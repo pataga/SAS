@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>SAS - Login</title>
+	<link rel="stylesheet" href="normalize.css">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<br>
+<h1>Server <span>Admin</span> System</h1>
+<h3>Bitte loggen sie sich mit ihren Kundendaten ein.</h3>
+	<section class="loginform cf">
+		<form name="login" action="login.php" method="post" accept-charset="utf-8">
+			<ul>
+				<li>
+					<label for="usermail">E-Mail</label>
+					<input type="email" name="usermail" placeholder="mustermann@beispiel.de" required>
+				</li>
+				<li>
+					<label for="password">Passwort</label>
+					<input type="password" name="password" placeholder="&bull;&bull;&bull;&bull;&bull;" required></li>
+				<li>
+					<input type="submit" value="Login"><br>
+				</li>
+			</ul>
+		</form>
+		<br><br><br>
+		<p><a href="passwort.html">Passwort vergessen?</a></p>
+	</section>
+	
+</body>
+</html>

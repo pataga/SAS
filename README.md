@@ -1,4 +1,0 @@
-SAS
-===
-
-Server-Admin-System
