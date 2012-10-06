@@ -1,36 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>SAS - Server Admin System</title>
-
-<!-- CSS -->
-<link href="style/css/transdmin.css" rel="stylesheet" type="text/css" media="screen" />
-<!--[if IE 6]><link rel="stylesheet" type="text/css" media="screen" href="style/css/ie6.css" /><![endif]-->
-<!--[if IE 7]><link rel="stylesheet" type="text/css" media="screen" href="style/css/ie7.css" /><![endif]-->
-
-<!-- JavaScripts-->
-<script type="text/javascript" src="style/js/jquery.js"></script>
-<script type="text/javascript" src="style/js/jNice.js"></script>
-</head>
-
-<body>
-	<div id="wrapper">
-    	<h1>Server <span>Admin</span> System</h1>
-        
-        <!-- You can name the links with lowercase, they will be transformed to uppercase by CSS, we prefered to name them with uppercase to have the same effect with disabled stylesheet -->
-        <ul id="mainNav">
-        	<li><a href="index.html">START</a></li> <!-- Use the "active" class for the active menu item  -->
-        	<li><a href="apache.html">APACHE</a></li>
-			<li><a href="postfix.html">POSTFIX</a></li>
-        	<li><a href="ftp.html">FTP</a></li>
-        	<li><a href="mysql.html" class="active">MYSQL</a></li>
-			<li><a href="samba.html">SAMBA</a></li>
-			<li><a href="management.html">MANAGEMENT</a></li>
-			<li><a href="webuser.html">WEBUSER</a></li>	
-			<li><a href="tools.html">SERVERTOOLS</a></li>			
-        	<li class="logout"><a href="#">LOGOUT</a></li>
-        </ul>
+<?php include 'inc/html/top.inc.php'; ?>
         <!-- // #end mainNav -->
         
         <div id="containerHolder">
@@ -100,17 +68,6 @@
                     </form>
                 </div>
                 <!-- // #main -->
-                
-                <div class="clear"></div>
-            </div>
-            <!-- // #container -->
-        </div>	
-        <!-- // #containerHolder -->
-        
-        <center><p id="footer">SAS - Server Admin System | Klasse: 2BKI2 | <a href="#">Patrick Farnkopf</a>, <a href="#">Tanja Weiser</a> &amp; <a href="http://mangopix.de">Gabriel Wanzek</a></p></center>
-    </div>
-    <!-- // #wrapper -->
-</body>
-</html>
+<?php include 'inc/html/footer.inc.php'; ?>
 
 

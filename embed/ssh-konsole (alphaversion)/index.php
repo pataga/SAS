@@ -1,8 +1,8 @@
 <?php
 require 'libs/Net/SSH2.php';
 $ausgabe = "";
-$ssh = new Net_SSH2("192.168.43.95");
-$ssh->login("gabriel","12345"); // USER,PW
+$ssh = new Net_SSH2("192.168.0.105");
+$ssh->login("gabriel","Mango11"); // USER,PW
 if (isset($_POST["command"]))
    $ausgabe = $ssh->exec($_POST['command']); //BEFEHL
 ?>
@@ -21,7 +21,7 @@ TEXTAREA {
 </style>
 <br><br><br><br><br>
 <form action="index.php" method="post">
-<textarea readonly="readonly"><?=$ausgabe?></textarea><br>
+<textarea readonly="readonly"><?php echo $ausgabe; ?></textarea><br>
 <input type="text" name="command" style="width:300px;height:auto;font-size:1.1em; font-family:monospace;"><input type="submit" style="width:auto;height:25px;font-size:1.1em; ">
 </form>
 

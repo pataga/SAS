@@ -1,0 +1,11 @@
+.console {
+    width: 400px;
+    height: 600px;
+    display: block;
+    padding: 15px;
+    overflow: auto; 
+    background: none repeat scroll 0% 0% transparent;
+    white-space: pre;
+    border: 3px solid #888;
+    resize: none;
+}
