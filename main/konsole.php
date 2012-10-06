@@ -14,7 +14,6 @@
                 <li><a href="#">CPU Auslastung</a></li>
                 <li><a href="#">RAM Auslastung</a></li>
                 <li><a href="#">Hardware Informationen</a></li>
-
             </ul>
             <!-- // .sideNav -->
         </div>    

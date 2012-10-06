@@ -15,8 +15,6 @@
                 <li><a href="#">Image aufspielen</a></li>
                 <li><a href="#">Grundinstallation</a></li>
                 <li><a style="color: rgb(255, 0, 0);" href="#">Selbstzerst&ouml;rung</a></li>
-
-
             </ul>
             <!-- // .sideNav -->
         </div>    
