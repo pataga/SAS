@@ -52,6 +52,4 @@
             </form>
         </div>
         <!-- // #main -->
-    </div>
-</div>
 <?php include 'inc/html/footer.inc.php'; ?>
