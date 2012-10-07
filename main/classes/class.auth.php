@@ -9,7 +9,6 @@
             
             if (md5($login_pass) == $row->password) //Wenn Eingabe Passwort mit dem aus DB übereinstimmt => TRUE
             {
-                $_SESSION['loggedin'] = true;
                 $_SESSION['username'] = $row->username;
                 $_SESSION['id'] = $row->id;
                 return true;

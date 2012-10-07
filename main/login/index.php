@@ -26,11 +26,11 @@ if (isset($_SESSION['loggedin']) && !$_SESSION['loggedin'])
                 <ul>
                     <li>
                         <label for="usermail">E-Mail</label>
-                        <input type="email" name="user" placeholder="mustermann@beispiel.de" required>
+                        <input type="text" name="user" placeholder="Benutzername" required>
                     </li>
                     <li>
                         <label for="password">Passwort</label>
-                        <input type="password" name="pw" placeholder="Passwort" required></li>
+                        <input type="password" name="pass" placeholder="Passwort" required></li>
                     <li>
                         <input type="submit" value="Login"><br>
                     </li>
