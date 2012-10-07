@@ -5,15 +5,13 @@
     <div id="container">
         <div id="sidebar">
             <ul class="sideNav">
-                <li><a href="#" class="active">System&uuml;bersicht</a></li>
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="#">System&uuml;bersicht</a></li>
                 <li><a href="#">Serverstatistiken</a></li>
                 <li><a href="#">QuickPanel</a></li>
                 <li><a href="#">Dokumentation</a></li>
                 <li><a href="#">Hilfe</a></li>
                 <li><a href="#">&Uuml;ber SAS</a></li>
-                <li><center><a href="#">- - - - - - </a></center></li>
-                <li><a href="example.html">Template Funktionen</a></li>
-
             </ul>
             <!-- // .sideNav -->
         </div>    

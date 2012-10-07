@@ -5,67 +5,69 @@
     <div id="container">
         <div id="sidebar">
             <ul class="sideNav">
-                <li><a href="#" class="active">Tool &Uuml;bersicht</a></li>
-                <li><a href="#">Serverstatistiken</a></li>
-                <li><a href="#">Cronjobs</a></li>
-                <li><a href="#">Taskmanager</a></li>
-                <li><a href="konsole.php">Serverkonsole</a></li>
-                <li><a href="#">Speicherplatz Info</a></li>
-                <li><a href="#">CPU Auslastung</a></li>
-                <li><a href="#">RAM Auslastung</a></li>
-                <li><a href="#">Hardware Informationen</a></li>
+                <li><a <?php if ($_GET['page'] == "overview") echo 'class="active"'; ?> href="tools.php?page=overview">Tool &Uuml;bersicht</a></li>
+                <li><a <?php if ($_GET['page'] == "stats") echo 'class="active"'; ?> href="tools.php?page=stats">Serverstatistiken</a></li>
+                <li><a <?php if ($_GET['page'] == "cronjobs") echo 'class="active"'; ?> href="tools.php?page=cronjobs">Cronjobs</a></li>
+                <li><a <?php if ($_GET['page'] == "taskmgr") echo 'class="active"'; ?> href="tools.php?page=taskmgr">Taskmanager</a></li>
+                <li><a <?php if ($_GET['page'] == "console") echo 'class="active"'; ?> href="tools.php?page=console">Serverkonsole</a></li>
+                <li><a <?php if ($_GET['page'] == "hddinfo") echo 'class="active"'; ?> href="tools.php?page=hddinfo">Speicherplatz Info</a></li>
+                <li><a <?php if ($_GET['page'] == "cpuload") echo 'class="active"'; ?> href="tools.php?page=cpuload">CPU Auslastung</a></li>
+                <li><a <?php if ($_GET['page'] == "ramload") echo 'class="active"'; ?> href="tools.php?page=ramload">RAM Auslastung</a></li>
+                <li><a <?php if ($_GET['page'] == "hwinfo") echo 'class="active"'; ?> href="tools.php?page=hwinfo">Hardware Informationen</a></li>
 
             </ul>
             <!-- // .sideNav -->
         </div>    
         <!-- // #sidebar -->
 
-        <!-- h2 stays for breadcrumbs -->
-        <h2><a href="#">Dashboard</a> &raquo; <a href="#" class="active">Print resources</a></h2>
-
+        <h2><a href="tools.php?page=overview">Servertools</a> &raquo; 
+            <?php
+            if ($_GET['page'] == "overview")
+                echo '<a href="tools.php?page=overview" class="active">Tool &Uuml;bersicht</a>';
+            else if ($_GET['page'] == "stats")
+                echo '<a href="tools.php?page=stats" class="active">Serverstatistiken</a>';
+            else if ($_GET['page'] == "cronjobs")
+                echo '<a href="tools.php?page=cronjobs" class="active">Cronjobs</a>';
+            else if ($_GET['page'] == "taskmgr")
+                echo '<a href="tools.php?page=taskmgr" class="active">Taskmanager</a>';
+            else if ($_GET['page'] == "console")
+                echo '<a href="tools.php?page=console" class="active">Serverkonsole</a>';
+            else if ($_GET['page'] == "hddinfo")
+                echo '<a href="tools.php?page=hddinfo" class="active">Speicherplatz Info</a>';
+            else if ($_GET['page'] == "cpuload")
+                echo '<a href="tools.php?page=cpuload" class="active">CPU Auslastung</a>';
+            else if ($_GET['page'] == "ramload")
+                echo '<a href="tools.php?page=ramload" class="active">RAM Auslastung</a>';
+            else if ($_GET['page'] == "hwinfo")
+                echo '<a href="tools.php?page=hwinfo" class="active">Hardware Informationen</a>';
+            ?>
+        </h2>
         <div id="main">
-            <form action="" class="jNice">
-                <h3>Sample section</h3>
-                <table cellpadding="0" cellspacing="0">
-                    <tr>
-                        <td>Vivamus rutrum nibh in felis tristique vulputate</td>
-                        <td class="action"><a href="#" class="view">View</a><a href="#" class="edit">Edit</a><a href="#" class="delete">Delete</a></td>
-                    </tr>                        
-                    <tr class="odd">
-                        <td>Duis adipiscing lorem iaculis nunc</td>
-                        <td class="action"><a href="#" class="view">View</a><a href="#" class="edit">Edit</a><a href="#" class="delete">Delete</a></td>
-                    </tr>                        
-                    <tr>
-                        <td>Donec sit amet nisi ac magna varius tempus</td>
-                        <td class="action"><a href="#" class="view">View</a><a href="#" class="edit">Edit</a><a href="#" class="delete">Delete</a></td>
-                    </tr>                        
-                    <tr class="odd">
-                        <td>Duis ultricies laoreet felis</td>
-                        <td class="action"><a href="#" class="view">View</a><a href="#" class="edit">Edit</a><a href="#" class="delete">Delete</a></td>
-                    </tr>                        
-                    <tr>
-                        <td>Vivamus rutrum nibh in felis tristique vulputate</td>
-                        <td class="action"><a href="#" class="view">View</a><a href="#" class="edit">Edit</a><a href="#" class="delete">Delete</a></td>
-                    </tr>                        
-                </table>
-                <h3>Another section</h3>
-                <fieldset>
-                    <p><label>Sample label:</label><input type="text" class="text-long" /></p>
-                    <p><label>Sample label:</label><input type="text" class="text-medium" /><input type="text" class="text-small" /><input type="text" class="text-small" /></p>
-                    <p><label>Sample label:</label>
-                        <select>
-                            <option>Select one</option>
-                            <option>Select two</option>
-                            <option>Select tree</option>
-                            <option>Select one</option>
-                            <option>Select two</option>
-                            <option>Select tree</option>
-                        </select>
-                    </p>
-                    <p><label>Sample label:</label><textarea rows="1" cols="1"></textarea></p>
-                    <input type="submit" value="Submit Query" />
-                </fieldset>
-            </form>
-        </div>
-        <!-- // #main -->
-        <?php include 'inc/html/footer.inc.php'; ?>
+            <?php
+            if (isset($_GET['page'])) {
+                if ($_GET['page'] == "overview")
+                    require 'inc/tools/overview.inc.php';
+                else if ($_GET['page'] == "stats")
+                    require 'inc/tools/stats.inc.php';
+                else if ($_GET['page'] == "cronjobs")
+                    require 'inc/tools/cronjobs.inc.php';
+                else if ($_GET['page'] == "taskmgr")
+                    require 'inc/tools/taskmgr.inc.php';
+                else if ($_GET['page'] == "console")
+                    require 'inc/tools/console.inc.php';
+                else if ($_GET['page'] == "hddinfo")
+                    require 'inc/tools/hddinfo.inc.php';
+                else if ($_GET['page'] == "cpuload")
+                    require 'inc/tools/cpuload.inc.php';
+                else if ($_GET['page'] == "ramload")
+                    require 'inc/tools/ramload.inc.php';
+                else if ($_GET['page'] == "hwinfo")
+                    require 'inc/tools/hwinfo.inc.php';
+                else
+                    echo '<meta http-equiv="refresh" content="0; URL=tools.php?page=overview">';
+            }
+            else
+                echo '<meta http-equiv="refresh" content="0; URL=tools.php?page=overview">';
+            ?>
+        
+
