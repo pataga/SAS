@@ -1,12 +1,16 @@
 <?php 
-session_start();
-$info = (isset($_SESSION['loggedin'])&&$_SESSION['loggedin']==false) ? '<div align="center"><div class="error">Fehler: Login fehlgeschlagen!</div></div>' : "";
-if (isset($_SESSION['loggedin']) && !$_SESSION['loggedin'])
-{
-    unset($_SESSION['loggedin']);
-}
-    
-    
+    session_start();
+    $info = (isset($_SESSION['loggedin'])&&$_SESSION['loggedin']==false) ? 
+                        '<div align="center"><div class="error">Fehler: Login fehlgeschlagen!</div></div>' : "";
+
+    if (isset($_SESSION['loggedin']) && !$_SESSION['loggedin'])
+        unset($_SESSION['loggedin']);
+
+    else if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'])
+    {
+        echo '<meta http-equiv="refresh" content="0; URL=../">'; 
+        die;
+    }
 ?>
 <!DOCTYPE html>
 <html>
