@@ -47,17 +47,7 @@
                     <input type="submit" value="Befehl ausf&uuml;hren" />
                     <br> <br> <br> 
                     <label>Konsolenausgabe:</label>
-                    <textarea id="console" readonly="readonly">
-total 109
-drwxr-xr-x  18 root     root         4096 Jun  9 21:12 ./
-drwxr-xr-x  18 root     root         4096 Jun  9 21:12 ../
-drwxr-xr-x   2 root     root         4096 Jun  9 21:14 bin/
-drwxr-xr-x   3 root     root         1024 Jun  9 20:32 boot/
-drwxr-xr-x   6 root     root        36864 Jul 12 10:26 dev/
-drwxr-xr-x  34 root     root         4096 Jul 12 10:25 etc/
-
-(Beispiel | PHP muss noch eingebunden werden...)
-                    </textarea>
+                    <textarea id="console" readonly="readonly"></textarea>
 
                 </fieldset>
             </form>
