@@ -18,7 +18,7 @@ if (isset($_SESSION['loggedin']) && !$_SESSION['loggedin'])
     <body>
         <br>
         <h1>Server <span>Admin</span> System</h1>
-        <h3>Bitte loggen sie sich mit ihren Kundendaten ein.</h3><br>
+        <h3>Bitte melden sie sich mit ihren Benutzerdaten an</h3><br>
         <?php echo $info; ?>
 
         <section class="loginform cf">

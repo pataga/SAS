@@ -43,7 +43,7 @@
                 <li><a href="management.php"<?php if (($pfile) == ("management.php")) echo "class='active'"; else " "; ?>>MANAGEMENT</a></li>
                 <li><a href="webuser.php"<?php if (($pfile) == ("webuser.php")) echo "class='active'"; else " "; ?>>WEBUSER</a></li>	
                 <li><a href="tools.php"<?php if (($pfile) == ("tools.php")) echo "class='active'"; else " "; ?>>SERVERTOOLS</a></li>			
-                <li class="logout"><a href="#">LOGOUT</a></li>
+                <li class="logout"><a href="logout.php">LOGOUT</a></li>
             </ul>
             <!-- // #end mainNav -->
 
