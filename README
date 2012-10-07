@@ -8,7 +8,7 @@ Verzeichnisdefinitionen:
 	aktuelle ToDo's, die Dokumentation und/oder deren Versionen und Teile und weiter Dokumente
 
 - embed:
-	Skripte, Klassen, Stylesheets usw. die eingebunden werden können
+	Skripte, Klassen, Stylesheets usw. die eingebunden werden kÃ¶nnen
 	
 - main
 	Das gesamte Projekt als Ganzes
@@ -18,3 +18,5 @@ Verzeichnisdefinitionen:
 	
 - template
 	Das HTML-Template ohne Funktion, als Backup.
+
+==> Default Web Access: admin geheim
