@@ -1,5 +1,19 @@
-<?php include 'inc/html/top.inc.php'; ?>
-<!-- // #end mainNav -->
+<?php
+    include 'inc/html/top.inc.php';
+    include 'libs/Net/SSH2.php';
+
+    if (isset($_POST['output']))
+        $output = $_POST['output'];
+    else
+        $output = "root@server:";
+
+    if (isset($_POST['command']))
+    {
+        $ssh = new Net_SSH2($_SESSION['server_ip']);
+        $ssh->login($_SESSION['server_user'],$_SESSION['server_pass']);
+        $output .= $ssh->exec($_POST['command']);
+    }
+?>
 
 <div id="containerHolder">
     <div id="container">
@@ -23,22 +37,7 @@
         <h2><a href="tools.php">Servertools</a> &raquo; <a href="#" class="active">Serverkonsole</a></h2>
 
         <div id="main">
-            <form action="" class="jNice">
-                <h3>Serverauswahl</h3>
-                <fieldset>
-                    <label>Server ausw&auml;hlen:</label>
-                    <select>
-                        <option>Server 1</option>
-                        <option>Server 2</option>
-                        <option>Server 3</option>
-                        <option>Server 4</option>
-                        <option>Server 5</option>
-                        <option>Server 6</option>
-                    </select>
-                    <input type="submit" class="submit2" value="Server verwenden" />
-                </fieldset>
-            </form>
-            <form action="" class="jNice">
+            <form action="konsole.php" class="jNice">
                 <h3>Konsole</h3>
                 <fieldset>
 
@@ -47,10 +46,12 @@
                     <input type="submit" value="Befehl ausf&uuml;hren" />
                     <br> <br> <br> 
                     <label>Konsolenausgabe:</label>
-                    <textarea id="console" readonly="readonly"></textarea>
+                    <textarea id="console" readonly="readonly"><?=$output?></textarea>
 
                 </fieldset>
             </form>
         </div>
         <!-- // #main -->
-        <?php include 'inc/html/footer.inc.php'; ?>
+    </div>
+</div>
+<?php include 'inc/html/footer.inc.php'; ?>
