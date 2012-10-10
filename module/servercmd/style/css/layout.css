@@ -31,7 +31,7 @@ h1 {
 }
 
 h1 span {
-    color:#D65236;
+    color:#3693D6;
     font-weight: ;
 }
 
@@ -115,8 +115,8 @@ h1 span {
 #sidebar .sideNav li a:hover { background: #fdfcf6; }
 
 #sidebar .sideNav li a.active, #sidebar .sideNav li a.active:hover {
-    background: #f0f7fa;
-    color: #c66653;
+    background: #E6F7FF;
+    color: #3693D6;
 }
 
 /* Breadcrumb ---------------------------------------- */
@@ -138,7 +138,7 @@ h2 a {
     text-decoration: none;
 }
 
-h2 a.active { color: #c66653; }
+h2 a.active { color: #3693D6; }
 
 h2 a:hover { text-decoration: underline; }
 
@@ -154,7 +154,7 @@ h3 {
     font-size: 14px;
     line-height: 14px;
     font-weight: bold;
-    color: #5494af;
+    color: #141414;
     padding: 0 0 0 10px;
     margin: 20px 0 10px;
 }
@@ -184,9 +184,10 @@ h3 {
 }
 
 #main table tr .action a { margin: 0 0 0 10px; text-decoration: none; color: #9b9b9b; }
-#main table tr:hover .action .edit { color: #c5a059; }
-#main table tr:hover .action .delete { color: #a02b2b; }
+#main table tr:hover .action .edit { color: #626262; }
+#main table tr:hover .action .delete { color: #DF0000; }
 #main table tr:hover .action .view { color: #55a34a; }
+#main table tr:hover .action .normal { color: #626262; }
 
 #main table tr:hover .action a:hover { text-decoration: underline; }
 
@@ -242,7 +243,7 @@ h3 {
 #main fieldset .text-long:focus, 
 #main fieldset .text-medium:focus,
 #main fieldset .text-small:focus
-{ background: #fdfcf6 url(../img/input-shaddow-hover.gif) no-repeat left top; }
+{ background: #F6FBFD url(../img/input-shaddow-hover.gif) no-repeat left top; }
 
 #main fieldset textarea {
     border: 1px solid #ddd;

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Transdmin Light</title>
+<title>SAS Servermanageme</title>
 
 <!-- CSS -->
 <link href="style/css/transdmin.css" rel="stylesheet" type="text/css" media="screen" />
@@ -25,11 +25,10 @@
 			<div id="container">
         		<div id="sidebar">
                 	<ul class="sideNav">
-                    	<li><a href="#" class="active">Serverliste</a></li>
-                    	<li><a href="#">Server hinzuf&uuml;gen</a></li>
-						<li><a href="#">Server bearbeiten</a></li>
-                    	<li><a href="#">Server entfernen</a></li>
-                    	<li><a href="#">Hilfe</a></li>
+                    	<li><a href="index.html" class="active">Serverliste</a></li>
+                    	<li><a href="addserver.html">Server hinzuf&uuml;gen</a></li>
+						<li><a href="user.html">SAS-User verwalten</a></li>
+						<li><a href="#">Hilfe</a></li>
                     	<li><a href="#">&Uuml;ber SAS</a></li>
                     </ul>
                     <!-- // .sideNav -->
@@ -37,58 +36,65 @@
                 <!-- // #sidebar -->
                 
                 <!-- h2 stays for breadcrumbs -->
-                <h2><a href="#">Servermanagement</a> &raquo; <a href="#" class="active">Serverliste</a></h2>
+                <h2><a href="index.html">Servermanagement</a> &raquo; <a href="#" class="active">Serverliste</a></h2>
                 
                 <div id="main">
                 	<form action="" class="jNice">
 					<h3>Aktuelle Server</h3>
                     	<table cellpadding="0" cellspacing="0">
 							<tr>
-                                <td>Server "Rechnername" @ 132.120.254.32</td>
+								<td width="100px">123.12.123.231</td>
+                                <td>Server "Rechnername"</td>
                                 <td class="action"><a href="#" class="view">Benutzen</a><a href="#" class="edit">Bearbeiten</a><a href="#" class="delete">Entfernen</a></td>
                             </tr>                        
 							<tr class="odd">
-                                 <td>Server "Rechnername" @ 132.120.254.32</td>
+                                <td>123.12.123.231</td>
+                                <td>Server "Rechnername"</td>
                                 <td class="action"><a href="#" class="view">Benutzen</a><a href="#" class="edit">Bearbeiten</a><a href="#" class="delete">Entfernen</a></td>
                             </tr>                        
 							<tr>
-                                 <td>Server "Rechnername" @ 132.120.254.32</td>
+                                <td>123.12.123.231</td>
+                                <td>Server "Rechnername"</td>
                                 <td class="action"><a href="#" class="view">Benutzen</a><a href="#" class="edit">Bearbeiten</a><a href="#" class="delete">Entfernen</a></td>
                             </tr>                        
 							<tr class="odd">
-                                 <td>Server "Rechnername" @ 132.120.254.32</td>
+                                <td>123.12.123.231</td>
+                                <td>Server "Rechnername"</td>
                                 <td class="action"><a href="#" class="view">Benutzen</a><a href="#" class="edit">Bearbeiten</a><a href="#" class="delete">Entfernen</a></td>
                             </tr>                        
 							<tr>
-                                 <td>Server "Rechnername" @ 132.120.254.32</td>
+                                <td>123.12.123.231</td>
+                                <td>Server "Rechnername"</td>
                                 <td class="action"><a href="#" class="view">Benutzen</a><a href="#" class="edit">Bearbeiten</a><a href="#" class="delete">Entfernen</a></td>
                             </tr>
 							<tr class="odd">
-                                 <td>Server "Rechnername" @ 132.120.254.32</td>
+                                <td>123.12.123.231</td>
+                                <td>Server "Rechnername"</td>
                                 <td class="action"><a href="#" class="view">Benutzen</a><a href="#" class="edit">Bearbeiten</a><a href="#" class="delete">Entfernen</a></td>
                             </tr>                        
 							<tr>
-                                 <td>Server "Rechnername" @ 132.120.254.32</td>
+                                <td>123.12.123.231</td>
+                                <td>Server "Rechnername"</td>
                                 <td class="action"><a href="#" class="view">Benutzen</a><a href="#" class="edit">Bearbeiten</a><a href="#" class="delete">Entfernen</a></td>
                             </tr> 
 							<tr class="odd">
-                                 <td>Server "Rechnername" @ 132.120.254.32</td>
+                                <td>123.12.123.231</td>
+                                <td>Server "Rechnername"</td>
                                 <td class="action"><a href="#" class="view">Benutzen</a><a href="#" class="edit">Bearbeiten</a><a href="#" class="delete">Entfernen</a></td>
                             </tr>                        
 							<tr>
-                                 <td>Server "Rechnername" @ 132.120.254.32</td>
+                                <td>123.12.123.231</td>
+                                <td>Server "Rechnername"</td>
                                 <td class="action"><a href="#" class="view">Benutzen</a><a href="#" class="edit">Bearbeiten</a><a href="#" class="delete">Entfernen</a></td>
                             </tr> 							
                         </table>
-					<h3>Neuer Server:</h3>
-                    	<fieldset>
-                        	<p><label>Servername/Rechnername:</label><input type="text" class="text-long" /></p>
-                        	<p><label>IP Adresse:</label><input type="text" class="text-long" /></p>
-                            <p><label>Kunde:</label><input type="text" class="text-long" /></p>
-                            <p><label>Beschreibung:</label><textarea rows="1" cols="1"></textarea></p>
-                            <input type="submit" value="Hinzuf&uuml;gen" />
-                        </fieldset>
-                    </form>
+						<br>
+						<fieldset>
+						<p><b>Achtung!</b> Sie befinden sich momentan im Bereich "Servermanagement".</p>
+						<p>Um sich in das SAS-Control-Panel einzuloggen, klicken Sie in der betreffenden Zeile auf "Benutzen".</p>
+						</fieldset>
+						<br>
+					</form>
                 </div>
                 <!-- // #main -->
                 
