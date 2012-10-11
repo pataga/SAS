@@ -4,5 +4,3 @@
 <br><br>
     <?php echo __file__;?></p>
 </fieldset>
-</div>
-
