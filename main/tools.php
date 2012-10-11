@@ -68,6 +68,7 @@
             }
             else
                 echo '<meta http-equiv="refresh" content="0; URL=tools.php?page=overview">';
-            ?>
-        
-
+            ?>    
+</div>
+<!-- // #main -->
+<?php require 'inc/html/footer.inc.php'; ?>

@@ -5,64 +5,62 @@
     <div id="container">
         <div id="sidebar">
             <ul class="sideNav">
-                <li><a href="#" class="active">Home</a></li>
-                <li><a href="#">System&uuml;bersicht</a></li>
-                <li><a href="#">Serverstatistiken</a></li>
-                <li><a href="#">QuickPanel</a></li>
-                <li><a href="#">Dokumentation</a></li>
-                <li><a href="#">Hilfe</a></li>
-                <li><a href="#">&Uuml;ber SAS</a></li>
+                <li><a <?php if ($_GET['page'] == "home") echo 'class="active"'; ?> href="index.php?page=home">Home</a></li>
+                <li><a <?php if ($_GET['page'] == "overview") echo 'class="active"'; ?> href="index.php?page=overview">System&uuml;bersicht</a></li>
+                <li><a <?php if ($_GET['page'] == "panel") echo 'class="active"'; ?> href="index.php?page=panel">QuickPanel</a></li>
+                <li><a <?php if ($_GET['page'] == "stats") echo 'class="active"'; ?> href="index.php?page=stats">Serverstatistiken</a></li>
+                <li><a <?php if ($_GET['page'] == "doku") echo 'class="active"'; ?> href="index.php?page=doku">Dokumentation</a></li>
+                <li><a <?php if ($_GET['page'] == "help") echo 'class="active"'; ?> href="index.php?page=help">Hilfe</a></li>
+                <li><a <?php if ($_GET['page'] == "about") echo 'class="active"'; ?> href="index.php?page=about">&Uuml;ber SAS</a></li>
+                <li><a <?php // if ($_GET['page'] == "#") echo 'class="active"';    ?> href="#">?</a></li>
+                <li><a <?php // if ($_GET['page'] == "#") echo 'class="active"';    ?> href="#">?</a></li>
+                <li><a <?php // if ($_GET['page'] == "#") echo 'class="active"';    ?> href="#">?</a></li>
             </ul>
             <!-- // .sideNav -->
         </div>    
         <!-- // #sidebar -->
 
-        <!-- h2 stays for breadcrumbs -->
-        <h2><a href="#">Dashboard</a> &raquo; <a href="#" class="active">Print resources</a></h2>
-
+        <h2><a href="index.php?page=overview">Start</a> &raquo; 
+            <?php
+            if ($_GET['page'] == "home")
+                echo '<a href="index.php?page=home" class="active">Home</a>';
+            else if ($_GET['page'] == "overview")
+                echo '<a href="index.php?page=overview" class="active">System&uuml;bersicht</a>';
+            else if ($_GET['page'] == "panel")
+                echo '<a href="index.php?page=panel" class="active">QuickPanel</a>';
+            else if ($_GET['page'] == "stats")
+                echo '<a href="index.php?page=stats" class="active">Serverstatistiken</a>';
+            else if ($_GET['page'] == "doku")
+                echo '<a href="index.php?page=doku" class="active">Dokumentation</a>';
+            else if ($_GET['page'] == "help")
+                echo '<a href="index.php?page=help" class="active">Hilfe</a>';
+            else if ($_GET['page'] == "about")
+                echo '<a href="index.php?page=about" class="active">&Uuml;ber SAS</a>';
+            ?>
+        </h2>
         <div id="main">
-            <form action="" class="jNice">
-                <h3>Sample section</h3>
-                <table cellpadding="0" cellspacing="0">
-                    <tr>
-                        <td>Vivamus rutrum nibh in felis tristique vulputate</td>
-                        <td class="action"><a href="#" class="view">View</a><a href="#" class="edit">Edit</a><a href="#" class="delete">Delete</a></td>
-                    </tr>                        
-                    <tr class="odd">
-                        <td>Duis adipiscing lorem iaculis nunc</td>
-                        <td class="action"><a href="#" class="view">View</a><a href="#" class="edit">Edit</a><a href="#" class="delete">Delete</a></td>
-                    </tr>                        
-                    <tr>
-                        <td>Donec sit amet nisi ac magna varius tempus</td>
-                        <td class="action"><a href="#" class="view">View</a><a href="#" class="edit">Edit</a><a href="#" class="delete">Delete</a></td>
-                    </tr>                        
-                    <tr class="odd">
-                        <td>Duis ultricies laoreet felis</td>
-                        <td class="action"><a href="#" class="view">View</a><a href="#" class="edit">Edit</a><a href="#" class="delete">Delete</a></td>
-                    </tr>                        
-                    <tr>
-                        <td>Vivamus rutrum nibh in felis tristique vulputate</td>
-                        <td class="action"><a href="#" class="view">View</a><a href="#" class="edit">Edit</a><a href="#" class="delete">Delete</a></td>
-                    </tr>                        
-                </table>
-                <h3>Another section</h3>
-                <fieldset>
-                    <p><label>Sample label:</label><input type="text" class="text-long" /></p>
-                    <p><label>Sample label:</label><input type="text" class="text-medium" /><input type="text" class="text-small" /><input type="text" class="text-small" /></p>
-                    <p><label>Sample label:</label>
-                        <select>
-                            <option>Select one</option>
-                            <option>Select two</option>
-                            <option>Select tree</option>
-                            <option>Select one</option>
-                            <option>Select two</option>
-                            <option>Select tree</option>
-                        </select>
-                    </p>
-                    <p><label>Sample label:</label><textarea rows="1" cols="1"></textarea></p>
-                    <input type="submit" value="Submit Query" />
-                </fieldset>
-            </form>
+            <?php
+            if (isset($_GET['page'])) {
+                if ($_GET['page'] == "home")
+                    require 'inc/index/home.inc.php';
+                else if ($_GET['page'] == "overview")
+                    require 'inc/index/overview.inc.php';
+                else if ($_GET['page'] == "panel")
+                    require 'inc/index/panel.inc.php';
+                else if ($_GET['page'] == "stats")
+                    require 'inc/index/stats.inc.php';
+                else if ($_GET['page'] == "doku")
+                    require 'inc/index/doku.inc.php';
+                else if ($_GET['page'] == "help")
+                    require 'inc/index/help.inc.php';
+                else if ($_GET['page'] == "about")
+                    require 'inc/index/about.inc.php';
+                else
+                    echo '<meta http-equiv="refresh" content="0; URL=index.php?page=home">';
+            }
+            else
+                echo '<meta http-equiv="refresh" content="0; URL=index.php?page=home">';
+            ?>
         </div>
         <!-- // #main -->
         <?php include 'inc/html/footer.inc.php'; ?>

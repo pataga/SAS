@@ -5,68 +5,46 @@
     <div id="container">
         <div id="sidebar">
             <ul class="sideNav">
-                <li><a href="#" class="active">Postfix &Uuml;bersicht</a></li>
-                <li><a href="#">Mail Statistiken</a></li>
-                <li><a href="#">Postfix Konfiguration</a></li>
-                <li><a href="#">?</a></li>
-                <li><a href="#">?</a></li>
-                <li><a href="#">?</a></li>
-                <li><a href="#">?</a></li>
-                <li><a href="#">?</a></li>
-
-
+                <li><a <?php if ($_GET['page'] == "overview") echo 'class="active"'; ?> href="postfix.php?page=overview">Postfix &Uuml;bersicht</a></li>
+                <li><a <?php if ($_GET['page'] == "config") echo 'class="active"'; ?> href="postfix.php?page=config">Postfix Konfiguration</a></li>
+                <li><a <?php if ($_GET['page'] == "stats") echo 'class="active"'; ?> href="postfix.php?page=stats">Mail Statistiken</a></li>
+                <li><a <?php // if ($_GET['page'] == "#") echo 'class="active"';    ?> href="#">?</a></li>
+                <li><a <?php // if ($_GET['page'] == "#") echo 'class="active"';    ?> href="#">?</a></li>
+                <li><a <?php // if ($_GET['page'] == "#") echo 'class="active"';    ?> href="#">?</a></li>
+                <li><a <?php // if ($_GET['page'] == "#") echo 'class="active"';    ?> href="#">?</a></li>
+                <li><a <?php // if ($_GET['page'] == "#") echo 'class="active"';    ?> href="#">?</a></li>
+                <li><a <?php // if ($_GET['page'] == "#") echo 'class="active"';    ?> href="#">?</a></li>
             </ul>
             <!-- // .sideNav -->
         </div>    
         <!-- // #sidebar -->
 
-        <!-- h2 stays for breadcrumbs -->
-        <h2><a href="#">Dashboard</a> &raquo; <a href="#" class="active">Print resources</a></h2>
-
-        <div id="main">
-            <form action="" class="jNice">
-                <h3>Sample section</h3>
-                <table cellpadding="0" cellspacing="0">
-                    <tr>
-                        <td>Vivamus rutrum nibh in felis tristique vulputate</td>
-                        <td class="action"><a href="#" class="view">View</a><a href="#" class="edit">Edit</a><a href="#" class="delete">Delete</a></td>
-                    </tr>                        
-                    <tr class="odd">
-                        <td>Duis adipiscing lorem iaculis nunc</td>
-                        <td class="action"><a href="#" class="view">View</a><a href="#" class="edit">Edit</a><a href="#" class="delete">Delete</a></td>
-                    </tr>                        
-                    <tr>
-                        <td>Donec sit amet nisi ac magna varius tempus</td>
-                        <td class="action"><a href="#" class="view">View</a><a href="#" class="edit">Edit</a><a href="#" class="delete">Delete</a></td>
-                    </tr>                        
-                    <tr class="odd">
-                        <td>Duis ultricies laoreet felis</td>
-                        <td class="action"><a href="#" class="view">View</a><a href="#" class="edit">Edit</a><a href="#" class="delete">Delete</a></td>
-                    </tr>                        
-                    <tr>
-                        <td>Vivamus rutrum nibh in felis tristique vulputate</td>
-                        <td class="action"><a href="#" class="view">View</a><a href="#" class="edit">Edit</a><a href="#" class="delete">Delete</a></td>
-                    </tr>                        
-                </table>
-                <h3>Another section</h3>
-                <fieldset>
-                    <p><label>Sample label:</label><input type="text" class="text-long" /></p>
-                    <p><label>Sample label:</label><input type="text" class="text-medium" /><input type="text" class="text-small" /><input type="text" class="text-small" /></p>
-                    <p><label>Sample label:</label>
-                        <select>
-                            <option>Select one</option>
-                            <option>Select two</option>
-                            <option>Select tree</option>
-                            <option>Select one</option>
-                            <option>Select two</option>
-                            <option>Select tree</option>
-                        </select>
-                    </p>
-                    <p><label>Sample label:</label><textarea rows="1" cols="1"></textarea></p>
-                    <input type="submit" value="Submit Query" />
-                </fieldset>
-            </form>
-        </div>
-        <!-- // #main -->
-        <?php include 'inc/html/footer.inc.php'; ?>
+        <h2><a href="postfix.php?page=overview">Postfix</a> &raquo; 
+            <?php
+            if ($_GET['page'] == "overview")
+                echo '<a href="postfix.php?page=overview" class="active">&Uuml;bersicht</a>';
+            else if ($_GET['page'] == "config")
+                echo '<a href="postfix.php?page=config" class="active">Konfiguration</a>';
+            else if ($_GET['page'] == "stats")
+                echo '<a href="postfix.php?page=stats" class="active">Mail Statistiken</a>';
+            ?>
+            </h2>
+            <div id="main">
+                <?php
+                if (isset($_GET['page'])) {
+                    if ($_GET['page'] == "overview")
+                        require 'inc/postfix/overview.inc.php';
+                    else if ($_GET['page'] == "config")
+                        require 'inc/postfix/config.inc.php';
+                    else if ($_GET['page'] == "stats")
+                        require 'inc/postfix/stats.inc.php';
+                    else
+                        echo '<meta http-equiv="refresh" content="0; URL=postfix.php?page=overview">';
+                }
+                else
+                    echo '<meta http-equiv="refresh" content="0; URL=postfix.php?page=overview">';
+                ?>
+            </div>
+            <!-- // #main -->
+            <?php include 'inc/html/footer.inc.php'; ?>
 

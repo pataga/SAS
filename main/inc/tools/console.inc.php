@@ -27,6 +27,4 @@ if (isset($_POST['command'])) {
 
     </fieldset>
 </form>
-</div>
-<!-- // #main -->
-<?php require 'inc/html/footer.inc.php'; ?>
+
