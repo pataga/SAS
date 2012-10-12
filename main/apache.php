@@ -5,32 +5,32 @@
     <div id="container">
         <div id="sidebar">
             <ul class="sideNav">
-                <li><a <?php if ($_GET['page'] == "overview") echo 'class="active"'; ?> href="apache.php?page=overview">Apache &Uuml;bersicht</a></li>
-                <li><a <?php if ($_GET['page'] == "control") echo 'class="active"'; ?> href="apache.php?page=control">Steuerung</a></li>
-                <li><a <?php if ($_GET['page'] == "module") echo 'class="active"'; ?> href="apache.php?page=module">Module</a></li>
-                <li><a <?php if ($_GET['page'] == "config") echo 'class="active"'; ?> href="apache.php?page=config">Konfiguration</a></li>
-                <li><a <?php if ($_GET['page'] == "hostingsys") echo 'class="active"'; ?> href="apache.php?page=hostingsys">Hosting-System</a></li>
-                <li><a <?php if ($_GET['page'] == "stats") echo 'class="active"'; ?> href="apache.php?page=stats">Zugriffstatistiken</a></li>
-                <li><a <?php //if ($_GET['page'] == "#") echo 'class="active"';   ?> href="#">?</a></li>
-                <li><a <?php //if ($_GET['page'] == "#") echo 'class="active"';   ?> href="#">?</a></li>
-                <li><a <?php //if ($_GET['page'] == "#") echo 'class="active"';   ?> href="#">?</a></li>
+                <li><a <?php if (isset($_GET['page']) && $_GET['page'] == "overview") echo 'class="active"'; ?> href="apache.php?page=overview">Apache &Uuml;bersicht</a></li>
+                <li><a <?php if (isset($_GET['page']) && $_GET['page'] == "control") echo 'class="active"'; ?> href="apache.php?page=control">Steuerung</a></li>
+                <li><a <?php if (isset($_GET['page']) && $_GET['page'] == "module") echo 'class="active"'; ?> href="apache.php?page=module">Module</a></li>
+                <li><a <?php if (isset($_GET['page']) && $_GET['page'] == "config") echo 'class="active"'; ?> href="apache.php?page=config">Konfiguration</a></li>
+                <li><a <?php if (isset($_GET['page']) && $_GET['page'] == "hostingsys") echo 'class="active"'; ?> href="apache.php?page=hostingsys">Hosting-System</a></li>
+                <li><a <?php if (isset($_GET['page']) && $_GET['page'] == "stats") echo 'class="active"'; ?> href="apache.php?page=stats">Zugriffstatistiken</a></li>
+                <li><a <?php //if (isset($_GET['page']) && $_GET['page'] == "#") echo 'class="active"';   ?> href="#">?</a></li>
+                <li><a <?php //if (isset($_GET['page']) && $_GET['page'] == "#") echo 'class="active"';   ?> href="#">?</a></li>
+                <li><a <?php //if (isset($_GET['page']) && $_GET['page'] == "#") echo 'class="active"';   ?> href="#">?</a></li>
             </ul>
             <!-- // .sideNav -->
         </div>    
         <!-- // #sidebar -->
         <h2><a href="apache.php?page=overview">Apache</a> &raquo; 
             <?php
-            if ($_GET['page'] == "overview")
+            if (isset($_GET['page']) && $_GET['page'] == "overview")
                 echo '<a href="apache.php?page=overview" class="active">Apache &Uuml;bersicht</a>';
-            else if ($_GET['page'] == "control")
+            else if (isset($_GET['page']) && $_GET['page'] == "control")
                 echo '<a href="apache.php?page=control" class="active">Steuerung</a>';
-            else if ($_GET['page'] == "module")
+            else if (isset($_GET['page']) && $_GET['page'] == "module")
                 echo '<a href="apache.php?page=module" class="active">Module</a>';
-            else if ($_GET['page'] == "config")
+            else if (isset($_GET['page']) && $_GET['page'] == "config")
                 echo '<a href="apache.php?page=config" class="active">Konfiguration</a>';
-            else if ($_GET['page'] == "hostingsys")
+            else if (isset($_GET['page']) && $_GET['page'] == "hostingsys")
                 echo '<a href="apache.php?page=hostingsys" class="active">Hosting-System</a>';
-            else if ($_GET['page'] == "stats")
+            else if (isset($_GET['page']) && $_GET['page'] == "stats")
                 echo '<a href="apache.php?page=stats" class="active">Zugriffstatistiken</a>';
             ?>
         </h2>

@@ -5,15 +5,15 @@
     <div id="container">
         <div id="sidebar">
             <ul class="sideNav">
-                <li><a <?php if ($_GET['page'] == "overview") echo 'class="active"'; ?> href="tools.php?page=overview">Tool &Uuml;bersicht</a></li>
-                <li><a <?php if ($_GET['page'] == "stats") echo 'class="active"'; ?> href="tools.php?page=stats">Serverstatistiken</a></li>
-                <li><a <?php if ($_GET['page'] == "cronjobs") echo 'class="active"'; ?> href="tools.php?page=cronjobs">Cronjobs</a></li>
-                <li><a <?php if ($_GET['page'] == "taskmgr") echo 'class="active"'; ?> href="tools.php?page=taskmgr">Taskmanager</a></li>
-                <li><a <?php if ($_GET['page'] == "console") echo 'class="active"'; ?> href="tools.php?page=console">Serverkonsole</a></li>
-                <li><a <?php if ($_GET['page'] == "hddinfo") echo 'class="active"'; ?> href="tools.php?page=hddinfo">Speicherplatz Info</a></li>
-                <li><a <?php if ($_GET['page'] == "cpuload") echo 'class="active"'; ?> href="tools.php?page=cpuload">CPU Auslastung</a></li>
-                <li><a <?php if ($_GET['page'] == "ramload") echo 'class="active"'; ?> href="tools.php?page=ramload">RAM Auslastung</a></li>
-                <li><a <?php if ($_GET['page'] == "hwinfo") echo 'class="active"'; ?> href="tools.php?page=hwinfo">Hardware Informationen</a></li>
+                <li><a <?php if (isset($_GET['page']) && $_GET['page'] == "overview") echo 'class="active"'; ?> href="tools.php?page=overview">Tool &Uuml;bersicht</a></li>
+                <li><a <?php if (isset($_GET['page']) && $_GET['page'] == "stats") echo 'class="active"'; ?> href="tools.php?page=stats">Serverstatistiken</a></li>
+                <li><a <?php if (isset($_GET['page']) && $_GET['page'] == "cronjobs") echo 'class="active"'; ?> href="tools.php?page=cronjobs">Cronjobs</a></li>
+                <li><a <?php if (isset($_GET['page']) && $_GET['page'] == "taskmgr") echo 'class="active"'; ?> href="tools.php?page=taskmgr">Taskmanager</a></li>
+                <li><a <?php if (isset($_GET['page']) && $_GET['page'] == "console") echo 'class="active"'; ?> href="tools.php?page=console">Serverkonsole</a></li>
+                <li><a <?php if (isset($_GET['page']) && $_GET['page'] == "hddinfo") echo 'class="active"'; ?> href="tools.php?page=hddinfo">Speicherplatz Info</a></li>
+                <li><a <?php if (isset($_GET['page']) && $_GET['page'] == "cpuload") echo 'class="active"'; ?> href="tools.php?page=cpuload">CPU Auslastung</a></li>
+                <li><a <?php if (isset($_GET['page']) && $_GET['page'] == "ramload") echo 'class="active"'; ?> href="tools.php?page=ramload">RAM Auslastung</a></li>
+                <li><a <?php if (isset($_GET['page']) && $_GET['page'] == "hwinfo") echo 'class="active"'; ?> href="tools.php?page=hwinfo">Hardware Informationen</a></li>
 
             </ul>
             <!-- // .sideNav -->
@@ -22,23 +22,23 @@
 
         <h2><a href="tools.php?page=overview">Servertools</a> &raquo; 
             <?php
-            if ($_GET['page'] == "overview")
+            if (isset($_GET['page']) && $_GET['page'] == "overview")
                 echo '<a href="tools.php?page=overview" class="active">Tool &Uuml;bersicht</a>';
-            else if ($_GET['page'] == "stats")
+            else if (isset($_GET['page']) && $_GET['page'] == "stats")
                 echo '<a href="tools.php?page=stats" class="active">Serverstatistiken</a>';
-            else if ($_GET['page'] == "cronjobs")
+            else if (isset($_GET['page']) && $_GET['page'] == "cronjobs")
                 echo '<a href="tools.php?page=cronjobs" class="active">Cronjobs</a>';
-            else if ($_GET['page'] == "taskmgr")
+            else if (isset($_GET['page']) && $_GET['page'] == "taskmgr")
                 echo '<a href="tools.php?page=taskmgr" class="active">Taskmanager</a>';
-            else if ($_GET['page'] == "console")
+            else if (isset($_GET['page']) && $_GET['page'] == "console")
                 echo '<a href="tools.php?page=console" class="active">Serverkonsole</a>';
-            else if ($_GET['page'] == "hddinfo")
+            else if (isset($_GET['page']) && $_GET['page'] == "hddinfo")
                 echo '<a href="tools.php?page=hddinfo" class="active">Speicherplatz Info</a>';
-            else if ($_GET['page'] == "cpuload")
+            else if (isset($_GET['page']) && $_GET['page'] == "cpuload")
                 echo '<a href="tools.php?page=cpuload" class="active">CPU Auslastung</a>';
-            else if ($_GET['page'] == "ramload")
+            else if (isset($_GET['page']) && $_GET['page'] == "ramload")
                 echo '<a href="tools.php?page=ramload" class="active">RAM Auslastung</a>';
-            else if ($_GET['page'] == "hwinfo")
+            else if (isset($_GET['page']) && $_GET['page'] == "hwinfo")
                 echo '<a href="tools.php?page=hwinfo" class="active">Hardware Informationen</a>';
             ?>
         </h2>

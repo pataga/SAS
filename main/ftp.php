@@ -5,12 +5,12 @@
     <div id="container">
         <div id="sidebar">
             <ul class="sideNav">
-                <li><a <?php if ($_GET['page'] == "overview") echo 'class="active"'; ?> href="ftp.php?page=overview">FTP-Server &Uuml;bersicht</a></li>
-                <li><a <?php if ($_GET['page'] == "control") echo 'class="active"'; ?> href="ftp.php?page=control">FTP-Server Steuerung</a></li>
-                <li><a <?php if ($_GET['page'] == "config") echo 'class="active"'; ?> href="ftp.php?page=config">Konfiguration</a></li>
-                <li><a <?php if ($_GET['page'] == "users") echo 'class="active"'; ?> href="ftp.php?page=users">FTP-Users</a></li>
-                <li><a <?php if ($_GET['page'] == "directories") echo 'class="active"'; ?> href="ftp.php?page=directories">FTP-Verzeichnisse</a></li>
-                <li><a <?php if ($_GET['page'] == "stats") echo 'class="active"'; ?> href="ftp.php?page=stats">Statistiken</a></li>
+                <li><a <?php if (isset($_GET['page']) && $_GET['page'] == "overview") echo 'class="active"'; ?> href="ftp.php?page=overview">FTP-Server &Uuml;bersicht</a></li>
+                <li><a <?php if (isset($_GET['page']) && $_GET['page'] == "control") echo 'class="active"'; ?> href="ftp.php?page=control">FTP-Server Steuerung</a></li>
+                <li><a <?php if (isset($_GET['page']) && $_GET['page'] == "config") echo 'class="active"'; ?> href="ftp.php?page=config">Konfiguration</a></li>
+                <li><a <?php if (isset($_GET['page']) && $_GET['page'] == "users") echo 'class="active"'; ?> href="ftp.php?page=users">FTP-Users</a></li>
+                <li><a <?php if (isset($_GET['page']) && $_GET['page'] == "directories") echo 'class="active"'; ?> href="ftp.php?page=directories">FTP-Verzeichnisse</a></li>
+                <li><a <?php if (isset($_GET['page']) && $_GET['page'] == "stats") echo 'class="active"'; ?> href="ftp.php?page=stats">Statistiken</a></li>
                 <li><a <?php // if ($_GET['page'] == "#") echo 'class="active"';   ?> href="#">?</a></li>
                 <li><a <?php // if ($_GET['page'] == "#") echo 'class="active"';   ?> href="#">?</a></li>
                 <li><a <?php // if ($_GET['page'] == "#") echo 'class="active"';   ?> href="#">?</a></li>
@@ -20,17 +20,17 @@
         <!-- // #sidebar -->
         <h2><a href="ftp.php?page=overview">FTP-Server</a> &raquo; 
             <?php
-            if ($_GET['page'] == "overview")
+            if (isset($_GET['page']) && $_GET['page'] == "overview")
                 echo '<a href="ftp.php?page=overview" class="active">FTP-Server &Uuml;bersicht</a>';
-            else if ($_GET['page'] == "control")
+            else if (isset($_GET['page']) && $_GET['page'] == "control")
                 echo '<a href="ftp.php?page=control" class="active">FTP-Server Steuerung</a>';
-            else if ($_GET['page'] == "config")
+            else if (isset($_GET['page']) && $_GET['page'] == "config")
                 echo '<a href="ftp.php?page=config" class="active">Konfiguration</a>';
-            else if ($_GET['page'] == "users")
+            else if (isset($_GET['page']) && $_GET['page'] == "users")
                 echo '<a href="ftp.php?page=users" class="active">FTP-Users</a>';
-            else if ($_GET['page'] == "directories")
+            else if (isset($_GET['page']) && $_GET['page'] == "directories")
                 echo '<a href="ftp.php?page=directories" class="active">FTP-Verzeichnisse</a>';
-            else if ($_GET['page'] == "stats")
+            else if (isset($_GET['page']) && $_GET['page'] == "stats")
                 echo '<a href="ftp.php?page=stats" class="active">Statistiken</a>';
             ?>
         </h2>

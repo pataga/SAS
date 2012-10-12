@@ -4,15 +4,15 @@
     <div id="container">
         <div id="sidebar">
             <ul class="sideNav">
-                <li><a <?php if ($_GET['page'] == "overview") echo 'class="active"'; ?> href="management.php?page=overview">Server&uuml;bersicht</a></li>
-                <li><a <?php if ($_GET['page'] == "masteredit") echo 'class="active"'; ?> href="management.php?page=masteredit">Stammdaten &auml;ndern</a></li>
-                <li><a <?php if ($_GET['page'] == "start") echo 'class="active"'; ?> href="management.php?page=start">Starten</a></li>
-                <li><a <?php if ($_GET['page'] == "shutdown") echo 'class="active"'; ?> href="management.php?page=shutdown">Herunterfahren</a></li>
-                <li><a <?php if ($_GET['page'] == "reboot") echo 'class="active"'; ?> href="management.php?page=reboot">Neustarten</a></li>
-                <li><a <?php if ($_GET['page'] == "reset") echo 'class="active"'; ?> href="management.php?page=reset">Zur&uuml;cksetzen</a></li>
-                <li><a <?php if ($_GET['page'] == "setup") echo 'class="active"'; ?> href="management.php?page=setup">Image aufspielen</a></li>
-                <li><a <?php if ($_GET['page'] == "install") echo 'class="active"'; ?> href="management.php?page=install">Grundinstallation</a></li>
-                <li><a <?php if ($_GET['page'] == "destroy") echo 'class="active"'; ?> href="management.php?page=destroy" style="color: rgb(255, 0, 0);">Selbstzerst&ouml;rung</a></li>
+                <li><a <?php if (isset($_GET['page']) && $_GET['page'] == "overview") echo 'class="active"'; ?> href="management.php?page=overview">Server&uuml;bersicht</a></li>
+                <li><a <?php if (isset($_GET['page']) && $_GET['page'] == "masteredit") echo 'class="active"'; ?> href="management.php?page=masteredit">Stammdaten &auml;ndern</a></li>
+                <li><a <?php if (isset($_GET['page']) && $_GET['page'] == "start") echo 'class="active"'; ?> href="management.php?page=start">Starten</a></li>
+                <li><a <?php if (isset($_GET['page']) && $_GET['page'] == "shutdown") echo 'class="active"'; ?> href="management.php?page=shutdown">Herunterfahren</a></li>
+                <li><a <?php if (isset($_GET['page']) && $_GET['page'] == "reboot") echo 'class="active"'; ?> href="management.php?page=reboot">Neustarten</a></li>
+                <li><a <?php if (isset($_GET['page']) && $_GET['page'] == "reset") echo 'class="active"'; ?> href="management.php?page=reset">Zur&uuml;cksetzen</a></li>
+                <li><a <?php if (isset($_GET['page']) && $_GET['page'] == "setup") echo 'class="active"'; ?> href="management.php?page=setup">Image aufspielen</a></li>
+                <li><a <?php if (isset($_GET['page']) && $_GET['page'] == "install") echo 'class="active"'; ?> href="management.php?page=install">Grundinstallation</a></li>
+                <li><a <?php if (isset($_GET['page']) && $_GET['page'] == "destroy") echo 'class="active"'; ?> href="management.php?page=destroy" style="color: rgb(255, 0, 0);">Selbstzerst&ouml;rung</a></li>
             </ul>
             <!-- // .sideNav -->
         </div>    
@@ -20,23 +20,23 @@
 
         <h2><a href="management.php?page=overview">Management</a> &raquo; 
             <?php
-            if ($_GET['page'] == "overview")
+            if (isset($_GET['page']) && $_GET['page'] == "overview")
                 echo '<a href="management.php?page=overview" class="active">Server&uuml;bersicht</a>';
-            else if ($_GET['page'] == "masteredit")
+            else if (isset($_GET['page']) && $_GET['page'] == "masteredit")
                 echo '<a href="management.php?page=masteredit" class="active">Stammdaten &auml;ndern</a>';
-            else if ($_GET['page'] == "start")
+            else if (isset($_GET['page']) && $_GET['page'] == "start")
                 echo '<a href="management.php?page=start" class="active">Starten</a>';
-            else if ($_GET['page'] == "shutdown")
+            else if (isset($_GET['page']) && $_GET['page'] == "shutdown")
                 echo '<a href="management.php?page=shutdown" class="active">Herunterfahren</a>';
-            else if ($_GET['page'] == "reboot")
+            else if (isset($_GET['page']) && $_GET['page'] == "reboot")
                 echo '<a href="management.php?page=reboot" class="active">Neustarten</a>';
-            else if ($_GET['page'] == "reset")
+            else if (isset($_GET['page']) && $_GET['page'] == "reset")
                 echo '<a href="management.php?page=reset" class="active">Zur&uuml;cksetzen</a>';
-            else if ($_GET['page'] == "setup")
+            else if (isset($_GET['page']) && $_GET['page'] == "setup")
                 echo '<a href="management.php?page=setup" class="active">Image aufspielen</a>';
-            else if ($_GET['page'] == "install")
+            else if (isset($_GET['page']) && $_GET['page'] == "install")
                 echo '<a href="management.php?page=install" class="active">Grundinstallation</a>';
-            else if ($_GET['page'] == "destroy")
+            else if (isset($_GET['page']) && $_GET['page'] == "destroy")
                 echo '<a href="management.php?page=destroy"  style="color: rgb(255, 0, 0);" class="active">Selbstzerst&ouml;rung</a>';
             ?>
         </h2>
