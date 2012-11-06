@@ -6,14 +6,11 @@
     include 'functions/func.misc.php';   //Sonstige Funktionen
     include 'functions/func.auth.php';   //Auth Management
 
-    grandAccess();
-
+    grandAccess();                       //Zugriff verwehren wenn inaktiv
     $get = GET();
 
     if ($get == "error")
-    {
         loadError();                    //Lade Fehlerseite => Todo: Erstelle Fehlerseite
-    }
 
     loadTop();                          //Lade Top + Hauptnavigation
     loadSideNav($get, $_GET[$get]);     //Lade Seitennavigation
