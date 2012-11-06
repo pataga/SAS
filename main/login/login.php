@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-include '../conf/config.php';
-include '../classes/class.auth.php';
+include '../config/config.mysql.php';
+include '../functions/class.auth.php';
 
 if (isset($_POST['user']) && isset($_POST['pass']))
     $_SESSION['loggedin'] = AuthChallenge($_POST['user'], $_POST['pass']);

@@ -1,11 +1,3 @@
-<?php
-    session_start();
-    if (isset($_SESSION['loggedin']) && !$_SESSION['loggedin'] || !isset($_SESSION['loggedin'])) 
-    {
-        echo '<meta http-equiv="refresh" content="0; URL=login/">';
-        die;
-    }
-?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -34,16 +26,12 @@
             ?>
 
             <ul id="mainNav">
-                <li><a href="index.php" <?php if (($pfile) == ("index.php")) echo "class='active'"; else " "; ?>>START</a></li> 
-                <li><a href="apache.php"<?php if (($pfile) == ("apache.php")) echo "class='active'"; else " "; ?>>APACHE</a></li>
-                <li><a href="postfix.php"<?php if (($pfile) == ("postfix.php")) echo "class='active'"; else " "; ?>>POSTFIX</a></li>
-                <li><a href="ftp.php"<?php if (($pfile) == ("ftp.php")) echo "class='active'"; else " "; ?>>FTP</a></li>
-                <li><a href="mysql.php"<?php if (($pfile) == ("mysql.php")) echo "class='active'"; else " "; ?>>MYSQL</a></li>
-                <li><a href="samba.php"<?php if (($pfile) == ("samba.php")) echo "class='active'"; else " "; ?>>SAMBA</a></li>
-                <li><a href="management.php"<?php if (($pfile) == ("management.php")) echo "class='active'"; else " "; ?>>MANAGEMENT</a></li>
-                <li><a href="webuser.php"<?php if (($pfile) == ("webuser.php")) echo "class='active'"; else " "; ?>>WEBUSER</a></li>	
-                <li><a href="tools.php"<?php if (($pfile) == ("tools.php")) echo "class='active'"; else " "; ?>>SERVERTOOLS</a></li>			
+                <?php 
+                    loadMenu();
+                ?>	
                 <li class="logout"><a href="logout.php">LOGOUT</a></li>
             </ul>
             <!-- // #end mainNav -->
-
+            <div id="containerHolder">
+                <div id="container">
+                    <div id="sidebar">
