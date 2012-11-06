@@ -7,7 +7,7 @@
     include 'functions/func.auth.php';   //Auth Management
 
     grandAccess();                       //Zugriff verwehren wenn inaktiv
-    $get = GET();
+    $get = GET();                        //Beziehe GET Index
 
     if ($get == "error")
         loadError();                    //Lade Fehlerseite => Todo: Erstelle Fehlerseite
