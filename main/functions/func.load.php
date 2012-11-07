@@ -11,10 +11,10 @@
 
 		while ($row = mysql_fetch_object($result))
 		{
-			$link = "index.php?p=".$row->getValue;
+			$link = "index.php?p=".$row->page;
 			$name = $row->name;
 
-			echo '<li><a href="'.$link.'" '.isSelected($row->get, $row->getValue).'>'.$name.'</a></li>';
+			echo '<li><a href="'.$link.'" '.isSelected($row->get, $row->page).'>'.$name.'</a></li>';
 		}
 	}
 
