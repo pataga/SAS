@@ -22,7 +22,7 @@ while [ "1" = "1" ]; do
 			read -p "Bitte INC Pfad angeben: " path
 
 			echo "INSERT INTO sas_main_menu (name, page) VALUES ('$name', '$get');" >> sas_main_menu.sql 
-			echo "INSERT INTO sas_page_content (page, inc_path) VALUES ('$get', '$path')" >> sas_page_content.sql
+			echo "INSERT INTO sas_page_content (page, inc_path) VALUES ('$get', '$path');" >> sas_page_content.sql
 			read -p "Druecke Y um zum Hauptmenue zu kommen oder ENTER zum weitermachen" -n1 cancel
 
 			if [ "$cancel" = "Y" ]; then 
@@ -40,7 +40,7 @@ while [ "1" = "1" ]; do
 			read -p "Bitte INC Pfad angeben: " path
 
 			echo "INSERT INTO sas_side_nav (name, page, spage) VALUES ('$name', '$page', '$spage');" >> sas_side_nav.sql 
-			echo "INSERT INTO sas_page_content (page, spage, inc_path) VALUES ('$page', '$spage', '$path')" >> sas_page_content.sql
+			echo "INSERT INTO sas_page_content (page, spage, inc_path) VALUES ('$page', '$spage', '$path');" >> sas_page_content.sql
 			read -p "Druecke Y um zum Hauptmenue zu kommen oder ENTER zum weitermachen" -n1 cancel
 
 			if [ "$cancel" = "Y" ]; then 
