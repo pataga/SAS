@@ -20,29 +20,29 @@
 
 	function loadSideNav($p, $s)
 	{
-		$result = mysql_query("SELECT * FROM sas_side_nav WHERE getValue='$p'") or die (mysql_error());
+		$result = mysql_query("SELECT * FROM sas_side_nav WHERE page='$p'") or die (mysql_error());
 
 		echo '<ul class="sideNav">';
 
 		while ($row = mysql_fetch_object($result))
 		{
-			$link = "index.php?p=".$row->getValue."&s=".$row->sub_getValue;
+			$link = "index.php?p=".$row->page."&s=".$row->spage;
 			$name = $row->name;
-			echo '<li><a href="'.$link.'" '.isSelected($row->sub_get, $row->sub_getValue).'>'.$name.'</a></li>';
+			echo '<li><a href="'.$link.'" '.isSelected("s", $row->spage).'>'.$name.'</a></li>';
 		}
 
         echo '</ul></div> ';
 	}
 
-	function loadTree($get, $getValue)
+	function loadTree($p)
 	{
-		$result = mysql_query("SELECT * FROM sas_side_nav WHERE get='$get' AND getValue='$getValue'") or die (mysql_error());
+		$result = mysql_query("SELECT * FROM sas_side_nav WHERE page='$p'") or die (mysql_error());
 
 		while ($row = mysql_fetch_object($result))
 		{
 			if (isset($_GET[$row->sub_get]))
 			{
-				echo '<h2><a href="index.php?page=overview">'.$row->get.'</a> &raquo; <a href="index.php?page=home" class="active">'.$row->sub_get.'</a></h2>';
+				echo '<h2><a href="index.php?page=overview">'.$row->page.'</a> &raquo; <a href="index.php?page=home" class="active">'.$row->spage.'</a></h2>';
 				break;
 			}
 		}
