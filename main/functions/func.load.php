@@ -11,22 +11,22 @@
 
 		while ($row = mysql_fetch_object($result))
 		{
-			$link = "index.php?".$row->get."=".$row->getValue;
+			$link = "index.php?p=".$row->getValue;
 			$name = $row->name;
 
 			echo '<li><a href="'.$link.'" '.isSelected($row->get, $row->getValue).'>'.$name.'</a></li>';
 		}
 	}
 
-	function loadSideNav($get, $getValue)
+	function loadSideNav($p, $s)
 	{
-		$result = mysql_query("SELECT * FROM sas_side_nav WHERE get='$get' AND getValue='$getValue'") or die (mysql_error());
+		$result = mysql_query("SELECT * FROM sas_side_nav WHERE getValue='$p'") or die (mysql_error());
 
 		echo '<ul class="sideNav">';
 
 		while ($row = mysql_fetch_object($result))
 		{
-			$link = "index.php?".$row->get."=".$row->getValue."&".$row->sub_get."=".$row->sub_getValue;
+			$link = "index.php?p=".$row->getValue."&s=".$row->sub_getValue;
 			$name = $row->name;
 			echo '<li><a href="'.$link.'" '.isSelected($row->sub_get, $row->sub_getValue).'>'.$name.'</a></li>';
 		}
@@ -48,9 +48,9 @@
 		}
 	}
 
-	function loadContent($get, $getValue)
+	function loadContent($p, $s)
 	{
-		$result = mysql_query("SELECT * FROM sas_main_menu WHERE get='$get' AND getValue='$getValue'") or die (mysql_error());
+		$result = mysql_query("SELECT * FROM sas_page_content WHERE page='$p' AND spage='$s'") or die (mysql_error());
 
 		echo '<div id="main">';
 

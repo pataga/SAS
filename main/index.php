@@ -6,16 +6,15 @@
     include 'functions/func.misc.php';   //Sonstige Funktionen
     include 'functions/func.auth.php';   //Auth Management
 
+    $page = isset($_GET['p']) ? $_GET['p'] : loadError();
+    $spage = isset($_GET['s']) ? $_GET['s'] : "";
+
     grandAccess();                       //Zugriff verwehren wenn inaktiv
-    $get = GET();                        //Beziehe GET Index
 
-    if ($get == "error")
-        loadError();                    //Lade Fehlerseite => Todo: Erstelle Fehlerseite
-
-    loadTop();                          //Lade Top + Hauptnavigation
-    loadSideNav($get, $_GET[$get]);     //Lade Seitennavigation
-    loadTree($get, $_GET[$get]);        //Lade Baumstruktur
-    loadContent($get, $_GET[$get]);     //Lade Inhalt
-    loadFooter();                       //Lade Fusszeile
+    loadTop();                           //Lade Top + Hauptnavigation
+    loadSideNav($page);             //Lade Seitennavigation
+    loadTree($page, $spage);    //Lade Baumstruktur
+    loadContent($page, $spage); //Lade Inhalt
+    loadFooter();                        //Lade Fusszeile
 ?>
 
