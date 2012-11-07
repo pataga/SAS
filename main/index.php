@@ -12,9 +12,9 @@
     grandAccess();                       //Zugriff verwehren wenn inaktiv
 
     loadTop();                           //Lade Top + Hauptnavigation
-    loadSideNav($page);             //Lade Seitennavigation
-    loadTree($page, $spage);    //Lade Baumstruktur
-    loadContent($page, $spage); //Lade Inhalt
+    loadSideNav($page);                  //Lade Seitennavigation
+    loadTree($page, $spage);             //Lade Baumstruktur
+    loadContent($page, $spage);          //Lade Inhalt
     loadFooter();                        //Lade Fusszeile
 ?>
 
