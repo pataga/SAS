@@ -17,7 +17,7 @@ while [ "1" = "1" ]; do
 	if [ "$opt" = "1" ]; then
 		while [ "1" = "1" ]
 		do 
-			read -p "Bitte GET Index eingeben: " get
+			read -p "Bitte Get Variable eingeben: " get
 			read -p "Bitte Name eingeben: " name
 			read -p "Bitte INC Pfad angeben: " path
 

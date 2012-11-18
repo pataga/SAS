@@ -9,6 +9,8 @@
 
     grandAccess();                       //Zugriff verwehren wenn inaktiv
 
+    //getServerSession();                
+
     $page = isset($_GET['p']) ? $_GET['p'] : loadError();
     $spage = isset($_GET['s']) ? $_GET['s'] : "";
 

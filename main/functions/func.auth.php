@@ -15,13 +15,13 @@
             }
             else //Ansonsten false
             {
-                session_unset();
-                session_destroy();
+                $_SESSION['loggedin'] = false;
                 return false;
             }
         }
         else //Wenn Datensatz nicht existiert => false
         {
+            $_SESSION['loggedin'] = false;
             return false;
         }
     }
