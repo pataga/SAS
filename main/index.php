@@ -13,7 +13,7 @@
     $spage = isset($_GET['s']) ? $_GET['s'] : "";
 
     loadTop();                           //Lade Top + Hauptnavigation
-    loadSideNav($page, $spage);                  //Lade Seitennavigation
+    loadSideNav($page, $spage);          //Lade Seitennavigation
     loadTree($page, $spage);             //Lade Baumstruktur
     loadContent($page, $spage);          //Lade Inhalt
     loadFooter();                        //Lade Fusszeile
