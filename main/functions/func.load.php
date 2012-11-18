@@ -14,7 +14,7 @@
 			$link = "index.php?p=".$row->page;
 			$name = $row->name;
 
-			echo '<li><a href="'.$link.'" '.isSelected($row->get, $row->page).'>'.$name.'</a></li>';
+			echo '<li><a href="'.$link.'" '.isSelected("p", $row->page).'>'.$name.'</a></li>';
 		}
 	}
 
@@ -40,7 +40,7 @@
 
 		while ($row = mysql_fetch_object($result))
 		{
-			if (isset($_GET[$row->sub_get]))
+			if (isset($_GET[$row->spage]))
 			{
 				echo '<h2><a href="index.php?page=overview">'.$row->page.'</a> &raquo; <a href="index.php?page=home" class="active">'.$row->spage.'</a></h2>';
 				break;
