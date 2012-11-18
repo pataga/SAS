@@ -15,6 +15,8 @@
             }
             else //Ansonsten false
             {
+                session_unset();
+                session_destroy();
                 return false;
             }
         }
@@ -39,7 +41,10 @@
     function grandAccess()
     {
         if (!isLoggedIn())
+        {
+            header("Location: login/");
             die;
+        }
         //ToDo: Weiterleitung auf Login Page
     }
 ?>

@@ -74,7 +74,7 @@
 
 	function loadError()
 	{
-		return;
+		header("Location: index.php?p=home");
 	}
 	
 ?>

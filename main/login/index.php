@@ -8,7 +8,7 @@
 
     else if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'])
     {
-        echo '<meta http-equiv="refresh" content="0; URL=../">'; 
+        echo '<meta http-equiv="refresh" content="0; URL=../">';
         die;
     }
 ?>
