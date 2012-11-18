@@ -2,7 +2,7 @@
 ![logo]
 
 ---
-#### Projektarbeit von Patrick Farnkopf, Tanja Weiser und Gabriel Wanzek *(PaTaGa)* | 2BKI2 | WvS² Mannheim
+** Projektarbeit von Patrick Farnkopf, Tanja Weiser und Gabriel Wanzek *(PaTaGa)* | 2BKI2 | WvS² Mannheim **
 ---
 
 ###Verzeichnisinhalte:
