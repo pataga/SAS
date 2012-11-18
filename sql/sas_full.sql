@@ -10,7 +10,7 @@ CREATE TABLE `sas_main_menu` (
   `name` varchar(255) NOT NULL,
   `page` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -19,7 +19,7 @@ CREATE TABLE `sas_main_menu` (
 
 LOCK TABLES `sas_main_menu` WRITE;
 /*!40000 ALTER TABLE `sas_main_menu` DISABLE KEYS */;
-INSERT INTO `sas_main_menu` VALUES (1,'START','home'),(2,'APACHE',''),(3,'POSTFIX',''),(4,'FTP',''),(5,'MYSQL','mysql'),(6,'SAMBA',''),(7,'MANAGEMENT',''),(8,'WEBUSER','');
+INSERT INTO `sas_main_menu` VALUES (1,'START','home'),(2,'MYSQL','mysql'),(3,'APACHE','apache'),(4,'POSTFIX','postfix'),(5,'FTP','ftp'),(6,'SAMBA','samba'),(7,'MANAGEMENT','management'),(8,'WEBUSER','webuser'),(9,'TOOLS','tools');
 /*!40000 ALTER TABLE `sas_main_menu` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -36,7 +36,7 @@ CREATE TABLE `sas_page_content` (
   `spage` varchar(255) NOT NULL,
   `inc_path` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,7 +45,7 @@ CREATE TABLE `sas_page_content` (
 
 LOCK TABLES `sas_page_content` WRITE;
 /*!40000 ALTER TABLE `sas_page_content` DISABLE KEYS */;
-INSERT INTO `sas_page_content` VALUES (1,'home','','inc/home/home.inc.php'),(2,'tools','console','inc/tools/console.inc.php'),(3,'home','overview','inc/index/overview.inc.php'),(4,'home','panel','inc/index/panel.inc.php'),(5,'home','stats','inc/index/stats.inc.php'),(6,'home','doku','inc/index/doku.inc.php'),(7,'home','help','inc/index/help.inc.php'),(8,'home','about','inc/index/about.inc.php'),(9,'mysql','console','inc/mysql/sqlcmd.inc.php'),(10,'mysql','','inc/mysql/overview.inc.php');
+INSERT INTO `sas_page_content` VALUES (1,'home','','inc/home/home.inc.php'),(2,'tools','console','inc/tools/console.inc.php'),(3,'home','overview','inc/index/overview.inc.php'),(4,'home','panel','inc/index/panel.inc.php'),(5,'home','stats','inc/index/stats.inc.php'),(6,'home','doku','inc/index/doku.inc.php'),(7,'home','help','inc/index/help.inc.php'),(8,'home','about','inc/index/about.inc.php'),(9,'mysql','console','inc/mysql/sqlcmd.inc.php'),(10,'mysql','','inc/mysql/overview.inc.php'),(11,'apache','','inc/apache/overview.inc.php'),(12,'postfix','','inc/postfix/overview.inc.php'),(13,'ftp','','inc/ftp/overview.inc.php'),(14,'samba','','inc/samba/overview.inc.php'),(15,'management','','inc/management/overview.inc.php');
 /*!40000 ALTER TABLE `sas_page_content` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -102,3 +102,26 @@ INSERT INTO `sas_web_users` VALUES (1,'admin','e8636ea013e682faf61f56ce1cb1ab5c'
 /*!40000 ALTER TABLE `sas_web_users` ENABLE KEYS */;
 UNLOCK TABLES;
 
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) NOT NULL DEFAULT '',
+  `password` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='latin1_swedish_ci';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users`
+--
+
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
