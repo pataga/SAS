@@ -43,12 +43,13 @@ h1 span {
     padding: 6px;
     margin: 0 0 30px 0;
     background: url(../img/top-menu-bg.gif) no-repeat left top; 
-    /* We used a background image making the thick border and the thin one to keep the html structure simple */
 }
+
 
 #mainNav li {
     float: left;
     height: 37px;
+    width: auto;
     border-right: 1px solid #ddd;
 }
 
@@ -63,8 +64,8 @@ h1 span {
     padding: 0 20px;
 }
 
-#mainNav li.logout {
-    float: right;
+#mainNav li.last {
+    float: left;
     border-left: 0px solid #ddd;
     border-right: none;
 }
@@ -300,4 +301,36 @@ h3 {
 
 #footer a { color: #9B9B9B; }
 
-#footer a:hover { text-decoration: none; }
+#footer a.logoutfooter {
+    font-size:110%;
+    font-weight: bold;
+    text-decoration: none;
+    color: #FFF;
+    background-color: #AAA;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+
+#footer a.logoutfooter:hover {
+    background-color: #CCC;
+    color: #FFF;
+}
+
+#footer a.logoutfooter, #footer a.logoutfooter:hover {
+    -webkit-transition-property: background color;
+    -moz-transition-property: background color;
+    -o-transition-property: background color;
+    -ms-transition-property: background color;
+    transition-property: background color;
+    -webkit-transition-duration: 0.25s;
+    -moz-transition-duration: 0.25s;
+    -o-transition-duration: 0.25s;
+    -ms-transition-duration: 0.25s;
+    transition-duration: 0.25s;
+    -webkit-transition-timing-function: ease-out;
+    -moz-transition-timing-function: ease-out;
+    -o-transition-timing-function: ease-out;
+    -ms-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+}

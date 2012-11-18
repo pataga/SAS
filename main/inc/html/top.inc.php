@@ -28,8 +28,7 @@
             <ul id="mainNav">
                 <?php 
                     loadMenu();
-                ?>	
-                <li class="logout"><a href="logout.php">LOGOUT</a></li>
+                ?>
             </ul>
             <!-- // #end mainNav -->
             <div id="containerHolder">

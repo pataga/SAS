@@ -13,8 +13,15 @@
 		{
 			$link = "index.php?p=".$row->page;
 			$name = $row->name;
-
-			echo '<li><a href="'.$link.'" '.isSelected("p", $row->page).'>'.$name.'</a></li>';
+			$id = $row->id;
+			
+			if ($id == "10"){
+				echo '<li class="last"><a href="'.$link.'" '.isSelected("p", $row->page).'>'.$name.'</a></li>';
+			}
+			
+			else {
+				echo '<li><a href="'.$link.'" '.isSelected("p", $row->page).'>'.$name.'</a></li>';
+			}
 		}
 	}
 
