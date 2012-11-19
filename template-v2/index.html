@@ -12,19 +12,19 @@
         <script src="js/vendor/modernizr-2.6.1.min.js"></script>
     </head>
     <body>
-            <div class="top">
-                <div class="logo">
-                    <h1>Server <span>Admin</span> System</h1>
-                </div>
-                <div class="usermenu">
-                    <img src="img/profile/0815.png" alt="Profilbild">
-                    <h3>Username</h3>
-                    <a href="#">Meine Daten &auml;ndern</a>
-                    <br>
-                    <a href="#">Logout</a>
-                </div>
+        <div class="top">
+            <div class="logo">
+                <h1>Server <span>Admin</span> System</h1>
             </div>
-            <div id="wrapper">
+            <div class="usermenu">
+                <img src="img/profile/0815.png" alt="Profilbild">
+                <h3>Username</h3>
+                <a href="#">Meine Daten &auml;ndern</a>
+                <br>
+                <a href="#">Logout</a>
+            </div>
+        </div>
+        <div id="wrapper">
             <div id="nav">
                 <ul>    
                     <li class="current"><a href="#">Home</a></li>   
@@ -33,34 +33,64 @@
                     <li><a href="#">FTP</a></li>  
                     <li><a href="#">MySQL</a></li>  
                     <li><a href="#">Samba</a></li>   
-                    <li><a href="#">Management</a></li>     
+                    <li><a href="#">Control</a></li>     
                     <li><a href="#">Webuser</a></li>     
                     <li><a href="#">Tools</a></li>     
                     <li><a href="#">Plugins</a></li>     
                 </ul>
                 <br style="clear:left">
             </div>
-            <div id="sidebar">
-                <ul class="sidenavtop">    
-                    <li class="current"><a href="#">Link 1</a></li>   
-                    <li><a href="#">Link 2</a></li>   
-                    <li><a href="#">Link 3</a></li>  
-                    <li><a href="#">Link 4</a></li>  
-                    <li><a href="#">Link 5</a></li>  
-                    <li><a href="#">Link 6</a></li>   
-                    <li><a href="#">Link 7</a></li>     
-                    <li><a href="#">Link 7</a></li>     
-                    <li><a href="#">Link 8</a></li>     
-                    <li><a href="#">Link 9</a></li>     
-                </ul>
+            <div id="main">
+                <div id="content">
+                    <h1>Content (&Uuml;berschrift 1)</h1>
+                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                    <h2>&Uuml;berschrift 2</h2>
+                    <h3>&Uuml;berschrift 3</h3>
+                    <h4>&Uuml;berschrift 4</h4>
+                    <h5>&Uuml;berschrift 5</h5>
+                    <h6>&Uuml;berschrift 6</h6>
+                    <hr>
+                    <div class="progress-bar blue stripes">
+                        <span style="width: 25%"></span>
+                    </div>
+                    <br>
+                    <div class="progress-bar green stripes">
+                        <span style="width: 45%"></span>
+                    </div>
+                    <br>
+                    <div class="progress-bar orange stripes">
+                        <span style="width: 65%"></span>
+                    </div>
+                    <hr>
+                    <a href="#" class="button white">Button</a> &nbsp;
+                    <a href="#" class="button grey">Button</a> &nbsp;
+                    <a href="#" class="button pink">Button</a> &nbsp;
+                    <a href="#" class="button orange">Button</a> &nbsp;
+                    <a href="#" class="button green">Button</a> <br><br>
+                    <a href="#" class="button blue">Button</a> &nbsp;
+                    <a href="#" class="button purple">Button</a> &nbsp;
+                    <a href="#" class="button teal">Button</a> &nbsp;
+                    <a href="#" class="button darkblue">Button</a> &nbsp;
+                    <a href="#" class="button black">Button</a> &nbsp;
+                </div>
+                <div id="sidebar">
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">System&uuml;bersicht</a></li>
+                        <li><a href="#">Quickpanel</a></li>
+                        <li><a href="#">Serverstatistiken</a></li>
+                        <li><a href="#">SAS-Homepage</a></li>
+                        <li class="last"><a href="#">Hilfe</a></li>
+                    </ul>
+                </div>
+            </div>
 
-            </div>
-            <div id="content">
-            </div>
         </div>
-
-
-
+        <div id="footer">
+            &copy; 2012 SAS - Server Admin System
+            <br><br> 
+            <a onclick="alert(unescape('Diese Seite ist vor%FCbergehend nicht erreichbar.'))" href="#">Patrick Farnkopf</a> <a onclick="alert(unescape('Diese Seite ist vor%FCbergehend nicht erreichbar.'))" href="#">Tanja Weiser</a><a class="last" href="http://mangopix.de" target="_blank">Gabriel Wanzek</a>
+        </div>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.8.2.min.js"><\/script>')</script>
         <script src="js/plugins.js"></script>
