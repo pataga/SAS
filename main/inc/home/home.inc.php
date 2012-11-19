@@ -4,7 +4,6 @@
 <br><br>
     <?php echo __file__;?></p>
 </fieldset>
-<br><br><br>
  <form action="" class="jNice">
                 <h3>Sample section</h3>
                 <table cellpadding="0" cellspacing="0">
