@@ -10,6 +10,10 @@
         <link rel="stylesheet" href="css/normalize.min.css">
         <link rel="stylesheet" href="css/main.css">
         <script src="js/vendor/modernizr-2.6.1.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.8.2.min.js"><\/script>')</script>
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
     </head>
     <body>
         <div class="top">
@@ -56,8 +60,8 @@
                     <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
                     <table border="1">
                         <tr>
-                            <th>Arial</th>
-                            <th>Ubuntu</th>
+                            <td>Arial</td>
+                            <td>Ubuntu</td>
                         </tr>
                         <tr>
                             <td>
@@ -150,37 +154,46 @@
                     <p>Verfügbare Farben für Buttons: white, grey, pink, orange, green, blue, purple, teal, darkblue, black</p>
                     <hr>
                     <h1>Forms</h1>
-                    small text: <br>
-                    <input type="text" class="text small" name=""><br><br>
-                    medium text: <br>
-                    <input type="text" class="text medium" name=""><br><br>
-                    large text: <br>
-                    <input type="text" class="text large" name=""><br><br>
-                    xlarge text: <br>
-                    <input type="text" class="text xlarge" name=""><br><br>
-                    <hr>
-                    <label>Select normal</label><br>
-                    <select class="select normal">
-                        <option value="1">Option 1</option>
-                        <option value="2">Option 2</option>
-                        <option value="3">Option 3</option>
-                        <option value="4">Option 4</option>
-                        <option value="5">Option 5</option>
-                    </select>
-                    <br><br>
-                    <label>Select big</label><br>
-                    <select class="select big">
-                        <option value="1">Option 1</option>
-                        <option value="2">Option 2</option>
-                        <option value="3">Option 3</option>
-                        <option value="4">Option 4</option>
-                        <option value="5">Option 5</option>
-                    </select>
-                    <hr>
-                    <label for="comments">Comments: </label>
-<textarea rows="4" name="comments"></textarea><br />
-<input type="submit" value="Submit" class="btnsubmit" />
-<input type="reset" value="Reset" class="btnreset" />
+                    <h3>Tabelle</h3>
+                    <table cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td>Vivamus rutrum nibh in felis tristique vulputate</td>
+                            <td class="action"><a href="#" class="view">View</a><a href="#" class="edit">Edit</a><a href="#" class="delete">Delete</a></td>
+                        </tr>                        
+                        <tr class="odd">
+                            <td>Duis adipiscing lorem iaculis nunc</td>
+                            <td class="action"><a href="#" class="view">View</a><a href="#" class="edit">Edit</a><a href="#" class="delete">Delete</a></td>
+                        </tr>                        
+                        <tr>
+                            <td>Donec sit amet nisi ac magna varius tempus</td>
+                            <td class="action"><a href="#" class="view">View</a><a href="#" class="edit">Edit</a><a href="#" class="delete">Delete</a></td>
+                        </tr>                        
+                        <tr class="odd">
+                            <td>Duis ultricies laoreet felis</td>
+                            <td class="action"><a href="#" class="view">View</a><a href="#" class="edit">Edit</a><a href="#" class="delete">Delete</a></td>
+                        </tr>                        
+                        <tr>
+                            <td>Vivamus rutrum nibh in felis tristique vulputate</td>
+                            <td class="action"><a href="#" class="view">View</a><a href="#" class="edit">Edit</a><a href="#" class="delete">Delete</a></td>
+                        </tr>                        
+                    </table>
+                    <h3>Formular</h3>
+                    <fieldset>
+                        <p><label>Sample label:</label><input type="text" class="text-long" /></p>
+                        <p><label>Sample label:</label><input type="text" class="text-medium" /><input type="text" class="text-small" /><input type="text" class="text-small" /></p>
+                        <p><label>Sample label:</label>
+                            <select>
+                                <option>Select one</option>
+                                <option>Select two</option>
+                                <option>Select tree</option>
+                                <option>Select one</option>
+                                <option>Select two</option>
+                                <option>Select tree</option>
+                            </select>
+                        </p>
+                        <p><label>Sample label:</label><textarea rows="1" cols="1"></textarea></p>
+                        <input type="submit" class="button black" value="Submit Query" />
+                    </fieldset>
                 </div>
             </div>
         </div>
@@ -189,9 +202,5 @@
             <br><br> 
             <a onclick="alert(unescape('Diese Seite ist vor%FCbergehend nicht erreichbar.'))" href="#">Patrick Farnkopf</a> <a onclick="alert(unescape('Diese Seite ist vor%FCbergehend nicht erreichbar.'))" href="#">Tanja Weiser</a><a class="last" href="http://mangopix.de" target="_blank">Gabriel Wanzek</a>
         </div>
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.8.2.min.js"><\/script>')</script>
-        <script src="js/plugins.js"></script>
-        <script src="js/main.js"></script>
     </body>
 </html>

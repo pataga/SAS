@@ -322,7 +322,7 @@ body {
 
 
 /* ==========================================================================
-   Template-Features [Forms, Text Formatierungen und so ...]
+   Template-Features [Text Formatierungen und so ...]
    ========================================================================== */
 
 ::-moz-selection {
@@ -400,9 +400,140 @@ pre {
 
 }
 
-th, td {
-    padding: 9px;
 }
+/* ==========================================================================
+   Template-Features [Forms und so ...]
+   ========================================================================== */
+
+
+#main table {
+    border-top: 1px solid #ddd;
+    width: 700px;
+}
+
+#main table tr td {
+    background: #f6f6f6;
+    padding: 0px 20px;
+    height: 29px;
+    line-height: 29px;
+    border: 1px solid #ddd;
+}
+
+#main table tr.odd td {
+    background: #fbfbfb;
+}
+
+#main table tr:hover td { background: #fdfcf6; }
+
+#main table .action {
+    text-align: right;
+    padding: 0 20px 0 10px;
+}
+
+#main table tr .action a { margin: 0 0 0 10px; text-decoration: none; color: #9b9b9b; }
+#main table tr:hover .action .edit { color: #c5a059; }
+#main table tr:hover .action .delete { color: #a02b2b; }
+#main table tr:hover .action .view { color: #55a34a; }
+
+#main table tr:hover .action a:hover { text-decoration: underline; }
+
+#main fieldset {
+    border: 1px solid #ddd;
+    padding: 19px;
+    margin: 0 0 20px 0;
+    background: #fbfbfb;
+}
+
+#main fieldset p { margin: 0 0 14px 0; float: left; width: 100%;  }
+
+#main fieldset label {
+    display: block;
+    width: 100%;
+    margin: 0 0 7px 0;
+    line-height: 12px;
+}
+
+#main fieldset .text-long {
+    border: 1px solid #ddd;
+    background: #fff;
+    font: 11px Arial, Helvetica, sans-serif;
+    color: #646464;
+    padding: 5px 7px;
+    width: 264px;
+    float: left;
+    margin: 0 10px 0 0;
+}
+
+#main fieldset .text-medium {
+    border: 1px solid #ddd;
+    background: #fff;
+    font: 11px Arial, Helvetica, sans-serif;
+    color: #646464;
+    padding: 5px 7px;
+    width: 124px;
+    float: left;
+    margin: 0 10px 0 0;
+}
+
+#main fieldset .text-small {
+    border: 1px solid #ddd;
+    background: #fff;
+    font: 11px Arial, Helvetica, sans-serif;
+    color: #646464;
+    padding: 5px 7px;
+    width: 44px;
+    float: left;
+    margin: 0 10px 0 0;
+}
+
+#main fieldset .text-long:focus, 
+#main fieldset .text-medium:focus,
+#main fieldset .text-small:focus,
+#main fieldset textarea:focus
+{ background: #EAF4FF no-repeat left top; }
+
+#main fieldset textarea {
+    border: 1px solid #ddd;
+    background: #fff no-repeat left top;
+    font: 11px Arial, Helvetica, sans-serif;
+    color: #646464;
+    padding: 5px 7px;
+    width: 400px;
+    float: left;
+    margin: 0 10px 0 0;
+    height: 148px;
+    overflow: hidden;
+    resize: vertical;
+}
+
+#main fieldset textarea#console {
+    background: #000;
+    font: 12px Courier, monospace;
+    color: #fff;
+    padding: 5px 7px;
+    width: 630px;
+    float: left;
+    margin: 3px 10px 0 0;
+    height: 400px;
+    overflow: hidden;
+    white-space: pre;
+    -moz-box-shadow: 0 0 5px #888;
+    -webkit-box-shadow: 0 0 5px #888;
+    box-shadow: 0 0 5px #888;
+}
+
+#main fieldset select {
+    width: 250px;
+    height: 26px;
+    background: #fff;
+    padding: 2px 2px;
+    
+    font: 11px/11px Arial, Helvetica, sans-serif;
+    color: #646464;
+    overflow: hidden;
+    border: 1px solid #ddd;
+}
+
 
 /* ==========================================================================
    Author's custom styles
