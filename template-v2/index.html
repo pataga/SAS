@@ -27,7 +27,7 @@
         <div id="wrapper">
             <div id="nav">
                 <ul>    
-                    <li class="current"><a href="#">Home</a></li>   
+                    <li><a class="aktiv" href="#">Home</a></li>   
                     <li><a href="#">Apache</a></li>   
                     <li><a href="#">Postfix</a></li>  
                     <li><a href="#">FTP</a></li>  
@@ -43,7 +43,7 @@
             <div id="main">
                 <div id="sidebar">
                     <ul>
-                        <li><a href="#">Home</a></li>
+                        <li class="aktiv"><a href="#">Home</a></li>
                         <li><a href="#">System&uuml;bersicht</a></li>
                         <li><a href="#">Quickpanel</a></li>
                         <li><a href="#">Serverstatistiken</a></li>
@@ -176,6 +176,11 @@
                         <option value="4">Option 4</option>
                         <option value="5">Option 5</option>
                     </select>
+                    <hr>
+                    <label for="comments">Comments: </label>
+<textarea rows="4" name="comments"></textarea><br />
+<input type="submit" value="Submit" class="btnsubmit" />
+<input type="reset" value="Reset" class="btnreset" />
                 </div>
             </div>
         </div>
