@@ -1,4 +1,6 @@
+<div class="clearfix"></div>
  </div>
+ 	<div class="clearfix"></div>
  	</div>
         <div id="footer">
             &copy; 2012 SAS - Server Admin System

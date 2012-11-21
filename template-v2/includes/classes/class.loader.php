@@ -23,7 +23,7 @@
 						            </div>
 						            <div class="usermenu">
 						                <img src="img/profile/0815.png" alt="Profilbild">
-						                <h3>Username</h3>
+						                <h3>'.$_SESSION['username'].'</h3>
 						                <a href="#">Meine Daten &auml;ndern</a>
 						                <br>
 						                <a href="#">Logout</a>
