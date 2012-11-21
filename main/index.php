@@ -2,9 +2,11 @@
 	session_start();
 	require_once("includes/classes/class.loader.php");
 	require_once("includes/classes/class.user.php");
+	require_once("includes/classes/class.server.php");
 
 	$loader = new Loader();
 	$user = new User();
+	$server = new Server();
 
 	$loader->createDatabaseConnection();
 

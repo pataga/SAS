@@ -26,7 +26,7 @@
 			$this->server_pass = $pass;
 		}
 
-		function getServerID ()
+		function setServerID ()
 		{
 			$result = mysql_query("SELECT id FROM sas_server_data WHERE host = '$this->server_host' AND user = '$this->server_user'");
 
@@ -63,10 +63,11 @@
 		{
 			if ($this->isInstalled("mysql"))
 			{
-				$result = mysql_query("SELECT * FROM sas_server_mysql WHERE id = $this->server_id");
+				$result = mysql_query("SELECT * FROM sas_server_mysql WHERE sid = $this->server_id");
 
 				if (mysql_num_rows($result) > 0)
 				{
+					$row = mysql_fetch_object($result);
 					$this->server_mysql_host = $row->host;
 					$this->server_mysql_port = $row->port;
 					$this->server_mysql_user = $row->username;
@@ -76,6 +77,28 @@
 			}
 			
 			return false;
+		}
+
+		function connectToMySQLServer ()
+		{
+			if ($this->getMySQLData())
+				return mysql_connect($this->server_mysql_host, $this->server_mysql_user, $this->server_mysql_pass);
+			else
+				return false;
+		}
+
+		function getMySQLDatabases ()
+		{
+			if ($this->connectToMySQLServer())
+			{
+				$result = mysql_query("SHOW DATABASES");
+				$database = array();
+
+				for ($itr = 0; ($row = mysql_fetch_object($result)); $itr++)
+					$database[$itr] = $row->Database;
+
+				return $database;
+			} else return 0;
 		}
 	}
 ?>
