@@ -31,17 +31,19 @@
 					$this->setAuthState(true);
 				else
 					$this->setAuthState(false);
-			}
-			else
-			{
-				$this->setAuthState(false);
-			}
+			} else $this->setAuthState(false);
 		}
 
 		function setAuthState ($authState)
 		{
 			$_SESSION['loggedIn'] = $authState;
 			$_SESSION['username'] = $this->_username;
+		}
+
+		function Logout ()
+		{
+			session_unset();
+			session_destroy();
 		}
 	}
 ?>

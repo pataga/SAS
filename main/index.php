@@ -19,6 +19,12 @@
 	if (!$user->isLoggedIn())
 		$loader->loadLoginMask();
 
+	if ($user->isLoggedIn() && isset($_GET['user']) && $_GET['user'] == "logout")
+	{
+		$user->Logout();
+		$loader->reload();
+	}
+
 	$loader->_page = isset($_GET['p']) ? $_GET['p'] : "home";
 	$loader->_spage = isset($_GET['s']) ? $_GET['s'] : " ";
 
