@@ -19,9 +19,9 @@ alert ('Bitte nutzen Sie einen modernen Browser, wie etwa:\n\nMozilla Firefox, G
         <div class="box">
             <p>Bitte loggen Sie sich mit ihren Benutzerdaten ein.</p>
             <form action="../index.php" method="post">
-                <input type="text" name="username" placeholder="Benutzername"><br>
-                <input type="password" name="password" placeholder="Passwort"><br>
-                <input type="submit" value="Login" class="button black"><br>
+                <input type="text" name="username" placeholder="Benutzername" tabindex="1" required><br>
+                <input type="password" name="password" placeholder="Passwort" tabindex="2" required><br>
+                <input type="submit" value="Login" tabindex="3" class="button black"><br>
             </form>
         </div>
         <p class="footer">&copy; 2012 SAS - Server Admin System
