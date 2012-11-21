@@ -10,14 +10,13 @@
 ###Verzeichnisinhalte:
 
 * **daemon:** alternative verbindung über java-daemon (anstatt SSH2)
-* **documents:** Dokumente wie etwa die Dokmentation, Notizbuch ...
-* **embed:** Dateien (Skripte u.ähn.) die in SAS eingebettet werden können
+* **dev-tmp:** Dateien (Skripte u.ähn.) die in SAS eingebettet werden können sowie Backups älterer Daten
 * **main:** Aktuellste Version des Gesamtprojekts.
 * **module:** Teilentwicklung von Modulen
 * **nbproject:** Nicht relevante Dateien, (Netbeans-Projekt-Daten)
 * **sql:** Benötigte Daten aus der MySQL-Datenbank
-* **template-backup:** Das HTML-Template ohne Funktion, als Backup.
-* **tools:** Zusätzliche Programme für SAS
+* **template-v2:** Das neue CSS3 Template von SAS (Eigenentwicklung)
+* **tools:** Zusätzliche externe Programme/Tools für SAS
            
 ---
 ###Online Demo:
@@ -36,8 +35,14 @@ Passwort:	geheim
 
 > **[SAS Dokumentation (Google Documents)][1]**
 
+---
+###Präsentation:
+
+> **[SAS Präsentation "Projektvorstellung" (Google Documents)][3]**
+
 [1]: http://goo.gl/dTrur
 [2]: http://46.38.238.216/SAS
+[3]: http://goo.gl/8UqKr
 [logo]: http://mangopix.de/local_images/sas-logo.png
 
 
