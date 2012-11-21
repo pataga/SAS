@@ -21,7 +21,8 @@
 
 		function AuthChallenge ()
 		{
-			$result = mysql_query("SELECT * FROM sas_users WHERE username = '$this->_username'") or die (mysql_error());
+			$user = mysql_real_escape_string($this->_username);
+			$result = mysql_query("SELECT * FROM sas_users WHERE username = '$user'") or die (mysql_error());
 
 			if (mysql_num_rows($result) > 0)
 			{
