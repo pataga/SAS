@@ -68,6 +68,7 @@ body {
     font-family: 'Lobster', Arial, Helvetica, sans-serif;
     text-shadow: 1px 1px #ccc;
     font-size: 46px;
+    font-weight: 400;
 }
 
 .top .logo h1 span {
