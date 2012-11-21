@@ -1,5 +1,5 @@
 <?php
-	class loader
+	class Loader
 	{
 		public $_page = "";
 		public $_spage = "";
@@ -80,7 +80,6 @@
 
 		function loadContent ()
 		{
-			$this->createDatabaseConnection();
 			$this->loadTop();
 			$this->loadUserInterface();
 			$this->loadMainMenu();
@@ -90,6 +89,12 @@
 			print($this->content);
 			$this->loadIncFile();
 			$this->loadFooter();
+		}
+
+		function loadLoginMask ()
+		{
+			header("Location: ./login/");
+			die;
 		}
 	}
 ?>
