@@ -96,5 +96,10 @@
 			header("Location: ./login/");
 			die;
 		}
+
+		function reload ()
+		{
+			header ("Location:");
+		}
 	}
 ?>

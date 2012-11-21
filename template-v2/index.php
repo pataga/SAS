@@ -13,6 +13,7 @@
 		$user->setUsername($_POST['username']);
 		$user->setPassword($_POST['password']);
 		$user->AuthChallenge();
+		$loader->reload();
 	}
 
 	if (!$user->isLoggedIn())
