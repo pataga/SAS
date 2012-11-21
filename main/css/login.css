@@ -1,0 +1,277 @@
+/* ==========================================================================
+   Schriftarten
+   ========================================================================== */
+
+@font-face {
+    font-family: 'Lobster';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Lobster'), url(fonts/lobster.woff) format('woff');
+}
+
+@font-face {
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Ubuntu Light'), local('Ubuntu-Light'), url(fonts/ubuntu-300.woff) format('woff');
+}
+
+@font-face {
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Ubuntu'), url(fonts/ubuntu-400.woff) format('woff');
+}
+
+/* ==========================================================================
+   Main
+   ========================================================================== */
+
+html,button,input,select,textarea {color: #222;}
+
+body {
+    background: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #646464;
+    text-align: center;
+    outline: none;
+    font-weight: 400;
+}
+
+a {
+    text-decoration: none;
+    color: #aaa;
+}
+
+/* ==========================================================================
+   Login
+   ========================================================================== */
+
+::-moz-selection {
+    background:#2d7e99;
+    color:#fff;
+}
+
+::selection {
+    background:#2d7e99;
+    color:#fff;
+}
+
+
+.logo {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.logo h1 {
+    color: #222;
+    font-family: 'Lobster', Arial, Helvetica, sans-serif;
+    text-shadow: 1px 1px #ccc;
+    font-size: 46px;
+    font-weight: 400;
+}
+
+.logo h1 span {
+    color: rgba(11, 117, 178, 1.0);
+    text-shadow: 1px 1px #333333;
+}
+
+.box {
+    width: 350px;
+    height: 220px;
+    text-align: center;
+    margin: -10px auto 20px auto;
+    padding: 10px;
+    border-radius: 3px;
+    background: #dddddd;
+    font-family: 'Ubuntu', Arial, Helvetica, sans-serif;
+    font-size: 13px;    
+    -webkit-box-shadow: 0 8px 6px -6px #555, 0 2px 5px rgba(0,0,0,0.15) inset;
+    -moz-box-shadow: 0 8px 6px -6px #555, 0 2px 5px rgba(0,0,0,0.15) inset;
+    box-shadow: 0 8px 6px -6px #555, 0 2px 5px rgba(0,0,0,0.15) inset;
+
+
+}
+
+input[type=text], input[type=password] {
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: 0 1px 0 #fff, 0 -2px 5px rgba(0,0,0,0.08) inset;
+    -moz-box-shadow: 0 1px 0 #fff, 0 -2px 5px rgba(0,0,0,0.08) inset;
+    -ms-box-shadow: 0 1px 0 #fff, 0 -2px 5px rgba(0,0,0,0.08) inset;
+    -o-box-shadow: 0 1px 0 #fff, 0 -2px 5px rgba(0,0,0,0.08) inset;
+    box-shadow: 0 1px 0 #fff, 0 -2px 5px rgba(0,0,0,0.08) inset;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    border: 1px solid #c8c8c8;
+    color: #777;
+    font: 16px 'Ubuntu', Verdana, Geneva, Arial, Helvetica, sans-serif;
+    margin: 0 0 10px;
+    padding: 13px;
+    width: 80%;
+}
+
+input[type="text"]:focus, input[type="password"]:focus {
+    -webkit-box-shadow: 0 0 3px #0b75b2 inset;
+    -moz-box-shadow: 0 0 3px #0b75b2 inset;
+    -ms-box-shadow: 0 0 3px #0b75b2 inset;
+    -o-box-shadow: 0 0 3px #0b75b2 inset;
+    box-shadow: 0 0 3px #0b75b2 inset;
+    background-color: #fff;
+    border: 1px solid #0b75b2;
+    outline: none;
+}
+
+::-webkit-input-placeholder  { color:#aaa; }
+input:-moz-placeholder { color:#aaa; }
+
+.button {
+    margin-top: 10px;
+    display: inline-block;
+    text-decoration: none;
+    font: bold 18px/18px HelveticaNeue, Arial;
+    padding: 10px 23px;
+    color: #555;
+    border: 1px solid #dedede;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+.button.black{
+    background: #525252;
+    background: -webkit-gradient(linear, left top, left bottom, from(#5e5e5e), to(#434343)); /*  WebKit */
+    background: -moz-linear-gradient(top,  #5e5e5e, #434343);
+    border-color: #4c4c4c #313131 #1f1f1f;
+    color: #fff;
+    text-shadow: 0 1px 0 #2e2e2e;
+    -webkit-box-shadow: 0 1px 1px #afafaf, inset 0 1px 0 #868686;
+    -moz-box-shadow: 0 1px 1px #afafaf, inset 0 1px 0 #868686;
+    box-shadow: 0 1px 1px #afafaf, inset 0 1px 0 #868686;    
+}
+.button.black:hover{
+    background: #5a5a5a;
+    border-color: #2c2c2c #1c1c1c #101010;
+    text-shadow: 0 1px 0 #363636;
+    -webkit-box-shadow: 0 1px 1px #b1b1b1, inset 0 1px 0 #838383;
+    -moz-box-shadow: 0 1px 1px #b1b1b1, inset 0 1px 0 #838383;
+    box-shadow: 0 1px 1px #b1b1b1, inset 0 1px 0 #838383;
+}
+
+.button.black:active{
+    -webkit-box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6);
+    -moz-box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6);
+    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6);
+    background: #0B75B2;
+    border: solid 1px #203E5F;
+}
+
+.show {display: none; }
+.hide:focus {display: inline; }
+.show {display: inline; }
+.hide:focus { display: none; }
+.animate1 {
+    -webkit-transition: all 1s;
+    -moz-transition: all 1s;
+    -o-transition: all 1s;
+    -ms-transition: all 1s;
+    transition: all 1s;}
+#secret {opacity: 0;}
+.hide:focus ~ #secret {opacity: 1}
+
+.footer {
+    color: #aaa;
+    font-family: 'Ubuntu', Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    line-height: 2.0;
+}
+
+.footer a {
+    margin-right: 25px;
+    text-decoration: none;
+    color: #aaa;
+}
+.footer a.last {
+    margin-right: 0px;
+} 
+
+.footer a:hover { 
+    color: #0b75b2;
+} 
+
+.footer a, #footer a:hover { 
+    -webkit-transition:  color 0.35s ease-in-out;
+    -moz-transition: color 0.35s ease-in-out;
+    -o-transition: color 0.35s ease-in-out;
+    -ms-transition: color 0.35s ease-in-out;
+    transition: color 0.35s ease-in-out;
+}
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+.ir {
+    background-color: transparent;
+    border: 0;
+    overflow: hidden;
+    *text-indent: -9999px;
+}
+
+.ir:before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 100%;
+}
+
+.hidden {
+    display: none !important;
+    visibility: hidden;
+}
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
+}

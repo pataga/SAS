@@ -10,12 +10,11 @@
 ###Verzeichnisinhalte:
 
 * **daemon:** alternative verbindung über java-daemon (anstatt SSH2)
-* **dev-tmp:** Dateien (Skripte u.ähn.) die in SAS eingebettet werden können sowie Backups älterer Daten
-* **main:** Aktuellste Version des Gesamtprojekts.
+* **dev-tmp:** Dateien (Skripte u.ähn.) die in SAS eingebettet werden können sowie Backups älterer Versionen und Daten
+* **main:** Aktuellste Version des Gesamtprojekts. Inkl. das neue CSS3 Template von SAS (Eigenentwicklung)
 * **module:** Teilentwicklung von Modulen
 * **nbproject:** Nicht relevante Dateien, (Netbeans-Projekt-Daten)
 * **sql:** Benötigte Daten aus der MySQL-Datenbank
-* **template-v2:** Das neue CSS3 Template von SAS (Eigenentwicklung)
 * **tools:** Zusätzliche externe Programme/Tools für SAS
            
 ---

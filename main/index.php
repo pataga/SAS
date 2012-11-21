@@ -1,22 +1,26 @@
-<?php 
-    session_start();
+<?php
+	session_start();
+	require_once("includes/classes/class.loader.php");
+	require_once("includes/classes/class.user.php");
 
-    include 'config/config.mysql.php';   //MySQL Konfigurationsdatei
-    include 'functions/func.load.php';   //Funktionen zum Laden des Inhalts
-    include 'functions/func.misc.php';   //Sonstige Funktionen
-    include 'functions/func.auth.php';   //Auth Management
+	$loader = new Loader();
+	$user = new User();
 
+	$loader->createDatabaseConnection();
 
-    grandAccess();                       //Zugriff verwehren wenn inaktiv
+	if (isset($_POST['username']) && isset($_POST['password']))
+	{
+		$user->setUsername($_POST['username']);
+		$user->setPassword($_POST['password']);
+		$user->AuthChallenge();
+		$loader->reload();
+	}
 
-    //getServerSession();                
+	if (!$user->isLoggedIn())
+		$loader->loadLoginMask();
 
-    $page = isset($_GET['p']) ? $_GET['p'] : loadError();
-    $spage = isset($_GET['s']) ? $_GET['s'] : "";
+	$loader->_page = isset($_GET['p']) ? $_GET['p'] : "home";
+	$loader->_spage = isset($_GET['s']) ? $_GET['s'] : " ";
 
-    loadTop();                           //Lade Top + Hauptnavigation
-    loadSideNav($page, $spage);          //Lade Seitennavigation
-    loadTree($page, $spage);             //Lade Baumstruktur
-    loadContent($page, $spage);          //Lade Inhalt
-    loadFooter();                        //Lade Fusszeile
+	$loader->loadContent();
 ?>
