@@ -34,7 +34,7 @@
 		function loadMainMenu ()
 		{
 			$this->content .= '<div id="wrapper"><div id="nav"><ul>';
-			$result = mysql_query("SELECT * FROM sas_menu_main");
+			$result = mysql_query("SELECT * FROM sas_main_menu");
 			while ($row = mysql_fetch_object($result))
 			{
 				$name = $row->name;
@@ -49,7 +49,7 @@
 		function loadSideMenu ()
 		{
 			$this->content .= '<div id="sidebar"><ul>';
-			$result = mysql_query("SELECT * FROM sas_menu_side WHERE page = '$this->_page'");
+			$result = mysql_query("SELECT * FROM sas_side_nav WHERE page = '$this->_page'");
 			while ($row = mysql_fetch_object($result))
 			{
 				$name = $row->name;
@@ -64,7 +64,7 @@
 
 		function loadIncFile ()
 		{
-			$result = mysql_query("SELECT inc_path FROM sas_content WHERE page = '$this->_page' AND spage = '$this->_spage'");
+			$result = mysql_query("SELECT inc_path FROM sas_page_content WHERE page = '$this->_page' AND spage = '$this->_spage'");
 			if (mysql_num_rows($result) > 0)
 			{
 				$row = mysql_fetch_object($result);
