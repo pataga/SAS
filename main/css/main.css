@@ -527,7 +527,6 @@ pre {
 }
 
 #main fieldset select {
-    border: 0 none;
     color: #222;
     background: transparent;
     font-size: 14px;
