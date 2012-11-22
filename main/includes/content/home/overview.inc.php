@@ -87,5 +87,15 @@
                 </div>
 	<br><br>
 	<hr>
-    <b>Dev-Info:</b>&nbsp;"<?php echo __file__;?>"</p>
+
+</fieldset>
+<h3>Notizbuch</h3>
+<fieldset>
+	<textarea>
+		
+	</textarea>
+	<input type="submit" class="button black" value="Notizen speichern">
+	<br>
+	<br>
+	<a href="#">&auml;ltere Notizen</a>
 </fieldset>

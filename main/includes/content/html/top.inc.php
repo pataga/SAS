@@ -30,6 +30,7 @@
                     loadMenu();
                 ?>
             </ul>
+            <div class="clearfix"></div>
             <!-- // #end mainNav -->
             <div id="containerHolder">
                 <div id="container">

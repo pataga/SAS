@@ -50,7 +50,7 @@ body {
 
 .top {
     width: 980px;
-    margin-top: 15px;
+    margin-top: 10px;
     margin-left: auto;
     margin-right: auto;
     outline: none;
@@ -121,6 +121,7 @@ body {
     text-align: left;
     width: 980px;
     margin: 0 auto;
+    margin-top: 0px;
 }
 #nav {
     padding: 0;
@@ -258,7 +259,6 @@ body {
     background: #fff;
     border-bottom: 1px solid #ccc;
     outline: none;
-
 }
 
 #sidebar li a {
@@ -377,12 +377,14 @@ body {
 h1, h2, h3, h4, h5, h6 { font-family: Arial, Helvetica, sans-serif; }
 h1.ubuntu, h2.ubuntu, h3.ubuntu, h4.ubuntu, h5.ubuntu, h6.ubuntu { font-family: 'Ubuntu', sans-serif; }
 
-h1 { font-size: 26px; font-weight: 700; margin: 10px 0px;}
+h1 { font-size: 26px; font-weight: 700; margin:}  /* H1 nicht verwenden! stattdessen h1.normal */
 h2 { font-size: 24px; font-weight: 700; margin: 10px 0px;}
 h3 { font-size: 22px; font-weight: 700; margin: 10px 0px;}
 h4 { font-size: 18px; font-weight: 700; margin: 10px 0px;}
 h5 { font-size: 16px; font-weight: 700; margin: 10px 0px;}
 h6 { font-size: 14px; font-weight: 700; margin: 10px 0px;}
+
+h1.normal { font-size: 26px; font-weight: 700; margin: 10px 0px;}
 
 h1.ubuntu { font-size: 25px; font-weight: 700;}
 h2.ubuntu { font-size: 22px; font-weight: 700;}
@@ -390,6 +392,16 @@ h3.ubuntu { font-size: 18px; font-weight: 400;}
 h4.ubuntu { font-size: 18px; font-weight: 300;}
 h5.ubuntu { font-size: 16px; font-weight: 300;}
 h6.ubuntu { font-size: 14px; font-weight: 300;}
+
+a {
+    color: #0b75b2;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #0b75b2;
+    text-decoration: underline;
+}
 
 span.aktiv {
     font-size: 14px;
