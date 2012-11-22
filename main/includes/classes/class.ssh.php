@@ -23,6 +23,8 @@
 			$this->_connection  = ssh2_connect($this->_host, $this->_port);
 			if (!$this->_connection) 
 			  	throw new Exception('SSH Connection failed');
+			else
+				$this->authenticate();
 		}
 
 		function authenticate ()
@@ -31,7 +33,7 @@
 				throw new Exception('SSH Autentication failed');
 		}
 
-		function execute ($command) 
+		function execute ($command, $type = 0) 
 		{
 			$output = "";
 			if (!($os = ssh2_exec($this->_connection, $command, "bash"))) 
@@ -42,7 +44,7 @@
 			while($line = fgets($os)) 
 			{
 				flush();
-				$output .= $line;
+				$output .= $line.($type==1 ? '<br>' : '');
 			}
 
 			return $output;
