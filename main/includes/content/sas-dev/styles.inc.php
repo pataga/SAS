@@ -1,4 +1,4 @@
-<h1>Content</h1>
+<h1 class="normal">Content</h1>
 <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
 <hr>
 <h3>Tooltip</h3>
@@ -15,7 +15,7 @@
     </tr>
     <tr>
         <td>
-            <h1>&Uuml;berschrift 1</h1>
+            <h1 class="normal">&Uuml;berschrift 1</h1>
             <h2>&Uuml;berschrift 2</h2>
             <h3>&Uuml;berschrift 3</h3>
             <h4>&Uuml;berschrift 4</h4>
@@ -23,7 +23,7 @@
             <h6>&Uuml;berschrift 6</h6>
         </td>
         <td>
-            <h1 class="ubuntu">&Uuml;berschrift 1</h1>
+            <h1 class="ubuntu normal">&Uuml;berschrift 1</h1>
             <h2 class="ubuntu">&Uuml;berschrift 2</h2>
             <h3 class="ubuntu">&Uuml;berschrift 3</h3>
             <h4 class="ubuntu">&Uuml;berschrift 4</h4>
