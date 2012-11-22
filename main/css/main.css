@@ -527,17 +527,17 @@ pre {
 }
 
 #main fieldset select {
-    width: 250px;
-    height: 26px;
-    background: #fff;
-    padding: 2px 2px;
-    
-    font: 11px/11px Arial, Helvetica, sans-serif;
-    color: #646464;
+    border: 0 none;
+    color: #222;
+    background: transparent;
+    font-size: 14px;
+    font-weight: 400;
+    padding: 3px 5px;
     overflow: hidden;
-    border: 1px solid #ddd;
-}
-
+    border: 1px solid  #ccc;
+    border-radius: 2px;
+    box-shadow: 1px 1px 6px #ccc;
+    }
 
 /* ==========================================================================
    Author's custom styles
