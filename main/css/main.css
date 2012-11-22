@@ -343,12 +343,12 @@ body {
 h1, h2, h3, h4, h5, h6 { font-family: Arial, Helvetica, sans-serif; }
 h1.ubuntu, h2.ubuntu, h3.ubuntu, h4.ubuntu, h5.ubuntu, h6.ubuntu { font-family: 'Ubuntu', sans-serif; }
 
-h1 { font-size: 26px; font-weight: 700;}
-h2 { font-size: 24px; font-weight: 700;}
-h3 { font-size: 22px; font-weight: 700;}
-h4 { font-size: 18px; font-weight: 700;}
-h5 { font-size: 16px; font-weight: 700;}
-h6 { font-size: 14px; font-weight: 700;}
+h1 { font-size: 26px; font-weight: 700; margin: 10px 0px;}
+h2 { font-size: 24px; font-weight: 700; margin: 10px 0px;}
+h3 { font-size: 22px; font-weight: 700; margin: 10px 0px;}
+h4 { font-size: 18px; font-weight: 700; margin: 10px 0px;}
+h5 { font-size: 16px; font-weight: 700; margin: 10px 0px;}
+h6 { font-size: 14px; font-weight: 700; margin: 10px 0px;}
 
 h1.ubuntu { font-size: 25px; font-weight: 700;}
 h2.ubuntu { font-size: 22px; font-weight: 700;}
@@ -535,9 +535,11 @@ pre {
     overflow: hidden;
     border: 1px solid  #ccc;
     border-radius: 2px;
-    box-shadow: 1px 1px 6px #ccc;
     }
 
+#main fieldset select.shadow {
+        box-shadow: 1px 1px 6px #ccc;
+}
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */

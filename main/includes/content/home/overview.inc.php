@@ -1,6 +1,6 @@
-<h3>Serverauswahl</h3>
+<h3>Serverübersicht</h3>
 <fieldset>
-	<p>Bitte w&auml;hlen Sie ihren Server aus, den Sie mit SAS verwalten m&ouml;chten.</p>
+	<h5>Aktuelle Daten ihres Servers</h5>
 	<label>Server:</label>
 	<select>
 		<option value=""> </option> <?// leere option drin lassen \\?>
