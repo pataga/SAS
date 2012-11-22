@@ -723,6 +723,7 @@ pre {
     -webkit-box-shadow: 0 1px 1px #eaeaea, inset 0 1px 0 #fbfbfb;
     -moz-box-shadow: 0 1px 1px #eaeaea, inset 0 1px 0 #fbfbfb;
     box-shadow: 0 1px 1px #eaeaea, inset 0 1px 0 #fbfbfb;
+    text-decoration: none;
 }
 .button.white:hover{
     background: #f4f4f4;
@@ -733,6 +734,7 @@ pre {
     -webkit-box-shadow: 0 1px 1px #ebebeb, inset 0 1px 0 #f3f3f3;
     -moz-box-shadow: 0 1px 1px #ebebeb, inset 0 1px 0 #f3f3f3;
     box-shadow: 0 1px 1px #ebebeb, inset 0 1px 0 #f3f3f3;
+    text-decoration: none;
 }
 .button.grey{
     background: #bdbdbd;
@@ -744,6 +746,7 @@ pre {
     -webkit-box-shadow: 0 1px 1px #c9c9c9, inset 0 1px 0 #d7d7d7;
     -moz-box-shadow: 0 1px 1px #c9c9c9, inset 0 1px 0 #d7d7d7;
     box-shadow: 0 1px 1px #c9c9c9, inset 0 1px 0 #d7d7d7;    
+    text-decoration: none;
 }
 .button.grey:hover{
     background: #c2c2c2;
@@ -754,6 +757,7 @@ pre {
     -webkit-box-shadow: 0 1px 1px #cdcdcd, inset 0 1px 0 #ccc;
     -moz-box-shadow: 0 1px 1px #cdcdcd, inset 0 1px 0 #ccc;
     box-shadow: 0 1px 1px #cdcdcd, inset 0 1px 0 #ccc;    
+    text-decoration: none;
 }
 .button.pink{
     background: #f67689;
@@ -765,6 +769,7 @@ pre {
     -webkit-box-shadow: 0 1px 1px #c1c1c1, inset 0 1px 0 #f9a1b1;
     -moz-box-shadow: 0 1px 1px #c1c1c1, inset 0 1px 0 #f9a1b1;
     box-shadow: 0 1px 1px #c1c1c1, inset 0 1px 0 #f9a1b1;    
+    text-decoration: none;
 }
 .button.pink:hover{
     background: #f67c90;
@@ -775,6 +780,7 @@ pre {
     -webkit-box-shadow: 0 1px 1px #c3c3c3, inset 0 1px 0 #f8909e;
     -moz-box-shadow: 0 1px 1px #c3c3c3, inset 0 1px 0 #f8909e;
     box-shadow: 0 1px 1px #c3c3c3, inset 0 1px 0 #f8909e;    
+    text-decoration: none;
 }
 
 .button.orange{
@@ -787,6 +793,7 @@ pre {
     -webkit-box-shadow: 0 1px 1px #d3d3d3, inset 0 1px 0 #fee395;
     -moz-box-shadow: 0 1px 1px #d3d3d3, inset 0 1px 0 #fee395;
     box-shadow: 0 1px 1px #d3d3d3, inset 0 1px 0 #fee395;    
+    text-decoration: none;
 }
 .button.orange:hover{
     background: #fecb5e;
@@ -797,6 +804,7 @@ pre {
     -webkit-box-shadow: 0 1px 1px #d4d4d4, inset 0 1px 0 #fed17e;
     -moz-box-shadow: 0 1px 1px #d4d4d4, inset 0 1px 0 #fed17e;
     box-shadow: 0 1px 1px #d4d4d4, inset 0 1px 0 #fed17e;    
+    text-decoration: none;
 }
 .button.green{
     background: #b7d770;
@@ -808,6 +816,7 @@ pre {
     -webkit-box-shadow: 0 1px 1px #d3d3d3, inset 0 1px 0 #d7e9a4;
     -moz-box-shadow: 0 1px 1px #d3d3d3, inset 0 1px 0 #d7e9a4;
     box-shadow: 0 1px 1px #d3d3d3, inset 0 1px 0 #d7e9a4;    
+    text-decoration: none;
 }
 .button.green:hover{
     background: #b9d972;
@@ -818,6 +827,7 @@ pre {
     -webkit-box-shadow: 0 1px 1px #d5d5d5, inset 0 1px 0 #cae295;
     -moz-box-shadow: 0 1px 1px #d5d5d5, inset 0 1px 0 #cae295;
     box-shadow: 0 1px 1px #d5d5d5, inset 0 1px 0 #cae295;    
+    text-decoration: none;
 }
 .button.blue{
     background: #92dbf6;
@@ -829,6 +839,7 @@ pre {
     -webkit-box-shadow: 0 1px 1px #d6d6d6, inset 0 1px 0 #c0ebfa;
     -moz-box-shadow: 0 1px 1px #d6d6d6, inset 0 1px 0 #c0ebfa;
     box-shadow: 0 1px 1px #d6d6d6, inset 0 1px 0 #c0ebfa;    
+    text-decoration: none;
 }
 .button.blue:hover{
     background: #92dbf6;
@@ -836,7 +847,8 @@ pre {
     text-shadow: 0 1px 0 #bee9fa;
     -webkit-box-shadow: 0 1px 1px #d6d6d6, inset 0 1px 0 #ade4f8;
     -moz-box-shadow: 0 1px 1px #d6d6d6, inset 0 1px 0 #ade4f8;
-    box-shadow: 0 1px 1px #d6d6d6, inset 0 1px 0 #ade4f8;    
+    box-shadow: 0 1px 1px #d6d6d6, inset 0 1px 0 #ade4f8;   
+    text-decoration: none; 
 }
 .button.purple{
     background: #dfaeda;
@@ -848,6 +860,7 @@ pre {
     -webkit-box-shadow: 0 1px 1px #d5d5d5, inset 0 1px 0 #eed3eb;
     -moz-box-shadow: 0 1px 1px #d5d5d5, inset 0 1px 0 #eed3eb;
     box-shadow: 0 1px 1px #d5d5d5, inset 0 1px 0 #eed3eb;    
+    text-decoration: none;
 }
 .button.purple:hover{
     background: #e0b1db;
@@ -858,6 +871,7 @@ pre {
     -webkit-box-shadow: 0 1px 1px #cdcdcd, inset 0 1px 0 #ccc;
     -moz-box-shadow: 0 1px 1px #cdcdcd, inset 0 1px 0 #ccc;
     box-shadow: 0 1px 1px #cdcdcd, inset 0 1px 0 #ccc;    
+    text-decoration: none;
 }
 .button.teal{
     background: #9cedef;
@@ -869,6 +883,7 @@ pre {
     -webkit-box-shadow: 0 1px 1px #d5d5d5, inset 0 1px 0 #c9f5f7;
     -moz-box-shadow: 0 1px 1px #d5d5d5, inset 0 1px 0 #c9f5f7;
     box-shadow: 0 1px 1px #d5d5d5, inset 0 1px 0 #c9f5f7;    
+    text-decoration: none;
 }
 .button.teal:hover{
     background: #9fedf0;
@@ -877,6 +892,7 @@ pre {
     -webkit-box-shadow: 0 1px 1px #d5d5d5, inset 0 1px 0 #b7f2f4;
     -moz-box-shadow: 0 1px 1px #d5d5d5, inset 0 1px 0 #b7f2f4;
     box-shadow: 0 1px 1px #d5d5d5, inset 0 1px 0 #b7f2f4;    
+    text-decoration: none;
 }
 .button.darkblue{
     background: #a5b8c6;
@@ -887,7 +903,8 @@ pre {
     text-shadow: 0 1px 0 #c4d0d9;
     -webkit-box-shadow: 0 1px 1px #d3d3d3, inset 0 1px 0 #ced8e0;
     -moz-box-shadow: 0 1px 1px #d3d3d3, inset 0 1px 0 #ced8e0;
-    box-shadow: 0 1px 1px #d3d3d3, inset 0 1px 0 #ced8e0;    
+    box-shadow: 0 1px 1px #d3d3d3, inset 0 1px 0 #ced8e0; 
+    text-decoration: none;   
 }
 .button.darkblue:hover{
     background: #adbfcb;
@@ -895,7 +912,8 @@ pre {
     text-shadow: 0 1px 0 #ced9e0;
     -webkit-box-shadow: 0 1px 1px #d3d3d3, inset 0 1px 0 #c2cfd8;
     -moz-box-shadow: 0 1px 1px #d3d3d3, inset 0 1px 0 #c2cfd8;
-    box-shadow: 0 1px 1px #d3d3d3, inset 0 1px 0 #c2cfd8;    
+    box-shadow: 0 1px 1px #d3d3d3, inset 0 1px 0 #c2cfd8;  
+    text-decoration: none;  
 }
 .button.black{
     background: #525252;
@@ -907,6 +925,7 @@ pre {
     -webkit-box-shadow: 0 1px 1px #afafaf, inset 0 1px 0 #868686;
     -moz-box-shadow: 0 1px 1px #afafaf, inset 0 1px 0 #868686;
     box-shadow: 0 1px 1px #afafaf, inset 0 1px 0 #868686;    
+    text-decoration: none;
 }
 .button.black:hover{
     background: #5a5a5a;
@@ -914,7 +933,8 @@ pre {
     text-shadow: 0 1px 0 #363636;
     -webkit-box-shadow: 0 1px 1px #b1b1b1, inset 0 1px 0 #838383;
     -moz-box-shadow: 0 1px 1px #b1b1b1, inset 0 1px 0 #838383;
-    box-shadow: 0 1px 1px #b1b1b1, inset 0 1px 0 #838383;    
+    box-shadow: 0 1px 1px #b1b1b1, inset 0 1px 0 #838383;   
+    text-decoration: none; 
 }
 
 .tooltip
