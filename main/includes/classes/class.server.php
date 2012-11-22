@@ -2,39 +2,28 @@
 	class Server
 	{
 		private $server_id;
-		private $server_host;
-		private $server_user;
-		private $server_pass;
 
 		private $server_mysql_host;
 		private $server_mysql_port;
 		private $server_mysql_user;
 		private $server_mysql_pass;
 
-		function setServerHost ($host)
+		function getServerData ($id = 1)
 		{
-			$this->server_host = $host;
-		}
-
-		function setServerUser ($user)
-		{
-			$this->server_user = $user;
-		}
-
-		function setServerPass ($pass)
-		{
-			$this->server_pass = $pass;
-		}
-
-		function setServerID ()
-		{
-			$result = mysql_query("SELECT id FROM sas_server_data WHERE host = '$this->server_host' AND user = '$this->server_user'");
+			$this->server_id = $id;
+			$result = mysql_query("SELECT * FROM sas_server_data WHERE id = $this->server_id");
 
 			if (mysql_num_rows($result) > 0)
 			{
 				$row = mysql_fetch_object($result);
-				$this->server_id = $row->id;
-			} else $this->server_id = -1;
+				$data = array();
+
+				$data[0] = $row->host;
+				$data[1] = $row->user;
+				$data[2] = $row->pass;
+
+				return $data;
+			}
 		}
 
 		function isInstalled ($package)

@@ -19,16 +19,13 @@
 				$this->_user = $user;
 			if (!empty($pass))
 				$this->_pass = $pass;
+		}
 
+		function openConnection ()
+		{
 			$this->_connection  = ssh2_connect($this->_host, $this->_port);
 			if (!$this->_connection) 
 			  	throw new Exception('SSH Connection failed');
-			else
-				$this->authenticate();
-		}
-
-		function authenticate ()
-		{
 			if (!ssh2_auth_password( $this->_connection, $this->_user, $this->_pass )) 
 				throw new Exception('SSH Autentication failed');
 		}

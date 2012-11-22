@@ -1,14 +1,28 @@
 <?php
 	session_start();
+
+	//Temporär statisch
+	$_SESSION['server_id'] = 1;
+
 	require_once 'includes/classes/class.loader.php';
 	require_once 'includes/classes/class.user.php';
 	require_once 'includes/classes/class.server.php';
+	require_once 'includes/classes/class.ssh.php';
 
 	$loader = new Loader();
 	$user = new User();
 	$server = new Server();
+	$ssh = "";
 
 	$loader->createDatabaseConnection();
+	$data = array();
+
+
+	if (isset($_SESSION['server_id']))
+	{
+		$data = $server->getServerData($_SESSION['server_id']);
+		$ssh = new SSH($data[0],'22',$data[1],$data[2]);
+	}
 
 	if (isset($_POST['username']) && isset($_POST['password']))
 	{
@@ -31,4 +45,6 @@
 	$loader->_spage = isset($_GET['s']) ? $_GET['s'] : ' ';
 
 	$loader->loadContent();
+	require_once $loader->getIncFile();
+	$loader->loadFooter();
 ?>

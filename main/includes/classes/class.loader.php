@@ -63,7 +63,7 @@
 			$this->content .= '</ul></div>';
 		}
 
-		function loadIncFile ()
+		function getIncFile ()
 		{
 			$page = mysql_real_escape_string($this->_page);
 			$spage = mysql_real_escape_string($this->_spage);
@@ -72,9 +72,9 @@
 			if (mysql_num_rows($result) > 0)
 			{
 				$row = mysql_fetch_object($result);
-				$path = $row->inc_path;
-				require_once($path);
+				return $row->inc_path;
 			}
+			else return 0;
 		}
 
 		function loadFooter ()
@@ -91,8 +91,6 @@
 			$this->loadSideMenu();
 			$this->content .= '<div id="content">';
 			print($this->content);
-			$this->loadIncFile();
-			$this->loadFooter();
 		}
 
 		function loadLoginMask ()
