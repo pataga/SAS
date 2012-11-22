@@ -2,7 +2,7 @@
 	class SSH
 	{
 		private $_host;
-		private $_post;
+		private $_port;
 		private $_user;
 		private $_pass;
 
