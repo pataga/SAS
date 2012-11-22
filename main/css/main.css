@@ -391,6 +391,18 @@ h4.ubuntu { font-size: 18px; font-weight: 300;}
 h5.ubuntu { font-size: 16px; font-weight: 300;}
 h6.ubuntu { font-size: 14px; font-weight: 300;}
 
+span.aktiv {
+    font-size: 14px;
+    font-weight: 700;
+    color: #079700;
+    letter-spacing: 1px;
+}
+span.inaktiv  {
+    font-size: 14px;
+    font-weight: 700;
+    color: #962301;
+    letter-spacing: 1px;
+}
 
 hr {
     display: block;
@@ -435,14 +447,12 @@ pre {
     border: 1px solid #ddd;
     font-family: Consolas, "Courier New", Courier, monospace;
     font-size: 0.9em;
-
 }
 
 }
 /* ==========================================================================
    Template-Features [Forms und so ...]
    ========================================================================== */
-
 
 #main table {
     border-top: 1px solid #ddd;
@@ -453,7 +463,7 @@ pre {
     background: #f6f6f6;
     padding: 0px 20px;
     height: 29px;
-    line-height: 29px;
+    line-height: 1.5;
     border: 1px solid #ddd;
 }
 
