@@ -89,8 +89,8 @@ body {
     border-bottom-left-radius: 4px;
     outline: none;
     -webkit-box-shadow: 0 8px 6px -6px black;
-       -moz-box-shadow: 0 8px 6px -6px black;
-            box-shadow: 0 8px 6px -6px black;
+    -moz-box-shadow: 0 8px 6px -6px black;
+    box-shadow: 0 8px 6px -6px black;
 }
 
 .top .usermenu h3 {
@@ -190,6 +190,40 @@ body {
     -o-transition-timing-function: ease-out;
     -ms-transition-timing-function: ease-out;
     transition-timing-function: ease-out;
+}
+/* ==========================================================================
+   Layout: Spaltensystem
+ ========================================================================== */
+
+
+.halbe-box          { width: 47.8%; }
+.drittel-box        { width: 30.5%; }
+.zweidrittel-box    { width: 65.3%; }
+.viertel-box        { width: 21.9%; }
+.dreiviertel-box    { width: 74.0%; }
+
+.halbe-box, .drittel-box, .zweidrittel-box, .viertel-box, .dreiviertel-box {
+    position: relative;
+    display: inline-block;
+    *display:inline;
+    float: left;
+    margin-right: 4%;
+    margin-bottom:15px;
+}
+
+.lastbox { margin-right: 0 !important; }
+
+.box-demo {
+    display:block;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.25em;
+    background: rgba(17,117,178,0.5);
+    border-radius:2px;
+    position:relative;
+    height:40px;
+    text-align:center;
+    padding-top:20px;
 }
 
 /* ==========================================================================
@@ -535,10 +569,10 @@ pre {
     overflow: hidden;
     border: 1px solid  #ccc;
     border-radius: 2px;
-    }
+}
 
 #main fieldset select.shadow {
-        box-shadow: 1px 1px 6px #ccc;
+    box-shadow: 1px 1px 6px #ccc;
 }
 /* ==========================================================================
    Author's custom styles
@@ -861,24 +895,50 @@ pre {
     box-shadow: 0 1px 1px #b1b1b1, inset 0 1px 0 #838383;    
 }
 
+.tooltip
+{
+    position: relative;
+    text-decoration: underline !important;
+    cursor: help;
+    display: inline-block;
+    text-decoration: none;
+    outline: none !important;
+    color: #0b75b2;
+}
+
+.tooltip span
+{
+    visibility: hidden;
+    color: #fff;
+    position: absolute; 
+    bottom: 30px;
+    left: 50%;
+    z-index: 999;
+    width: 210px;
+    margin-left: -120px;
+    padding: 5px;
+    line-height: 1.5;
+    border: 2px solid #222;
+    background-color: #ddd;                     
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    background: rgba(0,0,0,0.95);
+    opacity : 0;
+    transition: all 0.2s ease-in-out;
+    outline: none;
+}
+
+.tooltip:hover span
+{
+    visibility: visible;
+    opacity : 0.90;
+    transition: all 0.2s ease-in-out; 
+    outline: none;
+}
 
 /* ==========================================================================
    Helper classes
    ========================================================================== */
-
-.ir {
-    background-color: transparent;
-    border: 0;
-    overflow: hidden;
-    *text-indent: -9999px;
-}
-
-.ir:before {
-    content: "";
-    display: block;
-    width: 0;
-    height: 100%;
-}
 
 .hidden {
     display: none !important;

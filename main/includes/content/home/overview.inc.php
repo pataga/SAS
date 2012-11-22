@@ -1,17 +1,103 @@
 <h3>Serverübersicht</h3>
 <fieldset>
 	<h5>Aktuelle Daten ihres Servers</h5>
-	<label>Server:</label>
-	<select>
-		<option value=""> </option> <?// leere option drin lassen \\?>
-		<option value="">Server "Melone" - 46.38.238.216</option>
-		<option value="">Server "Papaya" - 122.215.215.12</option>
-		<option value="">Server "Apfel" - 198.232.141.131</option>
-		<option value="">Server "Cherry" - 221.123.132.132</option>
-		<option value="">Server "Grapefruit" - 241.103.102.130</option>
-	</select>
+	 <div class="halbe-box">
+	 <table cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td>Host-IP:</td>
+                            <td></td>
+                        </tr>
+                        <tr class="odd">
+							<td>Host-Name:</td>
+							<td></td>
+                        </tr>
+                        <tr>
+							<td>Kernel Version:</td>
+							<td></td>
+                        </tr>
+                        <tr class="odd">
+                            <td>Distribution:</td>
+							<td></td>
+                        </tr>
+                        <tr>
+                            <td>Server online seit:</td>
+							<td></td>
+                        </tr>
+                        <tr>
+                            <td>Letzter Bootvorgang:</td>
+							<td></td>
+                        </tr>
+                        <tr>
+                            <td>Eingeloggte User:</td>
+							<td></td>
+                        </tr>
+                        <tr>
+                            <td>Load: [<a href="#" class="tooltip">Info
+                            	<span>
+                            		Load = "Auslastung des Servers"<br>
+                            		1. Wert: letzte Minute<br>
+                            		2. Wert: letzten 5 Minuten<br>
+                            		2. Wert: letzten 15 Minuten<br>
+                            	</span>
+							</a>]
+						</td>
+							<td></td>
+                        </tr>
+                        <tr>
+                            <td>Server online seit:</td>
+							<td></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="halbe-box lastbox">
+                		 <table cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td>Apache 2:</td>
+                            <td></td>
+                        </tr>
+                        <tr class="odd">
+							<td>MySQL-Server:</td>
+							<td></td>
+                        </tr>
+                        <tr>
+							<td>Postfix:</td>
+							<td></td>
+                        </tr>
+                        <tr class="odd">
+                            <td>FTP:</td>
+							<td></td>
+                        </tr>
+                        <tr>
+                            <td>Server online seit:</td>
+							<td></td>
+                        </tr>
+                        <tr>
+                            <td>Letzter Bootvorgang:</td>
+							<td></td>
+                        </tr>
+                        <tr>
+                            <td>Eingeloggte User:</td>
+							<td></td>
+                        </tr>
+                        <tr>
+                            <td>Load: [<a href="#" class="tooltip">Info
+                            	<span>
+                            		Load = "Auslastung des Servers"<br>
+                            		1. Wert: letzte Minute<br>
+                            		2. Wert: letzten 5 Minuten<br>
+                            		2. Wert: letzten 15 Minuten<br>
+                            	</span>
+							</a>]
+						</td>
+							<td></td>
+                        </tr>
+                        <tr>
+                            <td>Server online seit:</td>
+							<td></td>
+                        </tr>
+                    </table>
+                </div>
 	<br><br>
-	<input class="button black"type="submit" value="Server ausw&auml;hlen">
 	<hr>
     <b>Dev-Info:</b>&nbsp;"<?php echo __file__;?>"</p>
 </fieldset>
