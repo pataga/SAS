@@ -38,10 +38,24 @@
 
 			stream_set_blocking($os, true);
 
-			while($line = fgets($os)) 
+			$data = array();
+
+			if ($type == 2)
 			{
-				flush();
-				$output .= $line.($type==1 ? '<br>' : '');
+				for ($i = 0; $line = fgets($os); $i++)
+				{
+					flush();
+					$data[$i] = $line;
+				}
+				return $data;
+			}
+			else
+			{
+				while($line = fgets($os)) 
+				{
+					flush();
+					$output .= $line.($type==1 ? '<br>' : '');
+				}
 			}
 
 			return $output;
