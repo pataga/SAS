@@ -1,9 +1,6 @@
 <?php
 	session_start();
 
-	//Temporär statisch
-	$_SESSION['server_id'] = 1;
-
 	require_once 'includes/classes/class.loader.php';
 	require_once 'includes/classes/class.user.php';
 	require_once 'includes/classes/class.server.php';

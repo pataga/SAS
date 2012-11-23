@@ -65,6 +65,8 @@
 
 		function getIncFile ()
 		{
+			if (!isset($_SESSION['server_id']))
+				return 'includes/content/home/server.inc.php';
 			$page = mysql_real_escape_string($this->_page);
 			$spage = mysql_real_escape_string($this->_spage);
 
