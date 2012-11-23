@@ -1,7 +1,7 @@
 <?php
 	$host = "127.0.0.1";
 	$user = "root";
-	$pass = "";
+	$pass = "123";
 	$db = "sas";
 
 	mysql_connect($host, $user, $pass);

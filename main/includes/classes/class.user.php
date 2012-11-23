@@ -14,6 +14,11 @@
 			$this->_password = $password;
 		}
 
+		function getUsername ()
+		{
+			return isset($_SESSION['username']) ? $_SESSION['username'] : "";
+		}
+
 		function isLoggedIn ()
 		{
 			return isset($_SESSION['loggedIn'])&&$_SESSION['loggedIn'];
