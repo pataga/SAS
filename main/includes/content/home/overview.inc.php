@@ -1,3 +1,33 @@
+<?php
+    $ssh->openConnection();
+    $uptime .= $ssh->execute("uptime");
+    $kernelversion .= $ssh->execute("cat /proc/version");
+    $hostname .= $ssh->execute("hostname -a");
+    // $uptime .= $ssh->execute(uptime);
+    // $uptime .= $ssh->execute(uptime);
+    // $uptime .= $ssh->execute(uptime);
+    $uptimepart = explode("load average:",$uptime);
+    $serverload = $uptimepart[1];
+//----------------------------------------------
+    $uptimetmp1 = explode("up",$uptime);
+    $uptimetmp2 = $uptimetmp1[1];
+    $uptimetmp3 = explode(", ",$uptimetmp2);
+    $uptimetmp4 = $uptimetmp3[0].$uptimetmp3[1];
+    $find = array();
+    $find[0] = "days";
+    $find[1] = "min";
+    $find[2] = "day";
+    $replace = array();
+    $replace[0] = "Tagen";
+    $replace[1] = "Minuten";
+    $replace[2] = "Tag";
+    $serveruptime = str_replace($find, $replace, $uptimetmp4);
+//----------------------------------------------
+
+?>
+<fieldset>
+    <?php print_r($uptimetmp3); ?>
+</fieldset>
 <h3>Serverübersicht</h3>
 <fieldset>
 	<h5>Aktuelle Daten ihres Servers</h5>
@@ -5,33 +35,29 @@
 	 <table cellpadding="0" cellspacing="0">
                         <tr>
                             <td>Host-IP:</td>
-                            <td>46.38.238.216</td>
+                            <td><?php echo $data[0];?></td>
                         </tr>
                         <tr class="odd">
 							<td>Host-Name:</td>
-							<td>Melone</td>
+							<td><?php echo $hostname; ?></td>
                         </tr>
                         <tr>
 							<td>Kernel Version:</td>
-							<td>Linux version 3.0.42-vs2.3.2.4.0-nc (root@build-squeeze.netcup.net) (gcc version 4.4.5 (Debian 4.4.5-8) ) </td>
+							<td><?php echo $kernelversion; ?></td>
                         </tr>
                         <tr class="odd">
-                            <td>Distribution:</td>
-							<td>Ubuntu Server 12.04</td>
-                        </tr>
-                        <tr>
                             <td>Server online seit:</td>
-							<td>4 Tagen, 2 Stunden, 30 Minuten</td>
+							<td><?php echo $serveruptime;?></td>
                         </tr>
                         <tr>
                             <td>Letzter Bootvorgang:</td>
 							<td>11.11.12 - 21:52:11</td>
                         </tr>
-                        <tr>
+                        <tr class="odd">
                             <td>Eingeloggte User:</td>
 							<td>5</td>
                         </tr>
-                        <tr>
+                        <tr class="odd">
                             <td>Load: [<a href="#" class="tooltip">Info
                             	<span>
                             		Load = "Auslastung des Servers"<br>
@@ -41,7 +67,7 @@
                             	</span>
 							</a>]
 						</td>
-							<td>0.80, 0.83, 0.73</td>
+							<td><?php echo $serverload; ?></td>
                         </tr>
                     </table>
                 </div>
