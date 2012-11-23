@@ -1,11 +1,11 @@
 <?php
     $ssh->openConnection();
-    $uptime .= $ssh->execute("uptime");
-    $kernelversion .= $ssh->execute("cat /proc/version");
-    $hostname .= $ssh->execute("hostname -a");
-    // $uptime .= $ssh->execute(uptime);
-    // $uptime .= $ssh->execute(uptime);
-    // $uptime .= $ssh->execute(uptime);
+    $uptime = $ssh->execute("uptime");
+    $kernelversion = $ssh->execute("cat /proc/version");
+    $hostname = $ssh->execute("hostname -a");
+    // $uptime = $ssh->execute(uptime);
+    // $uptime = $ssh->execute(uptime);
+    // $uptime = $ssh->execute(uptime);
     $uptimepart = explode("load average:",$uptime);
     $serverload = $uptimepart[1];
 //----------------------------------------------
