@@ -36,11 +36,11 @@
 
 				switch ($package)
 				{
-					case 'mysql': if ($row->mysql == "1") return true; break;
-					case 'postfix': if ($row->postfix == "1") return true; break;
-					case 'ftp': if ($row->ftp == "1") return true; break;
-					case 'samba': if ($row->samba == "1") return true; break;
-					case 'apache': if ($row->apache == "1") return true; break;
+					case 'mysql': if ($row->mysql == "1") return true;
+					case 'postfix': if ($row->postfix == "1") return true;
+					case 'ftp': if ($row->ftp == "1") return true;
+					case 'samba': if ($row->samba == "1") return true;
+					case 'apache': if ($row->apache == "1") return true;
 					default: return false;
 				}
 			}
