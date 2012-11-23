@@ -89,5 +89,27 @@
 				return $database;
 			} else return 0;
 		}
+
+		function serviceStatus ($ssh)
+		{
+			$data = array();
+			$data[0] = $this->getServiceStatus($ssh, 'smbd');
+			$data[1] = $this->getServiceStatus($ssh, 'apache2');
+			$data[2] = $this->getServiceStatus($ssh, 'postfix');
+			$data[3] = $this->getServiceStatus($ssh, 'ftp');
+			$data[4] = $this->getServiceStatus($ssh, 'mysql');
+			return $data;
+		}
+
+		function getServiceStatus ($ssh, $service)
+		{
+			$line = $ssh->execute('service '.$service.' status');
+			$exp = explode(" ", $line);
+
+			if ($exp[1] == "start/running,")
+				return true;
+			else
+				return false;
+		}
 	}
 ?>
