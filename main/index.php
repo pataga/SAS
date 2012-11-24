@@ -9,7 +9,7 @@
 	$loader = new Loader();
 	$user = new User();
 	$server = new Server();
-	$ssh = "";
+	$ssh = null;
 
 	$loader->createDatabaseConnection();
 	$data = array();

@@ -1,6 +1,7 @@
 <?php
 	class User
 	{
+		private $_userID = "";
 		private $_username = "";
 		private $_password = "";
 
@@ -50,6 +51,31 @@
 		{
 			session_unset();
 			session_destroy();
+		}
+
+		function addUser ($username, $password, $passwordr, $email)
+		{
+			if ($password == $passwordr)
+			{
+				$result = mysql_query("SELECT * FROM sas_users WHERE username = '$username' OR email = '$email'");
+				if (mysql_num_rows($result) == 0)
+				{
+					$password = md5($password);
+					mysql_query("INSERT INTO sas_users (username,password,email) VALUES ('$username','$password','$email')");
+					return 1;
+				} else return -1;
+			} else return -2;
+		}
+
+		function setPermission ($sid, $permission, $active)
+		{
+			$query;
+			$result = mysql_query("SELECT * FROM sas_user_permission WHERE uid = $this->_userID AND sid = $sid");
+			if (mysql_num_rows($result) > 0)
+				$query = "UPDATE sas_user_permission SET $permission = $active WHERE uid = $this->_userID AND sid = $sid";
+			else
+				$query = "REPLACE sas_user_permission SET $permission = $active WHERE uid = $this->_userID AND sid = $sid";
+			mysql_query($query);
 		}
 	}
 ?>
