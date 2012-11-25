@@ -55,7 +55,6 @@
 <form action="index.php?p=samba&s=shares" method="POST">
 
 	<table >
-
 		<tr>
 		<td>Freigabe Name:</td>
 		<td><input type="text" name="name" id=""></td>
@@ -85,11 +84,9 @@
 		<td>Directory Mask:</td>
 		<td><input type="text" name="directorymask" id=""></td>
 		</tr>
-
 	</table>
 
 	<table>
-
 		<tr>
 		<td>&Ouml;ffentliche Freigabe?</td>
 		<td><select name="public">
@@ -116,10 +113,9 @@
 		<option value=" "> disabled</option>
 		</select></td>
 		</tr>
-
 	</table>
 
 <br>
-	<input type="submit" name="add" value="Hinzuf&uuml;gen">
+	<input type="submit" name="add" value="Neue Freigabe Hinzuf&uuml;gen">
 </form>
 </html>
