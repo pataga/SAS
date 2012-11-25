@@ -978,6 +978,47 @@ pre {
     outline: none;
 }
 
+.tooltip2
+{
+    position: relative;
+    text-decoration: underline !important;
+    cursor: help;
+    display: inline-block;
+    text-decoration: none;
+    outline: none !important;
+    color: #0b75b2;
+}
+
+.tooltip2 span
+{
+    visibility: hidden;
+    color: #fff;
+    position: absolute; 
+    bottom: 30px;
+    left: 50%;
+    z-index: 999;
+    width: 130px;
+    margin-left: -30px;
+    padding: 5px;
+    line-height: 1.5;
+    border: 2px solid #222;
+    background-color: #ddd;                     
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    background: rgba(0,0,0,0.95);
+    opacity : 0;
+    transition: all 0.2s ease-in-out;
+    outline: none;
+}
+
+.tooltip2:hover span
+{
+    visibility: visible;
+    opacity : 0.90;
+    transition: all 0.2s ease-in-out; 
+    outline: none;
+}
+
 /* ==========================================================================
    Helper classes
    ========================================================================== */
