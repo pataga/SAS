@@ -5,6 +5,11 @@
 		private $_username = "";
 		private $_password = "";
 
+		function __construct ()
+		{
+			$this->_userID = isset($_SESSION['userID']) ? $_SESSION['userID'] : 0;
+		}
+
 		function setUsername ($username)
 		{
 			$this->_username = $username;
@@ -35,14 +40,15 @@
 				$row = mysql_fetch_object($result);
 
 				if ($row->password == md5($this->_password))
-					$this->setAuthState(true);
+					$this->setAuthState(true, $row->id);
 				else
 					$this->setAuthState(false);
 			} else $this->setAuthState(false);
 		}
 
-		function setAuthState ($authState)
+		function setAuthState ($authState, $id = 0)
 		{
+			$_SESSION['userID'] = $id;
 			$_SESSION['loggedIn'] = $authState;
 			$_SESSION['username'] = $this->_username;
 		}
