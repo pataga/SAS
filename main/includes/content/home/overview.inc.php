@@ -1,37 +1,27 @@
 <?php
     $ssh->openConnection();
-    $uptime = $ssh->execute("uptime");
+    $load = $ssh->execute("uptime");
+    $uptime = $ssh->execute("who -b");
+    $userswho = $ssh->execute("users");
     $kernelversion = $ssh->execute("cat /proc/version");
+    $sekundentmp = $ssh->execute("cat /proc/uptime");
     $hostname = $ssh->execute("hostname -a");
-    // $uptime = $ssh->execute(uptime);
-    // $uptime = $ssh->execute(uptime);
-    // $uptime = $ssh->execute(uptime);
-    $uptimepart = explode("load average:",$uptime);
-    $serverload = $uptimepart[1];
+    $loadpart = explode("load average:",$load);
+    $serverload = $loadpart[1];
 //----------------------------------------------
-    $uptimetmp1 = explode("up",$uptime);
-    $uptimetmp2 = $uptimetmp1[1];
-    $uptimetmp3 = explode(", ",$uptimetmp2);
-    $uptimetmp4 = $uptimetmp3[0].$uptimetmp3[1];
-    $find = array();
-    $find[0] = "days";
-    $find[1] = "min";
-    $find[2] = "day";
-    $replace = array();
-    $replace[0] = "Tagen";
-    $replace[1] = "Minuten";
-    $replace[2] = "Tag";
-    $serveruptime = str_replace($find, $replace, $uptimetmp4);
+    $sekunden0 = explode(".",$sekundentmp);
+    $sekunden = $sekunden0[0];
+    $serveruptime = (((((((($sekunden-($sekunden%60))/60) - (($sekunden-($sekunden%60))/60)%60)/60)))-(((((($sekunden-($sekunden%60))/60) - (($sekunden-($sekunden%60))/60)%60)/60))%24))/24)." T. ".(((((($sekunden-($sekunden%60))/60) - (($sekunden-($sekunden%60))/60)%60)/60))%24)." Std. ".((($sekunden-($sekunden%60))/60)%60)." Min. ". ($sekunden%60)." Sek. ";
 //----------------------------------------------
-
+     $bootdatetmp = str_replace("   ", "", $uptime);
+     $bootdate = str_replace("Systemstart", "", $bootdatetmp);
+     $userswholi = str_replace(" ", ", ", $userswho);
+//----------------------------------------------
 ?>
-<fieldset>
-    <?php print_r($uptimetmp3); ?>
-</fieldset>
 <h3>Serverübersicht</h3>
 <fieldset>
 	<h5>Aktuelle Daten ihres Servers</h5>
-	 <div class="halbe-box">
+	 <div class="zweidrittel-box">
 	 <table cellpadding="0" cellspacing="0">
                         <tr>
                             <td>Host-IP:</td>
@@ -43,7 +33,11 @@
                         </tr>
                         <tr>
 							<td>Kernel Version:</td>
-							<td><?php echo $kernelversion; ?></td>
+							<td>
+                                <a href="#" class="tooltip">Kernel
+                                <span><code><?=$kernelversion; ?></code></span>
+                            </a>
+                            </td>
                         </tr>
                         <tr class="odd">
                             <td>Server online seit:</td>
@@ -51,27 +45,20 @@
                         </tr>
                         <tr>
                             <td>Letzter Bootvorgang:</td>
-							<td>11.11.12 - 21:52:11</td>
+							<td><?php echo $bootdate ?></td>
                         </tr>
                         <tr class="odd">
                             <td>Eingeloggte User:</td>
-							<td>5</td>
+							<td><?php echo $userswholi ?></td>
                         </tr>
                         <tr class="odd">
-                            <td>Load: [<a href="#" class="tooltip">Info
-                            	<span>
-                            		Load = "Auslastung des Servers"<br>
-                            		1. Wert: letzte Minute<br>
-                            		2. Wert: letzten 5 Minuten<br>
-                            		2. Wert: letzten 15 Minuten<br>
-                            	</span>
-							</a>]
+                            <td>Load: 
 						</td>
 							<td><?php echo $serverload; ?></td>
                         </tr>
                     </table>
                 </div>
-                <div class="halbe-box lastbox">
+                <div class="drittel-box lastbox">
                 		 <table cellpadding="0" cellspacing="0">
                         <tr>
                             <td>Apache 2:</td>
@@ -118,7 +105,6 @@
 <h3>Notizbuch</h3>
 <fieldset>
 	<textarea>
-		
 	</textarea>
 	<input type="submit" class="button black" value="Notizen speichern">
 	<br>
