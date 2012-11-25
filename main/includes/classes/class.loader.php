@@ -103,7 +103,12 @@
 
 		function reload ()
 		{
-			header ("Location:");
+			if (!empty($this->_spage) && !empty($this->_page))
+				header ("Location: ?p=$this->_page&s=$this->_spage");
+			else if (!empty($this->_page))
+				header ("Location: ?p=$this->_page");
+			else
+				header ("Location: ");
 		}
 	}
 ?>
