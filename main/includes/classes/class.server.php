@@ -111,5 +111,10 @@
 			else
 				return false;
 		}
+
+		function addServer ($name, $host, $port, $user, $pass)
+		{
+			mysql_query("INSERT INTO sas_server_data (host,port,user,pass,name) VALUES ('$host','$port','$user','$pass','$name')");
+		}
 	}
 ?>
