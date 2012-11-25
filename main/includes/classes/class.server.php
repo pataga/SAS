@@ -90,6 +90,19 @@
 			} else return 0;
 		}
 
+		function getMySQLTables ($db)
+		{
+			if ($this->connectToMySQLServer())
+			{
+				$result = mysql_query("SHOW TABLES FROM $db");
+				$tables = array();
+				for ($itr = 0; ($row = mysql_fetch_array($result)); $itr++)
+					$tables[$itr] = $row[0];
+
+				return $tables;
+			} else return 0;
+		}
+
 		function serviceStatus ($ssh)
 		{
 			$data = array();
@@ -115,6 +128,12 @@
 		function addServer ($name, $host, $port, $user, $pass)
 		{
 			mysql_query("INSERT INTO sas_server_data (host,port,user,pass,name) VALUES ('$host','$port','$user','$pass','$name')");
+		}
+
+		function addMySQL ($host, $user, $pass)
+		{
+			mysql_query("INSERT INTO sas_server_mysql (sid,host,username,password) VALUES ('$this->server_id','$host','$user','$pass')");
+			mysql_query("UPDATE sas_server_data SET mysql = 1 WHERE id = $this->server_id");
 		}
 	}
 ?>

@@ -1,3 +1,6 @@
+-- ----------------------------
+-- Table structure for `sas_content`
+-- ----------------------------
 DROP TABLE IF EXISTS `sas_content`;
 CREATE TABLE `sas_content` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
@@ -5,7 +8,7 @@ CREATE TABLE `sas_content` (
   `spage` varchar(255) NOT NULL,
   `inc_path` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of sas_content
@@ -48,6 +51,8 @@ INSERT INTO `sas_content` VALUES ('43', 'tools', 'taskmgr', 'includes/content/to
 INSERT INTO `sas_content` VALUES ('44', 'tools', 'stats', 'includes/content/tools/stats.inc.php');
 INSERT INTO `sas_content` VALUES ('45', 'home', 'devstyle', 'includes/content/sas-dev/styles.inc.php');
 INSERT INTO `sas_content` VALUES ('46', 'mysql', 'adduser', 'includes/content/mysql/useradd.inc.php');
+INSERT INTO `sas_content` VALUES ('47', 'mysql', 'db', 'includes/content/mysql/db.inc.php');
+INSERT INTO `sas_content` VALUES ('48', 'mysql', 'configure', 'includes/content/mysql/configure.inc.php');
 
 -- ----------------------------
 -- Table structure for `sas_menu_main`
@@ -84,7 +89,7 @@ CREATE TABLE `sas_menu_side` (
   `page` varchar(255) NOT NULL,
   `spage` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of sas_menu_side
@@ -128,6 +133,7 @@ INSERT INTO `sas_menu_side` VALUES ('36', 'Taskmanager', 'tools', 'taskmgr');
 INSERT INTO `sas_menu_side` VALUES ('37', 'Statistiken', 'tools', 'stats');
 INSERT INTO `sas_menu_side` VALUES ('38', '<i>Dev: CSS-Info</i>', 'home', 'devstyle');
 INSERT INTO `sas_menu_side` VALUES ('39', 'Benutzer anlegen', 'mysql', 'adduser');
+INSERT INTO `sas_menu_side` VALUES ('40', 'Datenbanken', 'mysql', 'db');
 
 -- ----------------------------
 -- Table structure for `sas_server_data`
@@ -146,7 +152,7 @@ CREATE TABLE `sas_server_data` (
   `apache` tinyint(3) NOT NULL,
   `samba` tinyint(3) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of sas_server_data
@@ -164,7 +170,7 @@ CREATE TABLE `sas_server_mysql` (
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of sas_server_mysql
@@ -204,7 +210,7 @@ CREATE TABLE `sas_users` (
   `email` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `userunique` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of sas_users
