@@ -1,7 +1,7 @@
 <?php
 	class Server
 	{
-		private $server_id;
+		public $server_id;
 
 		private $server_mysql_host;
 		private $server_mysql_port;
@@ -21,6 +21,7 @@
 				$data[0] = $row->host;
 				$data[1] = $row->user;
 				$data[2] = $row->pass;
+				$data[3] = $row->name;
 
 				return $data;
 			}
@@ -100,6 +101,21 @@
 					$tables[$itr] = $row[0];
 
 				return $tables;
+			} else return 0;
+		}
+
+		function getMySQLColumns ($db, $table)
+		{
+			if (mysql_select_db($db))
+			{
+				$result = mysql_query("SHOW COLUMNS FROM $table");
+				$colums = array();
+				for ($i = 0;$row = mysql_fetch_array($result);$i++)
+				{
+					$colums[$i][0] = $row[0];
+					$colums[$i][1] = $row[1];
+				}
+				return $colums;
 			} else return 0;
 		}
 
