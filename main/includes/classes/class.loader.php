@@ -26,6 +26,7 @@
 						                <h3>'.$_SESSION['username'].'</h3>
 						                <a href="#">Meine Daten &auml;ndern</a>
 						                <br>
+						                <a href="?server=change">Server wechseln</a><br>
 						                <a href="?user=logout">Logout</a>
 						            </div>
 						        </div>';

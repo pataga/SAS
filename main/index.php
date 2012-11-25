@@ -38,6 +38,12 @@
 		$loader->reload();
 	}
 
+	if ($user->isLoggedIn() && isset($_GET['server']) && $_GET['server'] == 'change' && isset($_SESSION['server_id']))
+	{
+		unset($_SESSION['server_id']);
+		$loader->reload();
+	}
+
 	$loader->_page = isset($_GET['p']) ? $_GET['p'] : 'home';
 	$loader->_spage = isset($_GET['s']) ? $_GET['s'] : ' ';
 
