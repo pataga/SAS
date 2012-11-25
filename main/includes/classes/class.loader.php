@@ -40,7 +40,10 @@
 				$name = $row->name;
 				$page = $row->page;
 
-				$this->content .= "<li><a href='?p=$page'>$name</a></li>";
+				if ($this->_page == $page)
+					$this->content .= "<li><a class='aktiv' href='?p=$page'>$name</a></li>";
+				else
+					$this->content .= "<li><a href='?p=$page'>$name</a></li>";
 			}
 
 			$this->content .= '</ul><br style="clear:left"></div>';
