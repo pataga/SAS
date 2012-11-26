@@ -6,7 +6,7 @@
     }
     if (isset($_POST['submission']))
     {
-        $server->addMySQL($_POST['mhost'],$_POST['muser'],$_POST['mpass']);
+        $database->addMySQL($_POST['mhost'],$_POST['muser'],$_POST['mpass']);
         $loader->reload();
     }
 ?>

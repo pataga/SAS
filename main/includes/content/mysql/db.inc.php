@@ -9,8 +9,8 @@
 <fieldset style="width:auto;">
 <div style="height:auto;width:auto;min-width:100px;max-height:500px;max-width:800px;min-height:130px;overflow-x:scroll;overflow-y:scroll;">
 <?php
-    $data = $server->getServerData($server->server_id);
-    $databases = $server->getMySQLDatabases();
+    $data = $server->getServerData($server->GetID());
+    $databases = $database->getMySQLDatabases();
 
     if ($databases != 0 && !isset($_GET['db']))
     {
@@ -25,7 +25,7 @@
     else if (isset($_GET['db'])&&!isset($_GET['t']))
     {
         $db = $_GET['db'];
-        $tables = $server->getMySQLTables($db);
+        $tables = $database->getMySQLTables($db);
         $dbcontent = "<table>";
         foreach ($tables as $tab)
             $dbcontent .= "<tr><td><a href='?p=mysql&s=db&db=$db&t=$tab'>$tab</a></td></tr>";
@@ -38,7 +38,7 @@
     {
         $db = $_GET['db'];
         $table = $_GET['t'];
-        $columns = $server->getMySQLColumns($db,$table);
+        $columns = $database->getMySQLColumns($db,$table);
         $dbcontent = "<table><tr>";
         foreach ($columns as $col)
             $dbcontent .= "<td><a href='#' class='tooltip2'><h5>$col[0]</h5>

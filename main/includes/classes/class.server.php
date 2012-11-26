@@ -1,12 +1,18 @@
 <?php
 	class Server
 	{
-		public $server_id;
+		private $server_id;
+		private $mysql;
 
-		private $server_mysql_host;
-		private $server_mysql_port;
-		private $server_mysql_user;
-		private $server_mysql_pass;
+		function __construct ($_mysql)
+		{
+			$this->mysql = $_mysql;
+		}
+
+		function getID()
+		{
+			return $this->server_id;
+		}
 
 		function getServerData ($id = 1)
 		{
@@ -17,7 +23,7 @@
 			{
 				$row = mysql_fetch_object($result);
 				$data = array();
-
+				
 				$data[0] = $row->host;
 				$data[1] = $row->user;
 				$data[2] = $row->pass;
@@ -44,9 +50,7 @@
 					case 'apache': if ($row->apache == "1") return true;
 					default: return false;
 				}
-			}
-
-			return false;
+			} else return false;
 		}
 
 		function getMySQLData ()
@@ -57,66 +61,17 @@
 
 				if (mysql_num_rows($result) > 0)
 				{
+					$data = array();
 					$row = mysql_fetch_object($result);
-					$this->server_mysql_host = $row->host;
-					$this->server_mysql_port = $row->port;
-					$this->server_mysql_user = $row->username;
-					$this->server_mysql_pass = $row->password;
-					return true;
+					$data[0] = $row->host;
+					$data[1] = $row->port;
+					$data[2] = $row->username;
+					$data[3] = $row->password;
+					return $data;
 				}
 			}
 			
 			return false;
-		}
-
-		function connectToMySQLServer ()
-		{
-			if ($this->getMySQLData())
-				return mysql_connect($this->server_mysql_host, $this->server_mysql_user, $this->server_mysql_pass);
-			else
-				return false;
-		}
-
-		function getMySQLDatabases ()
-		{
-			if ($this->connectToMySQLServer())
-			{
-				$result = mysql_query("SHOW DATABASES");
-				$database = array();
-
-				for ($itr = 0; ($row = mysql_fetch_object($result)); $itr++)
-					$database[$itr] = $row->Database;
-
-				return $database;
-			} else return 0;
-		}
-
-		function getMySQLTables ($db)
-		{
-			if ($this->connectToMySQLServer())
-			{
-				$result = mysql_query("SHOW TABLES FROM $db");
-				$tables = array();
-				for ($itr = 0; ($row = mysql_fetch_array($result)); $itr++)
-					$tables[$itr] = $row[0];
-
-				return $tables;
-			} else return 0;
-		}
-
-		function getMySQLColumns ($db, $table)
-		{
-			if (mysql_select_db($db))
-			{
-				$result = mysql_query("SHOW COLUMNS FROM $table");
-				$colums = array();
-				for ($i = 0;$row = mysql_fetch_array($result);$i++)
-				{
-					$colums[$i][0] = $row[0];
-					$colums[$i][1] = $row[1];
-				}
-				return $colums;
-			} else return 0;
 		}
 
 		function serviceStatus ($ssh)
@@ -139,17 +94,6 @@
 				return true;
 			else
 				return false;
-		}
-
-		function addServer ($name, $host, $port, $user, $pass)
-		{
-			mysql_query("INSERT INTO sas_server_data (host,port,user,pass,name) VALUES ('$host','$port','$user','$pass','$name')");
-		}
-
-		function addMySQL ($host, $user, $pass)
-		{
-			mysql_query("INSERT INTO sas_server_mysql (sid,host,username,password) VALUES ('$this->server_id','$host','$user','$pass')");
-			mysql_query("UPDATE sas_server_data SET mysql = 1 WHERE id = $this->server_id");
-		}
+		}	
 	}
 ?>

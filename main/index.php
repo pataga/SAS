@@ -1,17 +1,21 @@
 <?php
 	session_start();
 
+	require_once 'includes/config/config.mysql.php';
 	require_once 'includes/classes/class.loader.php';
 	require_once 'includes/classes/class.user.php';
 	require_once 'includes/classes/class.server.php';
 	require_once 'includes/classes/class.ssh.php';
+	require_once 'includes/classes/class.db.php';
+	require_once 'includes/classes/class.mysql.php';
 
 	$loader = new Loader();
 	$user = new User();
-	$server = new Server();
+	$mysql = new MySQL($data);
+	$server = new Server($mysql);
+	$database = new Database($mysql, $server);
 	$ssh = null;
 
-	$loader->createDatabaseConnection();
 	$data = array();
 
 

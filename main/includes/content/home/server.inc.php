@@ -6,15 +6,15 @@
     }
     else if (isset($_POST['name'])&&isset($_POST['shost'])&&isset($_POST['sport'])&&isset($_POST['suser'])&&isset($_POST['spass']))
     {
-        $server->addServer($_POST['name'],$_POST['shost'],$_POST['sport'],$_POST['suser'],$_POST['spass']);
+        $database->addServer($_POST['name'],$_POST['shost'],$_POST['sport'],$_POST['suser'],$_POST['spass']);
         $loader->reload();
     }
 
-    $result = mysql_query("SELECT id, name, host FROM sas_server_data");
+    $row = $mysql->HQuery("SELECT id, name, host FROM sas_server_data");
     $server_selection = "";
-    while ($row = mysql_fetch_object($result))
+    for ($i = 0; $i < count($row); $i++)
     {
-        $server_selection .= "<option value='$row->id'>Server '$row->name' - $row->host</option>";
+        $server_selection .= "<option value='".$row[$i][0]."'>Server '".$row[$i][2]."' - ".$row[$i][4]."</option>";
     }
 ?>
 
