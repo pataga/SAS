@@ -90,7 +90,7 @@
 			$line = $ssh->execute('service '.$service.' status');
 			$exp = explode(" ", $line);
 
-			if ($exp[1] == "start/running," || $exp[2] == "is" && $exp[3] == "running")
+			if ($exp[1] == "start/running," || $exp[1] == "is" && $exp[2] == "running")
 				return true;
 			else
 				return false;
