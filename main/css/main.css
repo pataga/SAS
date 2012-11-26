@@ -199,11 +199,15 @@ body {
 
 .halbe-box          { width: 47.8%; }
 .drittel-box        { width: 30.5%; }
-.zweidrittel-box    { width: 65.3%; }
 .viertel-box        { width: 21.9%; }
+.fuenftel-box       { width: 16.7%; }
+.zweidrittel-box    { width: 65.3%; }
 .dreiviertel-box    { width: 74.0%; }
+.zweifuenftel-box   { width: 37.2%; }
+.dreifuenftel-box   { width: 58.0%; }
+.vierfuenftel-box   { width: 79.0%; }
 
-.halbe-box, .drittel-box, .zweidrittel-box, .viertel-box, .dreiviertel-box {
+.halbe-box, .drittel-box, .zweidrittel-box, .viertel-box, .dreiviertel-box, .fuenftel-box, .zweifuenftel-box, .dreifuenftel-box, .vierfuenftel-box   {
     position: relative;
     display: inline-block;
     *display:inline;
@@ -213,6 +217,7 @@ body {
 }
 
 .lastbox { margin-right: 0 !important; }
+.boxcenter { text-align: center !important; }
 
 .box-demo {
     display:block;
@@ -461,7 +466,7 @@ pre {
     font-size: 0.9em;
 }
 
-}
+
 /* ==========================================================================
    Template-Features [Forms und so ...]
    ========================================================================== */
@@ -520,6 +525,17 @@ pre {
     color: #646464;
     padding: 5px 7px;
     width: 264px;
+    float: left;
+    margin: 0 10px 0 0;
+}
+
+#main fieldset .text-medlong {
+    border: 1px solid #ddd;
+    background: #fff;
+    font: 11px Arial, Helvetica, sans-serif;
+    color: #646464;
+    padding: 5px 7px;
+    width: 200px;
     float: left;
     margin: 0 10px 0 0;
 }
@@ -1018,6 +1034,22 @@ pre {
     transition: all 0.2s ease-in-out; 
     outline: none;
 }
+
+span.error, span.info, span.alert, span.success { 
+    display: block; 
+    padding: 10px; 
+    margin: 5px 0;
+    border-style:solid;
+    border-width:1px;
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    border-radius:5px;
+}
+
+span.error      { border-color:#ffcfce; background: #ffdfdf }
+span.info       { border-color:#d4ecf0; background: #e0f2f5 }
+span.alert      { border-color:#efeabf; background: #f6f3da }
+span.success    { border-color:#c7f5ce; background: #d6f7db }
 
 /* ==========================================================================
    Helper classes

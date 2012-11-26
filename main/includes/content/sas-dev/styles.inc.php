@@ -164,6 +164,7 @@
 <div class="halbe-box lastbox">
     <span class="box-demo">halbe box lastbox</span>
 </div>
+<div class="clearfix"></div>
 <div class="drittel-box">
     <span class="box-demo">drittel box</span>
 </div>
@@ -173,12 +174,14 @@
 <div class="drittel-box lastbox">
     <span class="box-demo">drittel box lastbox</span>
 </div>
+<div class="clearfix"></div>
 <div class="drittel-box">
     <span class="box-demo">drittel box</span>
 </div>
 <div class="zweidrittel-box lastbox">
     <span class="box-demo">zweidrittel box lastbox</span>
 </div>
+<div class="clearfix"></div>
 <div class="viertel-box">
     <span class="box-demo">viertel box</span>
 </div>
@@ -191,12 +194,14 @@
 <div class="viertel-box lastbox">
     <span class="box-demo">viertel box lastbox</span>
 </div>
+<div class="clearfix"></div>
 <div class="dreiviertel-box">
     <span class="box-demo">dreiviertel box</span>
 </div>
 <div class="viertel-box lastbox">
     <span class="box-demo">viertel box lastbox</span>
 </div>
+<div class="clearfix"></div>
 <div class="viertel-box">
     <span class="box-demo">viertel box</span>
 </div>
@@ -206,3 +211,44 @@
 <div class="halbe-box lastbox">
     <span class="box-demo">halbe box lastbox</span>
 </div>
+<div class="clearfix"></div>
+<div class="fuenftel-box">
+    <span class="box-demo">fuenftel-box</span>
+</div>
+<div class="fuenftel-box">
+    <span class="box-demo">fuenftel-box</span>
+</div>
+<div class="fuenftel-box">
+    <span class="box-demo">fuenftel-box</span>
+</div>
+<div class="fuenftel-box">
+    <span class="box-demo">fuenftel-box</span>
+</div>
+<div class="fuenftel-box lastbox">
+    <span class="box-demo">fuenftel-box lastbox</span>
+</div>
+<div class="clearfix"></div>
+<div class="zweifuenftel-box">
+    <span class="box-demo">zweifuenftel-box</span>
+</div>
+<div class="dreifuenftel-box lastbox">
+    <span class="box-demo">dreifuenftel-box lastbox</span>
+</div>
+<div class="clearfix"></div>
+<div class="fuenftel-box">
+    <span class="box-demo">fuenftel-box</span>
+</div>
+<div class="vierfuenftel-box lastbox">
+    <span class="box-demo">vierfuenftel-box lastbox</span>
+</div>
+<div class="clearfix"></div>
+<hr>
+<h3>Meldungen</h3>
+<span class="info">Das ist eine "info"-Meldung</span>
+<br>
+<span class="success">Das ist eine "success"-Meldung</span>
+<br>
+<span class="alert">Das ist eine "alert"-Meldung</span>
+<br>
+<span class="error">Das ist eine "error"-Meldung</span>
+<hr>

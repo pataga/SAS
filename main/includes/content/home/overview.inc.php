@@ -62,7 +62,10 @@
                 		 <table cellpadding="0" cellspacing="0">
                         <tr>
                             <td>Apache 2:</td>
-                            <td><span class="aktiv">Aktiv</span></td>
+                            <td><span class="aktiv">Aktiv</span>
+                                <?php $status = $server->serviceStatus($ssh);
+                                echo ($status[0] ? "Aktiv" : "Inaktiv"); ?>
+                            </td>
                         </tr>
                         <tr class="odd">
 							<td>Postfix:</td>

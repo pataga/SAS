@@ -10,7 +10,7 @@
 	$data[2] = "root";
 
     //MySQL Passwort
-	$data[3] = "";
+	$data[3] = "123";
 
     //MySQL Datenbank
 	$data[4] = "sas";
