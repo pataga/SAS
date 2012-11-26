@@ -23,7 +23,7 @@
 <p>Bitte w&auml;hlen Sie ihren Server aus, den Sie mit SAS verwalten m&ouml;chten.</p>
 <form action="index.php" method="post">
     <label>Server:</label>
-    <select name="server">
+    <select name="server" class="shadow">
         <option value="-1"> </option>
         <?php echo $server_selection; ?>
     </select>
@@ -36,14 +36,19 @@
 <fieldset>
 <form action="index.php" method="post">
     <table>
-        <tr><td> Server Name </td><td><input type="text" name="name"></td></tr>
-        <tr><td> Server Host </td><td><input type="text" name="shost"></td></tr>
-        <tr><td> SSH Port </td><td><input type="text" name="sport"></td></tr>
-        <tr><td> Benutzername </td><td><input type="text" name="suser"></td></tr>
-        <tr><td> Passwort </td><td><input type="password" name="spass"></td></tr>
-        <tr><td>&nbsp;</td><td><input type="submit" value="Server eintragen"></td></tr>
+        <p><label>Server Name:</label>
+        <input type="text" name="name" class="text-long"></p>
+        <p><label>Server Host:</label>
+        <input type="text" name="shost" class="text-long"></p>
+        <p><label>SSH Port:</label>
+        <input type="text" name="sport" class="text-long"></p>
+        <p><label>Benutzername: </label>
+        <input type="text" name="suser" class="text-long"></p>
+        <p><label>Passwort: </label>
+        <input type="password" name="spass" class="text-long"></p>
+        <input type="submit" value="Server eintragen" class="button green">
     </table>
 </form>
-<hr>
-<b>Dev-Info:</b>&nbsp;"<?php echo __file__;?>"</p>
+<!--<hr>
+<b>Dev-Info:</b>&nbsp;"<?php echo __file__;?>"</p>-->
 </fieldset>
