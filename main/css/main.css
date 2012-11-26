@@ -1,6 +1,6 @@
 /* ==========================================================================
-   Schriftarten
-   ========================================================================== */
+Schriftarten
+========================================================================== */
 
 @font-face {
     font-family: 'Lobster';
@@ -30,8 +30,8 @@
     src: local('Ubuntu Bold'), url(fonts/ubuntu-700.woff) format('woff');
 }
 /* ==========================================================================
-   Layout
-   ========================================================================== */
+Layout
+========================================================================== */
 
 html,button,input,select,textarea {color: #222;}
 
@@ -45,8 +45,8 @@ body {
 }
 
 /* ==========================================================================
-   Top [Logo + Userpanel]
-   ========================================================================== */
+Top [Logo + Userpanel]
+========================================================================== */
 
 .top {
     width: 980px;
@@ -114,8 +114,8 @@ body {
 }
 
 /* ==========================================================================
-   Hauptnavigation (und Wrapper)
-   ========================================================================== */
+Hauptnavigation (und Wrapper)
+========================================================================== */
 
 #wrapper {
     text-align: left;
@@ -193,8 +193,8 @@ body {
     transition-timing-function: ease-out;
 }
 /* ==========================================================================
-   Layout: Spaltensystem
- ========================================================================== */
+Layout: Spaltensystem
+========================================================================== */
 
 
 .halbe-box          { width: 47.8%; }
@@ -233,8 +233,8 @@ body {
 }
 
 /* ==========================================================================
-   Layout: Sidebar + Content
-   ========================================================================== */
+Layout: Sidebar + Content
+========================================================================== */
 
 #main {
     width: 980px;
@@ -327,8 +327,8 @@ body {
 
 
 /* ==========================================================================
-   Layout: Footer
-   ========================================================================== */
+Layout: Footer
+========================================================================== */
 #footer {
     clear: right;
     width: 960px;
@@ -365,8 +365,8 @@ body {
 
 
 /* ==========================================================================
-   Template-Features [Text Formatierungen und so ...]
-   ========================================================================== */
+Template-Features [Text Formatierungen und so ...]
+========================================================================== */
 
 ::-moz-selection {
     background:#2d7e99;
@@ -409,16 +409,32 @@ a:hover {
 }
 
 span.aktiv {
-    font-size: 14px;
+    font-size: 13px;
+    font-family: Arial, Helvetica, sans-serif;
     font-weight: 700;
-    color: #079700;
-    letter-spacing: 1px;
+    color: #FFF;
+    background-color: #079700;
+    padding: 3px 7px;
+    border-radius: 2px;
 }
 span.inaktiv  {
-    font-size: 14px;
+    font-size: 13px;
+    font-family: Arial, Helvetica, sans-serif;
     font-weight: 700;
-    color: #962301;
-    letter-spacing: 1px;
+    color: #FFF;
+    background-color: #962301;
+    padding: 3px 7px;
+    border-radius: 2px;
+}
+
+span.notaviable  {
+    font-size: 13px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    color: #FFF;
+    background-color: #757575;
+    padding: 3px 7px;
+    border-radius: 2px;
 }
 
 hr {
@@ -468,13 +484,10 @@ pre {
 
 
 /* ==========================================================================
-   Template-Features [Forms und so ...]
-   ========================================================================== */
+Template-Features [Forms und so ...]
+========================================================================== */
 
-#main table {
-    border-top: 1px solid #ddd;
-}
-
+#main table {border-top: 1px solid #ddd;}
 #main table tr td {
     background: #f6f6f6;
     padding: 0px 20px;
@@ -487,18 +500,16 @@ pre {
     background: #fbfbfb;
 }
 
-#main table tr:hover td { background: #F7FCFD; }
-
 #main table .action {
     text-align: right;
     padding: 0 20px 0 10px;
 }
 
+#main table tr:hover td { background: #F7FCFD; }
 #main table tr .action a { margin: 0 0 0 10px; text-decoration: none; color: #9b9b9b; }
 #main table tr:hover .action .edit { color: #c5a059; }
 #main table tr:hover .action .delete { color: #a02b2b; }
 #main table tr:hover .action .view { color: #55a34a; }
-
 #main table tr:hover .action a:hover { text-decoration: underline; }
 
 #main fieldset {
@@ -561,9 +572,10 @@ pre {
     margin: 0 10px 0 0;
 }
 
-#main fieldset .text-long:focus, 
+#main fieldset .text-long:focus,
 #main fieldset .text-medium:focus,
-#main fieldset .text-small:focus,
+#main fieldset .text-small:focus, 
+#main fieldset .text-medlong:focus, 
 #main fieldset textarea:focus
 { background: #EAF4FF no-repeat left top; }
 
@@ -608,12 +620,12 @@ pre {
     border-radius: 2px;
 }
 
-#main fieldset select.shadow {
-    box-shadow: 1px 1px 6px #ccc;
-}
+#main fieldset select.shadow {box-shadow: 1px 1px 6px #ccc;}
+
+
 /* ==========================================================================
-   Author's custom styles
-   ========================================================================== */
+Author's custom styles
+========================================================================== */
 
 /* ====== PROGRESS BAR ===== */
 
@@ -1051,8 +1063,8 @@ span.alert      { border-color:#efeabf; background: #f6f3da }
 span.success    { border-color:#c7f5ce; background: #d6f7db }
 
 /* ==========================================================================
-   Helper classes
-   ========================================================================== */
+Helper classes
+========================================================================== */
 
 .hidden {
     display: none !important;
