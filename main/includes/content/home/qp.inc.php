@@ -65,7 +65,7 @@
         <div class="drittel-box lastbox">
             <h5>Server herunterfahren</h5>
             <form action="<?php $_SERVER['SCRIPT_NAME']?>" method="post">
-                <input type="submit" value="neustarten" class="button black">
+                <input type="submit" value="herunterfahren" class="button black">
             </form>
             <br>
             <p><b>Achtung!</b> <br> SAS kann den Server nicht mehr hochfahren. Diese Funktion muss ihnen ggf. der Provider zur Verf&uuml;gung stellen</p>
