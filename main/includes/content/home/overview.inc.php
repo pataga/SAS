@@ -21,7 +21,7 @@
 <h3>Serverübersicht</h3>
 <fieldset>
 	<h5>Aktuelle Daten ihres Servers</h5>
-	 <div class="zweidrittel-box">
+	 <div class="halbe-box">
 	 <table cellpadding="0" cellspacing="0">
                         <tr>
                             <td>Host-IP:</td>
@@ -58,7 +58,7 @@
                         </tr>
                     </table>
                 </div>
-                <div class="drittel-box lastbox">
+                <div class="halbe-box lastbox">
                 		 <table cellpadding="0" cellspacing="0">
                         <tr>
                             <td>Apache 2:</td>
