@@ -80,7 +80,7 @@
 			$data[0] = $this->getServiceStatus($ssh, 'smbd');
 			$data[1] = $this->getServiceStatus($ssh, 'apache2');
 			$data[2] = $this->getServiceStatus($ssh, 'postfix');
-			$data[3] = $this->getServiceStatus($ssh, 'ftp');
+			$data[3] = $this->getServiceStatus($ssh, 'proftpd');
 			$data[4] = $this->getServiceStatus($ssh, 'mysql');
 			return $data;
 		}
@@ -90,7 +90,7 @@
 			$line = $ssh->execute('service '.$service.' status');
 			$exp = explode(" ", $line);
 
-			if ($exp[1] == "start/running,")
+			if ($exp[1] == "start/running," || $exp[2] == "is" && $exp[3] == "running")
 				return true;
 			else
 				return false;

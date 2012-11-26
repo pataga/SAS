@@ -10,6 +10,7 @@
 <div style="height:auto;width:auto;min-width:100px;max-height:500px;max-width:800px;min-height:130px;overflow-x:scroll;overflow-y:scroll;">
 <?php
     $data = $server->getServerData($server->GetID());
+    $mysql->openRemoteConnection();
     $databases = $database->getMySQLDatabases();
 
     if ($databases != 0 && !isset($_GET['db']))
@@ -68,4 +69,5 @@
         print("Fehler beim Verbinden zum MySQL Server. Bitte pr&uuml;fen Sie die Verbindungsdaten.");
     }
 ?>
+<br><br>
 </fieldset>

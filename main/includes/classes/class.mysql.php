@@ -51,7 +51,7 @@
             $this->openHostConnection();
             $result = mysql_query($query);
             $data = array();
-
+            return mysql_fetch_array($result); // temporär
             for ($i=0;$row = mysql_fetch_array($result);$i++)
             {
                 $ai = 0;
@@ -84,11 +84,13 @@
 
         private function getRemoteData ()
         {
-            $data = $this->HQuery("SELECT host,port,username,password FROM sas_server_mysql WHERE sid = $this->server_id");
-            $this->remote_mysql_host = $data[0][0];
-            $this->remote_mysql_port = $data[0][1];
-            $this->remote_mysql_user = $data[0][2];
-            $this->remote_mysql_pass = $data[0][3];
+            if($data=$this->HQuery("SELECT host,port,username,password FROM sas_server_mysql WHERE sid = $this->server_id"))
+            {
+                $this->remote_mysql_host = $data[0];
+                $this->remote_mysql_port = $data[1];
+                $this->remote_mysql_user = $data[2];
+                $this->remote_mysql_pass = $data[3];
+            }
         }
 
         public function openRemoteConnection ()

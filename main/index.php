@@ -22,6 +22,7 @@
 	if (isset($_SESSION['server_id']))
 	{
 		$data = $server->getServerData($_SESSION['server_id']);
+		$mysql->setServerID($server->getID());
 		$ssh = new SSH($data[0],'22',$data[1],$data[2]);
 	}
 
