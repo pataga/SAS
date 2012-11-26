@@ -10,11 +10,11 @@
         $loader->reload();
     }
 
-    $row = $mysql->HQuery("SELECT id, name, host FROM sas_server_data");
+    $result = mysql_query("SELECT id, name, host FROM sas_server_data");
     $server_selection = "";
-    for ($i = 0; $i < count($row); $i++)
+    while ($row = mysql_fetch_object($result))
     {
-        $server_selection .= "<option value='".$row[$i][0]."'>Server '".$row[$i][2]."' - ".$row[$i][4]."</option>";
+        $server_selection .= "<option value='$row->id'>Server '$row->name' - $row->host</option>";
     }
 ?>
 
