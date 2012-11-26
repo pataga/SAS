@@ -50,7 +50,7 @@
 	}
 
 	$loader->_page = isset($_GET['p']) ? $_GET['p'] : 'home';
-	$loader->_spage = isset($_GET['s']) ? $_GET['s'] : ' ';
+	$loader->_spage = isset($_GET['s']) ? $_GET['s'] : null;
 
 	$loader->loadContent();
 	require_once $loader->getIncFile();
