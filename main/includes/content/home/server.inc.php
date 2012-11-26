@@ -31,7 +31,6 @@
     <input class="button black"type="submit" value="Server ausw&auml;hlen">
 </form>
 </fieldset>
-<br>
 <h3>Server hinzuf&uuml;gen</h3>
 <fieldset>
 <form action="index.php" method="post">
