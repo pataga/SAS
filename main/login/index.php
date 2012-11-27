@@ -20,6 +20,9 @@ alert ('Bitte nutzen Sie einen modernen Browser, wie etwa:\n\nMozilla Firefox, G
 </script>
 <![endif]-->
     <body>
+        <div class="ribbon">
+            <a href="https://github.com/pataga/SAS">Star us on GitHub</a>
+        </div>
         <div class="logo">
             <h1>Server <span>Admin</span> System</h1>
         </div>

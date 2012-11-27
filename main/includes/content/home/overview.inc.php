@@ -22,7 +22,7 @@
         <table cellpadding="0" cellspacing="0">
             <tr>
                 <td>Host-IP:</td>
-                <td><?php echo $data[0]; ?></td>
+                <td><a href="http://<?php echo $data[0]; ?>" target="_blank"><?php echo $data[0]; ?></a></td>
             </tr>
             <tr class="odd">
                 <td>Host-Name:</td>
