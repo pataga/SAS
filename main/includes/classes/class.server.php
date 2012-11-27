@@ -95,5 +95,11 @@
 			else
 				return false;
 		}	
+
+		public function addToFile ($ssh, $file, $content)
+		{
+			$ssh->openConnection();
+			$ssh->execute('echo -e "'.$content.'" >> '.$file);
+		}
 	}
 ?>
