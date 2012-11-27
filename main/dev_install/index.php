@@ -1,20 +1,20 @@
 <?php
-    $content = "<table>";
-    $mysql = extension_loaded('mysql') ?
-    "<div style='color:green;'>installiert":
-    "<div style='color:red;'>nicht installiert"."<div>";
+$content = "<table>";
+$mysql = extension_loaded('mysql') ?
+        "<span class='aktiv'>installiert" :
+        "<span class='inaktiv'>nicht installiert" . "</span>";
 
-    $ssh2 = extension_loaded('ssh2') ?
-    "<div style='color:green;'>installiert":
-    "<div style='color:red;'>nicht installiert"."<div>";
+$ssh2 = extension_loaded('ssh2') ?
+        "<span class='aktiv'>installiert" :
+        "<span class='inaktiv'>nicht installiert" . "</span>";
 
-    $ftp = extension_loaded('ftp') ?
-    "<div style='color:green;'>installiert":
-    "<div style='color:red;'>nicht installiert"."<div>";
+$ftp = extension_loaded('ftp') ?
+        "<span class='aktiv'>installiert" :
+        "<span class='inaktiv'>nicht installiert" . "</span>";
 
-    $sockets = extension_loaded('sockets') ?
-    "<div style='color:green;'>installiert":
-    "<div style='color:red;'>nicht installiert"."<div>";
+$sockets = extension_loaded('sockets') ?
+        "<span class='aktiv'>installiert" :
+        "<span class='inaktiv'>nicht installiert" . "</span>";
 ?>
 
 <!DOCTYPE html>
@@ -35,43 +35,41 @@
         <script src="../js/main.js"></script>
     </head>
     <body>
-        <div class="top">
-            <div class="logo" align="center" style="margin-left:180px;width:900px;">
-                <h1>&nbsp;&nbsp;&nbsp;&nbsp;Server <span>Admin</span> System Installation</h1>
+        <div id="main">
+            <div class="logoinstall">
+                <h1>Server <span>Admin</span> System</h1>
+                <h3>Installation</h3>
             </div>
-            <div id="main">
-                <div id="install">
-                    <fieldset>
-                        <b>Willkommen in der Installationsroutine von SAS. Bitte beachten sie, dass die unten aufgelisteten PHP Extensions für den vollen Funktionsumfang von SAS ben&ouml;tigt werden.</b>
-                    </fieldset>
-                    <fieldset>
-                        <div align="center">
-                            <table>
-                                <tr>
-                                    <td><h4>Extension</h4></td>
-                                    <td><h4>Status</h4></td>
-                                </tr>
-                                <tr>
-                                    <td>MySQL</td>
-                                    <td><?=$mysql?></td>
-                                </tr>
-                                <tr>
-                                    <td>LibSSH2</td>
-                                    <td><?=$mysql?></td>
-                                </tr>
-                                <tr>
-                                    <td>FTP</td>
-                                    <td><?=$mysql?></td>
-                                </tr>
-                                <tr>
-                                    <td>Sockets</td>
-                                    <td><?=$mysql?></td>
-                                </tr>
-                            </table>
-                        </div>
-                    </fieldset>
-                    <div align="center"><a href="step2.php" class="button black" style="width:370px;">Schritt 2</a></div>
+            <div id="box1_install">
+                <fieldset>
+                    <b>Willkommen in der Installationsroutine von SAS.</b> <br>Bitte beachten sie, dass die unten aufgelisteten PHP Extensions für den vollen Funktionsumfang von SAS ben&ouml;tigt werden.
+                </fieldset>
+                <div id="box2_install">
+                    <table style="width:400px;">
+                        <tr>
+                            <td><h5>Extension</h5></td>
+                            <td><h5>Status</h5></td>
+                        </tr>
+                        <tr>
+                            <td>MySQL</td>
+                            <td><?= $mysql ?></td>
+                        </tr>
+                        <tr>
+                            <td>LibSSH2</td>
+                            <td><?= $ssh2 ?></td>
+                        </tr>
+                        <tr>
+                            <td>FTP</td>
+                            <td><?= $ftp ?></td>
+                        </tr>
+                        <tr>
+                            <td>Sockets</td>
+                            <td><?= $sockets ?></td>
+                        </tr>
+                    </table>
                 </div>
-            </div>
+                <div id="installbutton"><a href="step2.php" class="button black">Schritt 2</a></div>
+            </div>    
+        </div>
     </body>
 </html>

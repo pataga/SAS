@@ -319,13 +319,6 @@ Layout: Sidebar + Content
     transition-timing-function: ease-out;
 }
 
-#install {
-    float: left;
-    text-align: left;
-    width: 40%;
-    margin-left: 30%;
-}
-
 #content {
     float: right;
     width: 770px;
@@ -385,6 +378,15 @@ Template-Features [Text Formatierungen und so ...]
     color:#fff;
 }
 
+::-webkit-input-placeholder {
+    color:#AAAAAA !important; 
+    font-style: italic !important;
+}
+
+:-moz-placeholder {
+    color:#AAAAAA !important; 
+    font-style: italic !important;
+}
 
 h1, h2, h3, h4, h5, h6 { font-family: Arial, Helvetica, sans-serif; }
 h1.ubuntu, h2.ubuntu, h3.ubuntu, h4.ubuntu, h5.ubuntu, h6.ubuntu { font-family: 'Ubuntu', sans-serif; }
@@ -1115,4 +1117,58 @@ Helper classes
 
 .clearfix {
     *zoom: 1;
+}
+
+
+/* ==========================================================================
+EXTRA: Installationsroutine
+========================================================================== */
+
+
+.logoinstall {
+    margin: 20px auto;
+}
+
+.logoinstall h1 {
+    color: #222;
+    font-family: 'Lobster', Arial, Helvetica, sans-serif;
+    text-shadow: 1px 1px #ccc;
+    font-size: 46px;
+    font-weight: 400;
+    text-align: center !important;
+}
+
+.logoinstall h1 span {
+    color: rgba(11, 117, 178, 1.0);
+    text-shadow: 1px 1px #333333;
+}
+
+.logoinstall h3 {
+    color: #222;
+    font-family: 'Lobster', Arial, Helvetica, sans-serif;
+    text-shadow: 1px 1px #ccc;
+    font-size: 36px;
+    font-weight: 400;
+    margin-top: -21px;
+}
+
+#box1_install {
+    margin: 0px auto;
+    text-align: left;
+    width: 400px;
+}
+
+#installbutton {
+    margin: 0px auto;
+    text-align: center;
+}
+
+#box1_install a.button, #installbutton input[type=submit] {
+    width: 200px;
+    text-align: center;
+}
+
+#box2_install {
+    margin: 0px auto 20px auto;
+    text-align: center;
 }

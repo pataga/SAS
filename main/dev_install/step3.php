@@ -226,14 +226,14 @@
         <script src="../js/main.js"></script>
     </head>
     <body>
-        <div class="top">
-            <div class="logo" align="center" style="margin-left:180px;width:900px;">
-                <h1>&nbsp;&nbsp;&nbsp;&nbsp;Server <span>Admin</span> System Installation</h1>
-            </div>
+        <div class="logoinstall">
+            <h1>Server <span>Admin</span> System</h1>
+            <h3>Installation</h3>
+        </div>
             <div id="main">
-                <div id="install">
+                <div id="box1_install">
                     <fieldset>
-                        <b>SAS wurde erfolgreich konfiguriert. Bitte legen sie nun einen Administrator Benutzer an.</b>
+                        <b>SAS wurde erfolgreich konfiguriert.<br> Bitte legen sie nun einen Administrator Benutzer an.</b>
                     </fieldset>
                     <form action="finish.php" method="post">
                         <fieldset>
@@ -245,7 +245,7 @@
                             <input type="password" name="passr" class="text-long" required></p>
                             <p><label>E-Mail:</label>
                             <input type="text" name="email" class="text-long" required></p>
-                            <div align="center"><input type="submit" value="Installation abschlie&szlig;en" class="button black" style="width:270px;"></div>
+                            <div id="installbutton"><input type="submit" value="Installation abschlie&szlig;en" class="button black"></div>
                         </fieldset>
                     </form>
                 </div>

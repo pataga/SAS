@@ -252,3 +252,10 @@
 <br>
 <span class="error">Das ist eine "error"-Meldung</span>
 <hr>
+<h3>Statusinformationen</h3>
+<span class='aktiv'>installiert</span>
+&nbsp;&nbsp;
+<span class='inaktiv'>nicht installiert</span>
+&nbsp;&nbsp;
+<span class="notaviable">nicht verf&uuml;gbar</span>
+<hr>

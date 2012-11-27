@@ -39,14 +39,16 @@
         <script src="../js/main.js"></script>
     </head>
     <body>
-        <div class="top">
-            <div class="logo" align="center" style="margin-left:180px;width:900px;">
-                <h1>&nbsp;&nbsp;&nbsp;&nbsp;Server <span>Admin</span> System Installation</h1>
-            </div>
+        <div class="logoinstall">
+            <h1>Server <span>Admin</span> System</h1>
+            <h3>Installation</h3>
+        </div>
             <div id="main">
-                <div id="install">
+                <div id="box1_install">
                     <fieldset>
-                        <b>Die Installation wurde erfolgreich abgeschlossen! Bitte l&ouml;schen sie nun das "install" Verzeichnis und klicken sie danach auf den "Weiter" Button.</b>
+                        <p>
+                            <h5>Die Installation wurde erfolgreich abgeschlossen!</h5> 
+                            Bitte l&ouml;schen Sie nun das "<code>install</code>" Verzeichnis und klicken sie danach auf den "Weiter" Button. <br>Andernfalls werden Sie erneut zur Installation weitergeleitet.</p>
                     </fieldset>
                     <div align="center"><a href=".." class="button black" style="width:300px;">Weiter</a></div>
                 </div>
