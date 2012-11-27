@@ -1,7 +1,7 @@
 <?php
-    if (is_dir('../install'))
+    if (is_dir('install') && !isset($data))
     {
-        header('Location: ../install');
+        header('Location: install');
         die();
     }
 ?>
