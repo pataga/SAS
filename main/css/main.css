@@ -44,6 +44,12 @@ body {
     outline: none;
 }
 
+
+
+
+
+
+
 /* ==========================================================================
 Top [Logo + Userpanel]
 ========================================================================== */
@@ -388,6 +394,8 @@ Template-Features [Text Formatierungen und so ...]
     font-style: italic !important;
 }
 
+button::-moz-focus-inner { border: 0; }
+
 h1, h2, h3, h4, h5, h6 { font-family: Arial, Helvetica, sans-serif; }
 h1.ubuntu, h2.ubuntu, h3.ubuntu, h4.ubuntu, h5.ubuntu, h6.ubuntu { font-family: 'Ubuntu', sans-serif; }
 
@@ -455,8 +463,21 @@ hr {
     padding: 0;
 }
 
+sup {
+    position: relative;
+    top: -3px;
+    vertical-align: top;
+    font-size: 90%;
+}
+
 code {
     padding: 5px;
+    font-family: Consolas, "Courier New", Courier, monospace;
+    font-size: 0.9em;
+}
+
+code.simple {
+    padding: 0px;
     font-family: Consolas, "Courier New", Courier, monospace;
     font-size: 0.9em;
 }
@@ -973,6 +994,70 @@ Author's custom styles
     text-decoration: none; 
 }
 
+a.pornobutton{
+    margin: 3px;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    width: 50px;
+    display:block;
+    text-decoration:none;
+    padding: 10px;
+    text-align:center;
+    border-right: 6px solid #313030;
+    border-top: 5px solid #616161;
+    background: #232324;
+    background: -webkit-gradient(linear, right bottom, right top, from(gray), to(#5E5E5E));
+    background: -webkit-linear-gradient(top, gray, #5E5E5E);
+    background: -moz-linear-gradient(top, gray, #5E5E5E);
+    background: -ms-linear-gradient(top, gray, #5E5E5E);
+    background: -o-linear-gradient(top, gray, #5E5E5E);
+    box-shadow: 1px -1px 7px black;
+    -webkit-box-shadow: 1px -1px 7px black;
+    -moz-box-shadow: 1px -1px 7px black;
+    -khtml-box-shadow: 1px -1px 7px black;
+    -o-box-shadow: 1px -1px 7px black;
+    border-radius: 10px 0px 5px 5px;
+    -webkit-border-radius: 10px 0px 5px 5px;
+    -khtml-border-radius: 10px 0px 5px 5px;
+    -o-border-radius: 10px 0px 5px 5px;
+    -moz-border-radius: 10px 0px 5px 5px;
+    -moz-transition: all 0.30s ease-in-out;
+    -o-transition: all 0.30s ease-in-out;
+    -webkit-transition: all 0.30s ease-in-out;
+    -ms-transition: all 0.30s ease-in-out;
+    
+}
+a.pornobutton:hover{
+       border-right: 2px solid #313030;
+       border-top: 1px solid #616161;
+    -moz-transition: all 0.30s ease-in-out;
+    -o-transition: all 0.30s ease-in-out;
+    -webkit-transition: all 0.30s ease-in-out;
+    -ms-transition: all 0.30s ease-in-out;
+}
+a.pornobutton:active{
+    border-left: 6px solid #313030;
+    border-bottom: 5px solid #1B1B1B;
+    border-right: 0px solid #313030;
+    border-top: 0px solid #616161;
+    box-shadow: -1px 1px 7px black;
+    -webkit-box-shadow: -1px 1px 7px black;
+    -moz-box-shadow: -1px 1px 7px black;
+    -khtml-box-shadow: -1px 1px 7px black;
+    -o-box-shadow: -1px 1px 7px black;
+    border-radius: 5px 5px 10px 0px;
+    -webkit-border-radius: 5px 5px 10px 0px;
+    -khtml-border-radius: 5px 5px 10px 0px;
+    -o-border-radius: 5px 5px 10px 0px;
+    -moz-border-radius: 5px 5px 10px 0px;
+    -moz-transition: all 0.30s ease-in-out;
+    -o-transition: all 0.30s ease-in-out;
+    -webkit-transition: all 0.30s ease-in-out;
+    -ms-transition: all 0.30s ease-in-out;
+} 
+
 .tooltip
 {
     position: relative;
@@ -1055,6 +1140,47 @@ Author's custom styles
     outline: none;
 }
 
+.tooltip3
+{
+    position: relative;
+    text-decoration: underline !important;
+    cursor: help;
+    display: inline-block;
+    text-decoration: none;
+    outline: none !important;
+    color: #0b75b2;
+}
+
+.tooltip3 span
+{
+    visibility: hidden;
+    color: #fff;
+    position: absolute; 
+    bottom: 30px;
+    left: 50%;
+    z-index: 999;
+    width: 350px;
+    margin-left: -120px;
+    padding: 5px;
+    line-height: 1.5;
+    border: 2px solid #222;
+    background-color: #ddd;                     
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    background: rgba(0,0,0,0.95);
+    opacity : 0;
+    transition: all 0.2s ease-in-out;
+    outline: none;
+}
+
+.tooltip3:hover span
+{
+    visibility: visible;
+    opacity : 0.90;
+    transition: all 0.2s ease-in-out; 
+    outline: none;
+}
+
 span.error, span.info, span.alert, span.success { 
     display: block; 
     padding: 10px; 
@@ -1070,6 +1196,53 @@ span.error      { border-color:#ffcfce; background: #ffdfdf }
 span.info       { border-color:#d4ecf0; background: #e0f2f5 }
 span.alert      { border-color:#efeabf; background: #f6f3da }
 span.success    { border-color:#c7f5ce; background: #d6f7db }
+
+.ribbon {
+    background-color: #0b75b2;
+    overflow: hidden;
+    font-size: 1.1em;
+    position: absolute;
+    left: -3em;
+    top: 2.5em;
+    -moz-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-box-shadow: 0 0 1em #888;
+    -webkit-box-shadow: 0 0 1em #888;
+    opacity: 0.4;
+}
+.ribbon a {
+    border: 1px solid #faa;
+    color: #fff;
+    display: block;
+    font: bold 81.25% 'Helvetiva Neue', Helvetica, Arial, sans-serif;
+    margin: 0.05em 0 0.075em 0;
+    padding: 0.5em 3.5em;
+    text-align: center;
+    text-decoration: none;
+    text-shadow: 0 0 0.5em #444;
+}
+
+.ribbon, .ribbon:hover {
+    -webkit-transition-property: background color;
+    -moz-transition-property: background color;
+    -o-transition-property: background color;
+    -ms-transition-property: background color;
+    transition-property: background color;
+    -webkit-transition-duration: 0.25s;
+    -moz-transition-duration: 0.25s;
+    -o-transition-duration: 0.25s;
+    -ms-transition-duration: 0.25s;
+    transition-duration: 0.25s;
+    -webkit-transition-timing-function: ease-out;
+    -moz-transition-timing-function: ease-out;
+    -o-transition-timing-function: ease-out;
+    -ms-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+}
+
+.ribbon:hover{
+    opacity: 1.0;
+}
 
 /* ==========================================================================
 Helper classes

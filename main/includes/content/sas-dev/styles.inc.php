@@ -107,6 +107,9 @@
 </code><br>
 <p>Verfügbare Farben für Buttons: white, grey, pink, orange, green, blue, purple, teal, darkblue, black</p>
 <hr>
+<h3>Der Porno-Button</h3>
+<a href="" class="pornobutton">Button</a>
+<hr>
 <h3>Tabelle</h3>
 <table cellpadding="0" cellspacing="0">
     <tr>
