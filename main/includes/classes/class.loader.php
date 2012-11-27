@@ -5,17 +5,17 @@
 		public $_spage = "";
 		private $content = "";
 
-		function createDatabaseConnection ()
+		public function createDatabaseConnection ()
 		{
 			require_once("includes/config/config.mysql.php");
 		}
 
-		function loadTop ()
+		private function loadTop ()
 		{
 			require_once("includes/content/main/top.inc.php");
 		}
 
-		function loadUserInterface ()
+		private function loadUserInterface ()
 		{
 			$this->content .= '	<div class="top">
 						            <div class="logo">
@@ -32,7 +32,7 @@
 						        </div>';
 		}
 
-		function loadMainMenu ()
+		private function loadMainMenu ()
 		{
 			$this->content .= '<div id="wrapper"><div id="nav"><ul>';
 			$result = mysql_query("SELECT * FROM sas_menu_main");
@@ -50,7 +50,7 @@
 			$this->content .= '</ul><br style="clear:left"></div>';
 		}
 
-		function loadSideMenu ()
+		private function loadSideMenu ()
 		{
 			$this->content .= '<div id="sidebar"><ul>';
 			$page = mysql_real_escape_string($this->_page);
@@ -67,7 +67,7 @@
 			$this->content .= '</ul></div>';
 		}
 
-		function getIncFile ()
+		public function getIncFile ()
 		{
 			if (!isset($_SESSION['server_id']))
 				return 'includes/content/home/server.inc.php';
@@ -83,12 +83,12 @@
 			else return 0;
 		}
 
-		function loadFooter ()
+		public function loadFooter ()
 		{
 			require_once("includes/content/main/footer.inc.php");
 		}
 
-		function loadContent ()
+		public function loadContent ()
 		{
 			$this->loadTop();
 			$this->loadUserInterface();
@@ -99,13 +99,13 @@
 			print($this->content);
 		}
 
-		function loadLoginMask ()
+		public function loadLoginMask ()
 		{
 			header("Location: ./login/");
 			die;
 		}
 
-		function reload ()
+		public function reload ()
 		{
 			if (!empty($this->_spage) && !empty($this->_page))
 				header ("Location: ?p=$this->_page&s=$this->_spage");

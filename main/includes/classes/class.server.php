@@ -9,12 +9,12 @@
 			$this->mysql = $_mysql;
 		}
 
-		function getID()
+		public function getID()
 		{
 			return $this->server_id;
 		}
 
-		function getServerData ($id = 1)
+		public function getServerData ($id = 1)
 		{
 			$this->server_id = $id;
 			$result = mysql_query("SELECT * FROM sas_server_data WHERE id = $this->server_id");
@@ -33,7 +33,7 @@
 			}
 		}
 
-		function isInstalled ($package)
+		public function isInstalled ($package)
 		{
 			$result = mysql_query("SELECT * FROM sas_server_data WHERE id = $this->server_id");
 
@@ -53,7 +53,7 @@
 			} else return false;
 		}
 
-		function getMySQLData ()
+		public function getMySQLData ()
 		{
 			if ($this->isInstalled("mysql"))
 			{
@@ -74,7 +74,7 @@
 			return false;
 		}
 
-		function serviceStatus ($ssh)
+		public function serviceStatus ($ssh)
 		{
 			$data = array();
 			$data[0] = $this->getServiceStatus($ssh, 'smbd');
@@ -85,7 +85,7 @@
 			return $data;
 		}
 
-		function getServiceStatus ($ssh, $service)
+		public function getServiceStatus ($ssh, $service)
 		{
 			$line = $ssh->execute('service '.$service.' status');
 			$exp = explode(" ", $line);

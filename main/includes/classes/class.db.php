@@ -10,7 +10,7 @@
             $this->server = $server;
         }
 
-        function getMySQLDatabases ()
+        public function getMySQLDatabases ()
         {
             $con = $this->mysql;
             $con->openRemoteConnection();
@@ -23,7 +23,7 @@
             return $database;
         }
 
-        function getMySQLTables ($db)
+        public function getMySQLTables ($db)
         {
             $con = $this->mysql;
             $con->openRemoteConnection();
@@ -35,7 +35,7 @@
             return $tables;
         }
 
-        function getMySQLColumns ($db, $table)
+        public function getMySQLColumns ($db, $table)
         {
             $con = $this->mysql;
             $con->openRemoteConnection();
@@ -52,12 +52,12 @@
             } else return 0;
         }
 
-        function addServer ($name, $host, $port, $user, $pass)
+        public function addServer ($name, $host, $port, $user, $pass)
         {
             mysql_query("INSERT INTO sas_server_data (host,port,user,pass,name) VALUES ('$host','$port','$user','$pass','$name')");
         }
 
-        function addMySQL ($host, $user, $pass)
+        public function addMySQL ($host, $user, $pass)
         {
             $server = $this->server;
             mysql_query("INSERT INTO sas_server_mysql (sid,host,username,password) VALUES ('$server->getID()','$host','$user','$pass')");

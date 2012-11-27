@@ -21,7 +21,7 @@
 				$this->_pass = $pass;
 		}
 
-		function openConnection ()
+		public function openConnection ()
 		{
 			$this->_connection  = ssh2_connect($this->_host, $this->_port);
 			if (!$this->_connection) 
@@ -30,7 +30,7 @@
 				throw new Exception('SSH Autentication failed');
 		}
 
-		function execute ($command, $type = 0) 
+		public function execute ($command, $type = 0) 
 		{
 			$output = "";
 			if (!($os = ssh2_exec($this->_connection, $command, "bash"))) 

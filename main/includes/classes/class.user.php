@@ -12,22 +12,22 @@
 			$this->_mysql = $mysql;
 		}
 
-		function setUsername ($username)
+		public function setUsername ($username)
 		{
 			$this->_username = $username;
 		}
 
-		function setPassword ($password)
+		public function setPassword ($password)
 		{
 			$this->_password = $password;
 		}
 
-		function getUsername ()
+		public function getUsername ()
 		{
 			return isset($_SESSION['username']) ? $_SESSION['username'] : "";
 		}
 
-		function isLoggedIn ()
+		public function isLoggedIn ()
 		{
 			return isset($_SESSION['loggedIn'])&&$_SESSION['loggedIn'];
 		}
@@ -48,7 +48,7 @@
 			} else return false;
 		}
 
-		function AuthChallenge ()
+		public function AuthChallenge ()
 		{
 			$user = mysql_real_escape_string($this->_username);
 			$result = mysql_query("SELECT * FROM sas_users WHERE username = '$user'") or die (mysql_error());
@@ -64,20 +64,20 @@
 			} else $this->setAuthState(false);
 		}
 
-		function setAuthState ($authState, $id = 0)
+		private function setAuthState ($authState, $id = 0)
 		{
 			$_SESSION['userID'] = $id;
 			$_SESSION['loggedIn'] = $authState;
 			$_SESSION['username'] = $this->_username;
 		}
 
-		function Logout ()
+		public function Logout ()
 		{
 			session_unset();
 			session_destroy();
 		}
 
-		function addUser ($username, $password, $passwordr, $email)
+		public function addUser ($username, $password, $passwordr, $email)
 		{
 			if ($password == $passwordr)
 			{
@@ -91,7 +91,7 @@
 			} else return -2;
 		}
 
-		function setPermission ($sid, $permission, $active)
+		public function setPermission ($sid, $permission, $active)
 		{
 			$query;
 			$result = mysql_query("SELECT * FROM sas_user_permission WHERE uid = $this->_userID AND sid = $sid");
