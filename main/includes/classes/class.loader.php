@@ -61,7 +61,10 @@
 				$page = $row->page;
 				$spage = $row->spage;
 
-				$this->content .= "<li><a href='?p=$page&s=$spage'>$name</a></li>";
+				if ($this->_spage == $spage)
+					$this->content .= "<li class='aktiv'><a href='?p=$page&s=$spage'>$name</a></li>";
+				else
+					$this->content .= "<li><a href='?p=$page&s=$spage'>$name</a></li>";
 			}
 
 			$this->content .= '</ul></div>';
