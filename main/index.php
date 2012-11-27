@@ -16,8 +16,8 @@
 	require_once 'includes/classes/class.mysql.php';
 
 	$loader = new Loader();
-	$user = new User();
 	$mysql = new MySQL($data);
+	$user = new User($mysql);
 	$server = new Server($mysql);
 	$database = new Database($mysql, $server);
 	$ssh = null;
@@ -57,7 +57,6 @@
 
 	$loader->_page = isset($_GET['p']) ? $_GET['p'] : 'home';
 	$loader->_spage = isset($_GET['s']) ? $_GET['s'] : null;
-
 	$loader->loadContent();
 	require_once $loader->getIncFile();
 	$loader->loadFooter();
