@@ -1,3 +1,10 @@
+<?php
+    if (is_dir('../install'))
+    {
+        header('Location: ../install');
+        die();
+    }
+?>
 <!DOCTYPE html>
 <html>
     <head>

@@ -1,6 +1,12 @@
 <?php
 	session_start();
 
+	if (is_dir('install'))
+	{
+		header('Location: install');
+		die();
+	}
+
 	require_once 'includes/config/config.mysql.php';
 	require_once 'includes/classes/class.loader.php';
 	require_once 'includes/classes/class.user.php';
