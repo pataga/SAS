@@ -16,35 +16,32 @@
         <script src="../js/main.js"></script>
     </head>
     <body>
-        <div class="top">
-            <div class="logo" align="center" style="margin-left:180px;width:900px;">
-                <h1>&nbsp;&nbsp;&nbsp;&nbsp;Server <span>Admin</span> System Installation</h1>
-            </div>
-        </div>
         <div id="main">
-            <div id="install">
-                <fieldset style="width:370px;">
-                    <b><p>Zum Speichern verschiedener Daten ben&ouml;tigt SAS eine MySQL Datenbank. Bitte geben sie die Zugangsdaten zu einem MySQL Server sowie den Datenbanknamen an.</p><p>
-                    Bitte beachten sie, dass die SAS Installationsroutine alle vorherigen SAS Tabellen &uuml;berschreibt, falls welche vorhanden sein sollten.</p></b>
+        <div class="logoinstall">
+            <h1>Server <span>Admin</span> System</h1>
+            <h3>Installation</h3>
+        </div>
+            <div id="box1_install">
+                <fieldset>
+                    <p>Zum Speichern verschiedener Daten ben&ouml;tigt SAS eine MySQL Datenbank. Bitte geben sie hier ihre Zugangsdaten an.<br><br>
+                    <b>Achtung!</b><br> Bitte beachten sie, dass die SAS Installationsroutine alle vorherigen SAS Tabellen &uuml;berschreibt, falls welche vorhanden sein sollten.</p>
                 </fieldset>
-                    
                 <form action="step3.php" method="post">
                     <fieldset>
-                        <p><label>MySQL Host:</label>
-                        <input type="text" name="host" class="text-long" required></p>
+                        <p><label>MySQL Host: </label>
+                        <input type="text" name="host" class="text-long" placeholder="z.B.:127.0.0.1" required></p>
                         <p><label>MySQL Port:</label>
-                        <input type="text" name="port" class="text-long" required></p>
+                        <input type="text" name="port" class="text-long" placeholder="Standard: 3306" required></p>
                         <p><label>MySQL Benutzername:</label>
                         <input type="text" name="user" class="text-long" required></p>
                         <p><label>MySQL Passwort:</label>
                         <input type="password" name="pass" class="text-long" required></p>
                         <p><label>MySQL Datenbank:</label>
                         <input type="text" name="db" class="text-long" required></p>
-
-                        <div align="center"><input type="submit" value="Schritt 3" class="button black" style="width:270px;"></div>
+                        <div id="installbutton"><input type="submit" value="Schritt 3" class="button black"></div>
                     </fieldset>
                 </form>
             </div>
-        </div>
+            </div>
     </body>
 </html>
