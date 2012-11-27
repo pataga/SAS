@@ -1,13 +1,15 @@
 <?php
 	class User
 	{
-		private $_userID = "";
-		private $_username = "";
-		private $_password = "";
+		private $_userID = null;
+		private $_username = null;
+		private $_password = null;
+		private $_mysql = null;
 
-		function __construct ()
+		function __construct ($mysql)
 		{
 			$this->_userID = isset($_SESSION['userID']) ? $_SESSION['userID'] : 0;
+			$this->_mysql = $mysql;
 		}
 
 		function setUsername ($username)
@@ -28,6 +30,22 @@
 		function isLoggedIn ()
 		{
 			return isset($_SESSION['loggedIn'])&&$_SESSION['loggedIn'];
+		}
+
+		public function validatePassword ($pass)
+		{
+			$mysql = $this->_mysql;
+			$mysql->openHostConnection();
+			$result = mysql_query("SELECT password FROM sas_users WHERE id = $this->_userID");
+
+			if (mysql_num_rows($result) > 0)
+			{
+				$row = mysql_fetch_object($result);
+				if ($row->password == md5($pass))
+					return true;
+				else
+					return false;
+			} else return false;
 		}
 
 		function AuthChallenge ()
