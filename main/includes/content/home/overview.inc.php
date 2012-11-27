@@ -16,13 +16,12 @@
     $bootdatetmp = str_replace("   ", "", $uptime);
     $bootdate = str_replace("Systemstart", "", $bootdatetmp);
     $userswholi = str_replace(" ", ", ", $userswho);
-    //----------------------------------------------
 ?>
 <h3>Serverübersicht</h3>
 <fieldset>
     <h5>Aktuelle Daten ihres Servers</h5>
     <div class="halbe-box">
-        <table cellpadding="0" cellspacing="0">
+        <table cellpadding="0" cellspacing="0" onload="updatedataHO">
             <tr>
                 <td>Host-IP:</td>
                 <td><?php echo $data[0]; ?></td>
@@ -34,8 +33,8 @@
             <tr>
                 <td>Kernel Version:</td>
                 <td>
-                    <a href="#" class="tooltip">Kernel
-                        <span><code><?= $kernelversion; ?></code></span>
+                    <a href="#" class="tooltip3">Kernel
+                        <span><code class="simple"><?= $kernelversion; ?></code></span>
                     </a>
                 </td>
             </tr>
@@ -57,6 +56,8 @@
                 <td><?php echo $serverload; ?></td>
             </tr>
         </table>
+        <br>
+        <a href="<?php $_SERVER['SCRIPT_NAME'] ?>" onclick="location.reload();" class="button white">Aktualisieren</a>
     </div>
     <div class="halbe-box lastbox">
         <table cellpadding="0" cellspacing="0">

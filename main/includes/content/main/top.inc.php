@@ -16,4 +16,6 @@
         <script src="js/main.js"></script>
     </head>
     <body>
-        
+    <div class="ribbon">
+        <a href="https://github.com/pataga/SAS">Star us on GitHub</a>
+    </div>
