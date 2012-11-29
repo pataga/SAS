@@ -24,12 +24,22 @@ class MySQL {
 
     }
 
+   /**
+    *   Selektiert eine Datenbank
+    *   @param Datenbankname
+    */
     public function selectDB($db) {
         if (!mysql_select_db($db)) {
             throw new Exeption("Fehler beim Verbinden der Datenbank ". mysql_error());
         }
     }
 
+
+   /**
+    *   Führt Query aus und gibt einen Klon von $this zurück
+    *   @param MySQL Query
+    *   @return MySQL Instanz
+    */
     public function Query($query) {
         if (!($result = mysql_query($query))) {
             throw new Exeption("Fehler beim Ausf&uuml;hren des Querys ". mysql_error());
@@ -39,6 +49,11 @@ class MySQL {
         }
     }
 
+
+   /**
+    *   Fetcht Query Result zu einem assoziativen Array
+    *   @return Array
+    */
     public function fetchAssoc() {
         if (!is_resource($this->result)) {
             throw new Exeption("Result ist keine Resource ".mysql_error());
@@ -47,6 +62,11 @@ class MySQL {
         }
     }
 
+
+   /**
+    *   Fetcht Query Result zu einem Array
+    *   @return Array
+    */
     public function fetchArray() {
         if (!is_resource($this->result)) {
             throw new Exeption("Result ist keine Resource ".mysql_error());
@@ -55,6 +75,11 @@ class MySQL {
         }
     }
 
+
+   /**
+    *   Fetcht Query Result zu einem Objekt
+    *   @return Object
+    */
     public function fetchObject() {
         if (!is_resource($this->result)) {
             throw new Exeption("Result ist keine Resource ".mysql_error());
@@ -63,11 +88,25 @@ class MySQL {
         }
     }
 
+
+   /**
+    *   Fügt mit einen Datensatz hinzu
+    *   @param (String) Tabellenname
+    *   @param (Array) Dateninhalte
+    */
     public function insert($table, $content) {
         $query = MySQL::buildQuery($table, $content);
         $this->Query($query);
     }
 
+
+   /**
+    *   Erstellt einen Query zum hinzufügen von Datensätzen
+    *   und gibt einen fertigen Query zurück
+    *   @param (String) Tabellenname
+    *   @param (Array) Dateninhalte
+    *   @return (String) Query
+    */
     protected function buildQuery($table, $content) {
         if (!is_array($content)) {
             throw new Exeption("Kein g&uuml;ltiger Parameter in MySQL::buildQuery(String)");
