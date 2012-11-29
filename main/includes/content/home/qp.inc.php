@@ -38,11 +38,10 @@ echo "Simulate: Reboot";
 }
 
 //if (isset($_POST['']) && isset($_POST[''])) {
-// $ssh->execute("service apache2 stop");
+// $ssh->execute("");
 //}
 
 
-}
 ?>
 <h3>Quickpanel</h3>
 <fieldset>
