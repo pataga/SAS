@@ -1,20 +1,21 @@
 <?php
-    $ssh->openConnection();
-    $load = $ssh->execute("uptime");
-    $uptime = $ssh->execute("who -b");
-    $userswho = $ssh->execute("users");
-    $kernelversion = $ssh->execute("cat /proc/version");
-    $sekundentmp = $ssh->execute("cat /proc/uptime");
-    $hostname = $ssh->execute("hostname -a");
-    $loadpart = explode("load average:", $load);
-    $serverload = $loadpart[1];
-    $sekunden0 = explode(".", $sekundentmp);
-    $sekunden = $sekunden0[0];
-    $serveruptime = (((((((($sekunden - ($sekunden % 60)) / 60) - (($sekunden - ($sekunden % 60)) / 60) % 60) / 60))) - (((((($sekunden - ($sekunden % 60)) / 60) - (($sekunden - ($sekunden % 60)) / 60) % 60) / 60)) % 24)) / 24) . " T. " . (((((($sekunden - ($sekunden % 60)) / 60) - (($sekunden - ($sekunden % 60)) / 60) % 60) / 60)) % 24) . " Std. " . ((($sekunden - ($sekunden % 60)) / 60) % 60) . " Min. " . ($sekunden % 60) . " Sek. ";
-    $bootdatetmp = str_replace("   ", "", $uptime);
-    $bootdate = str_replace("Systemstart", "", $bootdatetmp);
-    $userswholi = str_replace(" ", ", ", $userswho);
+$ssh->openConnection();
+$load = $ssh->execute("uptime");        //für Serverload
+$uptime = $ssh->execute("who -b");      //für Systemstartdatum
+$userswho = $ssh->execute("users");     //zeigt eingeloggte benutzer an
+$kernelversion = $ssh->execute("cat /proc/version");    //kernelversion
+$sekundentmp = $ssh->execute("cat /proc/uptime");       //zeit in sek. wie lang server an ist
+$hostname = $ssh->execute("hostname -a");       //gibt den Systemnamen/Hostnamen aus
+$loadpart = explode("load average:", $load);    
+$serverload = $loadpart[1];
+$sekunden0 = explode(".", $sekundentmp);
+$sekunden = $sekunden0[0];
+$serveruptime = (((((((($sekunden - ($sekunden % 60)) / 60) - (($sekunden - ($sekunden % 60)) / 60) % 60) / 60))) - (((((($sekunden - ($sekunden % 60)) / 60) - (($sekunden - ($sekunden % 60)) / 60) % 60) / 60)) % 24)) / 24) . " T. " . (((((($sekunden - ($sekunden % 60)) / 60) - (($sekunden - ($sekunden % 60)) / 60) % 60) / 60)) % 24) . " Std. " . ((($sekunden - ($sekunden % 60)) / 60) % 60) . " Min. " . ($sekunden % 60) . " Sek. "; // macht aus Sekunden xx Tage xx Stunden xx Minuten xx Sekunden (als kurzform)
+$bootdatetmp = str_replace("   ", "", $uptime);
+$bootdate = str_replace("Systemstart", "", $bootdatetmp);
+$userswholi = str_replace(" ", ", ", $userswho);
 ?>
+
 <h3>Serverübersicht</h3>
 <fieldset>
     <h5>Aktuelle Daten ihres Servers</h5>
@@ -38,8 +39,18 @@
             </tr>
             <tr class="odd">
                 <td>Server online seit:</td>
-                <td><?php echo $serveruptime; ?></td>
+                <td id="test"> <noscript> <?php echo $serveruptime; ?></noscript> </td>
             </tr>
+            <script>
+                var sek=<?php echo $sekunden; ?>;
+                function upservtime() {
+                    var uppy = ((((((((sek - (sek % 60)) / 60) - ((sek - (sek % 60)) / 60) % 60) / 60))) - ((((((sek - (sek % 60)) / 60) - ((sek - (sek % 60)) / 60) % 60) / 60)) % 24)) / 24) + " T. " + ((((((sek - (sek % 60)) / 60) - ((sek - (sek % 60)) / 60) % 60) / 60)) % 24) + " Std. " + (((sek - (sek % 60)) / 60) % 60) + " Min. " + (sek % 60) + " Sek. ";
+                    document.getElementById('test').innerHTML = uppy;  
+                    window.setTimeout("upservtime()",1000); 
+                    sek++;
+                }
+                upservtime(); <?php // aktualisiert die Uptime ständig neu. ?>
+            </script>    
             <tr>
                 <td>Letzter Bootvorgang:</td>
                 <td><?php echo $bootdate ?></td>
@@ -49,8 +60,7 @@
                 <td><?php echo $userswholi ?></td>
             </tr>
             <tr class="odd">
-                <td>Load: 
-                </td>
+                <td>Load:</td>
                 <td><?php echo $serverload; ?></td>
             </tr>
         </table>
@@ -63,7 +73,7 @@
                 <td>Apache 2:</td>
                 <td>
                     <?php
-                        echo ($server->getServiceStatus($ssh, 'apache2')) ? '<span class="aktiv">aktiv</span>' : '<span class="inaktiv">inaktiv</span>';
+                    echo ($server->getServiceStatus($ssh, 'apache2')) ? '<span class="aktiv">aktiv</span>' : '<span class="inaktiv">inaktiv</span>';
                     ?>
                 </td>
             </tr>
@@ -71,7 +81,7 @@
                 <td>Postfix:</td>
                 <td>
                     <?php
-                        echo ($server->getServiceStatus($ssh, 'postfix')) ? '<span class="aktiv">aktiv</span>' : '<span class="inaktiv">inaktiv</span>';
+                    echo ($server->getServiceStatus($ssh, 'postfix')) ? '<span class="aktiv">aktiv</span>' : '<span class="inaktiv">inaktiv</span>';
                     ?>
                 </td>
             </tr>
@@ -79,7 +89,7 @@
                 <td>FTP:</td>
                 <td>
                     <?php
-                        echo ($server->getServiceStatus($ssh, 'proftpd')) ? '<span class="aktiv">aktiv</span>' : '<span class="inaktiv">inaktiv</span>';
+                    echo ($server->getServiceStatus($ssh, 'proftpd')) ? '<span class="aktiv">aktiv</span>' : '<span class="inaktiv">inaktiv</span>';
                     ?>
                 </td>
             </tr>
@@ -87,7 +97,7 @@
                 <td>MySQL:</td>
                 <td>
                     <?php
-                        echo ($server->getServiceStatus($ssh, 'mysql')) ? '<span class="aktiv">aktiv</span>' : '<span class="inaktiv">inaktiv</span>';
+                    echo ($server->getServiceStatus($ssh, 'mysql')) ? '<span class="aktiv">aktiv</span>' : '<span class="inaktiv">inaktiv</span>';
                     ?>
                 </td>
             </tr>
@@ -95,7 +105,7 @@
                 <td>Samba:</td>
                 <td>
                     <?php
-                        echo ($server->getServiceStatus($ssh, 'smbd')) ? '<span class="aktiv">aktiv</span>' : '<span class="inaktiv">inaktiv</span>';
+                    echo ($server->getServiceStatus($ssh, 'smbd')) ? '<span class="aktiv">aktiv</span>' : '<span class="inaktiv">inaktiv</span>';
                     ?>
                 </td>
             </tr>
@@ -130,7 +140,7 @@
 </fieldset>
 <h3>Notizbuch</h3>
 <fieldset>
-    <form action="<?php echo "test"?>"></form>
+    <form action="<?php echo "test" ?>"></form>
     <textarea name="notizen">Diese Seite ist bis auf das Notizfeld voll funktionsfähig</textarea>
     <input type="submit" class="button black" value="Notizen speichern">
     <br>

@@ -1,8 +1,8 @@
 <?php
-$ssh->openConnection();
+$ssh->openConnection();                             //stelle SSH Verbindung her...
 
-if (isset($_POST['a2-stop']) && isset($_POST['a2-stop-h'])) {
-    $ssh->execute("service apache2 stop");
+if (isset($_POST['a2-stop']) && isset($_POST['a2-stop-h'])) {           //wenn hidden+submit ..
+    $ssh->execute("service apache2 stop");                              //.. führe das aus
 } elseif (isset($_POST['a2-start']) && isset($_POST['a2-start-h'])) {
     $ssh->execute("service apache2 start");
 }
@@ -27,22 +27,10 @@ if (isset($_POST['smbd-stop']) && isset($_POST['smbd-stop-h'])) {
     $ssh->execute("service apache2 start");
 }
 
-if (isset($_POST['shutdown-s']) && isset($_POST['shutdown'])) {
-    //$ssh->execute("shutdown -h now");
-    echo "Simulate: Shutdown";
-} 
-
-if (isset($_POST['reboot-s']) && isset($_POST['reboot'])) {
-   //$ssh->execute("reboot");
-echo "Simulate: Reboot";
-}
-
 //if (isset($_POST['']) && isset($_POST[''])) {
-// $ssh->execute("service apache2 stop");
+// $ssh->execute("");
 //}
 
-
-}
 ?>
 <h3>Quickpanel</h3>
 <fieldset>
@@ -87,33 +75,7 @@ echo "Simulate: Reboot";
         </form>
     </div>
 </fieldset>
-<h3>DangerZone</h3>
-<fieldset>
-    <form action="<?php $_SERVER['SCRIPT_NAME'] ?>" method="post">
-        <div class="drittel-box">
-            <h5>Sicherheitsabfrage</h5>
-            <p>Um den Server neuzustarten oder herunterzufahren m&uuml;ssen Sie zur &Uuml;berprüfung ihren Benutzernamen eingeben:</p>
-            <input type="text" name="checker" class="text-medlong">
-        </div>
 
-        <div class="drittel-box">
-            <h5>Server neustarten</h5>
-            <form action="<?php $_SERVER['SCRIPT_NAME'] ?>" method="post">
-                <input type="submit" value="neustarten" name="reboot-s" class="button black">
-                <input type="hidden" name="reboot">
-            </form>
-            <br><br>
-            <p><b>Information:</b> <br>Diese Aktion kann mehrere Minuten dauern.</p>
-        </div>
-        <div class="drittel-box lastbox">
-            <h5>Server herunterfahren</h5>
-            <form action="<?php $_SERVER['SCRIPT_NAME'] ?>" method="post">
-                <input type="submit" value="herunterfahren" name="shutdown-s" class="button black">
-                <input type="hidden" name="shutdown">
-            </form>
-            <br>
-            <p><b>Achtung!</b> <br> SAS kann den Server nicht mehr hochfahren. Diese Funktion muss ihnen ggf. der Provider zur Verf&uuml;gung stellen</p>
-        </div>
+<hr>
 
-    </form>
-</fieldset>
+<!--Weitere Shortcuts folgen bald. -->
