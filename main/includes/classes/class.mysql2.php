@@ -16,7 +16,7 @@ class MySQL {
         $this->mysql_pass = $pass;
 
         if (!mysql_connect($this->mysql_host, $this->mysql_user, $this->mysql_pass)) {
-            throw new Exeption("Fehler beim Verbinden zum MySQL Server " . mysql_error());
+            throw new Exception("Fehler beim Verbinden zum MySQL Server " . mysql_error());
         }
     }
 
@@ -30,7 +30,7 @@ class MySQL {
     */
     public function selectDB($db) {
         if (!mysql_select_db($db)) {
-            throw new Exeption("Fehler beim Verbinden der Datenbank ". mysql_error());
+            throw new Exception("Fehler beim Verbinden der Datenbank ". mysql_error());
         }
     }
 
@@ -42,7 +42,7 @@ class MySQL {
     */
     public function Query($query) {
         if (!($result = mysql_query($query))) {
-            throw new Exeption("Fehler beim Ausf&uuml;hren des Querys ". mysql_error());
+            throw new Exception("Fehler beim Ausf&uuml;hren des Querys ". mysql_error());
         } else {
             $this->result = $result;
             return clone $this;
@@ -56,7 +56,7 @@ class MySQL {
     */
     public function fetchAssoc() {
         if (!is_resource($this->result)) {
-            throw new Exeption("Result ist keine Resource ".mysql_error());
+            throw new Exception("Result ist keine Resource ".mysql_error());
         } else {
             return mysql_fetch_assoc($this->result);
         }
@@ -69,7 +69,7 @@ class MySQL {
     */
     public function fetchArray() {
         if (!is_resource($this->result)) {
-            throw new Exeption("Result ist keine Resource ".mysql_error());
+            throw new Exception("Result ist keine Resource ".mysql_error());
         } else {
             return mysql_fetch_array($this->result);
         }
@@ -82,7 +82,7 @@ class MySQL {
     */
     public function fetchObject() {
         if (!is_resource($this->result)) {
-            throw new Exeption("Result ist keine Resource ".mysql_error());
+            throw new Exception("Result ist keine Resource ".mysql_error());
         } else {
             return mysql_fetch_object($this->result);
         }
@@ -109,7 +109,7 @@ class MySQL {
     */
     protected function buildQuery($table, $content) {
         if (!is_array($content)) {
-            throw new Exeption("Kein g&uuml;ltiger Parameter in MySQL::buildQuery(String)");
+            throw new Exception("Kein g&uuml;ltiger Parameter in MySQL::buildQuery(String)");
         } else {
             $key_ = array_keys($content);
             $data_ = array_values($content);
