@@ -1,16 +1,16 @@
 <?php
 $ssh->openConnection();
-$load = $ssh->execute("uptime");
-$uptime = $ssh->execute("who -b");
-$userswho = $ssh->execute("users");
-$kernelversion = $ssh->execute("cat /proc/version");
-$sekundentmp = $ssh->execute("cat /proc/uptime");
-$hostname = $ssh->execute("hostname -a");
-$loadpart = explode("load average:", $load);
+$load = $ssh->execute("uptime");        //für Serverload
+$uptime = $ssh->execute("who -b");      //für Systemstartdatum
+$userswho = $ssh->execute("users");     //zeigt eingeloggte benutzer an
+$kernelversion = $ssh->execute("cat /proc/version");    //kernelversion
+$sekundentmp = $ssh->execute("cat /proc/uptime");       //zeit in sek. wie lang server an ist
+$hostname = $ssh->execute("hostname -a");       //gibt den Systemnamen/Hostnamen aus
+$loadpart = explode("load average:", $load);    
 $serverload = $loadpart[1];
 $sekunden0 = explode(".", $sekundentmp);
 $sekunden = $sekunden0[0];
-$serveruptime = (((((((($sekunden - ($sekunden % 60)) / 60) - (($sekunden - ($sekunden % 60)) / 60) % 60) / 60))) - (((((($sekunden - ($sekunden % 60)) / 60) - (($sekunden - ($sekunden % 60)) / 60) % 60) / 60)) % 24)) / 24) . " T. " . (((((($sekunden - ($sekunden % 60)) / 60) - (($sekunden - ($sekunden % 60)) / 60) % 60) / 60)) % 24) . " Std. " . ((($sekunden - ($sekunden % 60)) / 60) % 60) . " Min. " . ($sekunden % 60) . " Sek. ";
+$serveruptime = (((((((($sekunden - ($sekunden % 60)) / 60) - (($sekunden - ($sekunden % 60)) / 60) % 60) / 60))) - (((((($sekunden - ($sekunden % 60)) / 60) - (($sekunden - ($sekunden % 60)) / 60) % 60) / 60)) % 24)) / 24) . " T. " . (((((($sekunden - ($sekunden % 60)) / 60) - (($sekunden - ($sekunden % 60)) / 60) % 60) / 60)) % 24) . " Std. " . ((($sekunden - ($sekunden % 60)) / 60) % 60) . " Min. " . ($sekunden % 60) . " Sek. "; // macht aus Sekunden xx Tage xx Stunden xx Minuten xx Sekunden (als kurzform)
 $bootdatetmp = str_replace("   ", "", $uptime);
 $bootdate = str_replace("Systemstart", "", $bootdatetmp);
 $userswholi = str_replace(" ", ", ", $userswho);
@@ -39,7 +39,7 @@ $userswholi = str_replace(" ", ", ", $userswho);
             </tr>
             <tr class="odd">
                 <td>Server online seit:</td>
-                <td id="test"></td>
+                <td id="test"> <noscript> <?php echo $serveruptime; ?></noscript> </td>
             </tr>
             <script>
                 var sek=<?php echo $sekunden; ?>;
@@ -49,7 +49,7 @@ $userswholi = str_replace(" ", ", ", $userswho);
                     window.setTimeout("upservtime()",1000); 
                     sek++;
                 }
-                upservtime();
+                upservtime(); <?php // aktualisiert die Uptime ständig neu. ?>
             </script>    
             <tr>
                 <td>Letzter Bootvorgang:</td>
