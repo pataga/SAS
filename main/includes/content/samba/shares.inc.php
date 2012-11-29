@@ -52,70 +52,49 @@
 
 
 <html>
+<fieldset>
 <form action="index.php?p=samba&s=shares" method="POST">
 
-	<table >
-		<tr>
-		<td>Freigabe Name:</td>
-		<td><input type="text" name="name" id=""></td>
-		</tr>
+		<h3>Neue Samba-Freigabe hinzuf&uuml;gen</h3>
 
-		<tr>
-		<td>Verzeichnispfad:</td>
-		<td><input type="text" name="path" id=""></td>
-		</tr>
+	<div class ="viertel-box">
 
-		<tr>
-		<td>G&uuml;ltige Benutzer:</td>
-		<td><input type="text" name="validusers" id=""></td>
-		</tr>
+			Freigabe Name: <br>
+			Verzeichnispfad: <br>
+			G&uuml;ltige Benutzer: <br>
+			Schreibrechte f&uuml;r <br>
+			Create Mask: <br>
+			Directory Mask: <br>
 
-		<tr>
-		<td>Schreibrechte f&uuml;r:</td>
-		<td><input type="text" name="writelist" id=""></td>
-		</tr>
+			&Ouml;ffentliche Freigabe? <br>
+			Schreibrechte f&uuml;r jeden? 
 
-		<tr>
-		<td>Create Mask:</td>
-		<td><input type="text" name="createmask" id=""></td>
-		</tr>
+	</div>
 
-		<tr>
-		<td>Directory Mask:</td>
-		<td><input type="text" name="directorymask" id=""></td>
-		</tr>
-	</table>
+	<div class="dreiviertel-box lastbox">
 
-	<table>
-		<tr>
-		<td>&Ouml;ffentliche Freigabe?</td>
-		<td><select name="public">
-		<option value="1"> Ja </option>
-		<option value="0"> Nein </option>
-		<option value=" "> disabled</option>
-		</select></td>
-		</tr>
+			<input type="text" name="name" id=""><br>
+			<input type="text" name="path" id=""><br>
+			<input type="text" name="validusers" id=""><br>
+			<input type="text" name="writelist" id=""><br>
+			<input type="text" name="createmask" id=""><br>
+			<input type="text" name="directorymask" id=""><br>
 
-		<tr>
-		<td>Schreibrechte f&uuml;r jeden?</td>
-		<td><select name="writeable">
-		<option value="1"> Ja </option>
-		<option value="0"> Nein </option>
-		<option value=" "> disabled</option>
-		</select></td>
-		</tr>
+			<select name="public">
+				<option value="1"> Ja </option>
+				<option value="0"> Nein </option>
+				<option value=" "> disabled</option>
+			</select><br>
 
-		<tr>
-		<td>Nur Leserechte?</td>
-		<td><select name="readonly">
-		<option value="1"> Ja </option>
-		<option value="0"> Nein </option>
-		<option value=" "> disabled</option>
-		</select></td>
-		</tr>
-	</table>
+			<select name="readonly">
+				<option value="1"> Ja </option>
+				<option value="0"> Nein </option>
+				<option value=" "> disabled</option>
+			</select>
+	</div>
 
-<br>
-	<input type="submit" name="add" value="Neue Freigabe Hinzuf&uuml;gen">
+	    <input type="submit" class="button green" name="add" value="Neue Freigabe Hinzuf&uuml;gen">
+
 </form>
+</fieldset>
 </html>
