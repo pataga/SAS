@@ -8,11 +8,9 @@
     $hostname = $ssh->execute("hostname -a");
     $loadpart = explode("load average:", $load);
     $serverload = $loadpart[1];
-    //----------------------------------------------
     $sekunden0 = explode(".", $sekundentmp);
     $sekunden = $sekunden0[0];
     $serveruptime = (((((((($sekunden - ($sekunden % 60)) / 60) - (($sekunden - ($sekunden % 60)) / 60) % 60) / 60))) - (((((($sekunden - ($sekunden % 60)) / 60) - (($sekunden - ($sekunden % 60)) / 60) % 60) / 60)) % 24)) / 24) . " T. " . (((((($sekunden - ($sekunden % 60)) / 60) - (($sekunden - ($sekunden % 60)) / 60) % 60) / 60)) % 24) . " Std. " . ((($sekunden - ($sekunden % 60)) / 60) % 60) . " Min. " . ($sekunden % 60) . " Sek. ";
-    //----------------------------------------------
     $bootdatetmp = str_replace("   ", "", $uptime);
     $bootdate = str_replace("Systemstart", "", $bootdatetmp);
     $userswholi = str_replace(" ", ", ", $userswho);
@@ -21,10 +19,10 @@
 <fieldset>
     <h5>Aktuelle Daten ihres Servers</h5>
     <div class="halbe-box">
-        <table cellpadding="0" cellspacing="0" onload="updatedataHO">
+        <table cellpadding="0" cellspacing="0">
             <tr>
                 <td>Host-IP:</td>
-                <td><?php echo $data[0]; ?></td>
+                <td><a href="http://<?php echo $data[0]; ?>" target="_blank"><?php echo $data[0]; ?></a></td>
             </tr>
             <tr class="odd">
                 <td>Host-Name:</td>

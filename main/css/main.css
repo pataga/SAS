@@ -41,14 +41,8 @@ body {
     font-size: 12px;
     color: #646464;
     text-align: center;
-    outline: none;
+    outline: none !important;
 }
-
-
-
-
-
-
 
 /* ==========================================================================
 Top [Logo + Userpanel]
@@ -394,7 +388,14 @@ Template-Features [Text Formatierungen und so ...]
     font-style: italic !important;
 }
 
-button::-moz-focus-inner { border: 0; }
+button::-moz-focus-inner,
+.button::-moz-focus-inner,
+input[type="reset"]::-moz-focus-inner,
+input[type="button"]::-moz-focus-inner,
+input[type="submit"]::-moz-focus-inner,
+input[type="file"] > input[type="button"]::-moz-focus-inner {
+    border: 1px dotted transparent;
+}
 
 h1, h2, h3, h4, h5, h6 { font-family: Arial, Helvetica, sans-serif; }
 h1.ubuntu, h2.ubuntu, h3.ubuntu, h4.ubuntu, h5.ubuntu, h6.ubuntu { font-family: 'Ubuntu', sans-serif; }
@@ -1061,7 +1062,8 @@ a.pornobutton:active{
 .tooltip
 {
     position: relative;
-    text-decoration: underline !important;
+    text-decoration: none !important;
+    border-bottom: 1px dashed #0b75b2;
     cursor: help;
     display: inline-block;
     text-decoration: none;
@@ -1102,7 +1104,8 @@ a.pornobutton:active{
 .tooltip2
 {
     position: relative;
-    text-decoration: underline !important;
+    text-decoration: none !important;
+    border-bottom: 1px dashed #0b75b2;
     cursor: help;
     display: inline-block;
     text-decoration: none;
@@ -1143,7 +1146,8 @@ a.pornobutton:active{
 .tooltip3
 {
     position: relative;
-    text-decoration: underline !important;
+    text-decoration: none !important;
+    border-bottom: 1px dashed #0b75b2;
     cursor: help;
     display: inline-block;
     text-decoration: none;
@@ -1208,13 +1212,14 @@ span.success    { border-color:#c7f5ce; background: #d6f7db }
     -webkit-transform: rotate(-45deg);
     -moz-box-shadow: 0 0 1em #888;
     -webkit-box-shadow: 0 0 1em #888;
-    opacity: 0.4;
+    opacity: 0.3;
 }
 .ribbon a {
-    border: 1px solid #faa;
+    border: 1px solid #ccc;
     color: #fff;
     display: block;
-    font: bold 81.25% 'Helvetiva Neue', Helvetica, Arial, sans-serif;
+    font-size: 0.85em;
+    font-family: Arial, Helvetica, sans-serif;
     margin: 0.05em 0 0.075em 0;
     padding: 0.5em 3.5em;
     text-align: center;
@@ -1223,21 +1228,11 @@ span.success    { border-color:#c7f5ce; background: #d6f7db }
 }
 
 .ribbon, .ribbon:hover {
-    -webkit-transition-property: background color;
-    -moz-transition-property: background color;
-    -o-transition-property: background color;
-    -ms-transition-property: background color;
-    transition-property: background color;
-    -webkit-transition-duration: 0.25s;
-    -moz-transition-duration: 0.25s;
-    -o-transition-duration: 0.25s;
-    -ms-transition-duration: 0.25s;
-    transition-duration: 0.25s;
-    -webkit-transition-timing-function: ease-out;
-    -moz-transition-timing-function: ease-out;
-    -o-transition-timing-function: ease-out;
-    -ms-transition-timing-function: ease-out;
-    transition-timing-function: ease-out;
+    -webkit-transition: opacity 0.25s ease-out;
+    -moz-transition: opacity 0.25s ease-out;
+    -o-transition: opacity 0.25s ease-out;
+    -ms-transition: opacity 0.25s ease-out;
+    transition: opacity 0.25s ease-out;
 }
 
 .ribbon:hover{
