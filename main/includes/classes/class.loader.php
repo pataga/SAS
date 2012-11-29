@@ -5,9 +5,11 @@ class Loader {
     public $_page = "";
     public $_spage = "";
     private $content = "";
+    private $mysql = null;
 
-    public function createDatabaseConnection() {
-        require_once("includes/config/config.mysql.php");
+    function __construct($mysql_)
+    {
+        $this->mysql = $mysql_;
     }
 
     private function loadTop() {
@@ -32,8 +34,8 @@ class Loader {
 
     private function loadMainMenu() {
         $this->content .= '<div id="wrapper"><div id="nav"><ul>';
-        $result = mysql_query("SELECT * FROM sas_menu_main");
-        while ($row = mysql_fetch_object($result)) {
+        $result = $this->mysql->Query("SELECT * FROM sas_menu_main");
+        while ($row = $result->fetchObject()) {
             $name = $row->name;
             $page = $row->page;
 
@@ -49,8 +51,8 @@ class Loader {
     private function loadSideMenu() {
         $this->content .= '<div id="sidebar"><ul>';
         $page = mysql_real_escape_string($this->_page);
-        $result = mysql_query("SELECT * FROM sas_menu_side WHERE page = '$page'");
-        while ($row = mysql_fetch_object($result)) {
+        $result = $this->mysql->Query("SELECT * FROM sas_menu_side WHERE page = '$page'");
+        while ($row = $result->fetchObject()) {
             $name = $row->name;
             $page = $row->page;
             $spage = $row->spage;
@@ -70,9 +72,9 @@ class Loader {
         $page = mysql_real_escape_string($this->_page);
         $spage = mysql_real_escape_string($this->_spage);
 
-        $result = mysql_query("SELECT inc_path FROM sas_content WHERE page = '$page' AND spage = '$spage'");
-        if (mysql_num_rows($result) > 0) {
-            $row = mysql_fetch_object($result);
+        $result = $this->mysql->Query("SELECT inc_path FROM sas_content WHERE page = '$page' AND spage = '$spage'");
+        if ($result->getRowsCount() > 0) {
+            $row = $result->fetchObject();
             return $row->inc_path;
         }
         else

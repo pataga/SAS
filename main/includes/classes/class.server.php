@@ -7,6 +7,7 @@ class Server {
 
     function __construct($_mysql) {
         $this->mysql = $_mysql;
+        $this->server_id = isset($_SESSION['server_id']) ? $_SESSION['server_id'] : 0;
     }
 
     public function getID() {
@@ -15,10 +16,10 @@ class Server {
 
     public function getServerData($id = 1) {
         $this->server_id = $id;
-        $result = mysql_query("SELECT * FROM sas_server_data WHERE id = $this->server_id");
+        $result = $this->mysql->Query("SELECT * FROM sas_server_data WHERE id = $this->server_id");
 
-        if (mysql_num_rows($result) > 0) {
-            $row = mysql_fetch_object($result);
+        if ($result->getRowsCount() > 0) {
+            $row = $result->fetchObject();
             $data = array();
 
             $data[0] = $row->host;
@@ -31,10 +32,10 @@ class Server {
     }
 
     public function isInstalled($package) {
-        $result = mysql_query("SELECT * FROM sas_server_data WHERE id = $this->server_id");
+        $result = $this->mysql->Query("SELECT * FROM sas_server_data WHERE id = $this->server_id");
 
-        if (mysql_num_rows($result) > 0) {
-            $row = mysql_fetch_object($result);
+        if ($result->getRowsCount() > 0) {
+            $row = $result->fetchObject();
 
             switch ($package) {
                 case 'mysql': if ($row->mysql == "1")
@@ -55,11 +56,11 @@ class Server {
 
     public function getMySQLData() {
         if ($this->isInstalled("mysql")) {
-            $result = mysql_query("SELECT * FROM sas_server_mysql WHERE sid = $this->server_id");
+            $result = $this->mysql->Query("SELECT * FROM sas_server_mysql WHERE sid = $this->server_id");
 
-            if (mysql_num_rows($result) > 0) {
+            if ($result->getRowsCount() > 0) {
                 $data = array();
-                $row = mysql_fetch_object($result);
+                $row = $result->fetchObject();
                 $data[0] = $row->host;
                 $data[1] = $row->port;
                 $data[2] = $row->username;

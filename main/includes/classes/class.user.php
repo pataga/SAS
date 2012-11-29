@@ -29,12 +29,10 @@ class User {
     }
 
     public function validatePassword($pass) {
-        $mysql = $this->_mysql;
-        $mysql->openHostConnection();
-        $result = mysql_query("SELECT password FROM sas_users WHERE id = $this->_userID");
+        $result = $this->_mysql->Query("SELECT password FROM sas_users WHERE id = $this->_userID");
 
-        if (mysql_num_rows($result) > 0) {
-            $row = mysql_fetch_object($result);
+        if ($result->getRowsCount() > 0) {
+            $row = $this->_mysql->fetchObject();
             if ($row->password == md5($pass))
                 return true;
             else
@@ -45,10 +43,10 @@ class User {
 
     public function AuthChallenge() {
         $user = mysql_real_escape_string($this->_username);
-        $result = mysql_query("SELECT * FROM sas_users WHERE username = '$user'") or die(mysql_error());
+        $result = $this->_mysql->Query("SELECT * FROM sas_users WHERE username = '$user'") or die(mysql_error());
 
-        if (mysql_num_rows($result) > 0) {
-            $row = mysql_fetch_object($result);
+        if ($result->getRowsCount() > 0) {
+            $row = $this->_mysql->fetchObject();
 
             if ($row->password == md5($this->_password))
                 $this->setAuthState(true, $row->id);
@@ -71,10 +69,10 @@ class User {
 
     public function addUser($username, $password, $passwordr, $email) {
         if ($password == $passwordr) {
-            $result = mysql_query("SELECT * FROM sas_users WHERE username = '$username' OR email = '$email'");
-            if (mysql_num_rows($result) == 0) {
+            $result = $this->_mysql->Query("SELECT * FROM sas_users WHERE username = '$username' OR email = '$email'");
+            if ($result->getRowsCount() == 0) {
                 $password = md5($password);
-                mysql_query("INSERT INTO sas_users (username,password,email) VALUES ('$username','$password','$email')");
+                $this->_mysql->Query("INSERT INTO sas_users (username,password,email) VALUES ('$username','$password','$email')");
                 return 1;
             } else
                 return -1;
@@ -84,12 +82,12 @@ class User {
 
     public function setPermission($sid, $permission, $active) {
         $query;
-        $result = mysql_query("SELECT * FROM sas_user_permission WHERE uid = $this->_userID AND sid = $sid");
-        if (mysql_num_rows($result) > 0)
+        $result = $this->_mysql->Query("SELECT * FROM sas_user_permission WHERE uid = $this->_userID AND sid = $sid");
+        if ($result->getRowsCount() > 0)
             $query = "UPDATE sas_user_permission SET $permission = $active WHERE uid = $this->_userID AND sid = $sid";
         else
             $query = "REPLACE sas_user_permission SET $permission = $active WHERE uid = $this->_userID AND sid = $sid";
-        mysql_query($query);
+        $this->_mysql->Query($query);
     }
 
 }

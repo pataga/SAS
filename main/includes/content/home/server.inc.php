@@ -7,9 +7,9 @@
         $loader->reload();
     }
 
-    $result = mysql_query("SELECT id, name, host FROM sas_server_data");
+    $result = $mysql->Query("SELECT id, name, host FROM sas_server_data");
     $server_selection = "";
-    while ($row = mysql_fetch_object($result)) {
+    while ($row = $result->fetchObject()) {
         $server_selection .= "<option value='$row->id'>Server '$row->name' - $row->host</option>";
     }
 ?>

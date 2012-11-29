@@ -9,9 +9,7 @@
 <fieldset style="width:auto;">
 <div style="height:auto;width:auto;min-width:100px;max-height:500px;max-width:800px;min-height:130px;overflow-x:scroll;overflow-y:scroll;">
 <?php
-    $data = $server->getServerData($server->GetID());
-    $mysql->openRemoteConnection();
-    $databases = $database->getMySQLDatabases();
+    $databases = $database_remote->getMySQLDatabases();
 
     if ($databases != 0 && !isset($_GET['db']))
     {
@@ -26,7 +24,7 @@
     else if (isset($_GET['db'])&&!isset($_GET['t']))
     {
         $db = $_GET['db'];
-        $tables = $database->getMySQLTables($db);
+        $tables = $database_remote->getMySQLTables($db);
         $dbcontent = "<table>";
         foreach ($tables as $tab)
             $dbcontent .= "<tr><td><a href='?p=mysql&s=db&db=$db&t=$tab'>$tab</a></td></tr>";
@@ -39,15 +37,15 @@
     {
         $db = $_GET['db'];
         $table = $_GET['t'];
-        $columns = $database->getMySQLColumns($db,$table);
+        $columns = $database_remote->getMySQLColumns($db,$table);
         $dbcontent = "<table><tr>";
         foreach ($columns as $col)
             $dbcontent .= "<td><a href='#' class='tooltip2'><h5>$col[0]</h5>
                                 <span><b>Typ</b> $col[1]</span>
                             </a></td>";
         $dbcontent .= "</tr>";
-        $result = mysql_query("SELECT * FROM $table");
-        while ($row = mysql_fetch_array($result))
+        $result = $remote_mysql->Query("SELECT * FROM $table");
+        while ($row = $result->fetchArray())
         {
             $dbcontent .= "<tr>";
             for ($i=0;$i<count($columns);$i++)
