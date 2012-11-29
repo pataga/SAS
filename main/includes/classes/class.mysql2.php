@@ -62,6 +62,39 @@ class MySQL {
             return mysql_fetch_object($this->result);
         }
     }
+
+    public function insert($table, $content) {
+        $query = MySQL::buildQuery($table, $content);
+        $this->Query($query);
+    }
+
+    protected function buildQuery($table, $content) {
+        if (!is_array($content)) {
+            throw new Exeption("Kein g&uuml;ltiger Parameter in MySQL::buildQuery(String)");
+        } else {
+            $key_ = array_keys($content);
+            $data_ = array_values($content);
+            $amount = count($key_)-1;
+            $i = 0;
+            $query = "INSERT INTO $table (";
+            foreach ($key_ as $key) {
+                $query .= "$key";
+                if ($i < $amount) $query .= ",";
+                $i++;
+            }
+
+            $query .= ") VALUES (";
+            $i = 0;
+            foreach ($data_ as $data) {
+                $query .= "'$data'";
+                if ($i < $amount) $query .= ",";
+                $i++;
+            }
+            $query .= ")";
+
+            return $query;
+        }
+    }
 }
 
 ?>
