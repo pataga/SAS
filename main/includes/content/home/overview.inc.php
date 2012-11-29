@@ -130,7 +130,8 @@
 </fieldset>
 <h3>Notizbuch</h3>
 <fieldset>
-    <textarea>Diese Seite ist bis auf das Notizfeld voll funktionsfähig</textarea>
+    <form action="<?php echo "test"?>"></form>
+    <textarea name="notizen">Diese Seite ist bis auf das Notizfeld voll funktionsfähig</textarea>
     <input type="submit" class="button black" value="Notizen speichern">
     <br>
     <br>

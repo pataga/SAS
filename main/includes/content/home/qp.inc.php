@@ -27,9 +27,7 @@ if (isset($_POST['smbd-stop']) && isset($_POST['smbd-stop-h'])) {
     $ssh->execute("service apache2 start");
 }
 
-/* $usercheck = $_SESSION['username'];
-$userpost = $_POST['checker']; */
-if (isset($_POST['shutdown-s']) && isset($_POST['shutdown']) /*&& ($usercheck == $userpost)*/) {
+if (isset($_POST['shutdown-s']) && isset($_POST['shutdown'])) {
     //$ssh->execute("shutdown -h now");
     echo "Simulate: Shutdown";
 } 
@@ -37,6 +35,13 @@ if (isset($_POST['shutdown-s']) && isset($_POST['shutdown']) /*&& ($usercheck ==
 if (isset($_POST['reboot-s']) && isset($_POST['reboot'])) {
    //$ssh->execute("reboot");
 echo "Simulate: Reboot";
+}
+
+//if (isset($_POST['']) && isset($_POST[''])) {
+// $ssh->execute("service apache2 stop");
+//}
+
+
 }
 ?>
 <h3>Quickpanel</h3>

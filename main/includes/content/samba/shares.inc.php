@@ -51,50 +51,41 @@
 ?>
 
 
-<html>
+<h3>Neue Samba-Freigabe hinzuf&uuml;gen</h3>
 <fieldset>
-<form action="index.php?p=samba&s=shares" method="POST">
-
-		<h3>Neue Samba-Freigabe hinzuf&uuml;gen</h3>
-
-	<div class ="viertel-box">
-
-			Freigabe Name: <br>
-			Verzeichnispfad: <br>
-			G&uuml;ltige Benutzer: <br>
-			Schreibrechte f&uuml;r <br>
-			Create Mask: <br>
-			Directory Mask: <br>
-
-			&Ouml;ffentliche Freigabe? <br>
-			Schreibrechte f&uuml;r jeden? 
-
-	</div>
-
-	<div class="dreiviertel-box lastbox">
-
-			<input type="text" name="name" id=""><br>
-			<input type="text" name="path" id=""><br>
-			<input type="text" name="validusers" id=""><br>
-			<input type="text" name="writelist" id=""><br>
-			<input type="text" name="createmask" id=""><br>
-			<input type="text" name="directorymask" id=""><br>
-
-			<select name="public">
-				<option value="1"> Ja </option>
-				<option value="0"> Nein </option>
-				<option value=" "> disabled</option>
-			</select><br>
-
-			<select name="readonly">
-				<option value="1"> Ja </option>
-				<option value="0"> Nein </option>
-				<option value=" "> disabled</option>
-			</select>
-	</div>
-
-	    <input type="submit" class="button green" name="add" value="Neue Freigabe Hinzuf&uuml;gen">
-
-</form>
+    <form action="index.php?p=samba&s=shares" method="POST">
+        <div class ="viertel-box">
+            Freigabe Name: <br><br>
+            Verzeichnispfad: <br><br>
+            G&uuml;ltige Benutzer: <br><br>
+            Schreibrechte f&uuml;r <br><br>
+            Create Mask: <br><br>
+            Directory Mask: <br><br><br>
+            &Ouml;ffentliche Freigabe? 
+            <br><br><br>
+            Schreibrechte f&uuml;r jeden? 
+        </div>
+        <div class="dreiviertel-box lastbox">
+            <input type="text" class="text-long" name="name" id=""><br><br>
+            <input type="text" class="text-long" name="path" id=""><br><br>
+            <input type="text" class="text-long" name="validusers" id=""><br><br>
+            <input type="text" class="text-long" name="writelist" id=""><br><br>
+            <input type="text" class="text-long" name="createmask" id=""><br><br>
+            <input type="text" class="text-long" name="directorymask" id="">
+            <br><br><br>
+            <select name="public">
+                <option value="1"> Ja </option>
+                <option value="0"> Nein </option>
+                <option value=" "> disabled</option>
+            </select><br>
+            <br>
+            <select name="readonly">
+                <option value="1"> Ja </option>
+                <option value="0"> Nein </option>
+                <option value=" "> disabled</option>
+            </select>
+        </div>
+        <div class="clearfix"></div>
+        <input type="submit" class="button green" name="add" value="Neue Freigabe Hinzuf&uuml;gen">
+    </form>
 </fieldset>
-</html>
