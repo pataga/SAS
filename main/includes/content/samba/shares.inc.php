@@ -43,8 +43,14 @@
 
 		$ssh->openConnection();
 		$ssh->execute("echo [$name] >> /etc/samba/smb.conf");
-		$ssh->execute("echo $path >> /etc/samba/smb.conf");
+		$ssh->execute("echo 'path = $path' >> /etc/samba/smb.conf");
 
+		$content = "
+		[$name] \n 
+		path = $path \n 
+		writable = $writable \n 
+		";
+		$server->addToFile($ssh, '/etc/samba/smb.conf', $content);
 }
 
 
