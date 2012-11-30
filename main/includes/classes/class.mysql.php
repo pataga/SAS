@@ -110,12 +110,27 @@ class MySQL {
 
 
    /**
+    *   Erstellt eine neue Datenbank
+    *   @param String
+    *   @return bool
+    */
+    public function createDatabase($db) {
+        if (!$this->connection_res) {
+            throw new Exception("Keine Verbindung zum MySQL Server".mysql_error());
+        } else {
+            $this->Query("CREATE DATABASE $db");
+            return true;
+        }
+    }
+
+
+   /**
     *   Fügt mit einen Datensatz hinzu
     *   @param (String) Tabellenname
     *   @param (Array) Dateninhalte
     */
     public function insert($table, $content) {
-        $query = MySQL::buildQuery($table, $content);
+        $query = self::buildQuery($table, $content);
         $this->Query($query);
     }
 
