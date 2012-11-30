@@ -80,6 +80,16 @@ class User {
             return -2;
     }
 
+    public function setPassword($username, $password, $passwordr) {
+        if ($password == $passwordr) {
+            $password = md5($password);
+            $result = $this->_mysql->Query("UPDATE sas_users SET password = '$password' WHERE username = '$username'");
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
     public function setPermission($sid, $permission, $active) {
         $query;
         $result = $this->_mysql->Query("SELECT * FROM sas_user_permission WHERE uid = $this->_userID AND sid = $sid");
