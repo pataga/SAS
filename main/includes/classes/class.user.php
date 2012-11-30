@@ -80,7 +80,7 @@ class User {
             return -2;
     }
 
-    public function setPassword($username, $password, $passwordr) {
+    public function setUserPassword($username, $password, $passwordr) {
         if ($password == $passwordr) {
             $password = md5($password);
             $result = $this->_mysql->Query("UPDATE sas_users SET password = '$password' WHERE username = '$username'");
