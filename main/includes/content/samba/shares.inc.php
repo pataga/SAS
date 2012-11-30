@@ -37,6 +37,7 @@
 		}
 
 		$ssh->openConnection();
+		// Öffnen der Verbindung
 
 $content = "
 [$name]
@@ -50,13 +51,17 @@ writeable = $writeable
 read only = $readonly";
 $server->addToFile($ssh, '/etc/samba/smb.conf', $content);
 
-	}
-
+$ssh->execute('service smbd reload');
+// Schreiben der neuen Freigabe in die smb.conf
+}
 
 ?>
 
 
 <h3>Neue Samba-Freigabe hinzuf&uuml;gen</h3>
+<br>
+Hinweis: Nach dem hinzufügen einer neuen Freigabe wird der Server automatisch neu gestartet.
+<br><br>
 <fieldset>
     <form action="index.php?p=samba&s=shares" method="POST">
         <div class ="viertel-box"> 
