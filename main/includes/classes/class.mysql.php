@@ -8,7 +8,7 @@ class MySQL {
     private $mysql_pass;
     private $mysql_db;
     private $result;
-    private $connection;
+    private $connection_res;
 
     function __construct($host, $port, $user, $pass) {
         $this->mysql_host = $host;
@@ -23,9 +23,9 @@ class MySQL {
     *   Verbindet zu MySQL Server
     */
     private function connect() {
-        $this->connection = mysql_connect($this->mysql_host, $this->mysql_user, $this->mysql_pass);
+        $this->connection_res = mysql_connect($this->mysql_host, $this->mysql_user, $this->mysql_pass);
         if (!empty($this->mysql_db))
-            mysql_select_db($this->db, $this->connection);
+            mysql_select_db($this->db, $this->connection_res);
     }
 
 
@@ -34,7 +34,7 @@ class MySQL {
     *   @param Datenbankname
     */
     public function selectDB($db) {
-        if (!mysql_select_db($db)) {
+        if (!($this->database_res = mysql_select_db($db, $this->connection_res))) {
             throw new Exception("Fehler beim Verbinden der Datenbank ". mysql_error());
         } else {
             $this->mysql_db = $db;
@@ -48,7 +48,7 @@ class MySQL {
     *   @return MySQL Instanz
     */
     public function Query($query) {
-        if (!($result = mysql_query($query))) {
+        if (!($result = mysql_query($query, $this->connection_res))) {
             throw new Exception("Fehler beim Ausf&uuml;hren des Querys ". mysql_error());
         } else {
             $this->result = $result;

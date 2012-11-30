@@ -65,8 +65,11 @@ $inc_file = $loader->getIncFile();
 
 if (isset($_SESSION['server_id'])) {
     $remote_mysql_data = $server->getMySQLData();
-    $mysql_remote = new MySQL($remote_mysql_data[0], $remote_mysql_data[1], $remote_mysql_data[2], $remote_mysql_data[3]);
-    $database_remote = new Database($mysql_remote, $server);
+    if (is_array($remote_mysql_data)) {
+        $mysql_remote = new MySQL($remote_mysql_data[0], $remote_mysql_data[1], $remote_mysql_data[2], $remote_mysql_data[3]);
+        $database_remote = new Database($mysql_remote, $server);
+    }
+    
 }
 
 require_once $inc_file;
