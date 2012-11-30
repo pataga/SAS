@@ -10,51 +10,61 @@
 		$writelist = $_POST['writelist'];
 		$createmask = $_POST['createmask'];
 		$directorymask = $_POST['directorymask'];
+		$readonly = $_POST['readonly'];
 
 		if(isset($_POST['public']))
 		{
 			if($_POST['public'] == 1)
 			$public = "public = yes";
-			else if ($_POST['public'] == 0)
+			else 
 			$public = "public = no";
-			else
-			$public = "";
 		}
 
 		if(isset($_POST['writeable']))
 		{
 			if($_POST['writeable'] == 1)
 			$writeable = "writeable = yes";
-			else if ($_POST['writeable'] == 1)
+			else 
 			$writeable = "writeable = no";
-			else
-			$writeable = "";
 		}
 
 		if(isset($_POST['readonly']))
 		{
 			if($_POST['readonly'] == 1)
-			$writeable = "read only = yes";
-			else if ($_POST['readonly'] == 1)
-			$writeable = "read only = no";
-			else
-			$writeable = "";
+			$readonly = "read only = yes";
+			else 
+			$readonly = "read only = no";
 		}
 
 		$ssh->openConnection();
-		$ssh->execute("echo [$name] >> /etc/samba/smb.conf");
-		$ssh->execute("echo $path >> /etc/samba/smb.conf");
+		// Öffnen der Verbindung
 
+$content = "
+[$name]
+path = $path
+valid users = $validusers
+writelist = $writelist
+create mask = $createmask
+directory mask = $directorymask
+public = $public
+writeable = $writeable
+read only = $readonly";
+$server->addToFile($ssh, '/etc/samba/smb.conf', $content);
+
+$ssh->execute('service smbd reload');
+// Schreiben der neuen Freigabe in die smb.conf
 }
-
 
 ?>
 
 
 <h3>Neue Samba-Freigabe hinzuf&uuml;gen</h3>
+<br>
+Hinweis: Nach dem hinzufügen einer neuen Freigabe wird der Server automatisch neu gestartet.
+<br><br>
 <fieldset>
     <form action="index.php?p=samba&s=shares" method="POST">
-        <div class ="viertel-box">
+        <div class ="viertel-box"> 
             Freigabe Name: <br><br>
             Verzeichnispfad: <br><br>
             G&uuml;ltige Benutzer: <br><br>
@@ -62,8 +72,11 @@
             Create Mask: <br><br>
             Directory Mask: <br><br><br>
             &Ouml;ffentliche Freigabe? 
-            <br><br><br>
+            <br><br>
             Schreibrechte f&uuml;r jeden? 
+            <br><br>
+            Nur lesbar?
+
         </div>
         <div class="dreiviertel-box lastbox">
             <input type="text" class="text-long" name="name" id=""><br><br>
@@ -76,13 +89,16 @@
             <select name="public">
                 <option value="1"> Ja </option>
                 <option value="0"> Nein </option>
-                <option value=" "> disabled</option>
-            </select><br>
+            </select>
+            <br>
+             <select name="writeable">
+                <option value="1"> Ja </option>
+                <option value="0"> Nein </option>n>
+            </select>
             <br>
             <select name="readonly">
                 <option value="1"> Ja </option>
                 <option value="0"> Nein </option>
-                <option value=" "> disabled</option>
             </select>
         </div>
         <div class="clearfix"></div>

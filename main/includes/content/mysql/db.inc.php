@@ -9,7 +9,11 @@
 <fieldset style="width:auto;">
 <div style="height:auto;width:auto;min-width:100px;max-height:500px;max-width:800px;min-height:130px;overflow-x:scroll;overflow-y:scroll;">
 <?php
-    $databases = $database_remote->getMySQLDatabases();
+    $result = $mysql_remote->Query("SHOW DATABASES");
+    $databases = array();
+    for ($i=0;$row = $result->fetchArray();$i++) {
+        $databases[$i] = $row[0];
+    }
 
     if ($databases != 0 && !isset($_GET['db']))
     {
@@ -37,18 +41,25 @@
     {
         $db = $_GET['db'];
         $table = $_GET['t'];
-        $columns = $database_remote->getMySQLColumns($db,$table);
+        
+        $mysql_remote->selectDB($db);
+        $columns = $mysql_remote->Query("SHOW FIELDS FROM $table");
+
+
         $dbcontent = "<table><tr>";
-        foreach ($columns as $col)
+        $itr = 0;
+        while ($col = $mysql_remote->fetchArray()) {
             $dbcontent .= "<td><a href='#' class='tooltip2'><h5>$col[0]</h5>
                                 <span><b>Typ</b> $col[1]</span>
                             </a></td>";
+            $itr++;
+        }
         $dbcontent .= "</tr>";
-        $result = $remote_mysql->Query("SELECT * FROM $table");
+        $result = $mysql_remote->Query("SELECT * FROM $table");
         while ($row = $result->fetchArray())
         {
             $dbcontent .= "<tr>";
-            for ($i=0;$i<count($columns);$i++)
+            for ($i=0;$i<$itr;$i++)
             {
                 $dbcontent .= "<td>$row[$i]</td>";
             }
