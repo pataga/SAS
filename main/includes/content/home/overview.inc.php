@@ -20,7 +20,7 @@ $userswholi = str_replace(" ", ", ", $userswho);
 <fieldset>
     <h5>Aktuelle Daten ihres Servers</h5>
     <div class="halbe-box">
-        <table cellpadding="0" cellspacing="0">
+        <table>
             <tr>
                 <td>Host-IP:</td>
                 <td><a href="http://<?php echo $data[0]; ?>" target="_blank"><?php echo $data[0]; ?></a></td>
@@ -44,7 +44,7 @@ $userswholi = str_replace(" ", ", ", $userswho);
             <script>
                 var sek=<?php echo $sekunden; ?>;
                 function upservtime() {
-                    var uppy = ((((((((sek - (sek % 60)) / 60) - ((sek - (sek % 60)) / 60) % 60) / 60))) - ((((((sek - (sek % 60)) / 60) - ((sek - (sek % 60)) / 60) % 60) / 60)) % 24)) / 24) + " T. " + ((((((sek - (sek % 60)) / 60) - ((sek - (sek % 60)) / 60) % 60) / 60)) % 24) + " Std. " + (((sek - (sek % 60)) / 60) % 60) + " Min. " + (sek % 60) + " Sek. ";
+                    var uppy = ((((((((sek - (sek % 60)) / 60) - ((sek - (sek % 60)) / 60) % 60) / 60))) - ((((((sek - (sek % 60)) / 60) - ((sek - (sek % 60)) / 60) % 60) / 60)) % 24)) / 24) + " T " + ((((((sek - (sek % 60)) / 60) - ((sek - (sek % 60)) / 60) % 60) / 60)) % 24) + " Std " + (((sek - (sek % 60)) / 60) % 60) + " Min " + (sek % 60) + " Sek ";
                     document.getElementById('test').innerHTML = uppy;  
                     window.setTimeout("upservtime()",1000); 
                     sek++;
@@ -59,7 +59,7 @@ $userswholi = str_replace(" ", ", ", $userswho);
                 <td>Eingeloggte User:</td>
                 <td><?php echo $userswholi ?></td>
             </tr>
-            <tr class="odd">
+            <tr>
                 <td>Load:</td>
                 <td><?php echo $serverload; ?></td>
             </tr>
@@ -109,7 +109,7 @@ $userswholi = str_replace(" ", ", ", $userswho);
                     ?>
                 </td>
             </tr>
-            <tr>
+            <tr class="odd">
                 <td>Backups:</td>
                 <td>
                     <span class="notaviable">nicht verf&uuml;gbar</span>
@@ -121,7 +121,7 @@ $userswholi = str_replace(" ", ", ", $userswho);
                     <span class="notaviable">nicht verf&uuml;gbar</span>
                 </td>
             </tr>
-            <tr>
+            <tr class="odd">
                 <td> N/A </td>
                 <td>
                     <span class="notaviable">nicht verf&uuml;gbar</span>

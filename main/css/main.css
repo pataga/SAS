@@ -480,7 +480,7 @@ code {
 code.simple {
     padding: 0px;
     font-family: Consolas, "Courier New", Courier, monospace;
-    font-size: 0.9em;
+    font-size: 1.0em;
 }
 
 code.fancy {
@@ -1238,6 +1238,18 @@ span.success    { border-color:#c7f5ce; background: #d6f7db }
 .ribbon:hover{
     opacity: 1.0;
 }
+
+iframe.phpinfo {
+        width: 770px;
+        min-height: 600px;
+        max-height: 1200px;
+        -moz-box-shadow: 0 0 5px #888;
+        -webkit-box-shadow: 0 0 5px#888;
+        box-shadow: 0 0 5px #888;
+        overflow-x: hidden;
+        overflow-y: scroll; 
+    }
+
 
 /* ==========================================================================
 Helper classes
