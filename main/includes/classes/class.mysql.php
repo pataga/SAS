@@ -123,51 +123,8 @@ class MySQL {
         }
     }
 
-
-   /**
-    *   Fügt mit einen Datensatz hinzu
-    *   @param (String) Tabellenname
-    *   @param (Array) Dateninhalte
-    */
-    public function insert($table, $content) {
-        $query = self::buildQuery($table, $content);
-        $this->Query($query);
-    }
-
-
-   /**
-    *   Erstellt einen Query zum hinzufügen von Datensätzen
-    *   und gibt einen fertigen Query zurück
-    *   @param (String) Tabellenname
-    *   @param (Array) Dateninhalte
-    *   @return (String) Query
-    */
-    protected function buildQuery($table, $content) {
-        if (!is_array($content)) {
-            throw new Exception("Kein g&uuml;ltiger Parameter in MySQL::buildQuery(String)");
-        } else {
-            $key_ = array_keys($content);
-            $data_ = array_values($content);
-            $amount = count($key_)-1;
-            $i = 0;
-            $query = "INSERT INTO $table (";
-            foreach ($key_ as $key) {
-                $query .= "$key";
-                if ($i < $amount) $query .= ",";
-                $i++;
-            }
-
-            $query .= ") VALUES (";
-            $i = 0;
-            foreach ($data_ as $data) {
-                $query .= "'$data'";
-                if ($i < $amount) $query .= ",";
-                $i++;
-            }
-            $query .= ")";
-
-            return $query;
-        }
+    public function tableAction($table) {
+        return new TableAction($this, $table);
     }
 }
 
