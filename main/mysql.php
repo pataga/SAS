@@ -3,7 +3,7 @@
  * MySQL Klassen Test 
  */
 
-require_once 'includes/classes/class.mysql2.php';
+require_once 'includes/classes/class.mysql.php';
 $mysql = new MySQL('127.0.0.1', '3306', 'root', '');
 $mysql->selectDB('sas');
 
