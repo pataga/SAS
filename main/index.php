@@ -16,8 +16,7 @@ if (is_dir('install') && !isset($data)) {
     die();
 }
 
-$mysql = new MySQL($data[0], $data[1], $data[2], $data[3]);
-$mysql->selectDB($data[4]);
+$mysql = new MySQL($data[0], $data[1], $data[2], $data[3], $data[4]);
 $loader = new Loader($mysql);
 $user = new User($mysql);
 $server = new Server($mysql);
@@ -27,9 +26,8 @@ $ssh = null;
 
 $data = array();
 
-//Remote Instances
+//Remote Instance
 $mysql_remote = null;
-$database_remote = null;
 
 
 if (isset($_SESSION['server_id'])) {
@@ -68,7 +66,6 @@ if (isset($_SESSION['server_id'])) {
     $remote_mysql_data = $server->getMySQLData();
     if (is_array($remote_mysql_data)) {
         $mysql_remote = new MySQL($remote_mysql_data[0], $remote_mysql_data[1], $remote_mysql_data[2], $remote_mysql_data[3]);
-        $database_remote = new Database($mysql_remote, $server);
     }
     
 }

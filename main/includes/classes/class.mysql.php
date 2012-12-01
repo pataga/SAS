@@ -10,11 +10,12 @@ class MySQL {
     private $result;
     private $connection_res;
 
-    public function __construct($host, $port, $user, $pass) {
+    public function __construct($host, $port, $user, $pass, $db=false) {
         $this->mysql_host = $host;
         $this->mysql_port = $port;
         $this->mysql_user = $user;
         $this->mysql_pass = $pass;
+        if ($db) $this->selectDB($db);
         $this->connect();
     }
 
