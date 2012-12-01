@@ -32,15 +32,15 @@
     <form action="index.php" method="post">
         <table>
             <p><label>Server Name:</label>
-                <input type="text" name="name" class="text-long"></p>
+                <input type="text" name="name" placeholder="bspw.: Uranus" class="text-long required"></p>
             <p><label>Server Host:</label>
-                <input type="text" name="shost" class="text-long"></p>
+                <input type="text" name="shost" placeholder="bspw.: 12.123.213.132" class="text-long required"></p>
             <p><label>SSH Port:</label>
-                <input type="text" name="sport" class="text-long"></p>
-            <p><label>Benutzername: </label>
-                <input type="text" name="suser" class="text-long"></p>
-            <p><label>Passwort: </label>
-                <input type="password" name="spass" class="text-long"></p>
+                <input type="text" name="sport" placeholder="Standard: 22" class="text-long" required></p>
+            <p><label>SSH Benutzername: </label>
+                <input type="text" name="suser" class="text-long" required></p>
+            <p><label>SSH Passwort: </label>
+                <input type="password" name="spass" class="text-long" required></p>
             <input type="submit" value="Server eintragen" class="button green">
         </table>
     </form>

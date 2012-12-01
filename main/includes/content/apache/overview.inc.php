@@ -1,7 +1,7 @@
 <?php
 $ssh->openConnection();
 $status_a2 = $ssh->execute("service apache2 status");        //prozess status über apache2
-$version_a2 = $ssh->execute("apachectl -v");        //apache2 version
+$version_a2 = $ssh->execute("apache2ctl -v");        //apache2 version
 $info_a2 = $ssh->execute("apache2ctl status");
 $version_a2_ = explode("\n", $version_a2);
 $version_a2_x = explode(": ", $version_a2_[0]);

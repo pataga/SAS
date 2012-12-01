@@ -244,7 +244,7 @@
                             <p><label>Passwort best&auml;tigen:</label>
                             <input type="password" name="passr" class="text-long" required></p>
                             <p><label>E-Mail:</label>
-                            <input type="text" name="email" class="text-long" required></p>
+                            <input type="email" name="email" class="text-long" required></p>
                             <div id="installbutton"><input type="submit" value="Installation abschlie&szlig;en" class="button black"></div>
                         </fieldset>
                     </form>
