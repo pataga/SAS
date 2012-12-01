@@ -5,15 +5,25 @@ class Server {
     private $server_id;
     private $mysql;
 
-    function __construct($_mysql) {
+    public function __construct($_mysql) {
         $this->mysql = $_mysql;
         $this->server_id = isset($_SESSION['server_id']) ? $_SESSION['server_id'] : 0;
     }
 
+   /**
+    * Gibt Server ID zurück
+    * @return (int) ServerID
+    */
     public function getID() {
         return $this->server_id;
     }
 
+
+   /**
+    * Gibt einen Array mit den SSH Daten zurück
+    * @param (int) ServerID
+    * @return (array) SSH Daten
+    */
     public function getServerData($id = 1) {
         $this->server_id = $id;
         $result = $this->mysql->Query("SELECT * FROM sas_server_data WHERE id = $this->server_id");
@@ -31,6 +41,12 @@ class Server {
         }
     }
 
+
+   /**
+    * Überprüft, ob ein Modul installiert wurde.
+    * @param (String) Modul Name
+    * @return (Bool)
+    */
     public function isInstalled($package) {
         $result = $this->mysql->Query("SELECT * FROM sas_server_data WHERE id = $this->server_id");
 
@@ -54,6 +70,11 @@ class Server {
             return false;
     }
 
+
+   /**
+    * Gibt MySQL Daten des Servers zurück
+    * @return (array) MySQL Daten
+    */
     public function getMySQLData() {
         if ($this->isInstalled("mysql")) {
             $result = $this->mysql->Query("SELECT * FROM sas_server_mysql WHERE sid = $this->server_id");
@@ -72,6 +93,12 @@ class Server {
         return false;
     }
 
+
+   /**
+    * Gibt den Status der Modul Dienste zurück
+    * @param (SSH) SSH Verbindung
+    * @return (Bool Array) Status
+    */
     public function serviceStatus($ssh) {
         $data = array();
         $data[0] = $this->getServiceStatus($ssh, 'smbd');
@@ -82,6 +109,13 @@ class Server {
         return $data;
     }
 
+
+   /**
+    * Gibt den Status eines Dienstes zurück
+    * @param (SSH) SSH Verbindung
+    * @param (String) Dienst Name
+    * @return (Bool) Status
+    */
     public function getServiceStatus($ssh, $service) {
         $line = $ssh->execute('service ' . $service . ' status');
         $exp = explode(" ", $line);
@@ -92,6 +126,14 @@ class Server {
             return false;
     }
 
+
+   /**
+    * Fügt einen String an eine Datei auf dem Server an.
+    * Die empfiehlt sich für das Erweitern von Konfigs.
+    * @param (SSH) SSH Verbindung
+    * @param (String) Datei Name
+    * @param (String) Inhalt
+    */
     public function addToFile($ssh, $file, $content) {
         $ssh->openConnection();
         $ssh->execute('echo -e "' . $content . '" >> ' . $file);

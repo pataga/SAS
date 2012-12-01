@@ -7,7 +7,7 @@ class Loader {
     private $content = "";
     private $mysql = null;
 
-    function __construct($mysql_)
+    public function __construct($mysql_)
     {
         $this->mysql = $mysql_;
     }

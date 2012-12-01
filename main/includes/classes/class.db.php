@@ -5,7 +5,7 @@ class Database {
     private $mysql;
     private $server;
 
-    function __construct($mysql, $server) {
+    public function __construct($mysql, $server) {
         $this->mysql = $mysql;
         $this->server = $server;
     }

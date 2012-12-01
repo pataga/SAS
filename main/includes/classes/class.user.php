@@ -7,7 +7,7 @@ class User {
     private $_password = null;
     private $_mysql = null;
 
-    function __construct($mysql) {
+    public function __construct($mysql) {
         $this->_userID = isset($_SESSION['userID']) ? $_SESSION['userID'] : 0;
         $this->_mysql = $mysql;
     }

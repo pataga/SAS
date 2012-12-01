@@ -10,7 +10,7 @@ class MySQL {
     private $result;
     private $connection_res;
 
-    function __construct($host, $port, $user, $pass) {
+    public function __construct($host, $port, $user, $pass) {
         $this->mysql_host = $host;
         $this->mysql_port = $port;
         $this->mysql_user = $user;
@@ -123,6 +123,11 @@ class MySQL {
         }
     }
 
+   /**
+    *   Neue Instanz zum Bearbeiten von Tabellen
+    *   @param String Tabellenname
+    *   @return TableAction
+    */
     public function tableAction($table) {
         return new TableAction($this, $table);
     }
