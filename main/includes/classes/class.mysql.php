@@ -15,8 +15,8 @@ class MySQL {
         $this->mysql_port = $port;
         $this->mysql_user = $user;
         $this->mysql_pass = $pass;
-        if ($db) $this->selectDB($db);
         $this->connect();
+        if ($db) $this->selectDB($db);
     }
 
 
