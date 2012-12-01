@@ -1,5 +1,15 @@
 <?php
 
+/**
+* Licensed under The Apache License
+*
+* @copyright Copyright 2012-2013 Patrick Farnkopf, Tanja Weiser, Gabriel Wanzek (PaTaGa)
+* @link http://cakephp.org CakePHP(tm) Project
+* @since SAS v1.0.0
+* @license Apache License v2 (http://www.apache.org/licenses/LICENSE-2.0.txt
+*
+*/
+
 session_start();
 
 require_once 'includes/config/config.mysql.php';
