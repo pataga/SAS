@@ -15,26 +15,38 @@ class tableAction {
     *   @param (Array) Dateninhalte
     */
     public function insert($content) {
-        $query = self::buildInsertQuery($this->table, $content);
-        $this->Query($query);
-    }
-
-    public function update($content) {
-    	$query = self::buildUpdateQuery($this->table, $content);
-    	$this->Query($query);
+        $query = self::buildInsertQuery($content);
+        $this->mysql->Query($query);
     }
 
 
    /**
-    *   Erstellt einen Query zum hinzufügen von Datensätzen
-    *   und gibt einen fertigen Query zurück
+    *   Fügt mit einen Datensatz hinzu
     *   @param (String) Tabellenname
+    *   @param (Array) Dateninhalte
+    */
+    public function update($content, $where) {
+    	$query = self::buildUpdateQuery($content, $where);
+    	$this->mysql->Query($query);
+    }
+
+   /**
+    *   Gibt Tabellenname zurück
+    *   @return String Tabellenname
+    */
+    public function getTable() {
+        return $this->table;
+    }
+
+
+   /**
+    *   Erstellt aus einem Array einen INSERT Query
     *   @param (Array) Dateninhalte
     *   @return (String) Query
     */
     protected function buildInsertQuery($content) {
         if (!is_array($content)) {
-            throw new Exception("Kein g&uuml;ltiger Parameter in MySQL::buildInsertQuery(String)");
+            throw new Exception("Kein g&uuml;ltiger Parameter in tableAction::buildInsertQuery(Array)");
         } else {
             $key_ = array_keys($content);
             $data_ = array_values($content);
@@ -60,9 +72,15 @@ class tableAction {
         }
     }
 
+    /**
+    *   Erstellt aus einem Array einen UPDATE Query
+    *   @param (Array) Dateninhalte
+    *   @param (Array) Bedingung
+    *   @return (String) Query
+    */
     protected function buildUpdateQuery($content, $where) {
     	if (!is_array($content)) {
-    		throw new Exception("Kein g&uuml;ltiger Parameter in MySQL::buildInsertQuery(String)");
+    		throw new Exception("Kein g&uuml;ltiger Parameter in tableAction::buildUpdateQuery(String)");
     	} else {
     		$key = array_keys($content);
     		$data = array_values($content);
