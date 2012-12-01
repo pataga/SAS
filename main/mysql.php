@@ -19,12 +19,19 @@ while ($row = $res->fetchArray())
 $table = $mysql->tableAction('sas_users');
 
 $data = array(
-'id' => '10',
-'username' => 'test',
+'id' => '17',
+'username' => 'test5',
 'password' => md5('geheim'),
 'email' => 'test@test.de',
 );
 
 $table->insert($data);
+
+$table->update(array('username'=>'test16'), array('id' => '17'));
+
+$result = $table->select(NULL,NULL);
+while ($row = $result->fetchObject()) {
+    echo $row->username."<br>";
+}
 
 ?>
