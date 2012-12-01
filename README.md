@@ -1,4 +1,4 @@
-![logo]
+![logo2]
 
 ---
 
@@ -41,12 +41,6 @@ Passwort:  geheim
 
 > **[SAS Präsentation "Projektvorstellung" (Google Documents)][3]**
 
-[1]: http://goo.gl/dTrur
-[2]: http://46.38.238.216/SAS
-[3]: http://goo.gl/8UqKr
-[4]: http://goo.gl/OZT5x
-[logo]: http://mangopix.de/local_images/sas-logo.png
-
 ---
 ####Anforderungen des Host Servers:
 - PHP 5.3+
@@ -65,7 +59,7 @@ Getestete Distributionen:
 - Lubuntu 12.04
 - Ubuntu Server 12.04
 
-erforderliche (zusätzliche) Pakete:
+#####erforderliche (zusätzliche) Pakete:
 - <code>apache2, apache2-doc, apache2-utils, apache2.2-bin</code>
 - <code>mysql-server, mysql-server-5.5 ,mysql-server-core</code>
 - <code>lynx, lynx-cur</code>
@@ -75,5 +69,9 @@ erforderliche (zusätzliche) Pakete:
 - <code>zip, unzip, unrar</code>
 - <code>apt, bash, hostname</code>
 
-
+[1]: http://goo.gl/dTrur
+[2]: http://46.38.238.216/SAS
+[3]: http://goo.gl/8UqKr
+[4]: http://goo.gl/OZT5x
+[logo2]: http://mangopix.de/local_images/sas-logo2.png
 
