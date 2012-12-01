@@ -25,8 +25,8 @@
 ------
 ###Default Web Access:
 ~~~
-User:		admin
-Passwort:	geheim
+User:      admin
+Passwort:  geheim
 ~~~
            
 ---
@@ -46,5 +46,34 @@ Passwort:	geheim
 [3]: http://goo.gl/8UqKr
 [4]: http://goo.gl/OZT5x
 [logo]: http://mangopix.de/local_images/sas-logo.png
+
+---
+####Anforderungen des Host Servers:
+- PHP 5.3+
+- MySQL 5.5+
+- libssh2 (`apt-get install libssh2 libssh2-1 libssh2-1-dev libssh2-php`)
+- mind. 250 MB Speicherplatz
+- PHP-Memory Limit:  mind. 64 MB. 
+
+---
+
+####Anforderungen des fernsteuerbaren Server:
+
+Getestete Distributionen:
+- Ubuntu 12.04 LTS
+- Ubuntu 10.04
+- Lubuntu 12.04
+- Ubuntu Server 12.04
+
+erforderliche (zusätzliche) Pakete:
+- <code>apache2, apache2-doc, apache2-utils, apache2.2-bin</code>
+- <code>mysql-server, mysql-server-5.5 ,mysql-server-core</code>
+- <code>lynx, lynx-cur</code>
+- <code>openssh, openssh-server</code>
+- <code>php5, php5-common, php5-mysql</code>
+- <code>proftpd</code>
+- <code>zip, unzip, unrar</code>
+- <code>apt, bash, hostname</code>
+
 
 
