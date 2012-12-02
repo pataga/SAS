@@ -2,13 +2,7 @@
 
 class MySQL {
 
-    private $mysql_host;
-    private $mysql_port;
-    private $mysql_user;
-    private $mysql_pass;
-    private $mysql_db;
-    private $result;
-    private $connection_res;
+    private $mysql_host,$mysql_port,$mysql_user,$mysql_pass,$mysql_db,$result,$con_res,$mode;
 
     public function __construct($host, $port, $user, $pass, $db=false) {
         $this->mysql_host = $host;
@@ -19,14 +13,17 @@ class MySQL {
         if ($db) $this->selectDB($db);
     }
 
+    function  __clone() {
+        
+    }
 
    /**
     *   Verbindet zu MySQL Server
     */
     private function connect() {
-        $this->connection_res = mysql_connect($this->mysql_host, $this->mysql_user, $this->mysql_pass);
+        $this->con_res = mysql_connect($this->mysql_host, $this->mysql_user, $this->mysql_pass);
         if (!empty($this->mysql_db))
-            mysql_select_db($this->db, $this->connection_res);
+            mysql_select_db($this->db, $this->con_res);
     }
 
 
@@ -35,7 +32,7 @@ class MySQL {
     *   @param Datenbankname
     */
     public function selectDB($db) {
-        if (!($this->database_res = mysql_select_db($db, $this->connection_res))) {
+        if (!($this->database_res = mysql_select_db($db, $this->con_res))) {
             throw new Exception("Fehler beim Verbinden der Datenbank ". mysql_error());
         } else {
             $this->mysql_db = $db;
@@ -45,15 +42,33 @@ class MySQL {
 
    /**
     *   Führt Query aus und gibt einen Klon von $this zurück
-    *   @param MySQL Query
+    *   @param (String) Query
     *   @return MySQL Instanz
     */
     public function Query($query) {
-        if (!($result = mysql_query($query, $this->connection_res))) {
-            throw new Exception("Fehler beim Ausf&uuml;hren des Querys ". mysql_error());
+        if (!($result = mysql_query($query, $this->con_res))) {
+            return 0;
         } else {
             $this->result = $result;
             return clone $this;
+        }
+    }
+
+
+    /**
+    *   Führt Query aus und gibt den ersten Datensatz als Array zurück
+    *   @param (String) Query
+    *   @return (Array) Row
+    */
+    public function QueryFirst($query) {
+        if (!($result = mysql_query($query, $this->con_res))) {
+            return 0;
+        } else {
+            if (!is_resource($result)) {
+                return 0;
+            } else {
+                return mysql_fetch_array($result);
+            }
         }
     }
 
@@ -116,7 +131,7 @@ class MySQL {
     *   @return bool
     */
     public function createDatabase($db) {
-        if (!$this->connection_res) {
+        if (!$this->con_res) {
             throw new Exception("Keine Verbindung zum MySQL Server".mysql_error());
         } else {
             $this->Query("CREATE DATABASE $db");
