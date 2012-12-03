@@ -9,6 +9,7 @@
 <fieldset style="width:auto;">
 <div style="height:auto;width:auto;min-width:100px;max-height:500px;max-width:800px;min-height:130px;overflow-x:scroll;overflow-y:scroll;">
 <?php
+    $data = $server->getServerData($server->getID());
     $result = $mysql_remote->Query("SHOW DATABASES");
     $databases = array();
     for ($i=0;$row = $result->fetchArray();$i++) {
@@ -28,10 +29,10 @@
     else if (isset($_GET['db'])&&!isset($_GET['t']))
     {
         $db = $_GET['db'];
-        $tables = $database_remote->getMySQLTables($db);
+        $tables = $mysql_remote->Query("SHOW TABLES FROM ".$_GET['db']);
         $dbcontent = "<table>";
-        foreach ($tables as $tab)
-            $dbcontent .= "<tr><td><a href='?p=mysql&s=db&db=$db&t=$tab'>$tab</a></td></tr>";
+        while ($tab = $tables->fetchArray())
+            $dbcontent .= "<tr><td><a href='?p=mysql&s=db&db=$db&t=".$tab[0]."'>".$tab[0]."</a></td></tr>";
 
         $dbcontent .= "</table>";
         printf("<h5><a href='?p=mysql&s=db'>%s MySQL</a> >> <a href='?p=mysql&s=db&db=%s'>%s</a></h5>",$data[3],$db,$db);
@@ -48,7 +49,7 @@
 
         $dbcontent = "<table><tr>";
         $itr = 0;
-        while ($col = $mysql_remote->fetchArray()) {
+        while ($col = $columns->fetchArray()) {
             $dbcontent .= "<td><a href='#' class='tooltip2'><h5>$col[0]</h5>
                                 <span><b>Typ</b> $col[1]</span>
                             </a></td>";

@@ -23,6 +23,16 @@ class Main {
         $this->user = new User($this);
         $this->server = new Server($this);
         $this->database = new Database($this);
+        $this->ssh = $this->setSSHInstance();
+    }
+
+    private function setSSHInstance() {
+        if (isset($_SESSION['server_id'])) {
+            $data = $this->server->getServerData($_SESSION['server_id']);
+            return new SSH($data[0], '22', $data[1], $data[2]);
+        } else {
+            return NULL;
+        }
     }
 
     public function getServerInstance() { return $this->server; }

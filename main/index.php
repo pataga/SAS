@@ -30,19 +30,10 @@ $loader = $main->getLoaderInstance();
 $user = $main->getUserInstance();
 $server = $main->getServerInstance();
 $database = $main->getDatabaseInstance();
-
-$ssh = null;
-
-$data = array();
+$ssh = $main->getSSHInstance();
 
 //Remote Instance
 $mysql_remote = null;
-
-
-if (isset($_SESSION['server_id'])) {
-    $data = $server->getServerData($_SESSION['server_id']);
-    $ssh = new SSH($data[0], '22', $data[1], $data[2]);
-}
 
 if (isset($_POST['username']) && isset($_POST['password'])) {
     $user->setUsername($_POST['username']);
