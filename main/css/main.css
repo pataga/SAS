@@ -510,7 +510,22 @@ pre {
     box-shadow: inset 0px 0px 7px rgba(0,0,0,0.2);
     border: 1px solid #ddd;
     font-family: Consolas, "Courier New", Courier, monospace;
-    font-size: 0.9em;
+    font-size: 1em;
+}
+
+pre.simple {
+  white-space: pre-wrap;
+    white-space: -moz-pre-wrap !important;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    word-wrap: break-word;
+    font-family: Consolas, "Courier New", Courier, monospace;
+    font-size: 1em;
+    border: none;
+    box-shadow: none;
+    background: none;
+    padding: 0;
+    margin: 0;
 }
 
 

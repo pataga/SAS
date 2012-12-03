@@ -1,8 +1,7 @@
-
-    <?php
-        $ssh = new Net_SSH2("localhost");
-        $ssh->login("gabriel", "12345");
-        $output .= $ssh->exec("ps ax");
-        
-        echo "<textarea style='width:400px;height:500px;'>$output</textarea>";
-    ?>
+<h3> Hier ensteht die Seite "Taskmanager"</h3>
+<fieldset>
+    <p>Pfad zur Datei mit Inhalt: 
+        <br><br>
+        <?php echo __file__; ?></p>
+</fieldset>
+<p style="text-align: center; font-weight: 700;">Entwickler: Patrick</p>
