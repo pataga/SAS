@@ -16,7 +16,7 @@ class Database {
 
     public function addMySQL($host, $user, $pass) {
         $server = $this->server;
-        $this->mysql->Query("INSERT INTO sas_server_mysql (sid,host,username,password) VALUES ('$server->getID()','$host','$user','$pass')");
+        $this->mysql->Query("INSERT INTO sas_server_mysql (sid,host,username,password) VALUES ('".$server->getID()."','$host','$user','$pass')");
         $this->mysql->Query("UPDATE sas_server_data SET mysql = 1 WHERE id = " . $server->getID());
     }
 
