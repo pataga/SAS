@@ -13,14 +13,11 @@
 session_start();
 
 require_once 'includes/config/config.mysql.php';
-require_once 'includes/classes/class.loader.php';
-require_once 'includes/classes/class.user.php';
-require_once 'includes/classes/class.server.php';
-require_once 'includes/classes/class.ssh.php';
-require_once 'includes/classes/class.db.php';
-require_once 'includes/classes/class.mysql.php';
-require_once 'includes/classes/class.table.php';
-require_once 'includes/classes/class.result.php';
+
+function __autoload($name) {
+    require_once 'includes/classes/class.'.strtolower($name).'.php';
+}
+
 
 if (is_dir('install') && !isset($data)) {
     header('Location: install');
