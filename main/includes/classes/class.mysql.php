@@ -13,9 +13,6 @@ class MySQL {
         if ($db) $this->selectDB($db);
     }
 
-    function  __clone() {
-        
-    }
 
    /**
     *   Verbindet zu MySQL Server
@@ -50,7 +47,7 @@ class MySQL {
             return 0;
         } else {
             $this->result = $result;
-            return clone $this;
+            return new Result($this->result);
         }
     }
 
@@ -74,58 +71,6 @@ class MySQL {
 
 
    /**
-    *   Fetcht Query Result zu einem assoziativen Array
-    *   @return Array
-    */
-    public function fetchAssoc() {
-        if (!is_resource($this->result)) {
-            throw new Exception("Result ist keine Resource ".mysql_error());
-        } else {
-            return mysql_fetch_assoc($this->result);
-        }
-    }
-
-
-   /**
-    *   Fetcht Query Result zu einem Array
-    *   @return Array
-    */
-    public function fetchArray() {
-        if (!is_resource($this->result)) {
-            throw new Exception("Result ist keine Resource ".mysql_error());
-        } else {
-            return mysql_fetch_array($this->result);
-        }
-    }
-
-
-   /**
-    *   Fetcht Query Result zu einem Objekt
-    *   @return Object
-    */
-    public function fetchObject() {
-        if (!is_resource($this->result)) {
-            throw new Exception("Result ist keine Resource ".mysql_error());
-        } else {
-            return mysql_fetch_object($this->result);
-        }
-    }
-
-
-    /**
-    *   Gibt die Anzahl der Rows zurück
-    *   @return Integer
-    */
-    public function getRowsCount() {
-        if (!is_resource($this->result)) {
-            throw new Exception("Result ist keine Resource ".mysql_error());
-        } else {
-            return mysql_num_rows($this->result);
-        }
-    }
-
-
-   /**
     *   Erstellt eine neue Datenbank
     *   @param String
     *   @return bool
@@ -138,6 +83,7 @@ class MySQL {
             return true;
         }
     }
+
 
    /**
     *   Neue Instanz zum Bearbeiten von Tabellen

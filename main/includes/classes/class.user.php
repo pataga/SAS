@@ -43,10 +43,10 @@ class User {
 
     public function AuthChallenge() {
         $user = mysql_real_escape_string($this->_username);
-        $result = $this->_mysql->Query("SELECT * FROM sas_users WHERE username = '$user'") or die(mysql_error());
+        $result = $this->_mysql->Query("SELECT * FROM sas_users WHERE username = '$user'");
 
         if ($result->getRowsCount() > 0) {
-            $row = $this->_mysql->fetchObject();
+            $row = $result->fetchObject();
 
             if ($row->password == md5($this->_password))
                 $this->setAuthState(true, $row->id);

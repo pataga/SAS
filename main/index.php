@@ -20,6 +20,7 @@ require_once 'includes/classes/class.ssh.php';
 require_once 'includes/classes/class.db.php';
 require_once 'includes/classes/class.mysql.php';
 require_once 'includes/classes/class.table.php';
+require_once 'includes/classes/class.result.php';
 
 if (is_dir('install') && !isset($data)) {
     header('Location: install');
@@ -75,9 +76,10 @@ $inc_file = $loader->getIncFile();
 if (isset($_SESSION['server_id'])) {
     $remote_mysql_data = $server->getMySQLData();
     if (is_array($remote_mysql_data)) {
-        $mysql_remote = new MySQL($remote_mysql_data[0], $remote_mysql_data[1], $remote_mysql_data[2], $remote_mysql_data[3]);
+        $mysql_remote = new MySQL($remote_mysql_data[0],$remote_mysql_data[1],$remote_mysql_data[2],$remote_mysql_data[3]);
+    } else {
+        print_r("Keine Datenbank Remote Verbindung");
     }
-    
 }
 
 require_once $inc_file;
