@@ -5,8 +5,8 @@ class Server {
     private $server_id;
     private $mysql;
 
-    public function __construct($_mysql) {
-        $this->mysql = $_mysql;
+    public function __construct($main) {
+        $this->mysql = $main->getMySQLInstance();
         $this->server_id = isset($_SESSION['server_id']) ? $_SESSION['server_id'] : 0;
     }
 

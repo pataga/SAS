@@ -5,9 +5,9 @@ class Database {
     private $mysql;
     private $server;
 
-    public function __construct($mysql, $server) {
-        $this->mysql = $mysql;
-        $this->server = $server;
+    public function __construct($main) {
+        $this->mysql = $main->getMySQLInstance();
+        $this->server = $main->getServerInstance();
     }
 
     public function addServer($name, $host, $port, $user, $pass) {

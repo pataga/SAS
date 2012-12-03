@@ -7,9 +7,9 @@ class Loader {
     private $content = "";
     private $mysql = null;
 
-    public function __construct($mysql_)
+    public function __construct($main)
     {
-        $this->mysql = $mysql_;
+        $this->mysql = $main->getMySQLInstance();
     }
 
     private function loadTop() {

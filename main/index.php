@@ -18,17 +18,18 @@ function __autoload($name) {
     require_once 'includes/classes/class.'.strtolower($name).'.php';
 }
 
+$main = new Main($data);
 
 if (is_dir('install') && !isset($data)) {
     header('Location: install');
     die();
 }
 
-$mysql = new MySQL($data[0], $data[1], $data[2], $data[3], $data[4]);
-$loader = new Loader($mysql);
-$user = new User($mysql);
-$server = new Server($mysql);
-$database = new Database($mysql, $server);
+$mysql = $main->getMySQLInstance();
+$loader = $main->getLoaderInstance();
+$user = $main->getUserInstance();
+$server = $main->getServerInstance();
+$database = $main->getDatabaseInstance();
 
 $ssh = null;
 
@@ -74,8 +75,6 @@ if (isset($_SESSION['server_id'])) {
     $remote_mysql_data = $server->getMySQLData();
     if (is_array($remote_mysql_data)) {
         $mysql_remote = new MySQL($remote_mysql_data[0],$remote_mysql_data[1],$remote_mysql_data[2],$remote_mysql_data[3]);
-    } else {
-        print_r("Keine Datenbank Remote Verbindung");
     }
 }
 
