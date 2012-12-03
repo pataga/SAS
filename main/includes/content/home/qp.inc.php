@@ -1,77 +1,87 @@
 <?php
-$ssh->openConnection();                             //stelle SSH Verbindung her...
+//stelle SSH Verbindung her...
+$ssh->openConnection();
 
 if (isset($_POST['a2-stop']) && isset($_POST['a2-stop-h'])) {           //wenn hidden+submit ..
-    $ssh->execute("service apache2 stop");                              //.. führe das aus
+    $ssh->execute("service apache2 stop");
+    $loader->reload();                              //.. führe das aus
 } elseif (isset($_POST['a2-start']) && isset($_POST['a2-start-h'])) {
     $ssh->execute("service apache2 start");
+    $loader->reload();
 }
 if (isset($_POST['postfix-stop']) && isset($_POST['postfix-stop-h'])) {
     $ssh->execute("service postfix stop");
 } elseif (isset($_POST['postfix-start']) && isset($_POST['postfix-start-h'])) {
     $ssh->execute("service postfix start");
+    $loader->reload();
 }
 if (isset($_POST['proftpd-stop']) && isset($_POST['proftpd-stop-h'])) {
     $ssh->execute("service proftpd stop");
+    $loader->reload();
 } elseif (isset($_POST['a2-start']) && isset($_POST['proftpd-start-h'])) {
     $ssh->execute("service proftpd start");
+    $loader->reload();
 }
+
 if (isset($_POST['mysql-stop']) && isset($_POST['mysql-stop-h'])) {
     $ssh->execute("service mysql stop");
+    $loader->reload();
 } elseif (isset($_POST['mysql-start']) && isset($_POST['mysql-start-h'])) {
     $ssh->execute("service mysql start");
+    $loader->reload();
 }
 if (isset($_POST['smbd-stop']) && isset($_POST['smbd-stop-h'])) {
     $ssh->execute("service apache2 stop");
+    $loader->reload();
 } elseif (isset($_POST['smbd-start']) && isset($_POST['smbd-start-h'])) {
     $ssh->execute("service apache2 start");
+    $loader->reload();
 }
 
 //if (isset($_POST['']) && isset($_POST[''])) {
 // $ssh->execute("");
 //}
-
 ?>
 <h3>Quickpanel</h3>
 <fieldset>
     <div class="fuenftel-box boxcenter">
         <h5>Apache2</h5>
         <form action="<?php $_SERVER['SCRIPT_NAME'] ?>" method="post">
-            <?php
-            echo ($server->getServiceStatus($ssh, 'apache2')) ? '<input type="hidden" name="a2-stop-h"><input type="submit" name="a2-stop" value="Stop" class="button pink">' : '<input type="hidden" name="a2-start-h"><input type="submit" name="a2-start" value="Start" class="button green">';
-            ?>
+<?php
+echo ($server->getServiceStatus($ssh, 'apache2')) ? '<input type="hidden" name="a2-stop-h"><input type="submit" name="a2-stop" value="Stop" class="button pink">' : '<input type="hidden" name="a2-start-h"><input type="submit" name="a2-start" value="Start" class="button green">';
+?>
         </form>
     </div>
     <div class="fuenftel-box boxcenter">
         <h5>Postfix</h5>
         <form action="<?php $_SERVER['SCRIPT_NAME'] ?>" method="post">
-            <?php
-            echo ($server->getServiceStatus($ssh, 'postfix')) ? '<input type="hidden" name="postfix-stop-h"><input type="submit" name="postfix-stop" value="Stop" class="button pink">' : '<input type="hidden" name="postfix-start-h"><input type="submit" name="postfix-start" value="Start" class="button green">';
-            ?>
+<?php
+echo ($server->getServiceStatus($ssh, 'postfix')) ? '<input type="hidden" name="postfix-stop-h"><input type="submit" name="postfix-stop" value="Stop" class="button pink">' : '<input type="hidden" name="postfix-start-h"><input type="submit" name="postfix-start" value="Start" class="button green">';
+?>
         </form>
     </div>
     <div class="fuenftel-box boxcenter">
         <h5>FTP</h5>
         <form action="<?php $_SERVER['SCRIPT_NAME'] ?>" method="post">
-            <?php
-            echo ($server->getServiceStatus($ssh, 'proftpd')) ? '<input type="hidden" name="proftpd-stop-h"><input type="submit" name="proftpd-stop" value="Stop" class="button pink">' : '<input type="hidden" name="proftpd-start-h"><input type="submit" name="proftpd-start" value="Start" class="button green">';
-            ?>
+<?php
+echo ($server->getServiceStatus($ssh, 'proftpd')) ? '<input type="hidden" name="proftpd-stop-h"><input type="submit" name="proftpd-stop" value="Stop" class="button pink">' : '<input type="hidden" name="proftpd-start-h"><input type="submit" name="proftpd-start" value="Start" class="button green">';
+?>
         </form>
     </div>
     <div class="fuenftel-box boxcenter">
         <h5>MySQL</h5>
         <form action="<?php $_SERVER['SCRIPT_NAME'] ?>" method="post">
-            <?php
-            echo ($server->getServiceStatus($ssh, 'mysql')) ? '<input type="hidden" name="mysql-stop-h"><input type="submit" name="mysql-stop" value="Stop" class="button pink">' : '<input type="hidden" name="mysql-start-h"><input type="submit" name="mysql-start" value="Start" class="button green">';
-            ?>
+<?php
+echo ($server->getServiceStatus($ssh, 'mysql')) ? '<input type="hidden" name="mysql-stop-h"><input type="submit" name="mysql-stop" value="Stop" class="button pink">' : '<input type="hidden" name="mysql-start-h"><input type="submit" name="mysql-start" value="Start" class="button green">';
+?>
         </form>
     </div>
     <div class="fuenftel-box boxcenter lastbox">
         <h5>Samba</h5>
         <form action="<?php $_SERVER['SCRIPT_NAME'] ?>" method="post">
-            <?php
-            echo ($server->getServiceStatus($ssh, 'smbd')) ? '<input type="hidden" name="smbd-stop-h"><input type="submit" name="smbd-stop" value="Stop" class="button pink">' : '<input type="hidden" name="smbd-start-h"><input type="submit" name="smbd-start" value="Start" class="button green">';
-            ?>
+<?php
+echo ($server->getServiceStatus($ssh, 'smbd')) ? '<input type="hidden" name="smbd-stop-h"><input type="submit" name="smbd-stop" value="Stop" class="button pink">' : '<input type="hidden" name="smbd-start-h"><input type="submit" name="smbd-start" value="Start" class="button green">';
+?>
         </form>
     </div>
 </fieldset>
