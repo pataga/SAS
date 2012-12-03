@@ -20,6 +20,7 @@ class SSH {
             $this->_pass = $pass;
     }
 
+
    /**
     * Öffnet Verbindung zum SSH Daemon und Authentifiziert sich
     */
@@ -30,6 +31,7 @@ class SSH {
         if (!ssh2_auth_password($this->_connection, $this->_user, $this->_pass))
             throw new Exception('SSH Autentication failed');
     }
+
 
    /**
     * Führt einen Befehl über die SSH Verbindung aus

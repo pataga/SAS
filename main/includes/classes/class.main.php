@@ -28,7 +28,8 @@ class Main {
 
     private function setSSHInstance() {
         if (isset($_SESSION['server_id'])) {
-            $data = $this->server->getServerData($_SESSION['server_id']);
+            $this->server->setID($_SESSION['server_id']);
+            $data = $this->server->getServerData();
             return new SSH($data[0], '22', $data[1], $data[2]);
         } else {
             return NULL;

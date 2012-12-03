@@ -10,6 +10,7 @@ class Server {
         $this->server_id = isset($_SESSION['server_id']) ? $_SESSION['server_id'] : 0;
     }
 
+
    /**
     * Gibt Server ID zurück
     * @return (int) ServerID
@@ -18,14 +19,30 @@ class Server {
         return $this->server_id;
     }
 
+    /**
+     * Gibt Server Adresse zurück
+     * @return (String) Adresse
+     */
+    public function getAddress() {
+        return $this->server_address;
+    }
+
+
+    /**
+     * Setzt Server ID
+     * @param (int) ID 
+     */
+    public function setID($id) {
+        $this->server_id = $id;
+    }
+
 
    /**
     * Gibt einen Array mit den SSH Daten zurück
     * @param (int) ServerID
     * @return (array) SSH Daten
     */
-    public function getServerData($id = 1) {
-        $this->server_id = $id;
+    public function getServerData() {
         $result = $this->mysql->Query("SELECT * FROM sas_server_data WHERE id = $this->server_id");
 
         if ($result->getRowsCount() > 0) {
@@ -36,6 +53,8 @@ class Server {
             $data[1] = $row->user;
             $data[2] = $row->pass;
             $data[3] = $row->name;
+
+            $this->server_address = $row->host;
 
             return $data;
         }

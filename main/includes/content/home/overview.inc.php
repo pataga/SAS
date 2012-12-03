@@ -23,7 +23,7 @@ $userswholi = str_replace(" ", ", ", $userswho);
         <table>
             <tr>
                 <td>Host-IP:</td>
-                <td><a href="http://<?php echo $data[0]; ?>" target="_blank"><?php echo $data[0]; ?></a></td>
+                <td><a href="http://<?php echo $data[0]; ?>" target="_blank"><?php echo $server->getAddress(); ?></a></td>
             </tr>
             <tr class="odd">
                 <td>Host-Name:</td>

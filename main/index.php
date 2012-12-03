@@ -55,8 +55,11 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 }
 
 
-//Wenn ServerID gesetzt, dann versuche eine Remote MySQL Verbindung aufzubauen
+//Wenn ServerID gesetzt, dann ....
 if (isset($_SESSION['server_id'])) {
+    //... setze ServerID in Klasse
+    $server->setID($_SESSION['server_id']);
+    //... versuche eine Remote MySQL Verbindung aufzubauen
     $remote_mysql_data = $server->getMySQLData();
     if (is_array($remote_mysql_data)) {
         $mysql_remote = new MySQL($remote_mysql_data[0],$remote_mysql_data[1],$remote_mysql_data[2],$remote_mysql_data[3]);
