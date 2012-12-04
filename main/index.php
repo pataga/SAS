@@ -20,7 +20,15 @@ require_once 'includes/config/config.mysql.php';
 
 //Lade benötigte Klassen
 function __autoload($name) {
-    require_once 'includes/classes/class.'.strtolower($name).'.php';
+    $path = "includes/classes/";
+    if (file_exists($path.'class.'.strtolower($name).'.php')) {
+        require_once $path.'class.'.strtolower($name).'.php';
+    } elseif (file_exists($path.'module/mysql/class.'.strtolower($name).'.php')) {
+        require_once $path.'module/mysql/class.'.strtolower($name).'.php';
+    } else {
+        throw new Exception("Es ist ein Fehler aufgetreten! Die Klasse $name konnte nicht geladen werden!");
+    }
+    
 }
 
 
