@@ -25,6 +25,8 @@ function __autoload($name) {
         require_once $path.'class.'.strtolower($name).'.php';
     } elseif (file_exists($path.'module/mysql/class.'.strtolower($name).'.php')) {
         require_once $path.'module/mysql/class.'.strtolower($name).'.php';
+    } elseif (file_exists($path.'module/tools/class.'.strtolower($name).'.php')) {
+        require_once $path.'module/tools/class.'.strtolower($name).'.php';
     } else {
         throw new Exception("Es ist ein Fehler aufgetreten! Die Klasse $name konnte nicht geladen werden!");
     }
