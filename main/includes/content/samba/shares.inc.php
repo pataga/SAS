@@ -1,9 +1,20 @@
 <?php
 
+
+/**
+* Licensed under The Apache License
+*
+* @copyright Copyright 2012-2013 Patrick Farnkopf, Tanja Weiser, Gabriel Wanzek (PaTaGa)
+* @link https://github.com/pataga/SAS
+* @since SAS v1.0.0
+* @license Apache License v2 (http://www.apache.org/licenses/LICENSE-2.0.txt
+* @author Tanja Weiser
+*
+*/
+
+
 	if(isset($_POST['add']))
 	{
-
-
 		$name = $_POST['name'];
 		$path = $_POST['path'];
 		$validusers = $_POST['validusers'];
@@ -49,10 +60,11 @@ directory mask = $directorymask
 public = $public
 writeable = $writeable
 read only = $readonly";
-$server->addToFile($ssh, '/etc/samba/smb.conf', $content);
 
-$ssh->execute('service smbd reload');
+$server->addToFile($ssh, '/etc/samba/smb.conf', $content);
 // Schreiben der neuen Freigabe in die smb.conf
+$ssh->execute('service smbd reload');
+// Neustart
 }
 
 ?>
