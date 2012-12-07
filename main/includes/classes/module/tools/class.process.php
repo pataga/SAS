@@ -14,7 +14,7 @@ class Process {
     * @return (array) Prozesse
     */	
 	private function getProcesses() {
-		return $this->ssh->execute('ps axw', 2);
+		return $this->ssh->execute('ps auxw', 2);
 	}
 
    /**
@@ -31,15 +31,22 @@ class Process {
 			$attr = array();
 			foreach($attrW as $currentAttr) {
 				$currentAttr = trim($currentAttr);
-				if(!empty($currentAttr))
+
+				if(!empty($currentAttr) || $currentAttr === '0')
 					$attr[] = $currentAttr; 
 			}
 			
-			$data[$i][0] = $attr[0];
-			$data[$i][1] = $attr[1];
-			$data[$i][2] = $attr[2];
-			$data[$i][3] = $attr[3];
-			$data[$i][4] = $attr[4];
+			$data[$i][] = $attr[0];  //USER
+			$data[$i][] = $attr[1];  //PID
+			$data[$i][] = $attr[2];  //CPU
+			$data[$i][] = $attr[3];  //MEM
+			$data[$i][] = $attr[4];  //VSZ
+			$data[$i][] = $attr[5];  //RSS
+			$data[$i][] = $attr[6];  //TTY
+			$data[$i][] = $attr[7];  //STAT
+			$data[$i][] = $attr[8];  //START
+			$data[$i][] = $attr[9];  //TIME
+			$data[$i][] = $attr[10]; //COMMAND
 			$i++;
 		}
 		return $data;
