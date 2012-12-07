@@ -2,12 +2,15 @@
 
 if(isset($_POST['stop']))
 {
-	// Stop
+	$ssh->openConnection();
+	$ssh->execute('service smbd stop');
 }
 if(isset($_POST['restart']))
 {
-	// neustarten
+	$ssh->openConnection();
+	$ssh->execute('service smbd restart');
 }
+
 ?>
 
 <h3>Samba Übersicht</h3>
