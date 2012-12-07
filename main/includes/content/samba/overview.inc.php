@@ -24,22 +24,36 @@ if(isset($_POST['restart']))
 	$ssh->execute('service smbd restart');
 }
 
+$ssh->openConnection();
+$line=$ssh->execute('pdbedit -L',2);
+foreach($line as $value)
+{
+	$pdbedit=explode(":",$value);
+}
+
+
 ?>
 
 <h3>Samba Übersicht</h3>
 <fieldset>
-<p>Pfad zur Datei mit Inhalt: 
-<br><br>
-    <?php echo __file__;?></p>
+<div class ="drittel-box">
+	<h5>Aktuell angelegte User:</h5>
+</div>
+<div class ="zweidrittel-box lastbox">
+	<h5><?=$pdbedit[0]."<br>"?></h5> 
+</div>
 </fieldset>
+
 <fieldset>
 <form action="index.php?p=samba" method="POST">
 <div class ="drittel-box"> 
 <h5>Stop</h5>
+<p><b>Stoppt den Dienst sofort</b></p>
 	<br><input type="submit" class="button pink" name="stop" value="stop"> 
 </div>
 <div class ="drittel-box lastbox">
 <h5>Restart</h5>
+<p><b>Startet den Dienst neu</b></p>
 	<br><input type="submit" class="button black" name="restart" value="neustarten">
 </div>
 </div>
