@@ -26,9 +26,11 @@ if(isset($_POST['restart']))
 
 $ssh->openConnection();
 $line=$ssh->execute('pdbedit -L',2);
+$ausgabe = "";
 foreach($line as $value)
 {
 	$pdbedit=explode(":",$value);
+	$ausgabe .=$pdbedit[0]."<br>";
 }
 
 
@@ -40,7 +42,7 @@ foreach($line as $value)
 	<h5>Aktuell angelegte User:</h5>
 </div>
 <div class ="zweidrittel-box lastbox">
-	<h5><?=$pdbedit[0]."<br>"?></h5> 
+	<h5><?=$ausgabe."<br>"?></h5> 
 </div>
 </fieldset>
 
