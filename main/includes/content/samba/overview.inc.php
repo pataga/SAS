@@ -8,12 +8,6 @@ if(isset($_POST['restart']))
 {
 	// neustarten
 }
-
-
-
-
-
-
 ?>
 
 <h3>Samba Übersicht</h3>
