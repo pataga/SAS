@@ -1,4 +1,18 @@
 <?php
+
+
+    /**
+    * Licensed under The Apache License
+    *
+    * @copyright Copyright 2012-2013 Patrick Farnkopf, Tanja Weiser, Gabriel Wanzek (PaTaGa)
+    * @link https://github.com/pataga/SAS
+    * @since SAS v1.0.0
+    * @license Apache License v2 (http://www.apache.org/licenses/LICENSE-2.0.txt
+    * @author Patrick Farnkopf
+    *
+    */
+
+
     if (!is_writable('../includes/config/config.mysql.php') && !isset($_GET['p']))
     {
         echo '<b>Die Datei includes/config/config.mysql.php konnte nicht beschrieben werden. Bitte setzen sie die Berechtigung auf 777 (chmod 777 config.mysql.php)<br>Weiterleitung zu Schritt 2 in 5 Sekunden';

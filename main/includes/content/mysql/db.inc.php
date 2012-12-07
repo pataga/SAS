@@ -1,4 +1,18 @@
 <?php
+
+
+    /**
+    * Licensed under The Apache License
+    *
+    * @copyright Copyright 2012-2013 Patrick Farnkopf, Tanja Weiser, Gabriel Wanzek (PaTaGa)
+    * @link https://github.com/pataga/SAS
+    * @since SAS v1.0.0
+    * @license Apache License v2 (http://www.apache.org/licenses/LICENSE-2.0.txt
+    * @author Patrick Farnkopf
+    *
+    */
+
+
     if (!$server->isInstalled('mysql')) {
         header('Location: ?p=mysql&s=configure');
         die();
@@ -11,7 +25,7 @@
 <fieldset style="width:auto;">
     <div style="height:auto;width:auto;min-width:100px;max-height:500px;max-width:800px;min-height:130px;overflow-x:scroll;overflow-y:scroll;">
         <?php
-            print($dbhandler->buildLinkTree($data[1], 
+            print(DBHandler::buildLinkTree($data[1], 
                  (isset($_GET['db']) ? $_GET['db'] : false), 
                  (isset($_GET['t']) ? $_GET['t'] : false)));
         ?>
