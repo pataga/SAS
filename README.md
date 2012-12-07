@@ -2,7 +2,11 @@
 
 ---
 
-**Projektarbeit von Patrick Farnkopf, Tanja Weiser und Gabriel Wanzek** *(PaTaGa)* **| 2BKI2 | WvS² Mannheim**
+→ **Projektarbeit von Patrick Farnkopf, Tanja Weiser und Gabriel Wanzek (PaTaGa) | 2BKI2 | WvS² Mannheim**
+
+---
+
+→ **Lizenziert unter der [Apache Lizenz v2.0][5]**
 
 ---
 
@@ -30,16 +34,16 @@ Passwort:  geheim
 ~~~
            
 ---
-###Dokumentation:
+###SAS - Dokumente:
 
 > **[SAS Dokumentation (Google Documents)][1]**
 >
 > **[SAS Notizbuch (Google Documents)][4]**
 
 ---
-###Präsentation:
+###Projektvorstellung - Präsentation:
 
-> **[SAS Präsentation "Projektvorstellung" (Google Documents)][3]**
+> **[SAS Präsentation (Google Documents)][3]**
 
 ---
 ####Anforderungen des Host Servers:
@@ -54,10 +58,14 @@ Passwort:  geheim
 ####Anforderungen des fernsteuerbaren Server:
 
 Getestete Distributionen:
-- Ubuntu 12.04 LTS
-- Ubuntu 10.04
-- Lubuntu 12.04
-- Ubuntu Server 12.04
+- Ubuntu 12.04.1 LTS Desktop - 32 & 64-Bit
+- Backtrack5 R3 Desktop - 32-Bit
+- Lubuntu 12.04 Desktop - 64-Bit
+
+_diese Distributionen wurden im Rahmen der Entwicklung verwendet_
+
+#####Empfohlene und bisher getestete Server-Distributionen:
+- Ubuntu Server 12.04.1 LTS - 64-Bit ([Download][7])
 
 #####erforderliche (zusätzliche) Pakete:
 - <code>apache2, apache2-doc, apache2-utils, apache2.2-bin</code>
@@ -73,5 +81,7 @@ Getestete Distributionen:
 [2]: http://46.38.238.216/SAS
 [3]: http://goo.gl/8UqKr
 [4]: http://goo.gl/OZT5x
+[5]: http://www.apache.org/licenses/LICENSE-2.0.html
+[7]: http://releases.ubuntu.com/precise/ubuntu-12.04.1-server-amd64.iso
 [logo2]: http://mangopix.de/local_images/sas-logo2.png
 
