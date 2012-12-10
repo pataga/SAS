@@ -4,44 +4,32 @@
 <h3>Tooltip</h3>
 <br>
 <a href="#" class="tooltip">Dein Etwas
-    <span><b>Titel</b><br><br>Yeeeeey, jetzt siehst eine Beschreibung!</span>
+    <span><b>tooltip</b><br><br>Yeeeeey, jetzt siehst eine Beschreibung!</span>
+</a>&nbsp;&nbsp;
+<a href="#" class="tooltip2">Dein Etwas 2
+    <span><b>tooltip2</b><br>Yeeeeey, jetzt siehst eine kleine Beschreibung, jedoch hat "Dein Etwas" keine Unterstriche</span>
+</a>&nbsp;&nbsp;
+<a href="#" class="tooltip3">Dein Etwas 3
+    <span><b>tooltip3</b><br>Yeeeeey, jetzt siehst eine große Beschreibung!</span>
 </a>
 <hr>
-<h3>&Uuml;berschriften</h3>
-<table border="1">
-    <tr>
-        <td>Arial</td>
-        <td>Ubuntu</td>
-    </tr>
-    <tr>
-        <td>
-            <h1 class="normal">&Uuml;berschrift 1</h1>
-            <h2>&Uuml;berschrift 2</h2>
-            <h3>&Uuml;berschrift 3</h3>
-            <h4>&Uuml;berschrift 4</h4>
-            <h5>&Uuml;berschrift 5</h5>
-            <h6>&Uuml;berschrift 6</h6>
-        </td>
-        <td>
-            <h1 class="ubuntu normal">&Uuml;berschrift 1</h1>
-            <h2 class="ubuntu">&Uuml;berschrift 2</h2>
-            <h3 class="ubuntu">&Uuml;berschrift 3</h3>
-            <h4 class="ubuntu">&Uuml;berschrift 4</h4>
-            <h5 class="ubuntu">&Uuml;berschrift 5</h5>
-            <h6 class="ubuntu">&Uuml;berschrift 6</h6>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <code class="fancy">&lt;h1&gt;&amp;Uuml;berschrift&lt;/h1&gt;</code>
-        </td>
-        <td>
-            <code class="fancy">&lt;h1 class="ubuntu"&gt;&amp;Uuml;berschrift&lt;/h1&gt;</code>
-        </td>
-    </tr>
-</table>
+
+<fieldset>
+    <legend>&Uuml;berschriften</legend>
+    <h1 class="normal">&Uuml;berschrift 1</h1>
+    <h2>&Uuml;berschrift 2</h2>
+    <h3>&Uuml;berschrift 3</h3>
+    <h4>&Uuml;berschrift 4</h4>
+    <h5>&Uuml;berschrift 5</h5>
+    <h6>&Uuml;berschrift 6</h6>
+</fieldset>
 <hr>
-<div style="text-align:center;"><p><img src="img/load.gif" alt="Loading.."> <br>Ladekringel (unendlich, GIF-Animation)</p></div>
+<fieldset>
+    <legend>Ladekringel (Grafik)</legend>
+<p>
+    <img src="img/load.gif" alt="Loading..">
+</p>
+</fieldset>
 <hr>
 <h3>(Lade-)Balken</h3>
 <p>Durch die CSS-Class "stripes" werden animierte Streifen angezeigt.</p>
@@ -133,9 +121,85 @@
         <td class="action"><a href="#" class="view">View</a><a href="#" class="edit">Edit</a><a href="#" class="delete">Delete</a></td>
     </tr>                        
 </table>
+<hr>
+<h3>Tabelle mit Sortierung</h3>
+<table id="sortable" class="s"> 
+    <thead> 
+        <tr> 
+            <th>ID</th>
+            <th>Vorname</th> 
+            <th>Nachname</th> 
+            <th>E-Mail</th> 
+            <th>Wert</th> 
+            <th>Wert 2</th> 
+        </tr> 
+    </thead> 
+    <tbody> 
+        <tr> 
+            <td>1</td>
+            <td>Alex</td> 
+            <td>Habuschja</td> 
+            <td>alex.ha@gmail.com</td> 
+            <td>50.0</td> 
+            <td>http://www.jsmith.com</td> 
+        </tr> 
+        <tr> 
+            <td>2</td>
+            <td>Bernd</td> 
+            <td>Müller</td> 
+            <td>b.m@yahoo.com</td> 
+            <td>51.02</td> 
+            <td>http://www.frank.com</td> 
+        </tr> 
+        <tr> 
+            <td>3</td>
+            <td>Clown</td> 
+            <td>Schmidt</td> 
+            <td>c.schmidt@hotmail.com</td> 
+            <td>45.20</td> 
+            <td>http://www.jdoe.com</td> 
+        </tr> 
+        <tr> 
+            <td>4</td>
+            <td>David</td> 
+            <td>Bolleknolle</td> 
+            <td>david.bolle@earthlink.net</td> 
+            <td>50.00</td> 
+            <td>http://www.timconway.com</td> 
+        </tr> 
+        <tr> 
+            <td>5</td>
+            <td>Hermann</td> 
+            <td>Wald</td> 
+            <td>hr.wald@earthlink.net</td> 
+            <td>50.2210</td> 
+            <td>http://www.timconway.com</td> 
+        </tr> 
+        <tr> 
+            <td>6</td>
+            <td>Ulf</td> 
+            <td>Knulf</td> 
+            <td>Ulf.Knulf@earthlink.net</td> 
+            <td>4540.00</td> 
+            <td>http://www.timconway.com</td> 
+        </tr> 
+        <tr> 
+            <td>7</td>
+            <td>Friedel</td> 
+            <td>Bolleknolle</td> 
+            <td>Friedel.bolle@earthlink.net</td> 
+            <td>90.00</td> 
+            <td>http://www.timconway.com</td> 
+        </tr> 
+    </tbody> 
+</table>
+<hr>
 <h3>Formular</h3>
 <fieldset>
-    <p><label>Sample label:</label><input type="text" class="text-long" /></p>
+    <legend>Formularname</legend>
+    <label>Sample label:</label><input type="text" class="text-long" />
+    <br>
+    <br>
     <p><label>Sample label:</label><input type="text" class="text-medium" /><input type="text" class="text-small" /><input type="text" class="text-small" /></p>
     <p><label>Sample label:</label>
         <select>

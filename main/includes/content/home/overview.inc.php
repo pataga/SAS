@@ -32,7 +32,7 @@ $userswholi = str_replace(" ", ", ", $userswho);
 
 <h3>Serverübersicht</h3>
 <fieldset>
-    <h5>Aktuelle Daten ihres Servers</h5>
+    <legend>Aktuelle Daten ihres Servers</legend>
     <div class="halbe-box">
         <table>
             <tr>
@@ -152,8 +152,9 @@ $userswholi = str_replace(" ", ", ", $userswho);
     <br><br>
     <hr>
 </fieldset>
-<h3>Notizbuch</h3>
+
 <fieldset>
+    <legend>Notizbuch</legend>
     <form action="<?php echo "test" ?>"></form>
     <textarea name="notizen">Diese Seite ist bis auf das Notizfeld voll funktionsfähig</textarea>
     <input type="submit" class="button black" value="Notizen speichern">

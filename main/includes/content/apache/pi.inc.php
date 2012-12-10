@@ -31,7 +31,7 @@ if (isset($_POST['del_file']) && isset($_POST['del_file_s'])) {         //wenn h
         <iframe class="phpinfo" src="http://<?php echo $server->getAddress(); ?>/phpinfo.php" frameborder="0"></iframe>
         <br>
         <hr>
-        <p>Um die grafische phpinfo zu sehen, muss der gestarten sein. Sollte der Apache nicht gestartet sein, können Sie die phpinfo optional als Textdatei generieren.</p>
+        <p>Um die phpinfo als HTML-Dokument zu sehen, muss der Webserver gestartet sein. Sollte dieser nicht gestartet sein, können Sie die phpinfo optional als Textdatei generieren.</p>
     </div>
     <?php
     if (isset($_POST['show_txt']) && isset($_POST['show_txt_s'])) {

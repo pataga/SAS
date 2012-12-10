@@ -1,4 +1,18 @@
-/* ==========================================================================
+/* =======================================================================
+
+== Licensed under The Apache License ==
+
+- Copyright 2012-2013 Patrick Farnkopf, Tanja Weiser, Gabriel Wanzek (PaTaGa)
+
+- https://github.com/pataga/SAS
+
+- Apache License v2 (http://www.apache.org/licenses/LICENSE-2.0.txt
+ 
+- Author: Gabriel Wanzek
+
+========================================================================== 
+
+==========================================================================
 Schriftarten
 ========================================================================== */
 
@@ -129,6 +143,7 @@ Hauptnavigation (und Wrapper)
     width: 980px;
     font-size: 1.25em;
     font-weight: 700;
+
 }
 
 #nav ul {
@@ -136,7 +151,8 @@ Hauptnavigation (und Wrapper)
     margin: 0; 
     padding: 0;
     float: left;
-    background-color: #333; 
+    background-color: #333;
+    box-shadow: 2px 2px 3px #888,-2px -2px 3px #888;
 
 }
 
@@ -247,6 +263,7 @@ Layout: Sidebar + Content
     width: 190px;
     margin: 0px;
     padding: 0px;
+    font-size: 1em;
     border: 1px solid #ccc;
     -webkit-box-shadow: 0 0 5px #888;
     box-shadow: 0 0 5px #888;
@@ -379,13 +396,13 @@ Template-Features [Text Formatierungen und so ...]
 }
 
 ::-webkit-input-placeholder {
-    color:#AAAAAA !important; 
-    font-style: italic !important;
+    color:#AAA !important; 
+    font-style: italic !important; 
 }
 
 :-moz-placeholder {
-    color:#AAAAAA !important; 
-    font-style: italic !important;
+    color:#AAA !important; 
+    font-style: italic !important; 
 }
 
 button::-moz-focus-inner,
@@ -466,9 +483,9 @@ hr {
 
 sup {
     position: relative;
-    top: -3px;
+    top: 3px;
     vertical-align: top;
-    font-size: 90%;
+    font-size: 80%;
 }
 
 code {
@@ -514,7 +531,7 @@ pre {
 }
 
 pre.simple {
-  white-space: pre-wrap;
+    white-space: pre-wrap;
     white-space: -moz-pre-wrap !important;
     white-space: -pre-wrap;
     white-space: -o-pre-wrap;
@@ -542,6 +559,15 @@ Template-Features [Forms und so ...]
     border: 1px solid #ddd;
 }
 
+#main table tr th {
+    background: #f6f6f6;
+    padding: 0px 20px;
+    height: 29px;
+    line-height: 1.5;
+    border: 1px solid #ddd;
+    font-weight: 700;
+}
+
 #main table tr.odd td {
     background: #fbfbfb;
 }
@@ -557,6 +583,16 @@ Template-Features [Forms und so ...]
 #main table tr:hover .action .delete { color: #a02b2b; }
 #main table tr:hover .action .view { color: #55a34a; }
 #main table tr:hover .action a:hover { text-decoration: underline; }
+
+#main table.s th:hover td { background: #F7FCFD; }
+#main table.s th .action a { margin: 0 0 0 10px; text-decoration: none; color: #9b9b9b; }
+#main table.s th:hover .action .edit { color: #c5a059; }
+#main table.s th:hover .action .delete { color: #a02b2b; }
+#main table.s th:hover .action .view { color: #55a34a; }
+#main table.s th:hover .action a:hover { text-decoration: underline; }
+#main table.s th:after { content: " \2195"; }
+
+
 
 #main fieldset {
     border: 1px solid #ddd;
@@ -577,7 +613,7 @@ Template-Features [Forms und so ...]
 #main fieldset .text-long {
     border: 1px solid #ddd;
     background: #fff;
-    font: 11px Arial, Helvetica, sans-serif;
+    font: 12px Arial, Helvetica, sans-serif;
     color: #646464;
     padding: 5px 7px;
     width: 264px;
@@ -588,7 +624,7 @@ Template-Features [Forms und so ...]
 #main fieldset .text-medlong {
     border: 1px solid #ddd;
     background: #fff;
-    font: 11px Arial, Helvetica, sans-serif;
+    font: 12px Arial, Helvetica, sans-serif;
     color: #646464;
     padding: 5px 7px;
     width: 200px;
@@ -599,7 +635,7 @@ Template-Features [Forms und so ...]
 #main fieldset .text-medium {
     border: 1px solid #ddd;
     background: #fff;
-    font: 11px Arial, Helvetica, sans-serif;
+    font: 12px Arial, Helvetica, sans-serif;
     color: #646464;
     padding: 5px 7px;
     width: 124px;
@@ -610,7 +646,7 @@ Template-Features [Forms und so ...]
 #main fieldset .text-small {
     border: 1px solid #ddd;
     background: #fff;
-    font: 11px Arial, Helvetica, sans-serif;
+    font: 12px Arial, Helvetica, sans-serif;
     color: #646464;
     padding: 5px 7px;
     width: 44px;
@@ -628,7 +664,7 @@ Template-Features [Forms und so ...]
 #main fieldset textarea {
     border: 1px solid #ddd;
     background: #fff no-repeat left top;
-    font: 11px Arial, Helvetica, sans-serif;
+    font: 12px Arial, Helvetica, sans-serif;
     color: #646464;
     padding: 5px 7px;
     width: 400px;
@@ -690,15 +726,12 @@ Template-Features [Forms und so ...]
     resize: vertical;
 }
 
-phpinfotxt
-
-
 #main fieldset select {
     color: #222;
     background: transparent;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 400;
-    padding: 3px 5px;
+    padding: 4px 4px;
     overflow: hidden;
     border: 1px solid  #ccc;
     border-radius: 2px;
@@ -706,6 +739,13 @@ phpinfotxt
 
 #main fieldset select.shadow {box-shadow: 1px 1px 6px #ccc;}
 
+#main fieldset legend {
+    font-family: Arial, Helvetica, sans-serif; 
+    font-size: 18px; 
+    font-weight: 700; 
+    margin: 0px 0px;
+    color: rgb(100,100,100);
+}
 
 /* ==========================================================================
 Author's custom styles
@@ -1081,11 +1121,11 @@ a.pornobutton{
     -o-transition: all 0.30s ease-in-out;
     -webkit-transition: all 0.30s ease-in-out;
     -ms-transition: all 0.30s ease-in-out;
-    
+
 }
 a.pornobutton:hover{
-       border-right: 2px solid #313030;
-       border-top: 1px solid #616161;
+    border-right: 2px solid #313030;
+    border-top: 1px solid #616161;
     -moz-transition: all 0.30s ease-in-out;
     -o-transition: all 0.30s ease-in-out;
     -webkit-transition: all 0.30s ease-in-out;
@@ -1292,15 +1332,15 @@ span.success    { border-color:#c7f5ce; background: #d6f7db }
 }
 
 iframe.phpinfo {
-        width: 770px;
-        min-height: 600px;
-        max-height: 1200px;
-        -moz-box-shadow: 0 0 5px #888;
-        -webkit-box-shadow: 0 0 5px#888;
-        box-shadow: 0 0 5px #888;
-        overflow-x: hidden;
-        overflow-y: scroll; 
-    }
+    width: 770px;
+    min-height: 600px;
+    max-height: 1200px;
+    -moz-box-shadow: 0 0 5px #888;
+    -webkit-box-shadow: 0 0 5px#888;
+    box-shadow: 0 0 5px #888;
+    overflow-x: hidden;
+    overflow-y: scroll; 
+}
 
 
 /* ==========================================================================
