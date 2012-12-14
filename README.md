@@ -1,5 +1,8 @@
 ![logo2]
 
+####Zur Projekt-Webseite:
+www.pataga.de
+
 ---
 
 → **Projektarbeit von Patrick Farnkopf, Tanja Weiser und Gabriel Wanzek (PaTaGa) | 2BKI2 | WvS² Mannheim**
@@ -24,7 +27,8 @@
 ---
 ###Online Demo:
 
-> **[http://46.38.238.216/SAS][2]**
+> ~~**[http://46.38.238.216/SAS][2]**~~
+> Bald wieder verfügbar
 
 ------
 ###Default Web Access:
@@ -78,7 +82,7 @@ _diese Distributionen wurden im Rahmen der Entwicklung verwendet_
 - <code>apt, bash, hostname</code>
 
 [1]: http://goo.gl/dTrur
-[2]: http://46.38.238.216/SAS
+[2]: #
 [3]: http://goo.gl/8UqKr
 [4]: http://goo.gl/OZT5x
 [5]: http://www.apache.org/licenses/LICENSE-2.0.html

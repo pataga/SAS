@@ -31,12 +31,12 @@
 			$public = "public = no";
 		}
 
-		if(isset($_POST['writeable']))
+		if(isset($_POST['writable']))
 		{
-			if($_POST['writeable'] == 1)
-			$writeable = "writeable = yes";
+			if($_POST['writable'] == 1)
+			$writable = "writable = yes";
 			else 
-			$writeable = "writeable = no";
+			$writable = "writable = no";
 		}
 
 		if(isset($_POST['readonly']))
@@ -54,11 +54,10 @@ $content = "
 [$name]
 path = $path
 valid users = $validusers
-writelist = $writelist
 create mask = $createmask
 directory mask = $directorymask
 public = $public
-writeable = $writeable
+writable = $writable
 read only = $readonly";
 
 $server->addToFile($ssh, '/etc/samba/smb.conf', $content);
@@ -103,7 +102,7 @@ Hinweis: Nach dem hinzufügen einer neuen Freigabe wird der Server automatisch n
                 <option value="0"> Nein </option>
             </select>
             <br>
-             <select name="writeable">
+             <select name="writable">
                 <option value="1"> Ja </option>
                 <option value="0"> Nein </option>n>
             </select>
