@@ -16,12 +16,18 @@ class MySQL {
 
     private $mysql_host,$mysql_port,$mysql_user,$mysql_pass,$mysql_db,$result,$con_res,$mode;
 
-    public function __construct($host, $port, $user, $pass, $db=false) {
+    public function __construct($main, $host, $port, $user, $pass, $db=false) {
         $this->mysql_host = $host;
         $this->mysql_port = $port;
         $this->mysql_user = $user;
         $this->mysql_pass = $pass;
-        $this->connect();
+
+        try {
+            $this->connect();
+        } catch (MySQLException $e) {
+            $this->main->getDebugInstance()->error($e);
+        }
+        
         if ($db) $this->selectDB($db);
     }
 

@@ -35,7 +35,7 @@
                         <p><label>MySQL Benutzername:</label>
                         <input type="text" name="user" class="text-long" required></p>
                         <p><label>MySQL Passwort:</label>
-                        <input type="password" name="pass" class="text-long" required></p>
+                        <input type="password" name="pass" class="text-long"></p>
                         <p><label>MySQL Datenbank:</label>
                         <input type="text" name="db" class="text-long" required></p>
                         <div id="installbutton"><input type="submit" value="Schritt 3" class="button black"></div>

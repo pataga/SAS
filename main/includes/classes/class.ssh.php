@@ -35,7 +35,7 @@ class SSH {
 
 
    /**
-    * Öffnet Verbindung zum SSH Daemon und Authentifiziert sich
+    * Öffnet Verbindung zum SSH Daemon und authentifiziert sich
     */
     public function openConnection() {
         $this->_connection = ssh2_connect($this->_host, $this->_port);

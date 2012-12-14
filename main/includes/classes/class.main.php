@@ -29,15 +29,56 @@ class Main {
         }
     }
 
+
+    /**
+     * Initialisiert Objekte der Hauptklassen
+     */
     private function initialisizeInstances() {
-        $this->mysql = new MySQL($this->mysql_data[0], $this->mysql_data[1], $this->mysql_data[2], $this->mysql_data[3], $this->mysql_data[4]);
-        $this->loader = new Loader($this);
-        $this->user = new User($this);
-        $this->server = new Server($this);
-        $this->database = new Database($this);
+        try {
+            $this->debug = new Debug();
+        } catch (Exception $e) {
+            throw new Exception($e->getMessage());
+        }
+
+        try {
+            $this->mysql = new MySQL($this,$this->mysql_data[0], 
+            $this->mysql_data[1], $this->mysql_data[2], 
+            $this->mysql_data[3], $this->mysql_data[4]);    
+        } catch (Exception $e) {
+            $this->debug->error($e);
+        }
+
+        try {
+            $this->loader = new Loader($this);
+        } catch (Exception $e) {
+            $this->debug->error($e);
+        }
+
+        try {
+            $this->user = new User($this);
+        } catch (Exception $e) {
+            $this->debug->error($e);
+        }
+
+        try {
+            $this->server = new Server($this);
+        } catch (Exception $e) {
+            $this->debug->error($e);
+        }
+
+        try {
+            $this->database = new Database($this);
+        } catch (Exception $e) {
+            $this->debug->error($e);
+        }
+
         $this->ssh = $this->setSSHInstance();
     }
 
+    /**
+     * Erstellt SSH Instanz
+     * @return SSH Objekt oder NULL 
+     */
     private function setSSHInstance() {
         if (isset($_SESSION['server_id'])) {
             $this->server->setID($_SESSION['server_id']);
