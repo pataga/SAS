@@ -22,13 +22,15 @@ class Loader {
 
     public function __construct($main)
     {
-        $this->mysql = $main->getMySQLInstance();
+        try {
+            $this->mysql = $main->getMySQLInstance();
+        } catch (MySQLException $e) {
+            $this->main->getDebugInstance()->error($e);
+        }
+
         $this->main = $main;
     }
 
-    private function loadTop() {
-        require_once("includes/content/main/top.inc.php");
-    }
 
     private function loadUserInterface() {
         $this->content .= sprintf('<div class="top"><div class="logo"><h1>Server <span>Admin</span> System</h1>
@@ -47,7 +49,7 @@ class Loader {
             $page = $row->page;
 
             if ($this->_page == $page)
-                $this->content .= sprintf('<li><a class="aktiv" href="?p=%s">$name</a></li>',$page);
+                $this->content .= sprintf('<li><a class="aktiv" href="?p=%s">%s</a></li>',$page,$name);
             else
                 $this->content .= sprintf('<li><a href="?p=%s">%s</a></li>',$page,$name);
         }
@@ -88,18 +90,13 @@ class Loader {
             return 0;
     }
 
-    public function loadFooter() {
-        require_once("includes/content/main/footer.inc.php");
-    }
-
-    public function loadContent() {
-        $this->loadTop();
+    public function loadMenues() {
         $this->loadUserInterface();
         $this->loadMainMenu();
         $this->content .= '<div id="main">';
         $this->loadSideMenu();
         $this->content .= '<div id="content">';
-        print($this->content);
+        return $this->content;
     }
 
     public function loadLoginMask() {

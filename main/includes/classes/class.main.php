@@ -72,6 +72,12 @@ class Main {
             $this->debug->error($e);
         }
 
+        try {
+            $this->cache = new Cache($this);
+        } catch (Exception $e) {
+            $this->debug->error($e);
+        }
+
         $this->ssh = $this->setSSHInstance();
     }
 
@@ -95,6 +101,8 @@ class Main {
     public function getUserInstance() { return $this->user; }
     public function getDatabaseInstance() { return $this->database; }
     public function getLoaderInstance() { return $this->loader; }
+    public function getDebugInstance() { return $this->debug; }
+    public function getCacheInstance() { return $this->cache; }
 }
 
 ?>

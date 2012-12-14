@@ -14,13 +14,13 @@ class Debug {
 			case 0: break;
 			case 1: 
 				$file = fopen($this->logfile, 'a+');
-				fputs($file, "[ERROR] ".$msg);
+				fputs($file, "[ERROR] ".$msg."\n");
 				fclose($file);
 			break;
 
 			case 2: 
 				$file = fopen($this->logfile, 'a+');
-				fputs($file, "[ERROR] ".$msg);
+				fputs($file, "[ERROR] ".$msg."\n");
 				fclose($file);
 				throw new Exception("Ein schwerwiegender Fehler ist aufgetreten! :D");
 			break;

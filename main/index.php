@@ -59,6 +59,9 @@ $user = $main->getUserInstance();
 $server = $main->getServerInstance();
 $database = $main->getDatabaseInstance();
 $ssh = $main->getSSHInstance();
+$debug = $main->getDebugInstance();
+$cache = $main->getCacheInstance();
+
 
 //Remote Instance
 $mysql_remote = null;
@@ -107,13 +110,12 @@ if ($user->isLoggedIn() && isset($_GET['server']) && $_GET['server'] == 'change'
 $loader->_page = isset($_GET['p']) ? $_GET['p'] : 'home';
 $loader->_spage = isset($_GET['s']) ? $_GET['s'] : null;
 
-
-//Lade Top Content
-$loader->loadContent();
-
-//Lade Seiteninhalt
+ob_start();
 require_once $loader->getIncFile();
+$content = ob_get_contents();
+ob_end_clean();
 
-//Lade Footer
-$loader->loadFooter();
+$cache->buildCache($content);
+echo $cache->getCache();
+
 ?>
