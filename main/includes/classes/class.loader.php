@@ -18,10 +18,12 @@ class Loader {
     public $_spage = "";
     private $content = "";
     private $mysql = null;
+    private $main = null;
 
     public function __construct($main)
     {
         $this->mysql = $main->getMySQLInstance();
+        $this->main = $main;
     }
 
     private function loadTop() {
@@ -29,19 +31,12 @@ class Loader {
     }
 
     private function loadUserInterface() {
-        $this->content .= '	<div class="top">
-						            <div class="logo">
-						                <h1>Server <span>Admin</span> System</h1>
-						            </div>
-						            <div class="usermenu">
-						                <img src="img/profile/0815.png" alt="Profilbild">
-						                <h3>' . $_SESSION['username'] . '</h3>
-						                <a href="#">Meine Daten &auml;ndern</a>
-						                <br>
-						                <a href="?server=change">Server wechseln</a><br>
-						                <a href="?user=logout">Logout</a>
-						            </div>
-						        </div>';
+        $this->content .= sprintf('<div class="top"><div class="logo"><h1>Server <span>Admin</span> System</h1>
+						           </div><div class="usermenu"><img src="img/profile/0815.png" alt="Profilbild">
+                                   <h3>%s</h3><a href="#">Meine Daten &auml;ndern</a>
+						           <br><a href="?server=change">Server wechseln</a><br>
+						           <a href="?user=logout">Logout</a></div></div>',
+                                   $this->main->getUserInstance()->getUsername());
     }
 
     private function loadMainMenu() {
@@ -52,9 +47,9 @@ class Loader {
             $page = $row->page;
 
             if ($this->_page == $page)
-                $this->content .= "<li><a class='aktiv' href='?p=$page'>$name</a></li>";
+                $this->content .= sprintf('<li><a class="aktiv" href="?p=%s">$name</a></li>',$page);
             else
-                $this->content .= "<li><a href='?p=$page'>$name</a></li>";
+                $this->content .= sprintf('<li><a href="?p=%s">%s</a></li>',$page,$name);
         }
 
         $this->content .= '</ul><br style="clear:left"></div>';
@@ -70,9 +65,9 @@ class Loader {
             $spage = $row->spage;
 
             if ($this->_spage == $spage)
-                $this->content .= "<li class='aktiv'><a href='?p=$page&s=$spage'>$name</a></li>";
+                $this->content .= sprintf('<li class="aktiv"><a href="?p=%s&s=%s">%s</a></li>',$page,$spage,$name);
             else
-                $this->content .= "<li><a href='?p=$page&s=$spage'>$name</a></li>";
+                $this->content .= sprintf('<li><a href="?p=%s&s=%s">%s</a></li>',$page,$spage,$name);
         }
 
         $this->content .= '</ul></div>';
