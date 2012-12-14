@@ -82,7 +82,7 @@ if (isset($_SESSION['server_id'])) {
     //... versuche eine Remote MySQL Verbindung aufzubauen
     $remote_mysql_data = $server->getMySQLData();
     if (is_array($remote_mysql_data)) {
-        $mysql_remote = new MySQL($remote_mysql_data[0],$remote_mysql_data[1],$remote_mysql_data[2],$remote_mysql_data[3]);
+        $mysql_remote = new MySQL($main,$remote_mysql_data[0],$remote_mysql_data[1],$remote_mysql_data[2],$remote_mysql_data[3]);
     }
 }
 

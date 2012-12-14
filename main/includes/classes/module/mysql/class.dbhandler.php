@@ -38,7 +38,7 @@ class DBHandler {
         if (!is_array($data)) {
             $this->logError('Fehler in DBHandler::createDatabaseLink() - Variable data ist kein Array<br>');
         } else {
-            if (!($this->mysql = new MySQL($data[0],$data[1],$data[2],$data[3]))) {
+            if (!($this->mysql = new MySQL($this->main,$data[0],$data[1],$data[2],$data[3]))) {
                 $this->logError('Fehler in DBHandler::createDatabaseLink() - Verbindungsinformationen nicht korrekt<br>');
             }
         }
@@ -76,7 +76,7 @@ class DBHandler {
     }
 
 
-    public function buildLinkTree($sname, $db, $table) {
+    public static function buildLinkTree($sname, $db, $table) {
         if ($db&&$table) return "<h5>
         <a href='?p=mysql&s=db'>$sname MySQL</a> >>
         <a href='?p=mysql&s=db&db=$db'>$db</a> >>
