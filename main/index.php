@@ -23,7 +23,7 @@ set_error_handler('exceptionErrorHandler');
 
 //Lade MySQL Konfigurationsdatei
 require_once 'includes/config/config.mysql.php';
-
+require_once 'includes/config/config.system.php';
 
 //Lade benötigte Klassen
 function __autoload($name) {
@@ -42,7 +42,7 @@ function __autoload($name) {
 
 
 //Erstelle Instanz der Hauptklasse. Dieses Objekt beinhaltet Objekte der Hauptklassen
-$main = new Main($data);
+$main = new Main($data, $debugLevel, $logFile);
 
 
 //Wenn install Verzeichnis exisitiert und die Konfig Daten nicht gesetzt sind dann Installationsroutine
@@ -111,11 +111,26 @@ $loader->_page = isset($_GET['p']) ? $_GET['p'] : 'home';
 $loader->_spage = isset($_GET['s']) ? $_GET['s'] : null;
 
 ob_start();
-require_once $loader->getIncFile();
+
+try {
+    require_once $loader->getIncFile();
+} catch (Exception $e) {
+    $debug->error($e);
+}
+
 $content = ob_get_contents();
 ob_end_clean();
 
 $cache->buildCache($content);
+
+
+//Überprüfe auf Fehler
+if ($debug->hasError()) {
+    require_once 'includes/content/error/error.inc.php';
+    exit;
+}
+
+
 echo $cache->getCache();
 
 ?>

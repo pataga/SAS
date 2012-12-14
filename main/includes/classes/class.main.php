@@ -14,9 +14,11 @@
 
 class Main {
 
-    private $mysql_data, $mysql, $db, $result, $server, $ssh, $user, $tableaction, $loader;
+    private $mysql_data, $mysql, $db, $result, $server, $ssh, $user, $tableaction, $loader, $logFile, $debugLevel;
 
-    public function __construct($data = false) {
+    public function __construct($data=false, $debugLevel=2, $logFile='error.log') {
+        $this->debugLevel = $debugLevel;
+        $this->logFile = $logFile;
         if (!$data) {
             if(!file_exists('./install')) {
                 header('Location: ./install');
@@ -35,7 +37,7 @@ class Main {
      */
     private function initialisizeInstances() {
         try {
-            $this->debug = new Debug();
+            $this->debug = new Debug($this->debugLevel, $this->logFile);
         } catch (Exception $e) {
             throw new Exception($e->getMessage());
         }

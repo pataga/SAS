@@ -2,9 +2,13 @@
 
 class Debug {
 
-	public function __construct($loglevel=1, $logfile='error.log') {
+	private $loglevel, $logfile, $errorCount, $errors;
+
+	public function __construct($loglevel=2, $logfile='error.log') {
 		$this->loglevel = $loglevel;
 		$this->logfile = $logfile;
+		$this->errorCount = 0;
+		$this->errors = '';
 	}
 
 	public function error($exception) {
@@ -22,9 +26,18 @@ class Debug {
 				$file = fopen($this->logfile, 'a+');
 				fputs($file, "[ERROR] ".$msg."\n");
 				fclose($file);
-				throw new Exception("Ein schwerwiegender Fehler ist aufgetreten! :D");
+				$this->errors .= sprintf("[ERROR] %s\n",$msg);
+				$this->errorCount++;
 			break;
 		}
+	}
+
+	public function hasError() {
+		return $this->errorCount > 0;
+	}
+
+	public function getError() {
+		return $this->errors;
 	}
 }
 

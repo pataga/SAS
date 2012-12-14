@@ -84,6 +84,8 @@ class Loader {
         $result = $this->mysql->Query("SELECT inc_path FROM sas_content WHERE page = '$page' AND spage = '$spage'");
         if ($result->getRowsCount() > 0) {
             $row = $result->fetchObject();
+            if (!is_file($row->inc_path))
+                throw new Exception('Fatal Error: Incorrect include file for page '.$page.' and subpage '.$spage);
             return $row->inc_path;
         }
         else
