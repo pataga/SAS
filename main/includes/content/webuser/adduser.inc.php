@@ -19,12 +19,25 @@ if (isset($_POST['adduser']))
 	$usermail = $_POST['usermail'];
 	$passwd = $_POST['passwd'];
 	$repeatpasswd = $_POST['repeatpasswd'];
+
+	if($passwd == $repeatpasswd)
+	{
+
+		#Eintragen eines neuen Webusers
+		$status = $user->addUser($newuser,$passwd,$repeatpasswd,$usermail);
+		if($status == 1)
+			echo '<br>Benutzer wurde erstellt';
+		if($status == -1)
+			echo '<br>Benutzername existiert bereits';
+		if($status == -2)
+			echo '<br>Passwörter stimmen nicht überein';
+
+	}
 }
 
 
 ?>
 
-<!--############ User Hinzufügen ############//-->
 <h3>Benutzer hinzuf&uuml;gen</h3>
 <fieldset>
 <form action="index.php?p=webuser&s=add" method="POST">
