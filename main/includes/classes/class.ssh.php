@@ -22,6 +22,12 @@ class SSH {
     private $_connection;
     private $_out;
 
+   /**
+    * @param String Host
+    * @param int Port
+    * @param String Benutzername
+    * @param String Passwort
+    */
     public function __construct($host = '', $port = '', $user = '', $pass = '') {
         if (!empty($host))
             $this->_host = $host;
@@ -36,6 +42,7 @@ class SSH {
 
    /**
     * Öffnet Verbindung zum SSH Daemon und authentifiziert sich
+    * @param void
     */
     public function openConnection() {
         $this->_connection = ssh2_connect($this->_host, $this->_port);
@@ -48,9 +55,9 @@ class SSH {
 
    /**
     * Führt einen Befehl über die SSH Verbindung aus
-    * @param (String) Befehl
-    * @param (int) Typ => 0 = keine Formatierung - 1 = <br> nach jeder Zeile - 2 = Ausgabe als Array
-    * @return String/Array
+    * @param String 
+    * @param int
+    * @return String/String[]
     */
     public function execute($command, $type = 0) {
         $output = "";
