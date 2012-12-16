@@ -14,19 +14,12 @@
 //Starte Session
 session_start();
 
-//Starte Seitenladezeit 
-$pageloadstart = microtime(true); 
 
 function exceptionErrorHandler($errno, $errstr, $errfile, $errline) {
     throw new ErrorException($errstr, 0,$errno, $errfile, $errline);
 }
 
 set_error_handler('exceptionErrorHandler');
-
-
-//Lade MySQL Konfigurationsdatei
-require_once 'includes/config/config.mysql.php';
-require_once 'includes/config/config.system.php';
 
 //Lade benötigte Klassen
 function __autoload($name) {
@@ -42,6 +35,14 @@ function __autoload($name) {
     }
     
 }
+
+//Timer start
+$startTime = microtime(true);
+
+
+//Lade MySQL Konfigurationsdatei
+require_once 'includes/config/config.mysql.php';
+require_once 'includes/config/config.system.php';
 
 
 //Erstelle Instanz der Hauptklasse. Dieses Objekt beinhaltet Objekte der Hauptklassen
@@ -134,11 +135,11 @@ if ($debug->hasError()) {
 }
 
 
-echo $cache->getCache();
+print($cache->getCache());
 
-//Seitenladezeit ermitteln (keine Funktion wegen Zeitverfälschung)
-$pageloadend = microtime(true);
-$pageloadtime = $pageloadend - $pageloadstart;
-echo "<p class='loadtime'>Seite wurde in ".round($pageloadtime, 3)." Sekunden generiert</p>";
+//Timer stop
+$endTime = microtime(true);
 
+//Calc Time
+Main::printLoadTime($startTime, $endTime);
 ?>

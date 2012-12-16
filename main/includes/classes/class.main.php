@@ -113,6 +113,21 @@ class Main {
     public function getLoaderInstance() { return $this->loader; }
     public function getDebugInstance() { return $this->debug; }
     public function getCacheInstance() { return $this->cache; }
+
+
+    public static function printLoadTime($startTime, $endTime) {
+        try {
+            if (!is_float($startTime) || !is_float($endTime)) {
+                throw new Exception('', 5);
+            } else {
+                $totalTime = $endTime - $startTime;
+                $outStr = sprintf('<p class="loadtime">Seite wurde in %s Sekunden generiert</p>',round($totalTime,3));
+                print($outStr);
+            }
+        } catch (Exception $e) {
+            //$this->debug->logInfo('Fehler beim Berechnen der Ladezeit');
+        }
+    }
 }
 
 ?>
