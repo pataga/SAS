@@ -28,7 +28,7 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">204</span></a></li>
+                <span class="label label-info">203</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul></ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
@@ -53,8 +53,7 @@
 <li class="nav-header">
 <i class="icon-custom icon-method"></i> Methods
                     <ul>
-<li class="method public "><a href="#method___construct" title="__construct :: "><span class="description">__construct()
-        </span><pre>__construct()</pre></a></li>
+<li class="method public "><a href="#method___construct" title="__construct :: An diese Methode werden die SSH Zugangsdaten übergeben"><span class="description">An diese Methode werden die SSH Zugangsdaten übergeben</span><pre>__construct()</pre></a></li>
 <li class="method public "><a href="#method_execute" title="execute :: Führt einen Befehl über die SSH Verbindung aus"><span class="description">Führt einen Befehl über die SSH Verbindung aus</span><pre>execute()</pre></a></li>
 <li class="method public "><a href="#method_openConnection" title="openConnection :: Öffnet Verbindung zum SSH Daemon und authentifiziert sich"><span class="description">Öffnet Verbindung zum SSH Daemon und authentifiziert sich</span><pre>openConnection()</pre></a></li>
 </ul>
@@ -65,12 +64,12 @@
 </li>
 <li class="nav-header private">» Private
                     <ul>
-<li class="property private "><a href="#property__connection" title="$_connection :: "><span class="description"></span><pre>$_connection</pre></a></li>
-<li class="property private "><a href="#property__host" title="$_host :: "><span class="description"></span><pre>$_host</pre></a></li>
-<li class="property private "><a href="#property__out" title="$_out :: "><span class="description"></span><pre>$_out</pre></a></li>
-<li class="property private "><a href="#property__pass" title="$_pass :: "><span class="description"></span><pre>$_pass</pre></a></li>
-<li class="property private "><a href="#property__port" title="$_port :: "><span class="description"></span><pre>$_port</pre></a></li>
-<li class="property private "><a href="#property__user" title="$_user :: "><span class="description"></span><pre>$_user</pre></a></li>
+<li class="property private "><a href="#property_connection" title="$connection :: "><span class="description"></span><pre>$connection</pre></a></li>
+<li class="property private "><a href="#property_host" title="$host :: "><span class="description"></span><pre>$host</pre></a></li>
+<li class="property private "><a href="#property_out" title="$out :: "><span class="description"></span><pre>$out</pre></a></li>
+<li class="property private "><a href="#property_pass" title="$pass :: "><span class="description"></span><pre>$pass</pre></a></li>
+<li class="property private "><a href="#property_port" title="$port :: "><span class="description"></span><pre>$port</pre></a></li>
+<li class="property private "><a href="#property_user" title="$user :: "><span class="description"></span><pre>$user</pre></a></li>
 </ul>
 </li>
 </ul>
@@ -114,33 +113,65 @@
 <h3>
 <i class="icon-custom icon-method"></i> Methods</h3>
 <a id="method___construct"></a><div class="element clickable method public method___construct" data-toggle="collapse" data-target=".method___construct .collapse">
-<h2>__construct()
-        </h2>
-<pre>__construct(String $host, int $port, String $user, String $pass) </pre>
+<h2>An diese Methode werden die SSH Zugangsdaten übergeben</h2>
+<pre>__construct(<a href="../classes/Main.html">\Main</a> $main, String $host, int $port, String $user, String $pass) </pre>
 <div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
+<div class="row collapse">
+<div class="span4">
 <div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>example</th>
+<td>$ssh = new SSH($main, '127.0.0.1', 22, 'root', 'topsecret');</td>
+</tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
+<h4>$main</h4>
+<code><a href="../classes/Main.html">\Main</a></code><p>main [Main Instanz]</p>
+</div>
+<div class="subelement argument">
 <h4>$host</h4>
-<code>String</code><p>Host</p></div>
+<code>String</code><p>Host [Adresse zum SSH Server Host]</p>
+</div>
 <div class="subelement argument">
 <h4>$port</h4>
-<code>int</code><p>Port</p></div>
+<code>int</code><p>Port [Port des SSH Dienstes]</p>
+</div>
 <div class="subelement argument">
 <h4>$user</h4>
-<code>String</code><p>Benutzername</p></div>
+<code>String</code><p>Benutzername [SSH Benutzername]</p>
+</div>
 <div class="subelement argument">
 <h4>$pass</h4>
-<code>String</code><p>Passwort</p></div>
-</div></div>
+<code>String</code><p>Passwort [SSH Passwort]</p>
+</div>
+</div>
+<div class="span4">
+<h3>Examples</h3>
+<pre class="prettyprint linenums"></pre>
+</div>
+</div>
 </div>
 <a id="method_execute"></a><div class="element clickable method public method_execute" data-toggle="collapse" data-target=".method_execute .collapse">
 <h2>Führt einen Befehl über die SSH Verbindung aus</h2>
-<pre>execute(String $command, int $type) : \String/String[]</pre>
+<pre>execute(String $command, int $type) : mixed[]</pre>
 <div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
+<div class="row collapse">
+<div class="span4">
 <div class="long_description"></div>
+<table class="table table-bordered">
+<tr>
+<th>example</th>
+<td>$result = $ssh->execute('ls -la /',0); //Einfache Rückgabe</td>
+</tr>
+<tr>
+<th>example</th>
+<td>$result = $ssh->execute('ls -la /',1); //Nach jeder Zeile ein <br></td>
+</tr>
+<tr>
+<th>example</th>
+<td>$result = $ssh->execute('ls -la /',2); //Rückgabe als Array</td>
+</tr>
+</table>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$command</h4>
@@ -151,8 +182,15 @@
 <code>int</code>
 </div>
 <h3>Returns</h3>
-<div class="subelement response"><code>\String/String[]</code></div>
-</div></div>
+<div class="subelement response"><code>mixed[]</code></div>
+</div>
+<div class="span4">
+<h3>Examples</h3>
+<pre class="prettyprint linenums"></pre>
+<pre class="prettyprint linenums"></pre>
+<pre class="prettyprint linenums"></pre>
+</div>
+</div>
 </div>
 <a id="method_openConnection"></a><div class="element clickable method public method_openConnection" data-toggle="collapse" data-target=".method_openConnection .collapse">
 <h2>Öffnet Verbindung zum SSH Daemon und authentifiziert sich</h2>
@@ -162,39 +200,39 @@
 </div>
 <h3>
 <i class="icon-custom icon-property"></i> Properties</h3>
-<a id="property__connection"> </a><div class="element clickable property private property__connection" data-toggle="collapse" data-target=".property__connection .collapse">
+<a id="property_connection"> </a><div class="element clickable property private property_connection" data-toggle="collapse" data-target=".property_connection .collapse">
 <h2></h2>
-<pre>$_connection </pre>
+<pre>$connection </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
-<a id="property__host"> </a><div class="element clickable property private property__host" data-toggle="collapse" data-target=".property__host .collapse">
+<a id="property_host"> </a><div class="element clickable property private property_host" data-toggle="collapse" data-target=".property_host .collapse">
 <h2></h2>
-<pre>$_host </pre>
+<pre>$host </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
-<a id="property__out"> </a><div class="element clickable property private property__out" data-toggle="collapse" data-target=".property__out .collapse">
+<a id="property_out"> </a><div class="element clickable property private property_out" data-toggle="collapse" data-target=".property_out .collapse">
 <h2></h2>
-<pre>$_out </pre>
+<pre>$out </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
-<a id="property__pass"> </a><div class="element clickable property private property__pass" data-toggle="collapse" data-target=".property__pass .collapse">
+<a id="property_pass"> </a><div class="element clickable property private property_pass" data-toggle="collapse" data-target=".property_pass .collapse">
 <h2></h2>
-<pre>$_pass </pre>
+<pre>$pass </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
-<a id="property__port"> </a><div class="element clickable property private property__port" data-toggle="collapse" data-target=".property__port .collapse">
+<a id="property_port"> </a><div class="element clickable property private property_port" data-toggle="collapse" data-target=".property_port .collapse">
 <h2></h2>
-<pre>$_port </pre>
+<pre>$port </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
-<a id="property__user"> </a><div class="element clickable property private property__user" data-toggle="collapse" data-target=".property__user .collapse">
+<a id="property_user"> </a><div class="element clickable property private property_user" data-toggle="collapse" data-target=".property_user .collapse">
 <h2></h2>
-<pre>$_user </pre>
+<pre>$user </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
@@ -205,7 +243,7 @@
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a12</a> and<br>
-            generated on 2012-12-16T14:39:13+01:00.<br></footer></div>
+            generated on 2012-12-16T15:24:38+01:00.<br></footer></div>
 </div>
 </body>
 </html>

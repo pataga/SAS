@@ -363,14 +363,14 @@
       <error line="103" code="50010">No DocBlock was found for method decrypt()</error>
     </parse_markers>
   </file>
-  <file path="includes/classes/class.ssh.php" hash="e5a6d6c9442bec1780ed6a4b0d4e6cc1" package="Default">
+  <file path="includes/classes/class.ssh.php" hash="22222a38081636e9603f81aa91badb8c" package="Default">
     <class final="false" abstract="false" namespace="global" line="16" package="Default">
       <extends/>
       <name>SSH</name>
       <full_name>\SSH</full_name>
       <docblock line="4">
         <description>Licensed under The Apache License</description>
-        <long-description/>
+        <long-description></long-description>
         <tag line="4" name="copyright" description="Copyright 2012-2013 Patrick Farnkopf, Tanja Weiser, Gabriel Wanzek (PaTaGa)"/>
         <tag line="4" name="link" description="https://github.com/pataga/SAS" link="https://github.com/pataga/SAS"/>
         <tag line="4" name="since" description="SAS v1.0.0"/>
@@ -378,102 +378,114 @@
         <tag line="4" name="author" description="Patrick Farnkopf"/>
       </docblock>
       <property final="false" static="false" visibility="private" line="18" namespace="global" package="Default">
-        <name>$_host</name>
-        <default/>
+        <name>$host</name>
+        <default></default>
       </property>
       <property final="false" static="false" visibility="private" line="19" namespace="global" package="Default">
-        <name>$_port</name>
-        <default/>
+        <name>$port</name>
+        <default></default>
       </property>
       <property final="false" static="false" visibility="private" line="20" namespace="global" package="Default">
-        <name>$_user</name>
-        <default/>
+        <name>$user</name>
+        <default></default>
       </property>
       <property final="false" static="false" visibility="private" line="21" namespace="global" package="Default">
-        <name>$_pass</name>
-        <default/>
+        <name>$pass</name>
+        <default></default>
       </property>
       <property final="false" static="false" visibility="private" line="22" namespace="global" package="Default">
-        <name>$_connection</name>
-        <default/>
+        <name>$connection</name>
+        <default></default>
       </property>
       <property final="false" static="false" visibility="private" line="23" namespace="global" package="Default">
-        <name>$_out</name>
-        <default/>
+        <name>$out</name>
+        <default></default>
       </property>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="31" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="36" package="Default">
         <name>__construct</name>
         <full_name>__construct</full_name>
         <docblock line="25">
-          <description/>
-          <long-description/>
-          <tag line="25" name="param" description="Host" type="String" variable="$host">
+          <description>An diese Methode werden die SSH Zugangsdaten übergeben</description>
+          <long-description></long-description>
+          <tag line="25" name="param" description="main [Main Instanz]" type="\Main" variable="$main">
+            <type by_reference="false">\Main</type>
+          </tag>
+          <tag line="25" name="param" description="Host [Adresse zum SSH Server Host]" type="String" variable="$host">
             <type by_reference="false">String</type>
           </tag>
-          <tag line="25" name="param" description="Port" type="int" variable="$port">
+          <tag line="25" name="param" description="Port [Port des SSH Dienstes]" type="int" variable="$port">
             <type by_reference="false">int</type>
           </tag>
-          <tag line="25" name="param" description="Benutzername" type="String" variable="$user">
+          <tag line="25" name="param" description="Benutzername [SSH Benutzername]" type="String" variable="$user">
             <type by_reference="false">String</type>
           </tag>
-          <tag line="25" name="param" description="Passwort" type="String" variable="$pass">
+          <tag line="25" name="param" description="Passwort [SSH Passwort]" type="String" variable="$pass">
             <type by_reference="false">String</type>
           </tag>
+          <tag line="25" name="example" description="$ssh = new SSH($main, '127.0.0.1', 22, 'root', 'topsecret');"/>
         </docblock>
-        <argument line="31">
+        <argument line="36">
+          <name>$main</name>
+          <default>null</default>
+          <type/>
+        </argument>
+        <argument line="36">
           <name>$host</name>
           <default>''</default>
           <type/>
         </argument>
-        <argument line="31">
+        <argument line="36">
           <name>$port</name>
-          <default>''</default>
+          <default>22</default>
           <type/>
         </argument>
-        <argument line="31">
+        <argument line="36">
           <name>$user</name>
           <default>''</default>
           <type/>
         </argument>
-        <argument line="31">
+        <argument line="36">
           <name>$pass</name>
           <default>''</default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="47" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="52" package="Default">
         <name>openConnection</name>
         <full_name>openConnection</full_name>
-        <docblock line="43">
+        <docblock line="48">
           <description>Öffnet Verbindung zum SSH Daemon und authentifiziert sich</description>
-          <long-description/>
-          <tag line="43" name="param" description="" type="void" variable="">
+          <long-description></long-description>
+          <tag line="48" name="param" description="" type="void" variable="">
             <type by_reference="false">void</type>
           </tag>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="62" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="74" package="Default">
         <name>execute</name>
         <full_name>execute</full_name>
-        <docblock line="56">
+        <docblock line="64">
           <description>Führt einen Befehl über die SSH Verbindung aus</description>
-          <long-description/>
-          <tag line="56" name="param" description="" type="String" variable="$command">
+          <long-description></long-description>
+          <tag line="64" name="param" description="" type="String" variable="$command">
             <type by_reference="false">String</type>
           </tag>
-          <tag line="56" name="param" description="" type="int" variable="$type">
+          <tag line="64" name="param" description="" type="int" variable="$type">
             <type by_reference="false">int</type>
           </tag>
-          <tag line="56" name="return" description="" type="\String/String[]">
-            <type by_reference="false">\String/String[]</type>
+          <tag line="64" name="return" description="" type="mixed[]">
+            <type by_reference="false">mixed[]</type>
           </tag>
+          <tag line="64" name="example" description="$result = $ssh-&gt;execute('ls -la /',0); //Einfache Rückgabe"/>
+          <tag line="64" name="example" description="$result = $ssh-&gt;execute('ls -la /',1); //Nach jeder Zeile ein &lt;br&gt;"/>
+          <tag line="64" name="example" description="$result = $ssh-&gt;execute('ls -la /',2); //Rückgabe als Array"/>
         </docblock>
-        <argument line="62">
+        <argument line="74">
           <name>$command</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
-        <argument line="62">
+        <argument line="74">
           <name>$type</name>
           <default>0</default>
           <type/>
@@ -482,14 +494,13 @@
     </class>
     <parse_markers>
       <error line="0" code="50007">No page-level DocBlock was found in file includes/classes/class.ssh.php</error>
-      <error line="18" code="50018">No DocBlock was found for property $_host</error>
-      <error line="19" code="50018">No DocBlock was found for property $_port</error>
-      <error line="20" code="50018">No DocBlock was found for property $_user</error>
-      <error line="21" code="50018">No DocBlock was found for property $_pass</error>
-      <error line="22" code="50018">No DocBlock was found for property $_connection</error>
-      <error line="23" code="50018">No DocBlock was found for property $_out</error>
-      <error line="25" code="50012">No short description for method __construct()</error>
-      <notice line="43" code="50013">Parameter  could not be found in openConnection()</notice>
+      <error line="18" code="50018">No DocBlock was found for property $host</error>
+      <error line="19" code="50018">No DocBlock was found for property $port</error>
+      <error line="20" code="50018">No DocBlock was found for property $user</error>
+      <error line="21" code="50018">No DocBlock was found for property $pass</error>
+      <error line="22" code="50018">No DocBlock was found for property $connection</error>
+      <error line="23" code="50018">No DocBlock was found for property $out</error>
+      <notice line="48" code="50013">Parameter  could not be found in openConnection()</notice>
     </parse_markers>
   </file>
   <file path="includes/classes/module/tools/class.process.php" hash="3d9c4f9b3a86f754a7108a8c137c22c5" package="Default">
@@ -1402,7 +1413,7 @@
       <error line="0" code="50007">No page-level DocBlock was found in file includes/classes/class.MySQLException.php</error>
     </parse_markers>
   </file>
-  <file path="includes/classes/class.main.php" hash="abdd9c0d43e98aeaed0943e0404b988c" package="Default">
+  <file path="includes/classes/class.main.php" hash="52b633d4f73162003b53fade3bc452a9" package="Default">
     <class final="false" abstract="false" namespace="global" line="15" package="Default">
       <extends/>
       <name>Main</name>
@@ -1493,40 +1504,40 @@
         <docblock line="86">
           <description>Erstellt SSH Instanz</description>
           <long-description/>
-          <tag line="86" name="return" description="Objekt oder NULL" type="\SSH">
+          <tag line="86" name="return" description="ssh [SSH Instanz]" type="\SSH">
             <type by_reference="false">\SSH</type>
           </tag>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="100" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="108" package="Default">
         <name>getServerInstance</name>
         <full_name>getServerInstance</full_name>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="101" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="109" package="Default">
         <name>getSSHInstance</name>
         <full_name>getSSHInstance</full_name>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="102" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="110" package="Default">
         <name>getMySQLInstance</name>
         <full_name>getMySQLInstance</full_name>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="103" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="111" package="Default">
         <name>getUserInstance</name>
         <full_name>getUserInstance</full_name>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="104" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="112" package="Default">
         <name>getDatabaseInstance</name>
         <full_name>getDatabaseInstance</full_name>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="105" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="113" package="Default">
         <name>getLoaderInstance</name>
         <full_name>getLoaderInstance</full_name>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="106" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="114" package="Default">
         <name>getDebugInstance</name>
         <full_name>getDebugInstance</full_name>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="107" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="115" package="Default">
         <name>getCacheInstance</name>
         <full_name>getCacheInstance</full_name>
       </method>
@@ -1545,14 +1556,14 @@
       <error line="17" code="50018">No DocBlock was found for property $logFile</error>
       <error line="17" code="50018">No DocBlock was found for property $debugLevel</error>
       <error line="19" code="50010">No DocBlock was found for method __construct()</error>
-      <error line="100" code="50010">No DocBlock was found for method getServerInstance()</error>
-      <error line="101" code="50010">No DocBlock was found for method getSSHInstance()</error>
-      <error line="102" code="50010">No DocBlock was found for method getMySQLInstance()</error>
-      <error line="103" code="50010">No DocBlock was found for method getUserInstance()</error>
-      <error line="104" code="50010">No DocBlock was found for method getDatabaseInstance()</error>
-      <error line="105" code="50010">No DocBlock was found for method getLoaderInstance()</error>
-      <error line="106" code="50010">No DocBlock was found for method getDebugInstance()</error>
-      <error line="107" code="50010">No DocBlock was found for method getCacheInstance()</error>
+      <error line="108" code="50010">No DocBlock was found for method getServerInstance()</error>
+      <error line="109" code="50010">No DocBlock was found for method getSSHInstance()</error>
+      <error line="110" code="50010">No DocBlock was found for method getMySQLInstance()</error>
+      <error line="111" code="50010">No DocBlock was found for method getUserInstance()</error>
+      <error line="112" code="50010">No DocBlock was found for method getDatabaseInstance()</error>
+      <error line="113" code="50010">No DocBlock was found for method getLoaderInstance()</error>
+      <error line="114" code="50010">No DocBlock was found for method getDebugInstance()</error>
+      <error line="115" code="50010">No DocBlock was found for method getCacheInstance()</error>
     </parse_markers>
   </file>
   <file path="includes/classes/class.mysql.php" hash="fca22f1bfca4bd30e4c8c8610bac8c54" package="Default">
