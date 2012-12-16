@@ -14,6 +14,9 @@
 //Starte Session
 session_start();
 
+//Starte Seitenladezeit 
+$pageloadstart = microtime(true); 
+
 function exceptionErrorHandler($errno, $errstr, $errfile, $errline) {
     throw new ErrorException($errstr, 0,$errno, $errfile, $errline);
 }
@@ -132,5 +135,10 @@ if ($debug->hasError()) {
 
 
 echo $cache->getCache();
+
+//Seitenladezeit ermitteln (keine Funktion wegen Zeitverfälschung)
+$pageloadend = microtime(true);
+$pageloadtime = $pageloadend - $pageloadstart;
+echo "<p class='loadtime'>Seite wurde in ".round($pageloadtime, 3)." Sekunden generiert</p>";
 
 ?>

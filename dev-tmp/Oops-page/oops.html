@@ -1,0 +1,111 @@
+<html>
+	<head>
+		<title>Ooops!</title>
+	</head>
+	<style>
+	@font-face {
+    		font-family: 'Chunkfive';
+    		src: url('Chunkfive-webfont.woff') format('woff'),
+         		url('Chunkfive-webfont.svg#ChunkFiveRegular') format('svg');
+	    	font-weight: normal;
+    		font-style: normal;
+
+	}
+
+	@keyframes fade-in {
+		0% {opacity: 0;}
+		100% {opacity: 1;}
+	}
+
+	body {
+		text-align: center;
+		font-size: 14px;
+		margin: 0px;
+		padding: 0;
+		background: none repeat scroll 0 0 #ddd;
+	}
+
+	h1 {
+		font-family: 'Chunkfive', Helvetica, Verdana, Geneva, Arial, Helvetica, sans-serif;
+		margin-top: 45px;
+		font-size: 88px;
+		font-weight: normal;
+		-webkit-transform: rotate(-7deg);
+		-moz-transform: rotate(-7deg);
+		-ms-transform: rotate(-7deg);
+		o-transform: rotate(-7deg);
+		transform: rotate(-7deg);
+		color: #333;
+	}
+
+	h3 {
+		font-family: 'Chunkfive', Helvetica, Verdana, Geneva, Arial, Helvetica, sans-serif;
+		font-size: 26px;
+		font-weight: 300;
+	}
+
+	.fade-in {
+		animation-name: fade-in;
+		animation-duration: 1s;
+		animation-timing-function: ease-in;
+		animation-iteration-count: 1;
+		animation-delay: 0, 	4s;
+	} 
+
+	pre {
+		padding: 7px 3px;
+		border: 1px solid #999;
+		border-radius: 4px;
+		width: 600px;
+		margin: 0px auto;
+		background-color: #eee;
+		box-shadow: 0 0 5px rgba(11,75,178, 0.5),0 0 5px rgba(11,75,178, 0.5);
+
+	}
+
+	#footer {
+	    clear: right;
+	    width: 960px;
+	    margin: 5px auto;
+	    background: #eee;
+	    text-align: center;
+	    padding: 10px;
+	    font-size: 1.05em;
+	    font-family: 'Ubuntu', Arial, Helvetica, sans-serif;
+	    font-weight: 300;
+	    border-radius: 2px;
+	}
+
+	footer a {
+	    margin-right: 25px;
+	    text-decoration: none;
+	    color: #aaa;
+	}
+	footer a.last {
+	    margin-right: 0px;
+	} 
+
+	footer a:hover { 
+	    color: #0b75b2;
+	} 
+
+	footer a, #footer a:hover { 
+	    -webkit-transition:  color 0.35s ease-in-out;
+	    -moz-transition: color 0.35s ease-in-out;
+	    -o-transition: color 0.35s ease-in-out;
+	    -ms-transition: color 0.35s ease-in-out;
+	    transition: color 0.35s ease-in-out;
+	}
+
+	</style>
+	<body class="fade-in">
+		<h1>Ooops!</h1>
+		<h3>Ein Fehler ist aufgetreten!</h3>
+		<pre>[ERROR] #001 Testerror: dfgkhvcdztltgufkchzdz.fiz7t7tgui </pre>
+	</body>
+	<footer>
+		<p>
+			&copy; 
+		</p>
+	</footer>
+</html>
