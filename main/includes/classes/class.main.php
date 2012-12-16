@@ -85,15 +85,23 @@ class Main {
 
     /**
      * Erstellt SSH Instanz
-     * @return SSH Objekt oder NULL 
+     * @return SSH ssh [SSH Instanz]
      */
     private function setSSHInstance() {
-        if (isset($_SESSION['server_id'])) {
-            $this->server->setID($_SESSION['server_id']);
-            $data = $this->server->getServerData();
-            return new SSH($data[0], '22', $data[1], $data[2]);
-        } else {
-            return NULL;
+        try {
+            if (isset($_SESSION['server_id'])) {
+                $this->server->setID($_SESSION['server_id']);
+                $data = $this->server->getServerData();
+
+                if (!is_array($data))
+                    throw new Exception("unable to find data of ssh daemon in Main::setSSHInstance()", 1);
+
+                return new SSH($this,$data[0],22,$data[1],$data[2]);
+            } else {
+                return NULL;
+            }
+        } catch (Exception $e) {
+            $this->debug->error($e);
         }
     }
 

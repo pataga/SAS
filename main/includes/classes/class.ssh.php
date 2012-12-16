@@ -15,28 +15,33 @@
 
 class SSH {
 
-    private $_host;
-    private $_port;
-    private $_user;
-    private $_pass;
-    private $_connection;
-    private $_out;
+    private $host; 
+    private $port;
+    private $user;
+    private $pass;
+    private $connection;
+    private $out;
 
    /**
-    * @param String Host
-    * @param int Port
-    * @param String Benutzername
-    * @param String Passwort
+    * An diese Methode werden die SSH Zugangsdaten übergeben
+    *   
+    * @param Main main [Main Instanz]
+    * @param String Host [Adresse zum SSH Server Host]
+    * @param int Port [Port des SSH Dienstes]
+    * @param String Benutzername [SSH Benutzername]
+    * @param String Passwort [SSH Passwort]
+    * 
+    * @example $ssh = new SSH($main, '127.0.0.1', 22, 'root', 'topsecret');
     */
-    public function __construct($host = '', $port = '', $user = '', $pass = '') {
+    public function __construct($main=null,$host='',$port=22,$user='',$pass='') {
         if (!empty($host))
-            $this->_host = $host;
+            $this->host = $host;
         if (!empty($port))
-            $this->_port = $port;
+            $this->port = $port;
         if (!empty($user))
-            $this->_user = $user;
+            $this->user = $user;
         if (!empty($pass))
-            $this->_pass = $pass;
+            $this->pass = $pass;
     }
 
 
@@ -45,11 +50,14 @@ class SSH {
     * @param void
     */
     public function openConnection() {
-        $this->_connection = ssh2_connect($this->_host, $this->_port);
-        if (!$this->_connection)
-            throw new Exception('SSH Connection failed');
-        if (!ssh2_auth_password($this->_connection, $this->_user, $this->_pass))
-            throw new Exception('SSH Autentication failed');
+        try {
+            if (!($this->connection = ssh2_connect($this->host, $this->port)))
+                throw new Exception('SSH Connection failed');
+            if (!ssh2_auth_password($this->connection, $this->user, $this->pass))
+                throw new Exception('SSH Autentication failed');
+        } catch (Exception $e) {
+
+        }
     }
 
 
@@ -57,11 +65,15 @@ class SSH {
     * Führt einen Befehl über die SSH Verbindung aus
     * @param String 
     * @param int
-    * @return String/String[]
+    * @return mixed[]
+    * 
+    * @example $result = $ssh->execute('ls -la /',0); //Einfache Rückgabe
+    * @example $result = $ssh->execute('ls -la /',1); //Nach jeder Zeile ein <br>
+    * @example $result = $ssh->execute('ls -la /',2); //Rückgabe als Array
     */
     public function execute($command, $type = 0) {
         $output = "";
-        if (!($os = ssh2_exec($this->_connection, $command, "bash")))
+        if (!($os = ssh2_exec($this->connection, $command, "bash")))
             throw new Exception('SSH command failed');
 
         stream_set_blocking($os, true);
