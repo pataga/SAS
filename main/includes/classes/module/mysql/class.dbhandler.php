@@ -109,9 +109,7 @@ class DBHandler {
         $content = '';
         $res = $this->getDatabases();
         while ($row = $res->fetchArray()) {
-            $content .= '<tr>';
-            $content .= sprintf('<td><a href="?p=mysql&s=db&db=%s">%s</a></td>',$row[0],$row[0]);
-            $content .= '</tr>';
+            $content .= sprintf('<tr><td><a href="?p=mysql&s=db&db=%s">%s</a></td></tr>',$row[0],$row[0]);
         }
         return $content;
     }
@@ -121,9 +119,7 @@ class DBHandler {
         $content = '';
         $res = $this->getTables();
         while ($row = $res->fetchArray()) {
-            $content .= '<tr>';
-            $content .= sprintf('<td><a href="?p=mysql&s=db&db=%s&t=%s"> %s </td>',$this->database,$row[0],$row[0]);
-            $content .= '</tr>';
+            $content .= sprintf('<tr><td><a href="?p=mysql&s=db&db=%s&t=%s">%s</td></tr>',$this->database,$row[0],$row[0]);
         }
         return $content;
     }
