@@ -87,9 +87,9 @@ class Loader {
             if (!is_file($row->inc_path))
                 throw new Exception('Fatal Error: Incorrect include file for page '.$page.' and subpage '.$spage);
             return $row->inc_path;
+        } else {
+            throw new Exception('Fatal Error: Incorrect include file for page '.$page.' and subpage '.$spage);
         }
-        else
-            return 0;
     }
 
     public function loadMenues() {
