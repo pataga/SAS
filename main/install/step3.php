@@ -219,6 +219,15 @@
               PRIMARY KEY (`id`),
               UNIQUE KEY `userunique` (`username`)
             ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1");
+
+            //Update 18.12.2012
+            mysql_query("INSERT INTO sas_content (page, spage, inc_path) VALUES ('webuser', 'add', 'includes/content/webuser/adduser.inc.php')");
+            mysql_query("INSERT INTO sas_content (page, spage, inc_path) VALUES ('webuser', 'edit', 'includes/content/webuser/edituser.inc.php')");
+            mysql_query("INSERT INTO sas_content (page, spage, inc_path) VALUES ('home', 'quickpanel', 'includes/content/home/qp.inc.php')");
+            mysql_query("INSERT INTO sas_menu_side (name, page, spage) VALUES ('QuickPanel', 'home', 'quickpanel')");
+            mysql_query("INSERT INTO sas_menu_side (name, page, spage) VALUES ('phpinfo', 'apache', 'phpinfo')");
+            mysql_query("INSERT INTO sas_content (page, spage, inc_path) VALUES ('apache', 'phpinfo', 'includes/content/apache/pi.inc.php')");
+
         }
     }
 ?>
