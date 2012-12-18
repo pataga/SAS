@@ -39,26 +39,19 @@ function __autoload($name) {
 //Timer start
 $startTime = microtime(true);
 
-
 //Lade MySQL Konfigurationsdatei
 require_once 'includes/config/config.mysql.php';
 require_once 'includes/config/config.system.php';
-
-
-//Erstelle Instanz der Hauptklasse. Dieses Objekt beinhaltet Objekte der Hauptklassen
-try {
-    $main = new Main($data, $debugLevel, $logFile);
-} catch (Exception $e) {
-    $main = new Main(false, $debugLevel, $logFile);
-}
-
-
 
 //Wenn install Verzeichnis exisitiert und die Konfig Daten nicht gesetzt sind dann Installationsroutine
 if (is_dir('install') && !isset($data)) {
     header('Location: install');
     die();
 }
+
+
+//Erstelle Instanz der Hauptklasse. Dieses Objekt beinhaltet Objekte der Hauptklassen
+$main = new Main($data, $debugLevel, $logFile);
 
 
 //Initialisiere Hauptobjekte
@@ -97,8 +90,15 @@ if (isset($_SESSION['server_id'])) {
 
 
 //Wenn nicht angemeldet, dann LoginMaske
-if (!$user->isLoggedIn())
-    $loader->loadLoginMask();
+if (!$user->isLoggedIn()) {
+    try {
+        require_once 'includes/content/main/login.inc.php';
+        exit();
+    } catch (Exception $e) {
+        $debug->error($e);
+        exit;
+    }
+}
 
 
 //Wenn Logout Link geklickt, dann abmelden
