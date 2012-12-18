@@ -20,8 +20,9 @@ class Main {
         $this->debugLevel = $debugLevel;
         $this->logFile = $logFile;
         if (!$data) {
-            if(!file_exists('./install')) {
+            if(file_exists('./install')) {
                 header('Location: ./install');
+                exit;
             } else {
                 throw new Exception("Fehler in ./includes/config/config.mysql.php");
             }

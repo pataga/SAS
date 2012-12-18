@@ -46,7 +46,12 @@ require_once 'includes/config/config.system.php';
 
 
 //Erstelle Instanz der Hauptklasse. Dieses Objekt beinhaltet Objekte der Hauptklassen
-$main = new Main($data, $debugLevel, $logFile);
+try {
+    $main = new Main($data, $debugLevel, $logFile);
+} catch (Exception $e) {
+    $main = new Main(false, $debugLevel, $logFile);
+}
+
 
 
 //Wenn install Verzeichnis exisitiert und die Konfig Daten nicht gesetzt sind dann Installationsroutine
