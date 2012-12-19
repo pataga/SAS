@@ -25,8 +25,7 @@ class tableAction {
 
    /**
     *   Fügt mit einen Datensatz hinzu
-    *   @param (String) Tabellenname
-    *   @param (Array) Dateninhalte
+    *   @param Array Dateninhalte
     *   @return MySQL
     */
     public function insert($content) {
@@ -37,8 +36,7 @@ class tableAction {
 
    /**
     *   Fügt mit einen Datensatz hinzu
-    *   @param (String) Tabellenname
-    *   @param (Array) Dateninhalte
+    *   @param Array Dateninhalte
     *   @return MySQL
     */
     public function update($content, $where) {
@@ -48,8 +46,7 @@ class tableAction {
 
    /**
     *   Fügt mit einen Datensatz hinzu
-    *   @param (String) Tabellenname
-    *   @param (Array) Dateninhalte
+    *   @param Array Dateninhalte
     *   @return MySQL
     */
     public function select($content, $where) {
@@ -68,9 +65,9 @@ class tableAction {
 
    /**
     *   Erstellt aus einem Array einen UPDATE Query
-    *   @param (Array) Dateninhalte
-    *   @param (Array) Bedingung
-    *   @return (String) Query
+    *   @param Array Dateninhalte
+    *   @param Array Bedingung
+    *   @return String Query
     */
     protected function buildSelectQuery($content, $where) {
         $query = "SELECT ";
@@ -106,12 +103,12 @@ class tableAction {
 
    /**
     *   Erstellt aus einem Array einen INSERT Query
-    *   @param (Array) Dateninhalte
-    *   @return (String) Query
+    *   @param Array Dateninhalte
+    *   @return String Query
     */
     protected function buildInsertQuery($content) {
         if (!is_array($content)) {
-            throw new Exception("Kein g&uuml;ltiger Parameter in tableAction::buildInsertQuery(Array)");
+            throw new Exception("Kein g&uuml;ltiger Parameter in tableAction::buildInsertQueryArray");
         } else {
             $key_ = array_keys($content);
             $data_ = array_values($content);
@@ -139,13 +136,13 @@ class tableAction {
 
     /**
     *   Erstellt aus einem Array einen UPDATE Query
-    *   @param (Array) Dateninhalte
-    *   @param (Array) Bedingung
-    *   @return (String) Query
+    *   @param Array Dateninhalte
+    *   @param Array Bedingung
+    *   @return String Query
     */
     protected function buildUpdateQuery($content, $where) {
     	if (!is_array($content)) {
-    		throw new Exception("Kein g&uuml;ltiger Parameter in tableAction::buildUpdateQuery(String)");
+    		throw new Exception("Kein g&uuml;ltiger Parameter in tableAction::buildUpdateQueryString");
     	} else {
     		$key = array_keys($content);
     		$data = array_values($content);
