@@ -12,46 +12,31 @@
 *
 */
 
+// Skript Funktionsfähig .. bis auf den ProFTPD-Server Start (Fehler unbekannt...)
 
 //stelle SSH Verbindung her...
 $ssh->openConnection();
 
-if (isset($_POST['a2-stop']) && isset($_POST['a2-stop-h'])) {           //wenn hidden+submit ..
-    $ssh->execute("service apache2 stop");
-    $loader->reload();                              //.. führe das aus
-} elseif (isset($_POST['a2-start']) && isset($_POST['a2-start-h'])) {
+if (isset($_POST['a2-stop']) && isset($_POST['a2-stop-h']))     //wenn hidden+submit ..
+    $ssh->execute("service apache2 stop");      //.. führe das aus
+if (isset($_POST['a2-start']) && isset($_POST['a2-start-h']))
     $ssh->execute("service apache2 start");
-    $loader->reload();
-}
-if (isset($_POST['postfix-stop']) && isset($_POST['postfix-stop-h'])) {
+if (isset($_POST['postfix-stop']) && isset($_POST['postfix-stop-h'])) 
     $ssh->execute("service postfix stop");
-} elseif (isset($_POST['postfix-start']) && isset($_POST['postfix-start-h'])) {
+if (isset($_POST['postfix-start']) && isset($_POST['postfix-start-h']))
     $ssh->execute("service postfix start");
-    $loader->reload();
-}
-if (isset($_POST['proftpd-stop']) && isset($_POST['proftpd-stop-h'])) {
+if (isset($_POST['proftpd-stop']) && isset($_POST['proftpd-stop-h']))
     $ssh->execute("service proftpd stop");
-    $loader->reload();
-} elseif (isset($_POST['a2-start']) && isset($_POST['proftpd-start-h'])) {
+if (isset($_POST['proftpd-start']) && isset($_POST['proftpd-start-h']))
     $ssh->execute("service proftpd start");
-    $loader->reload();
-}
-
-if (isset($_POST['mysql-stop']) && isset($_POST['mysql-stop-h'])) {
+if (isset($_POST['mysql-stop']) && isset($_POST['mysql-stop-h']))
     $ssh->execute("service mysql stop");
-    $loader->reload();
-} elseif (isset($_POST['mysql-start']) && isset($_POST['mysql-start-h'])) {
+if (isset($_POST['mysql-start']) && isset($_POST['mysql-start-h']))
     $ssh->execute("service mysql start");
-    $loader->reload();
-}
-if (isset($_POST['smbd-stop']) && isset($_POST['smbd-stop-h'])) {
-    $ssh->execute("service apache2 stop");
-    $loader->reload();
-} elseif (isset($_POST['smbd-start']) && isset($_POST['smbd-start-h'])) {
-    $ssh->execute("service apache2 start");
-    $loader->reload();
-}
-
+if (isset($_POST['smbd-stop']) && isset($_POST['smbd-stop-h']))
+    $ssh->execute("service smbd stop");    
+if (isset($_POST['smbd-start']) && isset($_POST['smbd-start-h']))
+    $ssh->execute("service smbd start");
 //if (isset($_POST['']) && isset($_POST[''])) {
 // $ssh->execute("");
 //}
@@ -78,7 +63,7 @@ echo ($server->getServiceStatus($ssh, 'postfix')) ? '<input type="hidden" name="
         <h5>FTP</h5>
         <form action="<?php $_SERVER['SCRIPT_NAME'] ?>" method="post">
 <?php
-echo ($server->getServiceStatus($ssh, 'proftpd')) ? '<input type="hidden" name="proftpd-stop-h"><input type="submit" name="proftpd-stop" value="Stop" class="button pink">' : '<input type="hidden" name="proftpd-start-h"><input type="submit" name="proftpd-start" value="Start" class="button green">';
+echo ($server->getProFTPDStatus($ssh)) ? '<input type="hidden" name="proftpd-stop-h"><input type="submit" name="proftpd-stop" value="Stop" class="button pink">' : '<input type="hidden" name="proftpd-start-h"><input type="submit" name="proftpd-start" value="Start" class="button green">';
 ?>
         </form>
     </div>

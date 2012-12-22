@@ -158,6 +158,23 @@ class Server {
             return false;
     }
 
+   /**
+    * Gibt den Status des ProFTPD Dienstes zurück / könnte in getServiceStatus implementiert werden
+    * @return (Bool) ProFTPD Status (An/Aus)
+    */
+
+    public function getProFTPDStatus($ssh) {
+        $status = $ssh->execute('service proftpd status');
+        $exp = explode(",", $status);
+        $exp2 = explode(".", $exp[1]);
+        $exp3 = explode(" ", $exp2[0]);
+        
+        if ($exp3[1] == "currently" && $exp3[2] == "running")
+            return true;
+        else
+            return false;
+}
+
 
    /**
     * Fügt einen String an eine Datei auf dem Server an.

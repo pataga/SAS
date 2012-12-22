@@ -103,7 +103,7 @@ $userswholi = str_replace(" ", ", ", $userswho);
                 <td>FTP:</td>
                 <td>
                     <?php
-                    echo ($server->getServiceStatus($ssh, 'proftpd')) ? '<span class="aktiv">aktiv</span>' : '<span class="inaktiv">inaktiv</span>';
+                    echo ($server->getProFTPDStatus($ssh)) ? '<span class="aktiv">aktiv</span>' : '<span class="inaktiv">inaktiv</span>';
                     ?>
                 </td>
             </tr>
