@@ -12,39 +12,33 @@
 *
 */
 
+if (!$server->isInstalled('samba')) {
+    header('Location: ?p=samba&s=install');
+    exit;
+}
 
+//#######################################################
+//		Dienst stoppen
+//#######################################################
 if(isset($_POST['stop']))
 {
 	$ssh->openConnection();
 	$ssh->execute('service smbd stop');
 }
+
+//#######################################################
+//		Dienst neustarten
+//#######################################################
 if(isset($_POST['restart']))
 {
 	$ssh->openConnection();
 	$ssh->execute('service smbd restart');
 }
 
-$ssh->openConnection();
-$line=$ssh->execute('pdbedit -L',2);
-$ausgabe = "";
-foreach($line as $value)
-{
-	$pdbedit=explode(":",$value);
-	$ausgabe .=$pdbedit[0]."<br>";
-}
-
 
 ?>
 
 <h3>Samba Übersicht</h3>
-<fieldset>
-<div class ="drittel-box">
-	<h5>Aktuell angelegte User:</h5>
-</div>
-<div class ="zweidrittel-box lastbox">
-	<h5><?=$ausgabe."<br>"?></h5> 
-</div>
-</fieldset>
 
 <fieldset>
 <form action="index.php?p=samba" method="POST">

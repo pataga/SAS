@@ -11,7 +11,10 @@
 * @author Tanja Weiser
 *
 */
-
+    if (!$server->isInstalled('samba')) {
+        header('Location: ?p=samba&s=install');
+        exit;
+    }
 
 	if(isset($_POST['add']))
 	{
@@ -50,30 +53,31 @@
 		$ssh->openConnection();
 		// Öffnen der Verbindung
 
-$content = "
-[$name]
-path = $path
-valid users = $validusers
-create mask = $createmask
-directory mask = $directorymask
-public = $public
-writable = $writable
-read only = $readonly";
+        $content = "
+        [$name]
+        path = $path
+        valid users = $validusers
+        create mask = $createmask
+        directory mask = $directorymask
+        public = $public
+        writable = $writable
+        read only = $readonly";
 
-$server->addToFile($ssh, '/etc/samba/smb.conf', $content);
-// Schreiben der neuen Freigabe in die smb.conf
-$ssh->execute('service smbd reload');
-// Neustart
-}
+        $server->addToFile($ssh, '/etc/samba/smb.conf', $content);
+        // Schreiben der neuen Freigabe in die smb.conf
+        $ssh->execute('service smbd reload');
+        // Neustart
+        }
 
 ?>
 
 
-<h3>Neue Samba-Freigabe hinzuf&uuml;gen</h3>
+<h3>Freigaben</h3>
 <br>
-Hinweis: Nach dem hinzufügen einer neuen Freigabe wird der Server automatisch neu gestartet.
+Hinweis: Nach dem hinzufügen einer neuen Freigabe wird der Dienst automatisch neu gestartet.
 <br><br>
 <fieldset>
+    <legend>Freigabe hinzuf&uuml;gen</legend>
     <form action="index.php?p=samba&s=shares" method="POST">
         <div class ="viertel-box"> 
             Freigabe Name: <br><br>
