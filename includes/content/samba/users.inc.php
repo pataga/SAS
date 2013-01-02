@@ -27,7 +27,7 @@ if(isset($_POST['entry']))
 	if($smbpasswd == $repeat)
 	{
 		$ssh->openConnection();
-		$line=$ssh->execute('echo -ne "$smbpasswd\n$smbpasswd\n" | smbpasswd -a -s "$smbuser"');
+		//$line=$ssh->execute('echo -ne "$smbpasswd\n$smbpasswd\n" | smbpasswd -a -s "$smbuser"');
 	}
 	else {}
 }
@@ -46,7 +46,7 @@ if(isset($_POST['change']))
 	if($newpasswd == $newpasswdr)
 	{
 		$ssh->openConnection();
-		$line=$ssh->execute('echo -ne "$newpasswd\n$newpasswd\n" | smbpasswd -s "$user"');
+		//$line=$ssh->execute('echo -ne "$newpasswd\n$newpasswd\n" | smbpasswd -s "$user"');
 	}
 	else {}
 }
@@ -61,7 +61,7 @@ if(isset($_POST['delete']))
 	$deluser = $_POST['deluser'];
 	
 	$ssh->openConnection();
-	$line=$ssh->execute('echo -ne |  smbpasswd -x "$deluser" ');
+	//$line=$ssh->execute('echo -ne |  smbpasswd -x "$deluser" ');
 	
 
 }
