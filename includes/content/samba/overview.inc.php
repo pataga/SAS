@@ -35,13 +35,25 @@ if(isset($_POST['restart']))
 	$ssh->execute('service smbd restart');
 }
 
+//#######################################################
+//		Samba Version auslesen
+//#######################################################
+
+	$ssh->openConnection();
+	$version = $ssh->execute('smbd -V');
+	
 
 ?>
 
 <h3>Samba Übersicht</h3>
 
 <fieldset>
+<legend>Installierte Samba Version</legend>
+<h5><?=$version?></h5> 
+</fieldset>
+
 <form action="index.php?p=samba" method="POST">
+<fieldset>	
 <div class ="drittel-box"> 
 <h5>Stop</h5>
 <p><b>Stoppt den Dienst sofort</b></p>
@@ -51,7 +63,6 @@ if(isset($_POST['restart']))
 <h5>Restart</h5>
 <p><b>Startet den Dienst neu</b></p>
 	<br><input type="submit" class="button black" name="restart" value="neustarten">
-</div>
 </div>
 </form>
 </fieldset>
