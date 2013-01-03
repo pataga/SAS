@@ -1,7 +1,7 @@
 <h1 class="normal">Content</h1>
 <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
 <hr>
-<h3>Tooltip</h3>
+<h3>Tooltips</h3>
 <br>
 <a href="#" class="tooltip">Dein Etwas
     <span><b>tooltip</b><br><br>Yeeeeey, jetzt siehst eine Beschreibung!</span>
@@ -22,6 +22,44 @@
     <h4>&Uuml;berschrift 4</h4>
     <h5>&Uuml;berschrift 5</h5>
     <h6>&Uuml;berschrift 6</h6>
+</fieldset>
+<hr>
+<fieldset>
+    <legend>Code / Ausgabefelder</legend>
+    <br>
+    code:<br>
+    <code>0% [Warten auf Kopfzeilen][Verbindung mit extras.ubuntu.com (91.189.88.33)]</code>
+    <br><br>
+    code.simple:<br>
+    <code class="simple">0% [Warten auf Kopfzeilen][Verbindung mit extras.ubuntu.com (91.189.88.33)] </code>
+    <br><br>
+    code.fancy:<br><br>
+    <code class="fancy">0% [Warten auf Kopfzeilen][Verbindung mit extras.ubuntu.com (91.189.88.33)] </code>
+    <hr>
+pre:<br>
+    <pre>gabriel@papaya:/$ ll /var/www/
+insgesamt 24
+drwxrwxrwx  6 root    root    4096 Dez 29 18:18 ./
+drwxr-xr-x 15 root    root    4096 Jan  1 22:53 ../
+drwxrwxrwx 15 root    root    4096 Nov 23 00:05 backup-pc/
+drwxrwxrwx  9 root    root    4096 Dez 27 01:30 gab/
+lrwxrwxrwx  1 root    root      22 Nov 26 16:05 phpsysinfo -> /usr/share/phpsysinfo//
+drwxr-xr-x  9 gabriel gabriel 4096 Dez 19 11:29 SAS/
+drwxrwxrwx  8 root    root    4096 Jan 18  2011 sqlbuddy/
+</pre>
+<div class="clearfix"></div>
+pre.simple:<br>
+    <pre class="simple">gabriel@papaya:/$ ll /var/www/
+insgesamt 24
+drwxrwxrwx  6 root    root    4096 Dez 29 18:18 ./
+drwxr-xr-x 15 root    root    4096 Jan  1 22:53 ../
+drwxrwxrwx 15 root    root    4096 Nov 23 00:05 backup-pc/
+drwxrwxrwx  9 root    root    4096 Dez 27 01:30 gab/
+lrwxrwxrwx  1 root    root      22 Nov 26 16:05 phpsysinfo -> /usr/share/phpsysinfo//
+drwxr-xr-x  9 gabriel gabriel 4096 Dez 19 11:29 SAS/
+drwxrwxrwx  8 root    root    4096 Jan 18  2011 sqlbuddy/
+</pre>
+
 </fieldset>
 <hr>
 <fieldset>
@@ -325,4 +363,22 @@
 <span class='inaktiv'>nicht installiert</span>
 &nbsp;&nbsp;
 <span class="notaviable">nicht verf&uuml;gbar</span>
+<hr>
+<h3>Spoiler (jQuery)</h3>
+<span class="show_hide">Zeig mir mehr!</span> <!-- Öffnen und Schließen -->
+<br>
+<div class="spoiler_div"> <!-- Der Content der geöffnet/geschlossen wird -->
+    <h4>Dein Inhalt</h4>
+    <p>Hier kann man ganz normal den Seiteninhalt einbetten.</p>
+    <p><b>Achtung:</b> Vorerst nur ein Spoiler pro Seite verwenden.</p>
+    <hr>
+    <h5>Code:</h5>
+    <pre class="simple">&lt;span class="show_hide"&gt;Zeigen/Verstecken&lt;/span&gt;<br>
+    &lt;div class="spoiler_div"&gt; <br>
+        Dein Spoiler-Inhalt!<br>
+    &lt;/div&gt;</pre>
+    <hr>
+    <p>Der "Schließen"-Button ist optional!</p>
+    <span class="show_hide">Schließen</span>
+</div>
 <hr>
