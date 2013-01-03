@@ -582,19 +582,15 @@ Template-Features [Forms und so ...]
     padding: 0 20px 0 10px;
 }
 
-#main table tr:hover td { background: #F7FCFD; }
+#main table tr:hover td { background: #EBFCFF; }
 #main table tr .action a { margin: 0 0 0 10px; text-decoration: none; color: #9b9b9b; }
 #main table tr:hover .action .edit { color: #c5a059; }
 #main table tr:hover .action .delete { color: #a02b2b; }
 #main table tr:hover .action .view { color: #55a34a; }
 #main table tr:hover .action a:hover { text-decoration: underline; }
 
-#main table.s th:hover td { background: #F7FCFD; }
+#main table.s th:hover { background: #BCE7FF; cursor: pointer; text-decoration: underline;}
 #main table.s th .action a { margin: 0 0 0 10px; text-decoration: none; color: #9b9b9b; }
-#main table.s th:hover .action .edit { color: #c5a059; }
-#main table.s th:hover .action .delete { color: #a02b2b; }
-#main table.s th:hover .action .view { color: #55a34a; }
-#main table.s th:hover .action a:hover { text-decoration: underline; }
 #main table.s th:after { content: " \2195"; }
 
 
@@ -1324,6 +1320,12 @@ iframe.phpinfo {
     margin-top: 8px;
     border-top: 3px solid #0b75b2;
     border-bottom: 3px solid #0b75b2;
+}
+
+.spoiler_div.console {
+    background-color: #222;
+    color: #fff;
+    font-family: Consolas, "Courier New", Courier, monospace;
 }
 
 span.show_hide {

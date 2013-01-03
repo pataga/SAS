@@ -1,7 +1,26 @@
-<h1 class="normal">Content</h1>
-<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+<h1 class="normal">Dev: CSS-Info</h1>
+<p><b>Tipp:</b> Die "Element untersuchen" Funktion von Firefox kann hier hilfreich sein.</p>
+<h3>Inhalt:</h3>
+<ol>
+    <li><a href="#tt">Tooltips</a></li>
+    <li><a href="#hd">Überschrifen</a></li>
+    <li><a href="#co">Code/Ausgabefelder</a></li>
+    <li><a href="#gr">Grafiken</a></li>
+    <li><a href="#lb">Ladebalken</a></li>
+    <li><a href="#bu">Buttons</a></li>
+    <li><a href="#tb">Tabellen</a></li>
+    <li><a href="#fo">Formular</a></li>
+    <li><a href="#bx">Box-System</a></li>
+    <li><a href="#md">Meldungen</a></li>
+    <li><a href="#si">Statusinformationen</a></li>
+    <li><a href="#sp">Spoiler</a></li>
+</ol>
+
 <hr>
-<h3>Tooltips</h3>
+<!--
+   =========================== TOOLTIPS ===========================
+-->
+<h3 id="tt">Tooltips</h3>
 <br>
 <a href="#" class="tooltip">Dein Etwas
     <span><b>tooltip</b><br><br>Yeeeeey, jetzt siehst eine Beschreibung!</span>
@@ -13,9 +32,11 @@
     <span><b>tooltip3</b><br>Yeeeeey, jetzt siehst eine große Beschreibung!</span>
 </a>
 <hr>
-
+<!--
+   =========================== ÜBERSCHRIFTEN ===========================
+-->
 <fieldset>
-    <legend>&Uuml;berschriften</legend>
+    <legend id ="hd">&Uuml;berschriften</legend>
     <h1 class="normal">&Uuml;berschrift 1</h1>
     <h2>&Uuml;berschrift 2</h2>
     <h3>&Uuml;berschrift 3</h3>
@@ -24,8 +45,11 @@
     <h6>&Uuml;berschrift 6</h6>
 </fieldset>
 <hr>
+<!--
+   =========================== CODE / AUSGABEFELDER ===========================
+-->
 <fieldset>
-    <legend>Code / Ausgabefelder</legend>
+    <legend id="co">Code/Ausgabefelder</legend>
     <br>
     code:<br>
     <code>0% [Warten auf Kopfzeilen][Verbindung mit extras.ubuntu.com (91.189.88.33)]</code>
@@ -62,14 +86,20 @@ drwxrwxrwx  8 root    root    4096 Jan 18  2011 sqlbuddy/
 
 </fieldset>
 <hr>
+<!--
+   =========================== GRAFIKEN ===========================
+-->
 <fieldset>
-    <legend>Ladekringel (Grafik)</legend>
+    <legend id="gr">Grafiken</legend>
 <p>
     <img src="img/load.gif" alt="Loading..">
 </p>
 </fieldset>
 <hr>
-<h3>(Lade-)Balken</h3>
+<!--
+   =========================== LADEBALKEN ===========================
+-->
+<h3 id="lb">Ladebalken</h3>
 <p>Durch die CSS-Class "stripes" werden animierte Streifen angezeigt.</p>
 <div class="progress-bar blue">
     <span style="width: 25%"></span>
@@ -115,7 +145,10 @@ drwxrwxrwx  8 root    root    4096 Jan 18  2011 sqlbuddy/
 </code>
 <br>
 <hr>
-<h3>Buttons</h3>
+<!--
+   =========================== BUTTONS ===========================
+-->
+<h3 id="bu">Buttons</h3>
 <p>sowohl für Links als auch für Submit's</p>
 <a href="#" class="button white">Button</a> &nbsp;
 <a href="#" class="button grey">Button</a> &nbsp;
@@ -136,7 +169,11 @@ drwxrwxrwx  8 root    root    4096 Jan 18  2011 sqlbuddy/
 <h3>Der Porno-Button</h3>
 <a href="" class="pornobutton">Button</a>
 <hr>
-<h3>Tabelle</h3>
+<!--
+   =========================== TABELLEN ===========================
+-->
+<h3 id="tb">Tabellen</h3>
+<h5>Normale Tabelle</h5>
 <table cellpadding="0" cellspacing="0">
     <tr>
         <td>Vivamus rutrum nibh in felis tristique vulputate</td>
@@ -160,7 +197,7 @@ drwxrwxrwx  8 root    root    4096 Jan 18  2011 sqlbuddy/
     </tr>                        
 </table>
 <hr>
-<h3>Tabelle mit Sortierung</h3>
+<h5>Tabelle mit Sortierung</h5>
 <table id="sortable" class="s"> 
     <thead> 
         <tr> 
@@ -232,7 +269,10 @@ drwxrwxrwx  8 root    root    4096 Jan 18  2011 sqlbuddy/
     </tbody> 
 </table>
 <hr>
-<h3>Formular</h3>
+<!--
+   =========================== FORMULARE ===========================
+-->
+<h3 id="fo">Formulare</h3>
 <fieldset>
     <legend>Formularname</legend>
     <label>Sample label:</label><input type="text" class="text-long" />
@@ -262,7 +302,10 @@ drwxrwxrwx  8 root    root    4096 Jan 18  2011 sqlbuddy/
     <p><label>Sample label:</label><textarea rows="1" cols="1"></textarea></p>
     <input type="submit" class="button black" value="Submit Query" />
 </fieldset>
-<h3>Box System</h3>
+<!--
+   =========================== BOX-SYSTEM ===========================
+-->
+<h3 id="bx">Box System</h3>
 <div class="halbe-box">
     <span class="box-demo">halbe box</span>
 </div>
@@ -348,7 +391,10 @@ drwxrwxrwx  8 root    root    4096 Jan 18  2011 sqlbuddy/
 </div>
 <div class="clearfix"></div>
 <hr>
-<h3>Meldungen</h3>
+<!--
+   =========================== MELDUNGEN ===========================
+-->
+<h3 id="md">Meldungen</h3>
 <span class="info">Das ist eine "info"-Meldung</span>
 <br>
 <span class="success">Das ist eine "success"-Meldung</span>
@@ -357,14 +403,20 @@ drwxrwxrwx  8 root    root    4096 Jan 18  2011 sqlbuddy/
 <br>
 <span class="error">Das ist eine "error"-Meldung</span>
 <hr>
-<h3>Statusinformationen</h3>
+<!--
+   =========================== STATUSINFORMATIONEN ===========================
+-->
+<h3 id="si">Statusinformationen</h3>
 <span class='aktiv'>installiert</span>
 &nbsp;&nbsp;
 <span class='inaktiv'>nicht installiert</span>
 &nbsp;&nbsp;
 <span class="notaviable">nicht verf&uuml;gbar</span>
 <hr>
-<h3>Spoiler (jQuery)</h3>
+<!--
+   =========================== SPOILER ===========================
+-->
+<h3 id="sp">Spoiler (jQuery)</h3>
 <span class="show_hide">Zeig mir mehr!</span> <!-- Öffnen und Schließen -->
 <br>
 <div class="spoiler_div"> <!-- Der Content der geöffnet/geschlossen wird -->
@@ -375,6 +427,12 @@ drwxrwxrwx  8 root    root    4096 Jan 18  2011 sqlbuddy/
     <h5>Code:</h5>
     <pre class="simple">&lt;span class="show_hide"&gt;Zeigen/Verstecken&lt;/span&gt;<br>
     &lt;div class="spoiler_div"&gt; <br>
+        Dein Spoiler-Inhalt!<br>
+    &lt;/div&gt;</pre>
+    <hr>
+    <h5>Bei Konsolenausgaben:</h5>
+    <pre class="simple">&lt;span class="show_hide"&gt;Zeigen/Verstecken&lt;/span&gt;<br>
+    &lt;div class="spoiler_div console"&gt; <br>
         Dein Spoiler-Inhalt!<br>
     &lt;/div&gt;</pre>
     <hr>
