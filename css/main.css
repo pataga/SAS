@@ -751,7 +751,7 @@ Template-Features [Forms und so ...]
 Author's custom styles
 ========================================================================== */
 
-/* ====== LADEBALKEN ===== */
+/* ====== LADEBALKEN - Wurden ersetzt durch das HTML5-tag <meter>
 
 .progress-bar {
     background-color: #eee;
@@ -850,6 +850,7 @@ Author's custom styles
 @-moz-keyframes animate-stripes {
     0% {background-position: 0 0;} 100% {background-position: 60px 0;}
 }
+*/
 
 /* ====== BUTTONS FÜR SUBMIT, BUTTON AND LINKS ===== */
 

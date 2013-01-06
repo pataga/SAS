@@ -36,9 +36,11 @@
    =========================== ÜBERSCHRIFTEN ===========================
 -->
 <fieldset>
-    <legend id ="hd">&Uuml;berschriften</legend>
+    <legend id="hd">&Uuml;berschriften</legend>
     <h1 class="normal">&Uuml;berschrift 1</h1>
+
     <h2>&Uuml;berschrift 2</h2>
+
     <h3>&Uuml;berschrift 3</h3>
     <h4>&Uuml;berschrift 4</h4>
     <h5>&Uuml;berschrift 5</h5>
@@ -60,7 +62,7 @@
     code.fancy:<br><br>
     <code class="fancy">0% [Warten auf Kopfzeilen][Verbindung mit extras.ubuntu.com (91.189.88.33)] </code>
     <hr>
-pre:<br>
+    pre:<br>
     <pre>gabriel@papaya:/$ ll /var/www/
 insgesamt 24
 drwxrwxrwx  6 root    root    4096 Dez 29 18:18 ./
@@ -71,8 +73,8 @@ lrwxrwxrwx  1 root    root      22 Nov 26 16:05 phpsysinfo -> /usr/share/phpsysi
 drwxr-xr-x  9 gabriel gabriel 4096 Dez 19 11:29 SAS/
 drwxrwxrwx  8 root    root    4096 Jan 18  2011 sqlbuddy/
 </pre>
-<div class="clearfix"></div>
-pre.simple:<br>
+    <div class="clearfix"></div>
+    pre.simple:<br>
     <pre class="simple">gabriel@papaya:/$ ll /var/www/
 insgesamt 24
 drwxrwxrwx  6 root    root    4096 Dez 29 18:18 ./
@@ -91,16 +93,60 @@ drwxrwxrwx  8 root    root    4096 Jan 18  2011 sqlbuddy/
 -->
 <fieldset>
     <legend id="gr">Grafiken</legend>
-<p>
-    <img src="img/load.gif" alt="Loading..">
-</p>
+    <p>
+        <img src="img/load.gif" alt="Loading..">
+    </p>
 </fieldset>
 <hr>
 <!--
    =========================== LADEBALKEN ===========================
 -->
 <h3 id="lb">Ladebalken</h3>
-<p>Durch die CSS-Class "stripes" werden animierte Streifen angezeigt.</p>
+<fieldset>
+    <h5>&lt;meter&gt;-tag</h5>
+
+    <p>Kann auch mit <code>style="width: 100px; height: 20px;"</code> angepasst werden.</p>
+    <li>
+        <meter value="0"></meter>
+    </li>
+    <li>
+        <meter value="1"></meter>
+    </li>
+    <li>
+        <meter min="30" max="40" value="35"></meter>
+    </li>
+    <li>
+        <meter min="0" max="250" low="20" high="200" value="40"></meter>
+    </li>
+    <li>
+        <meter min="100" max="1000" low="200" high="800" value="900"></meter>
+    </li>
+    <li>
+        <meter low="70" high="80" max="100" value="90"></meter>
+    </li>
+    <p><b>Wichtig! </b>Für Browser die diese Tags noch nicht unterstützen, schreibt man zwischen die Tags einen
+        Alternativtext.</p>
+</fieldset>
+<fieldset>
+    <h5>&lt;progress&gt;-tag</h5>
+
+    <p>Kann mit CSS nicht verändern werden.</p>
+    <li>
+        <progress></progress>
+    </li>
+    <li>
+        <progress max="10" value="0"></progress>
+    </li>
+    <li>
+        <progress max="10" value="10"></progress>
+    </li>
+    <li>
+        <progress max="100" value="57"></progress>
+    </li>
+    <p><b>Wichtig! </b>Für Browser die diese Tags noch nicht unterstützen, schreibt man zwischen die Tags einen
+        Alternativtext.</p>
+</fieldset>
+<!--<p>Durch die CSS-Class "stripes" werden animierte Streifen angezeigt.</p>
 <div class="progress-bar blue">
     <span style="width: 25%"></span>
 </div>
@@ -144,11 +190,12 @@ drwxrwxrwx  8 root    root    4096 Jan 18  2011 sqlbuddy/
     &lt;/div&gt;
 </code>
 <br>
-<hr>
+<hr>-->
 <!--
    =========================== BUTTONS ===========================
 -->
 <h3 id="bu">Buttons</h3>
+
 <p>sowohl für Links als auch für Submit's</p>
 <a href="#" class="button white">Button</a> &nbsp;
 <a href="#" class="button grey">Button</a> &nbsp;
@@ -164,6 +211,7 @@ drwxrwxrwx  8 root    root    4096 Jan 18  2011 sqlbuddy/
 <code class="fancy">
     &lt;a href="#" class="button black"&gt;Button&lt;/a&gt;
 </code><br>
+
 <p>Verfügbare Farben für Buttons: white, grey, pink, orange, green, blue, purple, teal, darkblue, black</p>
 <hr>
 <h3>Der Porno-Button</h3>
@@ -177,96 +225,101 @@ drwxrwxrwx  8 root    root    4096 Jan 18  2011 sqlbuddy/
 <table cellpadding="0" cellspacing="0">
     <tr>
         <td>Vivamus rutrum nibh in felis tristique vulputate</td>
-        <td class="action"><a href="#" class="view">View</a><a href="#" class="edit">Edit</a><a href="#" class="delete">Delete</a></td>
-    </tr>                        
+        <td class="action"><a href="#" class="view">View</a><a href="#" class="edit">Edit</a><a href="#" class="delete">Delete</a>
+        </td>
+    </tr>
     <tr class="odd">
         <td>Duis adipiscing lorem iaculis nunc</td>
-        <td class="action"><a href="#" class="view">View</a><a href="#" class="edit">Edit</a><a href="#" class="delete">Delete</a></td>
-    </tr>                        
+        <td class="action"><a href="#" class="view">View</a><a href="#" class="edit">Edit</a><a href="#" class="delete">Delete</a>
+        </td>
+    </tr>
     <tr>
         <td>Donec sit amet nisi ac magna varius tempus</td>
-        <td class="action"><a href="#" class="view">View</a><a href="#" class="edit">Edit</a><a href="#" class="delete">Delete</a></td>
-    </tr>                        
+        <td class="action"><a href="#" class="view">View</a><a href="#" class="edit">Edit</a><a href="#" class="delete">Delete</a>
+        </td>
+    </tr>
     <tr class="odd">
         <td>Duis ultricies laoreet felis</td>
-        <td class="action"><a href="#" class="view">View</a><a href="#" class="edit">Edit</a><a href="#" class="delete">Delete</a></td>
-    </tr>                        
+        <td class="action"><a href="#" class="view">View</a><a href="#" class="edit">Edit</a><a href="#" class="delete">Delete</a>
+        </td>
+    </tr>
     <tr>
         <td>Vivamus rutrum nibh in felis tristique vulputate</td>
-        <td class="action"><a href="#" class="view">View</a><a href="#" class="edit">Edit</a><a href="#" class="delete">Delete</a></td>
-    </tr>                        
+        <td class="action"><a href="#" class="view">View</a><a href="#" class="edit">Edit</a><a href="#" class="delete">Delete</a>
+        </td>
+    </tr>
 </table>
 <hr>
 <h5>Tabelle mit Sortierung</h5>
-<table id="sortable" class="s"> 
-    <thead> 
-        <tr> 
-            <th>ID</th>
-            <th>Vorname</th> 
-            <th>Nachname</th> 
-            <th>E-Mail</th> 
-            <th>Wert</th> 
-            <th>Wert 2</th> 
-        </tr> 
-    </thead> 
-    <tbody> 
-        <tr> 
-            <td>1</td>
-            <td>Alex</td> 
-            <td>Habuschja</td> 
-            <td>alex.ha@gmail.com</td> 
-            <td>50.0</td> 
-            <td>http://www.jsmith.com</td> 
-        </tr> 
-        <tr> 
-            <td>2</td>
-            <td>Bernd</td> 
-            <td>Müller</td> 
-            <td>b.m@yahoo.com</td> 
-            <td>51.02</td> 
-            <td>http://www.frank.com</td> 
-        </tr> 
-        <tr> 
-            <td>3</td>
-            <td>Clown</td> 
-            <td>Schmidt</td> 
-            <td>c.schmidt@hotmail.com</td> 
-            <td>45.20</td> 
-            <td>http://www.jdoe.com</td> 
-        </tr> 
-        <tr> 
-            <td>4</td>
-            <td>David</td> 
-            <td>Bolleknolle</td> 
-            <td>david.bolle@earthlink.net</td> 
-            <td>50.00</td> 
-            <td>http://www.timconway.com</td> 
-        </tr> 
-        <tr> 
-            <td>5</td>
-            <td>Hermann</td> 
-            <td>Wald</td> 
-            <td>hr.wald@earthlink.net</td> 
-            <td>50.2210</td> 
-            <td>http://www.timconway.com</td> 
-        </tr> 
-        <tr> 
-            <td>6</td>
-            <td>Ulf</td> 
-            <td>Knulf</td> 
-            <td>Ulf.Knulf@earthlink.net</td> 
-            <td>4540.00</td> 
-            <td>http://www.timconway.com</td> 
-        </tr> 
-        <tr> 
-            <td>7</td>
-            <td>Friedel</td> 
-            <td>Bolleknolle</td> 
-            <td>Friedel.bolle@earthlink.net</td> 
-            <td>90.00</td> 
-            <td>http://www.timconway.com</td> 
-        </tr> 
-    </tbody> 
+<table id="sortable" class="s">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Vorname</th>
+        <th>Nachname</th>
+        <th>E-Mail</th>
+        <th>Wert</th>
+        <th>Wert 2</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>1</td>
+        <td>Alex</td>
+        <td>Habuschja</td>
+        <td>alex.ha@gmail.com</td>
+        <td>50.0</td>
+        <td>http://www.jsmith.com</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>Bernd</td>
+        <td>Müller</td>
+        <td>b.m@yahoo.com</td>
+        <td>51.02</td>
+        <td>http://www.frank.com</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>Clown</td>
+        <td>Schmidt</td>
+        <td>c.schmidt@hotmail.com</td>
+        <td>45.20</td>
+        <td>http://www.jdoe.com</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>David</td>
+        <td>Bolleknolle</td>
+        <td>david.bolle@earthlink.net</td>
+        <td>50.00</td>
+        <td>http://www.timconway.com</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>Hermann</td>
+        <td>Wald</td>
+        <td>hr.wald@earthlink.net</td>
+        <td>50.2210</td>
+        <td>http://www.timconway.com</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>Ulf</td>
+        <td>Knulf</td>
+        <td>Ulf.Knulf@earthlink.net</td>
+        <td>4540.00</td>
+        <td>http://www.timconway.com</td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td>Friedel</td>
+        <td>Bolleknolle</td>
+        <td>Friedel.bolle@earthlink.net</td>
+        <td>90.00</td>
+        <td>http://www.timconway.com</td>
+    </tr>
+    </tbody>
 </table>
 <hr>
 <!--
@@ -275,10 +328,13 @@ drwxrwxrwx  8 root    root    4096 Jan 18  2011 sqlbuddy/
 <h3 id="fo">Formulare</h3>
 <fieldset>
     <legend>Formularname</legend>
-    <label>Sample label:</label><input type="text" class="text-long" />
+    <label>Sample label:</label><input type="text" class="text-long"/>
     <br>
     <br>
-    <p><label>Sample label:</label><input type="text" class="text-medium" /><input type="text" class="text-small" /><input type="text" class="text-small" /></p>
+
+    <p><label>Sample label:</label><input type="text" class="text-medium"/><input type="text" class="text-small"/><input
+            type="text" class="text-small"/></p>
+
     <p><label>Sample label:</label>
         <select>
             <option>Select one</option>
@@ -300,12 +356,13 @@ drwxrwxrwx  8 root    root    4096 Jan 18  2011 sqlbuddy/
         </select>
     </p>
     <p><label>Sample label:</label><textarea rows="1" cols="1"></textarea></p>
-    <input type="submit" class="button black" value="Submit Query" />
+    <input type="submit" class="button black" value="Submit Query"/>
 </fieldset>
 <!--
    =========================== BOX-SYSTEM ===========================
 -->
 <h3 id="bx">Box System</h3>
+
 <div class="halbe-box">
     <span class="box-demo">halbe box</span>
 </div>
@@ -419,9 +476,12 @@ drwxrwxrwx  8 root    root    4096 Jan 18  2011 sqlbuddy/
 <h3 id="sp">Spoiler (jQuery)</h3>
 <span class="show_hide">Zeig mir mehr!</span> <!-- Öffnen und Schließen -->
 <br>
+
 <div class="spoiler_div"> <!-- Der Content der geöffnet/geschlossen wird -->
     <h4>Dein Inhalt</h4>
+
     <p>Hier kann man ganz normal den Seiteninhalt einbetten.</p>
+
     <p><b>Achtung:</b> Vorerst nur ein Spoiler pro Seite verwenden.</p>
     <hr>
     <h5>Code:</h5>
