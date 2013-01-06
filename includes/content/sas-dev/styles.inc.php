@@ -425,13 +425,15 @@ drwxrwxrwx  8 root    root    4096 Jan 18  2011 sqlbuddy/
     <p><b>Achtung:</b> Vorerst nur ein Spoiler pro Seite verwenden.</p>
     <hr>
     <h5>Code:</h5>
-    <pre class="simple">&lt;span class="show_hide"&gt;Zeigen/Verstecken&lt;/span&gt;<br>
+    <pre class="simple">&lt;span class="show_hide"&gt;Zeigen/Verstecken&lt;/span&gt;
+    &lt;br&gt;
     &lt;div class="spoiler_div"&gt; <br>
         Dein Spoiler-Inhalt!<br>
     &lt;/div&gt;</pre>
     <hr>
     <h5>Bei Konsolenausgaben:</h5>
-    <pre class="simple">&lt;span class="show_hide"&gt;Zeigen/Verstecken&lt;/span&gt;<br>
+    <pre class="simple">&lt;span class="show_hide"&gt;Zeigen/Verstecken&lt;/span&gt;
+    &lt;br&gt;
     &lt;div class="spoiler_div console"&gt; <br>
         Dein Spoiler-Inhalt!<br>
     &lt;/div&gt;</pre>

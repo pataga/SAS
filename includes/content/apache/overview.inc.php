@@ -21,12 +21,12 @@ $status_a2 = $ssh->execute("service apache2 status");
 $version_a2 = $ssh->execute("apache2ctl -v");
 
 // gibt aktive a2 mods in liste aus
-$en_mods_a2 = $ssh->execute("ls -1 /etc/apache2/mods-enabled/");
+$en_mods_a2 = $ssh->execute("ls -1 /etc/apache2/mods-enabled/ | grep load");
 
 // Verarbeitung...
 $version_a2_ = explode("\n", $version_a2);
 $version_a2_x = explode(": ", $version_a2_[0]);
-
+$en_mods_a2_ = explode(".load", $en_mods_a2);
 
 if (isset($_POST['a2-stop']) && isset($_POST['a2-stop-h'])) {           //wenn hidden+submit ..
     $ssh->execute("service apache2 stop");                              //.. führe das aus
@@ -63,7 +63,9 @@ if (isset($_POST['a2-restart']) && isset($_POST['a2-restart-h'])) {           //
     </div>
     <div class="halbe-box lastbox">
         <h5>Aktive Module:</h5>
-        <textarea name="" id="a2_module" readonly="readonly"><?php echo $en_mods_a2; ?></textarea>
+        <div name="a2_module" class="a2_module"><?php foreach ($en_mods_a2_ as $key => $value) {
+                echo $value."<br>";
+        };?></div>
     </div>
     <div class="clearfix"></div>
 </fieldset>
@@ -102,8 +104,3 @@ if (isset($_POST['a2-restart']) || isset($_POST['a2-reload']) || isset($_POST['a
     echo '<span class="info"><b>Hinweis:</b> Bitte beachten Sie, dass der Status ggf. nach einer Aktion manuell aktuelisiert werden muss. Klicken Sie hierzu einfach den Aktualisieren-Button. Dies kommt durch die Zeitverzögerung der Verbindung zum Server zustande.</span>';
 }
 ?>
-<!--
-<fieldset>
-        <textarea name="" id="console" readonly="readonly"><?php ?></textarea>
-</fieldset>
--->
