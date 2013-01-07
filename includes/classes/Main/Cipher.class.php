@@ -13,9 +13,9 @@
 */
 
 namespace Main;
-class Cipher {
+abstract class Cipher {
 
-    private function toAscii($key) {
+    private static function toAscii($key) {
         for ($i = 0; $i < strlen($key); $i++) {
             $temp[$i] = chr((ord($key[$i]) + $i * 3) + (ord($key[$i]) + $i * 5));
         }
@@ -33,14 +33,14 @@ class Cipher {
         return $ascii;
     }
 
-    private function shapeAsciiBits($key) {
+    private static function shapeAsciiBits($key) {
         for ($i = 0; $i < strlen($key); $i++) {
             @$temp[$i] = ord($key[$i]) << 2;
         }
         return @implode($temp);
     }
 
-    private function splitNumber($key) {
+    private static function splitNumber($key) {
         for ($i = strlen($key) - 1, $itr = 0; $i >= 0; $i--) {
             if ($i % 5 == 0 && strlen($key) - 1 != $i) {
                 $itr++;
@@ -51,14 +51,14 @@ class Cipher {
         return $temp;
     }
 
-    private function toHex($key) {
+    private static function toHex($key) {
         for ($i = 0; $i < count($key); $i++) {
             $temp[$i] = strtoupper(dechex($key[$i]));
         }
         return implode($temp);
     }
 
-    private function addUpOcts($key) {
+    private static function addUpOcts($key) {
         for ($i = 0, $itr = 0; $i < strlen($key); $i+=3) {
             @$temp[$itr] = $key[$i] . $key[$i + 1];
             $itr++;
