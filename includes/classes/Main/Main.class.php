@@ -12,6 +12,8 @@
 *
 */
 
+
+namespace Main;
 class Main {
 
     private $mysql_data, $mysql, $db, $result, $server, $ssh, $user, $tableaction, $loader, $logFile, $debugLevel;
@@ -33,13 +35,13 @@ class Main {
      */
     private function initialisizeInstances() {
         try {
-            $this->debug = new Debug($this->debugLevel, $this->logFile);
+            $this->debug = new \Main\Debug($this->debugLevel, $this->logFile);
         } catch (Exception $e) {
             throw new Exception($e->getMessage());
         }
 
         try {
-            $this->mysql = new MySQL($this,$this->mysql_data[0], 
+            $this->mysql = new \MySQL\MySQL($this,$this->mysql_data[0], 
             $this->mysql_data[1], $this->mysql_data[2], 
             $this->mysql_data[3], $this->mysql_data[4]);    
         } catch (Exception $e) {
@@ -47,31 +49,31 @@ class Main {
         }
 
         try {
-            $this->loader = new Loader($this);
+            $this->loader = new \Main\Loader($this);
         } catch (Exception $e) {
             $this->debug->error($e);
         }
 
         try {
-            $this->user = new User($this);
+            $this->user = new \User\User($this);
         } catch (Exception $e) {
             $this->debug->error($e);
         }
 
         try {
-            $this->server = new Server($this);
+            $this->server = new \Server\Server($this);
         } catch (Exception $e) {
             $this->debug->error($e);
         }
 
         try {
-            $this->database = new Database($this);
+            $this->database = new \MySQL\Database($this);
         } catch (Exception $e) {
             $this->debug->error($e);
         }
 
         try {
-            $this->cache = new Cache($this);
+            $this->cache = new \Cache\Cache($this);
         } catch (Exception $e) {
             $this->debug->error($e);
         }
@@ -92,7 +94,7 @@ class Main {
                 if (!is_array($data))
                     throw new Exception("unable to find data of ssh daemon in Main::setSSHInstance()", 1);
 
-                return new SSH($this,$data[0],22,$data[1],$data[2]);
+                return new \SSH\SSH($this,$data[0],22,$data[1],$data[2]);
             } else {
                 return NULL;
             }

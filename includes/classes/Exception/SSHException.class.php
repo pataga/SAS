@@ -12,7 +12,7 @@
 *
 */
 
-
+namespace Exception;
 class SSHException extends Exception {
 }
 

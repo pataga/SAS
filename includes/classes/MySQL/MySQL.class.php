@@ -12,6 +12,9 @@
 *
 */
 
+
+namespace MySQL;
+
 class MySQL {
 
     private $mysql_host,$mysql_port,$mysql_user,$mysql_pass,$mysql_db,$result,$con_res,$mode;

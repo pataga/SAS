@@ -13,6 +13,8 @@
 */
 
 
+namespace Module\Process;
+
 class Process {
 
 	private $ssh;

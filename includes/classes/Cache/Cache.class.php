@@ -12,7 +12,7 @@
 *
 */
 
-
+namespace Cache;
 class Cache {
 	
 	private $cache='';

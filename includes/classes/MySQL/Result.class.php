@@ -12,6 +12,7 @@
 *
 */
 
+namespace MySQL;
 
 class Result {
     private $result;

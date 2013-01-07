@@ -13,6 +13,8 @@
 */
 
 
+namespace SSH;
+
 class SSH {
 
     private $host; 

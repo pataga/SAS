@@ -12,7 +12,7 @@
 *
 */
 
-
+namespace Exception;
 class MySQLException extends Exception {
 }
 

@@ -12,6 +12,8 @@
 *
 */
 
+
+namespace Main;
 class Loader {
 
     public $_page = "";

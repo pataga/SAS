@@ -12,7 +12,7 @@
 *
 */
 
-
+namespace Main;
 class Debug {
 
 	private $loglevel, $logfile, $errorCount, $errors;

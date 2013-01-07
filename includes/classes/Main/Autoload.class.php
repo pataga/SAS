@@ -12,13 +12,16 @@
 *
 */
 
-
-class AutoLoad {
-    public function __construct($class) {
-        try {
-            require '';
-        } catch (Exception $e) {
-            
-        }
+namespace Main;
+abstract class AutoLoad {
+    /**
+     * Erstellt aus dem übergebenen Namespace den Verzeichnispfad
+     * @param String namespace_
+     * @return String path
+     */
+    public static function getFilePath($namespace_) {
+        if (empty($namespace_))
+            throw new Exception('Variable $namespace_ ist leer! (AutoLoad::getFilePath(String))');
+        return './includes/classes/'.str_replace('\\','/',$namespace_).'.class.php';
     }
 }

@@ -12,6 +12,7 @@
 *
 */
 
+namespace Module\MySQL;
 
 class DBHandler {
 

@@ -12,6 +12,7 @@
 *
 */
 
+namespace Server;
 
 class Server {
 

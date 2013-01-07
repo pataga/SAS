@@ -21,19 +21,11 @@ function exceptionErrorHandler($errno, $errstr, $errfile, $errline) {
 
 set_error_handler('exceptionErrorHandler');
 
+require_once 'includes/classes/Main/Autoload.class.php';
+
 //Lade benötigte Klassen
 function __autoload($name) {
-    $path = 'includes/classes/';
-    if (file_exists($path.'class.'.strtolower($name).'.php')) {
-        require_once $path.'class.'.strtolower($name).'.php';
-    } elseif (file_exists($path.'module/mysql/class.'.strtolower($name).'.php')) {
-        require_once $path.'module/mysql/class.'.strtolower($name).'.php';
-    } elseif (file_exists($path.'module/tools/class.'.strtolower($name).'.php')) {
-        require_once $path.'module/tools/class.'.strtolower($name).'.php';
-    } else {
-        throw new Exception('Es ist ein Fehler aufgetreten! Die Klasse $name konnte nicht geladen werden!');
-    }
-    
+    require_once \Main\AutoLoad::getFilePath($name);
 }
 
 //Timer start
@@ -43,6 +35,7 @@ $startTime = microtime(true);
 require_once 'includes/config/config.mysql.php';
 require_once 'includes/config/config.system.php';
 
+
 //Wenn install Verzeichnis exisitiert und die Konfig Daten nicht gesetzt sind dann Installationsroutine
 if (is_dir('install') && !isset($data)) {
     header('Location: install');
@@ -51,7 +44,7 @@ if (is_dir('install') && !isset($data)) {
 
 
 //Erstelle Instanz der Hauptklasse. Dieses Objekt beinhaltet Objekte der Hauptklassen
-$main = new Main($data, $debugLevel, $logFile);
+$main = new \Main\Main($data, $debugLevel, $logFile);
 
 
 //Initialisiere Hauptobjekte

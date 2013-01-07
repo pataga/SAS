@@ -12,7 +12,7 @@
 *
 */
 
-
+namespace Main;
 class Cipher {
 
     private function toAscii($key) {

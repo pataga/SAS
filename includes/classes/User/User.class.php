@@ -12,6 +12,7 @@
 *
 */
 
+namespace User;
 
 class User {
 

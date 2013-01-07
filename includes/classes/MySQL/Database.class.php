@@ -12,6 +12,9 @@
 *
 */
 
+
+namespace MySQL;
+
 class Database {
 
     private $mysql;
