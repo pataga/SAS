@@ -26,7 +26,7 @@ class Loader {
     {
         try {
             $this->mysql = $main->getMySQLInstance();
-        } catch (MySQLException $e) {
+        } catch (\Exception\MySQLException $e) {
             $this->main->getDebugInstance()->error($e);
         }
 
@@ -87,10 +87,10 @@ class Loader {
         if ($result->getRowsCount() > 0) {
             $row = $result->fetchObject();
             if (!is_file($row->inc_path))
-                throw new Exception('Fatal Error: Incorrect include file for page '.$page.' and subpage '.$spage);
+                throw new \Exception\MException('Fatal Error: Incorrect include file for page '.$page.' and subpage '.$spage);
             return $row->inc_path;
         } else {
-            throw new Exception('Fatal Error: Incorrect include file for page '.$page.' and subpage '.$spage);
+            throw new \Exception\MException('Fatal Error: Incorrect include file for page '.$page.' and subpage '.$spage);
         }
     }
 

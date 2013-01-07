@@ -37,7 +37,7 @@ class Cache {
 			$content = ob_get_contents();
 			ob_end_clean(); 
 			return $content;
-		} catch (Exception $e) {
+		} catch (\Exception\MException $e) {
 			$this->main->getDebugInstance()->error($e);
 			return '';
 		}
@@ -50,7 +50,7 @@ class Cache {
 			$content = ob_get_contents();
 			ob_end_clean();
 			return $content;
-		} catch (Exception $e) {
+		} catch (\Exception\MException $e) {
 			$this->main->getDebugInstance()->error($e);
 			return '';
 		}

@@ -27,7 +27,7 @@ class MySQL {
 
         try {
             $this->connect();
-        } catch (MySQLException $e) {
+        } catch (\Exception\MySQLException $e) {
             $this->main->getDebugInstance()->error($e);
         }
         
@@ -51,7 +51,7 @@ class MySQL {
     */
     public function selectDB($db) {
         if (!($this->database_res = mysql_select_db($db, $this->con_res))) {
-            throw new Exception("Fehler beim Verbinden der Datenbank ". mysql_error());
+            throw new \Exception\MException("Fehler beim Verbinden der Datenbank ". mysql_error());
         } else {
             $this->mysql_db = $db;
         }
@@ -98,7 +98,7 @@ class MySQL {
     */
     public function createDatabase($db) {
         if (!$this->con_res) {
-            throw new Exception("Keine Verbindung zum MySQL Server".mysql_error());
+            throw new \Exception\MException("Keine Verbindung zum MySQL Server".mysql_error());
         } else {
             $this->Query("CREATE DATABASE $db");
             return true;

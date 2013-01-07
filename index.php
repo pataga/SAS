@@ -77,7 +77,7 @@ if (isset($_SESSION['server_id'])) {
     //... versuche eine Remote MySQL Verbindung aufzubauen
     $remote_mysql_data = $server->getMySQLData();
     if (is_array($remote_mysql_data)) {
-        $mysql_remote = new MySQL($main,$remote_mysql_data[0],$remote_mysql_data[1],$remote_mysql_data[2],$remote_mysql_data[3]);
+        $mysql_remote = new \MySQL\MySQL($main,$remote_mysql_data[0],$remote_mysql_data[1],$remote_mysql_data[2],$remote_mysql_data[3]);
     }
 }
 
@@ -87,7 +87,7 @@ if (!$user->isLoggedIn()) {
     try {
         require_once 'includes/content/main/login.inc.php';
         exit();
-    } catch (Exception $e) {
+    } catch (\Exception\MException $e) {
         $debug->error($e);
         exit;
     }
@@ -116,7 +116,7 @@ ob_start();
 
 try {
     require_once $loader->getIncFile();
-} catch (Exception $e) {
+} catch (\Exception\Exception $e) {
     $debug->error($e);
 }
 
@@ -139,5 +139,5 @@ print($cache->getCache());
 $endTime = microtime(true);
 
 //Calc Time
-Main::printLoadTime($startTime, $endTime);
+\Main\Main::printLoadTime($startTime, $endTime);
 ?>

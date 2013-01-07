@@ -54,10 +54,10 @@ class SSH {
     public function openConnection() {
         try {
             if (!($this->connection = ssh2_connect($this->host, $this->port)))
-                throw new Exception('SSH Connection failed');
+                throw new \Exception\MException('SSH Connection failed');
             if (!ssh2_auth_password($this->connection, $this->user, $this->pass))
-                throw new Exception('SSH Autentication failed');
-        } catch (Exception $e) {
+                throw new \Exception\MException('SSH Autentication failed');
+        } catch (\Exception\MException $e) {
 
         }
     }
@@ -76,7 +76,7 @@ class SSH {
     public function execute($command, $type = 0) {
         $output = "";
         if (!($os = ssh2_exec($this->connection, $command, "bash")))
-            throw new Exception('SSH command failed');
+            throw new \Exception\MException('SSH command failed');
 
         stream_set_blocking($os, true);
 
