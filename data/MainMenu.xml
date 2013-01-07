@@ -1,0 +1,8 @@
+<MainMenu>
+    <item>
+        <id>1</id>
+        <name>Home</name>
+        <file>./includes/content/home/overview.inc.php</file>
+        <href>?p=home</href>
+    </item>
+</MainMenu>
