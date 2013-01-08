@@ -13,10 +13,14 @@
 */
 
 class Session {
+    private $mysql = NULL, $main = NULL;
     /**
      * Starte Session 
      */
-    public function __construct() {
+    public function __construct($main) {
+        $this->mysql = $main->getMySQLInstance();
+        $this->main = $main;
+
         session_start();
 
         //User Data Initialisierung
@@ -140,6 +144,47 @@ class Session {
      */
     public function GetLogLevel() {
         return $_SESSION['debug']['logLevel'];
+    }
+
+    /**
+     * Überprüft die Zugangsdaten des Benutzers und setzt entsprechende Session Daten
+     * Zudem wird eine Instanz der Klasse User angelegt.
+     * @param String username
+     * @param String password
+     * @return bool / User
+     */
+    public function AuthChallenge($username, $password) {
+        if (empty($username) || empty($password)) {
+            $_SESSION['user']['failedAuths']++;
+            return false;
+        } 
+
+        $users = $this->mysql->tableAction('sas_users');
+        $result = $users->select(NULL, ['username' => $username]);
+        if (!$result) {
+            $_SESSION['user']['failedAuths']++;
+            return false;
+        }
+
+        $user = $result->fetchObject();
+        if ($user->password != md5($password)) {
+            $_SESSION['user']['failedAuths']++;
+            return false;
+        }
+
+        $_SESSION['user']['authenticated'] = true;
+        $_SESSION['user']['failedAuths'] = 0;
+        $_SESSION['user']['id'] = $user->id;
+        $_SESSION['user']['name'] = $user->username;
+        $_SESSION['user']['email'] = $user->email;
+        $_SESSION['user']['admin'] = $user->admin;
+
+        //Klasse User noch nicht umgeschrieben, daher noch nicht funktionsfähig
+        $userInstance = new User($this->main);
+        if (!$userInstance->SetData())
+            return false;
+        
+        return $userInstance;
     }
 }
 
