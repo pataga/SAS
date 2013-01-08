@@ -14,6 +14,7 @@
     <li><a href="#md">Meldungen</a></li>
     <li><a href="#si">Statusinformationen</a></li>
     <li><a href="#sp">Spoiler</a></li>
+    <li><a href="#tab">Tabs</a></li>
 </ol>
 
 <hr>
@@ -502,3 +503,31 @@ drwxrwxrwx  8 root    root    4096 Jan 18  2011 sqlbuddy/
     <span class="show_hide">Schließen</span>
 </div>
 <hr>
+<!--
+   =========================== TABS ===========================
+-->
+<h3 id="tab">Tabs</h3>
+<p>Max. Tabs: 6 Stück</p>
+<div class="tabnav" >
+  <ul class="tabl" id="tabs_ui">
+    <li id="tab1" class="selected" onclick="tabs(this);">Tab 1</li>
+    <li id="tab2" onclick="tabs(this);">Tab 2</li>
+    <li id="tab3"  onclick="tabs(this);">Tab 3</li>
+  </ul>
+  <div id="tabcontent">
+    <h5>Tab 1!</h5>
+    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+  </div>
+</div> 
+<div id="tab1content" style="display:none;">
+    <h5>Tab 1!</h5>
+    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+</div>
+<div id="tab2content" style="display:none;">
+    <h5>Tab Nummero 2!</h5>
+    <p>At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+</div>
+<div id="tab3content" style="display:none;">
+    <h5>Tab Nummer 3!</h5>
+    <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla </p>
+</div>
