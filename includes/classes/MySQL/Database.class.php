@@ -12,6 +12,7 @@
 *
 */
 
+//Diese Klasse wird bald gelöscht und durch eine Funktionssammlung ersetzt
 
 namespace MySQL;
 

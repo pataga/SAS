@@ -16,7 +16,7 @@ class XMLReader {
     private $content;
     public function __construct($file) {
         if (!file_exists($file)) {
-            throw new Exception("XML Datei nicht gefunden.", 1);
+            throw new \Data\Exception("XML Datei nicht gefunden.", 1);
         } else {
             $this->content = file_get_contents($file);
         }

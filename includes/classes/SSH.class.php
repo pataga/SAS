@@ -13,8 +13,6 @@
 */
 
 
-namespace SSH;
-
 class SSH {
 
     private $host; 
@@ -54,10 +52,10 @@ class SSH {
     public function openConnection() {
         try {
             if (!($this->connection = ssh2_connect($this->host, $this->port)))
-                throw new \Exception\MException('SSH Connection failed');
+                throw new \SSH\Exception('SSH Connection failed');
             if (!ssh2_auth_password($this->connection, $this->user, $this->pass))
-                throw new \Exception\MException('SSH Autentication failed');
-        } catch (\Exception\MException $e) {
+                throw new \SSH\Exception('SSH Autentication failed');
+        } catch (\SSH\Exception $e) {
 
         }
     }
@@ -76,12 +74,10 @@ class SSH {
     public function execute($command, $type = 0) {
         $output = "";
         if (!($os = ssh2_exec($this->connection, $command, "bash")))
-            throw new \Exception\MException('SSH command failed');
+            throw new \SSH\Exception('SSH command failed');
 
         stream_set_blocking($os, true);
-
         $data = array();
-
         if ($type == 2) {
             for ($i = 0; $line = fgets($os); $i++) {
                 flush();

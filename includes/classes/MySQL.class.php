@@ -13,8 +13,6 @@
 */
 
 
-namespace MySQL;
-
 class MySQL {
 
     private $mysql_host,$mysql_port,$mysql_user,$mysql_pass,$mysql_db,$result,$con_res,$mode;
@@ -27,7 +25,7 @@ class MySQL {
 
         try {
             $this->connect();
-        } catch (\Exception\MySQLException $e) {
+        } catch (\MySQL\Exception $e) {
             $this->main->getDebugInstance()->error($e);
         }
         
@@ -51,7 +49,7 @@ class MySQL {
     */
     public function selectDB($db) {
         if (!($this->database_res = mysql_select_db($db, $this->con_res))) {
-            throw new \Exception\MException("Fehler beim Verbinden der Datenbank ". mysql_error());
+            throw new \MySQL\Exception("Fehler beim Verbinden der Datenbank ". mysql_error());
         } else {
             $this->mysql_db = $db;
         }
@@ -68,7 +66,7 @@ class MySQL {
             return 0;
         } else {
             $this->result = $result;
-            return new Result($this->result);
+            return new \MySQL\Result($this->result);
         }
     }
 
@@ -98,7 +96,7 @@ class MySQL {
     */
     public function createDatabase($db) {
         if (!$this->con_res) {
-            throw new \Exception\MException("Keine Verbindung zum MySQL Server".mysql_error());
+            throw new \MySQL\Exception("Keine Verbindung zum MySQL Server".mysql_error());
         } else {
             $this->Query("CREATE DATABASE $db");
             return true;

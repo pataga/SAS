@@ -12,8 +12,8 @@
 *
 */
 
-namespace Exception;
-class MySQLException extends Exception {
+namespace MySQL;
+class Exception extends \Exception {
 }
 
 ?>

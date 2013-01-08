@@ -44,7 +44,7 @@ if (is_dir('install') && !isset($data)) {
 
 
 //Erstelle Instanz der Hauptklasse. Dieses Objekt beinhaltet Objekte der Hauptklassen
-$main = new \Main\Main($data, $debugLevel, $logFile);
+$main = new \Main($data, $debugLevel, $logFile);
 
 
 //Initialisiere Hauptobjekte
@@ -87,7 +87,7 @@ if (!$user->isLoggedIn()) {
     try {
         require_once 'includes/content/main/login.inc.php';
         exit();
-    } catch (\Exception\MException $e) {
+    } catch (\Exception $e) {
         $debug->error($e);
         exit;
     }
@@ -116,7 +116,7 @@ ob_start();
 
 try {
     require_once $loader->getIncFile();
-} catch (\Exception\Exception $e) {
+} catch (\Main\Exception $e) {
     $debug->error($e);
 }
 
@@ -139,5 +139,5 @@ print($cache->getCache());
 $endTime = microtime(true);
 
 //Calc Time
-\Main\Main::printLoadTime($startTime, $endTime);
+\Main::printLoadTime($startTime, $endTime);
 ?>

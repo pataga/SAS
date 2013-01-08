@@ -27,7 +27,7 @@ class Result {
     */
     public function fetchAssoc() {
         if (!is_resource($this->result)) {
-            throw new \Exception\MySQLException("Result ist keine Resource ".mysql_error());
+            throw new \MySQL\Exception("Result ist keine Resource ".mysql_error());
         } else {
             return mysql_fetch_assoc($this->result);
         }
@@ -40,7 +40,7 @@ class Result {
     */
     public function fetchArray() {
         if (!is_resource($this->result)) {
-            throw new \Exception\MySQLException("Result ist keine Resource ".mysql_error());
+            throw new \MySQL\Exception("Result ist keine Resource ".mysql_error());
         } else {
             return mysql_fetch_array($this->result);
         }
@@ -53,7 +53,7 @@ class Result {
     */
     public function fetchObject() {
         if (!is_resource($this->result)) {
-            throw new \Exception\MySQLException("Result ist keine Resource ".mysql_error());
+            throw new \MySQL\Exception("Result ist keine Resource ".mysql_error());
         } else {
             return mysql_fetch_object($this->result);
         }
@@ -66,7 +66,7 @@ class Result {
     */
     public function getRowsCount() {
         if (!is_resource($this->result)) {
-            throw new \Exception\MySQLException("Result ist keine Resource ".mysql_error());
+            throw new \MySQL\Exception("Result ist keine Resource ".mysql_error());
         } else {
             return mysql_num_rows($this->result);
         }

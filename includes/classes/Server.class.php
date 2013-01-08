@@ -12,8 +12,6 @@
 *
 */
 
-namespace Server;
-
 class Server {
 
     private $server_id;

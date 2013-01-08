@@ -21,7 +21,7 @@ abstract class AutoLoad {
      */
     public static function getFilePath($namespace_) {
         if (empty($namespace_))
-            throw new \Exception\Exception('Variable $namespace_ ist leer! (AutoLoad::getFilePath(String))');
+            throw new \Exception('Variable $namespace_ ist leer! (AutoLoad::getFilePath(String))');
         return './includes/classes/'.str_replace('\\','/',$namespace_).'.class.php';
     }
 }

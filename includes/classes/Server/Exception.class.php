@@ -12,8 +12,8 @@
 *
 */
 
-namespace Exception;
-class MException extends Exception {
+namespace Server;
+class Exception extends \Exception {
 }
 
 ?>

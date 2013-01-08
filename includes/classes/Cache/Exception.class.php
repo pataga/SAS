@@ -12,8 +12,8 @@
 *
 */
 
-namespace Exception;
-class SSHException extends Exception {
+namespace Cache;
+class Exception extends \Exception {
 }
 
 ?>
