@@ -11,6 +11,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>SAS | Login</title>
         <link rel="stylesheet" href="./css/login.css">
+        <link rel="shortcut icon" href="./img/favicon.ico">
         <script src="./js/vendor/modernizr-2.6.1.min.js"></script>
     </head>
     <!--[if IE]>
@@ -28,7 +29,7 @@ alert ('Bitte nutzen Sie einen modernen Browser, wie etwa:\n\nMozilla Firefox, G
         <div class="box">
             <p>Bitte loggen Sie sich mit ihren Benutzerdaten ein.</p>
             <form action="" method="post">
-                <input type="text" name="username" placeholder="Benutzername" tabindex="1" required><br>
+                <input type="text" name="username" placeholder="Benutzername" tabindex="1" required autofocus="autofocus" autocomplete="off"><br>
                 <input type="password" name="password" placeholder="Passwort" tabindex="2" required><br>
                 <input type="submit" value="Login" tabindex="3" class="button black"><br>
             </form>

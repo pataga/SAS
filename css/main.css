@@ -38,11 +38,14 @@ Schriftarten
     font-weight: 700;
     src: local('Ubuntu Bold'), url(fonts/ubuntu-700.woff) format('woff');
 }
+
 /* ==========================================================================
 Layout
 ========================================================================== */
 
-html,button,input,select,textarea {color: #222;}
+html, button, input, select, textarea {
+    color: #222;
+}
 
 body {
     background: white;
@@ -84,6 +87,7 @@ Top [Logo + Userpanel]
     color: rgba(11, 117, 178, 1.0);
     text-shadow: 1px 1px #333333;
 }
+
 .top .usermenu {
     text-align: left;
     font-size: 1em;
@@ -130,8 +134,8 @@ Hauptnavigation (und Wrapper)
     text-align: left;
     width: 980px;
     margin: 0 auto;
-    margin-top: 0px;
 }
+
 #nav {
     padding: 0;
     height: 30px;
@@ -143,15 +147,17 @@ Hauptnavigation (und Wrapper)
 
 #nav ul {
     display: block;
-    margin: 0; 
+    margin: 0;
     padding: 0;
     float: left;
     background-color: #333;
-    box-shadow: 2px 2px 3px #888,-2px -2px 3px #888;
+    box-shadow: 2px 2px 3px #888, -2px -2px 3px #888;
 
 }
 
-#nav ul li {display: inline;}
+#nav ul li {
+    display: inline;
+}
 
 #nav ul li a {
     display: block;
@@ -161,18 +167,18 @@ Hauptnavigation (und Wrapper)
     font-weight: bold;
     line-height: 37px;
     text-decoration: none;
-    color: #646464;
     padding: 0;
-    color: #FFF;
     text-align: center;
     outline: none;
 }
 
-#nav ul li a:visited {color: white;}
+#nav ul li a:visited {
+    color: white;
+}
 
 #nav ul li a:hover {
     color: #fff;
-    background-color:#0b75b2;
+    background-color: #0b75b2;
     outline: none;
     -webkit-box-shadow: inset 0 0 5px 2px rgba(51, 51, 51, 0.5);
     box-shadow: inset 0 0 5px 2px rgba(51, 51, 51, 0.5);
@@ -180,7 +186,7 @@ Hauptnavigation (und Wrapper)
 
 #nav ul li a.aktiv {
     color: #fff;
-    background-color:#0b75b2;
+    background-color: #0b75b2;
     outline: none;
     -webkit-box-shadow: inset 0 0 5px 2px rgba(51, 51, 51, 0.5);
     box-shadow: inset 0 0 5px 2px rgba(51, 51, 51, 0.5);
@@ -203,44 +209,75 @@ Hauptnavigation (und Wrapper)
     -ms-transition-timing-function: ease-out;
     transition-timing-function: ease-out;
 }
+
 /* ==========================================================================
 Layout: Spaltensystem
 ========================================================================== */
 
-
-.halbe-box          { width: 47.8%; }
-.drittel-box        { width: 30.5%; }
-.viertel-box        { width: 21.9%; }
-.fuenftel-box       { width: 16.7%; }
-.zweidrittel-box    { width: 65.3%; }
-.dreiviertel-box    { width: 74.0%; }
-.zweifuenftel-box   { width: 37.2%; }
-.dreifuenftel-box   { width: 58.0%; }
-.vierfuenftel-box   { width: 79.0%; }
-
-.halbe-box, .drittel-box, .zweidrittel-box, .viertel-box, .dreiviertel-box, .fuenftel-box, .zweifuenftel-box, .dreifuenftel-box, .vierfuenftel-box   {
-    position: relative;
-    display: inline-block;
-    *display:inline;
-    float: left;
-    margin-right: 4%;
-    margin-bottom:15px;
+.halbe-box {
+    width: 47.8%;
 }
 
-.lastbox { margin-right: 0 !important; }
-.boxcenter { text-align: center !important; }
+.drittel-box {
+    width: 30.5%;
+}
+
+.viertel-box {
+    width: 21.9%;
+}
+
+.fuenftel-box {
+    width: 16.7%;
+}
+
+.zweidrittel-box {
+    width: 65.3%;
+}
+
+.dreiviertel-box {
+    width: 74.0%;
+}
+
+.zweifuenftel-box {
+    width: 37.2%;
+}
+
+.dreifuenftel-box {
+    width: 58.0%;
+}
+
+.vierfuenftel-box {
+    width: 79.0%;
+}
+
+.halbe-box, .drittel-box, .zweidrittel-box, .viertel-box, .dreiviertel-box, .fuenftel-box, .zweifuenftel-box, .dreifuenftel-box, .vierfuenftel-box {
+    position: relative;
+    display: inline-block;
+    *display: inline;
+    float: left;
+    margin-right: 4%;
+    margin-bottom: 15px;
+}
+
+.lastbox {
+    margin-right: 0 !important;
+}
+
+.boxcenter {
+    text-align: center !important;
+}
 
 .box-demo {
-    display:block;
+    display: block;
     color: #fff;
     font-weight: bold;
     font-size: 1.25em;
-    background: rgba(17,117,178,0.5);
-    border-radius:2px;
-    position:relative;
-    height:40px;
-    text-align:center;
-    padding-top:20px;
+    background: rgba(17, 117, 178, 0.5);
+    border-radius: 2px;
+    position: relative;
+    height: 40px;
+    text-align: center;
+    padding-top: 20px;
 }
 
 /* ==========================================================================
@@ -249,15 +286,15 @@ Layout: Sidebar + Content
 
 #main {
     width: 980px;
-    margin: 0px auto;
-    padding: 0px 0px;
+    margin: 0 auto;
+    padding: 0;
 }
 
 #sidebar {
     float: left;
     width: 190px;
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
     font-size: 1em;
     border: 1px solid #ccc;
     -webkit-box-shadow: 0 0 5px #888;
@@ -297,7 +334,7 @@ Layout: Sidebar + Content
 }
 
 #sidebar li li a {
-    padding: 0px 0px 0px 0px;
+    padding: 0;
 }
 
 #sidebar li:hover {
@@ -314,29 +351,18 @@ Layout: Sidebar + Content
 }
 
 #sidebar li, #sidebar li:hover {
-    -webkit-transition-property: background color;
-    -moz-transition-property: background color;
-    -o-transition-property: background color;
-    -ms-transition-property: background color;
-    transition-property: background color;
-    -webkit-transition-duration: 0.25s;
-    -moz-transition-duration: 0.25s;
-    -o-transition-duration: 0.25s;
-    -ms-transition-duration: 0.25s;
-    transition-duration: 0.25s;
-    -webkit-transition-timing-function: ease-out;
-    -moz-transition-timing-function: ease-out;
-    -o-transition-timing-function: ease-out;
-    -ms-transition-timing-function: ease-out;
-    transition-timing-function: ease-out;
+    -webkit-transition: color .25s ease-out;
+    -moz-transition: color .25s ease-out;
+    -ms-transition: color .25s ease-out;
+    -o-transition: color .25s ease-out;
+    transition: color .25s ease-out;
 }
 
 #content {
     float: right;
     width: 770px;
-    padding: 0px 0px 15px 10px;
+    padding: 0 0 15px 10px;
 }
-
 
 /* ==========================================================================
 Layout: Footer
@@ -359,16 +385,17 @@ Layout: Footer
     text-decoration: none;
     color: #aaa;
 }
+
 #footer a.last {
-    margin-right: 0px;
-} 
+    margin-right: 0;
+}
 
-#footer a:hover { 
+#footer a:hover {
     color: #0b75b2;
-} 
+}
 
-#footer a, #footer a:hover { 
-    -webkit-transition:  color 0.35s ease-in-out;
+#footer a, #footer a:hover {
+    -webkit-transition: color 0.35s ease-in-out;
     -moz-transition: color 0.35s ease-in-out;
     -o-transition: color 0.35s ease-in-out;
     -ms-transition: color 0.35s ease-in-out;
@@ -386,29 +413,28 @@ Layout: Footer
     font-weight: 300;
 }
 
-
 /* ==========================================================================
 Template-Features [Text Formatierungen und so ...]
 ========================================================================== */
 
 ::-moz-selection {
-    background:#2d7e99;
-    color:#fff;
+    background: #2d7e99;
+    color: #fff;
 }
 
 ::selection {
-    background:#2d7e99;
-    color:#fff;
+    background: #2d7e99;
+    color: #fff;
 }
 
 ::-webkit-input-placeholder {
-    color:#AAA !important; 
-    font-style: italic !important; 
+    color: #AAA !important;
+    font-style: italic !important;
 }
 
 :-moz-placeholder {
-    color:#AAA !important; 
-    font-style: italic !important; 
+    color: #AAA !important;
+    font-style: italic !important;
 }
 
 button::-moz-focus-inner,
@@ -420,24 +446,85 @@ input[type="file"] > input[type="button"]::-moz-focus-inner {
     border: 1px dotted transparent;
 }
 
-h1, h2, h3, h4, h5, h6 { font-family: Arial, Helvetica, sans-serif; }
-h1.ubuntu, h2.ubuntu, h3.ubuntu, h4.ubuntu, h5.ubuntu, h6.ubuntu { font-family: 'Ubuntu', sans-serif; }
+h1, h2, h3, h4, h5, h6 {
+    font-family: Arial, Helvetica, sans-serif;
+}
 
-h1 { font-size: 26px; font-weight: 700; margin:}  /* H1 nicht verwenden! stattdessen h1.normal */
-h2 { font-size: 24px; font-weight: 700; margin: 10px 0px;}
-h3 { font-size: 22px; font-weight: 700; margin: 10px 0px;}
-h4 { font-size: 18px; font-weight: 700; margin: 10px 0px;}
-h5 { font-size: 16px; font-weight: 700; margin: 10px 0px;}
-h6 { font-size: 14px; font-weight: 700; margin: 10px 0px;}
+h1.ubuntu, h2.ubuntu, h3.ubuntu, h4.ubuntu, h5.ubuntu, h6.ubuntu {
+    font-family: 'Ubuntu', sans-serif;
+}
 
-h1.normal { font-size: 26px; font-weight: 700; margin: 10px 0px;}
+h1 {
+    font-size: 26px;
+    font-weight: 700;
+}
 
-h1.ubuntu { font-size: 25px; font-weight: 700;}
-h2.ubuntu { font-size: 22px; font-weight: 700;}
-h3.ubuntu { font-size: 18px; font-weight: 400;}
-h4.ubuntu { font-size: 18px; font-weight: 300;}
-h5.ubuntu { font-size: 16px; font-weight: 300;}
-h6.ubuntu { font-size: 14px; font-weight: 300;}
+/* H1 nicht verwenden! stattdessen h1.normal */
+h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 10px 0;
+}
+
+h3 {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 10px 0;
+}
+
+h4 {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 10px 0;
+}
+
+h5 {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 10px 0;
+}
+
+h6 {
+    font-size: 14px;
+    font-weight: 700;
+    margin: 10px 0;
+}
+
+h1.normal {
+    font-size: 26px;
+    font-weight: 700;
+    margin: 10px 0;
+}
+
+h1.ubuntu {
+    font-size: 25px;
+    font-weight: 700;
+}
+
+h2.ubuntu {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+h3.ubuntu {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+h4.ubuntu {
+    font-size: 18px;
+    font-weight: 300;
+}
+
+h5.ubuntu {
+    font-size: 16px;
+    font-weight: 300;
+}
+
+h6.ubuntu {
+    font-size: 14px;
+    font-weight: 300;
+}
 
 a {
     color: #0b75b2;
@@ -458,7 +545,8 @@ span.aktiv {
     padding: 3px 7px;
     border-radius: 2px;
 }
-span.inaktiv  {
+
+span.inaktiv {
     font-size: 13px;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 700;
@@ -468,7 +556,7 @@ span.inaktiv  {
     border-radius: 2px;
 }
 
-span.notaviable  {
+span.notaviable {
     font-size: 13px;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 700;
@@ -501,7 +589,7 @@ code {
 }
 
 code.simple {
-    padding: 0px;
+    padding: 0;
     font-family: Consolas, "Courier New", Courier, monospace;
     font-size: 1.0em;
 }
@@ -511,7 +599,7 @@ code.fancy {
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     border-radius: 3px;
-    box-shadow: inset 0px 0px 7px rgba(0,0,0,0.2);
+    box-shadow: inset 0 0 7px rgba(0, 0, 0, 0.2);
     padding: 5px;
     border: 1px solid #ddd;
     font-family: Consolas, "Courier New", Courier, monospace;
@@ -521,16 +609,16 @@ code.fancy {
 pre {
     white-space: pre-wrap;
     white-space: -moz-pre-wrap !important;
-    white-space: -pre-wrap;
+    white-space: pre-wrap;
     white-space: -o-pre-wrap;
     word-wrap: break-word;
-    margin: 0px 0px 0px 0px;
+    margin: 0 0 0 0;
     padding: 5px 5px 3px 5px;
     background: #fff;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     border-radius: 3px;
-    box-shadow: inset 0px 0px 7px rgba(0,0,0,0.2);
+    box-shadow: inset 0 0 7px rgba(0, 0, 0, 0.2);
     border: 1px solid #ddd;
     font-family: Consolas, "Courier New", Courier, monospace;
     font-size: 1em;
@@ -539,7 +627,7 @@ pre {
 pre.simple {
     white-space: pre-wrap;
     white-space: -moz-pre-wrap !important;
-    white-space: -pre-wrap;
+    white-space: pre-wrap;
     white-space: -o-pre-wrap;
     word-wrap: break-word;
     font-family: Consolas, "Courier New", Courier, monospace;
@@ -551,15 +639,17 @@ pre.simple {
     margin: 0;
 }
 
-
 /* ==========================================================================
 Template-Features [Forms und so ...]
 ========================================================================== */
 
-#main table {border-top: 1px solid #ddd;}
+#main table {
+    border-top: 1px solid #ddd;
+}
+
 #main table tr td {
     background: #f6f6f6;
-    padding: 0px 20px;
+    padding: 0 20px;
     height: 29px;
     line-height: 1.5;
     border: 1px solid #ddd;
@@ -567,7 +657,7 @@ Template-Features [Forms und so ...]
 
 #main table tr th {
     background: #f6f6f6;
-    padding: 0px 20px;
+    padding: 0 20px;
     height: 29px;
     line-height: 1.5;
     border: 1px solid #ddd;
@@ -583,18 +673,47 @@ Template-Features [Forms und so ...]
     padding: 0 20px 0 10px;
 }
 
-#main table tr:hover td { background: #EBFCFF; }
-#main table tr .action a { margin: 0 0 0 10px; text-decoration: none; color: #9b9b9b; }
-#main table tr:hover .action .edit { color: #c5a059; }
-#main table tr:hover .action .delete { color: #a02b2b; }
-#main table tr:hover .action .view { color: #55a34a; }
-#main table tr:hover .action a:hover { text-decoration: underline; }
+#main table tr:hover td {
+    background: #EBFCFF;
+}
 
-#main table.s th:hover { background: #BCE7FF; cursor: pointer; text-decoration: underline;}
-#main table.s th .action a { margin: 0 0 0 10px; text-decoration: none; color: #9b9b9b; }
-#main table.s th:after { content: " \2195"; }
+#main table tr .action a {
+    margin: 0 0 0 10px;
+    text-decoration: none;
+    color: #9b9b9b;
+}
 
+#main table tr:hover .action .edit {
+    color: #c5a059;
+}
 
+#main table tr:hover .action .delete {
+    color: #a02b2b;
+}
+
+#main table tr:hover .action .view {
+    color: #55a34a;
+}
+
+#main table tr:hover .action a:hover {
+    text-decoration: underline;
+}
+
+#main table.s th:hover {
+    background: #BCE7FF;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+#main table.s th .action a {
+    margin: 0 0 0 10px;
+    text-decoration: none;
+    color: #9b9b9b;
+}
+
+#main table.s th:after {
+    content: " \2195";
+}
 
 #main fieldset {
     border: 1px solid #ddd;
@@ -603,7 +722,11 @@ Template-Features [Forms und so ...]
     background: #fbfbfb;
 }
 
-#main fieldset p { margin: 0 0 14px 0; float: left; width: 100%;  }
+#main fieldset p {
+    margin: 0 0 14px 0;
+    float: left;
+    width: 100%;
+}
 
 #main fieldset label {
     display: block;
@@ -658,10 +781,11 @@ Template-Features [Forms und so ...]
 
 #main fieldset .text-long:focus,
 #main fieldset .text-medium:focus,
-#main fieldset .text-small:focus, 
-#main fieldset .text-medlong:focus, 
-#main fieldset textarea:focus
-{ background: #EAF4FF no-repeat left top; }
+#main fieldset .text-small:focus,
+#main fieldset .text-medlong:focus,
+#main fieldset textarea:focus {
+    background: #EAF4FF no-repeat left top;
+}
 
 #main fieldset textarea {
     border: 1px solid #ddd;
@@ -687,7 +811,7 @@ Template-Features [Forms und so ...]
     margin: 3px 10px 0 0;
     height: 400px;
     overflow-x: hidden;
-    overflow-y: scroll; 
+    overflow-y: scroll;
     white-space: pre;
     -moz-box-shadow: 0 0 5px #888;
     -webkit-box-shadow: 0 0 5px #888;
@@ -704,7 +828,7 @@ Template-Features [Forms und so ...]
     margin: 2px;
     height: 100px;
     overflow-x: hidden;
-    overflow-y: scroll; 
+    overflow-y: scroll;
     -moz-box-shadow: 0 0 5px #888;
     -webkit-box-shadow: 0 0 5px #888;
     box-shadow: 0 0 5px #888;
@@ -720,7 +844,7 @@ Template-Features [Forms und so ...]
     margin: 3px 10px 0 0;
     height: 600px;
     overflow-x: hidden;
-    overflow-y: scroll; 
+    overflow-y: scroll;
     white-space: pre;
     box-shadow: 1px 2px 5px #ccc;
     resize: vertical;
@@ -733,18 +857,20 @@ Template-Features [Forms und so ...]
     font-weight: 400;
     padding: 4px 4px;
     overflow: hidden;
-    border: 1px solid  #ccc;
+    border: 1px solid #ccc;
     border-radius: 2px;
 }
 
-#main fieldset select.shadow {box-shadow: 1px 1px 6px #ccc;}
+#main fieldset select.shadow {
+    box-shadow: 1px 1px 6px #ccc;
+}
 
 #main fieldset legend {
-    font-family: Arial, Helvetica, sans-serif; 
-    font-size: 18px; 
-    font-weight: 700; 
-    margin: 0px 0px;
-    color: rgb(100,100,100);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0 0;
+    color: rgb(100, 100, 100);
 }
 
 /* ==========================================================================
@@ -851,10 +977,9 @@ Author's custom styles
     0% {background-position: 0 0;} 100% {background-position: 60px 0;}
 }
 */
-
 /* ====== BUTTONS FÜR SUBMIT, BUTTON AND LINKS ===== */
 
-.button{
+.button {
     display: inline-block;
     text-decoration: none;
     font: bold 12px/12px HelveticaNeue, Arial;
@@ -865,10 +990,11 @@ Author's custom styles
     -moz-border-radius: 3px;
     border-radius: 3px;
 }
-.button.white{
+
+.button.white {
     background: #f5f5f5;
     background: -webkit-gradient(linear, left top, left bottom, from(#f9f9f9), to(#f0f0f0)); /*  WebKit */
-    background: -moz-linear-gradient(top,  #f9f9f9, #f0f0f0);
+    background: -moz-linear-gradient(top, #f9f9f9, #f0f0f0);
     border-color: #dedede #d8d8d8 #d3d3d3;
     color: #555;
     text-shadow: 0 1px 0 #fff;
@@ -877,10 +1003,11 @@ Author's custom styles
     box-shadow: 0 1px 1px #eaeaea, inset 0 1px 0 #fbfbfb;
     text-decoration: none;
 }
-.button.white:hover{
+
+.button.white:hover {
     background: #f4f4f4;
     background: -webkit-gradient(linear, left top, left bottom, from(#efefef), to(#f8f8f8)); /*  WebKit */
-    background: -moz-linear-gradient(top,  #efefef, #f8f8f8);
+    background: -moz-linear-gradient(top, #efefef, #f8f8f8);
     border-color: #c7c7c7 #c3c3c3 #bebebe;
     text-shadow: 0 1px 0 #fdfdfd;
     -webkit-box-shadow: 0 1px 1px #ebebeb, inset 0 1px 0 #f3f3f3;
@@ -888,218 +1015,235 @@ Author's custom styles
     box-shadow: 0 1px 1px #ebebeb, inset 0 1px 0 #f3f3f3;
     text-decoration: none;
 }
-.button.grey{
+
+.button.grey {
     background: #bdbdbd;
     background: -webkit-gradient(linear, left top, left bottom, from(#cacaca), to(#aeaeae)); /*  WebKit */
-    background: -moz-linear-gradient(top,  #cacaca, #aeaeae);
+    background: -moz-linear-gradient(top, #cacaca, #aeaeae);
     border-color: #b5b5b5 #a1a1a1 #8f8f8f;
     color: #555;
     text-shadow: 0 1px 0 #d4d4d4;
     -webkit-box-shadow: 0 1px 1px #c9c9c9, inset 0 1px 0 #d7d7d7;
     -moz-box-shadow: 0 1px 1px #c9c9c9, inset 0 1px 0 #d7d7d7;
-    box-shadow: 0 1px 1px #c9c9c9, inset 0 1px 0 #d7d7d7;    
+    box-shadow: 0 1px 1px #c9c9c9, inset 0 1px 0 #d7d7d7;
     text-decoration: none;
 }
-.button.grey:hover{
+
+.button.grey:hover {
     background: #c2c2c2;
     background: -webkit-gradient(linear, left top, left bottom, from(#bcbcbc), to(#c2c2c2)); /*  WebKit */
-    background: -moz-linear-gradient(top,  #bcbcbc, #c2c2c2);
+    background: -moz-linear-gradient(top, #bcbcbc, #c2c2c2);
     border-color: #989898 #8e8e8e #878787;
     text-shadow: 0 1px 0 #dadada;
     -webkit-box-shadow: 0 1px 1px #cdcdcd, inset 0 1px 0 #ccc;
     -moz-box-shadow: 0 1px 1px #cdcdcd, inset 0 1px 0 #ccc;
-    box-shadow: 0 1px 1px #cdcdcd, inset 0 1px 0 #ccc;    
+    box-shadow: 0 1px 1px #cdcdcd, inset 0 1px 0 #ccc;
     text-decoration: none;
 }
-.button.pink{
+
+.button.pink {
     background: #f67689;
     background: -webkit-gradient(linear, left top, left bottom, from(#f78297), to(#f56778)); /*  WebKit */
-    background: -moz-linear-gradient(top,  #f78297, #f56778);
+    background: -moz-linear-gradient(top, #f78297, #f56778);
     border-color: #df6f8b #da5f75 #d55061;
     color: #913944;
     text-shadow: 0 1px 0 #f89ca9;
     -webkit-box-shadow: 0 1px 1px #c1c1c1, inset 0 1px 0 #f9a1b1;
     -moz-box-shadow: 0 1px 1px #c1c1c1, inset 0 1px 0 #f9a1b1;
-    box-shadow: 0 1px 1px #c1c1c1, inset 0 1px 0 #f9a1b1;    
+    box-shadow: 0 1px 1px #c1c1c1, inset 0 1px 0 #f9a1b1;
     text-decoration: none;
 }
-.button.pink:hover{
+
+.button.pink:hover {
     background: #f67c90;
     background: -webkit-gradient(linear, left top, left bottom, from(#f56c7e), to(#f78297)); /*  WebKit */
-    background: -moz-linear-gradient(top,  #f56c7e, #f78297);
+    background: -moz-linear-gradient(top, #f56c7e, #f78297);
     border-color: #c36079 #c25669 #c14e5c;
     text-shadow: 0 1px 0 #f9a6b4;
     -webkit-box-shadow: 0 1px 1px #c3c3c3, inset 0 1px 0 #f8909e;
     -moz-box-shadow: 0 1px 1px #c3c3c3, inset 0 1px 0 #f8909e;
-    box-shadow: 0 1px 1px #c3c3c3, inset 0 1px 0 #f8909e;    
+    box-shadow: 0 1px 1px #c3c3c3, inset 0 1px 0 #f8909e;
     text-decoration: none;
 }
 
-.button.orange{
+.button.orange {
     background: #fecc5f;
     background: -webkit-gradient(linear, left top, left bottom, from(#feda71), to(#febb4a)); /*  WebKit */
-    background: -moz-linear-gradient(top,  #feda71, #febb4a);
+    background: -moz-linear-gradient(top, #feda71, #febb4a);
     border-color: #f5b74e #e5a73e #d6982f;
     color: #996633;
     text-shadow: 0 1px 0 #fedd9b;
     -webkit-box-shadow: 0 1px 1px #d3d3d3, inset 0 1px 0 #fee395;
     -moz-box-shadow: 0 1px 1px #d3d3d3, inset 0 1px 0 #fee395;
-    box-shadow: 0 1px 1px #d3d3d3, inset 0 1px 0 #fee395;    
+    box-shadow: 0 1px 1px #d3d3d3, inset 0 1px 0 #fee395;
     text-decoration: none;
 }
-.button.orange:hover{
+
+.button.orange:hover {
     background: #fecb5e;
     background: -webkit-gradient(linear, left top, left bottom, from(#fec354), to(#fecd61)); /*  WebKit */
-    background: -moz-linear-gradient(top,  #fec354, #fecd61);
+    background: -moz-linear-gradient(top, #fec354, #fecd61);
     border-color: #d29a3a #cc9436 #c89133;
     text-shadow: 0 1px 0 #fee1a0;
     -webkit-box-shadow: 0 1px 1px #d4d4d4, inset 0 1px 0 #fed17e;
     -moz-box-shadow: 0 1px 1px #d4d4d4, inset 0 1px 0 #fed17e;
-    box-shadow: 0 1px 1px #d4d4d4, inset 0 1px 0 #fed17e;    
+    box-shadow: 0 1px 1px #d4d4d4, inset 0 1px 0 #fed17e;
     text-decoration: none;
 }
-.button.green{
+
+.button.green {
     background: #b7d770;
     background: -webkit-gradient(linear, left top, left bottom, from(#cae285), to(#9fcb57)); /*  WebKit */
-    background: -moz-linear-gradient(top,  #cae285, #9fcb57);
+    background: -moz-linear-gradient(top, #cae285, #9fcb57);
     border-color: #adc671 #98b65b #87aa4a;
     color: #5d7731;
     text-shadow: 0 1px 0 #cfe5a4;
     -webkit-box-shadow: 0 1px 1px #d3d3d3, inset 0 1px 0 #d7e9a4;
     -moz-box-shadow: 0 1px 1px #d3d3d3, inset 0 1px 0 #d7e9a4;
-    box-shadow: 0 1px 1px #d3d3d3, inset 0 1px 0 #d7e9a4;    
+    box-shadow: 0 1px 1px #d3d3d3, inset 0 1px 0 #d7e9a4;
     text-decoration: none;
 }
-.button.green:hover{
+
+.button.green:hover {
     background: #b9d972;
     background: -webkit-gradient(linear, left top, left bottom, from(#b8d872), to(#b9d972)); /*  WebKit */
-    background: -moz-linear-gradient(top,  #b8d872, #b9d972);
+    background: -moz-linear-gradient(top, #b8d872, #b9d972);
     border-color: #8bb14d #83a648 #7d9e45;
     text-shadow: 0 1px 0 #d5e8aa;
     -webkit-box-shadow: 0 1px 1px #d5d5d5, inset 0 1px 0 #cae295;
     -moz-box-shadow: 0 1px 1px #d5d5d5, inset 0 1px 0 #cae295;
-    box-shadow: 0 1px 1px #d5d5d5, inset 0 1px 0 #cae295;    
+    box-shadow: 0 1px 1px #d5d5d5, inset 0 1px 0 #cae295;
     text-decoration: none;
 }
-.button.blue{
+
+.button.blue {
     background: #92dbf6;
     background: -webkit-gradient(linear, left top, left bottom, from(#abe4f8), to(#6fcef3)); /*  WebKit */
-    background: -moz-linear-gradient(top,  #abe4f8, #6fcef3);
+    background: -moz-linear-gradient(top, #abe4f8, #6fcef3);
     border-color: #8dc5da #76b7cf #63abc7;
     color: #42788e;
     text-shadow: 0 1px 0 #b6e6f9;
     -webkit-box-shadow: 0 1px 1px #d6d6d6, inset 0 1px 0 #c0ebfa;
     -moz-box-shadow: 0 1px 1px #d6d6d6, inset 0 1px 0 #c0ebfa;
-    box-shadow: 0 1px 1px #d6d6d6, inset 0 1px 0 #c0ebfa;    
+    box-shadow: 0 1px 1px #d6d6d6, inset 0 1px 0 #c0ebfa;
     text-decoration: none;
 }
-.button.blue:hover{
+
+.button.blue:hover {
     background: #92dbf6;
     border-color: #7caec0 #68a3ba #5a9cb5;
     text-shadow: 0 1px 0 #bee9fa;
     -webkit-box-shadow: 0 1px 1px #d6d6d6, inset 0 1px 0 #ade4f8;
     -moz-box-shadow: 0 1px 1px #d6d6d6, inset 0 1px 0 #ade4f8;
-    box-shadow: 0 1px 1px #d6d6d6, inset 0 1px 0 #ade4f8;   
-    text-decoration: none; 
+    box-shadow: 0 1px 1px #d6d6d6, inset 0 1px 0 #ade4f8;
+    text-decoration: none;
 }
-.button.purple{
+
+.button.purple {
     background: #dfaeda;
     background: -webkit-gradient(linear, left top, left bottom, from(#e8c4e4), to(#d494ce)); /*  WebKit */
-    background: -moz-linear-gradient(top,  #e8c4e4, #d494ce);
+    background: -moz-linear-gradient(top, #e8c4e4, #d494ce);
     border-color: #bc9db9 #ad89aa #a1799d;
     color: #7b5777;
     text-shadow: 0 1px 0 #eacae6;
     -webkit-box-shadow: 0 1px 1px #d5d5d5, inset 0 1px 0 #eed3eb;
     -moz-box-shadow: 0 1px 1px #d5d5d5, inset 0 1px 0 #eed3eb;
-    box-shadow: 0 1px 1px #d5d5d5, inset 0 1px 0 #eed3eb;    
+    box-shadow: 0 1px 1px #d5d5d5, inset 0 1px 0 #eed3eb;
     text-decoration: none;
 }
-.button.purple:hover{
+
+.button.purple:hover {
     background: #e0b1db;
     background: -webkit-gradient(linear, left top, left bottom, from(#deabd9), to(#e0b1db)); /*  WebKit */
-    background: -moz-linear-gradient(top,  #deabd9, #e0b1db);
+    background: -moz-linear-gradient(top, #deabd9, #e0b1db);
     border-color: #a482a0 #9b7897 #947090;
     text-shadow: 0 1px 0 #ecd0e9;
     -webkit-box-shadow: 0 1px 1px #cdcdcd, inset 0 1px 0 #ccc;
     -moz-box-shadow: 0 1px 1px #cdcdcd, inset 0 1px 0 #ccc;
-    box-shadow: 0 1px 1px #cdcdcd, inset 0 1px 0 #ccc;    
+    box-shadow: 0 1px 1px #cdcdcd, inset 0 1px 0 #ccc;
     text-decoration: none;
 }
-.button.teal{
+
+.button.teal {
     background: #9cedef;
     background: -webkit-gradient(linear, left top, left bottom, from(#b7f2f4), to(#7ce7ea)); /*  WebKit */
-    background: -moz-linear-gradient(top,  #b7f2f4, #7ce7ea);
+    background: -moz-linear-gradient(top, #b7f2f4, #7ce7ea);
     border-color: #90c6c8 #78bdc0 #65b6ba;
     color: #437b7d;
     text-shadow: 0 1px 0 #bef3f5;
     -webkit-box-shadow: 0 1px 1px #d5d5d5, inset 0 1px 0 #c9f5f7;
     -moz-box-shadow: 0 1px 1px #d5d5d5, inset 0 1px 0 #c9f5f7;
-    box-shadow: 0 1px 1px #d5d5d5, inset 0 1px 0 #c9f5f7;    
+    box-shadow: 0 1px 1px #d5d5d5, inset 0 1px 0 #c9f5f7;
     text-decoration: none;
 }
-.button.teal:hover{
+
+.button.teal:hover {
     background: #9fedf0;
     border-color: #7db9bb #6bb2b5 #5dacaf;
     text-shadow: 0 1px 0 #c5f4f6;
     -webkit-box-shadow: 0 1px 1px #d5d5d5, inset 0 1px 0 #b7f2f4;
     -moz-box-shadow: 0 1px 1px #d5d5d5, inset 0 1px 0 #b7f2f4;
-    box-shadow: 0 1px 1px #d5d5d5, inset 0 1px 0 #b7f2f4;    
+    box-shadow: 0 1px 1px #d5d5d5, inset 0 1px 0 #b7f2f4;
     text-decoration: none;
 }
-.button.darkblue{
+
+.button.darkblue {
     background: #a5b8c6;
     background: -webkit-gradient(linear, left top, left bottom, from(#becbd6), to(#88a1b4)); /*  WebKit */
-    background: -moz-linear-gradient(top,  #becbd6, #88a1b4);
+    background: -moz-linear-gradient(top, #becbd6, #88a1b4);
     border-color: #a2afb8 #8696a1 #6f818f;
     color: #515f6a;
     text-shadow: 0 1px 0 #c4d0d9;
     -webkit-box-shadow: 0 1px 1px #d3d3d3, inset 0 1px 0 #ced8e0;
     -moz-box-shadow: 0 1px 1px #d3d3d3, inset 0 1px 0 #ced8e0;
-    box-shadow: 0 1px 1px #d3d3d3, inset 0 1px 0 #ced8e0; 
-    text-decoration: none;   
+    box-shadow: 0 1px 1px #d3d3d3, inset 0 1px 0 #ced8e0;
+    text-decoration: none;
 }
-.button.darkblue:hover{
+
+.button.darkblue:hover {
     background: #adbfcb;
     border-color: #8996a0 #798791 #6c7a85;
     text-shadow: 0 1px 0 #ced9e0;
     -webkit-box-shadow: 0 1px 1px #d3d3d3, inset 0 1px 0 #c2cfd8;
     -moz-box-shadow: 0 1px 1px #d3d3d3, inset 0 1px 0 #c2cfd8;
-    box-shadow: 0 1px 1px #d3d3d3, inset 0 1px 0 #c2cfd8;  
-    text-decoration: none;  
+    box-shadow: 0 1px 1px #d3d3d3, inset 0 1px 0 #c2cfd8;
+    text-decoration: none;
 }
-.button.black{
+
+.button.black {
     background: #525252;
     background: -webkit-gradient(linear, left top, left bottom, from(#5e5e5e), to(#434343)); /*  WebKit */
-    background: -moz-linear-gradient(top,  #5e5e5e, #434343);
+    background: -moz-linear-gradient(top, #5e5e5e, #434343);
     border-color: #4c4c4c #313131 #1f1f1f;
     color: #fff;
     text-shadow: 0 1px 0 #2e2e2e;
     -webkit-box-shadow: 0 1px 1px #afafaf, inset 0 1px 0 #868686;
     -moz-box-shadow: 0 1px 1px #afafaf, inset 0 1px 0 #868686;
-    box-shadow: 0 1px 1px #afafaf, inset 0 1px 0 #868686;    
+    box-shadow: 0 1px 1px #afafaf, inset 0 1px 0 #868686;
     text-decoration: none;
 }
-.button.black:hover{
+
+.button.black:hover {
     background: #5a5a5a;
     border-color: #2c2c2c #1c1c1c #101010;
     text-shadow: 0 1px 0 #363636;
     -webkit-box-shadow: 0 1px 1px #b1b1b1, inset 0 1px 0 #838383;
     -moz-box-shadow: 0 1px 1px #b1b1b1, inset 0 1px 0 #838383;
-    box-shadow: 0 1px 1px #b1b1b1, inset 0 1px 0 #838383;   
-    text-decoration: none; 
+    box-shadow: 0 1px 1px #b1b1b1, inset 0 1px 0 #838383;
+    text-decoration: none;
 }
 
-a.pornobutton{
+a.pornobutton {
     margin: 3px;
     color: white;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 12px;
     font-weight: bold;
     width: 50px;
-    display:block;
-    text-decoration:none;
+    display: block;
+    text-decoration: none;
     padding: 10px;
-    text-align:center;
+    text-align: center;
     border-right: 6px solid #313030;
     border-top: 5px solid #616161;
     background: #232324;
@@ -1113,18 +1257,19 @@ a.pornobutton{
     -moz-box-shadow: 1px -1px 7px black;
     -khtml-box-shadow: 1px -1px 7px black;
     -o-box-shadow: 1px -1px 7px black;
-    border-radius: 10px 0px 5px 5px;
-    -webkit-border-radius: 10px 0px 5px 5px;
-    -khtml-border-radius: 10px 0px 5px 5px;
-    -o-border-radius: 10px 0px 5px 5px;
-    -moz-border-radius: 10px 0px 5px 5px;
+    border-radius: 10px 0 5px 5px;
+    -webkit-border-radius: 10px 0 5px 5px;
+    -khtml-border-radius: 10px 0 5px 5px;
+    -o-border-radius: 10px 0 5px 5px;
+    -moz-border-radius: 10px 0 5px 5px;
     -moz-transition: all 0.30s ease-in-out;
     -o-transition: all 0.30s ease-in-out;
     -webkit-transition: all 0.30s ease-in-out;
     -ms-transition: all 0.30s ease-in-out;
 
 }
-a.pornobutton:hover{
+
+a.pornobutton:hover {
     border-right: 2px solid #313030;
     border-top: 1px solid #616161;
     -moz-transition: all 0.30s ease-in-out;
@@ -1132,31 +1277,31 @@ a.pornobutton:hover{
     -webkit-transition: all 0.30s ease-in-out;
     -ms-transition: all 0.30s ease-in-out;
 }
-a.pornobutton:active{
+
+a.pornobutton:active {
     border-left: 6px solid #313030;
     border-bottom: 5px solid #1B1B1B;
-    border-right: 0px solid #313030;
-    border-top: 0px solid #616161;
+    border-right: 0 solid #313030;
+    border-top: 0 solid #616161;
     box-shadow: -1px 1px 7px black;
     -webkit-box-shadow: -1px 1px 7px black;
     -moz-box-shadow: -1px 1px 7px black;
     -khtml-box-shadow: -1px 1px 7px black;
     -o-box-shadow: -1px 1px 7px black;
-    border-radius: 5px 5px 10px 0px;
-    -webkit-border-radius: 5px 5px 10px 0px;
-    -khtml-border-radius: 5px 5px 10px 0px;
-    -o-border-radius: 5px 5px 10px 0px;
-    -moz-border-radius: 5px 5px 10px 0px;
+    border-radius: 5px 5px 10px 0;
+    -webkit-border-radius: 5px 5px 10px 0;
+    -khtml-border-radius: 5px 5px 10px 0;
+    -o-border-radius: 5px 5px 10px 0;
+    -moz-border-radius: 5px 5px 10px 0;
     -moz-transition: all 0.30s ease-in-out;
     -o-transition: all 0.30s ease-in-out;
     -webkit-transition: all 0.30s ease-in-out;
     -ms-transition: all 0.30s ease-in-out;
-} 
+}
 
 /* --- TOOLTIPS --- */
 
-.tooltip
-{
+.tooltip {
     position: relative;
     text-decoration: none !important;
     border-bottom: 1px dotted #0b75b2;
@@ -1167,11 +1312,10 @@ a.pornobutton:active{
     color: #0b75b2;
 }
 
-.tooltip span
-{
+.tooltip span {
     visibility: hidden;
     color: #fff;
-    position: absolute; 
+    position: absolute;
     bottom: 30px;
     left: 50%;
     z-index: 999;
@@ -1180,25 +1324,32 @@ a.pornobutton:active{
     padding: 5px;
     line-height: 1.5;
     border: 2px solid #222;
-    background-color: #ddd;                     
+    background-color: #ddd;
     -moz-border-radius: 2px;
     border-radius: 2px;
-    background: rgba(0,0,0,0.95);
-    opacity : 0;
+    background: rgba(0, 0, 0, 0.95);
+    opacity: 0;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
     outline: none;
 }
 
-.tooltip:hover span
-{
+.tooltip:hover span {
     visibility: visible;
-    opacity : 0.90;
-    transition: all 0.2s ease-in-out; 
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+    opacity: 0.90;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
     outline: none;
 }
 
-.tooltip2
-{
+.tooltip2 {
     position: relative;
     text-decoration: none !important;
     cursor: help;
@@ -1208,11 +1359,10 @@ a.pornobutton:active{
     color: #0b75b2;
 }
 
-.tooltip2 span
-{
+.tooltip2 span {
     visibility: hidden;
     color: #fff;
-    position: absolute; 
+    position: absolute;
     bottom: 30px;
     left: 50%;
     z-index: 999;
@@ -1221,25 +1371,31 @@ a.pornobutton:active{
     padding: 5px;
     line-height: 1.5;
     border: 2px solid #222;
-    background-color: #ddd;                     
+    background-color: #ddd;
     -moz-border-radius: 2px;
     border-radius: 2px;
-    background: rgba(0,0,0,0.95);
-    opacity : 0;
+    background: rgba(0, 0, 0, 0.95);
+    opacity: 0;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
     outline: none;
 }
 
-.tooltip2:hover span
-{
+.tooltip2:hover span {
     visibility: visible;
-    opacity : 0.90;
-    transition: all 0.2s ease-in-out; 
+    opacity: 0.90;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
     outline: none;
 }
 
-.tooltip3
-{
+.tooltip3 {
     position: relative;
     text-decoration: none !important;
     border-bottom: 1px dotted #0b75b2;
@@ -1250,11 +1406,10 @@ a.pornobutton:active{
     color: #0b75b2;
 }
 
-.tooltip3 span
-{
+.tooltip3 span {
     visibility: hidden;
     color: #fff;
-    position: absolute; 
+    position: absolute;
     bottom: 30px;
     left: 50%;
     z-index: 999;
@@ -1263,40 +1418,61 @@ a.pornobutton:active{
     padding: 5px;
     line-height: 1.5;
     border: 2px solid #222;
-    background-color: #ddd;                     
+    background-color: #ddd;
     -moz-border-radius: 2px;
     border-radius: 2px;
-    background: rgba(0,0,0,0.95);
-    opacity : 0;
+    background: rgba(0, 0, 0, 0.95);
+    opacity: 0;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
     outline: none;
 }
 
-.tooltip3:hover span
-{
+.tooltip3:hover span {
     visibility: visible;
-    opacity : 0.90;
-    transition: all 0.2s ease-in-out; 
+    opacity: 0.90;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
     outline: none;
 }
 
 /* --- STATUSMELDUNGEN --- */
 
-span.error, span.info, span.alert, span.success { 
-    display: block; 
-    padding: 10px; 
+span.error, span.info, span.alert, span.success {
+    display: block;
+    padding: 10px;
     margin: 5px 0;
-    border-style:solid;
-    border-width:1px;
-    -webkit-border-radius:5px;
-    -moz-border-radius:5px;
-    border-radius:5px;
+    border: 1px solid;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
 }
 
-span.error      { border-color:#ffcfce; background: #ffdfdf }
-span.info       { border-color:#d4ecf0; background: #e0f2f5 }
-span.alert      { border-color:#efeabf; background: #f6f3da }
-span.success    { border-color:#c7f5ce; background: #d6f7db }
+span.error {
+    border-color: #ffcfce;
+    background: #ffdfdf
+}
+
+span.info {
+    border-color: #d4ecf0;
+    background: #e0f2f5
+}
+
+span.alert {
+    border-color: #efeabf;
+    background: #f6f3da
+}
+
+span.success {
+    border-color: #c7f5ce;
+    background: #d6f7db
+}
 
 /* --- PHPINFO --- */
 
@@ -1305,10 +1481,10 @@ iframe.phpinfo {
     min-height: 600px;
     max-height: 1200px;
     -moz-box-shadow: 0 0 5px #888;
-    -webkit-box-shadow: 0 0 5px#888;
+    -webkit-box-shadow: 0 0 5px #888;
     box-shadow: 0 0 5px #888;
     overflow-x: hidden;
-    overflow-y: scroll; 
+    overflow-y: scroll;
 }
 
 /* --- SPOILER --- */
@@ -1336,9 +1512,8 @@ span.show_hide {
     text-decoration: none;
 }
 
-
 .spoiler_div span.show_hide {
-    padding: 0px;
+    padding: 0;
     border: none;
     cursor: pointer;
     color: #0b75b2;
@@ -1350,7 +1525,64 @@ span.show_hide {
 }
 
 .show_hide {
-    display:none;
+    display: none;
+}
+
+/* --- TABS --- */
+
+.tabnav {
+    margin: 10px 0;
+}
+
+.tabnav .tabl {
+    list-style: none;
+    display: block;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top: 1px;
+}
+
+.tabnav .tabl li {
+    float: left;
+    background-color: #0b75b2;
+    border: 1px solid #e1e1e1;
+    padding: 5px ! important;
+    cursor: pointer;
+    border-bottom: none;
+    margin-right: 10px;
+    font-size: 0.9em;
+    font-weight: bold;
+    color: #fff;
+}
+
+.tabnav .tabl li, .tabnav .tabl li:hover {
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+
+.tabnav .tabl li:hover {
+    background-color: #222;
+    color: #fff;
+}
+
+.tabnav .tabl .selected {
+    background-color: #fff;
+    color: #393939;
+}
+
+#tabcontent {
+    padding: 10px;
+    background-color: #fff;
+    overflow: hidden;
+    float: left;
+    margin-bottom: 10px;
+    border: 1px solid #e1e1e1;
+    width: 93%;
 }
 
 /* ==========================================================================
@@ -1401,11 +1633,9 @@ Helper classes
     *zoom: 1;
 }
 
-
 /* ==========================================================================
 EXTRA: Installationsroutine
 ========================================================================== */
-
 
 .logoinstall {
     margin: 20px auto;
@@ -1435,13 +1665,13 @@ EXTRA: Installationsroutine
 }
 
 #box1_install {
-    margin: 0px auto;
+    margin: 0 auto;
     text-align: left;
     width: 400px;
 }
 
 #installbutton {
-    margin: 0px auto;
+    margin: 0 auto;
     text-align: center;
 }
 
@@ -1451,6 +1681,6 @@ EXTRA: Installationsroutine
 }
 
 #box2_install {
-    margin: 0px auto 20px auto;
+    margin: 0 auto 20px auto;
     text-align: center;
 }
