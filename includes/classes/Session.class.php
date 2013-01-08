@@ -46,7 +46,7 @@ class Session {
      * Überprüft, ob der Benutzer sich authentifiziert hat
      * @return bool 
      */
-    public function IsLoggedIn() {
+    public function isLoggedIn() {
         return isset($_SESSION['user']['authenticated']) && $_SESSION['user']['authenticated'];
     }
 
@@ -54,7 +54,7 @@ class Session {
      * Gibt einen boolschen Wert zurück, der angibt, ob ein Server ausgewählt wurde.
      * @return bool
      */
-    public function IsServerChosen() {
+    public function isServerChosen() {
         return $_SESSION['server']['chosen'];
     }
 
@@ -62,7 +62,7 @@ class Session {
      * Gibt die Datenbank ID des Servers zurück
      * @return int id
      */
-    public function GetServerID() {
+    public function getServerID() {
         return $_SESSION['server']['id'];
     }
 
@@ -70,7 +70,7 @@ class Session {
      * Gibt Server Namen zurück
      * @return String name
      */
-    public function GetServerName() {
+    public function getServerName() {
         return $_SESSION['server']['name'];
     }
 
@@ -78,7 +78,7 @@ class Session {
      * Gibt Server Adresse zurück
      * @return String address
      */
-    public function GetServerAddress() {
+    public function getServerAddress() {
         return $_SESSION['server']['address'];
     }
 
@@ -86,7 +86,7 @@ class Session {
      * Gibt den Auth Status des Benutzers zurück
      * @return bool status
      */
-    public function IsAuthenticated() {
+    public function isAuthenticated() {
         return $_SESSION['user']['authenticated'];
     }
 
@@ -94,7 +94,7 @@ class Session {
      * Gibt zurück, wie oft mit den falschen Benutzerdaten ein Login versucht wurde.
      * @return int count
      */
-    public function GetFailedAuths() {
+    public function getFailedAuths() {
         return $_SESSION['user']['failedAuths'];
     }
 
@@ -102,7 +102,7 @@ class Session {
      * Gibt die ID des Benutzers zurück
      * @return int id
      */
-    public function GetUserId() {
+    public function getUserId() {
         return $_SESSION['user']['id'];
     }
 
@@ -110,7 +110,7 @@ class Session {
      * Gibt den Benutzernamen zurück
      * @return String username
      */
-    public function GetUserName() {
+    public function getUserName() {
         return $_SESSION['user']['name'];
     }
 
@@ -118,7 +118,7 @@ class Session {
      * Gibt die Emailadresse des Benutzers zurück
      * @return String email
      */
-    public function GetUserEmail() {
+    public function getUserEmail() {
         return $_SESSION['user']['email'];
     }
 
@@ -126,7 +126,7 @@ class Session {
      * Gibt zurück ob der Benutzer ein Administrator ist
      * @return bool admin
      */
-    public function IsAdmin() {
+    public function isAdmin() {
         return $_SESSION['user']['admin'];
     }
 
@@ -134,7 +134,7 @@ class Session {
      * Gibt die Anzahl der Fehler auf der aktuelle Seite zurück
      * @return int count
      */
-    public function GetErrorsCount() {
+    public function getErrorsCount() {
         return $_SESSION['debug']['errorsCount'];
     }
 
@@ -142,7 +142,7 @@ class Session {
      * Gibt Userspezifisches logLevel zurück
      * @return int logLevel
      */
-    public function GetLogLevel() {
+    public function getLogLevel() {
         return $_SESSION['debug']['logLevel'];
     }
 
@@ -153,7 +153,7 @@ class Session {
      * @param String password
      * @return bool / User
      */
-    public function AuthChallenge($username, $password) {
+    public function authChallenge($username, $password) {
         if (empty($username) || empty($password)) {
             $_SESSION['user']['failedAuths']++;
             return false;
@@ -183,7 +183,7 @@ class Session {
         $userInstance = new User($this->main);
         if (!$userInstance->SetData())
             return false;
-        
+
         return $userInstance;
     }
 }
