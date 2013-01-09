@@ -12,7 +12,7 @@ $(document).ready(function()
     } 
 );
 	
-$(document).ready(function(){ 			// Spoiler mit jQuery
+$(document).ready(function(){ 			// Spoiler
     $(".spoiler_div").hide();
 	$(".show_hide").show();	
 	$('.show_hide').click(function() {

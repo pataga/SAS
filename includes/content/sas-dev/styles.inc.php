@@ -39,9 +39,7 @@
 <fieldset>
     <legend id="hd">&Uuml;berschriften</legend>
     <h1 class="normal">&Uuml;berschrift 1</h1>
-
     <h2>&Uuml;berschrift 2</h2>
-
     <h3>&Uuml;berschrift 3</h3>
     <h4>&Uuml;berschrift 4</h4>
     <h5>&Uuml;berschrift 5</h5>

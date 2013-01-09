@@ -30,21 +30,32 @@ $en_mods_a2_ = explode(".load", $en_mods_a2);
 
 if (isset($_POST['a2-stop']) && isset($_POST['a2-stop-h'])) {           //wenn hidden+submit ..
     $ssh->execute("service apache2 stop");                              //.. führe das aus
-    $loader->reload();
 } elseif (isset($_POST['a2-start']) && isset($_POST['a2-start-h'])) {
     $ssh->execute("service apache2 start");
-    $loader->reload();
 }
 if (isset($_POST['a2-reload']) && isset($_POST['a2-reload-h'])) {           //wenn hidden+submit ..
     $ssh->execute("service apache2 reload");                              //.. führe das aus
-    $loader->reload();
 }
 if (isset($_POST['a2-restart']) && isset($_POST['a2-restart-h'])) {           //wenn hidden+submit ..
     $ssh->execute("service apache2 restart");                              //.. führe das aus
-    $loader->reload();
+}
+if (isset($_POST['a2_install'])) {           //wenn hidden+submit ..
+    $ssh->execute("apt-get install apache2 -fy");
+    $mysql->Query("UPDATE sas_server_data SET apache=1 WHERE id = ".$_SESSION['server_id']);                              //.. führe das aus
 }
 ?>
 <h3>Apache 2 &Uuml;bersicht</h3>
+<?php if (!$server->isInstalled('apache')) {
+    echo '<fieldset>
+    <legend>Apache2 installieren</legend>
+    <span class="error"> <b>Fehler:</b> Apache2 ist nicht installiert.</span><br>
+    <form action="?p=apache" method="post">
+    <p>Wenn Sie den Apache2 jetzt installieren möchten klicken Sie hier: <input type="submit" name="a2_install" value="Apache2 installieren" class="button black">
+    </p>
+    </form>
+</fieldset>';
+}
+?>
 <fieldset>
     <div class="halbe-box">
         <h5>Info:</h5>
@@ -59,7 +70,7 @@ if (isset($_POST['a2-restart']) && isset($_POST['a2-restart-h'])) {           //
             </tr>
         </table>
         <br>
-        <a href="<?php $_SERVER['SCRIPT_NAME'] ?>" class="button white">Aktualisieren</a>
+        <a href="?p=apache" class="button white">Aktualisieren</a>
     </div>
     <div class="halbe-box lastbox">
         <h5>Aktive Module:</h5>
@@ -75,7 +86,7 @@ if (isset($_POST['a2-restart']) && isset($_POST['a2-restart-h'])) {           //
     <div class="drittel-box">
         <h5>Start / Stop</h5>
         <p><b><?php echo ($server->getServiceStatus($ssh, 'apache2')) ? 'Stoppt' : 'Startet'; ?> den Webserver sofort.</b></p>
-        <form action="<?php $_SERVER['SCRIPT_NAME'] ?>" method="post">
+        <form action="?p=apache" method="post">
             <?php
             echo ($server->getServiceStatus($ssh, 'apache2')) ? '<input type="hidden" name="a2-stop-h"><input type="submit" name="a2-stop" value="Stop" class="button pink">' : '<input type="hidden" name="a2-start-h"><input type="submit" name="a2-start" value="Start" class="button green">';
             ?>
@@ -84,7 +95,7 @@ if (isset($_POST['a2-restart']) && isset($_POST['a2-restart-h'])) {           //
     <div class="drittel-box">
         <h5>Reload</h5>
         <p><b>Lädt die Apache Konfiguration neu</b></p>
-        <form action="<?php $_SERVER['SCRIPT_NAME'] ?>" method="post">
+        <form action="?p=apache" method="post">
             <input type="hidden" name="a2-reload-h">
             <input type="submit" name="a2-reload" value="neu laden" class="button darkblue">
         </form>
@@ -92,7 +103,7 @@ if (isset($_POST['a2-restart']) && isset($_POST['a2-restart-h'])) {           //
     <div class="drittel-box lastbox">
         <h5>Restart</h5>
         <p><b>Startet den Webserver neu</b></p>
-        <form action="<?php $_SERVER['SCRIPT_NAME'] ?>" method="post">
+        <form action="?p=apache" method="post">
             <input type="hidden" name="a2-restart-h">
             <input type="submit" name="a2-restart" value="neustarten" class="button darkblue">
         </form>

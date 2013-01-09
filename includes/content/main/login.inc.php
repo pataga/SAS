@@ -11,7 +11,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>SAS | Login</title>
         <link rel="stylesheet" href="./css/login.css">
-        <link rel="shortcut icon" href="./img/favicon.ico">
+        <link rel="shortcut icon" href="./img/fav.ico">
         <script src="./js/vendor/modernizr-2.6.1.min.js"></script>
     </head>
     <!--[if IE]>
