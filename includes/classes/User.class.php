@@ -7,111 +7,145 @@
 * @copyright Copyright 2012-2013 Patrick Farnkopf, Tanja Weiser, Gabriel Wanzek (PaTaGa)
 * @link https://github.com/pataga/SAS
 * @since SAS v1.0.0
-* @license Apache License v2 (http://www.apache.org/licenses/LICENSE-2.0.txt
+* @license Apache License v2 (http://www.apache.org/licenses/LICENSE-2.0.txt)
 * @author Patrick Farnkopf
 *
 */
 
 
 class User {
+    //Objects
+    private $db = NULL, $session = NULL, $uTable = NULL;
+    //User Data
+    private $id=0, $name=NULL, $email=NULL, $admin=NULL, $self = true;
 
-    private $_userID = null;
-    private $_username = null;
-    private $_password = null;
-    private $_mysql = null;
-
-    public function __construct($main) {
-        $this->_userID = isset($_SESSION['userID']) ? $_SESSION['userID'] : 0;
-        $this->_mysql = $main->getMySQLInstance();
-    }
-
-    public function setUsername($username) {
-        $this->_username = $username;
-    }
-
-    public function setPassword($password) {
-        $this->_password = $password;
-    }
-
-    public function getUsername() {
-        return isset($_SESSION['username']) ? $_SESSION['username'] : "";
-    }
-
-    public function isLoggedIn() {
-        return isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'];
-    }
-
-    public function validatePassword($pass) {
-        $result = $this->_mysql->Query("SELECT password FROM sas_users WHERE id = $this->_userID");
-
-        if ($result->getRowsCount() > 0) {
-            $row = $this->_mysql->fetchObject();
-            if ($row->password == md5($pass))
-                return true;
-            else
-                return false;
-        } else
-            return false;
-    }
-
-    public function AuthChallenge() {
-        $user = mysql_real_escape_string($this->_username);
-        $result = $this->_mysql->Query("SELECT * FROM sas_users WHERE username = '$user'");
-
-        if ($result->getRowsCount() > 0) {
-            $row = $result->fetchObject();
-
-            if ($row->password == md5($this->_password))
-                $this->setAuthState(true, $row->id);
-            else
-                $this->setAuthState(false);
-        } else
-            $this->setAuthState(false);
-    }
-
-    private function setAuthState($authState, $id = 0) {
-        $_SESSION['userID'] = $id;
-        $_SESSION['loggedIn'] = $authState;
-        $_SESSION['username'] = $this->_username;
-    }
-
-    public function Logout() {
-        session_unset();
-        session_destroy();
-    }
-
-    public function addUser($username, $password, $passwordr, $email) {
-        if ($password == $passwordr) {
-            $result = $this->_mysql->Query("SELECT * FROM sas_users WHERE username = '$username' OR email = '$email'");
-            if ($result->getRowsCount() == 0) {
-                $password = md5($password);
-                $this->_mysql->Query("INSERT INTO sas_users (username,password,email) VALUES ('$username','$password','$email')");
-                return 1;
-            } else
-                return -1;
-        } else
-            return -2;
-    }
-
-    public function setUserPassword($username, $password, $passwordr) {
-        if ($password == $passwordr) {
-            $password = md5($password);
-            $result = $this->_mysql->Query("UPDATE sas_users SET password = '$password' WHERE username = '$username'");
-            return 1;
+    /**
+     * Initialisiert Instanzvariablen
+     * @param Main
+     * @param int id
+     */
+    public function __construct($main, $id = false) {
+        $this->db = $main->getMySQLInstance();
+        $this->uTable = $this->db->tableAction('sas_users');
+        $this->session = $main->getSession();
+        $s = $this->session;
+        if (!$id) {
+            $this->id = $s->getUserId();
+            $this->name = $s->getUserName();
+            $this->email = $s->getUserEmail();
+            $this->admin = $s->isAdmin();
         } else {
-            return 0;
+            $result = $this->uTable->select(NULL, ['id' => $id]);
+            if ($result) {
+                $row = $result->fetchObject();
+                $this->id = $row->id;
+                $this->name = $row->username;
+                $this->email = $row->email;
+                $this->admin = $row->admin;
+                $this->self = $s->getUserId() == $this->id;
+            }
         }
     }
 
-    public function setPermission($sid, $permission, $active) {
-        $query;
-        $result = $this->_mysql->Query("SELECT * FROM sas_user_permission WHERE uid = $this->_userID AND sid = $sid");
-        if ($result->getRowsCount() > 0)
-            $query = "UPDATE sas_user_permission SET $permission = $active WHERE uid = $this->_userID AND sid = $sid";
-        else
-            $query = "REPLACE sas_user_permission SET $permission = $active WHERE uid = $this->_userID AND sid = $sid";
-        $this->_mysql->Query($query);
+    /**
+     * Setzt neues Passwort
+     * @param String
+     * @return bool
+     */
+    public function setPassword($newPass) {
+        if (!empty($newPass)) {
+            $md5Hash = md5($newPass);
+            $this->uTable->update(['password' => $md5Hash], ['id' => $this->id]);
+            return true;
+        } else {
+            return false;
+        }
     }
 
+    /**
+     * Setzt neuen Benutzernamen
+     * @param String
+     * @return bool
+     */
+    public function setName($newName) {
+        if (!empty($newName)) {
+            $this->uTable->update(['username' => $newName], ['id' => $this->id]);
+            if ($this->self) $this->session->setUserName($newName);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Setzt neue Email
+     * @param String
+     * @return bool
+     */
+    public function setEmail($newEmail) {
+        if (!empty($newEmail)) {
+            $this->uTable->update(['email' => $newEmail], ['id' => $this->id]);
+            if ($this->self) $this->session->setUserEmail($newEmail);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Setzt Admin Berechtigung
+     * @param bool
+     * @return bool
+     */
+    public function setAdmin($newRights) {
+        if (is_bool($newRights)) {
+            $this->uTable->update(['admin' => ($newRights?1:0)], ['id' => $this->id]);
+            if ($this->self) $this->session->setAdmin($newRights);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Löscht Benutzer dieser Instanz. Geht wenn der ausführende Benutzer nicht selbst der zu Löschende ist
+     * @return bool
+     */
+    public function delete() {
+        if (!$this->self) {
+            $this->uTable->delete(['id' => $this->id]);
+            return true;
+        } else {
+            return false;
+        } 
+    }
+
+    /**
+     * Gibt ID zurück
+     */
+    public function getId() {
+        return $this->id;
+    }
+
+    /**
+     * Gibt Benutzernamen zurück
+     */
+    public function getName() {
+        return $this->name;
+    }
+
+    /**
+     * Gibt Email zurück
+     */
+    public function getEmail() {
+        return $this->email;
+    }
+
+    /**
+     * Gibt Admin Status zurück
+     */
+    public function isAdmin() {
+        return $this->admin;
+    }
 }
 ?>

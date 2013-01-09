@@ -40,8 +40,8 @@ class tableAction {
     *   @param Array Dateninhalte
     *   @return MySQL
     */
-    public function update($content, $where) {
-        $query = self::buildUpdateQuery($content, $where);
+    public function update($content, $condition) {
+        $query = self::buildUpdateQuery($content, $condition);
         return $this->mysql->Query($query);
     }
 
@@ -50,8 +50,18 @@ class tableAction {
     *   @param Array Dateninhalte
     *   @return MySQL
     */
-    public function select($content, $where) {
-        $query = self::buildSelectQuery($content, $where);
+    public function select($content, $condition) {
+        $query = self::buildSelectQuery($content, $condition);
+        return $this->mysql->Query($query);
+    }
+
+    /**
+    *   Fügt mit einen Datensatz hinzu
+    *   @param Array Dateninhalte
+    *   @return MySQL
+    */
+    public function delete($condition) {
+        $query = self::buildDeleteQuery($condition);
         return $this->mysql->Query($query);
     }
 
@@ -70,7 +80,7 @@ class tableAction {
     *   @param Array Bedingung
     *   @return String Query
     */
-    protected function buildSelectQuery($content, $where) {
+    protected function buildSelectQuery($content, $condition) {
         $query = "SELECT ";
 
         if (is_array($content)) {
@@ -85,9 +95,9 @@ class tableAction {
             $query .= "* FROM $this->table ";
         }
 
-        if (is_array($where)) {
-            $key = array_keys($where);
-            $data = array_values($where);
+        if (is_array($condition)) {
+            $key = array_keys($condition);
+            $data = array_values($condition);
             $amount = count($key)-1;
 
             $query .= " WHERE ";
@@ -141,7 +151,7 @@ class tableAction {
     *   @param Array Bedingung
     *   @return String Query
     */
-    protected function buildUpdateQuery($content, $where) {
+    protected function buildUpdateQuery($content, $condition) {
     	if (!is_array($content)) {
     		throw new Exception("Kein g&uuml;ltiger Parameter in tableAction::buildUpdateQueryString");
     	} else {
@@ -155,8 +165,8 @@ class tableAction {
     			if ($i < $amount) $query .= ",";
     		}
 
-    		$key = array_keys($where);
-    		$data = array_values($where);
+    		$key = array_keys($condition);
+    		$data = array_values($condition);
     		$amount = count($key)-1;
 
     		$query .= " WHERE ";
@@ -168,6 +178,30 @@ class tableAction {
 
     		return $query;
     	}
+    }
+
+    /**
+    *   Erstellt aus einem Array einen DELETE Query
+    *   @param Array Bedingung
+    *   @return String Query
+    */
+    protected function buildDeleteQuery($condition) {
+        if (!is_array($content)) {
+            throw new Exception("Kein g&uuml;ltiger Parameter in tableAction::buildDeleteQueryString");
+        } else {
+            $query = 'DELETE FROM '.$this->table.' WHERE ';
+
+            $key = array_keys($condition);
+            $data = array_values($condition);
+            $amount = count($key)-1;
+
+            for ($i = 0; $i <= $amount; $i++) {
+                $query .= $key[$i]." = '".$data[$i]."'";
+                if ($i < $amount) $query .= " AND ";
+            }
+
+            return $query;
+        }
     }
 }
 ?>

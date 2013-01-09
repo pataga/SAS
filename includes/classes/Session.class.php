@@ -186,6 +186,38 @@ class Session {
 
         return $userInstance;
     }
+
+    /**
+     * Setzt neue Email
+     * @param String
+     */
+    public function setUserEmail($newEmail) {
+        $_SESSION['user']['email'] = $newEmail;
+    }
+
+    /**
+     * Setzt neuen Benutzernamen
+     * @param String
+     */
+    public function setUserName($newName) {
+        $_SESSION['user']['name'] = $newName;
+    }
+
+    /**
+     * Setzt neue ID
+     * @param int
+     */
+    public function setUserId($newId) {
+        $_SESSION['user']['id'] = $newId;
+    }
+
+    /**
+     * Setzt neuen Admin Status
+     * @param bool
+     */
+    public function setAdmin($admin) {
+        $_SESSION['user']['admin'] = $admin;
+    }
 }
 
 ?>

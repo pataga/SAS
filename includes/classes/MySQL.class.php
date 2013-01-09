@@ -63,7 +63,7 @@ class MySQL {
     */
     public function Query($query) {
         if (!($result = mysql_query($query, $this->con_res))) {
-            return 0;
+            return false;
         } else {
             $this->result = $result;
             return new \MySQL\Result($this->result);
