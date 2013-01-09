@@ -45,7 +45,7 @@ if (isset($_POST['smbd-start']) && isset($_POST['smbd-start-h']))
 <fieldset>
     <div class="fuenftel-box boxcenter">
         <h5>Apache2</h5>
-        <form action="<?php $_SERVER['SCRIPT_NAME'] ?>" method="post">
+        <form action="?p=home&s=quickpanel" method="post">
 <?php
 echo ($server->getServiceStatus($ssh, 'apache2')) ? '<input type="hidden" name="a2-stop-h"><input type="submit" name="a2-stop" value="Stop" class="button pink">' : '<input type="hidden" name="a2-start-h"><input type="submit" name="a2-start" value="Start" class="button green">';
 ?>
@@ -53,7 +53,7 @@ echo ($server->getServiceStatus($ssh, 'apache2')) ? '<input type="hidden" name="
     </div>
     <div class="fuenftel-box boxcenter">
         <h5>Postfix</h5>
-        <form action="<?php $_SERVER['SCRIPT_NAME'] ?>" method="post">
+        <form action="?p=home&s=quickpanel" method="post">
 <?php
 echo ($server->getServiceStatus($ssh, 'postfix')) ? '<input type="hidden" name="postfix-stop-h"><input type="submit" name="postfix-stop" value="Stop" class="button pink">' : '<input type="hidden" name="postfix-start-h"><input type="submit" name="postfix-start" value="Start" class="button green">';
 ?>
@@ -61,7 +61,7 @@ echo ($server->getServiceStatus($ssh, 'postfix')) ? '<input type="hidden" name="
     </div>
     <div class="fuenftel-box boxcenter">
         <h5>FTP</h5>
-        <form action="<?php $_SERVER['SCRIPT_NAME'] ?>" method="post">
+        <form action="?p=home&s=quickpanel" method="post">
 <?php
 echo ($server->getProFTPDStatus($ssh)) ? '<input type="hidden" name="proftpd-stop-h"><input type="submit" name="proftpd-stop" value="Stop" class="button pink">' : '<input type="hidden" name="proftpd-start-h"><input type="submit" name="proftpd-start" value="Start" class="button green">';
 ?>
@@ -69,7 +69,7 @@ echo ($server->getProFTPDStatus($ssh)) ? '<input type="hidden" name="proftpd-sto
     </div>
     <div class="fuenftel-box boxcenter">
         <h5>MySQL</h5>
-        <form action="<?php $_SERVER['SCRIPT_NAME'] ?>" method="post">
+        <form action="?p=home&s=quickpanel" method="post">
 <?php
 echo ($server->getServiceStatus($ssh, 'mysql')) ? '<input type="hidden" name="mysql-stop-h"><input type="submit" name="mysql-stop" value="Stop" class="button pink">' : '<input type="hidden" name="mysql-start-h"><input type="submit" name="mysql-start" value="Start" class="button green">';
 ?>
@@ -77,7 +77,7 @@ echo ($server->getServiceStatus($ssh, 'mysql')) ? '<input type="hidden" name="my
     </div>
     <div class="fuenftel-box boxcenter lastbox">
         <h5>Samba</h5>
-        <form action="<?php $_SERVER['SCRIPT_NAME'] ?>" method="post">
+        <form action="?p=home&s=quickpanel" method="post">
 <?php
 echo ($server->getServiceStatus($ssh, 'smbd')) ? '<input type="hidden" name="smbd-stop-h"><input type="submit" name="smbd-stop" value="Stop" class="button pink">' : '<input type="hidden" name="smbd-start-h"><input type="submit" name="smbd-start" value="Start" class="button green">';
 ?>

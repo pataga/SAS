@@ -53,13 +53,13 @@ $userswholi = str_replace(" ", ", ", $userswho);
             </tr>
             <tr class="odd">
                 <td>Server online seit:</td>
-                <td id="test"> <noscript> <?php echo $serveruptime; ?></noscript> </td>
+                <td id="uptime"> <noscript> <?php echo $serveruptime; ?></noscript> </td>
             </tr>
             <script>
                 var sek=<?php echo $sekunden; ?>;
                 function upservtime() {
                     var uppy = ((((((((sek - (sek % 60)) / 60) - ((sek - (sek % 60)) / 60) % 60) / 60))) - ((((((sek - (sek % 60)) / 60) - ((sek - (sek % 60)) / 60) % 60) / 60)) % 24)) / 24) + " T " + ((((((sek - (sek % 60)) / 60) - ((sek - (sek % 60)) / 60) % 60) / 60)) % 24) + " Std " + (((sek - (sek % 60)) / 60) % 60) + " Min " + (sek % 60) + " Sek ";
-                    document.getElementById('test').innerHTML = uppy;  
+                    document.getElementById('uptime').innerHTML = uppy;  
                     window.setTimeout("upservtime()",1000); 
                     sek++;
                 }

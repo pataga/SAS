@@ -36,7 +36,7 @@ class Loader {
 
     private function loadUserInterface() {
         $this->content .= sprintf('<div class="top"><div class="logo"><h1>Server <span>Admin</span> System</h1>
-						           </div><div class="usermenu"><img src="img/profile/0815.png" alt="Profilbild">
+						           </div><div class="usermenu"><img src="img/profile/ubuntu.png" alt="Profilbild">
                                    <h3>%s</h3><a href="#">Meine Daten &auml;ndern</a>
 						           <br><a href="?server=change">Server wechseln</a><br>
 						           <a href="?user=logout">Logout</a></div></div>',
