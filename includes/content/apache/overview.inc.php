@@ -1,17 +1,14 @@
 <?php
-
-
 /**
-* Licensed under The Apache License
-*
-* @copyright Copyright 2012-2013 Patrick Farnkopf, Tanja Weiser, Gabriel Wanzek (PaTaGa)
-* @link https://github.com/pataga/SAS
-* @since SAS v1.0.0
-* @license Apache License v2 (http://www.apache.org/licenses/LICENSE-2.0.txt
-* @author Gabriel Wanzek
-*
-*/
-
+ * Licensed under The Apache License
+ *
+ * @copyright Copyright 2012-2013 Patrick Farnkopf, Tanja Weiser, Gabriel Wanzek (PaTaGa)
+ * @link https://github.com/pataga/SAS
+ * @since SAS v1.0.0
+ * @license Apache License v2 (http://www.apache.org/licenses/LICENSE-2.0.txt
+ * @author Gabriel Wanzek
+ *
+ */
 $ssh->openConnection();
 
 // prozess status über apache2
@@ -41,11 +38,12 @@ if (isset($_POST['a2-restart']) && isset($_POST['a2-restart-h'])) {           //
 }
 if (isset($_POST['a2_install'])) {           //wenn hidden+submit ..
     $ssh->execute("apt-get install apache2 -fy");
-    $mysql->Query("UPDATE sas_server_data SET apache=1 WHERE id = ".$_SESSION['server_id']);                              //.. führe das aus
+    $mysql->Query("UPDATE sas_server_data SET apache=1 WHERE id = " . $_SESSION['server_id']);                              //.. führe das aus
 }
 ?>
 <h3>Apache 2 &Uuml;bersicht</h3>
-<?php if (!$server->isInstalled('apache')) {
+<?php
+if (!$server->isInstalled('apache')) {
     echo '<fieldset>
     <legend>Apache2 installieren</legend>
     <span class="error"> <b>Fehler:</b> Apache2 ist nicht installiert.</span><br>
@@ -74,9 +72,11 @@ if (isset($_POST['a2_install'])) {           //wenn hidden+submit ..
     </div>
     <div class="halbe-box lastbox">
         <h5>Aktive Module:</h5>
-        <div name="a2_module" class="a2_module"><?php foreach ($en_mods_a2_ as $key => $value) {
-                echo $value."<br>";
-        };?></div>
+        <div name="a2_module" class="a2_module"><?php
+foreach ($en_mods_a2_ as $key => $value) {
+    echo $value . "<br>";
+};
+?></div>
     </div>
     <div class="clearfix"></div>
 </fieldset>
