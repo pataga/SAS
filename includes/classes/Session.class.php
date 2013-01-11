@@ -18,11 +18,14 @@ class Session {
      * Starte Session 
      */
     public function __construct($main) {
-        $this->mysql = $main->getMySQLInstance();
+        $this->mysql = $main->MySQL();
         $this->main = $main;
+        if (!isset($_SESSION['user']['authenticated'])) {
+            self::initSession();
+        }
+    }
 
-        session_start();
-
+    private static function initSession() {
         //User Data Initialisierung
         $_SESSION['user']['authenticated'] = false;
         $_SESSION['user']['failedAuths'] = 0;
@@ -40,14 +43,6 @@ class Session {
         //Debug Data Initialisierung
         $_SESSION['debug']['logLevel'] = 2; //Userspezifisches logLevel (für Entwicklung)
         $_SESSION['debug']['errorsCount'] = 0;
-    }
-
-    /**
-     * Überprüft, ob der Benutzer sich authentifiziert hat
-     * @return bool 
-     */
-    public function isLoggedIn() {
-        return isset($_SESSION['user']['authenticated']) && $_SESSION['user']['authenticated'];
     }
 
     /**
@@ -181,10 +176,38 @@ class Session {
 
         //Klasse User noch nicht umgeschrieben, daher noch nicht funktionsfähig
         $userInstance = new User($this->main);
-        if (!$userInstance->SetData())
-            return false;
-
         return $userInstance;
+    }
+
+    public function logout() {
+        $_SESSION['user']['authenticated'] = false;
+        $_SESSION['user']['failedAuths'] = 0;
+        $_SESSION['user']['id'] = 0;
+        $_SESSION['user']['name'] = '';
+        $_SESSION['user']['email'] = '';
+        $_SESSION['user']['admin'] = 0;
+        $_SESSION['server']['chosen'] = false;
+        $_SESSION['server']['id'] = 0;
+        $_SESSION['server']['name'] = '';
+        $_SESSION['server']['address'] = '';
+        $_SESSION['debug']['logLevel'] = 2; //Userspezifisches logLevel (für Entwicklung)
+        $_SESSION['debug']['errorsCount'] = 0;
+    }
+
+    /**
+     * Server Session
+     * @param String
+     */
+    public function selectServer() {
+        $_SESSION['server']['chosen'] = true;
+    }
+
+    /**
+     * Setzt Server Session zurück
+     * @param String
+     */
+    public function unselectServer() {
+        $_SESSION['server']['chosen'] = false;
     }
 
     /**
@@ -217,6 +240,14 @@ class Session {
      */
     public function setAdmin($admin) {
         $_SESSION['user']['admin'] = $admin;
+    }
+
+    /**
+     * Setzt Server ID
+     * @param int
+     */
+    public function setServerId($id) {
+        $_SESSION['server']['id'] = $id;
     }
 }
 

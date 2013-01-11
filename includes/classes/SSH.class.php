@@ -15,12 +15,7 @@
 
 class SSH {
 
-    private $host; 
-    private $port;
-    private $user;
-    private $pass;
-    private $connection;
-    private $out;
+    private $host,$port,$user,$pass,$connection,$out;
 
    /**
     * An diese Methode werden die SSH Zugangsdaten übergeben

@@ -18,14 +18,14 @@
         die();
     } else {
         $data = $server->getServerData($server->getID());
-        $dbhandler = new DBHandler($main);
+        $dbhandler = new \Module\MySQL\DBHandler($main);
     }
 ?>
 <h2>Datenbank Verwaltung</h2>
 <fieldset style="width:auto;">
     <div style="height:auto;width:auto;min-width:100px;max-height:500px;max-width:800px;min-height:130px;overflow-x:scroll;overflow-y:scroll;">
         <?php
-            print(DBHandler::buildLinkTree($data[1], 
+            print(\Module\MySQL\DBHandler::buildLinkTree($data[1], 
                  (isset($_GET['db']) ? $_GET['db'] : false), 
                  (isset($_GET['t']) ? $_GET['t'] : false)));
         ?>

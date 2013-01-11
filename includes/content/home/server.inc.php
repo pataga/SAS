@@ -14,7 +14,8 @@
 
 
     if (isset($_POST['server']) && $_POST['server'] != -1) {
-        $_SESSION['server_id'] = $_POST['server'];
+        $session->setServerId($_POST['server']);
+        $session->selectServer();
         $loader->reload();
     } else if (isset($_POST['name']) && isset($_POST['shost']) && isset($_POST['sport']) && isset($_POST['suser']) && isset($_POST['spass'])) {
         $database->addServer($_POST['name'], $_POST['shost'], $_POST['sport'], $_POST['suser'], $_POST['spass']);

@@ -95,7 +95,8 @@
             mysql_query("INSERT INTO `sas_content` VALUES ('46', 'mysql', 'adduser', 'includes/content/mysql/useradd.inc.php')");
             mysql_query("INSERT INTO `sas_content` VALUES ('47', 'mysql', 'db', 'includes/content/mysql/db.inc.php')");
             mysql_query("INSERT INTO `sas_content` VALUES ('48', 'mysql', 'configure', 'includes/content/mysql/configure.inc.php')");
-
+            mysql_query("INSERT INTO sas_content (page,spage,inc_path) VALUES ('samba','install','includes/content/samba/install.inc.php');
+");
             mysql_query("DROP TABLE IF EXISTS `sas_menu_main`");
             mysql_query("CREATE TABLE `sas_menu_main` (
               `id` int(10) NOT NULL AUTO_INCREMENT,

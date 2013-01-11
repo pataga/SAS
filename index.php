@@ -14,7 +14,6 @@
 //Starte Session
 session_start();
 
-
 function exceptionErrorHandler($errno, $errstr, $errfile, $errline) {
     throw new ErrorException($errstr, 0,$errno, $errfile, $errline);
 }
@@ -48,45 +47,43 @@ $main = new \Main($data, $debugLevel, $logFile);
 
 
 //Initialisiere Hauptobjekte
-$mysql = $main->getMySQLInstance();
-$loader = $main->getLoaderInstance();
-$user = $main->getUserInstance();
-$server = $main->getServerInstance();
-$database = $main->getDatabaseInstance();
-$ssh = $main->getSSHInstance();
-$debug = $main->getDebugInstance();
-$cache = $main->getCacheInstance();
-
+$mysql = $main->MySQL();
+$loader = $main->Loader();
+$server = $main->Server();
+$database = $main->Database();
+$ssh = $main->SSH();
+$debug = $main->Debug();
+$cache = $main->Cache();
+$session = $main->Session();
+$user = NULL;
 
 //Remote Instance
 $mysql_remote = null;
 
 //Authentifizierung
 if (isset($_POST['username']) && isset($_POST['password'])) {
-    $user->setUsername($_POST['username']);
-    $user->setPassword($_POST['password']);
-    $user->AuthChallenge();
+    $user = $session->authChallenge($_POST['username'],$_POST['password']);
     $loader->reload();
 }
 
 
 //Wenn ServerID gesetzt, dann ....
-if (isset($_SESSION['server_id'])) {
+if ($session->isServerChosen()) {
     //... setze ServerID in Klasse
-    $server->setID($_SESSION['server_id']);
+    $server->setID($session->getServerId());
     //... versuche eine Remote MySQL Verbindung aufzubauen
-    $remote_mysql_data = $server->getMySQLData();
-    if (is_array($remote_mysql_data)) {
-        $mysql_remote = new \MySQL\MySQL($main,$remote_mysql_data[0],$remote_mysql_data[1],$remote_mysql_data[2],$remote_mysql_data[3]);
+    $rmd = $server->getMySQLData();
+    if ($rmd) {
+        $mysql_remote = new \MySQL($main,$rmd[0],$rmd[1],$rmd[2],$rmd[3]);
     }
 }
 
 
 //Wenn nicht angemeldet, dann LoginMaske
-if (!$user->isLoggedIn()) {
+if (!$session->isAuthenticated()) {
     try {
         require_once 'includes/content/main/login.inc.php';
-        exit();
+        exit;
     } catch (\Exception $e) {
         $debug->error($e);
         exit;
@@ -95,14 +92,14 @@ if (!$user->isLoggedIn()) {
 
 
 //Wenn Logout Link geklickt, dann abmelden
-if ($user->isLoggedIn() && isset($_GET['user']) && $_GET['user'] == 'logout') {
-    $user->Logout();
+if ($session->isAuthenticated() && isset($_GET['user']) && $_GET['user'] == 'logout') {
+    $session->Logout();
     $loader->reload();
 }
 
 
 //Wenn Server wechseln geklickt, dann Server Session zerstören
-if ($user->isLoggedIn() && isset($_GET['server']) && $_GET['server'] == 'change' && isset($_SESSION['server_id'])) {
+if ($session->isAuthenticated() && isset($_GET['server']) && $_GET['server'] == 'change' && isset($_SESSION['server_id'])) {
     unset($_SESSION['server_id']);
     $loader->reload();
 }

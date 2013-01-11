@@ -22,8 +22,8 @@ class Database {
     private $server;
 
     public function __construct($main) {
-        $this->mysql = $main->getMySQLInstance();
-        $this->server = $main->getServerInstance();
+        $this->mysql = $main->MySQL();
+        $this->server = $main->Server();
     }
 
     public function addServer($name, $host, $port, $user, $pass) {

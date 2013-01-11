@@ -14,7 +14,7 @@
 
 class Main {
 
-    private $mysql_data, $mysql, $db, $result, $server, $ssh, $user, $tableaction, $loader, $logFile, $debugLevel;
+    private $mysql_data,$mysql,$db,$result,$server,$ssh,$user,$tableaction,$loader,$logFile,$debugLevel,$session;
 
     public function __construct($data=false, $debugLevel=2, $logFile='error.log') {
         $this->debugLevel = $debugLevel;
@@ -53,12 +53,6 @@ class Main {
         }
 
         try {
-            $this->user = new \User($this);
-        } catch (Main\Exception $e) {
-            $this->debug->error($e);
-        }
-
-        try {
             $this->server = new \Server($this);
         } catch (Main\Exception $e) {
             $this->debug->error($e);
@@ -76,6 +70,12 @@ class Main {
             $this->debug->error($e);
         }
 
+        try {
+            $this->session = new \Session($this);
+        } catch (Main\Exception $e) {
+            $this->debug->error($e);
+        }
+
         $this->ssh = $this->setSSHInstance();
     }
 
@@ -85,10 +85,9 @@ class Main {
      */
     private function setSSHInstance() {
         try {
-            if (isset($_SESSION['server_id'])) {
-                $this->server->setID($_SESSION['server_id']);
+            if ($this->session->isServerChosen()) {
+                $this->server->setID($this->session->getServerId());
                 $data = $this->server->getServerData();
-
                 if (!is_array($data))
                     throw new Main\Exception("unable to find data of ssh daemon in Main::setSSHInstance()", 1);
 
@@ -101,14 +100,15 @@ class Main {
         }
     }
 
-    public function getServerInstance() { return $this->server; }
-    public function getSSHInstance() { return $this->ssh; }
-    public function getMySQLInstance() { return $this->mysql; }
-    public function getUserInstance() { return $this->user; }
-    public function getDatabaseInstance() { return $this->database; }
-    public function getLoaderInstance() { return $this->loader; }
-    public function getDebugInstance() { return $this->debug; }
-    public function getCacheInstance() { return $this->cache; }
+    public function Server() { return $this->server; }
+    public function SSH() { return $this->ssh; }
+    public function MySQL() { return $this->mysql; }
+    public function User() { return $this->user; }
+    public function Database() { return $this->database; }
+    public function Loader() { return $this->loader; }
+    public function Debug() { return $this->debug; }
+    public function Cache() { return $this->cache; }
+    public function Session() { return $this->session; }
 
 
     public static function printLoadTime($startTime, $endTime) {

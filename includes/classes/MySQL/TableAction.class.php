@@ -117,32 +117,28 @@ class tableAction {
     *   @param Array Dateninhalte
     *   @return String Query
     */
-    protected function buildInsertQuery($content) {
-        if (!is_array($content)) {
-            throw new Exception("Kein g&uuml;ltiger Parameter in tableAction::buildInsertQueryArray");
-        } else {
-            $key_ = array_keys($content);
-            $data_ = array_values($content);
-            $amount = count($key_)-1;
-            $i = 0;
-            $query = "INSERT INTO $this->table (";
-            foreach ($key_ as $key) {
-                $query .= "$key";
-                if ($i < $amount) $query .= ",";
-                $i++;
-            }
-
-            $query .= ") VALUES (";
-            $i = 0;
-            foreach ($data_ as $data) {
-                $query .= "'$data'";
-                if ($i < $amount) $query .= ",";
-                $i++;
-            }
-            $query .= ")";
-
-            return $query;
+    protected function buildInsertQuery(array $content) {
+        $key_ = array_keys($content);
+        $data_ = array_values($content);
+        $amount = count($key_)-1;
+        $i = 0;
+        $query = "INSERT INTO $this->table (";
+        foreach ($key_ as $key) {
+            $query .= "$key";
+            if ($i < $amount) $query .= ",";
+            $i++;
         }
+
+        $query .= ") VALUES (";
+        $i = 0;
+        foreach ($data_ as $data) {
+            $query .= "'$data'";
+            if ($i < $amount) $query .= ",";
+            $i++;
+        }
+        $query .= ")";
+
+        return $query;
     }
 
     /**
@@ -151,33 +147,28 @@ class tableAction {
     *   @param Array Bedingung
     *   @return String Query
     */
-    protected function buildUpdateQuery($content, $condition) {
-    	if (!is_array($content)) {
-    		throw new Exception("Kein g&uuml;ltiger Parameter in tableAction::buildUpdateQueryString");
-    	} else {
-    		$key = array_keys($content);
-    		$data = array_values($content);
-    		$amount = count($key)-1;
-    		$query = "UPDATE $this->table SET ";
+    protected function buildUpdateQuery(array $content, array $condition) {
+    	$key = array_keys($content);
+    	$data = array_values($content);
+    	$amount = count($key)-1;
+    	$query = "UPDATE $this->table SET ";
 
-    		for ($i = 0; $i <= $amount; $i++) {
-    			$query .= "$key[$i] = '$data[$i]'";
-    			if ($i < $amount) $query .= ",";
-    		}
-
-    		$key = array_keys($condition);
-    		$data = array_values($condition);
-    		$amount = count($key)-1;
-
-    		$query .= " WHERE ";
-
-    		for ($i = 0; $i <= $amount; $i++) {
-    			$query .= "$key[$i] = '$data[$i]'";
-    			if ($i < $amount) $query .= " AND ";
-    		}
-
-    		return $query;
+    	for ($i = 0; $i <= $amount; $i++) {
+    		$query .= "$key[$i] = '$data[$i]'";
+    		if ($i < $amount) $query .= ",";
     	}
+
+    	$key = array_keys($condition);
+    	$data = array_values($condition);
+    	$amount = count($key)-1;
+
+    	$query .= " WHERE ";
+    	for ($i = 0; $i <= $amount; $i++) {
+    		$query .= "$key[$i] = '$data[$i]'";
+    		if ($i < $amount) $query .= " AND ";
+    	}
+
+    	return $query;
     }
 
     /**
@@ -185,23 +176,19 @@ class tableAction {
     *   @param Array Bedingung
     *   @return String Query
     */
-    protected function buildDeleteQuery($condition) {
-        if (!is_array($content)) {
-            throw new Exception("Kein g&uuml;ltiger Parameter in tableAction::buildDeleteQueryString");
-        } else {
-            $query = 'DELETE FROM '.$this->table.' WHERE ';
+    protected function buildDeleteQuery(array $condition) {
+        $query = 'DELETE FROM '.$this->table.' WHERE ';
 
-            $key = array_keys($condition);
-            $data = array_values($condition);
-            $amount = count($key)-1;
+        $key = array_keys($condition);
+        $data = array_values($condition);
+        $amount = count($key)-1;
 
-            for ($i = 0; $i <= $amount; $i++) {
-                $query .= $key[$i]." = '".$data[$i]."'";
-                if ($i < $amount) $query .= " AND ";
-            }
-
-            return $query;
+        for ($i = 0; $i <= $amount; $i++) {
+            $query .= $key[$i]." = '".$data[$i]."'";
+            if ($i < $amount) $query .= " AND ";
         }
+
+        return $query;
     }
 }
 ?>

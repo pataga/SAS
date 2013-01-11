@@ -13,14 +13,14 @@
 */
 
 
-namespace Module\Process;
+namespace Module\Tools;
 
 class Process {
 
 	private $ssh;
 
 	function __construct($main) {
-		$this->ssh = $main->getSSHInstance();
+		$this->ssh = $main->SSH();
 		$this->ssh->openConnection();
 	}
 

@@ -23,7 +23,7 @@ class Cache {
 	}
 
 	public function buildCache($inc) {
-		$loader = $this->main->getLoaderInstance();
+		$loader = $this->main->Loader();
 		$this->cache .= self::loadTop();
 		$this->cache .= $loader->loadMenues();
 		$this->cache .= $inc;

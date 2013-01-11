@@ -15,7 +15,7 @@
 ?>
 
 <?php
-$proc = new Process($main);
+$proc = new \Module\Tools\Process($main);
 
 if (isset($_POST['kill'])) {
     for ($i=0;$i<6000;$i++) {

@@ -25,17 +25,17 @@ class DBHandler {
 
 
     private function createDatabaseLink() {
-        $data = $this->main->getServerInstance()->getMySQLData();
+        $data = $this->main->Server()->getMySQLData();
         try {
             if (!is_array($data)) {
-                throw new Exception('Fehler in DBHandler::createDatabaseLink() - Variable data ist kein Array');
+                throw new \Exception('Fehler in DBHandler::createDatabaseLink() - Variable data ist kein Array');
             } else {
                 if (!($this->mysql = new MySQL($this->main,$data[0],$data[1],$data[2],$data[3]))) {
-                    throw new Exception('Fehler in DBHandler::createDatabaseLink() - Verbindungsinformationen nicht korrekt');
+                    throw new \Exception('Fehler in DBHandler::createDatabaseLink() - Verbindungsinformationen nicht korrekt');
                 }
             }
-        } catch (MySQLException $e) {
-            $this->main->getDebugInstance()->error($e);
+        } catch (\MySQL\Exception $e) {
+            $this->main->Debug()->error($e);
         }
     }
 

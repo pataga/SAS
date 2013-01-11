@@ -26,7 +26,7 @@ class MySQL {
         try {
             $this->connect();
         } catch (\MySQL\Exception $e) {
-            $this->main->getDebugInstance()->error($e);
+            $this->main->Debug()->error($e);
         }
         
         if ($db) $this->selectDB($db);
@@ -110,7 +110,7 @@ class MySQL {
     *   @return TableAction
     */
     public function tableAction($table) {
-        return new TableAction($this, $table);
+        return new \MySQL\TableAction($this, $table);
     }
 }
 

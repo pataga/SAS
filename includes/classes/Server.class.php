@@ -18,7 +18,7 @@ class Server {
     private $mysql;
 
     public function __construct($main) {
-        $this->mysql = $main->getMySQLInstance();
+        $this->mysql = $main->MySQL();
         $this->server_id = isset($_SESSION['server_id']) ? $_SESSION['server_id'] : 0;
     }
 
@@ -163,15 +163,21 @@ class Server {
     */
 
     public function getProFTPDStatus($ssh) {
-        $status = $ssh->execute('service proftpd status');
-        $exp = explode(",", $status);
-        $exp2 = explode(".", $exp[1]);
-        $exp3 = explode(" ", $exp2[0]);
+        try {
+            $status = $ssh->execute('service proftpd status');
+            $exp = explode(",", $status);
+            if (!isset($exp[1])) return false;
+            $exp2 = explode(".", $exp[1]);
+            if (!isset($exp2[0])) return false;
+            $exp3 = explode(" ", $exp2[0]);
         
-        if ($exp3[1] == "currently" && $exp3[2] == "running")
-            return true;
-        else
+            if ($exp3[1] == "currently" && $exp3[2] == "running")
+                return true;
+            else
+                return false;
+        } catch (\Server\Exception $e) {
             return false;
+        }
 }
 
 

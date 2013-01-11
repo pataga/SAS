@@ -25,9 +25,9 @@ class Loader {
     public function __construct($main)
     {
         try {
-            $this->mysql = $main->getMySQLInstance();
+            $this->mysql = $main->MySQL();
         } catch (\Exception\MySQLException $e) {
-            $this->main->getDebugInstance()->error($e);
+            $this->main->Debug()->error($e);
         }
 
         $this->main = $main;
@@ -40,7 +40,7 @@ class Loader {
                                    <h3>%s</h3><a href="#">Meine Daten &auml;ndern</a>
 						           <br><a href="?server=change">Server wechseln</a><br>
 						           <a href="?user=logout">Logout</a></div></div>',
-                                   $this->main->getUserInstance()->getUsername());
+                                   $this->main->Session()->getUsername());
     }
 
     private function loadMainMenu() {
@@ -78,7 +78,7 @@ class Loader {
     }
 
     public function getIncFile() {
-        if (!isset($_SESSION['server_id']))
+        if (!$this->main->Session()->getServerID())
             return 'includes/content/home/server.inc.php';
         $page = mysql_real_escape_string($this->_page);
         $spage = mysql_real_escape_string($this->_spage);
@@ -87,10 +87,10 @@ class Loader {
         if ($result->getRowsCount() > 0) {
             $row = $result->fetchObject();
             if (!is_file($row->inc_path))
-                throw new \Exception\MException('Fatal Error: Incorrect include file for page '.$page.' and subpage '.$spage);
+                throw new \Main\Exception('Fatal Error: Incorrect include file for page '.$page.' and subpage '.$spage);
             return $row->inc_path;
         } else {
-            throw new \Exception\MException('Fatal Error: Incorrect include file for page '.$page.' and subpage '.$spage);
+            throw new \Main\Exception('Fatal Error: Incorrect include file for page '.$page.' and subpage '.$spage);
         }
     }
 

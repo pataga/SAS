@@ -17,7 +17,7 @@ class User {
     //Objects
     private $db = NULL, $session = NULL, $uTable = NULL;
     //User Data
-    private $id=0, $name=NULL, $email=NULL, $admin=NULL, $self = true;
+    private $id=0, $name=NULL, $email=NULL, $admin=NULL, $self=true, $password=NULL;
 
     /**
      * Initialisiert Instanzvariablen
@@ -25,9 +25,9 @@ class User {
      * @param int id
      */
     public function __construct($main, $id = false) {
-        $this->db = $main->getMySQLInstance();
+        $this->db = $main->MySQL();
         $this->uTable = $this->db->tableAction('sas_users');
-        $this->session = $main->getSession();
+        $this->session = $main->Session();
         $s = $this->session;
         if (!$id) {
             $this->id = $s->getUserId();
@@ -118,6 +118,18 @@ class User {
         } else {
             return false;
         } 
+    }
+
+    public function saveToDB() {
+        if (empty($this->password) || empty($this->username)) {
+            return false;
+        } else {
+            $this->uTable->insert([
+                'username'=>$this->username, 
+                'password' => md5($this->password),
+                'email' => $this->email,
+                'admin' => $this->admin ? 1:0]);
+        }
     }
 
     /**
