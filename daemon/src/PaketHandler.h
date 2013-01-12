@@ -17,4 +17,5 @@ public:
 class Out {
 public:
     char* PreparePaket(int msg);
+    int GetPaketSize(int msg);
 };

@@ -35,7 +35,7 @@ int In::HandleReceivedPaket(char _byte[]) {
 }
 
 char* Out::PreparePaket(int msg) {
-    char paket[100];
+    char paket[Out::GetPaketSize(msg)];
     char* pointer;
 
     if (!msg) 
@@ -53,4 +53,17 @@ char* Out::PreparePaket(int msg) {
     }
     pointer = paket;
     return pointer;
+}
+
+int Out::GetPaketSize(int msg) {
+    switch (msg) {
+        case CMSG_SEND_CHECKSUM:
+            return 22; // 1-2 = Operation Code 0x0100-0xFF00 | 3 = 0x00; | 5-21 = MD5 Checksum | 22 = 0xFF;
+            break;
+        case CMSG_SEND_AUTHOKAY:
+            return 5;  // 1-2 = Operation Code 0x0100-0xFF00 | 3 = 0x00; | 4 = AuthStatus | 5 = 0xFF;
+            break;
+        default:
+            return CMSG_INVALID_PAKET;
+    }
 }
