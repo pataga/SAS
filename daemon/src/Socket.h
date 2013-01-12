@@ -22,8 +22,9 @@ class ClientSocket {
 public:
     virtual int GetSocket() { return _socket; }
     virtual unsigned int GetPort() { return _port; }
-    void Listen();
     virtual void SetPort(int port) { _port = port; }
+    void Listen();
+    char* ReadPaket();
 private:
     int _port;
     int _socket;

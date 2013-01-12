@@ -27,6 +27,6 @@ int main() {
     socket->SetPort(8080);
     printf("%d\n", socket->GetPort());
     socket->Listen();
-    
+    printf("%s", socket->ReadPaket());
     return 0;
 }
