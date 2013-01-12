@@ -11,17 +11,20 @@
 
 class ServerSocket {
 public:
-    virtual ServerSocket* GetSocket() { return _socket }
+    virtual int GetSocket() { return _socket; }
     virtual int GetSocketsCount() { return _currentCount; }
 private:
     unsigned int _currentCount; 
-    ServerSocket* _socket;
+    int _socket;
 };
 
 class ClientSocket {
 public:
-    virtual ClientSocket* GetSocket() { return _socket }
-    virtual ClientSocket* Listen() { return _socket }
+    virtual int GetSocket() { return _socket; }
+    virtual unsigned int GetPort() { return _port; }
+    void Listen();
+    virtual void SetPort(int port) { _port = port; }
 private:
-    ServerSocket* _socket;
+    int _port;
+    int _socket;
 };

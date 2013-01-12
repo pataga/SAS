@@ -22,6 +22,11 @@
 int main() {
     In* in = new In();
     Out* out = new Out();
+    ClientSocket* socket = new ClientSocket();
+
+    socket->SetPort(8080);
+    printf("%d\n", socket->GetPort());
+    socket->Listen();
     
     return 0;
 }
