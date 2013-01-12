@@ -848,14 +848,14 @@ Template-Features [Forms und so ...]
 }
 
 #main fieldset select {
-    color: #222;
-    background: transparent;
-    font-size: 12px;
-    font-weight: 400;
-    padding: 4px 4px;
-    overflow: hidden;
-    border: 1px solid #ccc;
-    border-radius: 2px;
+   background: transparent;
+   min-width: 100px;
+   padding: 5px;
+   font-size: 16px;
+   line-height: 1;
+   border: 1px solid #777;
+   border-radius: 2px;
+   height: 34px;
 }
 
 #main fieldset select.shadow {

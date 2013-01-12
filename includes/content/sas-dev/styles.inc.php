@@ -71,7 +71,7 @@ drwxrwxrwx  9 root    root    4096 Dez 27 01:30 gab/
 lrwxrwxrwx  1 root    root      22 Nov 26 16:05 phpsysinfo -> /usr/share/phpsysinfo//
 drwxr-xr-x  9 gabriel gabriel 4096 Dez 19 11:29 SAS/
 drwxrwxrwx  8 root    root    4096 Jan 18  2011 sqlbuddy/
-</pre>
+    </pre>
     <div class="clearfix"></div>
     pre.simple:<br>
     <pre class="simple">gabriel@papaya:/$ ll /var/www/
@@ -83,7 +83,7 @@ drwxrwxrwx  9 root    root    4096 Dez 27 01:30 gab/
 lrwxrwxrwx  1 root    root      22 Nov 26 16:05 phpsysinfo -> /usr/share/phpsysinfo//
 drwxr-xr-x  9 gabriel gabriel 4096 Dez 19 11:29 SAS/
 drwxrwxrwx  8 root    root    4096 Jan 18  2011 sqlbuddy/
-</pre>
+    </pre>
 
 </fieldset>
 <hr>
@@ -252,72 +252,72 @@ drwxrwxrwx  8 root    root    4096 Jan 18  2011 sqlbuddy/
 <h5>Tabelle mit Sortierung</h5>
 <table id="sortable" class="s">
     <thead>
-    <tr>
-        <th>ID</th>
-        <th>Vorname</th>
-        <th>Nachname</th>
-        <th>E-Mail</th>
-        <th>Wert</th>
-        <th>Wert 2</th>
-    </tr>
+        <tr>
+            <th>ID</th>
+            <th>Vorname</th>
+            <th>Nachname</th>
+            <th>E-Mail</th>
+            <th>Wert</th>
+            <th>Wert 2</th>
+        </tr>
     </thead>
     <tbody>
-    <tr>
-        <td>1</td>
-        <td>Alex</td>
-        <td>Habuschja</td>
-        <td>alex.ha@gmail.com</td>
-        <td>50.0</td>
-        <td>http://www.jsmith.com</td>
-    </tr>
-    <tr>
-        <td>2</td>
-        <td>Bernd</td>
-        <td>Müller</td>
-        <td>b.m@yahoo.com</td>
-        <td>51.02</td>
-        <td>http://www.frank.com</td>
-    </tr>
-    <tr>
-        <td>3</td>
-        <td>Clown</td>
-        <td>Schmidt</td>
-        <td>c.schmidt@hotmail.com</td>
-        <td>45.20</td>
-        <td>http://www.jdoe.com</td>
-    </tr>
-    <tr>
-        <td>4</td>
-        <td>David</td>
-        <td>Bolleknolle</td>
-        <td>david.bolle@earthlink.net</td>
-        <td>50.00</td>
-        <td>http://www.timconway.com</td>
-    </tr>
-    <tr>
-        <td>5</td>
-        <td>Hermann</td>
-        <td>Wald</td>
-        <td>hr.wald@earthlink.net</td>
-        <td>50.2210</td>
-        <td>http://www.timconway.com</td>
-    </tr>
-    <tr>
-        <td>6</td>
-        <td>Ulf</td>
-        <td>Knulf</td>
-        <td>Ulf.Knulf@earthlink.net</td>
-        <td>4540.00</td>
-        <td>http://www.timconway.com</td>
-    </tr>
-    <tr>
-        <td>7</td>
-        <td>Friedel</td>
-        <td>Bolleknolle</td>
-        <td>Friedel.bolle@earthlink.net</td>
-        <td>90.00</td>
-        <td>http://www.timconway.com</td>
-    </tr>
+        <tr>
+            <td>1</td>
+            <td>Alex</td>
+            <td>Habuschja</td>
+            <td>alex.ha@gmail.com</td>
+            <td>50.0</td>
+            <td>http://www.jsmith.com</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Bernd</td>
+            <td>Müller</td>
+            <td>b.m@yahoo.com</td>
+            <td>51.02</td>
+            <td>http://www.frank.com</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Clown</td>
+            <td>Schmidt</td>
+            <td>c.schmidt@hotmail.com</td>
+            <td>45.20</td>
+            <td>http://www.jdoe.com</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>David</td>
+            <td>Bolleknolle</td>
+            <td>david.bolle@earthlink.net</td>
+            <td>50.00</td>
+            <td>http://www.timconway.com</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>Hermann</td>
+            <td>Wald</td>
+            <td>hr.wald@earthlink.net</td>
+            <td>50.2210</td>
+            <td>http://www.timconway.com</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>Ulf</td>
+            <td>Knulf</td>
+            <td>Ulf.Knulf@earthlink.net</td>
+            <td>4540.00</td>
+            <td>http://www.timconway.com</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>Friedel</td>
+            <td>Bolleknolle</td>
+            <td>Friedel.bolle@earthlink.net</td>
+            <td>90.00</td>
+            <td>http://www.timconway.com</td>
+        </tr>
     </tbody>
 </table>
 <hr>
@@ -507,15 +507,15 @@ drwxrwxrwx  8 root    root    4096 Jan 18  2011 sqlbuddy/
 <h3 id="tab">Tabs</h3>
 <p>Max. Tabs: 6 Stück</p>
 <div class="tabnav" >
-  <ul class="tabl" id="tabs_ui">
-    <li id="tab1" class="selected" onclick="tabs(this);">Tab 1</li>
-    <li id="tab2" onclick="tabs(this);">Tab 2</li>
-    <li id="tab3"  onclick="tabs(this);">Tab 3</li>
-  </ul>
-  <div id="tabcontent">
-    <h5>Tab 1!</h5>
-    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
-  </div>
+    <ul class="tabl" id="tabs_ui">
+        <li id="tab1" class="selected" onclick="tabs(this);">Tab 1</li>
+        <li id="tab2" onclick="tabs(this);">Tab 2</li>
+        <li id="tab3"  onclick="tabs(this);">Tab 3</li>
+    </ul>
+    <div id="tabcontent">
+        <h5>Tab 1!</h5>
+        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+    </div>
 </div> 
 <div id="tab1content" style="display:none;">
     <h5>Tab 1!</h5>

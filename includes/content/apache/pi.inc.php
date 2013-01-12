@@ -1,18 +1,14 @@
 <?php
-
-
 /**
-* Licensed under The Apache License
-*
-* @copyright Copyright 2012-2013 Patrick Farnkopf, Tanja Weiser, Gabriel Wanzek (PaTaGa)
-* @link https://github.com/pataga/SAS
-* @since SAS v1.0.0
-* @license Apache License v2 (http://www.apache.org/licenses/LICENSE-2.0.txt
-* @author Gabriel Wanzek
-*
-*/
-
-
+ * Licensed under The Apache License
+ *
+ * @copyright Copyright 2012-2013 Patrick Farnkopf, Tanja Weiser, Gabriel Wanzek (PaTaGa)
+ * @link https://github.com/pataga/SAS
+ * @since SAS v1.0.0
+ * @license Apache License v2 (http://www.apache.org/licenses/LICENSE-2.0.txt
+ * @author Gabriel Wanzek
+ *
+ */
 $ssh->openConnection();
 $phpinfo_txt = $ssh->execute("php -i");
 
@@ -33,11 +29,11 @@ if (isset($_POST['del_file']) && isset($_POST['del_file_s'])) {         //wenn h
         <hr>
         <p>Um die phpinfo als HTML-Dokument zu sehen, muss der Webserver gestartet sein. Sollte dieser nicht gestartet sein, können Sie die phpinfo optional als Textdatei generieren.</p>
     </div>
-    <?php
-    if (isset($_POST['show_txt']) && isset($_POST['show_txt_s'])) {
-        echo '<textarea id="phpinfotxt" readonly="readonly">' . $phpinfo_txt . '</textarea>';
-    }
-    ?>
+<?php
+if (isset($_POST['show_txt']) && isset($_POST['show_txt_s'])) {
+    echo '<textarea id="phpinfotxt" readonly="readonly">' . $phpinfo_txt . '</textarea>';
+}
+?>
     <hr>
     <div class="drittel-box">
         <p style="margin-top:15px;">Falls die Datei nicht gefunden wird können Sie diese hier generieren:<br></p>
@@ -63,21 +59,21 @@ if (isset($_POST['del_file']) && isset($_POST['del_file_s'])) {         //wenn h
     </div>
     <div class="clearfix"></div>
 
-    <?php
-    if (isset($_POST['create_file']) && isset($_POST['create_file_s'])) {
-        echo '<hr>
+<?php
+if (isset($_POST['create_file']) && isset($_POST['create_file_s'])) {
+    echo '<hr>
 <span class="success"><b>Hinweis:</b><br>Die Datei wurde unter folgendendem Pfad generiert:&nbsp;
     <code class="simple">
         <a href="http://' . $server->getAddress() . '/phpinfo.php" target="_blank">/var/www/phpinfo.php</a>
     </code>
 </span>
 ';
-    }
-    if (isset($_POST['del_file']) && isset($_POST['del_file_s'])) {
-        echo '<hr>
+}
+if (isset($_POST['del_file']) && isset($_POST['del_file_s'])) {
+    echo '<hr>
 <span class="success"><b>Hinweis:</b><br>Die Datei wurde gelöscht.
 </span>
 ';
-    }
-    ?>
+}
+?>
 </fieldset>
