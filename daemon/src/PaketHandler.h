@@ -18,4 +18,11 @@ class Out {
 public:
     char* PreparePaket(int msg);
     int GetPaketSize(int msg);
+    virtual char* GetChecksum() { return _checksum; }
+    virtual void SetChecksum(char checksum[]) { _checksum = checksum; }
+    virtual int GetAuthState() { return _authstate; }
+    virtual void SetAuthState(int authstate) { _authstate = authstate; } 
+private:
+    char* _checksum;
+    int _authstate;
 };

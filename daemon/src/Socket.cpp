@@ -43,9 +43,6 @@ void ClientSocket::Listen() {
         printf("Fehler beim Akzeptieren des Sockets");
     }
 
-     
-
-
      _socket = newsockfd;
 }
 
