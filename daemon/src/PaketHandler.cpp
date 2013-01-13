@@ -16,11 +16,11 @@
 int In::HandleReceivedPaket(char _byte[]) {
     int _action = 0x00;
 
-    if (_byte[0])
+    if (!_byte[0] && !_byte[1])
         return SMSG_INVALID_PAKET;
 
-    if (_byte[1]) {
-        switch (_byte[1]) {
+    if (_byte[0]) {
+        switch (_byte[0]) {
             case SMSG_GIVE_CHECKSUM:
                 _action = CMSG_SEND_CHECKSUM;
                 break;

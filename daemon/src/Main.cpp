@@ -24,9 +24,13 @@ int main() {
     Out* out = new Out();
     ClientSocket* socket = new ClientSocket();
 
-    socket->SetPort(8080);
-    printf("%d\n", socket->GetPort());
+    out->SetChecksum("476a5533998c2b31c81c2d56a25b83a7");
+    out->SetAuthState(1);
+
+    socket->SetPort(8000);
     socket->Listen();
-    printf("%s", socket->ReadPaket());
+    char* paket = socket->ReadPaket();
+    int answer = in->HandleReceivedPaket(paket);
+    char* outPaket = out->PreparePaket(answer);
     return 0;
 }
