@@ -22,7 +22,7 @@ fi
 if [ "$opt" = "2" ]; then
     g++ -oSASDaemon src/Main.cpp
     cp SASDaemon /usr/bin -fr 
-    echo "#!/bin/bash\nSASDaemon > /dev/null&" > /etc/init.d/SASDaemon
+    echo -e "#!/bin/bash\nSASDaemon > /dev/null&" > /etc/init.d/SASDaemon
     chmod 777 /etc/init.d/SASDaemon
     clear
     read -p "SASDaemon wurde installiert. Starten mit service SASDaemon. Mit beliebiger Taste zum Hauptmenue..." -n1
