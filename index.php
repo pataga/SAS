@@ -99,8 +99,12 @@ if ($session->isAuthenticated() && isset($_GET['user']) && $_GET['user'] == 'log
 
 
 //Wenn Server wechseln geklickt, dann Server Session zerstören
-if ($session->isAuthenticated() && isset($_GET['server']) && $_GET['server'] == 'change' && isset($_SESSION['server_id'])) {
-    unset($_SESSION['server_id']);
+if ($session->isAuthenticated() && 
+    isset($_GET['server']) && 
+    $_GET['server'] == 'change' && 
+    $session->isServerChosen() &&
+    $session->isAuthenticated()) {
+    $session->unselectServer();
     $loader->reload();
 }
 

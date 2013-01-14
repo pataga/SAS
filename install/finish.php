@@ -25,7 +25,7 @@
     if ($pass == $passr)
     {
         $pass = md5($pass);
-        mysql_query("INSERT INTO sas_users (username, password, email) VALUES ('$user','$pass','$email')") or die(mysql_error());
+        mysql_query("INSERT INTO sas_users (username,password,email,admin) VALUES ('$user','$pass','$email',1)") or die(mysql_error());
     }
     else
     {

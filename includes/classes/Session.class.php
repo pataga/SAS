@@ -161,6 +161,11 @@ class Session {
             return false;
         }
 
+        if ($result->getRowsCount() == 0) {
+            $_SESSION['user']['failedAuths']++;
+            return false;
+        }
+
         $user = $result->fetchObject();
         if ($user->password != md5($password)) {
             $_SESSION['user']['failedAuths']++;
@@ -208,6 +213,9 @@ class Session {
      */
     public function unselectServer() {
         $_SESSION['server']['chosen'] = false;
+        $_SESSION['server']['id'] = 0;
+        $_SESSION['server']['name'] = '';
+        $_SESSION['server']['address'] = '';
     }
 
     /**

@@ -78,8 +78,10 @@ class Loader {
     }
 
     public function getIncFile() {
-        if (!$this->main->Session()->getServerID())
+        if (!$this->main->Session()->isServerChosen() && $this->main->Session()->isAuthenticated())
             return 'includes/content/home/server.inc.php';
+        if (!$this->main->Session()->isAuthenticated())
+            $this->reload();
         $page = mysql_real_escape_string($this->_page);
         $spage = mysql_real_escape_string($this->_spage);
 
