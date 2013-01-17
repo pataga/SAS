@@ -38,9 +38,9 @@ Passwort:  geheim
 
 ---
 ####Anforderungen des Host Servers:
-- PHP 5.3+
+- PHP 5.4+
 - MySQL 5.5+
-- libssh2 (`apt-get install libssh2 libssh2-1 libssh2-1-dev libssh2-php`)
+- libssh2 für PHP 5.4+
 - mind. 250 MB Speicherplatz
 - PHP-Memory Limit:  mind. 64 MB. 
 
@@ -49,9 +49,12 @@ Passwort:  geheim
 ####Anforderungen des fernsteuerbaren Server:
 
 Getestete Distributionen:
+- Ubuntu Server 12.04 - 64-Bit
+- Ubuntu 12.10 Desktop 32 & 64-Bit
 - Ubuntu 12.04.1 LTS Desktop - 32 & 64-Bit
 - Backtrack5 R3 Desktop - 32-Bit
 - Lubuntu 12.04 Desktop - 64-Bit
+- Debian-6.0.6-i386 (noch nicht ausführlich getestet!)
 
 _diese Distributionen wurden im Rahmen der Entwicklung verwendet_
 
