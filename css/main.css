@@ -555,6 +555,10 @@ hr {
     padding: 0;
 }
 
+ul.square {
+    list-style-type: square;
+}
+
 sup {
     position: relative;
     top: 3px;
@@ -830,6 +834,22 @@ Template-Features [Forms und so ...]
     box-shadow: 0 0 5px #888;
 }
 
+#main fieldset .license {
+    background: #fff;
+    font: 12px Courier, monospace;
+    color: #000;
+    padding: 15px 7px;
+    float: left;
+    margin: 7px;
+    width: 95%;
+    white-space: pre;
+    height: 185px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    -moz-box-shadow: 0 0 5px #888;
+    -webkit-box-shadow: 0 0 5px #888;
+    box-shadow: 0 0 5px #888;
+}
 
 #main fieldset textarea#phpinfotxt {
     background: #fff;
@@ -851,11 +871,11 @@ Template-Features [Forms und so ...]
    background: transparent;
    min-width: 100px;
    padding: 5px;
-   font-size: 16px;
-   line-height: 1;
+   font-size: 14px;
+   line-height: 1.5;
    border: 1px solid #777;
    border-radius: 2px;
-   height: 34px;
+   height: 27px;
 }
 
 #main fieldset select.shadow {
