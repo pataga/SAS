@@ -23,15 +23,13 @@ if (isset($_POST['adduser']))
 	if($passwd == $repeatpasswd)
 	{
 
-		#Eintragen eines neuen Webusers
+		// Eintragen eines neuen Webusers
+		
 		$status = $user->addUser($newuser,$passwd,$repeatpasswd,$usermail);
 		if($status == 1)
 			echo '<br>Benutzer wurde erstellt';
 		if($status == -1)
 			echo '<br>Benutzername existiert bereits';
-		if($status == -2)
-			echo '<br>Passwörter stimmen nicht überein';
-
 	}
 }
 
