@@ -706,6 +706,13 @@ Template-Features [Forms und so ...]
     background: #fbfbfb;
 }
 
+#main fieldset fieldset {
+    border: 1px solid #d5d5d5;
+    padding: 15px;
+    margin: 0 0 10px 0;
+    background: #fefefe;
+}
+
 #main fieldset p {
     margin: 0 0 14px 0;
     float: left;
