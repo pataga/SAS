@@ -36,13 +36,19 @@ class User {
             $this->admin = $s->isAdmin();
         } else {
             $result = $this->uTable->select(NULL, ['id' => $id]);
-            if ($result) {
+            if ($result && $result->getRowsCount() > 0) {
                 $row = $result->fetchObject();
                 $this->id = $row->id;
                 $this->name = $row->username;
                 $this->email = $row->email;
                 $this->admin = $row->admin;
                 $this->self = $s->getUserId() == $this->id;
+            } else {
+                $res = $this->db->Query("SELECT * FROM sas_users ORDER BY id DESC LIMIT 1");
+                if ($r = $res->fetchObject()) {
+                    $this->id = $r->id+1;
+                    $this->uTable->insert(['id' => $this->id]);
+                }
             }
         }
     }
