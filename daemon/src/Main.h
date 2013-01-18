@@ -8,3 +8,10 @@
 * @author Patrick Farnkopf
 *
 */
+
+class Daemon {
+public:
+	void start();
+private:
+	int _version;
+};

@@ -18,19 +18,33 @@
 #include <netinet/in.h>
 #include "PaketHandler.cpp"
 #include "Socket.cpp"
+#include "Main.h"
+#include "Log.cpp"
 
-int main() {
+void Daemon::start() {
     In* in = new In();
     Out* out = new Out();
     ClientSocket* socket = new ClientSocket();
+    sLog* log = new sLog();
 
     out->SetChecksum("476a5533998c2b31c81c2d56a25b83a7");
     out->SetAuthState(1);
+
+    log->error("Error Message");
+    log->info("Info Message");
+    log->debug("Debug Message");
+    sleep(1);
 
     socket->SetPort(8000);
     socket->Listen();
     char* paket = socket->ReadPaket();
     int answer = in->HandleReceivedPaket(paket);
     char* outPaket = out->PreparePaket(answer);
-    return 0;
+}
+
+int main() {
+    Daemon* daemon = new Daemon();
+    while (1) {
+        daemon->start();
+    }
 }
