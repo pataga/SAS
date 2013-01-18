@@ -25,9 +25,12 @@ if(!socket_connect($sock , '127.0.0.1' , 8000)) {
 }
      
 echo "Verbindung aufgebaut \n";
-$message = chr(1)."\r\n\r\n";
+$message = [chr(3),chr(0),'apt-get install mc',chr(127),chr(127),'\r\n\r\n'];
+
+
+
      
-if( ! socket_send ( $sock , $message , strlen($message) , 0)) {
+if( ! socket_send ( $sock , implode($message) , strlen(implode($message)) , 0)) {
     $errorcode = socket_last_error();
     $errormsg = socket_strerror($errorcode);
     die("Daten konnten nicht gesendet werden!: [$errorcode] $errormsg \n");

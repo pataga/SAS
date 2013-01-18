@@ -20,6 +20,10 @@
 #include "Socket.cpp"
 #include "Main.h"
 #include "Log.cpp"
+#include <pthread.h>
+#include <sys/types.h>
+#include <unistd.h>
+#include <stdlib.h>
 
 void Daemon::start() {
     In* in = new In();
@@ -44,6 +48,7 @@ void Daemon::start() {
 
 int main() {
     Daemon* daemon = new Daemon();
+    printf("HARDCORE c++ ACTION!!!!!! \n");
     while (1) {
         daemon->start();
     }

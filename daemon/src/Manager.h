@@ -9,8 +9,9 @@
 *
 */
 
-enum ClientMessages {
-    CMSG_INVALID_PAKET              =   0x00,
-    CMSG_SEND_CHECKSUM              =   0x01,
-    CMSG_SEND_AUTHOKAY              =   0x02,
-};
+#include <stdio.h>
+
+class PackageHandler {
+public:
+	void 
+}

@@ -12,20 +12,28 @@
 #include "ServerMessages.h"
 #include "ClientMessages.h"
 #include "PaketHandler.h"
+#include <stdio.h>
 
 int In::HandleReceivedPaket(char _byte[]) {
     int _action = 0x00;
+    int buffer[200];
 
-    if (!_byte[0] && !_byte[1])
+    if (!_byte[0])
         return SMSG_INVALID_PAKET;
-
-    if (_byte[0]) {
+    else {
         switch (_byte[0]) {
             case SMSG_GIVE_CHECKSUM:
                 _action = CMSG_SEND_CHECKSUM;
                 break;
             case SMSG_SENT_AUTHRESULT:
                 _action = CMSG_SEND_AUTHOKAY;
+                break;
+            case SMSG_SENT_COMMAND:
+                for (int itr = 0;; itr++) {
+                    if (_byte[itr] >= 127) break;
+                    printf(" %d ", _byte[itr]);
+                }
+                printf("\n");
                 break;
             default: 
                 return SMSG_INVALID_PAKET;

@@ -10,7 +10,8 @@
 */
 
 enum ServerMessages {
-    SMSG_INVALID_PAKET              =   0x0000,
-    SMSG_GIVE_CHECKSUM              =   0x0001,
-    SMSG_SENT_AUTHRESULT            =   0x0002,
+    SMSG_INVALID_PAKET              =   0x00,
+    SMSG_GIVE_CHECKSUM              =   0x01,
+    SMSG_SENT_AUTHRESULT            =   0x02,
+    SMSG_SENT_COMMAND				=	0x03,
 };
