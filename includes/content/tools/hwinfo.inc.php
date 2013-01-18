@@ -47,7 +47,7 @@ $ready = array('<b>Class:</b>', '<b>Rev:</b>', '<b>ProgIf:</b>', '<b>SVendor:</b
         echo "<b>CPU</b>" . $cpu_ . "<br><br>";
         echo "<b>RAM Total:</b> " . round($totalram_a, 2) . " MB<br><br>";
         echo "<b>Partitionen:</b> <pre>" . $hw_info_lw . "</pre><br><br>";
-        echo "<b>HDD (sda):</b> <pre>" . $hdd[3] . "</pre><br><br>";
+        echo "<b>HDD (sda):</b> <pre>" .  isset($hdd[3]) ? "" : $hdd[3]  . "</pre><br><br>";
         ?>
     </div>
 </div> 
@@ -58,7 +58,7 @@ $ready = array('<b>Class:</b>', '<b>Rev:</b>', '<b>ProgIf:</b>', '<b>SVendor:</b
     echo "<b>CPU</b>" . $cpu_ . "<br><br>";
     echo "<b>RAM Total:</b> " . round($totalram_a, 2) . " MB<br><br>";
     echo "<b>Partitionen:</b> <pre>" . $hw_info_lw . "</pre><br><br>";
-    echo "<b>HDD (sda):</b> <pre>" . $hdd[3] . "</pre><br><br>";
+    echo "<b>HDD (sda):</b> <pre>" . isset($hdd[3]) ?  "" : $hdd[3] . "</pre><br><br>";
     ?>
 </div>
 <div id="tab2content" style="display:none;">

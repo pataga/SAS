@@ -12,7 +12,6 @@
 *
 */
 
-
 $ssh->openConnection();
 $load = $ssh->execute("uptime");        //für Serverload
 $uptime = $ssh->execute("who -b");      //für Systemstartdatum
