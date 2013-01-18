@@ -41,7 +41,7 @@
         ";
 
         $ssh->execute('echo '.$smbconf.' > /etc/samba/smb.conf');
-        $mysql->Query("UPDATE sas_server_data SET samba=1 WHERE id = ".$_SESSION['server_id']);
+        $mysql->Query("UPDATE sas_server_data SET samba=1 WHERE id = ".$session->GetServerID());
         //$loader->reload();
     }
 ?>
