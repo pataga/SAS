@@ -12,6 +12,12 @@
         <script src="js/vendor/jquery-1.8.2.min.js"></script>
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
-        <script src="js/tablesorter/jquery.tablesorter.js"></script> 
+        <script src="js/notifications.js"></script> 
+        <script src="js/tablesorter/jquery.tablesorter.js"></script>        
     </head>
     <body>
+        <noscript>
+            <div id="nojsactive">
+               <p>Um ein besseres Nutzererlebnis im Server Admin System zu haben, <a href="http://www.enable-javascript.com/de/">aktiviere bitte JavaScript</a> in deinem Browser.</p>
+            </div>
+        </noscript>

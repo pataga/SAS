@@ -1,0 +1,176 @@
+/* ============================================= ==========================
+
+CSS für den SAS Notification Center
+
+Licensed under The Apache License
+- Copyright 2012-2013 Patrick Farnkopf, Tanja Weiser, Gabriel Wanzek (PaTaGa)
+- https://github.com/pataga/SAS
+- Apache License v2 (http://www.apache.org/licenses/LICENSE-2.0.txt
+- Author:  Gabriel Wanzek
+- Version: 1.0
+========================================================================== */
+
+@font-face {
+    font-family: 'Lobster';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Lobster'), url(fonts/lobster.woff) format('woff');
+}
+
+::-moz-selection {
+    background: #2d7e99;
+    color: #fff;
+}
+
+::selection {
+    background: #2d7e99;
+    color: #fff;
+}
+
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+}
+
+#top {
+	width: 100%;
+	position: relative;
+	top: 0;
+	left: 0;
+	background-image: -webkit-linear-gradient(top, #4D4D4D, #262626);
+	background-image:    -moz-linear-gradient(top, #4D4D4D, #262626);
+	background-image:     -ms-linear-gradient(top, #4D4D4D, #262626);
+	background-image:      -o-linear-gradient(top, #4D4D4D, #262626);
+	background-image:         linear-gradient(top, #4D4D4D, #262626);
+	box-shadow: 0 0 5px;
+}
+
+#top h3 {
+	color: #fff;
+	margin: 0 auto;
+	text-align: center;
+	padding: 7px 4px;
+	font-family: 'Lobster', Helvetica, Arial, sans-serif;
+	font-weight: normal;
+	font-size: 21px;
+}
+
+#top sup.notify {
+    background-color: #0275b2;
+    color: #fff;
+    padding: 1px 2px 2px 2px;
+    font-size: 10px;
+    font-weight: 700;
+    top: 3px;
+    left: 0px;
+    box-shadow: 1px 0px 1px gray;
+    border-radius: 9999px;
+}
+
+
+#post {
+	background-color:#d7d7d7;
+	margin: 0 0 0 10px;
+	width: auto;
+	padding: 0px 5px 5px 5px;
+	border-radius: 1px;	
+	border-left: 4px solid #0275b2;
+	box-shadow: 0 2px 3px #bbb;
+}
+
+#post .ntitel {
+	color: #222;
+	padding: 4px 0px;
+	margin-bottom: 0px;
+	font-size: 19px;
+	font-weight: 700;
+}
+
+#post #console {
+	white-space: pre-wrap;
+    white-space: -moz-pre-wrap !important;
+    white-space: pre-wrap;
+    white-space: -o-pre-wrap;
+    word-wrap: break-word;
+    margin: 0;
+    padding: 5px 5px 3px 5px;
+    background: #fff;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 1px;
+    color: #000;
+    box-shadow: inset 0 0 7px rgba(0, 0, 0, 0.2);
+    border: 1px solid #ddd;
+	font-family: "Lucida Console", "Courier New", Courier, monospace;
+}
+
+#post #ninfo .nlist {
+	border-bottom: 1px dashed #888;
+	margin-bottom: 4px;
+}
+
+#post #ninfo .nlist label  {
+	display: inline;
+	width: 85px;
+	float: left;
+	font-weight: 700;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 3px dashed #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+
+span.format {
+	font-family: "Lucida Console", "Courier New", Courier, monospace;
+	font-weight: normal;
+}
+
+
+span.ok {
+    font-weight: 700;
+    color: #079700;
+}
+
+span.crit {
+    font-weight: 700;
+    color: #970000;
+}
+
+span.noinfo {
+    font-weight: 700;
+    color: #555;
+    font-style: italic;
+}
+
+a.closing {
+	margin: auto 0;
+	background-color: #222;
+	color: #f1f1f1;
+	padding: 3px 7px;
+	font-weight: 700;
+	text-decoration: none;
+}
+
+a.closing:hover {
+	color: #5AC9C9;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
+}

@@ -160,6 +160,7 @@ class Server {
    /**
     * Gibt den Status des ProFTPD Dienstes zurück / könnte in getServiceStatus implementiert werden
     * @return (Bool) ProFTPD Status (An/Aus)
+    * @author Gabriel Wanzek
     */
 
     public function getProFTPDStatus($ssh) {

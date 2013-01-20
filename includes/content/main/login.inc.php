@@ -16,7 +16,7 @@
     </head>
     <!--[if IE]>
 <script type="text/javascript">
-alert ('Bitte nutzen Sie einen modernen Browser, wie etwa:\n\nMozilla Firefox, Google Chrome, Opera oder Safari.\n\nDanke!');
+alert ('Bitte nutzen Sie einen modernen Browser, wie etwa:\n\nGoogle Chrome oder Safari.\nDanke!');
 </script>
 <![endif]-->
     <body>

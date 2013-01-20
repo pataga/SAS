@@ -81,6 +81,7 @@ a {
     width: 350px;
     height: 220px;
     text-align: center;
+    font-weight: normal !important;
     margin: -10px auto 20px auto;
     padding: 10px;
     border-radius: 3px;
@@ -191,12 +192,14 @@ input:-moz-placeholder { color:#aaa; }
     font-family: 'Ubuntu', Arial, Helvetica, sans-serif;
     font-size: 12px;
     line-height: 2.0;
+    font-weight: 300 !important;
 }
 
 .footer a {
     margin-right: 25px;
     text-decoration: none;
     color: #aaa;
+    font-weight: 300 !important;
 }
 .footer a.last {
     margin-right: 0px;

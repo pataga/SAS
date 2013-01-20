@@ -6,8 +6,7 @@ Licensed under The Apache License
 - Author: Gabriel Wanzek
 ========================================================================== */
 
-$(document).ready(function() 
-    { 
+$(document).ready(function(){ 
         $("#sortable").tablesorter(); 	// Tabellensortierung
     } 
 );

@@ -1,10 +1,13 @@
 ﻿/* ============================================= ==========================
+
+MAIN.CSS - Komplettstyle von SAS
+
 Licensed under The Apache License
 - Copyright 2012-2013 Patrick Farnkopf, Tanja Weiser, Gabriel Wanzek (PaTaGa)
 - https://github.com/pataga/SAS
 - Apache License v2 (http://www.apache.org/licenses/LICENSE-2.0.txt
 - Author:  Gabriel Wanzek
-- Version: 2.0
+- Version: 3.0
 ========================================================================== */
 
 /* =======================================================================
@@ -1498,6 +1501,17 @@ span.success {
     background: #d6f7db
 }
 
+span.notify {
+    background-color: #0275b2;
+    color: #fff;
+    padding: 1px 2px 2px 2px;
+    font-size: 10px;
+    top: 5px;
+    left: 0px;
+    border-radius: 9999px;
+    vertical-align: top;
+}
+
 /* --- PHPINFO --- */
 
 iframe.phpinfo {
@@ -1607,6 +1621,84 @@ span.show_hide {
     margin-bottom: 10px;
     border: 1px solid #e1e1e1;
     width: 93%;
+}
+
+.sassasa {
+    -webkit-background-size: 50px 50px;
+    -moz-background-size: 50px 50px;
+    background-size: 50px 50px;
+}
+
+/* --- KEIN JS --- */
+
+#nojsactive {
+    background-image: -webkit-linear-gradient(
+    -45deg, rgba(255, 255, 255, .07) 25%, transparent 25%,
+    transparent 50%, rgba(255, 255, 255, .07) 50%, 
+    rgba(255, 255, 255, .07) 75%, transparent 75%, transparent);
+    background-image: -moz-linear-gradient(
+    -45deg, rgba(255, 255, 255, .07) 25%, transparent 25%,
+    transparent 50%, rgba(255, 255, 255, .07) 50%, 
+    rgba(255, 255, 255, .07) 75%, transparent 75%, transparent);
+    background-image: -o-linear-gradient(
+    -45deg, rgba(255, 255, 255, .07) 25%, transparent 25%,
+    transparent 50%, rgba(255, 255, 255, .07) 50%, 
+    rgba(255, 255, 255, .07) 75%, transparent 75%, transparent);
+    background-image: linear-gradient(
+    -45deg, rgba(255, 255, 255, .07) 25%, transparent 25%,
+    transparent 50%, rgba(255, 255, 255, .07) 50%, 
+    rgba(255, 255, 255, .07) 75%, transparent 75%, transparent);
+    -webkit-background-size: 50px 50px;
+    -moz-background-size: 50px 50px;
+    background-size: 50px 50px;
+    position: relative;
+    height: 50px;
+    vertical-align: middle;
+    z-index: 101;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #A90505;
+    color: #fff;
+    text-align: center;
+    overflow: hidden;
+    font-weight: 700;
+    font-size: 14px;
+    -webkit-box-shadow: 0 0 5px black;
+    box-shadow: 0 0 5px black;
+    -webkit-animation: animate-streifen 5s linear infinite;
+    -moz-animation: animate-streifen 5s linear infinite;
+    -ms-animation: animate-streifen 5s linear infinite;
+    -o-animation: animate-streifen 5s linear infinite;
+    animation: animate-streifen 5s linear infinite;
+}
+
+#nojsactive a {
+    color: #fff;
+    text-decoration: none;
+    border-bottom: 1px dotted #fff;
+}
+
+#nojsactive a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+@-webkit-keyframes animate-streifen {
+    0% {background-position: 0 0;}
+    100% {background-position: -100px 0;}
+}
+@-moz-keyframes animate-streifen  {
+    0% {background-position: 0 0;}
+    100% {background-position: -100px 0;}
+}
+@-o-keyframes animate-streifen  {
+    0% {background-position: 0 0;}
+    100% {background-position: -100px 0;}
+}
+@keyframes animate-streifen  {
+    0% {background-position: 0 0;}
+    100% {background-position: -100px 0;}
 }
 
 /* ==========================================================================
