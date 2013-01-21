@@ -83,7 +83,8 @@ Hinweis: Nach dem hinzufügen einer neuen Freigabe wird der Dienst automatisch n
             Freigabe Name: <br><br>
             Verzeichnispfad: <br><br>
             G&uuml;ltige Benutzer: <br><br>
-            Schreibrechte f&uuml;r <br><br>
+            Schreibrechte f&uuml;r: <br><br>
+            Schreibrechte für die Gruppe: <br><br>
             Create Mask: <br><br>
             Directory Mask: <br><br><br>
             &Ouml;ffentliche Freigabe? 
@@ -98,9 +99,20 @@ Hinweis: Nach dem hinzufügen einer neuen Freigabe wird der Dienst automatisch n
             <input type="text" class="text-long" name="path" id=""><br><br>
             <input type="text" class="text-long" name="validusers" id=""><br><br>
             <input type="text" class="text-long" name="writelist" id=""><br><br>
+             <input type="text" class="text-long" name="" id="" required list="gruppen">
+            <datalist id="gruppen">
+
+                <option value="Gruppe 1"></option>
+                <option value="Gruppe 2"></option>
+                <option value="Admin"></option>
+                <option value="Wichtig"></option>
+                <option value="XYZ"></option>
+            </datalist><br><br>
+
             <input type="text" class="text-long" name="createmask" id=""><br><br>
             <input type="text" class="text-long" name="directorymask" id="">
             <br><br><br>
+
             <select name="public">
                 <option value="1"> Ja </option>
                 <option value="0"> Nein </option>
@@ -115,7 +127,9 @@ Hinweis: Nach dem hinzufügen einer neuen Freigabe wird der Dienst automatisch n
                 <option value="1"> Ja </option>
                 <option value="0"> Nein </option>
             </select>
+            <br><br>
         </div>
+        
         <div class="clearfix"></div>
         <input type="submit" class="button green" name="add" value="Neue Freigabe Hinzuf&uuml;gen">
     </form>
