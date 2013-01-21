@@ -44,7 +44,8 @@ if (isset($_POST['adduser']))
  	Username:<br><br>
  	E-Mail:<br><br>
  	Passwort:<br><br>
- 	Passwort wiederholen:<br>
+ 	Passwort wiederholen:<br><br>
+ 	Admin? <input type="checkbox" name="admin" id="">
  </div>
 
  <div class ="dreiviertel-box lastbox">	
