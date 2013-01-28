@@ -9,31 +9,56 @@ $all_groups = $ssh->execute("cat /etc/group | cut -d: -f1 ", 2);
     <h4>Existierende User</h4>
     <fieldset>
         <h5>User ID &lt; ID 1000</h5>
-        <ul class="square">
+        <div class="listbox">
             <?php
             foreach ($seq_users as $key => $value) {
-                echo "<li>" . $value . "</li>";
+                echo $value . "<br>";
             }
             ?>
-        </ul>
-        <hr>
+            <br>
+        </div>
+        <div class="clearfix"></div>
         <h5>Alle User</h5>
-        <ul class="square">
+        <div class="listbox">
             <?php
             foreach ($all_users as $key => $value) {
-                echo "<li>" . $value . "</li>";
+                echo $value . "<br>";
             }
             ?>
-        </ul>
-        <hr>
+        </div>
+        <div class="clearfix"></div>
         <h5>Alle Gruppen</h5>
-        <ul class="square">
+        <div class="listbox">
+            <?php
+            foreach ($all_groups as $key => $value) {
+               echo $value . "<br>";
+            }
+            ?>
+        </div>
+    </fieldset>
+        <fieldset>
+        <legend>User einer Gruppe zuweisen</legend>
+        <form action="index.php?p=tools&s=cpu" method="post" autocomplete="off">
+            <p><label>Benutzername:</label> 
+                <input type="text" class="text-long" name="name" required list="users"></p>
+            <datalist id="users">
 <?php
-foreach ($all_groups as $key => $value) {
-    echo "<li>" . $value . "</li>";
+foreach ($all_users as $key => $value) {
+    echo '<option value="' . $value . '">';
 }
 ?>
-        </ul>
+            </datalist>
+            <p><label>Gruppe:</label> 
+                <input type="text" class="text-long" name="name" required list="all_groups"></p>
+            <datalist id="all_groups">
+<?php
+foreach ($all_groups as $key => $value) {
+    echo '<option value="' . $value . '">';
+}
+?>
+            </datalist>
+            <input type="submit" value="zuweisen" name="addg" class="button black">
+        </form>
     </fieldset>
 </div>
 <div class="halbe-box lastbox">
@@ -85,27 +110,4 @@ foreach ($all_users as $key => $value) {
             <input type="submit" value="ändern" name="addg" class="button black">
         </form>
     </fieldset>
-    <fieldset>
-        <legend>User einer Gruppe zuweisen</legend>
-        <form action="index.php?p=tools&s=cpu" method="post" autocomplete="off">
-            <p><label>Benutzername:</label> 
-                <input type="text" class="text-long" name="name" required list="users"></p>
-            <datalist id="users">
-<?php
-foreach ($all_users as $key => $value) {
-    echo '<option value="' . $value . '">';
-}
-?>
-            </datalist>
-            <p><label>Gruppe:</label> 
-                <input type="text" class="text-long" name="name" required list="all_groups"></p>
-            <datalist id="all_groups">
-<?php
-foreach ($all_groups as $key => $value) {
-    echo '<option value="' . $value . '">';
-}
-?>
-            </datalist>
-            <input type="submit" value="zuweisen" name="addg" class="button black">
-        </form>
-    </fieldset>
+</div>

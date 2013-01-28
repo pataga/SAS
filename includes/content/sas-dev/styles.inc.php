@@ -353,6 +353,17 @@ drwxrwxrwx  8 root    root    4096 Jan 18  2011 sqlbuddy/
             <option>Select two</option>
             <option>Select tree</option>
         </select>
+        <br><br>
+        <i>Mehrere mit SHIFT auswählen</i><br>
+        <select size="5" class="multi" multiple>
+            <option>Select items here here</option>
+            <option>Select items here here</option>
+            <option>Select items here here</option>
+            <option>Select items here here</option>
+            <option>Select items here here</option>
+            <option>Select items here here</option>
+            <option>Select items here here</option>
+        </select>
     </p>
     <p><label>Sample label:</label><textarea rows="1" cols="1"></textarea></p>
     <input type="submit" class="button black" value="Submit Query"/>

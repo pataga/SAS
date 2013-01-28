@@ -632,6 +632,7 @@ Template-Features [Forms und so ...]
 
 #main table {
     border-top: 1px solid #ddd;
+    max-width: 745px;
 }
 
 #main table tr td {
@@ -670,6 +671,14 @@ Template-Features [Forms und so ...]
     color: #9b9b9b;
 }
 
+#main table tr .action input[type=submit] {
+    background: none;
+    border: none;
+    color: #9b9b9b;
+    text-decoration: none;
+    cursor: pointer;
+}
+
 #main table tr:hover .action .edit {
     color: #c5a059;
 }
@@ -682,9 +691,29 @@ Template-Features [Forms und so ...]
     color: #55a34a;
 }
 
-#main table tr:hover .action a:hover {
+#main table tr:hover .action a:hover, #main table tr:hover .action input[type=submit]:hover {
     text-decoration: underline;
 }
+
+#main table tr td span.ok  {
+    background: #91E87B;
+    padding: 2px 5px;
+    border-radius: 2px;
+}
+
+#main table tr td span.red {
+    background: #EC9797;
+    padding: 2px 5px;
+    border-radius: 2px;
+}
+
+#main table tr td span.unknown {
+    background: #B3B3B3;
+    padding: 2px 5px;
+    border-radius: 2px;
+}
+
+/*** --- SORT. TABELLE --- ***/
 
 #main table.s th:hover {
     background: #BCE7FF;
@@ -702,6 +731,8 @@ Template-Features [Forms und so ...]
     content: " \2195";
 }
 
+/*** --- Formulare --- ***/
+
 #main fieldset {
     border: 1px solid #ddd;
     padding: 19px;
@@ -709,8 +740,8 @@ Template-Features [Forms und so ...]
     background: #fbfbfb;
 }
 
-#main fieldset fieldset {
-    border: 1px solid #d5d5d5;
+#main fieldset fieldset{ /* Fieldset in Fieldset */
+    border: 1px solid #A1A1A1;
     padding: 15px;
     margin: 0 0 10px 0;
     background: #fefefe;
@@ -828,6 +859,23 @@ Template-Features [Forms und so ...]
     box-shadow: 0 0 5px #888;
 }
 
+#main fieldset .listbox {
+    background: #fff;
+    font: 12px Couriehr, monospace;
+    color: #000;
+    padding: 5px 7px;
+    width: 250px;
+    float: left;
+    margin: 2px;
+    min-height: 75px;
+    max-height: 150px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    -moz-box-shadow: 0 0 5px #888;
+    -webkit-box-shadow: 0 0 5px #888;
+    box-shadow: 0 0 5px #888;
+}
+
 #main fieldset .a2_module_big {
     background: #fff;
     font: 12px Courier, monospace;
@@ -886,6 +934,13 @@ Template-Features [Forms und so ...]
    border: 1px solid #777;
    border-radius: 2px;
    height: 27px;
+}
+
+#main fieldset select.multi {
+    width: auto;
+    padding: 10px;
+    height: auto; 
+    background: #fff;
 }
 
 #main fieldset select.shadow {
@@ -1501,15 +1556,22 @@ span.success {
     background: #d6f7db
 }
 
-span.notify {
-    background-color: #0275b2;
+#notify {
+    position: relative;
+    z-index: 10000;
+    display: inherit;
+}
+.notify_bubble {
+    position:absolute;
+    top: -8px;
+    right: -8px;
+    padding: 0px 2px 0px 2px;
+    background-color: #0b75b2;
     color: #fff;
-    padding: 1px 2px 2px 2px;
-    font-size: 10px;
-    top: 5px;
-    left: 0px;
-    border-radius: 9999px;
-    vertical-align: top;
+    font-weight: bold;
+    font-size: 0.75em;
+    border-radius: 30px;
+    box-shadow: 1px 1px 1px #888;
 }
 
 /* --- PHPINFO --- */

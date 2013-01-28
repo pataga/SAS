@@ -149,7 +149,6 @@ $userswholi = str_replace(" ", ", ", $userswho);
         </table>
     </div>
     <br><br>
-    <hr>
 </fieldset>
 
 <fieldset>
