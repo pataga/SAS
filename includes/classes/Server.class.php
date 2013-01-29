@@ -16,12 +16,22 @@ class Server {
 
     private $server_id;
     private $mysql;
+    private $server_address;
+    private $soapActive;
+    private $soap_port;
+    private $m;
 
     public function __construct($main) {
+        $this->m = $main;
         $this->mysql = $main->MySQL();
         $this->server_id = isset($_SESSION['server_id']) ? $_SESSION['server_id'] : 0;
+        $result = $this->mysql->tableAction('sas_server_data')->select(NULL, ['id' => $this->server_id]);
+        if ($result->getRowsCount() > 0) {
+            $r = $result->fetchObject();
+            $this->soapActive = $r->soap == 1;
+            $this->soap_port = $r->soapPort;
+        }
     }
-
 
    /**
     * Gibt Server ID zurück
@@ -39,6 +49,13 @@ class Server {
         return $this->server_address;
     }
 
+    /**
+     * Gibt Server Adresse zurück
+     * @return (String) Adresse
+     */
+    public function getSoapPort() {
+        return $this->soap_port;
+    }
 
     /**
      * Setzt Server ID
@@ -48,14 +65,13 @@ class Server {
         $this->server_id = $id;
     }
 
-
    /**
     * Gibt einen Array mit den SSH Daten zurück
     * @param (int) ServerID
     * @return (array) SSH Daten
     */
     public function getServerData() {
-        $result = $this->mysql->Query("SELECT * FROM sas_server_data WHERE id = $this->server_id");
+        $result = $this->mysql->tableAction('sas_server_data')->select(NULL, ['id' => $this->server_id]);
 
         if ($result->getRowsCount() > 0) {
             $row = $result->fetchObject();
@@ -72,14 +88,13 @@ class Server {
         }
     }
 
-
    /**
     * Überprüft, ob ein Modul installiert wurde.
     * @param (String) Modul Name
     * @return (Bool)
     */
     public function isInstalled($package) {
-        $result = $this->mysql->Query("SELECT * FROM sas_server_data WHERE id = $this->server_id");
+        $result = $this->mysql->tableAction('sas_server_data')->select(NULL, ['id' => $this->server_id]);
 
         if ($result->getRowsCount() > 0) {
             $row = $result->fetchObject();
@@ -101,29 +116,27 @@ class Server {
             return false;
     }
 
-
    /**
     * Gibt MySQL Daten des Servers zurück
     * @return (array) MySQL Daten
     */
     public function getMySQLData() {
         if ($this->isInstalled("mysql")) {
-            $result = $this->mysql->Query("SELECT * FROM sas_server_mysql WHERE sid = $this->server_id");
+            $result = $this->mysql->tableAction('sas_server_mysql')->select(NULL, ['id' => $this->server_id]);
 
             if ($result->getRowsCount() > 0) {
-                $data = array();
+                $data = [];
                 $row = $result->fetchObject();
-                $data[0] = $row->host;
-                $data[1] = $row->port;
-                $data[2] = $row->username;
-                $data[3] = $row->password;
+                $data[] = $row->host;
+                $data[] = $row->port;
+                $data[] = $row->username;
+                $data[] = $row->password;
                 return $data;
             }
         }
 
         return false;
     }
-
 
    /**
     * Gibt den Status der Modul Dienste zurück
@@ -194,5 +207,20 @@ class Server {
         $ssh->execute('echo -e "' . $content . '" >> ' . $file);
     }
 
+    public function execute($cmd, $format = 0, $type = 0) {
+        if ($type == 0) {
+            if ($this->soapActive) 
+                return $m->SOAP()->execute($cmd);
+            else {
+                $m->SSH()->openConnection();
+                return $m->SSH->execute($cmd);
+            }
+        } elseif ($type == 1) {
+            return $m->SOAP()->execute($cmd);
+        } elseif ($type == 2) {
+            $m->SSH()->openConnection();
+            return $m->SSH()->execute($cmd);
+        }
+    }
 }
 ?>
