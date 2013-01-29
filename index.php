@@ -20,6 +20,15 @@ function exceptionErrorHandler($errno, $errstr, $errfile, $errline) {
 
 set_error_handler('exceptionErrorHandler');
 
+function exception_handler($exception) {
+    $_SESSION = [];
+    session_destroy();
+    require_once 'includes/content/error/error.inc.php';
+    exit;
+}
+
+set_exception_handler('exception_handler');
+
 require_once 'includes/classes/Main/Autoload.class.php';
 
 //Lade benötigte Klassen
