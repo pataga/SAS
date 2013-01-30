@@ -62,7 +62,7 @@ class Loader {
         $this->content .= '<div id="sidebar"><ul>';
         for ($i=0;$i<count($this->xmlData);$i++) {
             if ($this->xmlData[$i]['menu']['name'] == $this->_page) {
-                for ($s=0;$s<count($this->xmlData[$i])-2;$s++) {
+                for ($s=0;$s<count($this->xmlData[$i])-1;$s++) {
                     $sub = $this->xmlData[$i]['sub'.$s];
                     if ($this->_spage == $sub['name']) {
                         $this->content .= sprintf('<li class="aktiv"><a href="?p=%s&s=%s">%s</a></li>',
@@ -87,7 +87,7 @@ class Loader {
         for ($i=0;$i<count($this->xmlData);$i++) {
             if ($this->xmlData[$i]['menu']['name'] == $this->_page) {
                 $default = $this->xmlData[$i]['menu']['default'];
-                for ($s=0;$s<count($this->xmlData[$i])-2;$s++) {
+                for ($s=0;$s<count($this->xmlData[$i])-1;$s++) {
                     $sub = $this->xmlData[$i]['sub'.$s];
                     if ($this->_spage == $sub['name']) {
                         if (file_exists($sub['path']))
