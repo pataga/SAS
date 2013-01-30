@@ -2,8 +2,6 @@
 $url = $_SERVER['REQUEST_URI'];
 $exp = explode("/", $url);
 $file = end($exp);
-
-
 ?>
 
 <br>
