@@ -346,7 +346,24 @@
         <name>webuser</name>
         <display>Webuser</display>
         <default>includes/content/webuser/overview.inc.php</default>
-
+        <sub>
+            <id>1</id>
+            <name>overview</name>
+            <display>Übersicht</display>
+            <path>includes/content/webuser/overview.inc.php</path>
+        </sub>
+        <sub>
+            <id>2</id>
+            <name>adduser</name>
+            <display>Benutzer hinfügen</display>
+            <path>includes/content/webuser/adduser.inc.php</path>
+        </sub>
+        <sub>
+            <id>3</id>
+            <name>edituser</name>
+            <display>Benutzer verwalten</display>
+            <path>includes/content/webuser/edituser.inc.php</path>
+        </sub>
     </menu>
 
     <menu>
