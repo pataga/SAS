@@ -30,17 +30,29 @@ class Debug {
 		switch ($this->loglevel) {
 			case 0: break;
 			case 1: 
-				$file = fopen($this->logfile, 'a+');
-				fputs($file, "[ERROR] ".$msg."\n");
-				fclose($file);
+				try {
+					$file;
+					if (!($file = fopen($this->logfile, 'a+'))) throw new Exception("error.log konnte nicht ge&ouml;ffnet werden. Permission denied", 1);
+					fputs($file, "[ERROR] ".$msg."\n");
+					fclose($file);
+			    } catch (Exception $e) {
+				$this->errors .= sprintf("[ERROR] error.log konnte nicht ge&ouml;ffnet werden. Permission denied\n");
+				$this->errorCount++;
+			}
 			break;
 
 			case 2: 
-				$file = fopen($this->logfile, 'a+');
-				fputs($file, "[ERROR] ".$msg."\n");
-				fclose($file);
-				$this->errors .= sprintf("[ERROR] %s\n",$msg);
-				$this->errorCount++;
+				try {
+					$file;
+					if (!($file = fopen($this->logfile, 'a+'))) throw new Exception("error.log konnte nicht ge&ouml;ffnet werden. Permission denied", 1);
+					fputs($file, "[ERROR] ".$msg."\n");
+					fclose($file);
+					$this->errors .= sprintf("[ERROR] %s\n",$msg);
+					$this->errorCount++;
+				} catch (Exception $e) {
+					$this->errors .= sprintf("[ERROR] error.log konnte nicht ge&ouml;ffnet werden. Permission denied\n");
+					$this->errorCount++;
+				}
 			break;
 		}
 	}
