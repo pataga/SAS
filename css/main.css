@@ -765,6 +765,12 @@ Template-Features [Forms und so ...]
     line-height: 12px;
 }
 
+#main fieldset label.inline {
+    display: inline;
+    padding: 2px 4px;
+    line-height: 2.0;
+}
+
 #main fieldset .text-long {
     border: 1px solid #ddd;
     background: #fff;
