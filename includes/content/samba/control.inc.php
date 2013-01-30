@@ -1,5 +1,8 @@
 <?php 
-
+if (!$server->isInstalled('samba')) {
+    header('Location:?p=samba&s=install');
+    exit;
+}
 ?>
 <h3>Steuerung</h3>
 <fieldset>

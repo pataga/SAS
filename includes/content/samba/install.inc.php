@@ -1,8 +1,8 @@
 <?php
-    if (isset($_POST['install'])) {
-        $ssh->openConnection();
-        $ssh->execute('apt-get install samba -yf');
-        $smbconf = "
+if (isset($_POST['install'])) {
+  $ssh->openConnection();
+  $ssh->execute('apt-get install samba -yf');
+  $smbconf = "
 [global]
    workgroup = WORKGROUP
    server string = %h server (Samba, Ubuntu)
@@ -38,17 +38,26 @@
    read only = yes
    guest ok = no
 
-        ";
+  ";
 
-        $ssh->execute('echo '.$smbconf.' > /etc/samba/smb.conf');
-        $mysql->Query("UPDATE sas_server_data SET samba=1 WHERE id = ".$session->GetServerID());
-        //$loader->reload();
-    }
+  $ssh->execute('echo '.$smbconf.' > /etc/samba/smb.conf');
+  $mysql->Query("UPDATE sas_server_data SET samba=1 WHERE id = ".$session->GetServerID());
+}
+
+if (!$server->isInstalled('samba')) {
 ?>
-
 <fieldset>
     <h5>Samba wurde noch nicht von SAS eingerichtet. Bitte klicken Sie auf "Samba Installation" um Samba in SAS verf&uuml;gbar zu machen.</h5>
     <form action="?p=samba&s=install" method="post">
         <input type="submit" name="install" value="Samba Installation" class="button black">
     </form>
 </fieldset>
+<?}
+else {
+?>
+<fieldset>
+    <h5>Samba wurde erfolgreich installiert.</h5>
+</fieldset>
+<?
+}
+?>

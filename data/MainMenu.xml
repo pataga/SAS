@@ -288,6 +288,13 @@
             <display>Benutzer</display>
             <path>includes/content/samba/users.inc.php</path>
         </sub>
+
+        <sub>
+            <id>6</id>
+            <name>install</name>
+            <display></display>
+            <path>includes/content/samba/install.inc.php</path>
+        </sub>
     </menu>
 
     <menu>

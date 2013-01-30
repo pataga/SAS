@@ -63,7 +63,9 @@ class Loader {
         for ($i=0;$i<count($this->xmlData);$i++) {
             if ($this->xmlData[$i]['menu']['name'] == $this->_page) {
                 for ($s=0;$s<count($this->xmlData[$i])-1;$s++) {
+                    if (!isset($this->xmlData[$i]['sub'.$s])) continue;
                     $sub = $this->xmlData[$i]['sub'.$s];
+                    if (empty($sub['display'])) continue;
                     if ($this->_spage == $sub['name']) {
                         $this->content .= sprintf('<li class="aktiv"><a href="?p=%s&s=%s">%s</a></li>',
                                           $this->xmlData[$i]['menu']['name'],$sub['name'],$this->xmlData[$i]['sub'.$s]['display']);
@@ -83,17 +85,18 @@ class Loader {
             return 'includes/content/home/server.inc.php';
         if (!$this->main->Session()->isAuthenticated())
             $this->reload();
-        $default = 'includes/content/home/overview.inc.php';
+        $default = 'includes/content/error/404.inc.php';
         for ($i=0;$i<count($this->xmlData);$i++) {
             if ($this->xmlData[$i]['menu']['name'] == $this->_page) {
                 $default = $this->xmlData[$i]['menu']['default'];
                 for ($s=0;$s<count($this->xmlData[$i])-1;$s++) {
+                    if (!isset($this->xmlData[$i]['sub'.$s])) continue;
                     $sub = $this->xmlData[$i]['sub'.$s];
                     if ($this->_spage == $sub['name']) {
                         if (file_exists($sub['path']))
                             return $sub['path'];
                         else
-                            return 'includes/content/home/overview.inc.php';
+                            return 'includes/content/error/404.inc.php';
                     } 
                 }
             }
@@ -102,7 +105,7 @@ class Loader {
         if (file_exists($default))
             return $default;
         else
-            return 'includes/content/home/overview.inc.php';
+            return 'includes/content/error/404.inc.php';
     }
 
     public function loadMenues() {
