@@ -22,7 +22,7 @@ Schriftarten
 }
 
 @font-face {
-    font-family: 'Ubuntu';
+    font-family: 'Ubuntu Light';
     font-style: normal;
     font-weight: 300;
     src: local('Ubuntu Light'), local('Ubuntu-Light'), url(fonts/ubuntu-300.woff) format('woff');
@@ -36,7 +36,7 @@ Schriftarten
 }
 
 @font-face {
-    font-family: 'Ubuntu';
+    font-family: 'Ubuntu Bold';
     font-style: normal;
     font-weight: 700;
     src: local('Ubuntu Bold'), url(fonts/ubuntu-700.woff) format('woff');
@@ -469,11 +469,7 @@ input[type="submit"]::-moz-focus-inner{
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-h1.ubuntu, h2.ubuntu, h3.ubuntu, h4.ubuntu, h5.ubuntu, h6.ubuntu {
-    font-family: 'Ubuntu', sans-serif;
+    font-family: 'Ubuntu Bold', Arial, Helvetica, sans-serif;
 }
 
 h1 {
@@ -516,36 +512,6 @@ h1.normal {
     font-size: 26px;
     font-weight: 700;
     margin: 10px 0;
-}
-
-h1.ubuntu {
-    font-size: 25px;
-    font-weight: 700;
-}
-
-h2.ubuntu {
-    font-size: 22px;
-    font-weight: 700;
-}
-
-h3.ubuntu {
-    font-size: 18px;
-    font-weight: 400;
-}
-
-h4.ubuntu {
-    font-size: 18px;
-    font-weight: 300;
-}
-
-h5.ubuntu {
-    font-size: 16px;
-    font-weight: 300;
-}
-
-h6.ubuntu {
-    font-size: 14px;
-    font-weight: 300;
 }
 
 a {
@@ -967,12 +933,13 @@ Template-Features [Forms und so ...]
 #main fieldset select {
    background: transparent;
    min-width: 100px;
-   padding: 5px;
+   padding: 2px;
    font-size: 14px;
-   line-height: 1.5;
+   line-height: 1.0;
    border: 1px solid #777;
    border-radius: 2px;
    height: 27px;
+   margin: 2px 0;
 }
 
 #main fieldset select.multi {
@@ -987,8 +954,8 @@ Template-Features [Forms und so ...]
 }
 
 #main fieldset legend {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 18px;
+    font-family: "Ubuntu", Arial, Helvetica, sans-serif;
+    font-size: 16px;
     font-weight: 700;
     margin: 0 0;
     color: rgb(100, 100, 100);

@@ -1,6 +1,10 @@
-<h3> Hier ensteht die Seite "FTP-Server Steuerung"</h3>
+<?php 
+
+?>
+<h3>Steuerung</h3>
 <fieldset>
-    <p>Pfad zur Datei mit Inhalt: 
-        <br><br>
-        <?php echo __file__; ?></p>
+	<p><b>Modulname: </b>control</p>
+	<p><b>Modulbeschreibung: </b><br></p>
+	<p><b>Programmierer(in):</b> ?</p>
+	<p><b>Status:</b> Kein Status vorhanden</p>
 </fieldset>
