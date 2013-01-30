@@ -577,7 +577,7 @@ sup {
 code {
     padding: 5px;
     font-family: Consolas, "Courier New", Courier, monospace;
-    font-size: 0.9em;
+    font-size: 1.0em;
 }
 
 code.simple {
@@ -595,7 +595,7 @@ code.fancy {
     padding: 5px;
     border: 1px solid #ddd;
     font-family: Consolas, "Courier New", Courier, monospace;
-    font-size: 0.9em;
+    font-size: 1em;
 }
 
 pre {
@@ -743,6 +743,7 @@ Template-Features [Forms und so ...]
     padding: 19px;
     margin: 0 0 20px 0;
     background: #fbfbfb;
+    font-size: 1.1em;
 }
 
 #main fieldset fieldset{ /* Fieldset in Fieldset */
@@ -1576,7 +1577,7 @@ span.success {
 .notify_bubble {
     position:absolute;
     top: -8px;
-    right: -8px;
+    right: -10px;
     padding: 0px 2px 0px 2px;
     background-color: #0b75b2;
     color: #fff;
