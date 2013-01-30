@@ -21,8 +21,7 @@ if (isset($_POST['a2-f-reload'])) {
     $info = "Apache2-Konfigurationsdateien wurden neu geladen";
 }
 ?>
-
-<h3>Apache2 Steuerung</h3>
+<h3>Apache-Steuerung</h3>
 <fieldset>
     <?php if (isset($_POST['a2_action'])){
         echo '<span class="success"><b>Info: </b>'.$info.'</span>';

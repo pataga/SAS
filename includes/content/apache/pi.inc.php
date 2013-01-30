@@ -21,7 +21,7 @@ if (isset($_POST['del_file']) && isset($_POST['del_file_s'])) {         //wenn h
     $ssh->execute("rm /var/www/phpinfo.php");
 }
 ?>
-<h3>phpinfo</h3>
+<h3>PHP-Informationen</h3>
 <fieldset>
     <div <?php echo (isset($_POST['show_txt']) && isset($_POST['show_txt_s'])) ? 'style="display: none;";' : ""; ?>>
         <iframe class="phpinfo" src="http://<?php echo $server->getAddress(); ?>/phpinfo.php" frameborder="0"></iframe>

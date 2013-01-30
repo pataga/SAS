@@ -16,9 +16,7 @@
         obj.value=obj.value.replace(/[^\d]/g,'');
     }
 </script>
-
-
-<h3>Apache 2 Konfiguration</h3>
+<h3>Apache-Konfiguration</h3>
 <div class="halbe-box">
     <fieldset>
         <legend>apache2.conf</legend>

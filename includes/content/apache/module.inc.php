@@ -12,7 +12,7 @@ if (isset($_POST['deakt'])) {
     $ssh->execute("a2dismod " . $_POST['deakt'] . " && service apache2 restart");
 }
 ?>
-<h3>Module</h3>
+<h3>Apache-Module</h3>
 <?php
 if (isset($_POST['akt']))
     echo '<span class="success"><b>Info:</b><br>Das Modul ' . $_POST['akt'] . ' wurde aktiviert.</span>';

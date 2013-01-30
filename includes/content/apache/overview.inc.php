@@ -41,7 +41,7 @@ if (isset($_POST['a2_install'])) {           //wenn hidden+submit ..
     $mysql->Query("UPDATE sas_server_data SET apache=1 WHERE id = " . $_SESSION['server_id']);                              //.. führe das aus
 }
 ?>
-<h3>Apache 2 &Uuml;bersicht</h3>
+<h3>Apache-Übersicht</h3>
 <?php
 if (!$server->isInstalled('apache')) {
     echo '<fieldset>
