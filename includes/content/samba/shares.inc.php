@@ -22,8 +22,6 @@
 		$path = $_POST['path'];
 		$validusers = $_POST['validusers'];
 		$writelist = $_POST['writelist'];
-		$createmask = $_POST['createmask'];
-		$directorymask = $_POST['directorymask'];
 		$readonly = $_POST['readonly'];
 
 		if(isset($_POST['public']))
@@ -84,14 +82,24 @@ Hinweis: Nach dem hinzufügen einer neuen Freigabe wird der Dienst automatisch n
             Verzeichnispfad: <br><br>
             G&uuml;ltige Benutzer: <br><br>
             Schreibrechte f&uuml;r: <br><br>
-            Schreibrechte für die Gruppe: <br><br>
-            Create Mask: <br><br>
-            Directory Mask: <br><br><br>
+            Schreibrechte für die Gruppe: <br><br><br>           
             &Ouml;ffentliche Freigabe? 
             <br><br>
             Schreibrechte f&uuml;r jeden? 
             <br><br>
             Nur lesbar?
+            <br><br><br>
+            <b>Directory Mode:</b><br><br>
+            Besitzer:<br><br>
+            Gruppe:<br><br>
+            Sonstige:
+            <br><br><br>
+            <b>Create Mode:</b><br><br>
+            Besitzer:<br><br>
+            Gruppe:<br><br>
+            Sonstige:
+
+
 
         </div>
         <div class="dreiviertel-box lastbox">
@@ -107,11 +115,7 @@ Hinweis: Nach dem hinzufügen einer neuen Freigabe wird der Dienst automatisch n
                 <option value="Admin"></option>
                 <option value="Wichtig"></option>
                 <option value="XYZ"></option>
-            </datalist><br><br>
-
-            <input type="text" class="text-long" name="createmask" id=""><br><br>
-            <input type="text" class="text-long" name="directorymask" id="">
-            <br><br><br>
+            </datalist><br><br><br>
 
             <select name="public">
                 <option value="1"> Ja </option>
@@ -128,6 +132,48 @@ Hinweis: Nach dem hinzufügen einer neuen Freigabe wird der Dienst automatisch n
                 <option value="0"> Nein </option>
             </select>
             <br><br>
+
+            Lesen &nbsp; Schreiben &nbsp; Ausf&uuml;hren <br>
+            <br>
+            &nbsp;&nbsp;&nbsp;<input type="checkbox" name="dbr" value="db">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="checkbox" name="dbw" value="db"
+            >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="checkbox" name="dbx" value="db">&nbsp;
+            <br><br>
+            &nbsp;&nbsp;&nbsp;<input type="checkbox" name="dgr" value="dg">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="checkbox" name="dgw" value="dg">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="checkbox" name="dgx" value="dg">&nbsp;
+            <br><br>
+            &nbsp;&nbsp;&nbsp;<input type="checkbox" name="dsr" value="ds">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="checkbox" name="dsw" value="ds">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="checkbox" name="dsx" value="ds">&nbsp;
+
+            <br><br><br>
+            Lesen &nbsp; Schreiben &nbsp; Ausf&uuml;hren <br>
+            <br>
+            &nbsp;&nbsp;&nbsp;<input type="checkbox" name="cbr" value="cb">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="checkbox" name="cbw" value="cb">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="checkbox" name="cbx" value="cb">&nbsp;
+            <br><br>
+            &nbsp;&nbsp;&nbsp;<input type="checkbox" name="cgr" value="cg">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="checkbox" name="cgw" value="cg">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="checkbox" name="cgx" value="cg">&nbsp;
+            <br><br>
+            &nbsp;&nbsp;&nbsp;<input type="checkbox" name="csr" value="cs">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="checkbox" name="csw" value="cs">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="checkbox" name="csx" value="cs">&nbsp;
+
         </div>
         
         <div class="clearfix"></div>
