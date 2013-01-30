@@ -17,7 +17,18 @@
         $session->selectServer();
         $loader->reload();
     } else if (isset($_POST['name']) && isset($_POST['shost']) && isset($_POST['sport']) && isset($_POST['suser']) && isset($_POST['spass'])) {
-        $database->addServer($_POST['name'], $_POST['shost'], $_POST['sport'], $_POST['suser'], $_POST['spass']);
+        $mysql
+        ->tableAction('sas_server_data')
+        ->insert([
+            'name' => $_POST['name'], 
+            'host' => $_POST['shost'], 
+            'port' => $_POST['sport'], 
+            'user' => $_POST['suser'], 
+            'pass' => $_POST['spass'], 
+            'soapPort' => $_POST['soapPort'], 
+            'soapKey' => $_POST['soapKey']
+        ]);
+
         $loader->reload();
     }
 
@@ -65,6 +76,10 @@
                 <input type="text" name="shost" placeholder="bspw.: 203.7.201.90" class="text-long required"></p>
             <p><label>Server Domain(s):</label><a href="#" class="tooltip">Info<span><b>Achtung:</b><br>Bitte kein Protokoll (z.B.: http://) angeben!<br>Mehrere Domains durch Kommatrennung möglich, ohne Leerzeichen</span></a>
                 <input type="text" name="sport" class="text-long"></p>         
+            <p><label>SOAP Port:</label>
+                <input type="text" name="soapPort" placeholder="Daemon Port" class="text-long"></p>
+            <p><label>SOAP Key:</label>
+                <input type="text" name="soapKey" placeholder="Daemon Schl&uuml;ssel" class="text-long"></p>
             <p><label>SSH Port:</label>
                 <input type="text" name="sport" placeholder="Standard: 22" class="text-long" required></p>
             <p><label>SSH Benutzername: </label>
