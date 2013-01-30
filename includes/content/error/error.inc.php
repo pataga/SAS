@@ -13,7 +13,7 @@
 	</header>	
 <pre>
 <?php
-echo $debug->getError();
+if (isset($debug)) echo $debug->getError();
 ?>
 </pre>
 	</body>

@@ -19,6 +19,7 @@ class Server {
     private $server_address;
     private $soapActive;
     private $soap_port;
+    private $soap;
     private $m;
 
     public function __construct($main) {
@@ -30,6 +31,11 @@ class Server {
             $r = $result->fetchObject();
             $this->soapActive = $r->soap == 1;
             $this->soap_port = $r->soapPort;
+            try {
+                $this->soap = new SOAP($this);
+            } catch (Exception $e) {
+                $this->debug->error($e);
+            }   
         }
     }
 
