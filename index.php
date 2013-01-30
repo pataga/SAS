@@ -23,6 +23,7 @@ set_error_handler('exceptionErrorHandler');
 function exception_handler($exception) {
     $_SESSION = [];
     session_destroy();
+    echo $exception->getMessage();
     require_once 'includes/content/error/error.inc.php';
     exit;
 }

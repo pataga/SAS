@@ -5,7 +5,11 @@
         die();
     }
 ?>
-<h3> Hier ensteht die Seite "MySQL"</h3>
+<h3>MySQL</h3>
 <fieldset>
-    Diese Seite befindet sich in Entwicklung!
+	<p><b>Modulname: </b>overview</p>
+	<p><b>Modulbeschreibung: </b><br></p>
+	<p><b>Programmierer(in):</b> Patrick</p>
+	<p><b>Status:</b> in Entwicklung</p>
 </fieldset>
+

@@ -252,6 +252,45 @@ Layout: Spaltensystem
     padding-top: 20px;
 }
 
+.boxitem {
+    background-color: #222;
+    color:#fff;
+    height: 100px;
+    
+}
+
+.boxitem:hover {
+    box-shadow: inset 0 0 3px 5px #fff;
+}
+
+.boxitem, .boxitem:hover {
+    -webkit-transition: all .15s ease-in-out;
+    -moz-transition: all .15s ease-in-out;
+    -ms-transition: all .15s ease-in-out;
+    -o-transition: all .15s ease-in-out;
+    transition: all .15s ease-in-out;
+ }
+
+.boxitem:active {
+    top: 3px;
+}
+
+.boxitem p {
+    text-align: center;
+    vertical-align: middle;
+    margin: 40px auto;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.boxitem p.long {
+    text-align: center;
+    vertical-align: middle;
+    margin: 25px auto;
+    font-size: 16px;
+    font-weight: bold;
+}
+
 /* ==========================================================================
 Layout: Sidebar + Content
 ========================================================================== */

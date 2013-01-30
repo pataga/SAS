@@ -30,11 +30,12 @@ Licensed under The Apache License
 body {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 14px;
+	padding-top: 40px;
 }
 
 #top {
 	width: 100%;
-	position: relative;
+	position: fixed;
 	top: 0;
 	left: 0;
 	background-image: -webkit-linear-gradient(top, #4D4D4D, #262626);
@@ -42,7 +43,7 @@ body {
 	background-image:     -ms-linear-gradient(top, #4D4D4D, #262626);
 	background-image:      -o-linear-gradient(top, #4D4D4D, #262626);
 	background-image:         linear-gradient(top, #4D4D4D, #262626);
-	box-shadow: 0 0 5px;
+	box-shadow: 0 0 11px;
 }
 
 #top h3 {

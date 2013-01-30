@@ -16,11 +16,11 @@
 namespace Main;
 class Loader {
 
-    public $_page = "";
-    public $_spage = "";
-    private $content = "";
-    private $mysql = null;
-    private $main = null;
+    public $_page = '';
+    public $_spage = '';
+    private $content = '';
+    private $mysql, $main ;
+    private $xmlData = [[[]]];
 
     public function __construct($main)
     {
@@ -29,8 +29,12 @@ class Loader {
         } catch (\Exception\MySQLException $e) {
             $this->main->Debug()->error($e);
         }
-
+        $this->loadXML();
         $this->main = $main;
+    }
+
+    public function getMenuData() {
+        return $this->xmlData;
     }
 
 
@@ -45,33 +49,30 @@ class Loader {
 
     private function loadMainMenu() {
         $this->content .= '<div id="wrapper"><div id="nav"><ul>';
-        $result = $this->mysql->Query("SELECT * FROM sas_menu_main");
-        while ($row = $result->fetchObject()) {
-            $name = $row->name;
-            $page = $row->page;
-
-            if ($this->_page == $page)
-                $this->content .= sprintf('<li><a class="aktiv" href="?p=%s">%s</a></li>',$page,$name);
+        for ($i=0;$i<count($this->xmlData);$i++) {
+            if ($this->_page == $this->xmlData[$i]['menu']['name'])
+                $this->content .= sprintf('<li><a class="aktiv" href="?p=%s">%s</a></li>',$this->xmlData[$i]['menu']['name'],$this->xmlData[$i]['menu']['display']);
             else
-                $this->content .= sprintf('<li><a href="?p=%s">%s</a></li>',$page,$name);
+                $this->content .= sprintf('<li><a href="?p=%s">%s</a></li>',$this->xmlData[$i]['menu']['name'],$this->xmlData[$i]['menu']['display']);
         }
-
         $this->content .= '</ul><br style="clear:left"></div>';
     }
 
     private function loadSideMenu() {
         $this->content .= '<div id="sidebar"><ul>';
-        $page = mysql_real_escape_string($this->_page);
-        $result = $this->mysql->Query("SELECT * FROM sas_menu_side WHERE page = '$page'");
-        while ($row = $result->fetchObject()) {
-            $name = $row->name;
-            $page = $row->page;
-            $spage = $row->spage;
-
-            if ($this->_spage == $spage)
-                $this->content .= sprintf('<li class="aktiv"><a href="?p=%s&s=%s">%s</a></li>',$page,$spage,$name);
-            else
-                $this->content .= sprintf('<li><a href="?p=%s&s=%s">%s</a></li>',$page,$spage,$name);
+        for ($i=0;$i<count($this->xmlData);$i++) {
+            if ($this->xmlData[$i]['menu']['name'] == $this->_page) {
+                for ($s=0;$s<count($this->xmlData[$i])-2;$s++) {
+                    $sub = $this->xmlData[$i]['sub'.$s];
+                    if ($this->_spage == $sub['name']) {
+                        $this->content .= sprintf('<li class="aktiv"><a href="?p=%s&s=%s">%s</a></li>',
+                                          $this->xmlData[$i]['menu']['name'],$sub['name'],$this->xmlData[$i]['sub'.$s]['display']);
+                    } else {
+                        $this->content .= sprintf('<li><a href="?p=%s&s=%s">%s</a></li>',
+                                          $this->xmlData[$i]['menu']['name'],$sub['name'],$this->xmlData[$i]['sub'.$s]['display']);
+                    }
+                }
+            }
         }
 
         $this->content .= '</ul></div>';
@@ -82,18 +83,26 @@ class Loader {
             return 'includes/content/home/server.inc.php';
         if (!$this->main->Session()->isAuthenticated())
             $this->reload();
-        $page = mysql_real_escape_string($this->_page);
-        $spage = mysql_real_escape_string($this->_spage);
-
-        $result = $this->mysql->Query("SELECT inc_path FROM sas_content WHERE page = '$page' AND spage = '$spage'");
-        if ($result->getRowsCount() > 0) {
-            $row = $result->fetchObject();
-            if (!is_file($row->inc_path))
-                throw new \Main\Exception('Fatal Error: Incorrect include file for page '.$page.' and subpage '.$spage);
-            return $row->inc_path;
-        } else {
-            throw new \Main\Exception('Fatal Error: Incorrect include file for page '.$page.' and subpage '.$spage);
+        $default = 'includes/content/home/overview.inc.php';
+        for ($i=0;$i<count($this->xmlData);$i++) {
+            if ($this->xmlData[$i]['menu']['name'] == $this->_page) {
+                $default = $this->xmlData[$i]['menu']['default'];
+                for ($s=0;$s<count($this->xmlData[$i])-2;$s++) {
+                    $sub = $this->xmlData[$i]['sub'.$s];
+                    if ($this->_spage == $sub['name']) {
+                        if (file_exists($sub['path']))
+                            return $sub['path'];
+                        else
+                            return 'includes/content/home/overview.inc.php';
+                    } 
+                }
+            }
         }
+
+        if (file_exists($default))
+            return $default;
+        else
+            return 'includes/content/home/overview.inc.php';
     }
 
     public function loadMenues() {
@@ -117,6 +126,35 @@ class Loader {
             header("Location: ?p=$this->_page");
         else
             header("Location: ");
+    }
+
+    private function loadXML() {
+        $xml = new \XML();
+        $xml->open('data/MainMenu.xml');
+        $content = $this->xmlData;
+        $mi = 0;
+        $si = 0;
+        $inSub = false;
+
+        while ($xml->read()) {
+            if ($xml->nodeType == \XML::END_ELEMENT && $xml->name == 'sub') {
+                $si++;
+                $inSub = false;
+            } elseif ($xml->nodeType == \XML::END_ELEMENT && $xml->name == 'menu') {
+                $mi++;
+                $si = 0;     
+                $inSub = false;   
+            } elseif ($xml->nodeType == \XML::ELEMENT && $xml->name == 'sub') { 
+                $inSub = true;   
+            }
+
+            if ($xml->nodeType == \XML::ELEMENT && !$inSub && $xml->name != 'sub' && $xml->name != 'menu' && $xml->name != 'navigation') {
+                $content[$mi]['menu'][$xml->name] = htmlentities($xml->readString());
+            } elseif ($xml->nodeType == \XML::ELEMENT && $inSub && $xml->name != 'sub' && $xml->name != 'menu' && $xml->name != 'navigation') {
+                $content[$mi]['sub'.$si][$xml->name] = htmlentities($xml->readString());
+            } 
+        }
+        $this->xmlData = $content;
     }
 
 }
