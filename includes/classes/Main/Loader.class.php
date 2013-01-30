@@ -33,6 +33,10 @@ class Loader {
         $this->main = $main;
     }
 
+    public function getMenuData() {
+        return $this->xmlData;
+    }
+
 
     private function loadUserInterface() {
         $this->content .= sprintf('<div class="top"><div class="logo"><h1>Server <span>Admin</span> System</h1>
@@ -94,7 +98,7 @@ class Loader {
                 }
             }
         }
-        
+
         if (file_exists($default))
             return $default;
         else
