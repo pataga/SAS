@@ -213,9 +213,6 @@ drwxrwxrwx  8 root    root    4096 Jan 18  2011 sqlbuddy/
 
 <p>Verfügbare Farben für Buttons: white, grey, pink, orange, green, blue, purple, teal, darkblue, black</p>
 <hr>
-<h3>Der Porno-Button</h3>
-<a href="" class="pornobutton">Button</a>
-<hr>
 <!--
    =========================== TABELLEN ===========================
 -->

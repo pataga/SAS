@@ -20,6 +20,11 @@ alert ('Bitte nutzen Sie einen modernen Browser, wie etwa:\n\nGoogle Chrome oder
 </script>
 <![endif]-->
     <body>
+        <noscript>
+            <div id="nojsactive">
+               <p>Um ein besseres Nutzererlebnis im Server Admin System zu haben, <a href="http://www.enable-javascript.com/de/">aktiviere bitte JavaScript</a> in deinem Browser.</p>
+            </div>
+        </noscript>
         <div class="ribbon">
             <a href="https://github.com/pataga/SAS">Star us on GitHub</a>
         </div>
@@ -34,7 +39,7 @@ alert ('Bitte nutzen Sie einen modernen Browser, wie etwa:\n\nGoogle Chrome oder
                 <input type="submit" value="Login" tabindex="3" class="button black"><br>
             </form>
         </div>
-        <p class="footer">&copy; 2012 SAS - Server Admin System
+        <p class="footer">&copy; <?php echo date("Y");?> SAS - Server Admin System
             <br>
             <a onclick="alert(unescape('Diese Seite ist vor%FCbergehend nicht erreichbar.'))" href="#">Patrick Farnkopf</a>
             <a onclick="alert(unescape('Diese Seite ist vor%FCbergehend nicht erreichbar.'))" href="#">Tanja Weiser</a>
