@@ -19,7 +19,7 @@ $content = "<table>";
 while ($row = $result->fetchObject()) {
     $content .= "<tr><td>".$row->username."</td>";
     $content .= "<td>".$row->email."</td>";
-    $content .= "<td><form action='?p=webuser&s=edit' method='post'><input type='submit' name='edit' value='bearbeiten'>
+    $content .= "<td><form action='?p=webuser&s=edituser' method='post'><input type='submit' name='edit' value='bearbeiten'>
                         <input type='hidden' name='id' value='".$row->id."'></form></td></tr>";
 }
 $content .= "</table>";
@@ -34,7 +34,7 @@ if (isset($_POST['id'])) {
 
 <h3>Benutzer bearbeiten</h3>
 <fieldset>
-<form action="index.php?p=webuser&s=edit" method="post">
+<form action="index.php?p=webuser&s=edituser" method="post">
     <p><label>Username:</label><input type="text" name="user" value="'.$row->username.'" class="text-long"></p>
     <p><label>E-Mail:</label><input type="text" name="mail" value="'.$row->email.'" class="text-long"></p>
     <p><label>Passwort:</label><input type="password" name="pw" id="" class="text-long"></p>
@@ -263,7 +263,7 @@ if (isset($_POST['edituser']))
 <h3>Benutzer bearbeiten</h3>
 <fieldset>
     <?=$content?>
-<form action="index.php?p=webuser&s=edit" method="POST">   
+<form action="index.php?p=webuser&s=edituser" method="POST">   
 </form>
 </fieldset>
 

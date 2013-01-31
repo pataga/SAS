@@ -49,6 +49,13 @@
             <display>DEV: CSS-Info</display>
             <path>includes/content/sas-dev/styles.inc.php</path>
         </sub>
+
+        <sub>
+            <id>7</id>
+            <name>modulestatus</name>
+            <display>DEV: Module-Status</display>
+            <path>includes/content/sas-dev/module.inc.php</path>
+        </sub>
     </menu>
 
     <!-- NEW MENU -->

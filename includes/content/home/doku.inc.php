@@ -13,6 +13,7 @@
 
 <h3>Dokumentation</h3>
 <h5>Google Documents:</h5>
-<a href="http://goo.gl/dTrur" target="_blank">SAS-Dokumentation</a>
-<h5>PDF-Download</h5>
-<a href="http://mangopix.de/pataga/doku.pdf">Version: 30.01.2013 / 21:00</a>
+<a href="http://goo.gl/dTrur" target="_blank" class="button orange">SAS-Dokumentation</a>
+<h5>PDF</h5>
+<a href="http://mangopix.de/pataga/doku.pdf" class="button orange">Download</a><br><br>
+(Version: 30.01.2013, Größe: 303KB)
