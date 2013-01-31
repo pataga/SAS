@@ -89,12 +89,18 @@ Hinweis: Nach dem hinzufügen einer neuen Freigabe wird der Dienst automatisch n
             <br><br>
             Nur lesbar?
             <br><br><br>
-            <b>Directory Mode:</b><br><br>
+            <b>Directory Mask:
+            <a href="#" class="tooltip3">Info
+                <span><b>Info:</b><br>Rechtemaske für Dateien<br></span>
+            </a></b><br><br>
             Besitzer:<br><br>
             Gruppe:<br><br>
             Sonstige:
             <br><br><br>
-            <b>Create Mode:</b><br><br>
+            <b>Create Mask:
+            <a href="#" class="tooltip3">Info
+                <span><b>Info:</b><br>Rechtemaske für Verzeichnisse</span>
+            </a></b><br><br>
             Besitzer:<br><br>
             Gruppe:<br><br>
             Sonstige:
