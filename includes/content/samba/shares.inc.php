@@ -52,11 +52,9 @@ if (!$server->isInstalled('samba')) {
         [$name]
         path = $path
         valid users = $validusers
-        create mask = $createmask
-        directory mask = $directorymask
-        public = $public
-        writable = $writable
-        read only = $readonly";
+        $public
+        $writable
+        $readonly";
 
         $server->addToFile('/etc/samba/smb.conf', $content);
         // Schreiben der neuen Freigabe in die smb.conf
