@@ -9,16 +9,14 @@
  * @author Gabriel Wanzek
  *
  */
-$ssh->openConnection();
-
 // prozess status über apache2
-$status_a2 = $ssh->execute("service apache2 status");
+$status_a2 = $server->execute("service apache2 status");
 
 // apache2 version
-$version_a2 = $ssh->execute("apache2ctl -v");
+$version_a2 = $server->execute("apache2ctl -v");
 
 // gibt aktive a2 mods in liste aus
-$en_mods_a2 = $ssh->execute("ls -1 /etc/apache2/mods-enabled/ | grep load");
+$en_mods_a2 = $server->execute("ls -1 /etc/apache2/mods-enabled/ | grep load");
 
 // Verarbeitung...
 $version_a2_ = explode("\n", $version_a2);
@@ -26,18 +24,18 @@ $version_a2_x = explode(": ", $version_a2_[0]);
 $en_mods_a2_ = explode(".load", $en_mods_a2);
 
 if (isset($_POST['a2-stop']) && isset($_POST['a2-stop-h'])) {           //wenn hidden+submit ..
-    $ssh->execute("service apache2 stop");                              //.. führe das aus
+    $server->execute("service apache2 stop");                              //.. führe das aus
 } elseif (isset($_POST['a2-start']) && isset($_POST['a2-start-h'])) {
-    $ssh->execute("service apache2 start");
+    $server->execute("service apache2 start");
 }
 if (isset($_POST['a2-reload']) && isset($_POST['a2-reload-h'])) {           //wenn hidden+submit ..
-    $ssh->execute("service apache2 reload");                              //.. führe das aus
+    $server->execute("service apache2 reload");                              //.. führe das aus
 }
 if (isset($_POST['a2-restart']) && isset($_POST['a2-restart-h'])) {           //wenn hidden+submit ..
-    $ssh->execute("service apache2 restart");                              //.. führe das aus
+    $server->execute("service apache2 restart");                              //.. führe das aus
 }
 if (isset($_POST['a2_install'])) {           //wenn hidden+submit ..
-    $ssh->execute("apt-get install apache2 -fy");
+    $server->execute("apt-get install apache2 -fy");
     $mysql->Query("UPDATE sas_server_data SET apache=1 WHERE id = " . $_SESSION['server_id']);                              //.. führe das aus
 }
 ?>
@@ -85,10 +83,10 @@ foreach ($en_mods_a2_ as $key => $value) {
 <fieldset>
     <div class="drittel-box">
         <h5>Start / Stop</h5>
-        <p><b><?php echo ($server->getServiceStatus($ssh, 'apache2')) ? 'Stoppt' : 'Startet'; ?> den Webserver sofort.</b></p>
+        <p><b><?php echo ($server->getServiceStatus('apache2')) ? 'Stoppt' : 'Startet'; ?> den Webserver sofort.</b></p>
         <form action="?p=apache" method="post">
             <?php
-            echo ($server->getServiceStatus($ssh, 'apache2')) ? '<input type="hidden" name="a2-stop-h"><input type="submit" name="a2-stop" value="Stop" class="button pink">' : '<input type="hidden" name="a2-start-h"><input type="submit" name="a2-start" value="Start" class="button green">';
+            echo ($server->getServiceStatus('apache2')) ? '<input type="hidden" name="a2-stop-h"><input type="submit" name="a2-stop" value="Stop" class="button pink">' : '<input type="hidden" name="a2-start-h"><input type="submit" name="a2-start" value="Start" class="button green">';
             ?>
         </form>
     </div>

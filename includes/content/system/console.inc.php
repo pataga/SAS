@@ -16,15 +16,13 @@
 if (isset($_POST['output']))
     $output = $_POST['output'];
 else {
-    $ssh->openConnection();
-    $host = $ssh->execute("hostname -s");
+    $host = $server->execute("hostname -s");
     $output = "root@server:";
 }
     
 
 if (isset($_POST['command'])) {
-    $ssh->openConnection();
-    $output .= $ssh->execute($_POST['command']);
+    $output .= $server->execute($_POST['command']);
 }
 ?>
 

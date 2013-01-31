@@ -17,11 +17,10 @@ namespace Module\Tools;
 
 class Process {
 
-	private $ssh;
+	private $server;
 
 	function __construct($main) {
-		$this->ssh = $main->SSH();
-		$this->ssh->openConnection();
+		$this->server = $main->Server();
 	}
 
    /**
@@ -29,7 +28,7 @@ class Process {
     * @return (array) Prozesse
     */	
 	private function getProcesses() {
-		return $this->ssh->execute('ps auxw', 2);
+		return $this->server->execute('ps auxw', 2);
 	}
 
    /**

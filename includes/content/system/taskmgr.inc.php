@@ -21,8 +21,7 @@ if (isset($_POST['kill'])) {
     for ($i=0;$i<6000;$i++) {
         if (isset($_POST["pid_".$i])) {
             $pid = $_POST["pid_".$i];
-            echo $pid."<br>";
-            $ssh->execute("kill ".$pid);
+            $server->execute("kill ".$pid);
         }
     }
 }

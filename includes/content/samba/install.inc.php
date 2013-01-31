@@ -1,7 +1,6 @@
 <?php
 if (isset($_POST['install'])) {
-  $ssh->openConnection();
-  $ssh->execute('apt-get install samba -yf');
+  $server->execute('apt-get install samba -yf');
   $smbconf = "
 [global]
    workgroup = WORKGROUP

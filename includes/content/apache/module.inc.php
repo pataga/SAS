@@ -1,15 +1,13 @@
 <?php
-$ssh->openConnection();
-
-$en_mods_a2 = $ssh->execute("ls -1 /etc/apache2/mods-enabled/ | grep load", 2);
-$av_mods_a2 = $ssh->execute("ls -1 /etc/apache2/mods-available/ | grep load", 2);
+$en_mods_a2 = $server->execute("ls -1 /etc/apache2/mods-enabled/ | grep load", 2);
+$av_mods_a2 = $server->execute("ls -1 /etc/apache2/mods-available/ | grep load", 2);
 
 if (isset($_POST['akt'])) {
-    $ssh->execute("a2enmod " . $_POST['akt'] . "&& service apache2 restart");
+    $server->execute("a2enmod " . $_POST['akt'] . "&& service apache2 restart");
 }
 
 if (isset($_POST['deakt'])) {
-    $ssh->execute("a2dismod " . $_POST['deakt'] . " && service apache2 restart");
+    $server->execute("a2dismod " . $_POST['deakt'] . " && service apache2 restart");
 }
 ?>
 <h3>Apache-Module</h3>

@@ -22,8 +22,7 @@ if (!$server->isInstalled('samba')) {
 //#######################################################
 if(isset($_POST['stop']))
 {
-	$ssh->openConnection();
-	$ssh->execute('service smbd stop');
+	$server->execute('service smbd stop');
 }
 
 //#######################################################
@@ -31,16 +30,14 @@ if(isset($_POST['stop']))
 //#######################################################
 if(isset($_POST['restart']))
 {
-	$ssh->openConnection();
-	$ssh->execute('service smbd restart');
+	$server->execute('service smbd restart');
 }
 
 //#######################################################
 //		Samba Version auslesen
 //#######################################################
 
-	$ssh->openConnection();
-	$version = $ssh->execute('smbd -V');
+$version = $server->execute('smbd -V');
 	
 
 ?>

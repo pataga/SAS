@@ -47,6 +47,12 @@ class Main {
         }
 
         try {
+            $this->session = new \Session($this);
+        } catch (Main\Exception $e) {
+            $this->debug->error($e);
+        }
+
+        try {
             $this->loader = new \Main\Loader($this);
         } catch (Main\Exception $e) {
             $this->debug->error($e);
@@ -66,12 +72,6 @@ class Main {
 
         try {
             $this->cache = new \Cache($this);
-        } catch (Main\Exception $e) {
-            $this->debug->error($e);
-        }
-
-        try {
-            $this->session = new \Session($this);
         } catch (Main\Exception $e) {
             $this->debug->error($e);
         }
