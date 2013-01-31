@@ -27,6 +27,7 @@ $totalram_ = str_replace("kB", " ", $totalram);
 $totalram_a = $totalram / 1024;     //Umrechnung in MB
 
 $cpu_ = str_replace("model name", "", $cpu);
+$cpu_1 = str_replace(":", "<br>", $cpu_);
 $distr_ = explode('\\', $distr);
 
 $filter = array('Class:', 'Rev:', 'ProgIf:', 'SVendor:', 'SDevice:', 'Vendor:', 'Device:');
@@ -37,14 +38,14 @@ $ready = array('<b>Class:</b>', '<b>Rev:</b>', '<b>ProgIf:</b>', '<b>SVendor:</b
 <div class="tabnav" >
     <ul class="tabl" id="tabs_ui">
         <li id="tab1" class="selected" onclick="tabs(this);">Hardware</li>
-        <li id="tab2" onclick="tabs(this);">PCI</li>
+        <li id="tab2" onclick="tabs(this);">PCI-Geräte</li>
         <li id="tab3"  onclick="tabs(this);">HDD Status</li>
     </ul>
     <div id="tabcontent">
         <?php
         echo "<b>Kernel:</b> <code>" . $kernel . "</code><br><br>";
         echo "<b>Distribution:</b> " . $distr_[0] . "<br><br>";
-        echo "<b>CPU</b>" . $cpu_ . "<br><br>";
+        echo "<b>CPU(s):</b>" . $cpu_1 . "<br><br>";
         echo "<b>RAM Total:</b> " . round($totalram_a, 2) . " MB<br><br>";
         echo "<b>Partitionen:</b> <pre>" . $hw_info_lw . "</pre><br><br>";
         echo "<b>HDD (sda):</b> <pre>" .  isset($hdd[3]) ? "" : $hdd[3]  . "</pre><br><br>";

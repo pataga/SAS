@@ -1,10 +1,11 @@
 <?php 
 
 ?>
-<h3>Steuerung</h3>
+<h3>Cronjobs</h3>
 <fieldset>
-	<p><b>Modulname: </b>control</p>
+	<p><b>Modulname: </b>cronjobs</p>
 	<p><b>Modulbeschreibung: </b><br></p>
-	<p><b>Programmierer(in):</b> Patrick</p>
+	<p><b>Programmierer(in):</b> ?</p>
 	<p><b>Status:</b> Kein Status vorhanden</p>
 </fieldset>
+

@@ -230,6 +230,7 @@
         <ul>
             <li><b>Debian Logo:</b>    <a href="http://www.gnu.org/copyleft/lgpl.html" target="_blank">GNU Lesser General Public License</a></li>
             <li><b>Ajax Loading Icon:</b> by <a href="http://ajaxload.info/">ajaxload.info</a></li>
+            <li><b>404-Robot-Icon:</b> by <a href="http://www.indeepop.com/" target="_blank">indeepop</a></li>
             <li><b>Ubuntu Logo:</b> <a href="http://ubuntu.com" target="_blank">Ubuntu</a> is a registered trademark of Canonical Ltd.</li>
         </ul>
     </div>

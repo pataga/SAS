@@ -1,8 +1,432 @@
-<MainMenu>
-    <item>
+<?xml version='1.0' encoding='UTF-8' standalone='yes'?>
+<navigation>
+    <menu>
         <id>1</id>
-        <name>Home</name>
-        <file>./includes/content/home/overview.inc.php</file>
-        <href>?p=home</href>
-    </item>
-</MainMenu>
+        <name>home</name>
+        <display>Home</display>
+        <default>includes/content/home/overview.inc.php</default>
+
+        <!-- SUBS -->
+
+        <sub>
+            <id>1</id>
+            <name>overview</name>
+            <display>Übersicht</display>
+            <path>includes/content/home/overview.inc.php</path>
+        </sub>
+
+        <sub>
+            <id>2</id>
+            <name>qp</name>
+            <display>Quickpanel</display>
+            <path>includes/content/home/qp.inc.php</path>
+        </sub>
+
+        <sub>
+            <id>3</id>
+            <name>about</name>
+            <display>Über SAS</display>
+            <path>includes/content/home/about.inc.php</path>
+        </sub>
+
+        <sub>
+            <id>4</id>
+            <name>doku</name>
+            <display>SAS-Dokumentation</display>
+            <path>includes/content/home/doku.inc.php</path>
+        </sub>
+
+        <sub>
+            <id>5</id>
+            <name>repo</name>
+            <display>SAS-Repository</display>
+            <path>includes/content/home/repo.inc.php</path>
+        </sub>
+
+        <sub>
+            <id>6</id>
+            <name>cssinfo</name>
+            <display>DEV: CSS-Info</display>
+            <path>includes/content/sas-dev/styles.inc.php</path>
+        </sub>
+    </menu>
+
+    <!-- NEW MENU -->
+
+    <menu>
+        <id>2</id>
+        <name>apache</name>
+        <display>Apache</display>
+        <default>includes/content/apache/overview.inc.php</default>
+
+        <!-- SUBS -->
+
+        <sub>
+            <id>1</id>
+            <name>overview</name>
+            <display>Übersicht</display>
+            <path>includes/content/apache/overview.inc.php</path>
+        </sub>
+
+        <sub>
+            <id>2</id>            
+            <name>config</name>
+            <display>Konfiguration</display>
+            <path>includes/content/apache/config.inc.php</path>
+        </sub>
+
+        <sub>
+            <id>3</id>
+            <name>control</name>
+            <display>Steuerung</display>
+            <path>includes/content/apache/control.inc.php</path>
+        </sub>
+
+        <sub>
+            <id>4</id>
+            <name>vhosts</name>
+            <display>Virtuelle Hosts</display>
+            <path>includes/content/apache/vhosts.inc.php</path>
+        </sub>
+
+        <sub>
+            <id>5</id>
+            <name>modules</name>
+            <display>Module</display>
+            <path>includes/content/apache/module.inc.php</path>
+        </sub>
+
+        <sub>
+            <id>6</id>
+            <name>php</name>
+            <display>PHP</display>
+            <path>includes/content/apache/phpsetup.inc.php</path>
+        </sub>
+
+        <sub>
+            <id>7</id>
+            <name>phpinfo</name>
+            <display>PHP-Informationen</display>
+            <path>includes/content/apache/pi.inc.php</path>
+        </sub>
+
+        <sub>
+            <id>8</id>
+            <name>stats</name>
+            <display>Statistiken</display>
+            <path>includes/content/apache/stats.inc.php</path>
+        </sub>
+    </menu>
+
+    <!-- NEW MENU -->
+
+    <menu>
+        <id>3</id>
+        <name>postfix</name>
+        <display>Postfix</display>
+        <default>includes/content/postfix/overview.inc.php</default>
+
+        <!-- SUBS -->
+        
+        <sub>
+            <id>1</id>
+            <name>overview</name>
+            <display>Übersicht</display>
+            <path>includes/content/postfix/overview.inc.php</path>
+        </sub>
+
+        <sub>
+            <id>2</id>
+            <name>config</name>
+            <display>Konfiguration</display>
+            <path>includes/content/postfix/config.inc.php</path>
+        </sub>   
+    </menu>
+
+    <!-- NEW MENU -->
+
+    <menu>
+        <id>4</id>
+        <name>ftp</name>
+        <display>ProFTPD</display>
+        <default>includes/content/ftp/overview.inc.php</default>
+        
+        <!-- SUBS -->
+
+        <sub>
+            <id>1</id>
+            <name>overview</name>
+            <display>Übersicht</display>
+            <path>includes/content/ftp/overview.inc.php</path>
+        </sub>
+
+        <sub>
+            <id>2</id>
+            <name>config</name>
+            <display>Konfiguration</display>
+            <path>includes/content/ftp/config.inc.php</path>
+        </sub>
+
+        <sub>
+            <id>3</id>
+            <name>control</name>
+            <display>Steuerung</display>
+            <path>includes/content/ftp/control.inc.php</path>
+        </sub>
+
+        <sub>
+            <id>4</id>
+            <name>directories</name>
+            <display>Verzeichnisse</display>
+            <path>includes/content/ftp/directories.inc.php</path>
+        </sub>
+
+        <sub>
+            <id>5</id>
+            <name>stats</name>
+            <display>Statistiken</display>
+            <path>includes/content/ftp/module.inc.php</path>
+        </sub>
+ 
+    </menu>
+    <menu>
+        <id>5</id>
+        <name>mysql</name>
+        <display>MySQL</display>
+        <default>includes/content/mysql/overview.inc.php</default>
+        
+        <!-- SUBS -->
+        
+        <sub>
+            <id>1</id>
+            <name>overview</name>
+            <display>Übersicht</display>
+            <path>includes/content/mysql/overview.inc.php</path>
+        </sub>
+
+        <sub>
+            <id>2</id>
+            <name>adduser</name>
+            <display>Benutzer anlegen</display>
+            <path>includes/content/mysql/useradd.inc.php</path>
+        </sub>
+
+        <sub>
+            <id>3</id>
+            <name>control</name>
+            <display>Steuerung</display>
+            <path>includes/content/mysql/control.inc.php</path>
+        </sub>
+
+        <sub>
+            <id>4</id>
+            <name>configure</name>
+            <display>Einrichtung</display>
+            <path>includes/content/mysql/configure.inc.php</path>
+        </sub>
+
+        <sub>
+            <id>5</id>
+            <name>db</name>
+            <display>Datenbank Verwaltung</display>
+            <path>includes/content/mysql/db.inc.php</path>
+        </sub>
+
+        <sub>
+            <id>6</id>
+            <name>modules</name>
+            <display>Module</display>
+            <path>includes/content/mysql/module.inc.php</path>
+        </sub> 
+
+        <sub>
+            <id>7</id>
+            <name>impexp</name>
+            <display>Importieren/Exportieren</display>
+            <path>includes/content/mysql/impexp.inc.php</path>
+        </sub>
+    </menu>
+    <menu>
+        <id>6</id>
+        <name>samba</name>
+        <display>Samba</display>
+        <default>includes/content/samba/overview.inc.php</default>
+        
+        <!-- SUBS -->
+        
+        <sub>
+            <id>1</id>
+            <name>overview</name>
+            <display>Übersicht</display>
+            <path>includes/content/samba/overview.inc.php</path>
+        </sub>
+
+        <sub>
+            <id>2</id>
+            <name>shares</name>
+            <display>Freigaben</display>
+            <path>includes/content/samba/shares.inc.php</path>
+        </sub>
+
+        <sub>
+            <id>3</id>
+            <name>config</name>
+            <display>Konfiguration</display>
+            <path>includes/content/samba/config.inc.php</path>
+        </sub>
+
+        <sub>
+            <id>4</id>
+            <name>control</name>
+            <display>Steuerung</display>
+            <path>includes/content/samba/control.inc.php</path>
+        </sub>
+
+        <sub>
+            <id>5</id>
+            <name>users</name>
+            <display>Benutzer</display>
+            <path>includes/content/samba/users.inc.php</path>
+        </sub>
+
+        <sub>
+            <id>6</id>
+            <name>install</name>
+            <display></display>
+            <path>includes/content/samba/install.inc.php</path>
+        </sub>
+    </menu>
+
+    <menu>
+        <id>7</id>
+        <name>system</name>
+        <display>System</display>
+        <default>includes/content/system/overview.inc.php</default>
+        
+        <!-- SUBS -->
+        
+        <sub>
+            <id>1</id>
+            <name>overview</name>
+            <display>Übersicht</display>
+            <path>includes/content/system/overview.inc.php</path>
+        </sub>
+
+        <sub>
+            <id>2</id>
+            <name>console</name>
+            <display>Konsole</display>
+            <path>includes/content/system/console.inc.php</path>
+        </sub>
+
+        <sub>
+            <id>3</id>
+            <name>cronjobs</name>
+            <display>Cronjobs</display>
+            <path>includes/content/system/cronjobs.inc.php</path>
+        </sub>
+
+        <sub>
+            <id>4</id>
+            <name>taskmgr</name>
+            <display>Taskmanager</display>
+            <path>includes/content/system/taskmgr.inc.php</path>
+        </sub>
+
+        <sub>
+            <id>5</id>
+            <name>usergroups</name>
+            <display>User &amp; Gruppen</display>
+            <path>includes/content/system/usergroups.inc.php</path>
+        </sub>
+
+        <sub>
+            <id>6</id>
+            <name>destroy</name>
+            <display>Selbstzerstörung</display>
+            <path>includes/content/system/destroy.inc.php</path>
+        </sub>
+    </menu>
+    <menu>
+        <id>6</id>
+        <name>tools</name>
+        <display>Tools</display>
+        <default>includes/content/tools/overview.inc.php</default>
+
+        <sub>
+            <id>1</id>
+            <name>overview</name>
+            <display>Übersicht</display>
+            <path>includes/content/tools/overview.inc.php</path>
+        </sub>
+
+        <sub>
+            <id>2</id>
+            <name>hwinfo</name>
+            <display>HW Informationen</display>
+            <path>includes/content/tools/hwinfo.inc.php</path>
+        </sub>
+
+        <sub>
+            <id>3</id>
+            <name>hddinfo</name>
+            <display>HDD Informationen</display>
+            <path>includes/content/tools/hddinfo.inc.php</path>
+        </sub>
+
+        <sub>
+            <id>4</id>
+            <name>ramload</name>
+            <display>RAM Informationen</display>
+            <path>includes/content/tools/ramload.inc.php</path>
+        </sub>
+
+        <sub>
+            <id>5</id>
+            <name>info</name>
+            <display>Sonst. Informationen</display>
+            <path>includes/content/tools/info.inc.php</path>
+        </sub>        
+
+    </menu>
+
+    <menu>
+        <id>8</id>
+        <name>webuser</name>
+        <display>Webuser</display>
+        <default>includes/content/webuser/overview.inc.php</default>
+        <sub>
+            <id>1</id>
+            <name>info</name>
+            <display>Übersicht</display>
+            <path>includes/content/webuser/overview.inc.php</path>
+        </sub>   
+        <sub>
+            <id>2</id>
+            <name>adduser</name>
+            <display>Benutzer hinzufügen</display>
+            <path>includes/content/webuser/adduser.inc.php</path>
+        </sub>   
+        <sub>
+            <id>3</id>
+            <name>edituser</name>
+            <display>Benutzer bearbeiten</display>
+            <path>includes/content/webuser/edituser.inc.php</path>
+        </sub>                                  
+    </menu>
+
+    <menu>
+        <id>9</id>
+        <name>plugins</name>
+        <display>Plugins</display>
+        <default>includes/content/plugins/overview.inc.php</default>
+
+        <sub>
+            <id>1</id>
+            <name>plugin</name>
+            <display>Keine Plugins vorhanden</display>
+            <path>includes/content/plugins/overview.inc.php</path>
+        </sub>
+
+    </menu>
+</navigation>

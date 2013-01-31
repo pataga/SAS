@@ -29,9 +29,9 @@ if (isset($_POST['kill'])) {
 
 ?>
 
-<h3> Hier ensteht die Seite "Taskmanager"</h3>
+<h3>Taskmanager<sup>ALPHA</sup></h3>
 <fieldset>
-    <form action="index.php?p=tools&s=taskmgr" method="post">
+    <form action="index.php?p=system&s=taskmgr" method="post">
         <table>
             <tr>
                 <td> 

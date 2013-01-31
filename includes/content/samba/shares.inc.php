@@ -11,10 +11,10 @@
 * @author Tanja Weiser
 *
 */
-    if (!$server->isInstalled('samba')) {
-        require_once './includes/content/samba/install.inc.php';
-        exit;
-    }
+if (!$server->isInstalled('samba')) {
+    header('Location:?p=samba&s=install');
+    exit;
+}
 
 	if(isset($_POST['add']))
 	{

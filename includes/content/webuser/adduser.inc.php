@@ -36,7 +36,7 @@ if (isset($_POST['adduser']))
 
 ?>
 
-<h3>Benutzer hinzuf&uuml;gen</h3>
+<h3>Benutzer hinzufügen</h3>
 <fieldset>
 <form action="index.php?p=webuser&s=add" method="POST">
 
@@ -45,7 +45,7 @@ if (isset($_POST['adduser']))
  	E-Mail:<br><br>
  	Passwort:<br><br>
  	Passwort wiederholen:<br><br>
- 	Admin? <input type="checkbox" name="admin" id="">
+ 	<label for="admin" class="inline">Admin?</label><input type="checkbox" name="admin" id=""> 
  </div>
 
  <div class ="dreiviertel-box lastbox">	

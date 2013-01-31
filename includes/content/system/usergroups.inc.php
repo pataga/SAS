@@ -38,7 +38,7 @@ $all_groups = $ssh->execute("cat /etc/group | cut -d: -f1 ", 2);
     </fieldset>
         <fieldset>
         <legend>User einer Gruppe zuweisen</legend>
-        <form action="index.php?p=tools&s=cpu" method="post" autocomplete="off">
+        <form action="index.php?p=system&s=cpu" method="post" autocomplete="off">
             <p><label>Benutzername:</label> 
                 <input type="text" class="text-long" name="name" required list="users"></p>
             <datalist id="users">
@@ -65,7 +65,7 @@ foreach ($all_groups as $key => $value) {
     <h4>Aktionen</h4>
     <fieldset>
         <legend>User anlegen</legend>
-        <form action="index.php?p=tools&s=cpu" method="post" autocomplete="off">
+        <form action="index.php?p=system&s=cpu" method="post" autocomplete="off">
             <p><label>Benutzername:</label> 
                 <input type="text" class="text-long" name="name" required></p>
             <p><label>Passwort:</label> 
@@ -78,7 +78,7 @@ foreach ($all_groups as $key => $value) {
     </fieldset>
     <fieldset>
         <legend>User entfernen</legend>
-        <form action="index.php?p=tools&s=cpu" method="post" autocomplete="off">
+        <form action="index.php?p=system&s=cpu" method="post" autocomplete="off">
             <p><label>Benutzername:</label> 
                 <input type="text" class="text-long" name="name" required list="users"></p>
             <datalist id="users">
@@ -93,7 +93,7 @@ foreach ($all_users as $key => $value) {
     </fieldset>
     <fieldset>
         <legend>Passwort ändern</legend>
-        <form action="index.php?p=tools&s=cpu" name="pw" method="post" autocomplete="off">
+        <form action="index.php?p=system&s=cpu" name="pw" method="post" autocomplete="off">
             <p><label>Benutzername:</label> 
                 <input type="text" class="text-long" name="name" required list="users"></p>
             <datalist id="users">

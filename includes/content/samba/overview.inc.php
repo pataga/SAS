@@ -13,7 +13,7 @@
 */
 
 if (!$server->isInstalled('samba')) {
-    require_once './includes/content/samba/install.inc.php';
+    header('Location:?p=samba&s=install');
     exit;
 }
 

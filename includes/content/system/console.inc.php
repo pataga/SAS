@@ -15,8 +15,12 @@
 
 if (isset($_POST['output']))
     $output = $_POST['output'];
-else
+else {
+    $ssh->openConnection();
+    $host = $ssh->execute("hostname -s");
     $output = "root@server:";
+}
+    
 
 if (isset($_POST['command'])) {
     $ssh->openConnection();
@@ -24,7 +28,7 @@ if (isset($_POST['command'])) {
 }
 ?>
 
-<form action="?p=tools&s=console" method="POST">
+<form action="?p=system&s=console" method="POST">
     <h3>Konsole</h3>
     <fieldset>
 
