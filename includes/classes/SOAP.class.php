@@ -68,13 +68,28 @@ class SOAP {
     }
 
     /**
-     * Führt einen Befehl auf der Kommandoebene des Servers aus
-     * @param String Command
-     * @return String Output
+     * Fragt nach Neuigkeiten
+     * @return Integer Count
      */
     public function noticeCount() {
         if ($this->soap) {
             return $this->soap->GetNoticeCount($this->key);
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Fragt Verbindungsversuch mit dem Daemon
+     * @return Bool
+     */
+    public function isAlive() {
+        if ($this->soap) {
+            try {
+                return $this->soap->Alive($this->key);
+            } catch (\Exception $e) {
+                return false;
+            }
         } else {
             return false;
         }

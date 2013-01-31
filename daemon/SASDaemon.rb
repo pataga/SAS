@@ -12,6 +12,7 @@ class SASSoap < SOAP::RPC::StandaloneServer
     add_method(self, 'Install', 'key', 'packet') 
     add_method(self, 'Execute', 'key', 'cmd') 
     add_method(self, 'GetNoticeCount', 'key')
+    add_method(self, 'Alive', 'key')
     @log = Logger.new("SASDaemon.log", 5, 10*1024)  
     Thread.new {
       while 1
@@ -20,6 +21,14 @@ class SASSoap < SOAP::RPC::StandaloneServer
       end
     }
   end 
+
+  def Alive(key) 
+    if !Auth(key)
+      Log('Connection failed')
+      return false;
+    end
+    return true
+  end
 
   def Auth(key)
     data = open('SASDaemon.access', "r")

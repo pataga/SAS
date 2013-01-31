@@ -237,6 +237,9 @@ class Server {
 
     public function execute($cmd, $format = 0, $type = 0) {
         $m = $this->m;
+        if (!$this->soap->isAlive()) {
+            return $m->SSH()->execute($cmd,$format);
+        }
         if ($type == 0) {
             if ($this->soapActive) 
                 return $this->soap->execute($cmd);
