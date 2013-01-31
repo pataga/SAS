@@ -37,12 +37,21 @@ class Loader {
         return $this->xmlData;
     }
 
+    private function loadNotifications() {
+        $server = $this->main->Server();
+        $soap = $server->getSoap();
+        if (!$soap) {
+            return '<a href="javascript:poppy();">SAS Notification Center<div id="notify"><div class="notify_bubble">0</div></div></a><br>';
+        } else {
+            return '<a href="javascript:poppy();">SAS Notification Center<div id="notify"><div class="notify_bubble">'.$soap->noticeCount().'</div></div></a><br>';
+        }
+    }
 
     private function loadUserInterface() {
         $this->content .= sprintf('<div class="top"><div class="logo"><h1>Server <span>Admin</span> System</h1>
 						           </div><div class="usermenu"><img src="img/profile/ubuntu.png" alt="Profilbild">
                                    <h3>%s</h3><a href="?server=change">Server wechseln</a><br>
-                                   <a href="javascript:poppy();">SAS Notification Center<div id="notify"><div class="notify_bubble">2</div></div></a><br>
+                                   '.$this->loadNotifications().'
 						           <a href="?user=logout">Logout</a></div></div>',
                                    $this->main->Session()->getUsername());
     }

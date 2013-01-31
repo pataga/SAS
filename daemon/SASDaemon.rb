@@ -13,6 +13,12 @@ class SASSoap < SOAP::RPC::StandaloneServer
     add_method(self, 'Execute', 'key', 'cmd') 
     add_method(self, 'GetNoticeCount', 'key')
     @log = Logger.new("SASDaemon.log", 5, 10*1024)  
+    Thread.new {
+      while 1
+        puts "[SASDaemon] Status: "+status()
+        sleep 30
+      end
+    }
   end 
 
   def Auth(key)
@@ -52,6 +58,7 @@ class SASSoap < SOAP::RPC::StandaloneServer
       
     Thread.new {
       a = `apt-get install #{packet} -yf`
+      $newsCount++
       Log("Packet "+packet+" wurde installiert")
     }
     $newsCount = $newsCount+1
@@ -93,10 +100,10 @@ puts("########################################################################\n
 host = "127.0.0.1"
 port = "9000"
 
-puts "Initialisiere SOAP Server...."
-puts "Listen on "+host+":"+port
+puts "[SASDaemon] Initialisiere SOAP Server...."
+puts "[SASDaemon] Listen on "+host+":"+port
 server = SASSoap.new('SASRubySoap','urn:SASSoap',host,port)  
 trap('INT') {server.shutdown}  
-puts "SOAP Server bereit"
+puts "[SASDaemon] SOAP Server bereit"
 server.start  
-puts 'SASDaemon stopped'
+puts '[SASDaemon] SASDaemon stopped'

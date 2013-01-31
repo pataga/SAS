@@ -33,11 +33,16 @@ class Server {
         if ($result->getRowsCount() > 0) {
             $r = $result->fetchObject();
             $this->soapActive = ($r->soap == 1);
+            if (!$this->soapActive) return;
             $this->soap_port = $r->soapPort;
             $this->soap_key = $r->soapKey;
             try {
                 $this->soap = new SOAP($this);
             } catch (Exception $e) {
+                $this->soapActive = false;
+                $this->soap_port = 0;
+                $this->soap_key = 0;
+                $this->soap = false;
                 $this->debug->error($e);
             }   
         }
@@ -61,7 +66,7 @@ class Server {
 
     /**
      * Gibt SOAP Port zurück
-     * @return (String) Adresse
+     * @return (Integer) Port
      */
     public function getSoapPort() {
         return $this->soap_port;
@@ -69,10 +74,18 @@ class Server {
 
     /**
      * Gibt SOAP Key zurück
-     * @return (String) Adresse
+     * @return (String) Key
      */
     public function getSoapKey() {
         return $this->soap_key;
+    }
+
+    /**
+     * Gibt die SOAP Verbindung zurück
+     * @return SOAP
+     */
+    public function getSoap() {
+        return $this->soapActive ? $this->soap : false;
     }
 
     /**
