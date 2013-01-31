@@ -48,9 +48,6 @@ if (!$server->isInstalled('samba')) {
 			$readonly = "read only = no";
 		}
 
-		$ssh->openConnection();
-		// Öffnen der Verbindung
-
         $content = "
         [$name]
         path = $path
@@ -59,9 +56,9 @@ if (!$server->isInstalled('samba')) {
         $writable
         $readonly";
 
-        $server->addToFile($ssh, '/etc/samba/smb.conf', $content);
+        $server->addToFile('/etc/samba/smb.conf', $content);
         // Schreiben der neuen Freigabe in die smb.conf
-        $ssh->execute('service smbd reload');
+        $server->execute('service smbd reload');
         // Neustart
         }
 

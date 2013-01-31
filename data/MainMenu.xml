@@ -417,7 +417,7 @@
         </sub>   
         <sub>
             <id>2</id>
-            <name>adduser</name>
+            <name>add</name>
             <display>Benutzer hinzufügen</display>
             <path>includes/content/webuser/adduser.inc.php</path>
         </sub>   

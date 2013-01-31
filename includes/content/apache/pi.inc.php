@@ -9,16 +9,16 @@
  * @author Gabriel Wanzek
  *
  */
-$ssh->openConnection();
-$phpinfo_txt = $ssh->execute("php -i");
+
+$phpinfo_txt = $server->execute("php -i");
 
 if (isset($_POST['create_file']) && isset($_POST['create_file_s'])) {           //wenn hidden+submit ..
-    $ssh->execute("touch /var/www/phpinfo.php");
-    $ssh->execute("echo '<?php phpinfo(); ?>' > /var/www/phpinfo.php");
+    $server->execute("touch /var/www/phpinfo.php");
+    $server->execute("echo '<?php phpinfo(); ?>' > /var/www/phpinfo.php");
 }
 
 if (isset($_POST['del_file']) && isset($_POST['del_file_s'])) {         //wenn hidden+submit ..
-    $ssh->execute("rm /var/www/phpinfo.php");
+    $server->execute("rm /var/www/phpinfo.php");
 }
 ?>
 <h3>PHP-Informationen</h3>

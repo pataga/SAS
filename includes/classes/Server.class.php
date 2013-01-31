@@ -18,19 +18,23 @@ class Server {
     private $mysql;
     private $server_address;
     private $soapActive;
-    private $soap_port;
+    private $soap_port, $soap_key;
     private $soap;
     private $m;
 
     public function __construct($main) {
         $this->m = $main;
         $this->mysql = $main->MySQL();
-        $this->server_id = isset($_SESSION['server_id']) ? $_SESSION['server_id'] : 0;
+        $session = $main->Session();
+        $this->server_id = $session->getServerID();
+        $data = $this->getServerData();
+        $this->server_address = $data[0];
         $result = $this->mysql->tableAction('sas_server_data')->select(NULL, ['id' => $this->server_id]);
         if ($result->getRowsCount() > 0) {
             $r = $result->fetchObject();
-            $this->soapActive = $r->soap == 1;
+            $this->soapActive = ($r->soap == 1);
             $this->soap_port = $r->soapPort;
+            $this->soap_key = $r->soapKey;
             try {
                 $this->soap = new SOAP($this);
             } catch (Exception $e) {
@@ -56,11 +60,19 @@ class Server {
     }
 
     /**
-     * Gibt Server Adresse zurück
+     * Gibt SOAP Port zurück
      * @return (String) Adresse
      */
     public function getSoapPort() {
         return $this->soap_port;
+    }
+
+    /**
+     * Gibt SOAP Key zurück
+     * @return (String) Adresse
+     */
+    public function getSoapKey() {
+        return $this->soap_key;
     }
 
     /**
@@ -151,11 +163,11 @@ class Server {
     */
     public function serviceStatus($ssh) {
         $data = array();
-        $data[0] = $this->getServiceStatus($ssh, 'smbd');
-        $data[1] = $this->getServiceStatus($ssh, 'apache2');
-        $data[2] = $this->getServiceStatus($ssh, 'postfix');
-        $data[3] = $this->getServiceStatus($ssh, 'proftpd');
-        $data[4] = $this->getServiceStatus($ssh, 'mysql');
+        $data[0] = $this->getServiceStatus('smbd');
+        $data[1] = $this->getServiceStatus('apache2');
+        $data[2] = $this->getServiceStatus('postfix');
+        $data[3] = $this->getServiceStatus('proftpd');
+        $data[4] = $this->getServiceStatus('mysql');
         return $data;
     }
 
@@ -166,10 +178,9 @@ class Server {
     * @param (String) Dienst Name
     * @return (Bool) Status
     */
-    public function getServiceStatus($ssh, $service) {
-        $line = $ssh->execute('service ' . $service . ' status');
+    public function getServiceStatus($service) {
+        $line = $this->execute('service ' . $service . ' status');
         $exp = explode(" ", $line);
-
         if ($exp[1] == "start/running," || $exp[1] == "is" && $exp[2] == "running")
             return true;
         else
@@ -182,9 +193,9 @@ class Server {
     * @author Gabriel Wanzek
     */
 
-    public function getProFTPDStatus($ssh) {
+    public function getProFTPDStatus() {
         try {
-            $status = $ssh->execute('service proftpd status');
+            $status = $this->execute('service proftpd status');
             $exp = explode(",", $status);
             if (!isset($exp[1])) return false;
             $exp2 = explode(".", $exp[1]);
@@ -204,28 +215,24 @@ class Server {
    /**
     * Fügt einen String an eine Datei auf dem Server an.
     * Die empfiehlt sich für das Erweitern von Konfigs.
-    * @param (SSH) SSH Verbindung
     * @param (String) Datei Name
     * @param (String) Inhalt
     */
-    public function addToFile($ssh, $file, $content) {
-        $ssh->openConnection();
-        $ssh->execute('echo -e "' . $content . '" >> ' . $file);
+    public function addToFile($file, $content) {
+        $this->execute('echo -e "' . $content . '" >> ' . $file);
     }
 
     public function execute($cmd, $format = 0, $type = 0) {
+        $m = $this->m;
         if ($type == 0) {
             if ($this->soapActive) 
-                return $m->SOAP()->execute($cmd);
-            else {
-                $m->SSH()->openConnection();
-                return $m->SSH->execute($cmd);
-            }
+                return $this->soap->execute($cmd);
+            else 
+                return $m->SSH()->execute($cmd,$format);
         } elseif ($type == 1) {
-            return $m->SOAP()->execute($cmd);
+            return $this->soap->execute($cmd);
         } elseif ($type == 2) {
-            $m->SSH()->openConnection();
-            return $m->SSH()->execute($cmd);
+            return $m->SSH()->execute($cmd,$format);
         }
     }
 }

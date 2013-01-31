@@ -30,8 +30,7 @@ if(isset($_POST['entry']))
 
 	if($smbpasswd == $repeat)
 	{
-		$ssh->openConnection();
-		$line = $ssh->execute('echo -ne "'.$smbpasswd.'\n'.$smbpasswd.'\n" | smbpasswd -a -s '.$smbuser);
+		$line = $server->execute('echo -ne "'.$smbpasswd.'\n'.$smbpasswd.'\n" | smbpasswd -a -s '.$smbuser);
 	}
 	else {}
 }
@@ -49,8 +48,7 @@ if(isset($_POST['change']))
 
 	if($newpasswd == $newpasswdr)
 	{
-		$ssh->openConnection();
-		$line=$ssh->execute('echo -ne "'.$newpasswd.'\n'.$newpasswd.'\n" | smbpasswd -s '.$user);
+		$line=$server->execute('echo -ne "'.$newpasswd.'\n'.$newpasswd.'\n" | smbpasswd -s '.$user);
 	}
 	else {}
 }
@@ -61,21 +59,15 @@ if(isset($_POST['change']))
 
 if(isset($_POST['delete']))
 {
-
-	$deluser = $_POST['deluser'];
-	
-	$ssh->openConnection();
-	$line=$ssh->execute('echo -ne |  smbpasswd -x '.$deluser);
-	
-
+	$deluser = $_POST['deluser'];	
+	$line=$server->execute('echo -ne |  smbpasswd -x '.$deluser);
 }
 
 //#######################################################
 //		Aktuelle Benutzer anzeigen
 //#######################################################
 
-$ssh->openConnection();
-$line=$ssh->execute('pdbedit -L',2);
+$line=$server->execute('pdbedit -L', 2);
 $ausgabe = "";
 foreach($line as $value)
 {

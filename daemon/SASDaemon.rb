@@ -16,10 +16,9 @@ class SASSoap < SOAP::RPC::StandaloneServer
   end 
 
   def Auth(key)
-    data = open('data.sas', "r")
-    _key = data.read
-
-    if _key == key
+    data = open('SASDaemon.access', "r")
+    _key = data.read.chomp
+    if _key == key.chomp
       return true
     else
       return false
@@ -30,6 +29,7 @@ class SASSoap < SOAP::RPC::StandaloneServer
 
   def Execute(key, cmd)
     if !Auth(key)
+      Log('Connection failed')
       return false;
     end
 
@@ -46,6 +46,7 @@ class SASSoap < SOAP::RPC::StandaloneServer
 
   def Install(key, packet)
     if !Auth(key)
+      Log('Connection failed')
       return false;
     end
       
@@ -59,6 +60,7 @@ class SASSoap < SOAP::RPC::StandaloneServer
 
   def GetNoticeCount(key)
     if !Auth(key)
+      Log('Connection failed')
       return false;
     end
       
@@ -88,9 +90,13 @@ puts("#       /*******  //********//****** *** /** /**//******  ***  /**     # \
 puts("#       ///////    ////////  ////// ///  //  //  //////  ///   //      # \n\n");
 puts("########################################################################\n\n\n");
     
+host = "127.0.0.1"
+port = "9000"
+
 puts "Initialisiere SOAP Server...."
-server = SASSoap.new('SASRubySoap','urn:SASSoap','0.0.0.0',9000)  
+puts "Listen on "+host+":"+port
+server = SASSoap.new('SASRubySoap','urn:SASSoap',host,port)  
 trap('INT') {server.shutdown}  
 puts "SOAP Server bereit"
 server.start  
-puts server
+puts 'SASDaemon stopped'

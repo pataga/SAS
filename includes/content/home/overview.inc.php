@@ -12,15 +12,14 @@
 *
 */
 
-$ssh->openConnection();
-$load = $ssh->execute("uptime");        //für Serverload
-$uptime = $ssh->execute("who -b");      //für Systemstartdatum
-$userswho = $ssh->execute("users");     //zeigt eingeloggte benutzer an
-$kernelversion = $ssh->execute("cat /proc/version");    //kernelversion
-$sekundentmp = $ssh->execute("cat /proc/uptime");       //zeit in sek. wie lang server an ist
-$hostname = $ssh->execute("hostname -s");       //gibt den Systemnamen/Hostnamen aus
+$load = $server->execute("uptime");        //für Serverload
+$uptime = $server->execute("who -b");      //für Systemstartdatum
+$userswho = $server->execute("users");     //zeigt eingeloggte benutzer an
+$kernelversion = $server->execute("cat /proc/version");    //kernelversion
+$sekundentmp = $server->execute("cat /proc/uptime");       //zeit in sek. wie lang server an ist
+$hostname = $server->execute("hostname -s");       //gibt den Systemnamen/Hostnamen aus
 $loadpart = explode("load average:", $load);    
-$serverload = $loadpart[1];
+$serverload = isset($loadpart[1]) ? $loadpart[1] : 0;
 $sekunden0 = explode(".", $sekundentmp);
 $sekunden = $sekunden0[0];
 $serveruptime = (((((((($sekunden - ($sekunden % 60)) / 60) - (($sekunden - ($sekunden % 60)) / 60) % 60) / 60))) - (((((($sekunden - ($sekunden % 60)) / 60) - (($sekunden - ($sekunden % 60)) / 60) % 60) / 60)) % 24)) / 24) . " T. " . (((((($sekunden - ($sekunden % 60)) / 60) - (($sekunden - ($sekunden % 60)) / 60) % 60) / 60)) % 24) . " Std. " . ((($sekunden - ($sekunden % 60)) / 60) % 60) . " Min. " . ($sekunden % 60) . " Sek. "; // macht aus Sekunden xx Tage xx Stunden xx Minuten xx Sekunden (als kurzform)
@@ -86,7 +85,7 @@ $userswholi = str_replace(" ", ", ", $userswho);
                 <td>Apache 2:</td>
                 <td>
                     <?php
-                    echo ($server->getServiceStatus($ssh, 'apache2')) ? '<span class="aktiv">aktiv</span>' : '<span class="inaktiv">inaktiv</span>';
+                    echo ($server->getServiceStatus('apache2')) ? '<span class="aktiv">aktiv</span>' : '<span class="inaktiv">inaktiv</span>';
                     ?>
                 </td>
             </tr>
@@ -94,7 +93,7 @@ $userswholi = str_replace(" ", ", ", $userswho);
                 <td>Postfix:</td>
                 <td>
                     <?php
-                    echo ($server->getServiceStatus($ssh, 'postfix')) ? '<span class="aktiv">aktiv</span>' : '<span class="inaktiv">inaktiv</span>';
+                    echo ($server->getServiceStatus('postfix')) ? '<span class="aktiv">aktiv</span>' : '<span class="inaktiv">inaktiv</span>';
                     ?>
                 </td>
             </tr>
@@ -102,7 +101,7 @@ $userswholi = str_replace(" ", ", ", $userswho);
                 <td>FTP:</td>
                 <td>
                     <?php
-                    echo ($server->getProFTPDStatus($ssh)) ? '<span class="aktiv">aktiv</span>' : '<span class="inaktiv">inaktiv</span>';
+                    echo ($server->getProFTPDStatus()) ? '<span class="aktiv">aktiv</span>' : '<span class="inaktiv">inaktiv</span>';
                     ?>
                 </td>
             </tr>
@@ -110,7 +109,7 @@ $userswholi = str_replace(" ", ", ", $userswho);
                 <td>MySQL:</td>
                 <td>
                     <?php
-                    echo ($server->getServiceStatus($ssh, 'mysql')) ? '<span class="aktiv">aktiv</span>' : '<span class="inaktiv">inaktiv</span>';
+                    echo ($server->getServiceStatus('mysql')) ? '<span class="aktiv">aktiv</span>' : '<span class="inaktiv">inaktiv</span>';
                     ?>
                 </td>
             </tr>
@@ -118,7 +117,7 @@ $userswholi = str_replace(" ", ", ", $userswho);
                 <td>Samba:</td>
                 <td>
                     <?php
-                    echo ($server->getServiceStatus($ssh, 'smbd')) ? '<span class="aktiv">aktiv</span>' : '<span class="inaktiv">inaktiv</span>';
+                    echo ($server->getServiceStatus('smbd')) ? '<span class="aktiv">aktiv</span>' : '<span class="inaktiv">inaktiv</span>';
                     ?>
                 </td>
             </tr>

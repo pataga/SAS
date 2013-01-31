@@ -176,6 +176,7 @@
               `port` int(10) NOT NULL,
               `user` varchar(255) NOT NULL,
               `pass` varchar(255) NOT NULL,
+              `soap` int(3) NOT NULL,
               `soapPort` int(8) NOT NULL,
               `soapKey` varchar(255) NOT NULL,
               `mysql` tinyint(3) NOT NULL,

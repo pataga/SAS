@@ -7,7 +7,7 @@
 * @copyright Copyright 2012-2013 Patrick Farnkopf, Tanja Weiser, Gabriel Wanzek (PaTaGa)
 * @link https://github.com/pataga/SAS
 * @since SAS v1.0.0
-* @license Apache License v2 (http://www.apache.org/licenses/LICENSE-2.0.txt
+* @license Apache License v2 (http://www.apache.org/licenses/LICENSE-2.0.txt)
 * @author Tanja Weiser
 *
 */
@@ -24,12 +24,12 @@ if (isset($_POST['adduser']))
 	{
 
 		// Eintragen eines neuen Webusers
-		
-		$status = $user->addUser($newuser,$passwd,$repeatpasswd,$usermail);
-		if($status == 1)
-			echo '<br>Benutzer wurde erstellt';
-		if($status == -1)
-			echo '<br>Benutzername existiert bereits';
+		$status = $mysql->tableAction('sas_users')
+				->insert(['username'=>$newuser, 'password'=>md5($passwd), 'email' => $usermail]);
+		//if($status)
+			echo '<br>Benutzer wurde erstellt'; // Temp Hack
+		/*if($status == -1) //Hacky
+			echo '<br>Benutzername existiert bereits';*/
 	}
 }
 

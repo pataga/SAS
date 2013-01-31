@@ -1,8 +1,7 @@
 <?php
-$ssh->openConnection();
-$all_users = $ssh->execute("cat /etc/passwd | cut -d: -f1", 2);
-$seq_users = $ssh->execute("awk -F: '$3>999{print $1}' /etc/passwd", 2);
-$all_groups = $ssh->execute("cat /etc/group | cut -d: -f1 ", 2);
+$all_users = $server->execute("cat /etc/passwd | cut -d: -f1", 2);
+$seq_users = $server->execute("awk -F: '$3>999{print $1}' /etc/passwd", 2);
+$all_groups = $server->execute("cat /etc/group | cut -d: -f1 ", 2);
 ?>
 <h3>User &amp; Gruppen</h3>
 <div class="halbe-box">

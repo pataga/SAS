@@ -1,23 +1,22 @@
 <?php
-$ssh->openConnection();
 $info ="";
 if (isset($_POST['a2-stop']) && isset($_POST['a2-stop-h'])) {
-    $ssh->execute("service apache2 stop");
+    $server->execute("service apache2 stop");
     $info = "Apache2 wurde gestoppt";
 } elseif (isset($_POST['a2-start'])) {
-    $ssh->execute("service apache2 start");
+    $server->execute("service apache2 start");
     $info = "Apache2 wurde gestartet";
 }
 if (isset($_POST['a2-reload'])) {
-    $ssh->execute("service apache2 reload");
+    $server->execute("service apache2 reload");
     $info = "Apache2-Konfigurationsdateien wurden neu geladen";
 }
 if (isset($_POST['a2-restart'])) {
-    $ssh->execute("service apache2 restart");
+    $server->execute("service apache2 restart");
     $info = "Apache2 wurden neu gestartet";
 }
 if (isset($_POST['a2-f-reload'])) {
-    $ssh->execute("service apache2 force-reload");
+    $server->execute("service apache2 force-reload");
     $info = "Apache2-Konfigurationsdateien wurden neu geladen";
 }
 ?>
@@ -28,10 +27,10 @@ if (isset($_POST['a2-f-reload'])) {
     }?>
     <div class="viertel-box">
         <h5>Start / Stop</h5>
-        <p><b><?php echo ($server->getServiceStatus($ssh, 'apache2')) ? 'Stoppt' : 'Startet'; ?> den Webserver sofort.</b></p>
+        <p><b><?php echo ($server->getServiceStatus('apache2')) ? 'Stoppt' : 'Startet'; ?> den Webserver sofort.</b></p>
         <form action="<?php $_SERVER['SCRIPT_NAME'] ?>" method="post">
             <?php
-            echo ($server->getServiceStatus($ssh, 'apache2')) ? '<input type="hidden" name="a2-stop-h"><input type="submit" name="a2-stop" value="Stop" class="button pink">' : '<input type="hidden" name="a2-start-h"><input type="submit" name="a2-start" value="Start" class="button green">';
+            echo ($server->getServiceStatus('apache2')) ? '<input type="hidden" name="a2-stop-h"><input type="submit" name="a2-stop" value="Stop" class="button pink">' : '<input type="hidden" name="a2-start-h"><input type="submit" name="a2-start" value="Start" class="button green">';
             ?>
             <input type="hidden" name="a2_action">
         </form>
