@@ -70,7 +70,6 @@ class SSH {
     * @example $result = $ssh->execute('ls -la /',2); //Rückgabe als Array
     */
     public function execute($command, $type = 0) {
-        echo "SSH";
         if (!$this->con) {
             if (!$this->openConnection()) {
                 return false;
