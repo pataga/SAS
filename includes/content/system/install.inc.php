@@ -1,5 +1,5 @@
 <h3>Paket Installation</h3>
-<form action="index.php?p=management&s=install" method="POST">
+<form action="index.php?p=system&s=install" method="POST">
 <fieldset>	
 <legend>Paketsuche</legend>	
 <div class ="halbe-box">

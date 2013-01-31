@@ -353,6 +353,13 @@
             <display>Selbstzerstörung</display>
             <path>includes/content/system/destroy.inc.php</path>
         </sub>
+
+        <sub>
+            <id>7</id>
+            <name>install</name>
+            <display>Paketverwaltung</display>
+            <path>includes/content/system/install.inc.php</path>
+        </sub>
     </menu>
     <menu>
         <id>6</id>
