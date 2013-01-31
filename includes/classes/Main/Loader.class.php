@@ -41,7 +41,7 @@ class Loader {
         $server = $this->main->Server();
         $soap = $server->getSoap();
         if (!$soap || !$soap->isAlive()) {
-            return '<a href="javascript:poppy();">SAS Notification Center<div id="notify"><div class="notify_bubble">1</div></div></a><br>';
+            return '<a href="javascript:poppy();">SAS Notification Center<div id="notify"><div class="notify_bubble">0</div></div></a><br>';
         } else {
             return '<a href="javascript:poppy();">SAS Notification Center<div id="notify"><div class="notify_bubble">'.$soap->noticeCount().'</div></div></a><br>';
         }

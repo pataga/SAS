@@ -33,7 +33,6 @@ class Server {
         if ($result->getRowsCount() > 0) {
             $r = $result->fetchObject();
             $this->soapActive = ($r->soap == 1);
-            if (!$this->soapActive) return;
             $this->soap_port = $r->soapPort;
             $this->soap_key = $r->soapKey;
             try {
