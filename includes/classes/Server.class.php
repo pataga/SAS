@@ -193,6 +193,7 @@ class Server {
     public function getServiceStatus($service) {
         $line = $this->execute('service ' . $service . ' status');
         $exp = explode(" ", $line);
+        if (count($exp)<3) return false;
         if ($exp[1] == "start/running," || $exp[1] == "is" && $exp[2] == "running")
             return true;
         else
