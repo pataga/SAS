@@ -11,16 +11,15 @@
  */
 ?>
 <?php
-$ssh->openConnection();
-$hdds = $ssh->execute("df -h");
-$kernel = $ssh->execute("uname -a");
-$cpu = $ssh->execute("grep \"model name\" /proc/cpuinfo");
-$distr = $ssh->execute("head -n1 /etc/issue");
-$hdd = $ssh->execute("hdparm -i /dev/sda | head -n4", 2);
-$hw_info_hw = $ssh->execute("lspci -vm", 2);
-$hw_info_lw = $ssh->execute("lsblk -iln");
+$hdds = $server->execute("df -h");
+$kernel = $server->execute("uname -a");
+$cpu = $server->execute("grep \"model name\" /proc/cpuinfo");
+$distr = $server->execute("head -n1 /etc/issue");
+$hdd = $server->execute("hdparm -i /dev/sda | head -n4", 2);
+$hw_info_hw = $server->execute("lspci -vm", 2);
+$hw_info_lw = $server->execute("lsblk -iln");
 
-$meminfo = $ssh->execute("cat /proc/meminfo");        //für RAM-Info
+$meminfo = $server->execute("cat /proc/meminfo");        //für RAM-Info
 $total = explode("\n", $meminfo);
 $totalram = str_replace("MemTotal:", " ", $total[0]);
 $totalram_ = str_replace("kB", " ", $totalram);

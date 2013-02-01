@@ -11,12 +11,11 @@
 */
 ?>
 <?php 
-$ssh->openConnection();
-$hdd_info_1 = $ssh->execute("hdparm -i /dev/sda");
-$hdd_info_2 = $ssh->execute("lsblk");
-$hdd_info_3 = $ssh->execute("fdisk -l");
-$hdd_info_4 = $ssh->execute("df -hl");
-$hdd_info_5 = $ssh->execute("cat /proc/filesystems");
+$hdd_info_1 = $server->execute("hdparm -i /dev/sda");
+$hdd_info_2 = $server->execute("lsblk");
+$hdd_info_3 = $server->execute("fdisk -l");
+$hdd_info_4 = $server->execute("df -hl");
+$hdd_info_5 = $server->execute("cat /proc/filesystems");
 ?>
 
 <h3>Festplatten-Info</h3>

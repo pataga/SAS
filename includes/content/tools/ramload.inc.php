@@ -1,7 +1,6 @@
 <?php
-$ssh->openConnection();
-$ram = $ssh->execute(" dmidecode --type 17");
-$meminfo = $ssh->execute("cat /proc/meminfo");        //für RAM-Info
+$ram = $server->execute(" dmidecode --type 17");
+$meminfo = $server->execute("cat /proc/meminfo");        //für RAM-Info
 $total = explode("\n", $meminfo);
 $totalram = str_replace("MemTotal:", " ", $total[0]);
 $totalram_ = str_replace("kB", " ", $totalram);

@@ -150,35 +150,10 @@
 
     <!-- NEW MENU -->
 
-    <menu>
-        <id>3</id>
-        <name>postfix</name>
-        <display>Postfix</display>
-        <default>includes/content/postfix/overview.inc.php</default>
-
-        <!-- SUBS -->
-        
-        <sub>
-            <id>1</id>
-            <name>overview</name>
-            <display>Übersicht</display>
-            <path>includes/content/postfix/overview.inc.php</path>
-            <window>included</window>
-        </sub>
-
-        <sub>
-            <id>2</id>
-            <name>config</name>
-            <display>Konfiguration</display>
-            <path>includes/content/postfix/config.inc.php</path>
-            <window>included</window>
-        </sub>   
-    </menu>
-
     <!-- NEW MENU -->
 
     <menu>
-        <id>4</id>
+        <id>3</id>
         <name>ftp</name>
         <display>ProFTPD</display>
         <default>includes/content/ftp/overview.inc.php</default>
@@ -227,7 +202,7 @@
  
     </menu>
     <menu>
-        <id>5</id>
+        <id>4</id>
         <name>mysql</name>
         <display>MySQL</display>
         <default>includes/content/mysql/overview.inc.php</default>
@@ -291,7 +266,7 @@
         </sub>
     </menu>
     <menu>
-        <id>6</id>
+        <id>5</id>
         <name>samba</name>
         <display>Samba</display>
         <default>includes/content/samba/overview.inc.php</default>
@@ -347,6 +322,30 @@
         </sub>
     </menu>
 
+    <menu>
+        <id>6</id>
+        <name>logs</name>
+        <display>Logs</display>
+        <default>includes/content/logs/overview.inc.php</default>
+
+        <!-- SUBS -->
+        
+        <sub>
+            <id>1</id>
+            <name>overview</name>
+            <display>Übersicht</display>
+            <path>includes/content/logs/overview.inc.php</path>
+            <window>included</window>
+        </sub>
+
+        <sub>
+            <id>2</id>
+            <name>watch</name>
+            <display>Betrachten</display>
+            <path>includes/content/logs/watch.inc.php</path>
+            <window>included</window>
+        </sub>   
+    </menu>
     <menu>
         <id>7</id>
         <name>system</name>

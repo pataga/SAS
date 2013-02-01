@@ -49,6 +49,7 @@ Licensed under The Apache License
 	font-family: 'Lobster', Helvetica, Arial, sans-serif;
 	font-weight: normal;
 	font-size: 21px;
+	cursor: pointer;
 }
 
 #top sup.notify {
