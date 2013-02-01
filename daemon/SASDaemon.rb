@@ -5,7 +5,36 @@ require 'soap/rpc/standaloneServer'
 
 
 class SASSoap < SOAP::RPC::StandaloneServer  
-  $newsCount = 9
+  $news = []
+  $newsBackup = []
+
+  def setNews(type, msg)
+    case type
+    when 0
+      $news[$news.length] = 'Erfolgreich#>:<#'+msg
+    when 1
+      $news[$news.length] = 'Fehlgeschlagen#>:<#'+msg
+    when 2
+      $news[$news.length] = 'Information#>:<#'+msg
+    when 3
+      $news[$news.length] = 'FEUER!!!!#>:<#'+msg
+    end
+  end
+
+  def GiveNews(key)
+    if !Auth(key)
+      Log('Connection failed')
+      return false;
+    end
+    a = '#>::--::<#'
+    for i in 0..$news.length-1 do 
+      a = a+$news[i]+'#>::<#'
+      puts a
+    end
+    $newsBackup = $news
+    $news = []
+    return a
+  end
 
   def initialize(* args)  
     super  
@@ -13,6 +42,7 @@ class SASSoap < SOAP::RPC::StandaloneServer
     add_method(self, 'Execute', 'key', 'cmd') 
     add_method(self, 'GetNoticeCount', 'key')
     add_method(self, 'Alive', 'key')
+    add_method(self, 'GiveNews', 'key')
     @log = Logger.new("SASDaemon.log", 5, 10*1024)  
   end 
 
@@ -41,7 +71,7 @@ class SASSoap < SOAP::RPC::StandaloneServer
       Log('Connection failed')
       return false;
     end
-
+    setNews(2, "Befehl "+cmd+" wurde verwendet")
     t = Time.now  
     Log("Befehl "+cmd+" wurde verwendet") 
     a = `#{cmd}`

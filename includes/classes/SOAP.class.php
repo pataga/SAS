@@ -94,6 +94,26 @@ class SOAP {
             return false;
         }
     }
+
+    /**
+     * Fragt nach Neuigkeiten
+     * @return Array
+     */
+    public function giveNotices() {
+        if ($this->soap) {
+            try {
+                $news = $this->soap->GiveNews($this->key);
+                $news = explode("#>::--::<#",$news);
+                if (count($news) > 1) {
+                    return explode('#>::<#', $news[1]);
+                }
+            } catch (\Exception $e) {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
 }
 
 ?>

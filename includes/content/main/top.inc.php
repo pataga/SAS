@@ -7,6 +7,7 @@
         <meta name="robots" content="noindex,nofollow">
         <link rel="stylesheet" href="css/normalize.min.css">
         <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/notifications.css">
         <link rel="shortcut icon" href="img/fav.ico">
         <script src="js/vendor/modernizr-2.6.1.min.js"></script>
         <script src="js/vendor/jquery-1.8.2.min.js"></script>

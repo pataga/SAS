@@ -46,6 +46,7 @@ class Server {
                 $this->debug->error($e);
             }   
         }
+        $this->updateNotices();
     }
 
    /**
@@ -250,6 +251,25 @@ class Server {
             return $this->soap->execute($cmd);
         } elseif ($type == 2) {
             return $m->SSH()->execute($cmd,$format);
+        }
+    }
+
+    private function updateNotices() {
+        if (!$this->soap) {
+            return false;
+        }
+
+        if (!$this->soap->isAlive()) {
+            return false;
+        }
+
+        $news = $this->soap->giveNotices();
+        if ($news) {
+            foreach ($news as $value) {
+                $value = explode('#>:<#', $value);
+                if (count($value) > 1)
+                    $this->mysql->Query("INSERT INTO sas_notifications (type,body,datum,zeit) VALUES ('$value[0]','$value[1]',CURDATE(),CURTIME())");
+            }
         }
     }
 }
