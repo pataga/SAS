@@ -5,7 +5,7 @@ require 'soap/rpc/standaloneServer'
 
 
 class SASSoap < SOAP::RPC::StandaloneServer  
-  $newsCount = 0
+  $newsCount = 9
 
   def initialize(* args)  
     super  
@@ -14,12 +14,6 @@ class SASSoap < SOAP::RPC::StandaloneServer
     add_method(self, 'GetNoticeCount', 'key')
     add_method(self, 'Alive', 'key')
     @log = Logger.new("SASDaemon.log", 5, 10*1024)  
-    Thread.new {
-      while 1
-        puts "[SASDaemon] Status: "+status()
-        sleep 30
-      end
-    }
   end 
 
   def Alive(key) 
@@ -84,8 +78,9 @@ class SASSoap < SOAP::RPC::StandaloneServer
   end
 end  
 
-
-  
+def printRed(msg)
+  system("echo '[SASDaemon]\\033[31;1m #{msg} \\033[37;1m \n'")
+end  
 
 puts("########################################################################\n\n");
 puts("#         ********     **      ********                                # \n");
@@ -106,9 +101,15 @@ puts("#       /*******  //********//****** *** /** /**//******  ***  /**     # \
 puts("#       ///////    ////////  ////// ///  //  //  //////  ///   //      # \n\n");
 puts("########################################################################\n\n\n");
     
+
+
 host = "127.0.0.1"
 port = "9000"
-
+user = `whoami`.chomp
+if user != 'root'
+  printRed("Der Daemon muss als ROOT ausgeführt werden")
+  exit
+end
 puts "[SASDaemon] Initialisiere SOAP Server...."
 puts "[SASDaemon] Listen on "+host+":"+port
 server = SASSoap.new('SASRubySoap','urn:SASSoap',host,port)  

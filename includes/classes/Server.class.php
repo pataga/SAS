@@ -7,7 +7,7 @@
 * @copyright Copyright 2012-2013 Patrick Farnkopf, Tanja Weiser, Gabriel Wanzek (PaTaGa)
 * @link https://github.com/pataga/SAS
 * @since SAS v1.0.0
-* @license Apache License v2 (http://www.apache.org/licenses/LICENSE-2.0.txt
+* @license Apache License v2 (http://www.apache.org/licenses/LICENSE-2.0.txt)
 * @author Patrick Farnkopf
 *
 */
@@ -30,6 +30,7 @@ class Server {
         $data = $this->getServerData();
         $this->server_address = $data[0];
         $result = $this->mysql->tableAction('sas_server_data')->select(NULL, ['id' => $this->server_id]);
+        
         if ($result->getRowsCount() > 0) {
             $r = $result->fetchObject();
             $this->soapActive = ($r->soap == 1);
