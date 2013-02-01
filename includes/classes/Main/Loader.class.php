@@ -21,6 +21,7 @@ class Loader {
     private $content = '';
     private $mysql, $main ;
     private $xmlData = [[[]]];
+    private $window = 'included';
 
     public function __construct($main)
     {
@@ -89,6 +90,19 @@ class Loader {
         $this->content .= '</ul></div>';
     }
 
+    public function loadWindowType() {
+        for ($i=0;$i<count($this->xmlData);$i++) {
+            if ($this->xmlData[$i]['menu']['name'] == $this->_page) {
+                for ($s=0;$s<count($this->xmlData[$i])-1;$s++) {
+                    if (!isset($this->xmlData[$i]['sub'.$s])) continue;
+                    $sub = $this->xmlData[$i]['sub'.$s];
+                    if ($this->_spage == $sub['name'])
+                        $this->window = $sub['window'];
+                }
+            }
+        }
+    }
+
     public function getIncFile() {
         if (!$this->main->Session()->isServerChosen() && $this->main->Session()->isAuthenticated())
             return 'includes/content/home/server.inc.php';
@@ -118,10 +132,15 @@ class Loader {
     }
 
     public function loadMenues() {
-        $this->loadUserInterface();
-        $this->loadMainMenu();
+        $this->loadWindowType();
+        if ($this->window == 'included') {
+            $this->loadUserInterface();
+            $this->loadMainMenu();
+        }
+
         $this->content .= '<div id="main">';
-        $this->loadSideMenu();
+        if ($this->window == 'included')
+            $this->loadSideMenu();
         $this->content .= '<div id="content">';
         return $this->content;
     }

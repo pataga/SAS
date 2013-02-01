@@ -13,6 +13,7 @@
             <name>overview</name>
             <display>Übersicht</display>
             <path>includes/content/home/overview.inc.php</path>
+            <window>included</window>
         </sub>
 
         <sub>
@@ -20,6 +21,7 @@
             <name>qp</name>
             <display>Quickpanel</display>
             <path>includes/content/home/qp.inc.php</path>
+            <window>included</window>
         </sub>
 
         <sub>
@@ -27,6 +29,7 @@
             <name>about</name>
             <display>Über SAS</display>
             <path>includes/content/home/about.inc.php</path>
+            <window>included</window>
         </sub>
 
         <sub>
@@ -34,6 +37,7 @@
             <name>doku</name>
             <display>SAS-Dokumentation</display>
             <path>includes/content/home/doku.inc.php</path>
+            <window>included</window>
         </sub>
 
         <sub>
@@ -41,6 +45,7 @@
             <name>repo</name>
             <display>SAS-Repository</display>
             <path>includes/content/home/repo.inc.php</path>
+            <window>included</window>
         </sub>
 
         <sub>
@@ -48,6 +53,7 @@
             <name>cssinfo</name>
             <display>DEV: CSS-Info</display>
             <path>includes/content/sas-dev/styles.inc.php</path>
+            <window>included</window>
         </sub>
 
         <sub>
@@ -55,6 +61,15 @@
             <name>modulestatus</name>
             <display>DEV: Module-Status</display>
             <path>includes/content/sas-dev/module.inc.php</path>
+            <window>included</window>
+        </sub>
+
+        <sub>
+            <id>8</id>
+            <name>notification</name>
+            <display></display>
+            <path>includes/content/main/notification.inc.php</path>
+            <window>seperated</window>
         </sub>
     </menu>
 
@@ -73,6 +88,7 @@
             <name>overview</name>
             <display>Übersicht</display>
             <path>includes/content/apache/overview.inc.php</path>
+            <window>included</window>
         </sub>
 
         <sub>
@@ -80,6 +96,7 @@
             <name>config</name>
             <display>Konfiguration</display>
             <path>includes/content/apache/config.inc.php</path>
+            <window>included</window>
         </sub>
 
         <sub>
@@ -87,6 +104,7 @@
             <name>control</name>
             <display>Steuerung</display>
             <path>includes/content/apache/control.inc.php</path>
+            <window>included</window>
         </sub>
 
         <sub>
@@ -94,6 +112,7 @@
             <name>vhosts</name>
             <display>Virtuelle Hosts</display>
             <path>includes/content/apache/vhosts.inc.php</path>
+            <window>included</window>
         </sub>
 
         <sub>
@@ -101,6 +120,7 @@
             <name>modules</name>
             <display>Module</display>
             <path>includes/content/apache/module.inc.php</path>
+            <window>included</window>
         </sub>
 
         <sub>
@@ -108,6 +128,7 @@
             <name>php</name>
             <display>PHP</display>
             <path>includes/content/apache/phpsetup.inc.php</path>
+            <window>included</window>
         </sub>
 
         <sub>
@@ -115,6 +136,7 @@
             <name>phpinfo</name>
             <display>PHP-Informationen</display>
             <path>includes/content/apache/pi.inc.php</path>
+            <window>included</window>
         </sub>
 
         <sub>
@@ -122,6 +144,7 @@
             <name>stats</name>
             <display>Statistiken</display>
             <path>includes/content/apache/stats.inc.php</path>
+            <window>included</window>
         </sub>
     </menu>
 
@@ -140,6 +163,7 @@
             <name>overview</name>
             <display>Übersicht</display>
             <path>includes/content/postfix/overview.inc.php</path>
+            <window>included</window>
         </sub>
 
         <sub>
@@ -147,6 +171,7 @@
             <name>config</name>
             <display>Konfiguration</display>
             <path>includes/content/postfix/config.inc.php</path>
+            <window>included</window>
         </sub>   
     </menu>
 
@@ -165,6 +190,7 @@
             <name>overview</name>
             <display>Übersicht</display>
             <path>includes/content/ftp/overview.inc.php</path>
+            <window>included</window>
         </sub>
 
         <sub>
@@ -172,6 +198,7 @@
             <name>config</name>
             <display>Konfiguration</display>
             <path>includes/content/ftp/config.inc.php</path>
+            <window>included</window>
         </sub>
 
         <sub>
@@ -179,6 +206,7 @@
             <name>control</name>
             <display>Steuerung</display>
             <path>includes/content/ftp/control.inc.php</path>
+            <window>included</window>
         </sub>
 
         <sub>
@@ -186,6 +214,7 @@
             <name>directories</name>
             <display>Verzeichnisse</display>
             <path>includes/content/ftp/directories.inc.php</path>
+            <window>included</window>
         </sub>
 
         <sub>
@@ -193,6 +222,7 @@
             <name>stats</name>
             <display>Statistiken</display>
             <path>includes/content/ftp/module.inc.php</path>
+            <window>included</window>
         </sub>
  
     </menu>
@@ -209,6 +239,7 @@
             <name>overview</name>
             <display>Übersicht</display>
             <path>includes/content/mysql/overview.inc.php</path>
+            <window>included</window>
         </sub>
 
         <sub>
@@ -216,6 +247,7 @@
             <name>adduser</name>
             <display>Benutzer anlegen</display>
             <path>includes/content/mysql/useradd.inc.php</path>
+            <window>included</window>
         </sub>
 
         <sub>
@@ -223,6 +255,7 @@
             <name>control</name>
             <display>Steuerung</display>
             <path>includes/content/mysql/control.inc.php</path>
+            <window>included</window>
         </sub>
 
         <sub>
@@ -230,6 +263,7 @@
             <name>configure</name>
             <display>Einrichtung</display>
             <path>includes/content/mysql/configure.inc.php</path>
+            <window>included</window>
         </sub>
 
         <sub>
@@ -237,6 +271,7 @@
             <name>db</name>
             <display>Datenbank Verwaltung</display>
             <path>includes/content/mysql/db.inc.php</path>
+            <window>included</window>
         </sub>
 
         <sub>
@@ -244,6 +279,7 @@
             <name>modules</name>
             <display>Module</display>
             <path>includes/content/mysql/module.inc.php</path>
+            <window>included</window>
         </sub> 
 
         <sub>
@@ -251,6 +287,7 @@
             <name>impexp</name>
             <display>Importieren/Exportieren</display>
             <path>includes/content/mysql/impexp.inc.php</path>
+            <window>included</window>
         </sub>
     </menu>
     <menu>
@@ -266,6 +303,7 @@
             <name>overview</name>
             <display>Übersicht</display>
             <path>includes/content/samba/overview.inc.php</path>
+            <window>included</window>
         </sub>
 
         <sub>
@@ -273,6 +311,7 @@
             <name>shares</name>
             <display>Freigaben</display>
             <path>includes/content/samba/shares.inc.php</path>
+            <window>included</window>
         </sub>
 
         <sub>
@@ -280,6 +319,7 @@
             <name>config</name>
             <display>Konfiguration</display>
             <path>includes/content/samba/config.inc.php</path>
+            <window>included</window>
         </sub>
 
         <sub>
@@ -287,6 +327,7 @@
             <name>control</name>
             <display>Steuerung</display>
             <path>includes/content/samba/control.inc.php</path>
+            <window>included</window>
         </sub>
 
         <sub>
@@ -294,6 +335,7 @@
             <name>users</name>
             <display>Benutzer</display>
             <path>includes/content/samba/users.inc.php</path>
+            <window>included</window>
         </sub>
 
         <sub>
@@ -301,6 +343,7 @@
             <name>install</name>
             <display></display>
             <path>includes/content/samba/install.inc.php</path>
+            <window>included</window>
         </sub>
     </menu>
 
@@ -317,6 +360,7 @@
             <name>overview</name>
             <display>Übersicht</display>
             <path>includes/content/system/overview.inc.php</path>
+            <window>included</window>
         </sub>
 
         <sub>
@@ -324,6 +368,7 @@
             <name>console</name>
             <display>Konsole</display>
             <path>includes/content/system/console.inc.php</path>
+            <window>included</window>
         </sub>
 
         <sub>
@@ -331,6 +376,7 @@
             <name>cronjobs</name>
             <display>Cronjobs</display>
             <path>includes/content/system/cronjobs.inc.php</path>
+            <window>included</window>
         </sub>
 
         <sub>
@@ -338,6 +384,7 @@
             <name>taskmgr</name>
             <display>Taskmanager</display>
             <path>includes/content/system/taskmgr.inc.php</path>
+            <window>included</window>
         </sub>
 
         <sub>
@@ -345,6 +392,7 @@
             <name>usergroups</name>
             <display>User &amp; Gruppen</display>
             <path>includes/content/system/usergroups.inc.php</path>
+            <window>included</window>
         </sub>
 
         <sub>
@@ -352,6 +400,7 @@
             <name>destroy</name>
             <display>Selbstzerstörung</display>
             <path>includes/content/system/destroy.inc.php</path>
+            <window>included</window>
         </sub>
 
         <sub>
@@ -359,6 +408,7 @@
             <name>install</name>
             <display>Paketverwaltung</display>
             <path>includes/content/system/install.inc.php</path>
+            <window>included</window>
         </sub>
     </menu>
     <menu>
@@ -372,6 +422,7 @@
             <name>overview</name>
             <display>Übersicht</display>
             <path>includes/content/tools/overview.inc.php</path>
+            <window>included</window>
         </sub>
 
         <sub>
@@ -379,6 +430,7 @@
             <name>hwinfo</name>
             <display>HW Informationen</display>
             <path>includes/content/tools/hwinfo.inc.php</path>
+            <window>included</window>
         </sub>
 
         <sub>
@@ -386,6 +438,7 @@
             <name>hddinfo</name>
             <display>HDD Informationen</display>
             <path>includes/content/tools/hddinfo.inc.php</path>
+            <window>included</window>
         </sub>
 
         <sub>
@@ -393,6 +446,7 @@
             <name>ramload</name>
             <display>RAM Informationen</display>
             <path>includes/content/tools/ramload.inc.php</path>
+            <window>included</window>
         </sub>
 
         <sub>
@@ -400,6 +454,7 @@
             <name>info</name>
             <display>Sonst. Informationen</display>
             <path>includes/content/tools/info.inc.php</path>
+            <window>included</window>
         </sub>        
 
     </menu>
@@ -414,18 +469,21 @@
             <name>info</name>
             <display>Übersicht</display>
             <path>includes/content/webuser/overview.inc.php</path>
+            <window>included</window>
         </sub>   
         <sub>
             <id>2</id>
             <name>add</name>
             <display>Benutzer hinzufügen</display>
             <path>includes/content/webuser/adduser.inc.php</path>
+            <window>included</window>
         </sub>   
         <sub>
             <id>3</id>
             <name>edituser</name>
             <display>Benutzer bearbeiten</display>
             <path>includes/content/webuser/edituser.inc.php</path>
+            <window>included</window>
         </sub>                                  
     </menu>
 
@@ -440,6 +498,7 @@
             <name>plugin</name>
             <display>Keine Plugins vorhanden</display>
             <path>includes/content/plugins/overview.inc.php</path>
+            <window>included</window>
         </sub>
 
     </menu>
