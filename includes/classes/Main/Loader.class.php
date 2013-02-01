@@ -135,13 +135,11 @@ class Loader {
         $this->loadWindowType();
         if ($this->window == 'included') {
             $this->loadUserInterface();
-            $this->loadMainMenu();
-        }
-
-        $this->content .= '<div id="main">';
-        if ($this->window == 'included')
+            $this->loadMainMenu();      
+            $this->content .= '<div id="main">';
             $this->loadSideMenu();
-        $this->content .= '<div id="content">';
+            $this->content .= '<div id="content">';
+        }
         return $this->content;
     }
 

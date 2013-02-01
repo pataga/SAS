@@ -14,7 +14,8 @@
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
         <script src="js/notifications.js"></script> 
-        <script src="js/tablesorter/jquery.tablesorter.js"></script>        
+        <script src="js/tablesorter/jquery.tablesorter.js"></script>
+        <script type="text/javascript" src="https://www.google.com/jsapi"></script>       
     </head>
     <body>
         <noscript>

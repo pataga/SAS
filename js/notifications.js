@@ -17,9 +17,7 @@ function stopError(){
 }
 
 function poppy(){
-	posleft=20;
-	postop=20;
-	settings="width=785,height=480,top=" + postop + ",left=" + posleft + ",scrollbars=yes,location=no,directories=no,status=no,menubar=no,toolbar=no,resizable=yes,dependent=no";
+	settings="width=500,height=630,top=20,left=20,scrollbars=yes,location=no,directories=no,status=no,menubar=no,toolbar=no,resizable=yes,dependent=no";
 	win=window.open("?p=home&s=notification","SASNotifications",settings);
 	win.focus();
 }

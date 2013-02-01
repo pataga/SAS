@@ -379,7 +379,7 @@ Layout: Footer
 ========================================================================== */
 #footer {
     clear: right;
-    width: 960px;
+    max-width: 960px;
     margin: 5px auto;
     background: #eee;
     text-align: center;
@@ -421,6 +421,7 @@ Layout: Footer
     font-family: 'Ubuntu', Arial, Helvetica, sans-serif;
     font-size: 1em;
     font-weight: 300;
+	padding: 0 7px 0 0;
 }
 
 /* ==========================================================================

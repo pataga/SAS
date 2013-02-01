@@ -72,6 +72,7 @@ Licensed under The Apache License
 	border-radius: 1px;	
 	border-left: 4px solid #0275b2;
 	box-shadow: 0 2px 3px #bbb;
+	text-align: left !important;
 }
 
 #post .ntitel {
@@ -112,7 +113,7 @@ Licensed under The Apache License
 	font-weight: 700;
 }
 
-hr {
+hr.nf {
     display: block;
     height: 1px;
     border: 0;
