@@ -1,5 +1,5 @@
 <?php 
-$out = $server->execute('stat -c "*%n|%y" /var/log/*');
+$out = $server->execute('stat -c "*%n|%y#" /var/log/*');
 $filter = ['*','|','#'];
 $rep = ['<tr><td>','</td><td>','</tr>'];
 $put = str_replace($filter, $rep, $out);
