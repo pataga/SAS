@@ -1,6 +1,6 @@
 #!/usr/bin/ruby
 require 'logger'  
-require 'soap/rpc/standaloneServer'  
+require './lib/soap/rpc/standaloneServer'  
 
 
 
