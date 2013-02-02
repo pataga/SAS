@@ -1350,6 +1350,7 @@ Author's custom styles
     text-decoration: none;
     outline: none !important;
     color: #0b75b2;
+    vertical-align: middle;
 }
 
 .tooltip span {
