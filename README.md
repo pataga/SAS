@@ -1,81 +1,52 @@
 ![logo2]
 
-####Zur Projekt-Webseite:
-www.pataga.de
-
 ---
+
+→ **Was ist SAS? Was kann SAS? Wer sind wir? Diese und weitere Informationen hier: www.pataga.de**
 
 → **Projektarbeit von Patrick Farnkopf, Tanja Weiser und Gabriel Wanzek (PaTaGa) | 2BKI2 | WvS² Mannheim**
-
----
 
 → **Lizenziert unter der [Apache Lizenz v2.0][5]**
            
 ---
-###Online Demo:
+###Wiki
 
-> ~~**[http://46.38.238.216/SAS][2]**~~
+Anleitungen, Installation, unterstützte Distributionen, und mehr hier: [GitHub Wiki][2]
+
+---
+###Online Demo *(ohne Funktion)*:
+
+> ~~**[http://webflix.de/SAS][2]**~~
+>
 > Bald wieder verfügbar
 
-------
-###Default Web Access:
-~~~
-User:      admin
-Passwort:  geheim
-~~~
-           
 ---
 ###SAS - Dokumente:
 
 > **[SAS Dokumentation (Google Documents)][1]**
 >
 > **[SAS Notizbuch (Google Documents)][4]**
+>
+> **[SAS Präsentation: "Projektvorstellung" (Google Documents)][3]**
 
 ---
-###Projektvorstellung - Präsentation:
-
-> **[SAS Präsentation (Google Documents)][3]**
-
----
-####Anforderungen des Host Servers:
+####Anforderungen des Servers für SAS (Host):
+- Apache2.2+
 - PHP 5.4+
-- MySQL 5.5+
 - libssh2 für PHP 5.4+
+- MySQL-Server 5.5+
+- es werden **nur 32-Bit-Systeme** unterstützt (libssh2 für PHP5.4 ist noch nicht für 64-Bit-Systeme verfügbar)
 - mind. 250 MB Speicherplatz
-- PHP-Memory Limit:  mind. 64 MB. 
-
+- PHP-Memory Limit:  mind. 64 MB.
 ---
 
-####Anforderungen des fernsteuerbaren Server:
-
-Getestete Distributionen:
-- Ubuntu Server 12.04 - 64-Bit
-- Ubuntu 12.10 Desktop 32 & 64-Bit
-- Ubuntu 12.04.1 LTS Desktop - 32 & 64-Bit
-- Backtrack5 R3 Desktop - 32-Bit
-- Lubuntu 12.04 Desktop - 64-Bit
-- Debian-6.0.6-i386 (noch nicht ausführlich getestet!)
-
-_diese Distributionen wurden im Rahmen der Entwicklung verwendet_
-
-#####Empfohlene und bisher getestete Server-Distributionen:
-- Ubuntu Server 12.04.1 LTS - 64-Bit ([Download][7])
-
-#####erforderliche (zusätzliche) Pakete:
-- <code>apache2, apache2-doc, apache2-utils, apache2.2-bin</code>
-- <code>mysql-server, mysql-server-5.5 ,mysql-server-core</code>
-- <code>lynx, lynx-cur</code>
-- <code>openssh, openssh-server</code>
-- <code>php5, php5-common, php5-mysql</code>
-- <code>proftpd</code>
-- <code>zip, unzip, unrar</code>
-- <code>apt, bash, hostname</code>
+Es können alle Ubuntu-basierenden (12.04+) Distributionen per SSH oder über SOAP (Ruby-Daemon) ferngesteuert werden
 
 [1]: http://goo.gl/dTrur
 [2]: #
 [3]: http://goo.gl/8UqKr
 [4]: http://goo.gl/OZT5x
 [5]: http://www.apache.org/licenses/LICENSE-2.0.html
-[7]: http://releases.ubuntu.com/precise/ubuntu-12.04.1-server-amd64.iso
+[6]: https://github.com/pataga/SAS/wiki
 [logo2]: http://mangopix.de/local_images/sas-logo2.png
 
