@@ -22,13 +22,6 @@ Schriftarten
 }
 
 @font-face {
-    font-family: 'Ubuntu Light';
-    font-style: normal;
-    font-weight: 300;
-    src: local('Ubuntu Light'), local('Ubuntu-Light'), url(fonts/ubuntu-300.woff) format('woff');
-}
-
-@font-face {
     font-family: 'Ubuntu';
     font-style: normal;
     font-weight: 400;
@@ -40,6 +33,13 @@ Schriftarten
     font-style: normal;
     font-weight: 700;
     src: local('Ubuntu Bold'), url(fonts/ubuntu-700.woff) format('woff');
+}
+
+@font-face {
+    font-family: 'Ubuntu Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Ubuntu Mono'), local('UbuntuMono-Regular'), url(fonts/ubuntu-mono.woff) format('woff');
 }
 
 /* ==========================================================================
@@ -567,6 +567,18 @@ ul.square {
     list-style-type: square;
 }
 
+ul.log {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul.log li {
+    border-bottom: 1px solid #ccc;
+    font-family: "Ubuntu Mono", monospace;
+    font-size: 1.0em;
+}
+
 sup {
     position: relative;
     top: 1px;
@@ -575,14 +587,8 @@ sup {
 }
 
 code {
-    padding: 5px;
-    font-family: Consolas, "Courier New", Courier, monospace;
-    font-size: 1.0em;
-}
-
-code.simple {
     padding: 0;
-    font-family: Consolas, "Courier New", Courier, monospace;
+    font-family: "Ubuntu Mono", monospace;
     font-size: 1.0em;
 }
 
@@ -594,8 +600,8 @@ code.fancy {
     box-shadow: inset 0 0 7px rgba(0, 0, 0, 0.2);
     padding: 5px;
     border: 1px solid #ddd;
-    font-family: Consolas, "Courier New", Courier, monospace;
-    font-size: 1em;
+    font-family: "Ubuntu Mono", monospace;
+    font-size: 1.0em;
 }
 
 pre {
@@ -612,8 +618,8 @@ pre {
     border-radius: 3px;
     box-shadow: inset 0 0 7px rgba(0, 0, 0, 0.2);
     border: 1px solid #ddd;
-    font-family: Consolas, "Courier New", Courier, monospace;
-    font-size: 1em;
+    font-family: "Ubuntu Mono", monospace;
+    font-size: 1.0em;
 }
 
 pre.simple {
@@ -622,8 +628,8 @@ pre.simple {
     white-space: pre-wrap;
     white-space: -o-pre-wrap;
     word-wrap: break-word;
-    font-family: Consolas, "Courier New", Courier, monospace;
-    font-size: 1em;
+    font-family: "Ubuntu Mono", monospace;
+    font-size: 1.0em;
     border: none;
     box-shadow: none;
     background: none;
@@ -839,7 +845,7 @@ Template-Features [Forms und so ...]
 
 #main fieldset textarea#console {
     background: #000;
-    font: 12px Courier, monospace;
+    font: 1em "Ubuntu Mono", monospace;
     color: #fff;
     padding: 5px 7px;
     width: 630px;
@@ -856,7 +862,7 @@ Template-Features [Forms und so ...]
 
 #main fieldset .a2_module {
     background: #fff;
-    font: 12px Courier, monospace;
+    font: 1em "Ubuntu Mono", monospace;
     color: #000;
     padding: 5px 7px;
     width: 340px;
@@ -872,7 +878,7 @@ Template-Features [Forms und so ...]
 
 #main fieldset .listbox {
     background: #fff;
-    font: 12px Couriehr, monospace;
+    font: 1em "Ubuntu Mono", monospace;
     color: #000;
     padding: 5px 7px;
     width: 250px;
@@ -889,7 +895,7 @@ Template-Features [Forms und so ...]
 
 #main fieldset .a2_module_big {
     background: #fff;
-    font: 12px Courier, monospace;
+    font: 1em "Ubuntu Mono", monospace;
     color: #000;
     padding: 5px 7px;
     float: left;
@@ -922,7 +928,7 @@ Template-Features [Forms und so ...]
 
 #main fieldset textarea#phpinfotxt {
     background: #fff;
-    font: 12px Courier, monospace;
+    font: 1em "Ubuntu Mono", monospace;
     color: #000;
     padding: 5px 7px;
     width: 770px;
@@ -1553,7 +1559,8 @@ iframe.phpinfo {
 .spoiler_div.console {
     background-color: #222;
     color: #fff;
-    font-family: Consolas, "Courier New", Courier, monospace;
+    font-family: "Ubuntu Mono", monospace;
+    font-size: 1.0em;
 }
 
 span.show_hide {
@@ -1604,7 +1611,7 @@ span.show_hide {
     cursor: pointer;
     border-bottom: none;
     margin-right: 10px;
-    font-size: 0.9em;
+    font-size: 1.0em;
     font-weight: bold;
     color: #fff;
 }
