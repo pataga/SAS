@@ -337,14 +337,20 @@
             <path>includes/content/logs/overview.inc.php</path>
             <window>included</window>
         </sub>
-
         <sub>
             <id>2</id>
             <name>watch</name>
             <display>Betrachten</display>
             <path>includes/content/logs/watch.inc.php</path>
             <window>included</window>
-        </sub>   
+        </sub>
+        <sub>
+            <id>3</id>
+            <name>test</name>
+            <display>Test: Auth.log</display>
+            <path>includes/content/logs/test.inc.php</path>
+            <window>included</window>
+        </sub>
     </menu>
     <menu>
         <id>7</id>

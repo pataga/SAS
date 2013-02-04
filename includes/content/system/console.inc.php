@@ -16,8 +16,7 @@
 if (isset($_POST['output']))
     $output = $_POST['output'];
 else {
-    $host = $server->execute("hostname -s");
-    $output = "root@".str_replace("\n", "", $host).":";
+    $output = "root@server:";
 }
     
 
