@@ -577,6 +577,7 @@ ul.log li {
     border-bottom: 1px solid #ccc;
     font-family: "Ubuntu Mono", monospace;
     font-size: 1.0em;
+    line-height: 1.7;
 }
 
 sup {
@@ -729,7 +730,7 @@ Template-Features [Forms und so ...]
 #main table.s th:hover {
     background: #BCE7FF;
     cursor: pointer;
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 #main table.s th .action a {
@@ -740,6 +741,31 @@ Template-Features [Forms und so ...]
 
 #main table.s th:after {
     content: " \2195";
+}
+
+/*** --- Unsichtbare Tabelle --- ***/
+
+#main table.inv {
+    border:none;
+    background: none;
+    max-width: 745px;
+}
+
+#main table.inv tr td {
+    border:none;
+    background: none;
+    padding: 0 20px;
+    height: 29px;
+    line-height: 1.5;
+}
+
+#main table.inv tr th {
+    background: none;
+    padding: 0 20px;
+    height: 29px;
+    line-height: 1.5;
+    border:none;
+    font-weight: 700;
 }
 
 /*** --- Formulare --- ***/

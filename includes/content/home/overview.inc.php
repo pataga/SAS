@@ -64,15 +64,21 @@ $userswholi = str_replace(" ", ", ", $userswho);
                 upservtime(); <?php // aktualisiert die Uptime ständig neu. ?>
             </script>    
             <tr>
-                <td>Letzter Bootvorgang:</td>
-                <td><?php echo $bootdate ?></td>
+                <td>Systemstart:</td>
+                <td><?php echo date("d.m.Y - H:i", strtotime($bootdate))." Uhr"; ?></td>
             </tr>
             <tr class="odd">
                 <td>Eingeloggte User:</td>
                 <td><?php echo $userswholi ?></td>
             </tr>
             <tr>
-                <td>Load:</td>
+                <td>Load:  <a href="#" class="tooltip">Info
+                    <span><b>Was ist das?</b><br>
+                        1. Wert: letzte Minute<br>
+                        2. Wert: letzten 5 Min.<br>
+                        3. Wert: letzte 15 Min.
+                    </span></a>
+                </td>
                 <td><?php echo $serverload; ?></td>
             </tr>
         </table>

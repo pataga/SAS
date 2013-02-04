@@ -351,7 +351,7 @@ drwxrwxrwx  8 root    root    4096 Jan 18  2011 sqlbuddy/
             <option>Select tree</option>
         </select>
         <br><br>
-        <i>Mehrere mit SHIFT auswählen</i><br>
+        <i>Mehrere mit Strg/Ctrl auswählen</i><br>
         <select size="5" class="multi" multiple>
             <option>Select items here here</option>
             <option>Select items here here</option>
