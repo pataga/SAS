@@ -7,22 +7,20 @@
 * @copyright Copyright 2012-2013 Patrick Farnkopf, Tanja Weiser, Gabriel Wanzek (PaTaGa)
 * @link https://github.com/pataga/SAS
 * @since SAS v1.0.0
-* @license Apache License v2 (http://www.apache.org/licenses/LICENSE-2.0.txt
+* @license Apache License v2 (http://www.apache.org/licenses/LICENSE-2.0.txt)
 * @author Patrick Farnkopf
 *
 */
 
+namespace Classes;
 class Main {
 
-    private $mysql_data,$mysql,$db,$result,$server,$ssh,$user,$tableaction,$loader,$logFile,$debugLevel,$session;
+    private $mysql,$db,$result,$server,$ssh,$user,$tableaction,$loader,$session;
 
-    public function __construct($data=false, $debugLevel=2, $logFile='error.log') {
-        $this->debugLevel = $debugLevel;
-        $this->logFile = $logFile;
-        if (!$data) {
-            throw new Main\Exception("Fehler in ./includes/config/config.mysql.php");
+    public function __construct() {
+        if (!file_exists('./includes/Config/MySQL.conf.php')) {
+            throw new \Classes\Main\Exception("Fehler in ./includes/Config/MySQL.conf.php");
         } else {
-            $this->mysql_data = $data;
             $this->initialisizeInstances();
         }
     }
@@ -33,46 +31,44 @@ class Main {
      */
     private function initialisizeInstances() {
         try {
-            $this->debug = new \Main\Debug($this->debugLevel, $this->logFile);
-        } catch (Main\Exception $e) {
-            throw new Main\Exception($e->getMessage());
+            $this->debug = new \Classes\Main\Debug();
+        } catch (\Classes\Main\Exception $e) {
+            throw new \Classes\Main\Exception($e->getMessage());
         }
 
         try {
-            $this->mysql = new \MySQL($this,$this->mysql_data[0], 
-            $this->mysql_data[1], $this->mysql_data[2], 
-            $this->mysql_data[3], $this->mysql_data[4]);    
-        } catch (Main\Exception $e) {
+            $this->mysql = new \Classes\MySQL($this);    
+        } catch (\Classes\Main\Exception $e) {
             $this->debug->error($e);
         }
 
         try {
-            $this->session = new \Session($this);
-        } catch (Main\Exception $e) {
+            $this->session = new \Classes\Session($this);
+        } catch (\Classes\Main\Exception $e) {
             $this->debug->error($e);
         }
 
         try {
-            $this->loader = new \Main\Loader($this);
-        } catch (Main\Exception $e) {
+            $this->loader = new \Classes\Main\Loader($this);
+        } catch (\Classes\Main\Exception $e) {
             $this->debug->error($e);
         }
 
         try {
-            $this->server = new \Server($this);
-        } catch (Main\Exception $e) {
+            $this->server = new \Classes\Server($this);
+        } catch (\Classes\Main\Exception $e) {
             $this->debug->error($e);
         }
 
         try {
-            $this->database = new \MySQL\Database($this);
-        } catch (Main\Exception $e) {
+            $this->database = new \Classes\MySQL\Database($this);
+        } catch (\Classes\Main\Exception $e) {
             $this->debug->error($e);
         }
 
         try {
-            $this->cache = new \Cache($this);
-        } catch (Main\Exception $e) {
+            $this->cache = new \Classes\Cache($this);
+        } catch (\Classes\Main\Exception $e) {
             $this->debug->error($e);
         }
 
@@ -89,13 +85,13 @@ class Main {
                 $this->server->setID($this->session->getServerId());
                 $data = $this->server->getServerData();
                 if (!is_array($data))
-                    throw new Main\Exception("unable to find data of ssh daemon in Main::setSSHInstance()", 1);
+                    throw new \Classes\Main\Exception("unable to find data of ssh daemon in Main::setSSHInstance()", 1);
 
-                return new \SSH($this,$data[0],22,$data[1],$data[2]);
+                return new \Classes\SSH($this,$data[0],22,$data[1],$data[2]);
             } else {
                 return NULL;
             }
-        } catch (Main\Exception $e) {
+        } catch (\Classes\Main\Exception $e) {
             $this->debug->error($e);
         }
     }
@@ -114,13 +110,13 @@ class Main {
     public static function printLoadTime($startTime, $endTime) {
         try {
             if (!is_float($startTime) || !is_float($endTime)) {
-                throw new Main\Exception('', 5);
+                throw new \Classes\Main\Exception('', 5);
             } else {
                 $totalTime = $endTime - $startTime;
                 $outStr = sprintf('<p class="loadtime">Seite wurde in %s Sekunden generiert</p>',round($totalTime,3));
                 print($outStr);
             }
-        } catch (Main\Exception $e) {
+        } catch (\Classes\Main\Exception $e) {
             //$this->debug->logInfo('Fehler beim Berechnen der Ladezeit');
         }
     }

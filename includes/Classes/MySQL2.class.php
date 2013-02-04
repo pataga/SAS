@@ -13,7 +13,7 @@
 */
 
 namespace Classes;
-class MySQL2 extends PDO implements Config\MySQL {
+class MySQL2 extends PDO implements \Config\MySQL {
     public function __construct($data = false) {
         if (!$data) {
             $dsn = 'mysql:dbname='.\Config\MySQL::DATABASE.';host='.\Config\MySQL::HOST_ADDRESS;

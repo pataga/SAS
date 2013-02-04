@@ -12,7 +12,7 @@
 *
 */
 
-namespace Server;
+namespace Classes\Server;
 class Exception extends \Exception {
 }
 

@@ -12,14 +12,12 @@
 *
 */
 
-namespace Main;
-class Debug {
+namespace Classes\Main;
+class Debug implements \Config\System {
 
-	private $loglevel, $logfile, $errorCount, $errors;
+	private $errorCount, $errors;
 
-	public function __construct($loglevel=2, $logfile='error.log') {
-		$this->loglevel = $loglevel;
-		$this->logfile = $logfile;
+	public function __construct() {
 		$this->errorCount = 0;
 		$this->errors = '';
 	}
@@ -27,15 +25,15 @@ class Debug {
 	public function error($exception) {
 		$msg = $exception->getMessage();
 
-		switch ($this->loglevel) {
+		switch (\Config\System::SYSTEM_DEBUG_LEVEL) {
 			case 0: break;
 			case 1: 
 				try {
 					$file;
-					if (!($file = fopen($this->logfile, 'a+'))) throw new Exception("error.log konnte nicht ge&ouml;ffnet werden. Permission denied", 1);
+					if (!($file = fopen(\Config\System::SYSTEM_LOG_FILE, 'a+'))) throw new Exception("error.log konnte nicht ge&ouml;ffnet werden. Permission denied", 1);
 					fputs($file, "[ERROR] ".$msg."\n");
 					fclose($file);
-			    } catch (Exception $e) {
+			    } catch (\Exception $e) {
 				$this->errors .= sprintf("[ERROR] error.log konnte nicht ge&ouml;ffnet werden. Permission denied\n");
 				$this->errorCount++;
 			}
@@ -44,12 +42,12 @@ class Debug {
 			case 2: 
 				try {
 					$file;
-					if (!($file = fopen($this->logfile, 'a+'))) throw new Exception("error.log konnte nicht ge&ouml;ffnet werden. Permission denied", 1);
+					if (!($file = fopen(\Config\System::SYSTEM_LOG_FILE, 'a+'))) throw new Exception("error.log konnte nicht ge&ouml;ffnet werden. Permission denied", 1);
 					fputs($file, "[ERROR] ".$msg."\n");
 					fclose($file);
 					$this->errors .= sprintf("[ERROR] %s\n",$msg);
 					$this->errorCount++;
-				} catch (Exception $e) {
+				} catch (\Exception $e) {
 					$this->errors .= sprintf("[ERROR] error.log konnte nicht ge&ouml;ffnet werden. Permission denied\n");
 					$this->errorCount++;
 				}

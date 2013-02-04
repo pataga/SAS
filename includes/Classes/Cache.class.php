@@ -7,12 +7,12 @@
 * @copyright Copyright 2012-2013 Patrick Farnkopf, Tanja Weiser, Gabriel Wanzek (PaTaGa)
 * @link https://github.com/pataga/SAS
 * @since SAS v1.0.0
-* @license Apache License v2 (http://www.apache.org/licenses/LICENSE-2.0.txt
+* @license Apache License v2 (http://www.apache.org/licenses/LICENSE-2.0.txt)
 * @author Patrick Farnkopf
 *
 */
 
-
+namespace Classes;
 class Cache {
 	
 	private $cache='';
@@ -33,11 +33,11 @@ class Cache {
 	static function loadTop() {
 		try {
 			ob_start();
-			require_once 'includes/content/main/top.inc.php';
+			require_once 'includes/Content/main/top.inc.php';
 			$content = ob_get_contents();
 			ob_end_clean(); 
 			return $content;
-		} catch (\Exception\MException $e) {
+		} catch (\Exception $e) {
 			$this->main->getDebugInstance()->error($e);
 			return '';
 		}
@@ -46,11 +46,11 @@ class Cache {
 	static function loadFooter() {
 		try {
 			ob_start();
-			require_once 'includes/content/main/footer.inc.php';
+			require_once 'includes/Content/main/footer.inc.php';
 			$content = ob_get_contents();
 			ob_end_clean();
 			return $content;
-		} catch (\Exception\MException $e) {
+		} catch (\Exception $e) {
 			$this->main->getDebugInstance()->error($e);
 			return '';
 		}

@@ -12,24 +12,35 @@
 *
 */
 
-
-class MySQL {
+namespace Classes;
+class MySQL implements \Config\MySQL {
 
     private $mysql_host,$mysql_port,$mysql_user,$mysql_pass,$mysql_db,$result,$con_res,$mode;
 
-    public function __construct($main, $host, $port, $user, $pass, $db=false) {
-        $this->mysql_host = $host;
-        $this->mysql_port = $port;
-        $this->mysql_user = $user;
-        $this->mysql_pass = $pass;
-
+    public function __construct($main, $data = false) {
+        if (!$data) {
+            $this->mysql_host = \Config\MySQL::HOST_ADDRESS;
+            $this->mysql_port = \Config\MySQL::HOST_PORT;
+            $this->mysql_user = \Config\MySQL::USERNAME;
+            $this->mysql_pass = \Config\MySQL::PASSWORD;
+        } else {
+            $this->mysql_host = $data[0];
+            $this->mysql_port = $data[1];
+            $this->mysql_user = $data[2];
+            $this->mysql_pass = $data[3];
+        }
+        
         try {
             $this->connect();
-        } catch (\MySQL\Exception $e) {
+        } catch (\Classes\MySQL\Exception $e) {
             $this->main->Debug()->error($e);
         }
         
-        if ($db) $this->selectDB($db);
+        if ($data[4]) {
+            $this->selectDB($db);
+        } elseif (!$data) {
+            $this->selectDB(\Config\MySQL::DATABASE);
+        }
     }
 
 
@@ -49,7 +60,7 @@ class MySQL {
     */
     public function selectDB($db) {
         if (!($this->database_res = mysql_select_db($db, $this->con_res))) {
-            throw new \MySQL\Exception("Fehler beim Verbinden der Datenbank ". mysql_error());
+            throw new \Classes\MySQL\Exception("Fehler beim Verbinden der Datenbank ". mysql_error());
         } else {
             $this->mysql_db = $db;
         }
@@ -66,7 +77,7 @@ class MySQL {
             return false;
         } else {
             $this->result = $result;
-            return new \MySQL\Result($this->result);
+            return new \Classes\MySQL\Result($this->result);
         }
     }
 
@@ -96,7 +107,7 @@ class MySQL {
     */
     public function createDatabase($db) {
         if (!$this->con_res) {
-            throw new \MySQL\Exception("Keine Verbindung zum MySQL Server".mysql_error());
+            throw new \Classes\MySQL\Exception("Keine Verbindung zum MySQL Server".mysql_error());
         } else {
             $this->Query("CREATE DATABASE $db");
             return true;
@@ -110,7 +121,7 @@ class MySQL {
     *   @return TableAction
     */
     public function tableAction($table) {
-        return new \MySQL\TableAction($this, $table);
+        return new \Classes\MySQL\TableAction($this, $table);
     }
 }
 

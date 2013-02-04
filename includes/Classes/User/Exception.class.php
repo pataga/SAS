@@ -12,7 +12,7 @@
 *
 */
 
-namespace User;
+namespace Classes\User;
 class Exception extends \Exception {
 }
 

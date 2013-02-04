@@ -12,6 +12,7 @@
 *
 */
 
-class XML extends XMLReader{}
+namespace Classes;
+class XML extends \XMLReader{}
 
 ?>

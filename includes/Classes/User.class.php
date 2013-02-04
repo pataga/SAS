@@ -12,12 +12,12 @@
 *
 */
 
-
+namespace Classes;
 class User {
     //Objects
-    private $db = NULL, $session = NULL, $uTable = NULL;
+    private $db, $session, $uTable;
     //User Data
-    private $id=0, $name=NULL, $email=NULL, $admin=NULL, $self=true, $password=NULL;
+    private $id=0, $name, $email, $admin, $self, $password;
 
     /**
      * Initialisiert Instanzvariablen

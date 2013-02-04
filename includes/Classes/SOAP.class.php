@@ -12,6 +12,7 @@
 *
 */
 
+namespace Classes;
 class SOAP {
     private $server,$key,$soap;
 
@@ -30,13 +31,13 @@ class SOAP {
         $this->server = $s;
         $this->key = $s->getSoapKey();
         try {
-            $this->soap = new SoapClient(NULL,[
+            $this->soap = new \SoapClient(NULL,[
                         'location'  =>    'http://'.$s->getAddress().':'.$s->getSoapPort().'',
                         'uri'       =>    'urn:SASSoap',
                         'style'     =>     SOAP_RPC,
                         'use'       =>     SOAP_ENCODED 
                     ]);
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             $this->soap = false;
         }
     }

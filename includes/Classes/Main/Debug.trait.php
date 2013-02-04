@@ -12,7 +12,7 @@
 *
 */
 
-namespace Main;
+namespace Classes\Main;
 
 trait Debug {
 

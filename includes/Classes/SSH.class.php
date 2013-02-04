@@ -7,12 +7,12 @@
 * @copyright Copyright 2012-2013 Patrick Farnkopf, Tanja Weiser, Gabriel Wanzek (PaTaGa)
 * @link https://github.com/pataga/SAS
 * @since SAS v1.0.0
-* @license Apache License v2 (http://www.apache.org/licenses/LICENSE-2.0.txt
+* @license Apache License v2 (http://www.apache.org/licenses/LICENSE-2.0.txt)
 * @author Patrick Farnkopf
 *
 */
 
-
+namespace Classes;
 class SSH {
 
     private $host,$port,$user,$pass,$connection,$out,$con;
@@ -48,10 +48,10 @@ class SSH {
         if ($this->con) return true;
         try {
             if (!($this->connection = ssh2_connect($this->host, $this->port)))
-                throw new \SSH\Exception('SSH Connection failed');
+                throw new \Classes\SSH\Exception('SSH Connection failed');
             if (!ssh2_auth_password($this->connection, $this->user, $this->pass))
-                throw new \SSH\Exception('SSH Autentication failed');
-        } catch (\SSH\Exception $e) {
+                throw new \Classes\SSH\Exception('SSH Autentication failed');
+        } catch (\Classes\SSH\Exception $e) {
             $this->con = false;
             return false;
         }
@@ -77,7 +77,7 @@ class SSH {
         }
         $output = '';
         if (!($os = ssh2_exec($this->connection, $command, "bash")))
-            throw new \SSH\Exception('SSH command failed');
+            throw new \Classes\SSH\Exception('SSH command failed');
 
         stream_set_blocking($os, true);
         $data = array();

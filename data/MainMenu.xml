@@ -4,7 +4,7 @@
         <id>1</id>
         <name>home</name>
         <display>Home</display>
-        <default>includes/content/home/overview.inc.php</default>
+        <default>includes/Content/home/overview.inc.php</default>
 
         <!-- SUBS -->
 
@@ -12,7 +12,7 @@
             <id>1</id>
             <name>overview</name>
             <display>Übersicht</display>
-            <path>includes/content/home/overview.inc.php</path>
+            <path>includes/Content/home/overview.inc.php</path>
             <window>included</window>
         </sub>
 
@@ -20,7 +20,7 @@
             <id>2</id>
             <name>qp</name>
             <display>Quickpanel</display>
-            <path>includes/content/home/qp.inc.php</path>
+            <path>includes/Content/home/qp.inc.php</path>
             <window>included</window>
         </sub>
 
@@ -28,7 +28,7 @@
             <id>3</id>
             <name>about</name>
             <display>Über SAS</display>
-            <path>includes/content/home/about.inc.php</path>
+            <path>includes/Content/home/about.inc.php</path>
             <window>included</window>
         </sub>
 
@@ -36,7 +36,7 @@
             <id>4</id>
             <name>doku</name>
             <display>SAS-Dokumentation</display>
-            <path>includes/content/home/doku.inc.php</path>
+            <path>includes/Content/home/doku.inc.php</path>
             <window>included</window>
         </sub>
 
@@ -44,7 +44,7 @@
             <id>5</id>
             <name>repo</name>
             <display>SAS-Repository</display>
-            <path>includes/content/home/repo.inc.php</path>
+            <path>includes/Content/home/repo.inc.php</path>
             <window>included</window>
         </sub>
 
@@ -52,7 +52,7 @@
             <id>6</id>
             <name>cssinfo</name>
             <display>DEV: CSS-Info</display>
-            <path>includes/content/sas-dev/styles.inc.php</path>
+            <path>includes/Content/sas-dev/styles.inc.php</path>
             <window>included</window>
         </sub>
 
@@ -60,7 +60,7 @@
             <id>7</id>
             <name>modulestatus</name>
             <display>DEV: Module-Status</display>
-            <path>includes/content/sas-dev/module.inc.php</path>
+            <path>includes/Content/sas-dev/module.inc.php</path>
             <window>included</window>
         </sub>
 
@@ -68,7 +68,7 @@
             <id>8</id>
             <name>notification</name>
             <display></display>
-            <path>includes/content/main/notification.inc.php</path>
+            <path>includes/Content/main/notification.inc.php</path>
             <window>seperated</window>
         </sub>
     </menu>
@@ -79,7 +79,7 @@
         <id>2</id>
         <name>apache</name>
         <display>Apache</display>
-        <default>includes/content/apache/overview.inc.php</default>
+        <default>includes/Content/apache/overview.inc.php</default>
 
         <!-- SUBS -->
 
@@ -87,7 +87,7 @@
             <id>1</id>
             <name>overview</name>
             <display>Übersicht</display>
-            <path>includes/content/apache/overview.inc.php</path>
+            <path>includes/Content/apache/overview.inc.php</path>
             <window>included</window>
         </sub>
 
@@ -95,7 +95,7 @@
             <id>2</id>            
             <name>config</name>
             <display>Konfiguration</display>
-            <path>includes/content/apache/config.inc.php</path>
+            <path>includes/Content/apache/config.inc.php</path>
             <window>included</window>
         </sub>
 
@@ -103,7 +103,7 @@
             <id>3</id>
             <name>control</name>
             <display>Steuerung</display>
-            <path>includes/content/apache/control.inc.php</path>
+            <path>includes/Content/apache/control.inc.php</path>
             <window>included</window>
         </sub>
 
@@ -111,7 +111,7 @@
             <id>4</id>
             <name>vhosts</name>
             <display>Virtuelle Hosts</display>
-            <path>includes/content/apache/vhosts.inc.php</path>
+            <path>includes/Content/apache/vhosts.inc.php</path>
             <window>included</window>
         </sub>
 
@@ -119,7 +119,7 @@
             <id>5</id>
             <name>modules</name>
             <display>Module</display>
-            <path>includes/content/apache/module.inc.php</path>
+            <path>includes/Content/apache/module.inc.php</path>
             <window>included</window>
         </sub>
 
@@ -127,7 +127,7 @@
             <id>6</id>
             <name>php</name>
             <display>PHP</display>
-            <path>includes/content/apache/phpsetup.inc.php</path>
+            <path>includes/Content/apache/phpsetup.inc.php</path>
             <window>included</window>
         </sub>
 
@@ -135,7 +135,7 @@
             <id>7</id>
             <name>phpinfo</name>
             <display>PHP-Informationen</display>
-            <path>includes/content/apache/pi.inc.php</path>
+            <path>includes/Content/apache/pi.inc.php</path>
             <window>included</window>
         </sub>
 
@@ -143,7 +143,7 @@
             <id>8</id>
             <name>stats</name>
             <display>Statistiken</display>
-            <path>includes/content/apache/stats.inc.php</path>
+            <path>includes/Content/apache/stats.inc.php</path>
             <window>included</window>
         </sub>
     </menu>
@@ -156,7 +156,7 @@
         <id>3</id>
         <name>ftp</name>
         <display>ProFTPD</display>
-        <default>includes/content/ftp/overview.inc.php</default>
+        <default>includes/Content/ftp/overview.inc.php</default>
         
         <!-- SUBS -->
 
@@ -164,7 +164,7 @@
             <id>1</id>
             <name>overview</name>
             <display>Übersicht</display>
-            <path>includes/content/ftp/overview.inc.php</path>
+            <path>includes/Content/ftp/overview.inc.php</path>
             <window>included</window>
         </sub>
 
@@ -172,7 +172,7 @@
             <id>2</id>
             <name>config</name>
             <display>Konfiguration</display>
-            <path>includes/content/ftp/config.inc.php</path>
+            <path>includes/Content/ftp/config.inc.php</path>
             <window>included</window>
         </sub>
 
@@ -180,7 +180,7 @@
             <id>3</id>
             <name>control</name>
             <display>Steuerung</display>
-            <path>includes/content/ftp/control.inc.php</path>
+            <path>includes/Content/ftp/control.inc.php</path>
             <window>included</window>
         </sub>
 
@@ -188,7 +188,7 @@
             <id>4</id>
             <name>directories</name>
             <display>Verzeichnisse</display>
-            <path>includes/content/ftp/directories.inc.php</path>
+            <path>includes/Content/ftp/directories.inc.php</path>
             <window>included</window>
         </sub>
 
@@ -196,7 +196,7 @@
             <id>5</id>
             <name>stats</name>
             <display>Statistiken</display>
-            <path>includes/content/ftp/module.inc.php</path>
+            <path>includes/Content/ftp/module.inc.php</path>
             <window>included</window>
         </sub>
  
@@ -205,7 +205,7 @@
         <id>4</id>
         <name>mysql</name>
         <display>MySQL</display>
-        <default>includes/content/mysql/overview.inc.php</default>
+        <default>includes/Content/mysql/overview.inc.php</default>
         
         <!-- SUBS -->
         
@@ -213,7 +213,7 @@
             <id>1</id>
             <name>overview</name>
             <display>Übersicht</display>
-            <path>includes/content/mysql/overview.inc.php</path>
+            <path>includes/Content/mysql/overview.inc.php</path>
             <window>included</window>
         </sub>
 
@@ -221,7 +221,7 @@
             <id>2</id>
             <name>adduser</name>
             <display>Benutzer anlegen</display>
-            <path>includes/content/mysql/useradd.inc.php</path>
+            <path>includes/Content/mysql/useradd.inc.php</path>
             <window>included</window>
         </sub>
 
@@ -229,7 +229,7 @@
             <id>3</id>
             <name>control</name>
             <display>Steuerung</display>
-            <path>includes/content/mysql/control.inc.php</path>
+            <path>includes/Content/mysql/control.inc.php</path>
             <window>included</window>
         </sub>
 
@@ -237,7 +237,7 @@
             <id>4</id>
             <name>configure</name>
             <display>Einrichtung</display>
-            <path>includes/content/mysql/configure.inc.php</path>
+            <path>includes/Content/mysql/configure.inc.php</path>
             <window>included</window>
         </sub>
 
@@ -245,7 +245,7 @@
             <id>5</id>
             <name>db</name>
             <display>Datenbank Verwaltung</display>
-            <path>includes/content/mysql/db.inc.php</path>
+            <path>includes/Content/mysql/db.inc.php</path>
             <window>included</window>
         </sub>
 
@@ -253,7 +253,7 @@
             <id>6</id>
             <name>modules</name>
             <display>Module</display>
-            <path>includes/content/mysql/module.inc.php</path>
+            <path>includes/Content/mysql/module.inc.php</path>
             <window>included</window>
         </sub> 
 
@@ -261,7 +261,7 @@
             <id>7</id>
             <name>impexp</name>
             <display>Importieren/Exportieren</display>
-            <path>includes/content/mysql/impexp.inc.php</path>
+            <path>includes/Content/mysql/impexp.inc.php</path>
             <window>included</window>
         </sub>
     </menu>
@@ -269,7 +269,7 @@
         <id>5</id>
         <name>samba</name>
         <display>Samba</display>
-        <default>includes/content/samba/overview.inc.php</default>
+        <default>includes/Content/samba/overview.inc.php</default>
         
         <!-- SUBS -->
         
@@ -277,7 +277,7 @@
             <id>1</id>
             <name>overview</name>
             <display>Übersicht</display>
-            <path>includes/content/samba/overview.inc.php</path>
+            <path>includes/Content/samba/overview.inc.php</path>
             <window>included</window>
         </sub>
 
@@ -285,7 +285,7 @@
             <id>2</id>
             <name>shares</name>
             <display>Freigaben</display>
-            <path>includes/content/samba/shares.inc.php</path>
+            <path>includes/Content/samba/shares.inc.php</path>
             <window>included</window>
         </sub>
 
@@ -293,7 +293,7 @@
             <id>3</id>
             <name>config</name>
             <display>Konfiguration</display>
-            <path>includes/content/samba/config.inc.php</path>
+            <path>includes/Content/samba/config.inc.php</path>
             <window>included</window>
         </sub>
 
@@ -301,7 +301,7 @@
             <id>4</id>
             <name>control</name>
             <display>Steuerung</display>
-            <path>includes/content/samba/control.inc.php</path>
+            <path>includes/Content/samba/control.inc.php</path>
             <window>included</window>
         </sub>
 
@@ -309,7 +309,7 @@
             <id>5</id>
             <name>users</name>
             <display>Benutzer</display>
-            <path>includes/content/samba/users.inc.php</path>
+            <path>includes/Content/samba/users.inc.php</path>
             <window>included</window>
         </sub>
 
@@ -317,7 +317,7 @@
             <id>6</id>
             <name>install</name>
             <display></display>
-            <path>includes/content/samba/install.inc.php</path>
+            <path>includes/Content/samba/install.inc.php</path>
             <window>included</window>
         </sub>
     </menu>
@@ -326,7 +326,7 @@
         <id>6</id>
         <name>logs</name>
         <display>Logs</display>
-        <default>includes/content/logs/overview.inc.php</default>
+        <default>includes/Content/logs/overview.inc.php</default>
 
         <!-- SUBS -->
         
@@ -334,21 +334,21 @@
             <id>1</id>
             <name>overview</name>
             <display>Übersicht</display>
-            <path>includes/content/logs/overview.inc.php</path>
+            <path>includes/Content/logs/overview.inc.php</path>
             <window>included</window>
         </sub>
         <sub>
             <id>2</id>
             <name>watch</name>
             <display>Betrachten</display>
-            <path>includes/content/logs/watch.inc.php</path>
+            <path>includes/Content/logs/watch.inc.php</path>
             <window>included</window>
         </sub>
         <sub>
             <id>3</id>
             <name>test</name>
             <display>Test: Auth.log</display>
-            <path>includes/content/logs/test.inc.php</path>
+            <path>includes/Content/logs/test.inc.php</path>
             <window>included</window>
         </sub>
     </menu>
@@ -356,7 +356,7 @@
         <id>7</id>
         <name>system</name>
         <display>System</display>
-        <default>includes/content/system/overview.inc.php</default>
+        <default>includes/Content/system/overview.inc.php</default>
         
         <!-- SUBS -->
         
@@ -364,7 +364,7 @@
             <id>1</id>
             <name>overview</name>
             <display>Übersicht</display>
-            <path>includes/content/system/overview.inc.php</path>
+            <path>includes/Content/system/overview.inc.php</path>
             <window>included</window>
         </sub>
 
@@ -372,7 +372,7 @@
             <id>2</id>
             <name>console</name>
             <display>Konsole</display>
-            <path>includes/content/system/console.inc.php</path>
+            <path>includes/Content/system/console.inc.php</path>
             <window>included</window>
         </sub>
 
@@ -380,7 +380,7 @@
             <id>3</id>
             <name>cronjobs</name>
             <display>Cronjobs</display>
-            <path>includes/content/system/cronjobs.inc.php</path>
+            <path>includes/Content/system/cronjobs.inc.php</path>
             <window>included</window>
         </sub>
 
@@ -388,7 +388,7 @@
             <id>4</id>
             <name>taskmgr</name>
             <display>Taskmanager</display>
-            <path>includes/content/system/taskmgr.inc.php</path>
+            <path>includes/Content/system/taskmgr.inc.php</path>
             <window>included</window>
         </sub>
 
@@ -396,7 +396,7 @@
             <id>5</id>
             <name>usergroups</name>
             <display>User &amp; Gruppen</display>
-            <path>includes/content/system/usergroups.inc.php</path>
+            <path>includes/Content/system/usergroups.inc.php</path>
             <window>included</window>
         </sub>
 
@@ -404,7 +404,7 @@
             <id>6</id>
             <name>destroy</name>
             <display>Selbstzerstörung</display>
-            <path>includes/content/system/destroy.inc.php</path>
+            <path>includes/Content/system/destroy.inc.php</path>
             <window>included</window>
         </sub>
 
@@ -412,7 +412,7 @@
             <id>7</id>
             <name>install</name>
             <display>Paketverwaltung</display>
-            <path>includes/content/system/install.inc.php</path>
+            <path>includes/Content/system/install.inc.php</path>
             <window>included</window>
         </sub>
     </menu>
@@ -420,13 +420,13 @@
         <id>6</id>
         <name>tools</name>
         <display>Tools</display>
-        <default>includes/content/tools/overview.inc.php</default>
+        <default>includes/Content/tools/overview.inc.php</default>
 
         <sub>
             <id>1</id>
             <name>overview</name>
             <display>Übersicht</display>
-            <path>includes/content/tools/overview.inc.php</path>
+            <path>includes/Content/tools/overview.inc.php</path>
             <window>included</window>
         </sub>
 
@@ -434,7 +434,7 @@
             <id>2</id>
             <name>hwinfo</name>
             <display>HW Informationen</display>
-            <path>includes/content/tools/hwinfo.inc.php</path>
+            <path>includes/Content/tools/hwinfo.inc.php</path>
             <window>included</window>
         </sub>
 
@@ -442,7 +442,7 @@
             <id>3</id>
             <name>hddinfo</name>
             <display>HDD Informationen</display>
-            <path>includes/content/tools/hddinfo.inc.php</path>
+            <path>includes/Content/tools/hddinfo.inc.php</path>
             <window>included</window>
         </sub>
 
@@ -450,7 +450,7 @@
             <id>4</id>
             <name>ramload</name>
             <display>RAM Informationen</display>
-            <path>includes/content/tools/ramload.inc.php</path>
+            <path>includes/Content/tools/ramload.inc.php</path>
             <window>included</window>
         </sub>
 
@@ -458,7 +458,7 @@
             <id>5</id>
             <name>info</name>
             <display>Sonst. Informationen</display>
-            <path>includes/content/tools/info.inc.php</path>
+            <path>includes/Content/tools/info.inc.php</path>
             <window>included</window>
         </sub>        
 
@@ -468,26 +468,26 @@
         <id>8</id>
         <name>webuser</name>
         <display>Webuser</display>
-        <default>includes/content/webuser/overview.inc.php</default>
+        <default>includes/Content/webuser/overview.inc.php</default>
         <sub>
             <id>1</id>
             <name>info</name>
             <display>Übersicht</display>
-            <path>includes/content/webuser/overview.inc.php</path>
+            <path>includes/Content/webuser/overview.inc.php</path>
             <window>included</window>
         </sub>   
         <sub>
             <id>2</id>
             <name>add</name>
             <display>Benutzer hinzufügen</display>
-            <path>includes/content/webuser/adduser.inc.php</path>
+            <path>includes/Content/webuser/adduser.inc.php</path>
             <window>included</window>
         </sub>   
         <sub>
             <id>3</id>
             <name>edituser</name>
             <display>Benutzer bearbeiten</display>
-            <path>includes/content/webuser/edituser.inc.php</path>
+            <path>includes/Content/webuser/edituser.inc.php</path>
             <window>included</window>
         </sub>                                  
     </menu>
@@ -496,13 +496,13 @@
         <id>9</id>
         <name>plugins</name>
         <display>Plugins</display>
-        <default>includes/content/plugins/overview.inc.php</default>
+        <default>includes/Content/plugins/overview.inc.php</default>
 
         <sub>
             <id>1</id>
             <name>plugin</name>
             <display>Keine Plugins vorhanden</display>
-            <path>includes/content/plugins/overview.inc.php</path>
+            <path>includes/Content/plugins/overview.inc.php</path>
             <window>included</window>
         </sub>
 

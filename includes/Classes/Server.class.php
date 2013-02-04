@@ -12,6 +12,7 @@
 *
 */
 
+namespace Classes;
 class Server {
 
     private $server_id;
@@ -37,8 +38,8 @@ class Server {
             $this->soap_port = $r->soapPort;
             $this->soap_key = $r->soapKey;
             try {
-                $this->soap = new SOAP($this);
-            } catch (Exception $e) {
+                $this->soap = new \Classes\SOAP($this);
+            } catch (\Exception $e) {
                 $this->soapActive = false;
                 $this->soap_port = 0;
                 $this->soap_key = 0;
@@ -221,7 +222,7 @@ class Server {
                 return true;
             else
                 return false;
-        } catch (\Server\Exception $e) {
+        } catch (Classes\Server\Exception $e) {
             return false;
         }
 }

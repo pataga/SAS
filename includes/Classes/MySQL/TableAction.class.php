@@ -12,7 +12,7 @@
 *
 */
 
-namespace MySQL;
+namespace Classes\MySQL;
 
 class tableAction {
 

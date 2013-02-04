@@ -6,7 +6,7 @@
 * @copyright Copyright 2012-2013 Patrick Farnkopf, Tanja Weiser, Gabriel Wanzek (PaTaGa)
 * @link https://github.com/pataga/SAS
 * @since SAS v1.0.0
-* @license Apache License v2 (http://www.apache.org/licenses/LICENSE-2.0.txt
+* @license Apache License v2 (http://www.apache.org/licenses/LICENSE-2.0.txt)
 * @author Patrick Farnkopf
 *
 */
@@ -24,36 +24,31 @@ function exception_handler($exception) {
     $_SESSION = [];
     session_destroy();
     echo $exception->getMessage();
-    require_once 'includes/content/error/error.inc.php';
+    require_once 'includes/Content/error/error.inc.php';
     exit;
 }
 
 set_exception_handler('exception_handler');
 
-require_once 'includes/classes/Main/Autoload.class.php';
+require_once 'includes/Classes/Main/Autoload.class.php';
 
 //Lade benötigte Klassen
 function __autoload($name) {
-    require_once \Main\AutoLoad::getFilePath($name);
+    require_once \Classes\Main\AutoLoad::getFilePath($name);
 }
 
 //Timer start
 $startTime = microtime(true);
 
-//Lade MySQL Konfigurationsdatei
-require_once 'includes/config/config.mysql.php';
-require_once 'includes/config/config.system.php';
-
-
 //Wenn install Verzeichnis exisitiert und die Konfig Daten nicht gesetzt sind dann Installationsroutine
-if (is_dir('install') && !isset($data)) {
+if (is_dir('install') && !file_exists('./includes/Config/MySQL.conf.php')) {
     header('Location: install');
     die();
 }
 
 
 //Erstelle Instanz der Hauptklasse. Dieses Objekt beinhaltet Objekte der Hauptklassen
-$main = new \Main($data, $debugLevel, $logFile);
+$main = new \Classes\Main();
 
 
 //Initialisiere Hauptobjekte
@@ -61,7 +56,6 @@ $mysql = $main->MySQL();
 $loader = $main->Loader();
 $server = $main->Server();
 $database = $main->Database();
-$ssh = $main->SSH();
 $debug = $main->Debug();
 $cache = $main->Cache();
 $session = $main->Session();
@@ -78,7 +72,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 
 
 //Wenn ServerID gesetzt, dann ....
-if ($session->isServerChosen()) {
+/*if ($session->isServerChosen()) {
     //... setze ServerID in Klasse
     $server->setID($session->getServerId());
     //... versuche eine Remote MySQL Verbindung aufzubauen
@@ -86,13 +80,13 @@ if ($session->isServerChosen()) {
     if ($rmd) {
         $mysql_remote = new \MySQL($main,$rmd[0],$rmd[1],$rmd[2],$rmd[3]);
     }
-}
+}*/
 
 
 //Wenn nicht angemeldet, dann LoginMaske
 if (!$session->isAuthenticated()) {
     try {
-        require_once 'includes/content/main/login.inc.php';
+        require_once 'includes/Content/main/login.inc.php';
         exit;
     } catch (\Exception $e) {
         $debug->error($e);
@@ -127,7 +121,7 @@ ob_start();
 
 try {
     require_once $loader->getIncFile();
-} catch (\Main\Exception $e) {
+} catch (\Classes\Main\Exception $e) {
     $debug->error($e);
 }
 
@@ -139,7 +133,7 @@ $cache->buildCache($content);
 
 //Überprüfe auf Fehler
 if ($debug->hasError()) {
-    require_once 'includes/content/error/error.inc.php';
+    require_once 'includes/Content/error/error.inc.php';
     exit;
 }
 
@@ -150,5 +144,5 @@ print($cache->getCache());
 $endTime = microtime(true);
 
 //Calc Time
-\Main::printLoadTime($startTime, $endTime);
+\Classes\Main::printLoadTime($startTime, $endTime);
 ?>

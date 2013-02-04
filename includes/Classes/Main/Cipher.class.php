@@ -12,7 +12,7 @@
 *
 */
 
-namespace Main;
+namespace Classes\Main;
 abstract class Cipher {
 
     private static function toAscii($key) {

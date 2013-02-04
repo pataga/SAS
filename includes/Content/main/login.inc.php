@@ -1,5 +1,5 @@
 <?php
-    if (is_dir('install') && !isset($data)) {
+    if (is_dir('install') && !file_exists('./includes/Config/MySQL.conf.php')) {
         header('Location: install');
         exit;
     }

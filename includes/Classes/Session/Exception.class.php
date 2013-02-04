@@ -12,7 +12,7 @@
 *
 */
 
-namespace Session;
+namespace Classes\Session;
 class Exception extends \Exception {
 }
 

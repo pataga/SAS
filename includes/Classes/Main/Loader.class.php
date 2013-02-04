@@ -13,7 +13,7 @@
 */
 
 
-namespace Main;
+namespace Classes\Main;
 class Loader {
 
     public $_page = '';
@@ -27,7 +27,7 @@ class Loader {
     {
         try {
             $this->mysql = $main->MySQL();
-        } catch (\Exception\MySQLException $e) {
+        } catch (\Exception $e) {
             $this->main->Debug()->error($e);
         }
         $this->loadXML();
@@ -105,10 +105,10 @@ class Loader {
 
     public function getIncFile() {
         if (!$this->main->Session()->isServerChosen() && $this->main->Session()->isAuthenticated())
-            return 'includes/content/home/server.inc.php';
+            return 'includes/Content/home/server.inc.php';
         if (!$this->main->Session()->isAuthenticated())
             $this->reload();
-        $default = 'includes/content/error/404.inc.php';
+        $default = 'includes/Content/error/404.inc.php';
         for ($i=0;$i<count($this->xmlData);$i++) {
             if ($this->xmlData[$i]['menu']['name'] == $this->_page) {
                 $default = $this->xmlData[$i]['menu']['default'];
@@ -119,7 +119,7 @@ class Loader {
                         if (file_exists($sub['path']))
                             return $sub['path'];
                         else
-                            return 'includes/content/error/404.inc.php';
+                            return 'includes/Content/error/404.inc.php';
                     } 
                 }
             }
@@ -128,7 +128,7 @@ class Loader {
         if (file_exists($default))
             return $default;
         else
-            return 'includes/content/error/404.inc.php';
+            return 'includes/Content/error/404.inc.php';
     }
 
     public function loadMenues() {
@@ -158,7 +158,7 @@ class Loader {
     }
 
     private function loadXML() {
-        $xml = new \XML();
+        $xml = new \Classes\XML();
         $xml->open('data/MainMenu.xml');
         $content = $this->xmlData;
         $mi = 0;
@@ -166,20 +166,20 @@ class Loader {
         $inSub = false;
 
         while ($xml->read()) {
-            if ($xml->nodeType == \XML::END_ELEMENT && $xml->name == 'sub') {
+            if ($xml->nodeType == \Classes\XML::END_ELEMENT && $xml->name == 'sub') {
                 $si++;
                 $inSub = false;
-            } elseif ($xml->nodeType == \XML::END_ELEMENT && $xml->name == 'menu') {
+            } elseif ($xml->nodeType == \Classes\XML::END_ELEMENT && $xml->name == 'menu') {
                 $mi++;
                 $si = 0;     
                 $inSub = false;   
-            } elseif ($xml->nodeType == \XML::ELEMENT && $xml->name == 'sub') { 
+            } elseif ($xml->nodeType == \Classes\XML::ELEMENT && $xml->name == 'sub') { 
                 $inSub = true;   
             }
 
-            if ($xml->nodeType == \XML::ELEMENT && !$inSub && $xml->name != 'sub' && $xml->name != 'menu' && $xml->name != 'navigation') {
+            if ($xml->nodeType == \Classes\XML::ELEMENT && !$inSub && $xml->name != 'sub' && $xml->name != 'menu' && $xml->name != 'navigation') {
                 $content[$mi]['menu'][$xml->name] = htmlentities($xml->readString());
-            } elseif ($xml->nodeType == \XML::ELEMENT && $inSub && $xml->name != 'sub' && $xml->name != 'menu' && $xml->name != 'navigation') {
+            } elseif ($xml->nodeType == \Classes\XML::ELEMENT && $inSub && $xml->name != 'sub' && $xml->name != 'menu' && $xml->name != 'navigation') {
                 $content[$mi]['sub'.$si][$xml->name] = htmlentities($xml->readString());
             } 
         }

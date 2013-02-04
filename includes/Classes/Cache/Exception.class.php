@@ -12,7 +12,7 @@
 *
 */
 
-namespace Cache;
+namespace Classes\Cache;
 class Exception extends \Exception {
 }
 

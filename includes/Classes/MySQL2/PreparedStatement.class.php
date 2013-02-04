@@ -12,8 +12,8 @@
 *
 */
 
-namespace Classes\MySQL2;
-class PreparedStatement extends PDOStatement {
+namespace Classes\Classes\MySQL2;
+class PreparedStatement {
     
 }
 ?>

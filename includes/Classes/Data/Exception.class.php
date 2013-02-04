@@ -12,7 +12,7 @@
 *
 */
 
-namespace Data;
+namespace Classes\Data;
 class Exception extends \Exception {
 }
 
