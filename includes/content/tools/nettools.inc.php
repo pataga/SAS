@@ -1,30 +1,19 @@
-<?php
-
-?>
 
 <h3>Netzwerk-Tools</h3>
 <div class="zweidrittel-box">
 <fieldset>
 	<legend>Tool auswählen</legend>
-	Welche Aktion möchten Sie durchführen?
 	<form action="index.php?p=tools&s=nettools" method="get">
-		<input type="radio" name="net" value="ping">
-		<label class="inline" for="ping">Ping</label>
-		<br>
-		<input type="radio" name="net" value="tr">
-		<label class="inline" for="traceroute">Traceroute</label>
-		<br>
-		<input type="radio" name="net" value="whois">
-		<label class="inline" for="whois">Whois</label>
-		<br>
-		<input type="radio" name="net" value="ifc">
-		<label class="inline" for="ifc">Netzwerkkonfiguration anzeigen</label>
-		<br>
-		<input type="radio" name="net" value="my">
-		<label class="inline" for="me">Meine Daten anzeigen lassen</label>
-		<br>
-		<p>Anzahl:<br> <input type="number" name="n" id="" min="1" step="1" max="30" required>
-			<a href="#" class="tooltip">Info<span>Anzahl der Pings.<br>Muss angegeben werden.</span></a></p>
+		<p>Host (IP-Adresse oder Domain ohne Protokoll):<br>
+		<input type="text" class="text-long" required name="host" autofocus></p>
+		<select name="net" required>
+			<option value="ping">Ping</option>
+			<option value="traceroute">Ping</option>
+			<option value="whois">Traceroute</option>
+			<option value="ifc">Netzwerkkonfiguration anzeigen</option>
+			<option value="me">Meine Netz-Daten anzeigen</option>
+		</select><br><br>
+		<input type="submit" class="button black" value="Aktion starten" name="go">
 	</form>
 </fieldset>
 </div>
