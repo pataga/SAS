@@ -58,7 +58,7 @@
     <p>Bitte w&auml;hlen Sie ihren Server aus, den Sie mit SAS verwalten m&ouml;chten.</p>
     <form action="index.php" method="post">
         <label>Server:</label>
-        <select name="server" class="shadow">
+        <select name="server" class="shadow" required autofocus="autofocus">
             <option value="-1"> </option>
             <?php echo $server_selection; ?>
         </select>
