@@ -1,6 +1,6 @@
 <h3>SAS-Repository</h3>
+<img src="img/github.png" alt="GitHub Logo" style="float:right;">
 <p>Sie werden in <span id="sec_time">5</span> Sekunden auf eine externe Seite weitergeleitet, sollte die Weiterleitung nicht erfolgen, klicken Sie bitte <a href="https://github.com/pataga/SAS/">hier</a>.</p>
-
 <script>
 	var sec = 5;
 	var url = "https://github.com/pataga/SAS/";
