@@ -11,7 +11,7 @@
 ---
 ###Wiki
 
-Anleitungen, Installation, unterstützte Distributionen, und mehr hier: [GitHub Wiki][2]
+Anleitungen, Installation, unterstützte Distributionen, und mehr hier: [GitHub Wiki][6]
 
 ---
 ###Online Demo *(ohne Funktion)*:
