@@ -2,7 +2,7 @@
 <form action="index.php?p=system&s=install" method="POST">
 <fieldset>	
 <legend>Paketsuche</legend>	
-<div class ="halbe-box">
+<div class="halbe-box">
 <input type="text" class="text-long" name="aptcache">
 <br><br><br>
 <input type="submit" class="button green" name="search" value="suchen">
