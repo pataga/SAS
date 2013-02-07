@@ -22,6 +22,11 @@ class SOAP {
     const STATUS_INSTALLATION_FAILED    =   4;
     const STATUS_UNKNOWS_PACKAGE        =   5;
 
+    //SOAP Execute Return Format
+    const EXECUTE_FORMAT_NONE           =   0;
+    const EXECUTE_FORMAT_BREAKS         =   1;
+    const EXECUTE_FORMAT_ARRAY          =   2;
+
     /**
      * SOAP Verbindung aufbauen
      * @param Object Main
@@ -59,9 +64,19 @@ class SOAP {
      * @param String Command
      * @return String Output
      */
-    public function execute($cmd) {
+    public function execute($cmd, $format) {
         if ($this->soap) {
-            return $this->soap->Execute($this->key, $cmd);
+            $out = $this->soap->Execute($this->key, $cmd);
+            switch ($format) {
+                case SOAP::EXECUTE_FORMAT_NONE:
+                    return $out;
+                case SOAP::EXECUTE_FORMAT_BREAKS:
+                    return str_replace("\n", '<br>', $out);
+                case SOAP::EXECUTE_FORMAT_ARRAY:
+                    return explode("\n", $out);
+                default:
+                    return false;
+            }
         } else {
             return false;
         }

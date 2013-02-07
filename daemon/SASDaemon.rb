@@ -71,6 +71,7 @@ class SASSoap < SOAP::RPC::StandaloneServer
       Log('Connection failed')
       return false;
     end
+    
     if $debug
       printRed("Der Befehl "+cmd+" wurde verwendet")
     end

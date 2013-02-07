@@ -134,8 +134,6 @@ class Server {
             switch ($package) {
                 case 'mysql': if ($row->mysql == "1")
                         return true;
-                case 'postfix': if ($row->postfix == "1")
-                        return true;
                 case 'ftp': if ($row->ftp == "1")
                         return true;
                 case 'samba': if ($row->samba == "1")
@@ -176,12 +174,11 @@ class Server {
     * @return (Bool Array) Status
     */
     public function serviceStatus($ssh) {
-        $data = array();
-        $data[0] = $this->getServiceStatus('smbd');
-        $data[1] = $this->getServiceStatus('apache2');
-        $data[2] = $this->getServiceStatus('postfix');
-        $data[3] = $this->getServiceStatus('proftpd');
-        $data[4] = $this->getServiceStatus('mysql');
+        $data = [];
+        $data[] = $this->getServiceStatus('smbd');
+        $data[] = $this->getServiceStatus('apache2');
+        $data[] = $this->getServiceStatus('postfix');
+        $data[] = $this->getServiceStatus('mysql');
         return $data;
     }
 
@@ -244,11 +241,11 @@ class Server {
         }
         if ($type == 0) {
             if ($this->soapActive) 
-                return $this->soap->execute($cmd);
+                return $this->soap->execute($cmd,$format);
             else 
                 return $m->SSH()->execute($cmd,$format);
         } elseif ($type == 1) {
-            return $this->soap->execute($cmd);
+            return $this->soap->execute($cmd,$format);
         } elseif ($type == 2) {
             return $m->SSH()->execute($cmd,$format);
         }
