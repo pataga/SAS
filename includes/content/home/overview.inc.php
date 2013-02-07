@@ -95,14 +95,6 @@ $userswholi = str_replace(" ", ", ", $userswho);
                     ?>
                 </td>
             </tr>
-            <tr class="odd">
-                <td>Postfix:</td>
-                <td>
-                    <?php
-                    echo ($server->getServiceStatus('postfix')) ? '<span class="aktiv">aktiv</span>' : '<span class="inaktiv">inaktiv</span>';
-                    ?>
-                </td>
-            </tr>
             <tr>
                 <td>FTP:</td>
                 <td>
