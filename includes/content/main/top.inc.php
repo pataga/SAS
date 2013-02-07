@@ -19,7 +19,8 @@
         <script src="js/notifications.js"></script> 
         <script src="js/tablesorter/jquery.tablesorter.js"></script>
         <script src="js/jquery.fastLiveFilter.js"></script>
-        <script type="text/javascript" src="https://www.google.com/jsapi"></script>       
+        <!-- external JS -->
+        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     </head>
     <body>
         <noscript>

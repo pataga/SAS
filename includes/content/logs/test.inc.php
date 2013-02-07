@@ -1,19 +1,32 @@
-
 <?php
 $log1 = $server->execute('cat /var/log/auth.log.1');
 $log2 = $server->execute('cat /var/log/auth.log');
+$lcdate = $server->execute("ls -l | grep auth.log | awk '{print $6,$7,$8,$9}'");
 
 $log1f = explode("\n", $log1);
 $log2f = explode("\n", $log2);
 
-$kw = 	['session', 'root', 'closed', 'login', ' su ', ' sudo ', 'invalid', 'failed', 'opened', 'closed', 'disconnect', 'connect', 'received', 'send', 'error', 'command'];
-$fkw = 	['<b>session</b>', '<b>root</b>', '<b>closed</b>', '<b>login</b>', '<b> su </b>', '<b> sudo </b>', '<b>invalid</b>', '<b>failed</b>', '<b>opened</b>', '<b>closed</b>', '<b>disconnect</b>', '<b>connect</b>', '<b>received</b>', '<b>send</b>', '<b>error</b>', '<b>command</b>'];				
+function highlightAuthlog($logline) {
+	$logline =  explode("\n",(wordwrap($logline, 15,"\n",false)));
+	if (isset($logline[0])) {$logline[0] = '<span style="color:#00008F; font-weight: bold;">'.$logline[0].'</span>';}
+	if (isset($logline[1])) {$logline[1] = '<span style="color:#009D1A; font-weight: bold;">'.$logline[1].'</span>';}
+	return implode(" ", $logline);
+}
+
+
+
 ?>
 <script>
     $(function() {
         $('#search').fastLiveFilter('#logline');
     });
 </script>
+<style type="text/css">
+	span.datetime {
+		color: #0100EB;
+		font-weight: bold;
+	}
+</style>
 <h3>auth.log</h3>
 <div class="halbe-box">
 <fieldset>
@@ -33,11 +46,11 @@ $fkw = 	['<b>session</b>', '<b>root</b>', '<b>closed</b>', '<b>login</b>', '<b> 
 <ul id="logline" class="log">
 	<?php
 		foreach (array_reverse($log2f) as $value) {
-			echo "<li>". str_replace($kw, $fkw, $value)."</li>";
+			echo "<li>". highlightAuthlog($value) ."</li>\n";
 		}
 
 		foreach (array_reverse($log1f) as $value) {
-			echo "<li>". str_replace($kw, $fkw, $value)."</li>";
+			echo "<li>". highlightAuthlog($value)  ."</li>\n";
 		}
 
 
