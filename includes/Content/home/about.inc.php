@@ -219,18 +219,19 @@
     </div>
 </fieldset>
 <fieldset>
-    <legend>Thanks to:</legend>
+    <legend>sonstige Lizenzinformationen</legend>
     <div class="halbe-box">
         <h5>Fonts:</h5>
         <ul>
             <li><b>Lobster:</b> <a href="http://scripts.sil.org/OFL" target="_blank">SIL Open Font License, 1.1</a></li>
             <li><b>Ubuntu:</b> <a href="http://font.ubuntu.com/ufl/" target="_blank">Ubuntu Font License, 1.0</a></li>
         </ul>
-        <h5>Icons:</h5>
+        <h5>Graphics/Icons:</h5>
         <ul>
             <li><b>Debian Logo:</b>    <a href="http://www.gnu.org/copyleft/lgpl.html" target="_blank">GNU Lesser General Public License</a></li>
             <li><b>Ajax Loading Icon:</b> by <a href="http://ajaxload.info/">ajaxload.info</a></li>
             <li><b>404-Robot-Icon:</b> by <a href="http://www.indeepop.com/" target="_blank">indeepop</a></li>
+            <li><b>Github Logo:</b> from <a href="https://github.com/github/media">GitHub media</a></li>
             <li><b>Ubuntu Logo:</b> <a href="http://ubuntu.com" target="_blank">Ubuntu</a> is a registered trademark of Canonical Ltd.</li>
         </ul>
     </div>

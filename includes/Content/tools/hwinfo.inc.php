@@ -15,8 +15,8 @@ $hdds = $server->execute("df -h");
 $kernel = $server->execute("uname -a");
 $cpu = $server->execute("grep \"model name\" /proc/cpuinfo");
 $distr = $server->execute("head -n1 /etc/issue");
-$hdd = $server->execute("hdparm -i /dev/sda | head -n4", 2, 2);
-$hw_info_hw = $server->execute("lspci -vm", 2, 2);
+$hdd = $server->execute("hdparm -i /dev/sda | head -n4", 2);
+$hw_info_hw = $server->execute("lspci -vm", 2);
 $hw_info_lw = $server->execute("lsblk -iln");
 
 $meminfo = $server->execute("cat /proc/meminfo");        //für RAM-Info
