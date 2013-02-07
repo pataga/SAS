@@ -1362,7 +1362,7 @@ Author's custom styles
 .button.white:active, .button.grey:active, .button.pink:active, 
 .button.orange:active, .button.green:active, .button.blue:active, 
 .button.purple:active, .button.teal:active, .button.darkblue:active, .button.black:active {
-    margin-top: 1px;
+    box-shadow: inset 0 0 6px 1px #999;
 }
 
 /* --- TOOLTIPS --- */
