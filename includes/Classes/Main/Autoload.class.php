@@ -24,6 +24,8 @@ abstract class AutoLoad {
             throw new \Exception('Variable $namespace_ ist leer! (AutoLoad::getFilePath(String))');
         if (strstr($namespace_, 'Config'))
             return './includes/'.str_replace('\\','/',$namespace_).'.conf.php';
-        return './includes/'.str_replace('\\','/',$namespace_).'.class.php';
+        if (strstr($namespace_, 'Classes'))
+            return './includes/'.str_replace('\\','/',$namespace_).'.class.php';
+        return false;
     }
 }

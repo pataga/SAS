@@ -30,6 +30,8 @@ class Server {
         $this->server_id = $session->getServerID();
         $data = $this->getServerData();
         $this->server_address = $data[0];
+
+        if (!$this->server_id) return;
         $result = $this->mysql->tableAction('sas_server_data')->select(NULL, ['id' => $this->server_id]);
         
         if ($result->getRowsCount() > 0) {
@@ -104,6 +106,7 @@ class Server {
     * @return (array) SSH Daten
     */
     public function getServerData() {
+        if (!$this->server_id) return false;
         $result = $this->mysql->tableAction('sas_server_data')->select(NULL, ['id' => $this->server_id]);
 
         if ($result->getRowsCount() > 0) {
@@ -127,6 +130,7 @@ class Server {
     * @return (Bool)
     */
     public function isInstalled($package) {
+        if (!$this->server_id) return false;
         $result = $this->mysql->tableAction('sas_server_data')->select(NULL, ['id' => $this->server_id]);
 
         if ($result->getRowsCount() > 0) {

@@ -37,7 +37,7 @@ class Main {
         }
 
         try {
-            $this->mysql = new \Classes\MySQL($this);    
+            $this->mysql = new \Classes\MySQL();    
         } catch (\Classes\Main\Exception $e) {
             $this->debug->error($e);
         }

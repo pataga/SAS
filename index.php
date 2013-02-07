@@ -78,7 +78,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     //... versuche eine Remote MySQL Verbindung aufzubauen
     $rmd = $server->getMySQLData();
     if ($rmd) {
-        $mysql_remote = new \MySQL($main,$rmd[0],$rmd[1],$rmd[2],$rmd[3]);
+        $mysql_remote = new \MySQL($rmd);
     }
 }*/
 
