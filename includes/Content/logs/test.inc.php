@@ -5,6 +5,9 @@ $log2 = $server->execute('cat /var/log/auth.log');
 
 $log1f = explode("\n", $log1);
 $log2f = explode("\n", $log2);
+
+$kw = 	['session', 'root', 'closed', 'login', ' su ', ' sudo ', 'invalid', 'failed', 'opened', 'closed', 'disconnect', 'connect', 'received', 'send', 'error', 'command'];
+$fkw = 	['<b>session</b>', '<b>root</b>', '<b>closed</b>', '<b>login</b>', '<b> su </b>', '<b> sudo </b>', '<b>invalid</b>', '<b>failed</b>', '<b>opened</b>', '<b>closed</b>', '<b>disconnect</b>', '<b>connect</b>', '<b>received</b>', '<b>send</b>', '<b>error</b>', '<b>command</b>'];				
 ?>
 <script>
     $(function() {
@@ -30,11 +33,11 @@ $log2f = explode("\n", $log2);
 <ul id="logline" class="log">
 	<?php
 		foreach (array_reverse($log2f) as $value) {
-			echo "<li>".$value."</li>";
+			echo "<li>". str_replace($kw, $fkw, $value)."</li>";
 		}
 
 		foreach (array_reverse($log1f) as $value) {
-			echo "<li>".$value."</li>";
+			echo "<li>". str_replace($kw, $fkw, $value)."</li>";
 		}
 
 

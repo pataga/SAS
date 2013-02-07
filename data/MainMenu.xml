@@ -453,14 +453,21 @@
             <path>includes/Content/tools/ramload.inc.php</path>
             <window>included</window>
         </sub>
-
         <sub>
-            <id>5</id>
+            <id>6</id>
+            <name>nettools</name>
+            <display>Netzwerk-Tools</display>
+            <path>includes/content/tools/nettools.inc.php</path>
+            <window>included</window>
+        </sub> 
+        <sub>
+            <id>10</id>
             <name>info</name>
             <display>Sonst. Informationen</display>
             <path>includes/Content/tools/info.inc.php</path>
             <window>included</window>
-        </sub>        
+        </sub>    
+            
 
     </menu>
 

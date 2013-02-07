@@ -39,7 +39,10 @@ alert ('Bitte nutzen Sie einen modernen Browser, wie etwa:\n\nGoogle Chrome oder
                 <input type="submit" value="Login" tabindex="3" class="button black"><br>
             </form>
         </div>
-        <p class="footer">&copy; <?php echo date("Y");?> SAS - Server Admin System
+        <p class="footer">
+            <a onclick="alert(unescape('Bitte wenden Sie sich an den Systemadministrator.'))" href="#">Passwort vergessen?</a>
+            <br>
+            &copy; <?php echo date("Y");?> SAS - Server Admin System
             <br>
             <a onclick="alert(unescape('Diese Seite ist vor%FCbergehend nicht erreichbar.'))" href="#">Patrick Farnkopf</a>
             <a onclick="alert(unescape('Diese Seite ist vor%FCbergehend nicht erreichbar.'))" href="#">Tanja Weiser</a>
