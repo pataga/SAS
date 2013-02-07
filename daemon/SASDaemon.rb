@@ -1,6 +1,7 @@
-#!/usr/bin/ruby
+#!/usr/bin/ruby1.8
 require 'logger'  
 require './lib/soap/rpc/standaloneServer'  
+require 'daemons'
 
 $debug = true;
 
@@ -137,7 +138,7 @@ system("echo '#       ///////    ////////  ////// ///  //  //  //////  ///   // 
 system("echo '########################################################################\\033[37;1m \n\n\n'");
     
 
-
+#Daemons.daemonize
 host = "127.0.0.1"
 port = "9000"
 user = `whoami`.chomp

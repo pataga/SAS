@@ -7,15 +7,20 @@ echo "#### Server Admin System ####"
 echo "##### Daemon Installer ######"
 echo "#############################"
 echo -e "\n"
-echo "Ruby installieren <1>"
+echo "Daemon installieren <1>"
 echo "Daemon starten <2>"
 echo "Neuen SOAP KEY generieren <3>"
 echo "Aktuellen SOAP KEY anzeigen <4>"
 read -p "Auswahl: " -n1 opt
 
 if [ "$opt" = "1" ]; then
-    apt-get install ruby1.9.1-full rubygems -fy
+    apt-get install ruby1.8-full rubygems -fy
+    
+    clear
+    echo "Pakete wurden installiert. Beginne Implementierung der Bibliotheken..."
+    sleep 2
     gem install soap4r --include-dependencies
+    cd contrib && tar xfv daemon.tar && cd daemon && chmod a+x setup.rb && ./setup.rb 
     clear
     read -p "Pakete installiert. Mit beliebiger Taste zum Hauptmenue..." -n1
     clear
