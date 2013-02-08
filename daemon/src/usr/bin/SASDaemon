@@ -1,9 +1,12 @@
 #!/usr/bin/ruby1.8
 require 'logger'  
-require './lib/soap/rpc/standaloneServer'  
+require '/usr/lib/SASDaemon/soap/rpc/standaloneServer'  
 require 'daemons'
 
 $debug = true;
+$host = '0.0.0.0'.chomp;
+$port = '9000';
+$key = '';
 
 
 class SASSoap < SOAP::RPC::StandaloneServer  
@@ -12,14 +15,14 @@ class SASSoap < SOAP::RPC::StandaloneServer
 
   def setNews(type, msg)
     case type
-    when 0
-      $news[$news.length] = 'Erfolgreich#>:<#'+msg
-    when 1
-      $news[$news.length] = 'Fehlgeschlagen#>:<#'+msg
-    when 2
-      $news[$news.length] = 'Information#>:<#'+msg
-    when 3
-      $news[$news.length] = 'FEUER!!!!#>:<#'+msg
+      when 0
+        $news[$news.length] = 'Erfolgreich#>:<#'+msg
+      when 1
+        $news[$news.length] = 'Fehlgeschlagen#>:<#'+msg
+      when 2
+        $news[$news.length] = 'Information#>:<#'+msg
+      when 3
+        $news[$news.length] = 'FEUER!!!!#>:<#'+msg
     end
   end
 
@@ -56,9 +59,7 @@ class SASSoap < SOAP::RPC::StandaloneServer
   end
 
   def Auth(key)
-    data = open('SASDaemon.access', "r")
-    _key = data.read.chomp
-    if _key == key.chomp
+    if $key == key.chomp
       return true
     else
       return false
@@ -118,6 +119,31 @@ def printRed(msg)
   system("echo '[SASDaemon]\\033[31;1m #{msg} \\033[37;1m'")
 end  
 
+f = File.open("/etc/SASDaemon/SASd.conf")
+f.each{
+    |line|
+    val = line.split("=")
+    case val[0].chomp.strip
+      when 'host'
+        $host = val[1].chomp
+      when 'port'
+        $port = val[1].chomp
+      when 'debug'
+        $debug = val[1].chomp
+      when 'key'
+        $key = val[1].chomp
+    end  
+}
+f.close
+
+Daemons.daemonize
+puts "SASDaemon started..."
+
+if !$debug
+  Daemons.daemonize
+  puts "SASDaemon started..."
+end
+
 system("echo '\\033[36;1m########################################################################\n'");
 system("echo '#         ********     **      ********                                #'");
 system("echo '#        **//////     ****    **//////                                 #'");
@@ -136,19 +162,17 @@ system("echo '#       /**    **  **////** /**////  /** /** /**/**   /** /**  /**
 system("echo '#       /*******  //********//****** *** /** /**//******  ***  /**     #'");
 system("echo '#       ///////    ////////  ////// ///  //  //  //////  ///   //      # \n'\n");
 system("echo '########################################################################\\033[37;1m \n\n\n'");
-    
 
-#Daemons.daemonize
-host = "127.0.0.1"
-port = "9000"
+a = `echo #{$$} > /var/run/SASDaemon/SASDaemon.pid`
+
 user = `whoami`.chomp
 if user != 'root'
   printRed("Der Daemon muss als ROOT ausgeführt werden")
   exit
 end
 puts "[SASDaemon] Initialisiere SOAP Server...."
-puts "[SASDaemon] Listen on "+host+":"+port
-server = SASSoap.new('SASRubySoap','urn:SASSoap',host,port)  
+puts "[SASDaemon] Listen on "+$host+":"+$port+"\n"
+server = SASSoap.new('SASRubySoap','urn:SASSoap',$host, $port)  
 trap('INT') {server.shutdown}  
 puts "[SASDaemon] SOAP Server bereit"
 server.start  

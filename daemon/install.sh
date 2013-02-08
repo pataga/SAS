@@ -7,10 +7,11 @@ echo "#### Server Admin System ####"
 echo "##### Daemon Installer ######"
 echo "#############################"
 echo -e "\n"
-echo "Daemon installieren <1>"
-echo "Daemon starten <2>"
-echo "Neuen SOAP KEY generieren <3>"
-echo "Aktuellen SOAP KEY anzeigen <4>"
+echo "Abhaengigkeiten installieren <1>"
+echo "Daemon installieren <2>"
+echo "Daemon starten <3>"
+echo "Neuen SOAP KEY generieren <4>"
+echo "Aktuellen SOAP KEY anzeigen <5>"
 read -p "Auswahl: " -n1 opt
 
 if [ "$opt" = "1" ]; then
@@ -27,10 +28,18 @@ if [ "$opt" = "1" ]; then
 fi 
 
 if [ "$opt" = "2" ]; then
-    ./SASDaemon.rb
+    rm -rf /SASDaemon.tar
+    cp SASDaemon.tar / -f
+    cd / && tar xfv SASDaemon.tar
+    chmod 770 /usr/bin/SASDaemon
+    rm -rf /SASDaemon.tar
 fi 
 
 if [ "$opt" = "3" ]; then
+    ./SASDaemon.rb
+fi 
+
+if [ "$opt" = "4" ]; then
     clear
     openssl rand -base64 32 > SASDaemon.access
     echo "Der neue SOAP Key lautet: "
@@ -40,7 +49,7 @@ if [ "$opt" = "3" ]; then
     clear
 fi
 
-if [ "$opt" = "4" ]; then
+if [ "$opt" = "5" ]; then
     clear
     echo "Der aktuelle SOAP Key lautet: "
     cat SASDaemon.access

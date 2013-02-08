@@ -1,0 +1,32 @@
+#!/bin/bash
+
+action=$1
+
+if [ "$action" = "start" ]; then
+	if [ -f /var/run/SASDaemon/SASDaemon.pid ]; then
+		echo "SASDaemon is already running"
+	else
+		SASDaemon
+		echo "SASDaemon started"
+	fi
+fi
+
+if [ "$action" = "stop" ]; then
+	if [ -f /var/run/SASDaemon/SASDaemon.pid ]; then
+		pid=`cat /var/run/SASDaemon/SASDaemon.pid`
+		kill -9 $pid
+		rm -rf /var/run/SASDaemon/SASDaemon.pid
+		echo "SASDaemon stopped"
+	else
+		echo "SASDaemon is not running"
+	fi
+fi
+
+if [ "$action" = "status" ]; then
+	if [ -f /var/run/SASDaemon/SASDaemon.pid ]; then
+		pid=`cat /var/run/SASDaemon/SASDaemon.pid`
+		echo "SASDaemon is running. PID is $pid"
+	else
+		echo "SASDaemon is not running"
+	fi
+fi
