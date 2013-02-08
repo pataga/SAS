@@ -12,7 +12,7 @@ while ($row = $result->fetchObject()) {
         <div id="ninfo">
             <div class="nlist"><label>Nr: </label><span class="format">#<?= $row->id ?></span></div>
             <div class="nlist"><label>ID: </label><span class="format">#1</span></div>
-            <div class="nlist"><label>Zeitpunkt: </label><span class="format"><?= date("d.m.Y \u\m H:i",strToTime($row->datum)) ?> | <?= $row->zeit ?></span></div>
+            <div class="nlist"><label>Zeitpunkt: </label><span class="format"><?= date("d.m.Y",strToTime($row->datum)) ?> | <?= $row->zeit ?></span></div>
             <div class="nlist"><label>Typ: </label><span class="ok"><?= $row->type ?></span></div>
             <b>Meldung(en):</b>
             <div id="console"><?= $row->body ?></div>
