@@ -14,6 +14,13 @@
 //Starte Session
 session_start();
 
+require_once 'includes/Classes/Main/Autoload.class.php';
+
+//Lade benötigte Klassen
+function __autoload($name) {
+    require_once \Classes\Main\AutoLoad::getFilePath($name);
+}
+
 function exceptionErrorHandler($errno, $errstr, $errfile, $errline) {
     throw new ErrorException($errstr, 0,$errno, $errfile, $errline);
 }
@@ -30,22 +37,24 @@ function exception_handler($exception) {
 
 set_exception_handler('exception_handler');
 
-require_once 'includes/Classes/Main/Autoload.class.php';
+if (isset($_GET['install'])) {
+    if ($installer = new \Classes\Install()) {
+        require_once $installer->getFile();
+        exit;
+    }
+}
 
-//Lade benötigte Klassen
-function __autoload($name) {
-    require_once \Classes\Main\AutoLoad::getFilePath($name);
+if (is_dir(\Classes\Install::DIRECTORY)) {
+    if ($installer = new \Classes\Install()) {
+        if (file_get_contents(\Classes\Install::MYSQL_CONFIG_FILE) == '') {
+            header('Location: ?install=1');
+            exit();
+        }
+    }
 }
 
 //Timer start
 $startTime = microtime(true);
-
-//Wenn install Verzeichnis exisitiert und die Konfig Daten nicht gesetzt sind dann Installationsroutine
-if (is_dir('install') && !file_exists('./includes/Config/MySQL.conf.php')) {
-    header('Location: install');
-    die();
-}
-
 
 //Erstelle Instanz der Hauptklasse. Dieses Objekt beinhaltet Objekte der Hauptklassen
 $main = new \Classes\Main();

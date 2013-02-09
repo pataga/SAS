@@ -17,15 +17,16 @@ class MySQL implements \Config\MySQL {
     public function __construct($data = false) {
         try {
             if (!$data) {
-                $dsn = 'mysql:dbname='.\Config\MySQL::DATABASE.';host='.\Config\MySQL::HOST_ADDRESS;
+                $dsn = 'mysql:host='.\Config\MySQL::HOST_ADDRESS;
                 $this->pdoInstance = new \PDO($dsn, \Config\MySQL::USERNAME, \Config\MySQL::PASSWORD);
             } else {
                 $dsn = 'mysql:host='.$data[0];
                 $this->pdoInstance = new \PDO($dsn, $data[2], $data[3]);
                 if ($data[1]) $this->selectDatabase($data[1]);
             }
+            $this->pdoInstance->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
         } catch (\Exception $e) {
-            echo $e->getMessage();
+            unset($this);
         }
     }
 

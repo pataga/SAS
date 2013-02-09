@@ -37,7 +37,8 @@ class Main {
         }
 
         try {
-            $this->mysql = new \Classes\MySQL();    
+            $this->mysql = new \Classes\MySQL();  
+            $this->mysql->selectDatabase(\Config\MySQL::DATABASE);  
         } catch (\Classes\Main\Exception $e) {
             $this->debug->error($e);
         }

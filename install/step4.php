@@ -11,22 +11,11 @@
 *
 */
 
-if (isset($_POST['from2'])) {
-  if (!$installer->writeConfig()) {
-    echo 'Die Konfigurationsdatei konnte nicht beschrieben werden!<br>Bitte f&uuml;hren sie <b>chmod 777 SAS/includes/Config/MySQL.conf.php</b> aus.<br>Weiterleitung zu Schritt 2 in 10 Sekunden...';
-    header ("Refresh: 10; ?install=2");
+if (!$installer->addUser()) {
+    echo 'Ihre Eingabe war inkorrekt! Weiterleitung zu Schritt 3 in 5 Sekunden...';
+    header ("Refresh: 5; ?install=3");  
     exit;
-  }
-
-  if (!$installer->connect()){
-    echo 'MySQL Zugangsdaten inkorrekt! Weiterleitung zu Schritt 2 in 10 Sekunden...';
-    header ("Refresh: 10; ?install=2");  
-    exit;
-  }
-
-  $installer->installDatabase();
 }
-   
 ?>
 
 <!DOCTYPE html>
@@ -54,21 +43,11 @@ if (isset($_POST['from2'])) {
             <div id="main">
                 <div id="box1_install">
                     <fieldset>
-                        <b>SAS wurde erfolgreich konfiguriert.<br> Bitte legen sie nun einen Administrator Benutzer an.</b>
+                        <p>
+                            <h5>Die Installation wurde erfolgreich abgeschlossen!</h5> 
+                            Bitte l&ouml;schen Sie nun das "<code>install</code>" Verzeichnis und klicken sie danach auf den "Weiter" Button. <br>Andernfalls werden Sie erneut zur Installation weitergeleitet.</p>
                     </fieldset>
-                    <form action="?install=4" method="post">
-                        <fieldset>
-                            <p><label>Benutzername:</label>
-                            <input type="text" name="user" class="text-long" required></p>
-                            <p><label>Passwort:</label>
-                            <input type="password" name="pass" class="text-long" required></p>
-                            <p><label>Passwort best&auml;tigen:</label>
-                            <input type="password" name="passwdh" class="text-long" required></p>
-                            <p><label>E-Mail:</label>
-                            <input type="email" name="email" class="text-long" required></p>
-                            <div id="installbutton"><input type="submit" value="Installation abschlie&szlig;en" class="button black"></div>
-                        </fieldset>
-                    </form>
+                    <div align="center"><a href="index.php" class="button black" style="width:300px;">Weiter</a></div>
                 </div>
             </div>
     </body>
