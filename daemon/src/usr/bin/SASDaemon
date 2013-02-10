@@ -132,12 +132,12 @@ f.each{
         $debug = val[1].chomp
       when 'key'
         $key = val[1].chomp
+        if val.length == 3
+          $key << '='
+        end
     end  
 }
 f.close
-
-Daemons.daemonize
-puts "SASDaemon started..."
 
 if !$debug
   Daemons.daemonize
