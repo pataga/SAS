@@ -1,4 +1,15 @@
 <?php
+/**
+ * Licensed under The Apache License
+ *
+ * @copyright Copyright 2012-2013 Patrick Farnkopf, Tanja Weiser, Gabriel Wanzek (PaTaGa)
+ * @link https://github.com/pataga/SAS
+ * @since SAS v1.0.0
+ * @license Apache License v2 (http://www.apache.org/licenses/LICENSE-2.0.txt
+ * @author Gabriel Wanzek
+ *
+ */
+
 $all_users = $server->execute("cat /etc/passwd | cut -d: -f1", 2);
 $seq_users = $server->execute("awk -F: '$3>999{print $1}' /etc/passwd", 2);
 $all_groups = $server->execute("cat /etc/group | cut -d: -f1 ", 2);

@@ -1,4 +1,15 @@
-<h1 class="normal">Dev: CSS-Info</h1>
+<?php
+/**
+ * Licensed under The Apache License
+ *
+ * @copyright Copyright 2012-2013 Patrick Farnkopf, Tanja Weiser, Gabriel Wanzek (PaTaGa)
+ * @link https://github.com/pataga/SAS
+ * @since SAS v1.0.0
+ * @license Apache License v2 (http://www.apache.org/licenses/LICENSE-2.0.txt
+ * @author Gabriel Wanzek
+ *
+ */
+?><h1 class="normal">Dev: CSS-Info</h1>
 <p><b>Tipp:</b> Die "Element untersuchen" Funktion von Firefox kann hier hilfreich sein.</p>
 <h3>Inhalt:</h3>
 <ol>
