@@ -154,5 +154,5 @@ $endTime = microtime(true);
 
 //Calc Time
 \Classes\Main::printLoadTime($startTime, $endTime);
-echo '<p class="memory">Speicherverbrauch '.floor(memory_get_usage()/1024).'Kb</p>';
+echo '<p class="memory">Speicherverbrauch '.floor(memory_get_usage()/1024).'KiB</p>';
 ?>
