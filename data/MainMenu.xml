@@ -441,7 +441,7 @@
             <id>6</id>
             <name>nettools</name>
             <display>Netzwerk-Tools</display>
-            <path>includes/content/tools/nettools.inc.php</path>
+            <path>includes/Content/tools/nettools.inc.php</path>
             <window>included</window>
         </sub> 
         <sub>

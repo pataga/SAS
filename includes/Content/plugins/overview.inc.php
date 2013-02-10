@@ -21,7 +21,7 @@
 		<option selected>Ideen für Plugins</option>
 			<optgroup label="Vorschläge">
 			<option>Minecraft Install &amp; Control Plugin</option>
-			<option>optionghttpd Plugin</option>
+			<option>lighttpd Plugin</option>
 			<option>vsftpd <i>oder</i> DrFTPD Plugin</option>
 			<option>CUPS Plugin</option>
 			<option>Ampache Plugin</option>
