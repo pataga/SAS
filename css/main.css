@@ -415,13 +415,25 @@ Layout: Footer
 /* --- LOADTIME --- */
 
 .loadtime {
+    float:right;
     text-align: right;
     color: #aaa;
     border-radius: 2px;
     font-family: 'Ubuntu', Arial, Helvetica, sans-serif;
     font-size: 1em;
     font-weight: 300;
-	padding: 0 7px 0 0;
+    padding: 0 7px 0 0;
+}
+
+.memory {
+    float:left;
+    text-align: left;
+    color: #aaa;
+    border-radius: 2px;
+    font-family: 'Ubuntu', Arial, Helvetica, sans-serif;
+    font-size: 1em;
+    font-weight: 300;
+    padding: 0 7px 0 0;
 }
 
 /* ==========================================================================
