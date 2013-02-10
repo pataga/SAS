@@ -49,22 +49,6 @@
         </sub>
 
         <sub>
-            <id>6</id>
-            <name>cssinfo</name>
-            <display>DEV: CSS-Info</display>
-            <path>includes/Content/sas-dev/styles.inc.php</path>
-            <window>included</window>
-        </sub>
-
-        <sub>
-            <id>7</id>
-            <name>modulestatus</name>
-            <display>DEV: Module-Status</display>
-            <path>includes/Content/sas-dev/module.inc.php</path>
-            <window>included</window>
-        </sub>
-
-        <sub>
             <id>8</id>
             <name>notification</name>
             <display></display>
@@ -504,12 +488,11 @@
         <name>plugins</name>
         <display>Plugins</display>
         <default>includes/Content/plugins/overview.inc.php</default>
-
         <sub>
-            <id>1</id>
-            <name>plugin</name>
-            <display>Keine Plugins vorhanden</display>
-            <path>includes/Content/plugins/overview.inc.php</path>
+            <id>20000</id>
+            <name>cssinfo</name>
+            <display>DEV: CSS-Info</display>
+            <path>includes/Content/plugins/styles.inc.php</path>
             <window>included</window>
         </sub>
 
