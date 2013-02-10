@@ -1,82 +1,69 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Server-Admin-System by pataga</title>
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="javascripts/respond.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
     <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <!--[if lt IE 8]>
-    <link rel="stylesheet" href="stylesheets/ie.css">
-    <![endif]-->
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
+    <title>Server-Admin-System by pataga</title>
   </head>
+
   <body>
-      <div id="header">
-        <nav>
-          <li class="fork"><a href="https://github.com/pataga/SAS">View On GitHub</a></li>
-          <li class="downloads"><a href="https://github.com/pataga/SAS/zipball/master">ZIP</a></li>
-          <li class="downloads"><a href="https://github.com/pataga/SAS/tarball/master">TAR</a></li>
-          <li class="title">DOWNLOADS</li>
-        </nav>
-      </div><!-- end header -->
+    <header>
+      <div class="inner">
+        <h1>Server-Admin-System</h1>
+        <h2>Die Webanwendung zum verwalten von Linux Servern</h2>
+        <a href="https://github.com/pataga/SAS" class="button"><small>View project on</small>GitHub</a>
+      </div>
+    </header>
 
-    <div class="wrapper">
-
-      <section>
-        <div id="title">
-          <h1>Server-Admin-System</h1>
-          <p>Die Webanwendung zum verwalten von Linux Servern</p>
-          <hr>
-          <span class="credits left">Project maintained by <a href="https://github.com/pataga">pataga</a></span>
-          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></span>
-        </div>
-
-        <hr><p>→ <strong>Projektarbeit von Patrick Farnkopf, Tanja Weiser und Gabriel Wanzek (PaTaGa) | 2BKI2 | WvS² Mannheim</strong></p>
-
-<hr><p>→ <strong>Lizenziert unter der <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache Lizenz v2.0</a></strong></p>
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <hr><p><strong>Projektarbeit von Patrick Farnkopf, Tanja Weiser und Gabriel Wanzek (PaTaGa) | 2BKI2 | WvS² Mannheim</strong></p>
 
 <hr><h1>Was ist SAS?</h1>
 
-<p>SAS bedeutet „Server Admin System“ bzw. „Server Administration System“ und ist ein Webinterface zur Verwaltung von beliebig vielen Linux-Servern. Anders als bisherige Verwa    ltungsoberflächen, muss diese nicht auf den betreffenden Server lokal installiert sein. SAS kann auf einen einfachen Webspace installiert werden. Das System kommuniziert über das sichere SSH2-Protokoll. Die Authentifizierung wird über einen RSA-Key oder einem speziellen Zugang vorgenommen. Über diese Verbindung werden die Befehle an den Linux Server gesendet und ausgeführt.  </p>
+<p>Für viele stellt die <strong>Administration eines Linux-Servers</strong> eine Herausforderung dar. Dieses Problem haben wir erkannt und somit die Entwicklung eines einfachen, schnellen und innovativem Systems begonnen. Das Server Admin System ist eine <strong>Webanwendung</strong>, die auf einem separaten Server ausgeführt und im Webbrowser aufgerufen wird. SAS bietet <strong>Konfigurations- und Steuerungsmöglichkeiten</strong> für verschiedene Dienste und Systemeinheiten mit nützlichen Erklärungen für unerfahrene Benutzer. Jedoch ist das System Die Besonderheit von SAS besteht darin, dass SAS mehr als einen Server verwalten kann und der ferngesteuerte Server nur** minimale Sofwareanforderungen **hat.</p>
 
-<h2>Systemanforderungen</h2>
+<p>Folgende Dienste sind nach der Installation zur Administration vorhanden:</p>
 
-<p>Anforderungen für die Installation und Benutzung von SAS:</p>
+<ul>
+<li>Apache 2.2</li>
+<li>MySQL-Server 5.5+ </li>
+<li>ProFTPD 1.3+</li>
+<li>Samba 3.6+ </li>
+</ul><p>Weitere Serversoftware kann mit ein grundlegendem Wissen in der Programmiersprache PHP (Version 5.4) realisiert werden, beispielsweise zur Steuerung eines Gameservers. Nach der ersten Stable-Version wird es auch Plugins für lighttpd und vsftpd geben.</p>
 
-<pre><code>PHP 5.3+
-MySQL 5.5+
-libssh2 Extension
-mind. 250 MB Speicherplatz
-PHP-Memory Limit:  mind. 64 MB. 
-</code></pre>
+<p>Weitere Einstellungen betreffen das System selbst, wie etwa eine Rechteverwaltung, die anderen Benutzern nicht den vollen Funktionsumfang ermöglicht. Die Anwendung an sich erfordert einige Softwarepakete die zuvor über ein Skript einfach installiert werden. Anschließend leitet SAS den Benutzer durch eine simple Installationsroutine, mit der die Installation sehr einfach wird. Die Voraussetzungen an den Benutzer sind gering: Da nach den neusten Standards entwickelt wird, setzt SAS lediglich einen modernen Browser (beispielsweise die aktuellste Version von Google Chrome) und eine durchschnittliche Internetverbindung voraus. Nach der Anmeldung ruft der Benutzer die Serververwaltung auf. Nach der Serverauswahl wird eine Übersichtsseite aufgerufen die aktuelle Daten des Servers darstellt.</p>
 
-<h2>Hintergrund</h2>
+<p>Auch die <strong>Vorraussetzungen</strong> an den zu verwaltenden Server sind durchaus gering. Wahlweise wird die Verbindung zum Server über das SSH2-Protokoll oder über einen sichereren und performanteren Daemon (selbstgeschrieben in “Ruby on Rails”) aufgebaut. Zusätzlich werden auch einige Pakete benötigt, die allerdings meistens schon vorinstalliert sind. Während der Entwicklung wurde klar, dass SAS aus Kompatibiltäts- und Zeitproblemen nur die Linux-Distribution "Ubuntu Server 12.04 LTS” und neuer, unabhängig von Architektur, vollständig unterstützt. Im Prinzip funktioniert jede andere Debian-basierte Distribution, jedoch wird nicht gewährleistet, dass diese vollständig unterstützt wird.
+Das gesamte System ist frei unter der Apache Lizenz v2.0 erhältlich und kann somit völlig kostenlos genutzt werden. Abschließend lässt sich sagen, dass das Server Admin System eine leistungsfähige Methode ist, seinen Server zu administrieren, egal ob Linux Anfänger oder Profi.</p>
 
-<p>Mit SAS wird das Verwalten von einem sowie mehreren Linux Servern sehr einfach, besonders für Personen die sich mit der Verwaltung über die Konsole schwer tun. SAS ist einfach, übersichtlich und schnell. Auch für Profis steht die Möglichkeit der einfachen Erweiterung zur Verfügung, die es ermöglicht eigene Skripte einzubinden. Des weiteren ist SAS vollständig OpenSource und ist mit der MIT Lizenz frei erhältlich. Desweiteren ist SAS wie bereits beschrieben, einzigartig in seinem Wesen. Mehrere Linux Server werden über ein unabhängiges System ferngesteuert und somit sicher verwaltet.
-</p>
+<h1>Systemanforderungen</h1>
 
-<h2>Verwendete Programmier- und Darstellungsprachen</h2>
+<p>Anforderungen für die Installation und Benutzung von SAS (Host):</p>
 
-<p><strong>PHP</strong>- Realisierung der Funktionalität des gesamten Systems</p>
+<ul>
+<li>PHP 5.4+</li>
+<li>MySQL 5.5+</li>
+<li><strong>Wahlweise:</strong></li>
+<li>1. libssh2 Extension (gibt es nur für 32-Bit Systeme) <em>oder</em>
+</li>
+<li>2. Ruby1.8</li>
+<li>mind. 50 MB Speicherplatz</li>
+<li>PHP-Memory Limit:  mind. 64 MB</li>
+</ul><h2>Verwendete Programmier- und Darstellungsprachen</h2>
 
-<p><strong>Bash-Script</strong> - Tools sowie Ausführung der Befehle die von SAS gesendet werden.</p>
-
-<p><strong>Javascript / jQuery</strong> - Dynamische Funktionen in den Seiteninhalten</p>
-
-<p><strong>HTML / HTML5</strong> -(Moderene) Darstellung der Inhalte</p>
-
-<p><strong>CSS / CSS3</strong> - moderne und animierte Gestaltung der Inhalte. (empfohlene Browser: Google Chrome, Mozilla Firefox, Safari)</p>
-
-<p><strong>Java</strong> - Eventuelle Servermodule und Erweiterungen</p>
-
-<p><strong>SQL</strong> - Für Interaktion mit den MySQL-Datenbanken</p>
+<p>PHP5 - Ruby - Bash - JS/jQuery - HTML5 - CSS3 - XML - SQL</p>
 
 <h2>Modulübersicht</h2>
 
@@ -90,11 +77,7 @@ PHP-Memory Limit:  mind. 64 MB.
 
 <p>Webserver-Verwaltung wird mit SAS einfach und schnell konfigurierbar. Die eingebauten Funktionen bieten die sichere Anpassung für individuelle Hostinglösungen und stellen genaue Statistiken dar, sowie eine einfache Option neue Kunden hinzuzufügen.</p>
 
-<h3>Postfix</h3>
-
-<p>Das Postfix Modul ermöglicht eine unkomplizierte Konfiguration eines Postfix E-Mail Servers. Es bringt Optionen zur Erstellung und Verwaltung von E-Mail Konten mit, sowie die Möglichkeit E-Mail Statistiken auszuwerten.</p>
-
-<h3>FTP</h3>
+<h3>ProFTPD</h3>
 
 <p>Der FTP-Server wird mithilfe des Moduls effektiv administriert. Somit wird ProFTPD im Handumdrehen konfiguriert.</p>
 
@@ -106,76 +89,43 @@ PHP-Memory Limit:  mind. 64 MB.
 
 <p>Dieses Modul verfügt über das Potential einfach und effizient Freigaben zu erstellen und zu organisieren.</p>
 
-<h3>Management</h3>
+<h3>System</h3>
 
-<p>Der Managementbereich dient zur allgemeinen Verwaltung des Serversystems und beinhaltet Funktionen wie Neustart, Paket-Installation,</p>
+<p>Der Managementbereich dient zur allgemeinen Verwaltung des Serversystems und beinhaltet Funktionen wie Neustart, Paket-Installation</p>
+
+<h3>Tools</h3>
+
+<p>Um Informationen über den Server herauszufinden gibt es hier verschiedene Module um Systeminformationen auszulesen.</p>
 
 <h3>Webuser</h3>
 
 <p>Hier werden verschiedene Möglichkeiten bereitgestellt, mit denen Zugriffsberechtigungen für einzelne Benutzer/Benutzergruppen gesetzt werden können.</p>
 
-<h3>Servertools</h3>
-
-<p>Die SAS-Tools schaffen die Vorraussetzung für eine aufschlussreiche Darstellung der Serverinformationen und verdeutlicht die  gegebenen Angaben, wie etwa eine grafische Darstellung der CPU-Auslastung.</p>
-
-<hr><h3>Online Demo:</h3>
-
-<blockquote>
-<p><strong><a href="http://46.38.238.216/SAS">http://46.38.238.216/SAS</a></strong></p>
-</blockquote>
-
-<hr><h3>SAS - Dokumente:</h3>
-
-<blockquote>
-<p><strong><a href="http://goo.gl/dTrur">SAS Dokumentation (Google Documents)</a></strong></p>
-
-<p><strong><a href="http://goo.gl/OZT5x">SAS Notizbuch (Google Documents)</a></strong></p>
-</blockquote>
-
-<hr><h3>Projektvorstellung - Präsentation:</h3>
-
-<blockquote>
-<p><strong><a href="http://goo.gl/8UqKr">SAS Präsentation (Google Documents)</a></strong></p>
-</blockquote>
-
-<hr><h4>Anforderungen des Host Servers:</h4>
+<hr><h2>SAS - Dokumente:</h2>
 
 <ul>
-<li>PHP 5.3+</li>
-<li>MySQL 5.5+</li>
-<li>libssh2 (<code>apt-get install libssh2 libssh2-1 libssh2-1-dev libssh2-php</code>)</li>
-<li>mind. 250 MB Speicherplatz</li>
-<li>PHP-Memory Limit:  mind. 64 MB. </li>
-</ul><hr><h4>Anforderungen des fernsteuerbaren Server:</h4>
+<li><strong><a href="http://goo.gl/dTrur">SAS Dokumentation (Google Documents)</a></strong></li>
+<li><strong><a href="http://goo.gl/8UqKr">SAS Präsentation (Google Documents)</a></strong></li>
+</ul><hr>
+        </section>
 
-<p>Getestete Distributionen:</p>
+        <aside id="sidebar">
+          <a href="https://github.com/pataga/SAS/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/pataga/SAS/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
 
-<ul>
-<li>Ubuntu 12.04.1 LTS Desktop - 32 &amp; 64-Bit</li>
-<li>Backtrack5 R3 Desktop - 32-Bit</li>
-<li>Lubuntu 12.04 Desktop - 64-Bit</li>
-</ul><p><em>diese Distributionen wurden im Rahmen der Entwicklung verwendet</em></p>
+          <p class="repo-owner"><a href="https://github.com/pataga/SAS"></a> is maintained by <a href="https://github.com/pataga">pataga</a>.</p>
 
-<h5>Empfohlene und bisher getestete Server-Distributionen:</h5>
-
-<ul>
-<li>Ubuntu Server 12.04.1 LTS - 64-Bit (<a href="http://releases.ubuntu.com/precise/ubuntu-12.04.1-server-amd64.iso">Download</a>)</li>
-</ul><h5>erforderliche (zusätzliche) Pakete:</h5>
-
-<ul>
-<li><code>apache2, apache2-doc, apache2-utils, apache2.2-bin</code></li>
-<li><code>mysql-server, mysql-server-5.5 ,mysql-server-core</code></li>
-<li><code>lynx, lynx-cur</code></li>
-<li><code>openssh, openssh-server</code></li>
-<li><code>php5, php5-common, php5-mysql</code></li>
-<li><code>proftpd</code></li>
-<li><code>zip, unzip, unrar</code></li>
-<li><code>apt, bash, hostname</code></li>
-</ul>
-      </section>
-
+          <p>This page was generated by <a href="pages.github.com">GitHub Pages</a> using the Architect theme by <a href="http://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
     </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-    
+
+  
   </body>
 </html>
