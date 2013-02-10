@@ -33,10 +33,10 @@ Anleitungen, Installation, unterstützte Distributionen, und mehr hier: [GitHub 
 ####Anforderungen des Servers für SAS (Host):
 - Apache2.2+
 - PHP 5.4+
-- libssh2 für PHP 5.4+
+- optional libssh2 für PHP 5.4+
+- Ruby1.8
 - MySQL-Server 5.5+
-- es werden **nur 32-Bit-Systeme** unterstützt (libssh2 für PHP5.4 ist noch nicht für 64-Bit-Systeme verfügbar)
-- mind. 250 MB Speicherplatz
+- mind. freier 50 MB Speicherplatz
 - PHP-Memory Limit:  mind. 64 MB.
 ---
 
