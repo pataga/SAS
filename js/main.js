@@ -21,16 +21,16 @@ $(document).ready(function(){ 			// Spoiler
 });
 
 function tabs(x) {
-	var lis=document.getElementById("tabs_ui").childNodes; //gets all the LI from the UL
+	var lis=document.getElementById("tabs_ui").childNodes;
 
 	for(i=0;i<lis.length;i++)
 	{
-	  lis[i].className=""; //removes the classname from all the LI
+	  lis[i].className="";
 	}
-	x.className="selected"; //the clicked tab gets the classname selected
-	var res=document.getElementById("tabcontent");  //the resource for the main tabcontent
+	x.className="selected";
+	var res=document.getElementById("tabcontent");
 	var tab=x.id;
-	switch(tab) //this switch case replaces the tabcontent
+	switch(tab)
 	{
 	    case "tab1":
 	        res.innerHTML=document.getElementById("tab1content").innerHTML;

@@ -14,11 +14,9 @@
         <!-- JS -->
         <script src="js/vendor/modernizr-2.6.1.min.js"></script>
         <script src="js/vendor/jquery-1.8.2.min.js"></script>
-        <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
         <script src="js/notifications.js"></script> 
-        <script src="js/tablesorter/jquery.tablesorter.js"></script>
-        <script src="js/jquery.fastLiveFilter.js"></script>
+        <script src="js/tablesorter/jquery.tablesorter.min.js"></script>
         <!-- external JS -->
         <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     </head>
