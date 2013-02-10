@@ -35,7 +35,6 @@ if (isset($_POST['installtools'])) {
     $out = "Aktion erfolgreich durchgef&uuml;hrt.";
 }
 ?>
-
 <h3>Netzwerk-Tools</h3>
 <div class="zweidrittel-box">
 <fieldset>
@@ -90,8 +89,7 @@ document.getElementById("output").innerHTML=me;
 <span class="show_hide">Hilfe zu den Begriffen</span>
 <br>
 <div class="spoiler_div"> 
-<h4>Begriffserklärung</h4>
-<ul>
-    <li><b>PING</b>, steht für "<b>P</b>acket <b>I</b>nter<b>n</b>et <b>G</b>roper", und sendet kleine Datenpakete an einen Zielrechner. Ist der Rechner vefügbar, so kommt eine Antwort zurück. Das Protokoll gibt anschließend aus ob die Daten zurück gekommen sind und wie lang dieser Vorgang gedauert hat.</li>
-    <li><b>Traceroute</b>, mit diesem Tool kann man den Weg von Datenpaketen verfolgen und sichtbar machen. Somit wird festgestellt durch welche "Stationen" sich ein vom Server gesendetes Datenpaket geht. Zusätzlich werden Informationen ausgegeben, wie: Zeit, Hostname der "Station" und deren IP-Adresse.</li>
+<p><b>PING</b>, steht für "<b>P</b>acket <b>I</b>nter<b>n</b>et <b>G</b>roper", und sendet kleine Datenpakete an einen Zielrechner. Ist der Rechner vefügbar, so kommt eine Antwort zurück. Das Protokoll gibt anschließend aus ob die Daten zurück gekommen sind und wie lang dieser Vorgang gedauert hat.</p>
+<p><b>Traceroute</b>, mit diesem Tool kann man den Weg von Datenpaketen verfolgen und sichtbar machen. Somit wird festgestellt durch welche "Stationen" sich ein vom Server gesendetes Datenpaket geht. Zusätzlich werden Informationen ausgegeben, wie: Zeit, Hostname der "Station" und deren IP-Adresse.</p>
+<p><b>Whois</b>, ein Dienst, mit dem Informationen über den Inhaber und Administrator einer Domain abgefragt werden können. </p>
 </div>
