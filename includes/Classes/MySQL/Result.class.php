@@ -26,7 +26,7 @@ class Result {
         $this->result = $result;
     }
 
-    public function fetch($type = 0) {
+    public function fetch($type = Result::FETCH_OBJECT) {
         switch ($type) {
             case Result::FETCH_OBJECT: 
                 return $this->result->fetch(\PDO::FETCH_OBJ);
@@ -39,6 +39,10 @@ class Result {
             default:
                 return false;
         }
+    }
+
+    public function fetchAll() {
+        return $this->result->fetchAll();
     }
 
     // Temporäre Methode, bis alle Module und Klassen abgeändert wurden

@@ -1,13 +1,17 @@
-<?php/**
+<?php
+
+/**
 * Licensed under The Apache License
 *
 * @copyright Copyright 2012-2013 Patrick Farnkopf, Tanja Weiser, Gabriel Wanzek (PaTaGa)
 * @link https://github.com/pataga/SAS
 * @since SAS v1.0.0
-* @license Apache License v2 (http://www.apache.org/licenses/LICENSE-2.0.txt
+* @license Apache License v2 (http://www.apache.org/licenses/LICENSE-2.0.txt)
 * @author Gabriel Wanzek
 *
-*/?>
+*/
+
+?>
 <h3>SAS Plugins</h3>
 <a href="?p=plugins&s=cssinfo"><div class="viertel-box boxitem"><p>CSS-Info</p></div></a>
 <a href="#LEER"><div class="viertel-box boxitem"><p><i>leer</i></p></div></a>

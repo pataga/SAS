@@ -64,7 +64,6 @@ $main = new \Classes\Main();
 $mysql = $main->MySQL();
 $loader = $main->Loader();
 $server = $main->Server();
-$database = $main->Database();
 $debug = $main->Debug();
 $cache = $main->Cache();
 $session = $main->Session();

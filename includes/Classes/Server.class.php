@@ -23,6 +23,12 @@ class Server {
     private $soap;
     private $m;
 
+    const MYSQL_HOST        = 0;
+    const MYSQL_PORT        = 1;
+    const MYSQL_USER        = 2;
+    const MYSQL_PASS        = 3;
+    const MYSQL_DB          = 4;
+
     public function __construct($main) {
         $this->m = $main;
         $this->mysql = $main->MySQL();
@@ -159,13 +165,13 @@ class Server {
         if ($this->isInstalled("mysql")) {
             $result = $this->mysql->tableAction('sas_server_mysql')->select(NULL, ['id' => $this->server_id]);
 
-            if ($result->getRowsCount() > 0) {
+            if ($result->getRowsCount()) {
                 $data = [];
                 $row = $result->fetchObject();
-                $data[] = $row->host;
-                $data[] = $row->port;
-                $data[] = $row->username;
-                $data[] = $row->password;
+                $data[Server::MYSQL_HOST] = $row->host;
+                $data[Server::MYSQL_PORT] = $row->port;
+                $data[Server::MYSQL_USER] = $row->username;
+                $data[Server::MYSQL_PASS] = $row->password;
                 return $data;
             }
         }

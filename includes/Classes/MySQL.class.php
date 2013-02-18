@@ -20,9 +20,9 @@ class MySQL implements \Config\MySQL {
                 $dsn = 'mysql:host='.\Config\MySQL::HOST_ADDRESS;
                 $this->pdoInstance = new \PDO($dsn, \Config\MySQL::USERNAME, \Config\MySQL::PASSWORD);
             } else {
-                $dsn = 'mysql:host='.$data[0];
-                $this->pdoInstance = new \PDO($dsn, $data[2], $data[3]);
-                if ($data[1]) $this->selectDatabase($data[1]);
+                $dsn = 'mysql:host='.$data[\Classes\Server::MYSQL_HOST];
+                $this->pdoInstance = new \PDO($dsn, $data[\Classes\Server::MYSQL_USER], $data[\Classes\Server::MYSQL_PASS]);
+                if ($data[\Classes\Server::MYSQL_DB]) $this->selectDatabase($data[\Classes\Server::MYSQL_DB]);
             }
             $this->pdoInstance->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
         } catch (\Exception $e) {

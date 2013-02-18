@@ -62,12 +62,6 @@ class Main {
         }
 
         try {
-            $this->database = new \Classes\MySQL\Database($this);
-        } catch (\Classes\Main\Exception $e) {
-            $this->debug->error($e);
-        }
-
-        try {
             $this->cache = new \Classes\Cache($this);
         } catch (\Classes\Main\Exception $e) {
             $this->debug->error($e);
@@ -101,7 +95,6 @@ class Main {
     public function SSH() { return $this->ssh; }
     public function MySQL() { return $this->mysql; }
     public function User() { return $this->user; }
-    public function Database() { return $this->database; }
     public function Loader() { return $this->loader; }
     public function Debug() { return $this->debug; }
     public function Cache() { return $this->cache; }
