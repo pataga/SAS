@@ -38,6 +38,7 @@ Anleitungen, Installation, unterstützte Distributionen, und mehr hier: [GitHub 
 - MySQL-Server 5.5+
 - mind. freier 50 MB Speicherplatz
 - PHP-Memory Limit:  mind. 64 MB.
+
 ---
 
 Es können alle Ubuntu-basierenden (12.04+) Distributionen per SSH oder über SOAP (Ruby-Daemon) ferngesteuert werden
