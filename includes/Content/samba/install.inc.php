@@ -39,7 +39,7 @@ if (isset($_POST['install'])) {
 
   ";
 
-  $ssh->execute('echo '.$smbconf.' > /etc/samba/smb.conf');
+  $server->execute('echo '.$smbconf.' > /etc/samba/smb.conf');
   $mysql->Query("UPDATE sas_server_data SET samba=1 WHERE id = ".$session->GetServerID());
 }
 
