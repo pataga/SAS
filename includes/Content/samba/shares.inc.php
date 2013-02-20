@@ -11,6 +11,7 @@
 * @author Tanja Weiser
 *
 */
+
 if (!$server->isInstalled('samba')) {
     header('Location:?p=samba&s=install');
     exit;
@@ -64,11 +65,13 @@ if (!$server->isInstalled('samba')) {
 
 ?>
 
-
-<h3>Freigaben</h3>
-<br>
-Hinweis: Nach dem hinzufügen einer neuen Freigabe wird der Dienst automatisch neu gestartet.
 <br><br>
+<fieldset>
+<legend>Was sind Freigaben unter Samba?</legend>
+Samba arbeitet als Server sobald Datenträger mit anderen Rechnern im Netzwerk geteilt werden.<br>
+Um Bestimmte Ordner für andere Rechner freigeben zu können muss eine neue Freigabe in der Konfigurationsdatei von Samba eingetragen werden.
+Die Freigaben tauchen in der Netzwerkumgebung auf und können bei Bedarf auch als festes Laufwerk eingebunden werden.
+</fieldset>
 <fieldset>
     <legend>Freigabe hinzuf&uuml;gen</legend>
     <form action="index.php?p=samba&s=shares" method="POST">
@@ -178,6 +181,7 @@ Hinweis: Nach dem hinzufügen einer neuen Freigabe wird der Dienst automatisch n
         </div>
         
         <div class="clearfix"></div>
-        <input type="submit" class="button green" name="add" value="Neue Freigabe Hinzuf&uuml;gen">
+        <input type="submit" class="button green" name="add" value="Neue Freigabe Hinzuf&uuml;gen"><br><br>
+        Hinweis: Nach dem hinzufügen einer neuen Freigabe wird der Dienst automatisch neu gestartet.
     </form>
 </fieldset>

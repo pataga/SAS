@@ -1,10 +1,73 @@
 <?php 
 
+
+/**
+* Licensed under The Apache License
+*
+* @copyright Copyright 2012-2013 Patrick Farnkopf, Tanja Weiser, Gabriel Wanzek (PaTaGa)
+* @link https://github.com/pataga/SAS
+* @since SAS v1.0.0
+* @license Apache License v2 (http://www.apache.org/licenses/LICENSE-2.0.txt
+* @author Tanja Weiser
+*
+*/
+
+// Status -> ftpwho
+// Version -> proftpd --version
+// Benutzer -> 
+// Module -> proftpd --list
+// Letzte Fehlrmedung -> proftpd -vv
+// neustarten -> etc/init.d/proftpd restart
+
+$version = $server->execute('proftpd --version');
+$status = $server->execute('ftpwho');
+//$status = explode(",", $stat);
+$module = $server->execute('proftpd --list');
+//$user = $server->execute('');
+
+
+
+
 ?>
+
+
 <h3>Übersicht</h3>
 <fieldset>
-	<p><b>Modulname: </b>overview</p>
-	<p><b>Modulbeschreibung: </b><br></p>
-	<p><b>Programmierer(in):</b> ?</p>
-	<p><b>Status:</b> Kein Status vorhanden</p>
+<legend>Was Ist ProFTPD?</legend>
+	Das File Transfer Protocol (FTP) ist ein Dateiübertragungsverfahren.<br>
+	Es wird genutzt um Dateien auf einen Server hochzuladen oder um Dateien auf den Client herunterzuladen.<br>
+	ProFTPD (Pro File Transfer Protocoll Daemon) ist ein freier FTP-Server, der am häufigsten genutzt wird.
 </fieldset>
+<form action="index.php?p=ftp&s=overview" method="POST">
+<fieldset>	
+<legend>Restart</legend>
+<input type="submit" class="button black" name="restart" value="neustarten">
+</form>
+</fieldset>
+<div class="halbe-box">
+<fieldset>
+<legend>Version</legend>
+<h5><?=$version?></h5><br>
+</fieldset>
+</div>
+<div class="halbe-box lastbox">
+<fieldset>
+<legend>Status</legend>
+<h5><?=$status?></h5>
+</fieldset>
+</div>
+
+<div class="halbe-box">
+<fieldset>
+<legend>Module</legend>
+<h5><?=$module?></h5><br>
+</fieldset>
+</div>
+<div class="halbe-box lastbox">
+<fieldset>
+<legend>Benutzer</legend>
+<!--<h5><?=$user?></h5>-->
+Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>
+Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>
+</fieldset>
+</div>

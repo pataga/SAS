@@ -42,12 +42,20 @@ $version = $server->execute('smbd -V');
 
 ?>
 
-<h3>Samba Übersicht</h3>
+<br><br>
 
+<fieldset>
+<legend>Was ist Samba?</legend>
+Samba ist ein Dienst, der eine Verbindung zweier Systeme ermöglicht.<br>
+Durch Samba bietet sich die Möglichkeit zum Datenaustausch in Netzwerken auch zwischen verschiedenen Betriebssystemen.
+</fieldset>
+
+<div class="halbe-box lastbox">
 <fieldset>
 <legend>Installierte Samba Version</legend>
 <h5><?=$version?></h5> 
 </fieldset>
+</div><br><br><br><br><br><br><br><br><br><br>
 
 <form action="index.php?p=samba" method="POST">
 <fieldset>	
