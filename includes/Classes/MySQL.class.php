@@ -22,11 +22,12 @@ class MySQL implements \Config\MySQL {
             } else {
                 $dsn = 'mysql:host='.$data[\Classes\Server::MYSQL_HOST];
                 $this->pdoInstance = new \PDO($dsn, $data[\Classes\Server::MYSQL_USER], $data[\Classes\Server::MYSQL_PASS]);
-                if ($data[\Classes\Server::MYSQL_DB]) $this->selectDatabase($data[\Classes\Server::MYSQL_DB]);
+                if (isset($data[\Classes\Server::MYSQL_DB])) $this->selectDatabase($data[\Classes\Server::MYSQL_DB]);
             }
+            $this->isAlive = true;
             $this->pdoInstance->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
         } catch (\Exception $e) {
-            unset($this);
+            $this->isAlive = false;
         }
     }
 
@@ -66,7 +67,11 @@ class MySQL implements \Config\MySQL {
         }
     }
 
-    private $prepStmt, $stmtData = [], $pdoInstance;
+    public function isAlive() {
+        return $this->isAlive;
+    }
+
+    private $prepStmt, $stmtData = [], $pdoInstance, $isAlive;
 }
 
 ?>

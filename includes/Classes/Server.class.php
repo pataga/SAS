@@ -163,8 +163,7 @@ class Server {
     */
     public function getMySQLData() {
         if ($this->isInstalled("mysql")) {
-            $result = $this->mysql->tableAction('sas_server_mysql')->select(NULL, ['id' => $this->server_id]);
-
+            $result = $this->mysql->tableAction('sas_server_mysql')->select(NULL, ['sid' => $this->server_id]);
             if ($result->getRowsCount()) {
                 $data = [];
                 $row = $result->fetchObject();

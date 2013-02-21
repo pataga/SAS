@@ -25,7 +25,7 @@ class tableAction {
 
 
    /**
-    *   Fügt mit einen Datensatz hinzu
+    *   Fügt einen Datensatz hinzu
     *   @param Array Dateninhalte
     *   @return MySQL
     */
@@ -36,12 +36,24 @@ class tableAction {
 
 
    /**
-    *   Fügt mit einen Datensatz hinzu
-    *   @param Array Dateninhalte
+    *   Aktualisiert einen Datensatz
+    *   @param Array Änderungen
+    *   @param Array Condition
     *   @return MySQL
     */
     public function update($content, $condition) {
         $query = self::buildUpdateQuery($content, $condition);
+        return $this->mysql->Query($query);
+    }
+
+    /**
+    *   Aktualisiert einen Datensatz
+    *   @param Array Änderungen
+    *   @param Array Condition
+    *   @return MySQL
+    */
+    public function replace($content, $condition) {
+        $query = self::buildReplaceQuery($content, $condition);
         return $this->mysql->Query($query);
     }
 
@@ -148,27 +160,57 @@ class tableAction {
     *   @return String Query
     */
     protected function buildUpdateQuery(array $content, array $condition) {
-    	$key = array_keys($content);
-    	$data = array_values($content);
-    	$amount = count($key)-1;
-    	$query = "UPDATE $this->table SET ";
+        $key = array_keys($content);
+        $data = array_values($content);
+        $amount = count($key)-1;
+        $query = "UPDATE $this->table SET ";
 
-    	for ($i = 0; $i <= $amount; $i++) {
-    		$query .= "$key[$i] = '$data[$i]'";
-    		if ($i < $amount) $query .= ",";
-    	}
+        for ($i = 0; $i <= $amount; $i++) {
+            $query .= "$key[$i] = '$data[$i]'";
+            if ($i < $amount) $query .= ",";
+        }
 
-    	$key = array_keys($condition);
-    	$data = array_values($condition);
-    	$amount = count($key)-1;
+        $key = array_keys($condition);
+        $data = array_values($condition);
+        $amount = count($key)-1;
 
-    	$query .= " WHERE ";
-    	for ($i = 0; $i <= $amount; $i++) {
-    		$query .= "$key[$i] = '$data[$i]'";
-    		if ($i < $amount) $query .= " AND ";
-    	}
+        $query .= " WHERE ";
+        for ($i = 0; $i <= $amount; $i++) {
+            $query .= "$key[$i] = '$data[$i]'";
+            if ($i < $amount) $query .= " AND ";
+        }
 
-    	return $query;
+        return $query;
+    }
+
+    /**
+    *   Erstellt aus einem Array einen REPLACE Query
+    *   @param Array Dateninhalte
+    *   @param Array Bedingung
+    *   @return String Query
+    */
+    protected function buildReplaceQuery(array $content, array $condition) {
+        $key = array_keys($content);
+        $data = array_values($content);
+        $amount = count($key)-1;
+        $query = "REPLACE $this->table SET ";
+
+        for ($i = 0; $i <= $amount; $i++) {
+            $query .= "$key[$i] = '$data[$i]'";
+            if ($i < $amount) $query .= ",";
+        }
+
+        $key = array_keys($condition);
+        $data = array_values($condition);
+        $amount = count($key)-1;
+
+        $query .= " WHERE ";
+        for ($i = 0; $i <= $amount; $i++) {
+            $query .= "$key[$i] = '$data[$i]'";
+            if ($i < $amount) $query .= " AND ";
+        }
+
+        return $query;
     }
 
     /**
