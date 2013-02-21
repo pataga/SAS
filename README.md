@@ -28,6 +28,8 @@ Anleitungen, Installation, unterstützte Distributionen, und mehr hier: [GitHub 
 > **[SAS Notizbuch (Google Documents)][4]**
 >
 > **[SAS Präsentation: "Projektvorstellung" (Google Documents)][3]**
+>
+> **[Countdown v1.2 Beta][100] (aktuell: _v1.1 alpha)
 
 ---
 ####Anforderungen des Servers für SAS (Host):
@@ -49,5 +51,6 @@ Es können alle Ubuntu-basierenden (12.04+) Distributionen per SSH oder über SO
 [4]: http://goo.gl/OZT5x
 [5]: http://www.apache.org/licenses/LICENSE-2.0.html
 [6]: https://github.com/pataga/SAS/wiki
+[100]: http://www.webflix.de/sas-launch/
 [logo2]: http://mangopix.de/local_images/sas-logo2.png
 
