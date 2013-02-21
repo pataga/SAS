@@ -10,6 +10,8 @@
  *
  */
 ?><h1 class="normal">Dev: CSS-Info</h1>
+<span class="error">Diese Seite ist unvollständig und wird vorerst nicht aktualisiert.<br>Für Entwickler ist die Datei "css/main.css" jedoch mit einem Inhaltsverzeichnis versehen.</span>
+<hr>
 <p><b>Tipp:</b> Die "Element untersuchen" Funktion von Firefox kann hier hilfreich sein.</p>
 <h3>Inhalt:</h3>
 <ol>
