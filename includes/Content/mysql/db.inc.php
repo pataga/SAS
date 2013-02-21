@@ -17,7 +17,7 @@ if (!$data) {
     exit;
 }
 
-$dbModule = new \Classes\Module\MySQL\DBHandler();
+$dbModule = new \Classes\Module\MySQL\DBHandler($data);
 
 //ToDo: Implementierung
 
