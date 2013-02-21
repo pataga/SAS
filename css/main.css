@@ -8,10 +8,40 @@ Licensed under The Apache License
 - Apache License v2 (http://www.apache.org/licenses/LICENSE-2.0.txt
 - Author:  Gabriel Wanzek
 - Version: 3.0
+========================================================================== 
+
+Inhaltsverzeichnis:
+
+    1. Schriftarten (Lobster, Ubuntu, Ubuntu Bold, Ubuntu Mono)
+    2. simple resets
+    3. Top [Logo + Userpanel]
+    4. Layout    
+        4.0 Hauptnavigation (und Wrapper)
+        4.1 Layout: Boxensystem + Overview-Boxen
+        4.2 Layout: Sidebar + Content
+        4.3 Layout: Footer
+    5. Template-Features
+        5.1 Text, Links, Placeholder, Überschriften, Listen, code/pre, etc.
+        5.2 Tabellen, Formulare, Inputs, diverse scrollbare Container
+        5.3 [VERWORFEN] CSS3 animierte Ladebalken -> ersetzt -> HTML5 "<progress>" und "<meter>"
+        5.4 Buttonstlyes für submit, button and links
+        5.5 Tooltips (CSS3, abwärtskompatibel) in 3 Variationen
+        5.6 Template Features: Statusmeldungen - autom. breite (kominierbar mix box-system)
+        5.7 jQuery Spoiler (nur ein Spoiler pro Seite möglich)
+        5.8 Javascript Tabs (max 6 Tabs)
+    6. Kein Javascript aktiv -> Meldung über dem eig. Pagecontent
+    7. Helper classes from HTML5Boilerplate 
+    8. [EXTRA] Custom Styles für Module
+    9. [EXTRA] Installationsroutine
+
+
+
+
 ========================================================================== */
 
+
 /* =======================================================================
-Schriftarten
+1. Schriftarten
 ========================================================================== */
 
 @font-face {
@@ -43,7 +73,7 @@ Schriftarten
 }
 
 /* ==========================================================================
-Layout
+2. simple resets
 ========================================================================== */
 
 html, button, input, select, textarea {
@@ -60,7 +90,7 @@ body {
 }
 
 /* ==========================================================================
-Top [Logo + Userpanel]
+3. Top [Logo + Userpanel]
 ========================================================================== */
 
 .top {
@@ -134,7 +164,7 @@ Top [Logo + Userpanel]
 }
 
 /* ==========================================================================
-Hauptnavigation (und Wrapper)
+4.0 Hauptnavigation (und Wrapper)
 ========================================================================== */
 
 #wrapper {
@@ -209,7 +239,7 @@ Hauptnavigation (und Wrapper)
 }
 
 /* ==========================================================================
-Layout: Spaltensystem
+4.1 Layout: Boxensystem + Overview-Boxen
 ========================================================================== */
 
 .halbe-box          { width: 47.5%; }
@@ -291,7 +321,7 @@ Layout: Spaltensystem
 }
 
 /* ==========================================================================
-Layout: Sidebar + Content
+4.2 Layout: Sidebar + Content
 ========================================================================== */
 
 #main {
@@ -375,7 +405,7 @@ Layout: Sidebar + Content
 }
 
 /* ==========================================================================
-Layout: Footer
+4.3 Layout: Footer
 ========================================================================== */
 #footer {
     clear: right;
@@ -437,7 +467,7 @@ Layout: Footer
 }
 
 /* ==========================================================================
-Template-Features [Text Formatierungen und so ...]
+5.1 Template-Features: Text, Links, Placeholder, Überschriften, Listen, code/pre, etc.
 ========================================================================== */
 
 ::-moz-selection {
@@ -651,7 +681,7 @@ pre.simple {
 }
 
 /* ==========================================================================
-Template-Features [Forms und so ...]
+5.2 Template-Features: Tabellen, Formulare, Inputs, diverse scrollbare Container;
 ========================================================================== */
 
 #main table {
@@ -1012,10 +1042,10 @@ Template-Features [Forms und so ...]
 }
 
 /* ==========================================================================
-Author's custom styles
+5.3 Template Features: LADEBALKEN - Wurden ersetzt durch das HTML5-tag <meter>
 ========================================================================== */
 
-/* ====== LADEBALKEN - Wurden ersetzt durch das HTML5-tag <meter>
+/* ====== 
 
 .progress-bar {
     background-color: #eee;
@@ -1115,8 +1145,10 @@ Author's custom styles
     0% {background-position: 0 0;} 100% {background-position: 60px 0;}
 }
 */
-/* ====== BUTTONS FÜR SUBMIT, BUTTON AND LINKS ===== */
 
+/* ==========================================================================
+5.4 Template Features: BUTTONS FÜR SUBMIT, BUTTON AND LINKS
+========================================================================== */
 .button {
     display: inline-block;
     text-decoration: none;
@@ -1377,7 +1409,9 @@ Author's custom styles
     box-shadow: inset 0 0 6px 1px #999;
 }
 
-/* --- TOOLTIPS --- */
+/* ==========================================================================
+5.5 Template Features: Tooltips (CSS3, abwärtskompatibel) 
+========================================================================== */
 
 .tooltip {
     position: relative;
@@ -1521,7 +1555,9 @@ Author's custom styles
     outline: none;
 }
 
-/* --- STATUSMELDUNGEN --- */
+/* ==========================================================================
+5.6 Template Features: Statusmeldungen - autom. breite (kominierbar mix box-system)
+========================================================================== */
 
 span.error, span.info, span.alert, span.success {
     display: block;
@@ -1571,20 +1607,9 @@ span.success {
     box-shadow: 1px 1px 1px #888;
 }
 
-/* --- PHPINFO --- */
-
-iframe.phpinfo {
-    width: 770px;
-    min-height: 600px;
-    max-height: 1200px;
-    -moz-box-shadow: 0 0 5px #888;
-    -webkit-box-shadow: 0 0 5px #888;
-    box-shadow: 0 0 5px #888;
-    overflow-x: hidden;
-    overflow-y: scroll;
-}
-
-/* --- SPOILER --- */
+/* ==========================================================================
+5.7 jQuery Spoiler (nur ein Spoiler pro Seite möglich)
+========================================================================== */
 
 .spoiler_div {
     height: auto;
@@ -1626,7 +1651,9 @@ span.show_hide {
     display: none;
 }
 
-/* --- TABS --- */
+/* ==========================================================================
+5.8 Javascript Tabs (max 6 Tabs)
+========================================================================== */
 
 .tabnav {
     margin: 10px 0;
@@ -1689,7 +1716,9 @@ span.show_hide {
     background-size: 50px 50px;
 }
 
-/* --- KEIN JS --- */
+/* ==========================================================================
+6. Kein Javascript aktiv -> Meldung über dem eig. Pagecontent
+========================================================================== */
 
 #nojsactive {
     background-image: -webkit-linear-gradient(
@@ -1762,7 +1791,7 @@ span.show_hide {
 }
 
 /* ==========================================================================
-Helper classes
+7. Helper classes from HTML5Boilerplate
 ========================================================================== */
 
 .hidden {
@@ -1810,7 +1839,24 @@ Helper classes
 }
 
 /* ==========================================================================
-EXTRA: Installationsroutine
+8. [EXTRA] Custom Styles für Module
+========================================================================== */
+
+/* --- PHPINFO --- */
+
+iframe.phpinfo {
+    width: 770px;
+    min-height: 600px;
+    max-height: 1200px;
+    -moz-box-shadow: 0 0 5px #888;
+    -webkit-box-shadow: 0 0 5px #888;
+    box-shadow: 0 0 5px #888;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+/* ==========================================================================
+9. [EXTRA] Installationsroutine
 ========================================================================== */
 
 .logoinstall {
