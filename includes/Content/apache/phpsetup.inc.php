@@ -15,10 +15,10 @@ $ipa = $server->execute("ls -l /etc/apache2/mods-available/ | grep load | awk {'
 // ^^ Das ginge bestimmt auch einfacher, aber das ist mir vorzeitig egal :o)
 $gle = $server->execute("php -r \"print_r(get_loaded_extensions());\" | grep = | awk {'print $3'}",1);
 
-if (preg_match('/php5.aload/',$ipe)) {
-	$ps = 'Das PHP-Modul ist auf ihrem Webserver aktiviert.';
+if (preg_match('/php5.load/',$ipe)) {
+	$ps = 'Das PHP5-Modul ist auf ihrem Webserver aktiviert.';
 } else {
-	$ps = 'Das PHP-Modul ist auf ihrem Webserver deaktiviert oder wurde nicht gefunden. Sie können das ggf. Modul <a href="?p=apache&s=modules">hier</a> aktivieren. Alternativ muss PHP installiert werden:<br>
+	$ps = 'Das PHP5-Modul ist auf ihrem Webserver deaktiviert oder wurde nicht gefunden. Sie können das ggf. Modul <a href="?p=apache&s=modules">hier</a> aktivieren. Alternativ muss PHP installiert werden:<br>
 	<input type="submit" name="installphp" class="invs" value="PHP installieren"> ';
 }
 
