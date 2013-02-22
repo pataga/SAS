@@ -1409,6 +1409,22 @@ pre.simple {
     box-shadow: inset 0 0 6px 1px #999;
 }
 
+/* Submit der aussieht wie ein Link */
+
+input[type=submit].invs {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    color: #0b75b2;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+input[type=submit].invs:hover {
+    text-decoration: underline;
+}
+
 /* ==========================================================================
 5.5 Template Features: Tooltips (CSS3, abwärtskompatibel) 
 ========================================================================== */
@@ -1708,12 +1724,6 @@ span.show_hide {
     margin-bottom: 10px;
     border: 1px solid #e1e1e1;
     width: 93%;
-}
-
-.sassasa {
-    -webkit-background-size: 50px 50px;
-    -moz-background-size: 50px 50px;
-    background-size: 50px 50px;
 }
 
 /* ==========================================================================
