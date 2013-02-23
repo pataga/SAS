@@ -16,7 +16,7 @@
     </head>
     <!--[if IE]>
 <script type="text/javascript">
-alert ('Bitte nutzen Sie einen modernen Browser, wie etwa:\n\nGoogle Chrome oder Safari.\nDanke!');
+alert ('Bitte nutzen Sie einen modernen Browser, wie bspw.:\n\nGoogle Chrome oder Safari.\nDanke!');
 </script>
 <![endif]-->
     <body>
@@ -25,9 +25,6 @@ alert ('Bitte nutzen Sie einen modernen Browser, wie etwa:\n\nGoogle Chrome oder
                <p>Um ein besseres Nutzererlebnis im Server Admin System zu haben, <a href="http://www.enable-javascript.com/de/">aktiviere bitte JavaScript</a> in deinem Browser.</p>
             </div>
         </noscript>
-        <div class="ribbon">
-            <a href="https://github.com/pataga/SAS">Star us on GitHub</a>
-        </div>
         <div class="logo">
             <h1>Server <span>Admin</span> System</h1>
         </div>
@@ -40,13 +37,13 @@ alert ('Bitte nutzen Sie einen modernen Browser, wie etwa:\n\nGoogle Chrome oder
             </form>
         </div>
         <p class="footer">
-            <a onclick="alert(unescape('Bitte wenden Sie sich an den Systemadministrator.'))" href="#">Passwort vergessen?</a>
+            <a onclick="alert(unescape('Sollten Sie ihr Passwort vergessen haben, wenden Sie sich bitte an den Systemadministrator. Dieser kann ihnen ein neues Passwort zuweisen.'))" href="#">Passwort vergessen?</a>
             <br>
             &copy; <?php echo date("Y");?> SAS - Server Admin System
             <br>
-            <a onclick="alert(unescape('Diese Seite ist vor%FCbergehend nicht erreichbar.'))" href="#">Patrick Farnkopf</a>
-            <a onclick="alert(unescape('Diese Seite ist vor%FCbergehend nicht erreichbar.'))" href="#">Tanja Weiser</a>
-            <a class="last" href="http://mangopix.de" target="_blank">Gabriel Wanzek</a>
+            <a href="https://github.com/PatrickFarnkopf" target="_blank">Patrick Farnkopf</a> 
+            <a href="https://github.com/TanjaWeiser" target="_blank">Tanja Weiser</a> 
+            <a class="last" href="https://github.com/GabrielWanzek" target="_blank">Gabriel Wanzek</a>
         </p>
     </body>
 </html>

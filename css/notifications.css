@@ -7,7 +7,7 @@ Licensed under The Apache License
 - https://github.com/pataga/SAS
 - Apache License v2 (http://www.apache.org/licenses/LICENSE-2.0.txt
 - Author:  Gabriel Wanzek
-- Version: 1.0
+- Version: 1.2
 ========================================================================== */
 
 @font-face {
@@ -26,7 +26,6 @@ Licensed under The Apache License
     background: #2d7e99;
     color: #fff;
 }
-
 
 #top {
 	width: 100%;

@@ -1,41 +1,38 @@
-﻿/* ============================================= ==========================
+﻿/* =======================================================================
 
-MAIN.CSS - Komplettstyle von SAS
+main.css - stylesheet for SAS and SAS-Notification Center with all features
 
 Licensed under The Apache License
 - Copyright 2012-2013 Patrick Farnkopf, Tanja Weiser, Gabriel Wanzek (PaTaGa)
 - https://github.com/pataga/SAS
 - Apache License v2 (http://www.apache.org/licenses/LICENSE-2.0.txt
 - Author:  Gabriel Wanzek
-- Version: 3.0
+- Version: 3.2
 ========================================================================== 
 
 Inhaltsverzeichnis:
 
-    1. Schriftarten (Lobster, Ubuntu, Ubuntu Bold, Ubuntu Mono)
-    2. simple resets
+    1. Schriftarten (Lobster (>Logo), Ubuntu (>content), Ubuntu Bold (>headings), Ubuntu Mono (>code))
+    2. simple resets for cross Browser -> another resets done by normalize.css
     3. Top [Logo + Userpanel]
     4. Layout    
-        4.0 Hauptnavigation (und Wrapper)
+        4.0 Hauptnavigation und Wrapper
         4.1 Layout: Boxensystem + Overview-Boxen
-        4.2 Layout: Sidebar + Content
+        4.2 Layout: Sidebarnavigation + Content
         4.3 Layout: Footer
     5. Template-Features
         5.1 Text, Links, Placeholder, Überschriften, Listen, code/pre, etc.
         5.2 Tabellen, Formulare, Inputs, diverse scrollbare Container
-        5.3 [VERWORFEN] CSS3 animierte Ladebalken -> ersetzt -> HTML5 "<progress>" und "<meter>"
-        5.4 Buttonstlyes für submit, button and links
-        5.5 Tooltips (CSS3, abwärtskompatibel) in 3 Variationen
+        5.3 [VERWORFEN] CSS3 animierte Ladebalken -> ersetzt durch -> HTML5 "<progress>" und "<meter>"
+        5.4 Buttonstlyes für submit, button and links und Submit der aussieht wie ein Link
+        5.5 Tooltips (CSS3, funktioniert auch mit IE) in 3 Variationen
         5.6 Template Features: Statusmeldungen - autom. breite (kominierbar mix box-system)
         5.7 jQuery Spoiler (nur ein Spoiler pro Seite möglich)
-        5.8 Javascript Tabs (max 6 Tabs)
-    6. Kein Javascript aktiv -> Meldung über dem eig. Pagecontent
+        5.8 Javascript Tabs (max. 6 Tabs)
+    6. Kein Javascript aktiv -> Meldung über dem eigentl. Pagecontent
     7. Helper classes from HTML5Boilerplate 
     8. [EXTRA] Custom Styles für Module
     9. [EXTRA] Installationsroutine
-
-
-
 
 ========================================================================== */
 

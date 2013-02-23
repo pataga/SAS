@@ -6,25 +6,39 @@
 * @since SAS v1.0.0
 * @license Apache License v2 (http://www.apache.org/licenses/LICENSE-2.0.txt)
 * @author Gabriel Wanzek
-*
 */
-$pini = $server->execute('cat /etc/php5/apache2/php.ini');
-$gpv = $server->execute('php -r "echo substr(phpversion(),0,strpos(phpversion(), \"-\"));"');
-$ipe = $server->execute("ls -l /etc/apache2/mods-enabled/ | grep load | awk {'print $9'} | grep php");
-$ipa = $server->execute("ls -l /etc/apache2/mods-available/ | grep load | awk {'print $9'} | grep php");
-// ^^ Das ginge bestimmt auch einfacher, aber das ist mir vorzeitig egal :o)
-$gle = $server->execute("php -r \"print_r(get_loaded_extensions());\" | grep = | awk {'print $3'}",1);
 
+/* 
+Status: 
+Ausgaben 		-> funktionieren 
+PHP-Status 		-> funktioniert
+Installation 	-> funktioniert
+PHP-Config 		-> Planung 
+*/
+
+$gpv = $server->execute('php -r "echo substr(phpversion(),0,strpos(phpversion(), \"-\"));"'); // PHP-Version  (nur Zahlen)
+$xgpv = preg_replace(['/No entry for terminal type/', '/using dumb terminal settings./', '/"bash";/'], '', $gpv); //Entferne Fehlermeldungen
+
+$gle = $server->execute("php -r \"print_r(get_loaded_extensions());\" | grep = | awk {'print $3'}",2); //PHP-Extensions in Array laden
+
+$ipe = $server->execute("ls -l /etc/apache2/mods-enabled/ | grep load | awk {'print $9'} | grep php"); //nach aktivem PHP-Modul suchen
+$ipa = $server->execute("ls -l /etc/apache2/mods-available/ | grep load | awk {'print $9'} | grep php"); //nach verfügbaren PHP-Modul suchen
+
+//Behandlung für 'aktiv'/'inaktiv'/'nicht installiert'
 if (preg_match('/php5.load/',$ipe)) {
 	$ps = 'Das PHP5-Modul ist auf ihrem Webserver aktiviert.';
+} elseif (preg_match('/php5.load/',$ipa)) {
+	$ps = 'Das PHP5-Modul ist auf ihrem Webserver deaktiviert. Sie können das Modul <a href="?p=apache&s=modules">hier</a> aktivieren.';
 } else {
-	$ps = 'Das PHP5-Modul ist auf ihrem Webserver deaktiviert oder wurde nicht gefunden. Sie können das ggf. Modul <a href="?p=apache&s=modules">hier</a> aktivieren. Alternativ muss PHP installiert werden:<br>
-	<input type="submit" name="installphp" class="invs" value="PHP installieren"> ';
+	$ps = 'Das PHP5-Modul wurde auf ihrem Webserver nicht gefunden.	<input type="submit" name="installphp" class="invs" value="PHP5 jetzt installieren."> ';
 }
 
+//PHP installieren
 if (isset($_POST['installphp'])) {
 	$server->execute('apt-get install php5 -fy');
 }
+
+//folgt...
 if (isset($_POST['phpini'])) {
 	//$server->execute('');
 }
@@ -37,9 +51,11 @@ if (isset($_POST['phpini'])) {
 		<form action="?p=apache&s=php" method="post">
 			<legend>Informationen</legend>
 			<h6>Status</h6>
-				<?=$ps?><br>
+				<?=$ps?>
+				<br>
 			<h6>Version</h6>
-				<?=$gpv?><br>
+				<?=$xgpv?>
+				<br>
 		</form>
 	</fieldset>
 </div>
@@ -47,26 +63,21 @@ if (isset($_POST['phpini'])) {
 	<fieldset>
 		<legend>Aktive PHP-Erweiterungen</legend>
 		<div class="a2_module">
-		<?=$gle?>
+		<?php
+		foreach ($gle as $value) {
+			if (preg_match('/No entry for terminal type/', $value) || preg_match('/using dumb terminal settings/', $value)) {
+				
+			} else {
+				echo $value."<br>\n";	
+			}			
+		}
+		?> 
 		</div>
 	</fieldset>
 </div>
 <div class="clearfix"></div>
 <fieldset>
 	<legend>php.ini bearbeiten</legend>
-		<form action="?p=apache&s=php" method="post">
-		<div class="vierfuenftel-box">
-			<textarea name="phpini" class="iniedit" wrap="off"><?=$pini?></textarea>
-		</div>
-		<div class="fuenftel-box lastbox">	
-			<h6>Hilfe</h6>
-			Sie können die Datei mit <b>[STRG]+[F]</b> nach Schlüsselbegriffen durchsuchen.<br>
-			<br>
-			Sollten Sie Hilfe zur Konfiguration benötigen, klicken Sie <a href="http://www.php.net/manual/de/configuration.file.php" target="_blank">hier</a>.
-		</div>
-		<div class="clearfix"></div>
-		<br>
-		<input type="submit" value="Speichern" class="button black">
-		<br>
+	<form action="?p=apache&s=php" method="post">
 	</form>
 </fieldset>

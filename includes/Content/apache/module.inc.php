@@ -5,8 +5,9 @@
 * @copyright Copyright 2012-2013 Patrick Farnkopf, Tanja Weiser, Gabriel Wanzek (PaTaGa)
 * @link https://github.com/pataga/SAS
 * @since SAS v1.0.0
-* @license Apache License v2 (http://www.apache.org/licenses/LICENSE-2.0.txt
+* @license Apache License v2 (http://www.apache.org/licenses/LICENSE-2.0.txt)
 * @author Gabriel Wanzek
+* @version 1.0
 *
 */
 $en_mods_a2 = $server->execute("ls -1 /etc/apache2/mods-enabled/ | grep load", 2);
