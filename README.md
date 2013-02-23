@@ -9,27 +9,18 @@
 → **Lizenziert unter der [Apache Lizenz v2.0][5]**
            
 ---
-###Wiki
 
-Anleitungen, Installation, unterstützte Distributionen, und mehr hier: [GitHub Wiki][6]
+###SAS - Dokumente:
+
+* **[SAS Dokumentation (Google Documents)][1]**
+* **[SAS Notizbuch (Google Documents)][4]**
+* **[SAS Präsentation: "Projektvorstellung" (Google Documents)][3]**
+* **[Countdown zur ersten Beta-Version][100] (aktuell: _v1.1 alpha)**
 
 ---
 ###Online Demo *(ohne Funktion)*:
 
-> ~~**[http://webflix.de/SAS][2]**~~
->
 > Bald wieder verfügbar
-
----
-###SAS - Dokumente:
-
-> **[SAS Dokumentation (Google Documents)][1]**
->
-> **[SAS Notizbuch (Google Documents)][4]**
->
-> **[SAS Präsentation: "Projektvorstellung" (Google Documents)][3]**
->
-> **[Countdown v1.2 Beta][100] (aktuell: _v1.1 alpha)
 
 ---
 ####Anforderungen des Servers für SAS (Host):
