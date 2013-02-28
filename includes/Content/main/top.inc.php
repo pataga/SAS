@@ -19,6 +19,9 @@
         <script src="js/tablesorter/jquery.tablesorter.min.js"></script>
         <!-- external JS -->
         <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+        <!--[if IE]>
+            <script  src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
     </head>
     <body>
         <noscript>
