@@ -15,7 +15,7 @@
 namespace Classes;
 class Main {
 
-    private $mysql,$db,$result,$server,$ssh,$user,$tableaction,$loader,$session;
+    private $mysql,$db,$result,$server,$ssh,$user,$tableaction,$loader,$session,$header;
 
     public function __construct() {
         if (!file_exists('./includes/Config/MySQL.conf.php')) {
@@ -62,6 +62,12 @@ class Main {
         }
 
         try {
+            $this->header = new \Classes\Main\Header();
+        } catch (\Classes\Main\Exception $e) {
+            $this->debug->error($e);
+        }
+
+        try {
             $this->cache = new \Classes\Cache($this);
         } catch (\Classes\Main\Exception $e) {
             $this->debug->error($e);
@@ -99,6 +105,7 @@ class Main {
     public function Debug() { return $this->debug; }
     public function Cache() { return $this->cache; }
     public function Session() { return $this->session; }
+    public function Header() { return $this->header; }
 
 
     public static function printLoadTime($startTime, $endTime) {

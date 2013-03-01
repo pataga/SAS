@@ -30,7 +30,7 @@ set_error_handler('exceptionErrorHandler');
 function exception_handler($exception) {
     $_SESSION = [];
     session_destroy();
-    echo $exception->getMessage();
+    echo $exception;
     require_once 'includes/Content/error/error.inc.php';
     exit;
 }
@@ -67,6 +67,7 @@ $server = $main->Server();
 $debug = $main->Debug();
 $cache = $main->Cache();
 $session = $main->Session();
+$header = $main->Header();
 $user = NULL;
 
 //Remote Instance
@@ -120,11 +121,6 @@ if ($session->isAuthenticated() &&
     $loader->reload();
 }
 
-
-//Übergebe GET Variablen an Loader Klasse
-$loader->_page = isset($_GET['p']) ? $_GET['p'] : 'home';
-$loader->_spage = isset($_GET['s']) ? $_GET['s'] : null;
-
 ob_start();
 
 try {
@@ -135,6 +131,8 @@ try {
 
 $content = ob_get_contents();
 ob_end_clean();
+
+$header->printHeaders();
 
 $cache->buildCache($content);
 

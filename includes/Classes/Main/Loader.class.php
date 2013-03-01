@@ -16,15 +16,21 @@
 namespace Classes\Main;
 class Loader {
 
-    public $_page = '';
-    public $_spage = '';
     private $content = '';
     private $mysql, $main ;
-    private $xmlData = [[[]]];
+    private $xmlData;
     private $window = 'included';
+    private $p,$s;
+
+    const CONTENT_PATH          = 'includes/Content/';
+    const CONTENT_MENU_DATA     = 'data/MainMenu.xml';
+
 
     public function __construct($main)
     {
+        $this->p = isset($_GET['p']) ? $_GET['p'] : 'home';
+        $this->s = isset($_GET['s']) ? $_GET['s'] : null;
+
         try {
             $this->mysql = $main->MySQL();
         } catch (\Exception $e) {
@@ -60,7 +66,7 @@ class Loader {
     private function loadMainMenu() {
         $this->content .= '<div id="wrapper"><div id="nav"><ul>';
         for ($i=0;$i<count($this->xmlData);$i++) {
-            if ($this->_page == $this->xmlData[$i]['menu']['name'])
+            if ($this->p == $this->xmlData[$i]['menu']['name'])
                 $this->content .= sprintf('<li><a class="aktiv" href="?p=%s">%s</a></li>',$this->xmlData[$i]['menu']['name'],$this->xmlData[$i]['menu']['display']);
             else
                 $this->content .= sprintf('<li><a href="?p=%s">%s</a></li>',$this->xmlData[$i]['menu']['name'],$this->xmlData[$i]['menu']['display']);
@@ -71,12 +77,12 @@ class Loader {
     private function loadSideMenu() {
         $this->content .= '<div id="sidebar"><ul>';
         for ($i=0;$i<count($this->xmlData);$i++) {
-            if ($this->xmlData[$i]['menu']['name'] == $this->_page) {
+            if ($this->xmlData[$i]['menu']['name'] == $this->p) {
                 for ($s=0;$s<count($this->xmlData[$i])-1;$s++) {
                     if (!isset($this->xmlData[$i]['sub'.$s])) continue;
                     $sub = $this->xmlData[$i]['sub'.$s];
                     if (empty($sub['display'])) continue;
-                    if ($this->_spage == $sub['name']) {
+                    if ($this->s == $sub['name']) {
                         $this->content .= sprintf('<li class="aktiv"><a href="?p=%s&s=%s">%s</a></li>',
                                           $this->xmlData[$i]['menu']['name'],$sub['name'],$this->xmlData[$i]['sub'.$s]['display']);
                     } else {
@@ -92,11 +98,11 @@ class Loader {
 
     public function loadWindowType() {
         for ($i=0;$i<count($this->xmlData);$i++) {
-            if ($this->xmlData[$i]['menu']['name'] == $this->_page) {
+            if ($this->xmlData[$i]['menu']['name'] == $this->p) {
                 for ($s=0;$s<count($this->xmlData[$i])-1;$s++) {
                     if (!isset($this->xmlData[$i]['sub'.$s])) continue;
                     $sub = $this->xmlData[$i]['sub'.$s];
-                    if ($this->_spage == $sub['name'])
+                    if ($this->s == $sub['name'])
                         $this->window = $sub['window'];
                 }
             }
@@ -105,21 +111,21 @@ class Loader {
 
     public function getIncFile() {
         if (!$this->main->Session()->isServerChosen() && $this->main->Session()->isAuthenticated())
-            return 'includes/Content/home/server.inc.php';
+            return Loader::CONTENT_PATH.'home/server.inc.php';
         if (!$this->main->Session()->isAuthenticated())
             $this->reload();
-        $default = 'includes/Content/error/404.inc.php';
+        $default = Loader::CONTENT_PATH.'error/404.inc.php';
         for ($i=0;$i<count($this->xmlData);$i++) {
-            if ($this->xmlData[$i]['menu']['name'] == $this->_page) {
+            if ($this->xmlData[$i]['menu']['name'] == $this->p) {
                 $default = $this->xmlData[$i]['menu']['default'];
                 for ($s=0;$s<count($this->xmlData[$i])-1;$s++) {
                     if (!isset($this->xmlData[$i]['sub'.$s])) continue;
                     $sub = $this->xmlData[$i]['sub'.$s];
-                    if ($this->_spage == $sub['name']) {
+                    if ($this->s == $sub['name']) {
                         if (file_exists($sub['path']))
                             return $sub['path'];
                         else
-                            return 'includes/Content/error/404.inc.php';
+                            return Loader::CONTENT_PATH.'error/404.inc.php';
                     } 
                 }
             }
@@ -127,8 +133,8 @@ class Loader {
 
         if (file_exists($default))
             return $default;
-        else
-            return 'includes/Content/error/404.inc.php';
+        
+        return Loader::CONTENT_PATH.'error/404.inc.php';
     }
 
     public function loadMenues() {
@@ -144,22 +150,23 @@ class Loader {
     }
 
     public function loadLoginMask() {
-        header("Location: ./login/");
+        $this->main->Header()->relocate("./login/");
         die;
     }
 
     public function reload() {
-        if (!empty($this->_spage) && !empty($this->_page))
-            header("Location: ?p=$this->_page&s=$this->_spage");
-        else if (!empty($this->_page))
-            header("Location: ?p=$this->_page");
+        $header = $this->main->Header();
+        if (!empty($this->s) && !empty($this->p))
+            $header->relocate('?p='.$this->p.'&s='.$this->s);
+        else if (!empty($this->p))
+            $header->relocate('?p='.$this->p);
         else
-            header("Location: ");
+            $header->relocate(" ");
     }
 
     private function loadXML() {
         $xml = new \Classes\XML();
-        $xml->open('data/MainMenu.xml');
+        $xml->open(Loader::CONTENT_MENU_DATA);
         $content = $this->xmlData;
         $mi = 0;
         $si = 0;
