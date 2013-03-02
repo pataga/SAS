@@ -41,7 +41,7 @@ class Loader {
 
     private function prepareTop() {
         $this->loadWindowType();
-        $top = file_get_contents(Loader2::CONTENT_TOP);
+        $top = file_get_contents(Loader::CONTENT_TOP);
         preg_match('/-----MENUSTART-----(.*?)-----MENUEND-----/',$top,$menuArr);
         $menu = $menuArr[1];
         preg_match('/-----SIDEBARSTART-----(.*?)-----SIDEBAREND-----/',$top,$sidebar);
