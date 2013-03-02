@@ -40,6 +40,7 @@ class Loader {
     }
 
     private function prepareTop() {
+        $this->loadWindowType();
         $top = file_get_contents(Loader2::CONTENT_TOP);
         preg_match('/-----MENUSTART-----(.*?)-----MENUEND-----/',$top,$menuArr);
         $menu = $menuArr[1];
@@ -78,19 +79,21 @@ class Loader {
             }
         }
 
-        $top = preg_replace('/-----MENUSTART-----(.*?)-----MENUEND-----/',$fullMenu,$top); 
-        $top = preg_replace('/-----SIDEBARSTART-----(.*?)-----SIDEBAREND-----/',$subFull,$top); 
+        $top = preg_replace('/-----MENUSTART-----(.*?)-----MENUEND-----/',$this->window==='included'?$fullMenu:'',$top); 
+        $top = preg_replace('/-----SIDEBARSTART-----(.*?)-----SIDEBAREND-----/',$this->window==='included'?$subFull:'',$top); 
 
         $search = [
             '#{PAGE_NAME}',
             '#{USERNAME}',
-            '#{NOTIFICATION_COUNT}'
+            '#{NOTIFICATION_COUNT}',
+            '#{VISIBILITY}'
         ];
 
         $replace = [
             $this->pageName,
             $this->main->Session()->getUsername(),
-            $this->getNotificationCount()
+            $this->getNotificationCount(),
+            $this->window === 'included' ? '' : 'display:none;'
         ];
 
         $top = str_replace($search, $replace, $top);

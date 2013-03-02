@@ -30,10 +30,10 @@
             </div>
         </noscript>
         <div class="top">
-            <div class="logo">
+            <div class="logo" style="#{VISIBILITY}">
                 <h1>Server <span>Admin</span> System</h1>                       
             </div>
-            <div class="usermenu">
+            <div class="usermenu" style="#{VISIBILITY}">
                 <img src="img/profile/ubuntu.png" alt="Profilbild">
                 <h3>#{USERNAME}</h3><a href="?server=change">Server wechseln</a><br>
                 <a href="javascript:poppy();">SAS Notification Center
