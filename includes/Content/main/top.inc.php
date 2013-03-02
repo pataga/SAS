@@ -3,7 +3,7 @@
         <!-- META -->
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Server Admin System</title>
+        <title>#{PAGE_NAME}</title>
         <meta name="application-name" content="Server-Admin-System">
         <meta name="robots" content="noindex,nofollow">
         <!-- CSS -->
@@ -29,4 +29,31 @@
                <p>Um ein besseres Nutzererlebnis im Server Admin System zu haben, <a href="http://www.enable-javascript.com/de/">aktiviere bitte JavaScript</a> in deinem Browser.</p>
             </div>
         </noscript>
-        
+        <div class="top">
+            <div class="logo">
+                <h1>Server <span>Admin</span> System</h1>                       
+            </div>
+            <div class="usermenu">
+                <img src="img/profile/ubuntu.png" alt="Profilbild">
+                <h3>#{USERNAME}</h3><a href="?server=change">Server wechseln</a><br>
+                <a href="javascript:poppy();">SAS Notification Center
+                    <div id="notify">
+                        <div class="notify_bubble">#{NOTIFICATION_COUNT}</div>
+                    </div>
+                </a><br>
+                <a href="?user=logout">Logout</a>
+            </div>
+        </div>
+        <div id="wrapper">
+            <div id="nav">
+                <ul>
+-----MENUSTART-----<li><a  class="#{STATUS}" href="?p=#{PAGE_PARAM}">#{PAGE_NAME}</a></li>-----MENUEND-----
+                </ul>
+                <br style="clear:left"></div>
+                <div id="main">
+                    <div id="sidebar">
+                        <ul>
+-----SIDEBARSTART----- <li><a class="#{STATUS}" href="?p=#{PAGE_PARAM}&s=#{SUBPAGE_PARAM}">#{SUBPAGE_NAME}</a></li>-----SIDEBAREND-----
+                        </ul>
+                    </div>
+                    <div id="content">

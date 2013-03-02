@@ -24,23 +24,9 @@ class Cache {
 
 	public function buildCache($inc) {
 		$loader = $this->main->Loader();
-		$this->cache .= self::loadTop();
-		$this->cache .= $loader->loadMenues();
+		$this->cache .= $loader->getMenu();
 		$this->cache .= $inc;
 		$this->cache .= self::loadFooter();
-	}
-
-	static function loadTop() {
-		try {
-			ob_start();
-			require_once 'includes/Content/main/top.inc.php';
-			$content = ob_get_contents();
-			ob_end_clean(); 
-			return $content;
-		} catch (\Exception $e) {
-			$this->main->getDebugInstance()->error($e);
-			return '';
-		}
 	}
 
 	static function loadFooter() {

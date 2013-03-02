@@ -1,13 +1,12 @@
 <?php
 
-
 /**
 * Licensed under The Apache License
 *
 * @copyright Copyright 2012-2013 Patrick Farnkopf, Tanja Weiser, Gabriel Wanzek (PaTaGa)
 * @link https://github.com/pataga/SAS
 * @since SAS v1.0.0
-* @license Apache License v2 (http://www.apache.org/licenses/LICENSE-2.0.txt
+* @license Apache License v2 (http://www.apache.org/licenses/LICENSE-2.0.txt)
 * @author Patrick Farnkopf
 *
 */
@@ -15,16 +14,12 @@
 
 namespace Classes\Main;
 class Loader {
-
-    private $content = '';
-    private $mysql, $main ;
-    private $xmlData;
     private $window = 'included';
-    private $p,$s;
+    private $p,$s,$xmlData,$mysql,$main,$pageName;
 
     const CONTENT_PATH          = 'includes/Content/';
     const CONTENT_MENU_DATA     = 'data/MainMenu.xml';
-
+    const CONTENT_TOP           = 'includes/Content/main/top.inc.php';
 
     public function __construct($main)
     {
@@ -40,42 +35,32 @@ class Loader {
         $this->main = $main;
     }
 
-    public function getMenuData() {
-        return $this->xmlData;
+    public function getMenu() {
+        return $this->prepareTop();
     }
 
-    private function loadNotifications() {
-        $server = $this->main->Server();
-        $soap = $server->getSoap();
-        if (!$soap || !$soap->isAlive()) {
-            return '<a href="javascript:poppy();">SAS Notification Center<div id="notify"><div class="notify_bubble">0</div></div></a><br>';
-        } else {
-            return '<a href="javascript:poppy();">SAS Notification Center<div id="notify"><div class="notify_bubble">'.$soap->noticeCount().'</div></div></a><br>';
-        }
-    }
+    private function prepareTop() {
+        $top = file_get_contents(Loader2::CONTENT_TOP);
+        preg_match('/-----MENUSTART-----(.*?)-----MENUEND-----/',$top,$menuArr);
+        $menu = $menuArr[1];
+        preg_match('/-----SIDEBARSTART-----(.*?)-----SIDEBAREND-----/',$top,$sidebar);
+        $sidebar = $sidebar[1];
 
-    private function loadUserInterface() {
-        $this->content .= sprintf('<div class="top"><div class="logo"><h1>Server <span>Admin</span> System</h1>
-						           </div><div class="usermenu"><img src="img/profile/ubuntu.png" alt="Profilbild">
-                                   <h3>%s</h3><a href="?server=change">Server wechseln</a><br>
-                                   '.$this->loadNotifications().'
-						           <a href="?user=logout">Logout</a></div></div>',
-                                   $this->main->Session()->getUsername());
-    }
+        $fullMenu = '';
 
-    private function loadMainMenu() {
-        $this->content .= '<div id="wrapper"><div id="nav"><ul>';
         for ($i=0;$i<count($this->xmlData);$i++) {
-            if ($this->p == $this->xmlData[$i]['menu']['name'])
-                $this->content .= sprintf('<li><a class="aktiv" href="?p=%s">%s</a></li>',$this->xmlData[$i]['menu']['name'],$this->xmlData[$i]['menu']['display']);
+            if ($this->p == $this->xmlData[$i]['menu']['name']) {
+                $fullMenu .= str_replace(['#{PAGE_NAME}','#{PAGE_PARAM}','#{STATUS}'],
+                    [$this->xmlData[$i]['menu']['display'],$this->xmlData[$i]['menu']['name'],'aktiv'],$menu);
+                $this->pageName = $this->xmlData[$i]['menu']['display'];
+            }
             else
-                $this->content .= sprintf('<li><a href="?p=%s">%s</a></li>',$this->xmlData[$i]['menu']['name'],$this->xmlData[$i]['menu']['display']);
+                $fullMenu .= str_replace(['#{PAGE_NAME}','#{PAGE_PARAM}','#{STATUS}'],
+                    [$this->xmlData[$i]['menu']['display'],$this->xmlData[$i]['menu']['name'],'inaktiv'],$menu);
         }
-        $this->content .= '</ul><br style="clear:left"></div>';
-    }
 
-    private function loadSideMenu() {
-        $this->content .= '<div id="sidebar"><ul>';
+        $subFull = '';
+
         for ($i=0;$i<count($this->xmlData);$i++) {
             if ($this->xmlData[$i]['menu']['name'] == $this->p) {
                 for ($s=0;$s<count($this->xmlData[$i])-1;$s++) {
@@ -83,17 +68,48 @@ class Loader {
                     $sub = $this->xmlData[$i]['sub'.$s];
                     if (empty($sub['display'])) continue;
                     if ($this->s == $sub['name']) {
-                        $this->content .= sprintf('<li class="aktiv"><a href="?p=%s&s=%s">%s</a></li>',
-                                          $this->xmlData[$i]['menu']['name'],$sub['name'],$this->xmlData[$i]['sub'.$s]['display']);
+                        $subFull .= str_replace(['#{PAGE_NAME}','#{PAGE_PARAM}','#{SUBPAGE_NAME}','#{SUBPAGE_PARAM}','#{STATUS}'],
+                            [$this->xmlData[$i]['menu']['display'],$this->xmlData[$i]['menu']['name'],$this->xmlData[$i]['sub'.$s]['display'],$sub['name'],'aktiv'],$sidebar);
                     } else {
-                        $this->content .= sprintf('<li><a href="?p=%s&s=%s">%s</a></li>',
-                                          $this->xmlData[$i]['menu']['name'],$sub['name'],$this->xmlData[$i]['sub'.$s]['display']);
+                        $subFull .= str_replace(['#{PAGE_NAME}','#{PAGE_PARAM}','#{SUBPAGE_NAME}','#{SUBPAGE_PARAM}','#{STATUS}'],
+                            [$this->xmlData[$i]['menu']['display'],$this->xmlData[$i]['menu']['name'],$this->xmlData[$i]['sub'.$s]['display'],$sub['name'],'inaktiv'],$sidebar);
                     }
                 }
             }
         }
 
-        $this->content .= '</ul></div>';
+        $top = preg_replace('/-----MENUSTART-----(.*?)-----MENUEND-----/',$fullMenu,$top); 
+        $top = preg_replace('/-----SIDEBARSTART-----(.*?)-----SIDEBAREND-----/',$subFull,$top); 
+
+        $search = [
+            '#{PAGE_NAME}',
+            '#{USERNAME}',
+            '#{NOTIFICATION_COUNT}'
+        ];
+
+        $replace = [
+            $this->pageName,
+            $this->main->Session()->getUsername(),
+            $this->getNotificationCount()
+        ];
+
+        $top = str_replace($search, $replace, $top);
+
+        return $top;
+    }
+
+    public function getMenuData() {
+        return $this->xmlData;
+    }
+
+    private function getNotificationCount() {
+        $server = $this->main->Server();
+        $soap = $server->getSoap();
+        if (!$soap || !$soap->isAlive()) {
+            return 0;
+        } else {
+            return $soap->noticeCount();
+        }
     }
 
     public function loadWindowType() {
@@ -137,33 +153,6 @@ class Loader {
         return Loader::CONTENT_PATH.'error/404.inc.php';
     }
 
-    public function loadMenues() {
-        $this->loadWindowType();
-        if ($this->window == 'included') {
-            $this->loadUserInterface();
-            $this->loadMainMenu();      
-            $this->content .= '<div id="main">';
-            $this->loadSideMenu();
-            $this->content .= '<div id="content">';
-        }
-        return $this->content;
-    }
-
-    public function loadLoginMask() {
-        $this->main->Header()->relocate("./login/");
-        die;
-    }
-
-    public function reload() {
-        $header = $this->main->Header();
-        if (!empty($this->s) && !empty($this->p))
-            $header->relocate('?p='.$this->p.'&s='.$this->s);
-        else if (!empty($this->p))
-            $header->relocate('?p='.$this->p);
-        else
-            $header->relocate(" ");
-    }
-
     private function loadXML() {
         $xml = new \Classes\XML();
         $xml->open(Loader::CONTENT_MENU_DATA);
@@ -193,5 +182,19 @@ class Loader {
         $this->xmlData = $content;
     }
 
+    public function loadLoginMask() {
+        $this->main->Header()->relocate("./login/");
+        die;
+    }
+
+    public function reload() {
+        $header = $this->main->Header();
+        if (!empty($this->s) && !empty($this->p))
+            $header->relocate('?p='.$this->p.'&s='.$this->s);
+        else if (!empty($this->p))
+            $header->relocate('?p='.$this->p);
+        else
+            $header->relocate(" ");
+    }
 }
 ?>
