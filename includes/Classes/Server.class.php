@@ -201,7 +201,7 @@ class Server {
     * @return (Bool) Status
     */
     public function getServiceStatus($service) {
-        $data = $this->execute("ps -e -o command | grep /usr/sbin");
+        $data = $this->execute("ps -e -o command");
         if (strpos($data,$service) !== false) 
             return true;
         return false;
