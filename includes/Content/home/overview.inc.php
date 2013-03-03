@@ -27,6 +27,8 @@ $serveruptime = (((((((($sekunden - ($sekunden % 60)) / 60) - (($sekunden - ($se
 $bootdatetmp = str_replace("   ", "", $uptime);
 $bootdate = str_replace("Systemstart", "", $bootdatetmp);
 $userswholi = str_replace(" ", ", ", $userswho);
+
+$service = $server->serviceStatus();
 ?>
 
 <h3>Serverübersicht</h3>
@@ -92,7 +94,7 @@ $userswholi = str_replace(" ", ", ", $userswho);
                 <td>Apache 2:</td>
                 <td>
                     <?php
-                    echo ($server->getServiceStatus('apache2')) ? '<span class="aktiv">aktiv</span>' : '<span class="inaktiv">inaktiv</span>';
+                    echo $service['apache'] ? '<span class="aktiv">aktiv</span>' : '<span class="inaktiv">inaktiv</span>';
                     ?>
                 </td>
             </tr>
@@ -100,7 +102,7 @@ $userswholi = str_replace(" ", ", ", $userswho);
                 <td>FTP:</td>
                 <td>
                     <?php
-                    echo ($server->getProFTPDStatus()) ? '<span class="aktiv">aktiv</span>' : '<span class="inaktiv">inaktiv</span>';
+                    echo $service['ftp'] ? '<span class="aktiv">aktiv</span>' : '<span class="inaktiv">inaktiv</span>';
                     ?>
                 </td>
             </tr>
@@ -108,7 +110,7 @@ $userswholi = str_replace(" ", ", ", $userswho);
                 <td>MySQL:</td>
                 <td>
                     <?php
-                    echo ($server->getServiceStatus('mysql')) ? '<span class="aktiv">aktiv</span>' : '<span class="inaktiv">inaktiv</span>';
+                    echo $service['mysql'] ? '<span class="aktiv">aktiv</span>' : '<span class="inaktiv">inaktiv</span>';
                     ?>
                 </td>
             </tr>
@@ -116,7 +118,7 @@ $userswholi = str_replace(" ", ", ", $userswho);
                 <td>Samba:</td>
                 <td>
                     <?php
-                    echo ($server->getServiceStatus('smbd')) ? '<span class="aktiv">aktiv</span>' : '<span class="inaktiv">inaktiv</span>';
+                    echo $service['samba'] ? '<span class="aktiv">aktiv</span>' : '<span class="inaktiv">inaktiv</span>';
                     ?>
                 </td>
             </tr>

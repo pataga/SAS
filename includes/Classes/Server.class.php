@@ -183,15 +183,16 @@ class Server {
     * @param (SSH) SSH Verbindung
     * @return (Bool Array) Status
     */
-    public function serviceStatus($ssh) {
+    public function serviceStatus() {
         $data = [];
-        $data[] = $this->getServiceStatus('smbd');
-        $data[] = $this->getServiceStatus('apache2');
-        $data[] = $this->getServiceStatus('postfix');
-        $data[] = $this->getServiceStatus('mysql');
+        $out = $this->execute("ps -e -o command");
+        $data['samba'] = strpos($out,'smbd') !== false;
+        $data['apache'] = strpos($out,'apache2') !== false;
+        $data['mysql'] = strpos($out,'mysqld') !== false;
+        $data['ssh'] = strpos($out,'sshd') !== false;
+        $data['ftp'] = strpos($out,'proftp') !== false;
         return $data;
     }
-
 
    /**
     * Gibt den Status eines Dienstes zurück
@@ -200,39 +201,11 @@ class Server {
     * @return (Bool) Status
     */
     public function getServiceStatus($service) {
-        $line = $this->execute('service ' . $service . ' status');
-        $exp = explode(" ", $line);
-        if (count($exp)<3) return false;
-        if ($exp[1] == "start/running," || $exp[1] == "is" && $exp[2] == "running")
+        $data = $this->execute("ps -e -o command | grep /usr/sbin");
+        if (strpos($data,$service) !== false) 
             return true;
-        else
-            return false;
+        return false;
     }
-
-   /**
-    * Gibt den Status des ProFTPD Dienstes zurück / könnte in getServiceStatus implementiert werden
-    * @return (Bool) ProFTPD Status (An/Aus)
-    * @author Gabriel Wanzek
-    */
-
-    public function getProFTPDStatus() {
-        try {
-            $status = $this->execute('service proftpd status');
-            $exp = explode(",", $status);
-            if (!isset($exp[1])) return false;
-            $exp2 = explode(".", $exp[1]);
-            if (!isset($exp2[0])) return false;
-            $exp3 = explode(" ", $exp2[0]);
-        
-            if ($exp3[1] == "currently" && $exp3[2] == "running")
-                return true;
-            else
-                return false;
-        } catch (Classes\Server\Exception $e) {
-            return false;
-        }
-}
-
 
    /**
     * Fügt einen String an eine Datei auf dem Server an.
