@@ -13,17 +13,13 @@
 */
 
 namespace Classes;
-class Cache {
+class Cache extends \Classes\Singleton {
 	
-	private $cache='';
-	private $main;
+	private $cache = '';
 
-	public function __construct($main) {
-		$this->main = $main;
-	}
 
 	public function buildCache($inc) {
-		$loader = $this->main->Loader();
+		$loader = self::getInstance('\Classes\Main\Loader');
 		$this->cache .= $loader->getMenu();
 		$this->cache .= $inc;
 		$this->cache .= self::loadFooter();
@@ -37,7 +33,7 @@ class Cache {
 			ob_end_clean();
 			return $content;
 		} catch (\Exception $e) {
-			$this->main->getDebugInstance()->error($e);
+			self::getInstance('\Classes\Main\Debug')->error($e);
 			return '';
 		}
 	}

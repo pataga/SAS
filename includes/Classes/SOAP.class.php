@@ -13,7 +13,7 @@
 */
 
 namespace Classes;
-class SOAP {
+class SOAP extends \Classes\Singleton {
     private $server,$key,$soap;
 
     //Package Installer Status
@@ -32,9 +32,9 @@ class SOAP {
      * SOAP Verbindung aufbauen
      * @param Object Main
      */
-    public function __construct($s) {
-        $this->server = $s;
-        $this->key = $s->getSoapKey();
+    public function __construct() {
+        $this->server = self::getInstance('\Classes\Server');
+        $this->key = self::getInstance('\Classes\Server')->getSoapKey();
         try {
             $this->soap = new \SoapClient(NULL,[
                         'location'  =>    'http://'.$s->getAddress().':'.$s->getSoapPort().'',

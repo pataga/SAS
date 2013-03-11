@@ -13,7 +13,7 @@
 */
 
 namespace Classes;
-class MySQL implements \Config\MySQL {
+class MySQL extends \Classes\Singleton implements \Config\MySQL {
     public function __construct($data = false) {
         try {
             if (!$data) {

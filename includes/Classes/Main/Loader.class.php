@@ -13,26 +13,19 @@
 
 
 namespace Classes\Main;
-class Loader {
+class Loader extends \Classes\Singleton {
     private $window = 'included';
-    private $p,$s,$xmlData,$mysql,$main,$pageName;
+    private $p,$s,$xmlData,$pageName;
 
     const CONTENT_PATH          = 'includes/Content/';
     const CONTENT_MENU_DATA     = 'data/MainMenu.xml';
     const CONTENT_TOP           = 'includes/Content/main/top.inc.php';
 
-    public function __construct($main)
+    public function __construct()
     {
         $this->p = isset($_GET['p']) ? $_GET['p'] : 'home';
         $this->s = isset($_GET['s']) ? $_GET['s'] : null;
-
-        try {
-            $this->mysql = $main->MySQL();
-        } catch (\Exception $e) {
-            $this->main->Debug()->error($e);
-        }
         $this->loadXML();
-        $this->main = $main;
     }
 
     public function getMenu() {
@@ -129,17 +122,24 @@ class Loader {
     }
 
     public function getIncFile() {
-        if (!$this->main->Session()->isServerChosen() && $this->main->Session()->isAuthenticated())
+        if (!self::getInstance('\Classes\Main\Session')->isServerChosen() && self::getInstance('\Classes\Main\Session')->isAuthenticated())
             return Loader::CONTENT_PATH.'home/server.inc.php';
-        if (!$this->main->Session()->isAuthenticated())
+
+        if (!self::getInstance('\Classes\Main\Session')->isAuthenticated())
             $this->reload();
+
         $default = Loader::CONTENT_PATH.'error/404.inc.php';
+
         for ($i=0;$i<count($this->xmlData);$i++) {
             if ($this->xmlData[$i]['menu']['name'] == $this->p) {
                 $default = $this->xmlData[$i]['menu']['default'];
+                
                 for ($s=0;$s<count($this->xmlData[$i])-1;$s++) {
-                    if (!isset($this->xmlData[$i]['sub'.$s])) continue;
+                    if (!isset($this->xmlData[$i]['sub'.$s])) 
+                        continue;
+
                     $sub = $this->xmlData[$i]['sub'.$s];
+
                     if ($this->s == $sub['name']) {
                         if (file_exists($sub['path']))
                             return $sub['path'];
@@ -186,12 +186,12 @@ class Loader {
     }
 
     public function loadLoginMask() {
-        $this->main->Header()->relocate("./login/");
+        self::getInstance('\Classes\Main\Header')->relocate("./login/");
         die;
     }
 
     public function reload() {
-        $header = $this->main->Header();
+        $header = self::getInstance('\Classes\Main\Header');
         if (!empty($this->s) && !empty($this->p))
             $header->relocate('?p='.$this->p.'&s='.$this->s);
         else if (!empty($this->p))

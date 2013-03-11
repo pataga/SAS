@@ -13,14 +13,8 @@
 */
 
 namespace Classes;
-class Session {
-    private $mysql, $main;
-    /**
-     * Starte Session 
-     */
-    public function __construct($main) {
-        $this->mysql = $main->MySQL();
-        $this->main = $main;
+class Session extends \Classes\Singleton {
+    public function __construct() {
         if (!isset($_SESSION['user']['authenticated'])) {
             self::initSession();
         }
@@ -155,7 +149,7 @@ class Session {
             return false;
         } 
 
-        $users = $this->mysql->tableAction('sas_users');
+        $users = self::getInstance('\Classes\MySQL')->tableAction('sas_users');
         $result = $users->select(NULL, ['username' => $username]);
         if (!$result) {
             $_SESSION['user']['failedAuths']++;
@@ -181,7 +175,7 @@ class Session {
         $_SESSION['user']['admin'] = $user->admin;
 
         //Klasse User noch nicht umgeschrieben, daher noch nicht funktionsfähig
-        $userInstance = new User($this->main);
+        $userInstance = new User(self::getInstance('\Classes\MySQL'));
         return $userInstance;
     }
 

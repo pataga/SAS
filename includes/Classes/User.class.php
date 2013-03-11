@@ -13,7 +13,7 @@
 */
 
 namespace Classes;
-class User {
+class User extends \Classes\Singleton {
     //Objects
     private $db, $session, $uTable;
     //User Data
@@ -24,11 +24,12 @@ class User {
      * @param Main
      * @param int id
      */
-    public function __construct($main, $id = false) {
-        $this->db = $main->MySQL();
+    public function __construct($id = false) {
+        $this->db = self::getInstance('\Classes\MySQL');
         $this->uTable = $this->db->tableAction('sas_users');
-        $this->session = $main->Session();
+        $this->session = self::getInstance('\Classes\Main\Session');
         $s = $this->session;
+
         if (!$id) {
             $this->id = $s->getUserId();
             $this->name = $s->getUserName();
@@ -36,6 +37,7 @@ class User {
             $this->admin = $s->isAdmin();
         } else {
             $result = $this->uTable->select(NULL, ['id' => $id]);
+
             if ($result && $result->getRowsCount() > 0) {
                 $row = $result->fetchObject();
                 $this->id = $row->id;
@@ -45,6 +47,7 @@ class User {
                 $this->self = $s->getUserId() == $this->id;
             } else {
                 $res = $this->db->Query("SELECT * FROM sas_users ORDER BY id DESC LIMIT 1");
+
                 if ($r = $res->fetchObject()) {
                     $this->id = $r->id+1;
                     $this->uTable->insert(['id' => $this->id]);

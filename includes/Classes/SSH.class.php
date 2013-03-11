@@ -13,30 +13,27 @@
 */
 
 namespace Classes;
-class SSH {
+class SSH extends \Classes\Singleton {
 
     private $host,$port,$user,$pass,$connection,$out,$con;
 
    /**
     * An diese Methode werden die SSH Zugangsdaten übergeben
-    *   
-    * @param Main main [Main Instanz]
-    * @param String Host [Adresse zum SSH Server Host]
-    * @param int Port [Port des SSH Dienstes]
-    * @param String Benutzername [SSH Benutzername]
-    * @param String Passwort [SSH Passwort]
     * 
-    * @example $ssh = new SSH($main, '127.0.0.1', 22, 'root', 'topsecret');
+    * @example $ssh = new SSH();
     */
     public function __construct($main=null,$host='',$port=22,$user='',$pass='') {
-        if (!empty($host))
-            $this->host = $host;
-        if (!empty($port))
-            $this->port = $port;
-        if (!empty($user))
-            $this->user = $user;
-        if (!empty($pass))
-            $this->pass = $pass;
+        $db = self::getInstance('\Classes\MySQL');
+        $result = $db->tableAction('sas_server_data')->select(NULL, 
+                                ['id' => self::getInstance('\Classes\Server')->getID()]);
+        
+        if ($data = $result->fetch()) {
+            $this->user = $data->user;
+            $this->pass = $data->pass;
+            $this->host = $data->host;
+            $this->port = $data->port;
+        }
+
         $this->con = false;
     }
 
@@ -75,16 +72,19 @@ class SSH {
                 return false;
             }
         }
+
         $output = '';
+
         if (!($os = ssh2_exec($this->connection, $command, "bash")))
             throw new \Classes\SSH\Exception('SSH command failed');
 
         stream_set_blocking($os, true);
-        $data = array();
+        $data = [];
+
         if ($type == 2) {
-            for ($i = 0; $line = fgets($os); $i++) {
+            while ($line = fgets($os)) {
                 flush();
-                $data[$i] = $line;
+                $data[] = $line;
             }
             return $data;
         } else {

@@ -12,7 +12,7 @@
 */
 
 namespace Classes\Main;
-class Header {
+class Header extends \Classes\Singleton {
 	private $header = [];
 
 	public function add($header) {

@@ -12,7 +12,7 @@
 */
 
 namespace Classes;
-class Main {
+class Main extends \Classes\Singleton {
 
     private $mysql,$db,$result,$server,$ssh,$user,$tableaction,$loader,$session,$header;
 
@@ -30,44 +30,44 @@ class Main {
      */
     private function initialisizeInstances() {
         try {
-            $this->debug = new \Classes\Main\Debug();
+            $this->debug = self::getInstance('\Classes\Main\Debug');
         } catch (\Classes\Main\Exception $e) {
             throw new \Classes\Main\Exception($e->getMessage());
         }
 
         try {
-            $this->mysql = new \Classes\MySQL();  
+            $this->mysql = self::getInstance('\Classes\MySQL');
             $this->mysql->selectDatabase(\Config\MySQL::DATABASE);  
         } catch (\Classes\Main\Exception $e) {
             $this->debug->error($e);
         }
 
         try {
-            $this->session = new \Classes\Session($this);
+            $this->session = self::getInstance('\Classes\Session');
         } catch (\Classes\Main\Exception $e) {
             $this->debug->error($e);
         }
 
         try {
-            $this->loader = new \Classes\Main\Loader($this);
+            $this->loader = self::getInstance('\Classes\Main\Loader');
         } catch (\Classes\Main\Exception $e) {
             $this->debug->error($e);
         }
 
         try {
-            $this->server = new \Classes\Server($this);
+            $this->server = self::getInstance('\Classes\Server');
         } catch (\Classes\Main\Exception $e) {
             $this->debug->error($e);
         }
 
         try {
-            $this->header = new \Classes\Main\Header();
+            $this->header = self::getInstance('\Classes\Main\Header');
         } catch (\Classes\Main\Exception $e) {
             $this->debug->error($e);
         }
 
         try {
-            $this->cache = new \Classes\Cache($this);
+            $this->cache = self::getInstance('\Classes\Cache');
         } catch (\Classes\Main\Exception $e) {
             $this->debug->error($e);
         }

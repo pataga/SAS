@@ -13,7 +13,7 @@
 */
 
 namespace Classes\Main;
-class Debug implements \Config\System {
+class Debug extends \Classes\Singleton implements \Config\System {
 
 	private $errorCount, $errors;
 
