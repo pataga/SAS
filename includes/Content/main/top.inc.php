@@ -3,7 +3,7 @@
         <!-- META -->
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>#{PAGE_NAME}</title>
+        <title>SAS &middot; #{PAGE_NAME}</title>
         <meta name="application-name" content="Server-Admin-System">
         <meta name="robots" content="noindex,nofollow">
         <!-- CSS -->

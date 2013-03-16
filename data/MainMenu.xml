@@ -93,9 +93,9 @@
 
         <sub>
             <id>4</id>
-            <name>vhosts</name>
-            <display>Virtuelle Hosts</display>
-            <path>includes/Content/apache/vhosts.inc.php</path>
+            <name>directorys</name>
+            <display>&lt;Directory&gt;</display>
+            <path>includes/Content/apache/directorys.inc.php</path>
             <window>included</window>
         </sub>
 

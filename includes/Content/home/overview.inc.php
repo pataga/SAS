@@ -27,7 +27,6 @@ $serveruptime = (((((((($sekunden - ($sekunden % 60)) / 60) - (($sekunden - ($se
 $bootdatetmp = str_replace("   ", "", $uptime);
 $bootdate = str_replace("Systemstart", "", $bootdatetmp);
 $userswholi = str_replace(" ", ", ", $userswho);
-
 $service = $server->serviceStatus();
 ?>
 
@@ -123,27 +122,27 @@ $service = $server->serviceStatus();
                 </td>
             </tr>
             <tr class="odd">
-                <td>Backups:</td>
+                <td>Daemon:</td>
                 <td>
-                    <span class="notaviable">nicht verf&uuml;gbar</span>
+                   <span class="notaviable">keine Information</span>
                 </td>
             </tr>
             <tr>
-                <td>E-Mail-Reports:</td>
+                <td> N/A </td>
                 <td>
-                    <span class="notaviable">nicht verf&uuml;gbar</span>
+                    <span class="notaviable">keine Information</span>
                 </td>
             </tr>
             <tr class="odd">
                 <td> N/A </td>
                 <td>
-                    <span class="notaviable">nicht verf&uuml;gbar</span>
+                    <span class="notaviable">keine Information</span>
                 </td>
             </tr>
             <tr>
                 <td> N/A </td>
                 <td>
-                    <span class="notaviable">nicht verf&uuml;gbar</span>
+                    <span class="notaviable">keine Information</span>
                 </td>
             </tr>
         </table>

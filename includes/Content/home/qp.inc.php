@@ -9,7 +9,7 @@
 * @author Gabriel Wanzek
 *
 */
-
+$service = $server->serviceStatus();
 if (isset($_POST['a2-stop']))
     $server->execute("service apache2 stop");
 if (isset($_POST['a2-start']))
@@ -29,7 +29,6 @@ if (isset($_POST['smbd-stop']))
     $server->execute("service smbd stop");    
 if (isset($_POST['smbd-start']))
     $server->execute("service smbd start");
-
 ?>
 <h3>Quickpanel</h3>
 <fieldset>
@@ -39,7 +38,7 @@ if (isset($_POST['smbd-start']))
         <h5>Apache2</h5>
         <form action="index.php?p=home&s=qp" method="post">
 <?php
-echo ($server->getServiceStatus('apache2')) ? '<input type="submit" name="a2-stop" value="Stop" class="button pink">' : '<input type="submit" name="a2-start" value="Start" class="button green">';
+echo ($service['apache']) ? '<input type="submit" name="a2-stop" value="Stop" class="button pink">' : '<input type="submit" name="a2-start" value="Start" class="button green">';
 ?>
         </form>
     </div>
@@ -47,7 +46,7 @@ echo ($server->getServiceStatus('apache2')) ? '<input type="submit" name="a2-sto
         <h5>FTP</h5>
         <form action="index.php?p=home&s=qp" method="post">
 <?php
-echo ($server->getProFTPDStatus()) ? '<input type="submit" name="proftpd-stop" value="Stop" class="button pink">' : '<input type="submit" name="proftpd-start" value="Start" class="button green">';
+echo ($service['ftp']) ? '<input type="submit" name="proftpd-stop" value="Stop" class="button pink">' : '<input type="submit" name="proftpd-start" value="Start" class="button green">';
 ?>
         </form>
     </div>
@@ -55,7 +54,7 @@ echo ($server->getProFTPDStatus()) ? '<input type="submit" name="proftpd-stop" v
         <h5>MySQL</h5>
         <form action="index.php?p=home&s=qp" method="post">
 <?php
-echo ($server->getServiceStatus('mysql')) ? '<input type="submit" name="mysql-stop" value="Stop" class="button pink">' : '<input type="submit" name="mysql-start" value="Start" class="button green">';
+echo ($service['mysql']) ? '<input type="submit" name="mysql-stop" value="Stop" class="button pink">' : '<input type="submit" name="mysql-start" value="Start" class="button green">';
 ?>
         </form>
     </div>
@@ -63,7 +62,7 @@ echo ($server->getServiceStatus('mysql')) ? '<input type="submit" name="mysql-st
         <h5>Samba</h5>
         <form action="index.php?p=home&s=qp" method="post">
 <?php
-echo ($server->getServiceStatus('smbd')) ? '<input type="submit" name="smbd-stop" value="Stop" class="button pink">' : '<input type="submit" name="smbd-start" value="Start" class="button green">';
+echo ($service['samba']) ? '<input type="submit" name="smbd-stop" value="Stop" class="button pink">' : '<input type="submit" name="smbd-start" value="Start" class="button green">';
 ?>
         </form>
     </div>

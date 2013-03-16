@@ -13,11 +13,16 @@
 $all_users = $server->execute("cat /etc/passwd | cut -d: -f1", 2);
 $seq_users = $server->execute("awk -F: '$3>999{print $1}' /etc/passwd", 2);
 $all_groups = $server->execute("cat /etc/group | cut -d: -f1 ", 2);
+
+if (isset($_POST[''])) {
+    # code...
+}
+
 ?>
 <h3>User &amp; Gruppen</h3>
 <div class="halbe-box">
-    <h4>Existierende User</h4>
     <fieldset>
+        <legend>Bestehende User</legend>
         <h5>User ID &lt; ID 1000</h5>
         <div class="listbox">
             <?php
@@ -36,8 +41,9 @@ $all_groups = $server->execute("cat /etc/group | cut -d: -f1 ", 2);
             }
             ?>
         </div>
-        <div class="clearfix"></div>
-        <h5>Alle Gruppen</h5>
+    </fieldset>
+    <fieldset>
+        <legend>Gruppen</legend>
         <div class="listbox">
             <?php
             foreach ($all_groups as $key => $value) {
@@ -50,7 +56,7 @@ $all_groups = $server->execute("cat /etc/group | cut -d: -f1 ", 2);
         <legend>User einer Gruppe zuweisen</legend>
         <form action="index.php?p=system&s=cpu" method="post" autocomplete="off">
             <p><label>Benutzername:</label> 
-                <input type="text" class="text-long" name="name" required list="users"></p>
+                <input type="text" class="text-long" name="addgroup" required list="users"></p>
             <datalist id="users">
 <?php
 foreach ($all_users as $key => $value) {
@@ -72,7 +78,6 @@ foreach ($all_groups as $key => $value) {
     </fieldset>
 </div>
 <div class="halbe-box lastbox">
-    <h4>Aktionen</h4>
     <fieldset>
         <legend>User anlegen</legend>
         <form action="index.php?p=system&s=cpu" method="post" autocomplete="off">
