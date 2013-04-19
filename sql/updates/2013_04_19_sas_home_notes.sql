@@ -1,8 +1,3 @@
---
--- MySQL 5.5.29
--- Fri, 19 Apr 2013 06:39:56 +0000
---
-
 CREATE TABLE `sas_home_notes` (
    `id` int(11) not null auto_increment,
    `author` varchar(255),

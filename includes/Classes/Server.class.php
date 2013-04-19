@@ -13,7 +13,7 @@
 */
 
 namespace Classes;
-class Server {
+class Server extends Singleton {
 
     private $server_id;
     private $mysql;
