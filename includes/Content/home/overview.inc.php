@@ -28,6 +28,14 @@ $bootdatetmp = str_replace("   ", "", $uptime);
 $bootdate = str_replace("Systemstart", "", $bootdatetmp);
 $userswholi = str_replace(" ", ", ", $userswho);
 $service = $server->serviceStatus();
+if (isset($_POST['notiz'])) {
+    $sql = "INSERT INTO sas_home_notes (id, author, note, notetime) 
+    VALUES (NULL, '".$_SESSION['user']['name']."','".htmlspecialchars(mysql_real_escape_string($_POST['notizen']))."'  , CURRENT_TIMESTAMP);";
+    $mysql->Query($sql);
+}
+
+$noteres = $mysql->Query('SELECT * FROM sas_home_notes ORDER BY id DESC LIMIT 1');
+
 ?>
 
 <h3>Serverübersicht</h3>
@@ -152,10 +160,12 @@ $service = $server->serviceStatus();
 
 <fieldset>
     <legend>Notizbuch</legend>
-    <form action="<?php echo "test" ?>"></form>
-    <textarea name="notizen">Diese Seite ist bis auf das Notizfeld voll funktionsfähig</textarea>
-    <input type="submit" class="button black" value="Notizen speichern">
-    <br>
-    <br>
-    <a href="#">&auml;ltere Notizen</a>
+    <form action="index.php?p=home" method="POST">
+<?php while ($row = $noteres->fetchObject()): ?>
+    <textarea name="notizen"><?= $row->note ?></textarea>
+    <input type="submit" class="button black" name="notiz" value="Notizen speichern">
+    <br><br>
+    <span>Gespeichert um:<br><b><?= date("d.m.Y H:i:s",strtotime($row->notetime)) ?></b> von <b><?= $row->author ?></b></span>
+    </form>
+<?php endwhile; ?>
 </fieldset>
