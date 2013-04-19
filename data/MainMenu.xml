@@ -489,12 +489,25 @@
         <display>Plugins</display>
         <default>includes/Content/plugins/overview.inc.php</default>
         <sub>
+            <id>1</id>
+            <name>overview</name>
+            <display>Übersicht</display>
+            <path>includes/Content/plugins/overview.inc.php</path>
+            <window>included</window>
+        </sub>
+        <sub>
+            <id>2</id>
+            <name>add</name>
+            <display>Plugin hinzufügen</display>
+            <path>includes/Content/plugins/add.inc.php</path>
+            <window>included</window>
+        </sub>
+        <sub>
             <id>20000</id>
             <name>cssinfo</name>
             <display>DEV: CSS-Info</display>
             <path>includes/Content/plugins/styles.inc.php</path>
             <window>included</window>
         </sub>
-
     </menu>
 </navigation>
