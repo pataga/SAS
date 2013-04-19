@@ -47,19 +47,189 @@ if (!$server->isInstalled('samba')) {
             $readonly = "read only = no";
         }
 
+//============================================================================
+//Abfrage der Checkboxen Directory Mode - Besitzer
+
+    if(isset($_POST['dbr']) && isset($_POST['dbw']) && isset($_POST['dbx'])){
+          $DirectoryUser="7";
+    }
+    else if (isset($_POST['dbr']) && isset($_POST['dbw'])) {
+          $DirectoryUser="6";
+    }
+    else if (isset($_POST['dbr']) && isset($_POST['dbx'])) {
+          $DirectoryUser="5";
+    }
+    else if (isset($_POST['dbr'])) {
+          $DirectoryUser="4";
+    }
+    else if (isset($_POST['dbw']) && isset($_POST['dbx'])) {
+          $DirectoryUser="3";
+    }
+    else if (isset($_POST['dbw'])) {
+          $DirectoryUser="2";
+    }
+    else if (isset($_POST['dbx'])) {
+          $DirectoryUser="1";
+    }
+    else  $DirectoryUser="0";
+//============================================================================
+
+//============================================================================
+//Abfrage der Checkboxen Directory Mode - Gruppen
+
+    if(isset($_POST['dgr']) && isset($_POST['dgw']) && isset($_POST['dgx'])){
+          $DirectoryGroup="7";
+    }
+    else if (isset($_POST['dgr']) && isset($_POST['dgw'])) {
+          $DirectoryGroup="6";
+    }
+    else if (isset($_POST['dgr']) && isset($_POST['dgx'])) {
+          $DirectoryGroup="5";
+    }
+    else if (isset($_POST['dgr'])) {
+          $DirectoryGroup="4";
+    }
+    else if (isset($_POST['dgw']) && isset($_POST['dgx'])) {
+          $DirectoryGroup="3";
+    }
+    else if (isset($_POST['dgw'])) {
+          $DirectoryGroup="2";
+    }
+    else if (isset($_POST['dgx'])) {
+          $DirectoryGroup="1";
+    }
+    else  $DirectoryGroup="0";
+//============================================================================
+
+//============================================================================
+//Abfrage der Checkboxen Directory Mode - Sonstige
+
+    if(isset($_POST['dsr']) && isset($_POST['dsw']) && isset($_POST['dsx'])){
+          $DirectorySonst="7";
+    }
+    else if (isset($_POST['dsr']) && isset($_POST['dsw'])) {
+          $DirectorySonst="6";
+    }
+    else if (isset($_POST['dsr']) && isset($_POST['dsx'])) {
+          $DirectorySonst="5";
+    }
+    else if (isset($_POST['dsr'])) {
+          $DirectorySonst="4";
+    }
+    else if (isset($_POST['dsw']) && isset($_POST['dsx'])) {
+          $DirectorySonst="3";
+    }
+    else if (isset($_POST['dsw'])) {
+          $DirectorySonst="2";
+    }
+    else if (isset($_POST['dsx'])) {
+          $DirectorySonst="1";
+    }
+    else  $DirectorySonst="0";
+//============================================================================
+
+$dm = $DirectoryUser.$DirectoryGroup.$DirectorySonst;
+
+//============================================================================
+//Abfrage der Checkboxen Create Mode - Besitzer
+
+    if(isset($_POST['cbr']) && isset($_POST['cbw']) && isset($_POST['cbx'])){
+          $CreateUser="7";
+    }
+    else if (isset($_POST['cbr']) && isset($_POST['cbw'])) {
+          $CreateUser="6";
+    }
+    else if (isset($_POST['dcbr']) && isset($_POST['cbx'])) {
+          $CreateUser="5";
+    }
+    else if (isset($_POST['cbr'])) {
+          $CreateUser="4";
+    }
+    else if (isset($_POST['cbw']) && isset($_POST['cbx'])) {
+          $CreateUser="3";
+    }
+    else if (isset($_POST['cbw'])) {
+          $CreateUser="2";
+    }
+    else if (isset($_POST['cbx'])) {
+          $CreateUser="1";
+    }
+    else  $CreateUser="0";
+//============================================================================
+
+//============================================================================
+//Abfrage der Checkboxen Create Mode - Gruppen
+
+    if(isset($_POST['dcgr']) && isset($_POST['cgw']) && isset($_POST['cgx'])){
+          $CreateGroup="7";
+    }
+    else if (isset($_POST['cgr']) && isset($_POST['cgw'])) {
+          $CreateGroup="6";
+    }
+    else if (isset($_POST['cgr']) && isset($_POST['cgx'])) {
+          $CreateGroup="5";
+    }
+    else if (isset($_POST['cgr'])) {
+          $CreateGroup="4";
+    }
+    else if (isset($_POST['cgw']) && isset($_POST['cgx'])) {
+          $CreateGroup="3";
+    }
+    else if (isset($_POST['cgw'])) {
+          $CreateGroup="2";
+    }
+    else if (isset($_POST['cgx'])) {
+          $CreateGroup="1";
+    }
+    else  $CreateGroup="0";
+//============================================================================
+
+//============================================================================
+//Abfrage der Checkboxen Create Mode - Sonstige
+
+    if(isset($_POST['csr']) && isset($_POST['csw']) && isset($_POST['csx'])){
+          $CreateSonst="7";
+    }
+    else if (isset($_POST['csr']) && isset($_POST['csw'])) {
+          $CreateSonst="6";
+    }
+    else if (isset($_POST['csr']) && isset($_POST['csx'])) {
+          $CreateSonst="5";
+    }
+    else if (isset($_POST['csr'])) {
+          $CreateSonst="4";
+    }
+    else if (isset($_POST['csw']) && isset($_POST['csx'])) {
+          $CreateSonst="3";
+    }
+    else if (isset($_POST['csw'])) {
+          $CreateSonst="2";
+    }
+    else if (isset($_POST['csx'])) {
+          $CreateSonst="1";
+    }
+    else  $CreateSonst="0";
+//============================================================================
+    $cm = $CreateUser.$CreateGroup.$CreateSonst;
+//============================================================================
         $content = "
         [$name]
         path = $path
         valid users = $validusers
         $public
         $writable
-        $readonly";
+        $readonly
+        directory mask = $dm
+        create mask = $cm"
+        ;
 
         $server->addToFile('/etc/samba/smb.conf', $content);
         // Schreiben der neuen Freigabe in die smb.conf
         $server->execute('service smbd reload');
         // Neustart
-        }
+
+
+    }
 
 ?>
 
