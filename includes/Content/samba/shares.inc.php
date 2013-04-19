@@ -76,29 +76,53 @@ Die Freigaben tauchen in der Netzwerkumgebung auf und können bei Bedarf auch al
     <legend>Freigabe hinzuf&uuml;gen</legend>
     <form action="index.php?p=samba&s=shares" method="POST">
         <div class ="viertel-box"> 
-            Freigabe Name: <br><br>
-            Verzeichnispfad: <br><br>
-            G&uuml;ltige Benutzer: <br><br>
-            Schreibrechte f&uuml;r: <br><br>
-            Schreibrechte für die Gruppe: <br><br><br>           
+            Freigabename 
+                <a href="#" class="tooltip3">?
+                <span><b>Info:</b><br>Name der neuen Freigabe.
+                </span></a><br><br>
+            Verzeichnispfad: 
+                <a href="#" class="tooltip3">?
+                <span><b>Info:</b><br>Hier geben Sie den Pfad für das Verzeichniss an, dass SIe Freigeben möchten<br><br><b>Achtung:</b>
+                    Hier muss der absolute Pfad angegeben werden!
+                </span></a><br><br>
+            G&uuml;ltige Benutzer:
+                <a href="#" class="tooltip3">?
+                <span><b>Info:</b><br>Hier können Benutzer angegeben werden, welche die Berechtigung haben, nach Passwortabfrage, dieses Verzeichnis zu benutzen.
+                </span></a><br><br>
+            Schreibrechte f&uuml;r:
+                <a href="#" class="tooltip3">?
+                <span><b>Info:</b><br>Hier können Benutzer angegeben werden, welche Schreibrechte erhalten sollen.<br><br>
+                    Bitte trennen Sie die einzelnen Benutzer mit einem Komma.<br>
+                    Beispiel: user1, user2, user3
+                </span></a><br><br>
+            Schreibrechte für die Gruppe:
+                <a href="#" class="tooltip3">?
+                <span><b>Info:</b><br>Hier können Sie Gruppen angeben, die Schreibrechte erhalten sollen.<br><br>
+                    Bitte trennen Sie die einzelnen Gruppen mit einem Komma.<br>
+                    Beispiel: group1, group2, group3
+                </span></a><br><br><br>          
             &Ouml;ffentliche Freigabe? 
             <br><br>
             Schreibrechte f&uuml;r jeden? 
             <br><br>
             Nur lesbar?
             <br><br><br>
-            <b>Directory Mask:
+            <b>Directory Mask:</b>
             <a href="#" class="tooltip3">Info
-                <span><b>Info:</b><br>Rechtemaske für Dateien<br></span>
-            </a></b><br><br>
+                <span><b>Info:</b><br>Hier können Sie die <b><u>Rechtemaske für Dateien</u></b> angeben die im Verzeichnis neu angelegt werden.<br>
+                    Sie haben die Möglichkeit die Rechte für Besitzer, Gruppen und Sonstige Benutzer einzustellen. Hierbei müssen sie entscheiden welche Rechte
+                    die verschiedenen User besitzen sollen.<br></span>
+            </a><br><br>
             Besitzer:<br><br>
             Gruppe:<br><br>
             Sonstige:
             <br><br><br>
-            <b>Create Mask:
+            <b>Create Mask:</b>
             <a href="#" class="tooltip3">Info
-                <span><b>Info:</b><br>Rechtemaske für Verzeichnisse</span>
-            </a></b><br><br>
+                <span><b>Info:</b><br>Hier können Sie die <b><u>Rechtemaske für Verzeichnisse</u></b> angeben die im Verzeichnis neu angelegt werden.<br>
+                    Sie haben die Möglichkeit die Rechte für Besitzer, Gruppen und Sonstige Benutzer einzustellen. Hierbei müssen sie entscheiden welche Rechte
+                    die verschiedenen User besitzen sollen.<br></span>
+            </a><br><br>
             Besitzer:<br><br>
             Gruppe:<br><br>
             Sonstige:
@@ -182,6 +206,6 @@ Die Freigaben tauchen in der Netzwerkumgebung auf und können bei Bedarf auch al
         
         <div class="clearfix"></div>
         <input type="submit" class="button green" name="add" value="Neue Freigabe Hinzuf&uuml;gen"><br><br>
-        Hinweis: Nach dem hinzufügen einer neuen Freigabe wird der Dienst automatisch neu gestartet.
+        <span class="info">Hinweis: Nach dem hinzufügen einer neuen Freigabe wird der Dienst automatisch neu gestartet.</span>
     </form>
 </fieldset>
