@@ -1,6 +1,4 @@
 <?php
-
-
 /**
 * Licensed under The Apache License
 *
@@ -17,37 +15,37 @@ if (!$server->isInstalled('samba')) {
     exit;
 }
 
-	if(isset($_POST['add']))
-	{
-		$name = $_POST['name'];
-		$path = $_POST['path'];
-		$validusers = $_POST['validusers'];
-		$writelist = $_POST['writelist'];
-		$readonly = $_POST['readonly'];
+    if(isset($_POST['add']))
+    {
+        $name = $_POST['name'];
+        $path = $_POST['path'];
+        $validusers = $_POST['validusers'];
+        $writelist = $_POST['writelist'];
+        $readonly = $_POST['readonly'];
 
-		if(isset($_POST['public']))
-		{
-			if($_POST['public'] == 1)
-			$public = "public = yes";
-			else 
-			$public = "public = no";
-		}
+        if(isset($_POST['public']))
+        {
+            if($_POST['public'] == 1)
+            $public = "public = yes";
+            else 
+            $public = "public = no";
+        }
 
-		if(isset($_POST['writable']))
-		{
-			if($_POST['writable'] == 1)
-			$writable = "writable = yes";
-			else 
-			$writable = "writable = no";
-		}
+        if(isset($_POST['writable']))
+        {
+            if($_POST['writable'] == 1)
+            $writable = "writable = yes";
+            else 
+            $writable = "writable = no";
+        }
 
-		if(isset($_POST['readonly']))
-		{
-			if($_POST['readonly'] == 1)
-			$readonly = "read only = yes";
-			else 
-			$readonly = "read only = no";
-		}
+        if(isset($_POST['readonly']))
+        {
+            if($_POST['readonly'] == 1)
+            $readonly = "read only = yes";
+            else 
+            $readonly = "read only = no";
+        }
 
         $content = "
         [$name]
@@ -126,8 +124,6 @@ Die Freigaben tauchen in der Netzwerkumgebung auf und können bei Bedarf auch al
             Besitzer:<br><br>
             Gruppe:<br><br>
             Sonstige:
-
-
 
         </div>
         <div class="dreiviertel-box lastbox">
