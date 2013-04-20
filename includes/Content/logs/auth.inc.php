@@ -27,32 +27,9 @@ function highlightAuthlog($logline) {
 
 
 ?>
-<script>
-    $(function() {
-        $('#search').fastLiveFilter('#logline');
-    });
-</script>
-<style type="text/css">
-	span.datetime {
-		color: #0100EB;
-		font-weight: bold;
-	}
-</style>
 <h3>auth.log</h3>
-<div class="halbe-box">
-<fieldset>
-	<legend>Filter</legend>
-	<form method="get" action="index.php?p=logs">
-		<p>Geben Sie Schlüsselbegriffe<br>(z.B.: Benutzername, Zeit, Befehl) ein: </p>
-		<input type="text" name="" id="search" placeholder="Suchbegriff..." class="text-medlong"> 
-		<a href="#" class="tooltip">Info<span>mehrere Begriffe werden automatisch durch Leerzeichen getrennt</span></a>
-	</form>
-</fieldset>
-</div>
-<div class="halbe-box lastbox">
-	<p><b>auth.log</b> protokolliert alle Anmeldeversuche am System mit. Zugriffe über ssh, su und sudo werden ebenfalls protokolliert.<br>Beim Herunterfahren des Systems wird diese Datei automatisch geleert.<br><br>
+	<p><b>auth.log</b> protokolliert alle Anmeldeversuche am System mit. Zugriffe über ssh, su und sudo werden ebenfalls protokolliert.<br>Beim Herunterfahren des Systems wird diese Datei automatisch geleert.<br><b>Tipp:</b> Nutzen Sie die Suchfunktionen ihres Browsers, um bestimmte Ereignisse schneller zu finden<br><br>
 	<b>Wichtige Schlüsselbegriffe:</b><br> failed for, login, ssh, root, su, sudo, from, invalid, by</p>
-</div>
 <div class="clearfix"></div>
 <ul id="logline" class="log">
 	<?php

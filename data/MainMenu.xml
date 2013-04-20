@@ -322,17 +322,10 @@
             <window>included</window>
         </sub>
         <sub>
-            <id>2</id>
-            <name>watch</name>
-            <display>Betrachten</display>
-            <path>includes/Content/logs/watch.inc.php</path>
-            <window>included</window>
-        </sub>
-        <sub>
             <id>3</id>
-            <name>test</name>
-            <display>Test: Auth.log</display>
-            <path>includes/Content/logs/test.inc.php</path>
+            <name>auth</name>
+            <display>Auth.log</display>
+            <path>includes/Content/logs/auth.inc.php</path>
             <window>included</window>
         </sub>
     </menu>
