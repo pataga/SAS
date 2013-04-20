@@ -15,13 +15,28 @@ if (!$server->isInstalled('samba')) {
     exit;
 }
 
+    $out = $server->execute('cat /etc/group');
+    $out = explode("\n", $out);
+
+    $group = array();
+    for ($i = 0; $i < count($out); $i++) {
+        $line = explode(':', $out[$i]);
+        $group[$i]['name'] = $line[0];
+    //$group[$i]['id'] = $line[2]; 
+    }
+
+    
+
+
     if(isset($_POST['add']))
     {
         $name = $_POST['name'];
         $path = $_POST['path'];
         $validusers = $_POST['validusers'];
-        $writelist = $_POST['writelist'];
+        $writeuser = $_POST['writelist'];
         $readonly = $_POST['readonly'];
+        $writegroup = $_POST['group'];
+
 
         if(isset($_POST['public']))
         {
@@ -50,82 +65,80 @@ if (!$server->isInstalled('samba')) {
 //============================================================================
 //Abfrage der Checkboxen Directory Mode - Besitzer
 
-    if(isset($_POST['dbr']) && isset($_POST['dbw']) && isset($_POST['dbx'])){
-          $DirectoryUser="7";
-    }
-    else if (isset($_POST['dbr']) && isset($_POST['dbw'])) {
-          $DirectoryUser="6";
-    }
-    else if (isset($_POST['dbr']) && isset($_POST['dbx'])) {
-          $DirectoryUser="5";
-    }
-    else if (isset($_POST['dbr'])) {
-          $DirectoryUser="4";
-    }
-    else if (isset($_POST['dbw']) && isset($_POST['dbx'])) {
-          $DirectoryUser="3";
-    }
-    else if (isset($_POST['dbw'])) {
-          $DirectoryUser="2";
-    }
-    else if (isset($_POST['dbx'])) {
-          $DirectoryUser="1";
-    }
-    else  $DirectoryUser="0";
+        if(isset($_POST['dbr']) && isset($_POST['dbw']) && isset($_POST['dbx'])){
+              $DirectoryUser="7";
+        }
+        else if (isset($_POST['dbr']) && isset($_POST['dbw'])) {
+              $DirectoryUser="6";
+        }
+        else if (isset($_POST['dbr']) && isset($_POST['dbx'])) {
+              $DirectoryUser="5";
+        }
+        else if (isset($_POST['dbr'])) {
+              $DirectoryUser="4";
+        }
+        else if (isset($_POST['dbw']) && isset($_POST['dbx'])) {
+              $DirectoryUser="3";
+        }
+        else if (isset($_POST['dbw'])) {
+              $DirectoryUser="2";
+        }
+        else if (isset($_POST['dbx'])) {
+              $DirectoryUser="1";
+        }
+        else  $DirectoryUser="0";
 //============================================================================
-
 //============================================================================
 //Abfrage der Checkboxen Directory Mode - Gruppen
 
-    if(isset($_POST['dgr']) && isset($_POST['dgw']) && isset($_POST['dgx'])){
-          $DirectoryGroup="7";
-    }
-    else if (isset($_POST['dgr']) && isset($_POST['dgw'])) {
-          $DirectoryGroup="6";
-    }
-    else if (isset($_POST['dgr']) && isset($_POST['dgx'])) {
-          $DirectoryGroup="5";
-    }
-    else if (isset($_POST['dgr'])) {
-          $DirectoryGroup="4";
-    }
-    else if (isset($_POST['dgw']) && isset($_POST['dgx'])) {
-          $DirectoryGroup="3";
-    }
-    else if (isset($_POST['dgw'])) {
-          $DirectoryGroup="2";
-    }
-    else if (isset($_POST['dgx'])) {
-          $DirectoryGroup="1";
-    }
-    else  $DirectoryGroup="0";
+        if(isset($_POST['dgr']) && isset($_POST['dgw']) && isset($_POST['dgx'])){
+              $DirectoryGroup="7";
+        }
+        else if (isset($_POST['dgr']) && isset($_POST['dgw'])) {
+              $DirectoryGroup="6";
+        }
+        else if (isset($_POST['dgr']) && isset($_POST['dgx'])) {
+              $DirectoryGroup="5";
+        }
+        else if (isset($_POST['dgr'])) {
+              $DirectoryGroup="4";
+        }
+        else if (isset($_POST['dgw']) && isset($_POST['dgx'])) {
+              $DirectoryGroup="3";
+        }
+        else if (isset($_POST['dgw'])) {
+              $DirectoryGroup="2";
+        }
+        else if (isset($_POST['dgx'])) {
+              $DirectoryGroup="1";
+        }
+        else  $DirectoryGroup="0";
 //============================================================================
-
 //============================================================================
 //Abfrage der Checkboxen Directory Mode - Sonstige
 
-    if(isset($_POST['dsr']) && isset($_POST['dsw']) && isset($_POST['dsx'])){
-          $DirectorySonst="7";
-    }
-    else if (isset($_POST['dsr']) && isset($_POST['dsw'])) {
-          $DirectorySonst="6";
-    }
-    else if (isset($_POST['dsr']) && isset($_POST['dsx'])) {
-          $DirectorySonst="5";
-    }
-    else if (isset($_POST['dsr'])) {
-          $DirectorySonst="4";
-    }
-    else if (isset($_POST['dsw']) && isset($_POST['dsx'])) {
-          $DirectorySonst="3";
-    }
-    else if (isset($_POST['dsw'])) {
-          $DirectorySonst="2";
-    }
-    else if (isset($_POST['dsx'])) {
-          $DirectorySonst="1";
-    }
-    else  $DirectorySonst="0";
+        if(isset($_POST['dsr']) && isset($_POST['dsw']) && isset($_POST['dsx'])){
+              $DirectorySonst="7";
+        }
+        else if (isset($_POST['dsr']) && isset($_POST['dsw'])) {
+              $DirectorySonst="6";
+        }
+        else if (isset($_POST['dsr']) && isset($_POST['dsx'])) {
+              $DirectorySonst="5";
+        }
+        else if (isset($_POST['dsr'])) {
+              $DirectorySonst="4";
+        }
+        else if (isset($_POST['dsw']) && isset($_POST['dsx'])) {
+              $DirectorySonst="3";
+        }
+        else if (isset($_POST['dsw'])) {
+              $DirectorySonst="2";
+        }
+        else if (isset($_POST['dsx'])) {
+              $DirectorySonst="1";
+        }
+        else  $DirectorySonst="0";
 //============================================================================
 
 $dm = $DirectoryUser.$DirectoryGroup.$DirectorySonst;
@@ -133,84 +146,86 @@ $dm = $DirectoryUser.$DirectoryGroup.$DirectorySonst;
 //============================================================================
 //Abfrage der Checkboxen Create Mode - Besitzer
 
-    if(isset($_POST['cbr']) && isset($_POST['cbw']) && isset($_POST['cbx'])){
-          $CreateUser="7";
-    }
-    else if (isset($_POST['cbr']) && isset($_POST['cbw'])) {
-          $CreateUser="6";
-    }
-    else if (isset($_POST['dcbr']) && isset($_POST['cbx'])) {
-          $CreateUser="5";
-    }
-    else if (isset($_POST['cbr'])) {
-          $CreateUser="4";
-    }
-    else if (isset($_POST['cbw']) && isset($_POST['cbx'])) {
-          $CreateUser="3";
-    }
-    else if (isset($_POST['cbw'])) {
-          $CreateUser="2";
-    }
-    else if (isset($_POST['cbx'])) {
-          $CreateUser="1";
-    }
-    else  $CreateUser="0";
+        if(isset($_POST['cbr']) && isset($_POST['cbw']) && isset($_POST['cbx'])){
+              $CreateUser="7";
+        }
+        else if (isset($_POST['cbr']) && isset($_POST['cbw'])) {
+              $CreateUser="6";
+        }
+        else if (isset($_POST['dcbr']) && isset($_POST['cbx'])) {
+              $CreateUser="5";
+        }
+        else if (isset($_POST['cbr'])) {
+              $CreateUser="4";
+        }
+        else if (isset($_POST['cbw']) && isset($_POST['cbx'])) {
+              $CreateUser="3";
+        }
+        else if (isset($_POST['cbw'])) {
+              $CreateUser="2";
+        }
+        else if (isset($_POST['cbx'])) {
+              $CreateUser="1";
+        }
+        else  $CreateUser="0";
 //============================================================================
-
 //============================================================================
 //Abfrage der Checkboxen Create Mode - Gruppen
 
-    if(isset($_POST['dcgr']) && isset($_POST['cgw']) && isset($_POST['cgx'])){
-          $CreateGroup="7";
-    }
-    else if (isset($_POST['cgr']) && isset($_POST['cgw'])) {
-          $CreateGroup="6";
-    }
-    else if (isset($_POST['cgr']) && isset($_POST['cgx'])) {
-          $CreateGroup="5";
-    }
-    else if (isset($_POST['cgr'])) {
-          $CreateGroup="4";
-    }
-    else if (isset($_POST['cgw']) && isset($_POST['cgx'])) {
-          $CreateGroup="3";
-    }
-    else if (isset($_POST['cgw'])) {
-          $CreateGroup="2";
-    }
-    else if (isset($_POST['cgx'])) {
-          $CreateGroup="1";
-    }
-    else  $CreateGroup="0";
+        if(isset($_POST['dcgr']) && isset($_POST['cgw']) && isset($_POST['cgx'])){
+              $CreateGroup="7";
+        }
+        else if (isset($_POST['cgr']) && isset($_POST['cgw'])) {
+              $CreateGroup="6";
+        }
+        else if (isset($_POST['cgr']) && isset($_POST['cgx'])) {
+              $CreateGroup="5";
+        }
+        else if (isset($_POST['cgr'])) {
+              $CreateGroup="4";
+        }
+        else if (isset($_POST['cgw']) && isset($_POST['cgx'])) {
+              $CreateGroup="3";
+        }
+        else if (isset($_POST['cgw'])) {
+              $CreateGroup="2";
+        }
+        else if (isset($_POST['cgx'])) {
+              $CreateGroup="1";
+        }
+        else  $CreateGroup="0";
 //============================================================================
-
 //============================================================================
 //Abfrage der Checkboxen Create Mode - Sonstige
 
-    if(isset($_POST['csr']) && isset($_POST['csw']) && isset($_POST['csx'])){
-          $CreateSonst="7";
-    }
-    else if (isset($_POST['csr']) && isset($_POST['csw'])) {
-          $CreateSonst="6";
-    }
-    else if (isset($_POST['csr']) && isset($_POST['csx'])) {
-          $CreateSonst="5";
-    }
-    else if (isset($_POST['csr'])) {
-          $CreateSonst="4";
-    }
-    else if (isset($_POST['csw']) && isset($_POST['csx'])) {
-          $CreateSonst="3";
-    }
-    else if (isset($_POST['csw'])) {
-          $CreateSonst="2";
-    }
-    else if (isset($_POST['csx'])) {
-          $CreateSonst="1";
-    }
-    else  $CreateSonst="0";
+        if(isset($_POST['csr']) && isset($_POST['csw']) && isset($_POST['csx'])){
+              $CreateSonst="7";
+        }
+        else if (isset($_POST['csr']) && isset($_POST['csw'])) {
+              $CreateSonst="6";
+        }
+        else if (isset($_POST['csr']) && isset($_POST['csx'])) {
+              $CreateSonst="5";
+        }
+        else if (isset($_POST['csr'])) {
+              $CreateSonst="4";
+        }
+        else if (isset($_POST['csw']) && isset($_POST['csx'])) {
+              $CreateSonst="3";
+        }
+        else if (isset($_POST['csw'])) {
+              $CreateSonst="2";
+        }
+        else if (isset($_POST['csx'])) {
+              $CreateSonst="1";
+        }
+        else  $CreateSonst="0";
 //============================================================================
     $cm = $CreateUser.$CreateGroup.$CreateSonst;
+//============================================================================
+    
+//============================================================================
+// FREIGABE DIE ABGESPEICHERT WIRD
 //============================================================================
         $content = "
         [$name]
@@ -219,6 +234,7 @@ $dm = $DirectoryUser.$DirectoryGroup.$DirectorySonst;
         $public
         $writable
         $readonly
+        writelist= $writeuser.$writegroup
         directory mask = $dm
         create mask = $cm"
         ;
@@ -268,7 +284,7 @@ Die Freigaben tauchen in der Netzwerkumgebung auf und können bei Bedarf auch al
                 <span><b>Info:</b><br>Hier können Sie Gruppen angeben, die Schreibrechte erhalten sollen.<br><br>
                     Bitte trennen Sie die einzelnen Gruppen mit einem Komma.<br>
                     Beispiel: group1, group2, group3
-                </span></a><br><br><br>          
+                </span></a><br><br><br>         
             &Ouml;ffentliche Freigabe? 
             <br><br>
             Schreibrechte f&uuml;r jeden? 
@@ -301,15 +317,15 @@ Die Freigaben tauchen in der Netzwerkumgebung auf und können bei Bedarf auch al
             <input type="text" class="text-long" name="path" id=""><br><br>
             <input type="text" class="text-long" name="validusers" id=""><br><br>
             <input type="text" class="text-long" name="writelist" id=""><br><br>
-             <input type="text" class="text-long" name="" id="" required list="gruppen">
+            <input type="text" class="text-long" name="group" id="" required list="gruppen">
             <datalist id="gruppen">
-
-                <option value="Gruppe 1"></option>
-                <option value="Gruppe 2"></option>
-                <option value="Admin"></option>
-                <option value="Wichtig"></option>
-                <option value="XYZ"></option>
-            </datalist><br><br><br>
+              <?
+              foreach ($group as $value) {
+                  echo "<option value='&#064;".$value['name']."'>";
+              }
+              ?>
+            </datalist>
+            <br><br><br><br>
 
             <select name="public">
                 <option value="1"> Ja </option>
@@ -375,3 +391,5 @@ Die Freigaben tauchen in der Netzwerkumgebung auf und können bei Bedarf auch al
         <span class="info">Hinweis: Nach dem hinzufügen einer neuen Freigabe wird der Dienst automatisch neu gestartet.</span>
     </form>
 </fieldset>
+
+
