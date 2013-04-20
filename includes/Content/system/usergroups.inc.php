@@ -7,15 +7,27 @@
  * @since SAS v1.0.0
  * @license Apache License v2 (http://www.apache.org/licenses/LICENSE-2.0.txt)
  * @author Gabriel Wanzek
- *
+ * echo -ne "'.$_POST['pw'].'\n'.$_POST['pw'].'\n" | adduser '.$_POST['name'].' --no-create-home
  */
+
+if (isset($_POST['add'])) {
+    echo $server->execute("useradd ".$_POST['name']);
+}
+
+if (isset($_POST['del'])) {
+    echo $server->execute("deluser ".$_POST['name']);
+}
 
 $all_users = $server->execute("cat /etc/passwd | cut -d: -f1", 2);
 $seq_users = $server->execute("awk -F: '$3>999{print $1}' /etc/passwd", 2);
 $all_groups = $server->execute("cat /etc/group | cut -d: -f1 ", 2);
 
-if (isset($_POST[''])) {
-    # code...
+if (isset($_POST['addg'])) {
+    echo $server->execute("useradd -G ".$_POST['g']." ".$_POST['u']);
+}
+
+if (isset($_POST['pwc'])) {
+    echo $server->execute('echo -ne "'.$_POST['pw'].'\n'.$_POST['pw'].'\n" | passwd '.$_POST['name']);
 }
 
 ?>
@@ -23,7 +35,7 @@ if (isset($_POST[''])) {
 <div class="halbe-box">
     <fieldset>
         <legend>Bestehende User</legend>
-        <h5>User ID &lt; ID 1000</h5>
+        <h5>User ID &gt; ID 1000</h5>
         <div class="listbox">
             <?php
             foreach ($seq_users as $key => $value) {
@@ -52,48 +64,19 @@ if (isset($_POST[''])) {
             ?>
         </div>
     </fieldset>
-        <fieldset>
-        <legend>User einer Gruppe zuweisen</legend>
-        <form action="index.php?p=system&s=cpu" method="post" autocomplete="off">
-            <p><label>Benutzername:</label> 
-                <input type="text" class="text-long" name="addgroup" required list="users"></p>
-            <datalist id="users">
-<?php
-foreach ($all_users as $key => $value) {
-    echo '<option value="' . $value . '">';
-}
-?>
-            </datalist>
-            <p><label>Gruppe:</label> 
-                <input type="text" class="text-long" name="name" required list="all_groups"></p>
-            <datalist id="all_groups">
-<?php
-foreach ($all_groups as $key => $value) {
-    echo '<option value="' . $value . '">';
-}
-?>
-            </datalist>
-            <input type="submit" value="zuweisen" name="addg" class="button black">
-        </form>
-    </fieldset>
 </div>
 <div class="halbe-box lastbox">
     <fieldset>
         <legend>User anlegen</legend>
-        <form action="index.php?p=system&s=cpu" method="post" autocomplete="off">
+        <form action="?p=system&s=usergroups" method="post" autocomplete="off">
             <p><label>Benutzername:</label> 
                 <input type="text" class="text-long" name="name" required></p>
-            <p><label>Passwort:</label> 
-                <input type="text" class="text-long" name="pw" required></p>
-            <p><label>Passwort wiederholen:</label> 
-                <input type="text" class="text-long" name="pwx" required></p>
-            <p><input type="checkbox" name="home" checked> Home-Ordner erstellen?</p>
             <input type="submit" value="anlegen" name="add" class="button black">
         </form>
     </fieldset>
     <fieldset>
         <legend>User entfernen</legend>
-        <form action="index.php?p=system&s=cpu" method="post" autocomplete="off">
+        <form action="?p=system&s=usergroups" method="post" autocomplete="off">
             <p><label>Benutzername:</label> 
                 <input type="text" class="text-long" name="name" required list="users"></p>
             <datalist id="users">
@@ -107,8 +90,8 @@ foreach ($all_users as $key => $value) {
         </form>
     </fieldset>
     <fieldset>
-        <legend>Passwort ändern</legend>
-        <form action="index.php?p=system&s=cpu" name="pw" method="post" autocomplete="off">
+        <legend>Passwort zuweisen/ändern</legend>
+        <form action="?p=system&s=usergroups" method="post" autocomplete="off">
             <p><label>Benutzername:</label> 
                 <input type="text" class="text-long" name="name" required list="users"></p>
             <datalist id="users">
@@ -119,10 +102,34 @@ foreach ($all_users as $key => $value) {
 ?>
             </datalist>
             <p><label>Neues Passwort:</label> 
-                <input type="text" class="text-long" name="´pw" required"></p>
-            <p><label>Neues Passwort wiederholen:</label> 
-                <input type="text" class="text-long" name="pwx" required"></p>
-            <input type="submit" value="ändern" name="addg" class="button black">
+                <input type="text" class="text-long" name="pw" required></p>
+            <input type="submit" value="ändern" name="pwc" class="button black">
         </form>
     </fieldset>
+    
+<?php // verursacht noch Fehler ?>
+    <!--<fieldset>
+        <legend>User einer Gruppe zuweisen</legend>
+        <form action="?p=system&s=usergroups" method="post" autocomplete="off">
+            <p><label>Benutzername:</label> 
+                <input type="text" class="text-long" name="u" required list="users"></p>
+            <datalist id="users">
+<?php
+foreach ($all_users as $key => $value) {
+    echo '<option value="' . $value . '">';
+}
+?>
+            </datalist>
+            <p><label>Gruppe:</label> 
+                <input type="text" class="text-long" name="g" required list="all_groups"></p>
+            <datalist id="all_groups">
+<?php
+foreach ($all_groups as $key => $value) {
+    echo '<option value="' . $value . '">';
+}
+?>
+            </datalist>
+            <input type="submit" value="zuweisen" name="addg" class="button black">
+        </form>
+    </fieldset>-->
 </div>
