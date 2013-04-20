@@ -11,49 +11,72 @@
 */
 ?>
 <?php 
-$hdd_info_1 = $server->execute("hdparm -i /dev/sda");
-$hdd_info_2 = $server->execute("lsblk");
-$hdd_info_3 = $server->execute("fdisk -l");
-$hdd_info_4 = $server->execute("df -hl");
-$hdd_info_5 = $server->execute("cat /proc/filesystems");
-?>
+$fss = $server->execute("cat /proc/filesystems");
+$lsblk = $server->execute("lsblk -ilo NAME,TYPE,SIZE,MOUNTPOINT");
+$disks = $server->execute("fdisk -l | grep Disk | awk {'print $2, $3, $4'}");
 
+$disksarr = explode("\n", str_replace(",", "", $disks));
+foreach ($disksarr as $value) {
+	$tmparr = explode(":", $value);
+	if (isset($tmparr[0]) && isset($tmparr[1])) {
+		$disk[$tmparr[0]] = $tmparr[1];
+	}
+}
+
+if (isset($_POST['hdparm'])) {
+	$hdparm = $server->execute("hdparm -i ".$_POST['cdisk']);
+}
+
+$lbexp = explode("\n", $lsblk);
+foreach ($lbexp as $key => $value) {
+	$trim = trim($value);
+	$fnlexp = explode(" ", $trim);
+	$lsblk_data[] = array_values(array_filter($fnlexp));
+}
+?>
 <h3>Festplatten-Info</h3>
 <fieldset>
-<h5>Festplatten &amp; Partitionierung</h5>
-Befehl: <code class="fancy">hdparm -i /dev/sda</code>
-<pre class="simple">
-<?=$hdd_info_1?>
-</pre>
-<hr>
-<h5>Verfügbare "Block-devices"</h5>
-Befehl: <code class="fancy">lsblk</code>
-<hr>
-<pre class="simple">
-<?=$hdd_info_2?>
-</pre>
-<hr>
-<h5>Auflisten der Informationen zu MBR-Partitionen - alle oder ein angegebener Datenträger</h5>
-Befehl: <code class="fancy">fdisk -l</code>
-<hr>
-<pre class="simple">
-<?=$hdd_info_3?>
-</pre>
-<hr>
-<h5>Verfügbarer Speicherplatz</h5>
-Befehl: <code class="fancy">df -hl</code>
-<hr>
-<pre class="simple">
-<?=$hdd_info_4?>
-</pre>
-<hr>
-<h5>Verfügbare Dateisysteme</h5>
-Dateiausgabe: <code class="fancy">/proc/filesystems</code>
-<hr>
-<pre class="simple">
-<?=$hdd_info_5?>
-</pre>
-<div class="clearfix"></div>
-<hr>
-<b>Info:</b> Momentan nur einfache Ausgaben die noch verarbeitet werden müssen.
+	<legend>Festplatteninformationen</legend>
+	<p>Wählen Sie eine Festplatte aus, um mehr Informationen über Sie herauszufinden.</p>
+	<form action="?p=tools&s=hddinfo" method="post">
+		<select name="cdisk">
+				<?php foreach ($disk as $key => $value): ?>
+				<option value="<?=$key?>"><?php echo $key." (".$value.")"; ?></option>
+			<?php endforeach; ?>
+		</select>
+		<input type="submit" name="hdparm" value="Auswählen" class="button black">
+	</form>
+<?php echo (isset($hdparm)) ? "<pre class='simple'>".$hdparm."</pre>" : "";?>
 </fieldset>
+<div class="zweidrittel-box">
+	<fieldset>
+		<legend>Festplatten/Partitionen/Mountpoints</legend>
+		<table>
+			<tr>
+				<th>Name</th>
+				<th>Typ</th>
+				<th>Größe</th>
+				<th>Mount</th>
+			</tr>
+		<?php
+		unset($lsblk_data[0]);
+		foreach ($lsblk_data as $value) {
+			echo "<tr>";
+			foreach ($value as $key => $value) {
+				echo "<td>".$value."</td>";
+			}
+			echo "<tr>";
+		}
+		?>
+		</table>
+	</fieldset>
+</div>
+<div class="drittel-box lastbox">
+	<fieldset>
+		<legend>Dateisysteme</legend>
+		<p>Auflistung aller verfügbaren Dateisysteme</p>
+	<div class="listbox_fss">
+	<?echo str_replace("\n", "<br>", $fss)?>
+	</div>
+	</fieldset>
+</div>

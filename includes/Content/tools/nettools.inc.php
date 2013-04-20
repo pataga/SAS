@@ -10,6 +10,11 @@
 * @version 0.6
 *
 */
+if (isset($_POST['timeout'])) {
+    $timeout = (int)$_POST['timeout'];
+    @set_time_limit($timeout);
+}
+
 if (isset($_POST['net'])) {
     $net = $_POST['net'];
     switch ($net) {
@@ -47,6 +52,9 @@ if (isset($_POST['installtools'])) {
 }
 ?>
 <h3>Netzwerk-Tools</h3>
+<p>
+    Die Aktionen können ggf. etwas länger dauern. Haben Sie daher ein wenig Geduld.<br>Sie können einen Timeout <i>(in Sekunden)</i> festlegen, wann die Aktion beendet werden soll, sollte diese länger dauern.
+</p>
 <div class="zweidrittel-box">
 <fieldset>
     <legend>Tool auswählen</legend>
@@ -60,6 +68,8 @@ if (isset($_POST['installtools'])) {
         </select><br><br>
         <p><b>Host</b> (IP-Adresse oder Domain ohne Protokoll):<br>
         <input type="text" class="text-long" name="host"></p>
+        <p><b>Timeout</b> (in Sekunden):<br>
+        <input type="number" class="text-small" name="timeout" value="30" step="1" min="5" max="300"></p>
         <input type="submit" class="button black" value="Aktion starten" name="go">
     </form>
 </fieldset>

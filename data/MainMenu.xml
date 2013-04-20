@@ -443,16 +443,7 @@
             <display>Netzwerk-Tools</display>
             <path>includes/Content/tools/nettools.inc.php</path>
             <window>included</window>
-        </sub> 
-        <sub>
-            <id>10</id>
-            <name>info</name>
-            <display>Sonst. Informationen</display>
-            <path>includes/Content/tools/info.inc.php</path>
-            <window>included</window>
-        </sub>    
-            
-
+        </sub>
     </menu>
 
     <menu>
