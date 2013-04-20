@@ -123,13 +123,6 @@
             <window>included</window>
         </sub>
 
-        <sub>
-            <id>8</id>
-            <name>stats</name>
-            <display>Statistiken</display>
-            <path>includes/Content/apache/stats.inc.php</path>
-            <window>included</window>
-        </sub>
     </menu>
 
     <!-- NEW MENU -->
