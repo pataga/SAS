@@ -10,6 +10,7 @@
 * @author Patrick Farnkopf
 *
 */
+
 $msg = '';
 
 if (isset($_POST['submission'])) {
