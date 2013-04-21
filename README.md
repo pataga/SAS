@@ -30,6 +30,8 @@
 
 Es können alle Ubuntu-basierenden (12.04+) Distributionen per SSH oder über SOAP (Ruby-Daemon) ferngesteuert werden
 
+vServer die nicht die 100%ige Funktionalität eines Root-Servers haben können eventuell Fehler verursachen.
+
 [1]: http://goo.gl/dTrur
 [3]: http://goo.gl/8UqKr
 [4]: http://goo.gl/OZT5x
