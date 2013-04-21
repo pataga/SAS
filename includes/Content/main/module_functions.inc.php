@@ -13,9 +13,6 @@
  *
  */
 
-/* ============================================================================ */
-
-
 /**
 * Sucht nach dem übergebenen String in einem Wert eines eindimensionalem Arrays und gibt den Key zurück.
 * Ähnlich "array_search()", jedoch benötigt diese als needle den vollständigen String, und nicht nur einen Teil.

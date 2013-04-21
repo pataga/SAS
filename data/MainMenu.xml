@@ -75,13 +75,13 @@
             <window>included</window>
         </sub>
 
-        <sub>
-            <id>2</id>            
+        <!--<sub>
+            <id>2</id>
             <name>config</name>
             <display>Konfiguration</display>
             <path>includes/Content/apache/config.inc.php</path>
             <window>included</window>
-        </sub>
+        </sub>-->
 
         <sub>
             <id>3</id>
@@ -101,7 +101,7 @@
 
         <sub>
             <id>5</id>
-            <name>modules</name>
+            <name>module</name>
             <display>Module</display>
             <path>includes/Content/apache/module.inc.php</path>
             <window>included</window>
@@ -124,8 +124,6 @@
         </sub>
 
     </menu>
-
-    <!-- NEW MENU -->
 
     <!-- NEW MENU -->
 

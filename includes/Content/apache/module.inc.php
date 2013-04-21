@@ -14,11 +14,11 @@ $en_mods_a2 = $server->execute("ls -1 /etc/apache2/mods-enabled/ | grep load", 2
 $av_mods_a2 = $server->execute("ls -1 /etc/apache2/mods-available/ | grep load", 2);
 
 if (isset($_POST['akt'])) {
-    $server->execute("a2enmod " . $_POST['akt'] . "&& service apache2 restart");
+    $server->execute("a2enmod " . $_POST['akt'] . "&& service apache2 reload");
 }
 
 if (isset($_POST['deakt'])) {
-    $server->execute("a2dismod " . $_POST['deakt'] . " && service apache2 restart");
+    $server->execute("a2dismod " . $_POST['deakt'] . " && service apache2 reload");
 }
 ?>
 <h3>Apache-Module</h3>

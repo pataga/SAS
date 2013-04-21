@@ -19,15 +19,19 @@ $userswho = $server->execute("users");     //zeigt eingeloggte benutzer an
 $kernelversion = $server->execute("cat /proc/version");    //kernelversion
 $sekundentmp = $server->execute("cat /proc/uptime");       //zeit in sek. wie lang server an ist
 $hostname = $server->execute("hostname -s");       //gibt den Systemnamen/Hostnamen aus
+
 $loadpart = explode("load average:", $load);    
 $serverload = isset($loadpart[1]) ? $loadpart[1] : 0;
+
 $sekunden0 = explode(".", $sekundentmp);
 $sekunden = $sekunden0[0];
 $serveruptime = (((((((($sekunden - ($sekunden % 60)) / 60) - (($sekunden - ($sekunden % 60)) / 60) % 60) / 60))) - (((((($sekunden - ($sekunden % 60)) / 60) - (($sekunden - ($sekunden % 60)) / 60) % 60) / 60)) % 24)) / 24) . " T. " . (((((($sekunden - ($sekunden % 60)) / 60) - (($sekunden - ($sekunden % 60)) / 60) % 60) / 60)) % 24) . " Std. " . ((($sekunden - ($sekunden % 60)) / 60) % 60) . " Min. " . ($sekunden % 60) . " Sek. "; // macht aus Sekunden xx Tage xx Stunden xx Minuten xx Sekunden (als kurzform)
+
 $bootdatetmp = str_replace("   ", "", $uptime);
 $bootdate = str_replace("Systemstart", "", $bootdatetmp);
 $userswholi = str_replace(" ", ", ", $userswho);
 $service = $server->serviceStatus();
+
 if (isset($_POST['notiz'])) {
     $sql = "INSERT INTO sas_home_notes (id, author, note, notetime) 
     VALUES (NULL, '".$_SESSION['user']['name']."','".htmlspecialchars(mysql_real_escape_string($_POST['notizen']))."'  , CURRENT_TIMESTAMP);";

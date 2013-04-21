@@ -7,15 +7,8 @@
 * @license Apache License v2 (http://www.apache.org/licenses/LICENSE-2.0.txt)
 * @author Gabriel Wanzek
 */
-
-/* 
-Status: 
-Ausgaben 		-> funktionieren 
-PHP-Status 		-> funktioniert
-Installation 	-> funktioniert
-PHP-Config 		-> Planung 
-*/
-
+$pini = $server->execute('cat /etc/php5/apache2/php.ini');
+$piniarr = parse_ini_string($pini,false);
 $gpv = $server->execute('php -r "echo substr(phpversion(),0,strpos(phpversion(), \"-\"));"'); // PHP-Version  (nur Zahlen)
 $xgpv = preg_replace(['/No entry for terminal type/', '/using dumb terminal settings./', '/"bash";/'], '', $gpv); //Entferne Fehlermeldungen
 
@@ -38,13 +31,16 @@ if (isset($_POST['installphp'])) {
 	$server->execute('apt-get install php5 -fy');
 }
 
-//folgt...
-if (isset($_POST['phpini'])) {
-	//$server->execute('');
+// php.ini speichern
+if (isset($_POST['pinisave'])) {
+	$server->execute('echo "'.$_POST['pinidata'].'" >  /etc/php5/apache2/php.ini');
+}
+
+// php.ini speichern und apache2 neuladen
+if (isset($_POST['pinisave'])) {
+	$server->execute('echo "'.$_POST['pinidata'].'" >  /etc/php5/apache2/php.ini && service apache2 reload');
 }
 ?>
-<style>textarea.iniedit {width: 560px !important;font: 1em "Ubuntu Mono", monospace !important;color: #000 !important;height: 345px !important; line-height: 1.2; overflow: scroll !important;} textarea.iniedit:focus {background: #fff !important;}
-</style>
 <h3>PHP</h3>
 <div class="halbe-box">
 	<fieldset>
@@ -78,6 +74,22 @@ if (isset($_POST['phpini'])) {
 <div class="clearfix"></div>
 <fieldset>
 	<legend>php.ini bearbeiten</legend>
+	<p>
+		Hier können php.ini-Direktiven bearbeitet werden. Eine Liste mit Beschreibungen und Standard-Werten erhalten Sie <a href="http://www.php.net/manual/de/ini.list.php">hier</a>.<br><i>Damit es übersichtlich bleibt, werden Kommentare nicht angezeigt und verarbeitet.</i>
+	</p>
 	<form action="?p=apache&s=php" method="post">
+<!-- white-space: pre !!! ?-->
+<textarea name="pinidata" id="console">
+<?php
+foreach ($piniarr as $key => $value) {
+echo $key." = ".$value."\n";
+}
+?>
+</textarea>
+<!-- white-space: pre END ?-->
+		<div class="clearfix"></div>
+		<br>
+		<input type="submit" name="pinisave" class="button green" value="Speichern">
+		<input type="submit" name="pinisaverel" class="button orange" value="Speichern und Konfiguration neuladen">
 	</form>
 </fieldset>
