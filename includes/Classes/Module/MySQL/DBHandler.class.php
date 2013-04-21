@@ -54,8 +54,8 @@ class DBHandler extends \Classes\MySQL {
 
     public function getData() {
         $from = $this->maxRows*$this->pageNumber;
-        $to = $this->maxRows*$this->pageNumber+$this->maxRows()-1;
-        return $this->Query("SELECT * FROM ".$this->selectedTable." LIMIT ".$from." ".$to)->fetchAll();
+        $to = $this->maxRows*$this->pageNumber+$this->maxRows-1;
+        return $this->Query("SELECT * FROM ".$this->selectedTable." LIMIT ".$from.", ".$to)->fetchAll();
     }
     
     private $selectedDatabase, $selectedTable, $maxRows, $pageNumber;

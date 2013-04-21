@@ -74,3 +74,46 @@ $dbModule = new \Classes\Module\MySQL\DBHandler($data);
         ?>
     </form>
 </fieldset>
+
+<? if (isset($_GET['database']) && isset($_GET['table'])) { ?>
+
+<fieldset style="">
+    <legend>Datens&auml;tze</legend>
+    <div class="scroll">
+    <table>
+        <tr>
+            <th></th>
+    <?
+    $dbModule->setTable($_GET['table']);
+    $dbModule->setDatabase($_GET['database']);
+    $cols = $dbModule->getColumns();
+    foreach ($cols as $key => $col) {
+        ?>
+        <th><?=$col[0]?></th>
+        <?
+    }
+    ?>
+        </tr>
+    <?
+    $dbModule->setMaxRows(50);
+    $data = $dbModule->getData();
+    foreach ($data as $key => $row) {
+        ?>
+        <tr>
+            <td>#OPTIONS</td>
+        <?
+        for ($i=0; $i < count($row)/2; $i++) {
+            ?>
+            <td><?=$row[$i]?></td>
+            <?
+        }
+        ?>
+        </tr>
+        <?
+    }
+    ?>
+    </table>
+    </div>
+</fieldset>
+
+<?}?>

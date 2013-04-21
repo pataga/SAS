@@ -1069,6 +1069,19 @@ pre.simple {
     color: rgb(100, 100, 100);
 }
 
+#main fieldset .scroll {
+    min-height: 100px;
+    max-width: 670px;
+    overflow:scroll;
+    scrollbar-3dlight-color:#FFFFFF;
+    scrollbar-arrow-color:#000000;
+    scrollbar-base-color:#FF9999;
+    scrollbar-darkshadow-color:#000000;
+    scrollbar-face-color:#000000;
+    scrollbar-highlight-color:#000000;
+    scrollbar-shadow-color:#0033CC;
+}
+
 /* ==========================================================================
 5.3 Template Features: LADEBALKEN - Wurden ersetzt durch das HTML5-tag <meter>
 ========================================================================== */
