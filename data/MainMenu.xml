@@ -313,12 +313,33 @@
             <window>included</window>
         </sub>
         <sub>
-            <id>3</id>
+            <id>2</id>
             <name>auth</name>
-            <display>Auth.log</display>
+            <display>Authentifizierung</display>
             <path>includes/Content/logs/auth.inc.php</path>
             <window>included</window>
         </sub>
+        <sub>
+            <id>3</id>
+            <name>syslog</name>
+            <display>System</display>
+            <path>includes/Content/logs/syslog.inc.php</path>
+            <window>included</window>
+        </sub>
+        <sub>
+            <id>4</id>
+            <name>apachelog</name>
+            <display>Apache</display>
+            <path>includes/Content/logs/apachelog.inc.php</path>
+            <window>included</window>
+        </sub>   
+        <sub>
+            <id>5</id>
+            <name>mysqllog</name>
+            <display>MySQL</display>
+            <path>includes/Content/logs/mysqllog.inc.php</path>
+            <window>included</window>
+        </sub>                    
     </menu>
     <menu>
         <id>7</id>

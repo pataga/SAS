@@ -5,33 +5,20 @@
  * @copyright Copyright 2012-2013 Patrick Farnkopf, Tanja Weiser, Gabriel Wanzek (PaTaGa)
  * @link https://github.com/pataga/SAS
  * @since SAS v1.0.0
- * @license Apache License v2 (http://www.apache.org/licenses/LICENSE-2.0.txt
+ * @license Apache License v2 (http://www.apache.org/licenses/LICENSE-2.0.txt)
  * @author Gabriel Wanzek
  *
  */
+?><h3>Logs</h3>
+<a href="?p=logs&s=auth"><div class="viertel-box boxitem"><p>Authentifizierung</p></div></a>
+<a href="?p=logs&s=syslog"><div class="viertel-box boxitem"><p>Systemmeldungen</p></div></a>
+<a href="?p=logs&s=apachelog"><div class="viertel-box boxitem"><p>Apache</p></div></a>
+<a href="?p=logs&s=mysqllog"><div class="viertel-box boxitem lastbox"><p>MySQL</p></div>
+<div class="clearfix"></div>
 
-$out = $server->execute('stat -c "*%n|%y#" /var/log/*');
-$filter = ['*','|','#'];
-$rep = ['<tr><td>','</td><td>','</tr>'];
-$put = str_replace($filter, $rep, $out);
-?>
-<h3>System-Logs</h3>
-<fieldset>
-	<p><b>Modulname: </b>overview</p>
-	<p><b>Modulbeschreibung: </b>Alle verfügbaren Logs in einer Übersicht</p>
-	<p><b>Programmierer(in):</b> Gabriel</p>
-	<p><b>Status:</b> Kein Status vorhanden</p>
-</fieldset>
-
-<fieldset>
-	<legend>Verfügbare Logs</legend>
-	<table>
-		<tr>
-			<th>Datei</th>
-			<th>Letzte Änderung</th>
-		</tr>
-		<?=$put ?>
-	</table>
-</fieldset>
-
-
+<!--
+<a href="?#LEER"><div class="viertel-box boxitem"><p><i>leer</i></p></div></a>
+<a href="?#LEER"><div class="viertel-box boxitem"><p><i>leer</i></p></div></a>
+<a href="?#LEER"><div class="viertel-box boxitem"><p><i>leer</i></p></div></a>
+<a href="?#LEER"><div class="viertel-box boxitem lastbox"><p><i>leer</i></p></div></a>
+<div class="clearfix"></div>-->
