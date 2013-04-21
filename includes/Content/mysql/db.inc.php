@@ -24,10 +24,10 @@ $dbModule = new \Classes\Module\MySQL\DBHandler($data);
 <h3>MySQL</h3>
 <fieldset>
     <legend>Datenbank/Tabelle</legend>
-    <form action="" method="get">
+    <form action="" method="get" name="mysqlSubmit" id="mysqlForm">
         <input type="hidden" name="p" value="mysql">
         <input type="hidden" name="s" value="db">
-        <select name="database" onchange="submit();">
+        <select name="database" id="database" onchange="checkDatabase()">
             <option value="0">Datenbank w&auml;hlen</option>
             <?
             $data = $dbModule->getDatabases();
@@ -50,7 +50,7 @@ $dbModule = new \Classes\Module\MySQL\DBHandler($data);
         if (isset($_GET['database'])) {
             ?>
 
-            <select name="table" onchange="submit();">
+            <select name="table" id="table" onchange="submit();">
             <option value="0">Tabelle w&auml;hlen</option>
             <?
             $dbModule->setDatabase($_GET['database']);
@@ -75,7 +75,7 @@ $dbModule = new \Classes\Module\MySQL\DBHandler($data);
     </form>
 </fieldset>
 
-<? if (isset($_GET['database']) && isset($_GET['table'])) { ?>
+<? if (isset($_GET['database']) && isset($_GET['table']) && $_GET['table'] != '0') { ?>
 
 <fieldset style="">
     <legend>Datens&auml;tze</legend>

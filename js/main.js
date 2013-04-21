@@ -20,6 +20,12 @@ $(document).ready(function(){ 			// Spoiler
 
 });
 
+function checkDatabase() {
+    if (document.getElementById('table'))
+        document.getElementById('table').selectedIndex = 0; 
+    document.getElementById('mysqlForm').submit();
+}
+
 function tabs(x) {
 	var lis=document.getElementById("tabs_ui").childNodes;
 
