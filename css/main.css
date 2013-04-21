@@ -45,7 +45,7 @@ Inhaltsverzeichnis:
     font-family: 'Lobster';
     font-style: normal;
     font-weight: 400;
-    src: local('Lobster'), url(fonts/lobster.woff) format('woff');
+    src: url(fonts/lobster.woff) format('woff');
 }
 
 @font-face {
@@ -123,6 +123,7 @@ body {
 }
 
 .top .usermenu {
+    top: 0;
     text-align: left;
     font-size: 1em;
     margin-top: -15px;
@@ -283,22 +284,35 @@ body {
     background-color: #222;
     color:#fff;
     height: 100px;
+    box-shadow: 0 8px 6px -6px #000;
 }
 
 .boxitem:hover {
-    box-shadow: inset 0 0 3px 5px #fff;
+    /*box-shadow: inset 0 0 3px 5px #fff;*/
+    border-top-left-radius: 38px;
+    border-bottom-right-radius: 38px;
 }
 
-.boxitem, .boxitem:hover {
-    -webkit-transition: all .3s ease-in-out;
-    -moz-transition: all .3s ease-in-out;
-    -ms-transition: all .3s ease-in-out;
-    -o-transition: all .3s ease-in-out;
-    transition: all .3s ease-in-out;
+.boxitem {
+    -webkit-transition: border-radius .2s ease-in-out;
+    -moz-transition: border-radius .2s ease-in-out;
+    -ms-transition: border-radius .2s ease-in-out;
+    -o-transition: border-radius .2s ease-in-out;
+    transition: border-radius .2s ease-in-out;
+
  }
 
 .boxitem:active {
-    top: 3px;
+    -webkit-transition: all .1s ease-in-out;
+    -moz-transition: all .1s ease-in-out;
+    -ms-transition: all .1s ease-in-out;
+    -o-transition: all .1s ease-in-out;
+    transition: all .1s ease-in-out;
+    -webkit-transform: scale(0.95);
+    -moz-transform: scale(0.95);
+    -ms-transform: scale(0.95);
+    -o-transform: scale(0.95);
+    transform: scale(0.95);
 }
 
 .boxitem p {
