@@ -15,5 +15,5 @@
 <a href="?p=logs&s=syslog"><div class="drittel-box boxitem lastbox"><p>Systemmeldungen</p></div></a>
 <div class="clearfix"></div>
 <a href="?p=logs&s=apachelog"><div class="drittel-box boxitem"><p>Apache</p></div></a>
-<a href="?p=logs&s=mysqllog"><div class="drittel-box boxitem lastbox"><p>MySQL</p></div>
+<a href="?p=logs&s=mysqllog"><div class="drittel-box boxitem lastbox"><p>MySQL</p></div></a>
 <div class="clearfix"></div>
