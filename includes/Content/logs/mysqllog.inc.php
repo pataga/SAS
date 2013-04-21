@@ -10,21 +10,18 @@
  *
  */
 
-$alog1 = "";
-$alog2 = "";
+$mlog = "";
 
 if (isset($_POST['access'])) {
-	$alog1 = $server->execute('cat /var/log/apache2/access.log');
-	$alog2 = $server->execute('cat /var/log/apache2/access.log.1');
+	$mlog = $server->execute('cat /var/log/mysql.log');
+
 } 
 
 if (isset($_POST['error'])) {
-	$alog1 = $server->execute('cat /var/log/apache2/error.log');
-	$alog2 = $server->execute('cat /var/log/apache2/error.log.1');
+	$mlog = $server->execute('cat /var/log/mysql.err');
 }
 
-$log1f = explode("\n", $alog1);
-$log2f = explode("\n", $alog2);
+$log1f = explode("\n", $mlog);
 
 function highlightLog($logline) {
 	$logline =  explode("\n",(wordwrap($logline, 30,"\n",false)));
@@ -33,17 +30,17 @@ function highlightLog($logline) {
 	return implode(" ", $logline);
 }
 ?>
-<h3>Apache-Log</h3>
+<h3>MySQL-Log</h3>
 	<div class="halbe-box">
 		<p>
-			Alle Zugriffe über http/https werden selbstverständlich mitgeloggt. Apache2 schreibt einen <code>access.log</code> und einen <code>error.log</code>. Wählen Sie die Logdatei aus, um diese auzugeben.
+			Probleme beim Starten, Ausführen oder Beenden von <code>mysqld</code> sowie hergestellte Clientverbindungen und ausgeführte Anweisungen werden in den Logdateien gespeichert.
 		</p>
 	</div>
 	<div class="halbe-box lastbox">
 		<fieldset>
 			<legend>Logdatei auswählen</legend>
-			<form action="?p=logs&s=apachelog" method="post">
-				<input type="submit" name="access" value="access.log" class="button black">
+			<form action="?p=logs&s=mysqllog" method="post">
+				<input type="submit" name="access" value="mysql.log" class="button black">
 				&nbsp;&nbsp;
 				<input type="submit" name="error" value="error.log" class="button pink">
 			</form>
@@ -56,11 +53,5 @@ function highlightLog($logline) {
 		foreach (array_reverse($log1f) as $value) {
 			echo "<li>". highlightLog($value) ."</li>\n";
 		}
-
-		foreach (array_reverse($log2f) as $value) {
-			echo "<li>". highlightLog($value)  ."</li>\n";
-		}
-
-
 	?>
 </ul>

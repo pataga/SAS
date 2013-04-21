@@ -10,15 +10,10 @@
  *
  */
 ?><h3>Logs</h3>
-<a href="?p=logs&s=auth"><div class="viertel-box boxitem"><p>Authentifizierung</p></div></a>
-<a href="?p=logs&s=syslog"><div class="viertel-box boxitem"><p>Systemmeldungen</p></div></a>
-<a href="?p=logs&s=apachelog"><div class="viertel-box boxitem"><p>Apache</p></div></a>
-<a href="?p=logs&s=mysqllog"><div class="viertel-box boxitem lastbox"><p>MySQL</p></div>
+<a href="?p=logs&s=boot"><div class="drittel-box boxitem"><p>Bootmeldungen</p></div></a>
+<a href="?p=logs&s=auth"><div class="drittel-box boxitem"><p>Authentifizierung</p></div></a>
+<a href="?p=logs&s=syslog"><div class="drittel-box boxitem lastbox"><p>Systemmeldungen</p></div></a>
 <div class="clearfix"></div>
-
-<!--
-<a href="?#LEER"><div class="viertel-box boxitem"><p><i>leer</i></p></div></a>
-<a href="?#LEER"><div class="viertel-box boxitem"><p><i>leer</i></p></div></a>
-<a href="?#LEER"><div class="viertel-box boxitem"><p><i>leer</i></p></div></a>
-<a href="?#LEER"><div class="viertel-box boxitem lastbox"><p><i>leer</i></p></div></a>
-<div class="clearfix"></div>-->
+<a href="?p=logs&s=apachelog"><div class="drittel-box boxitem"><p>Apache</p></div></a>
+<a href="?p=logs&s=mysqllog"><div class="drittel-box boxitem lastbox"><p>MySQL</p></div>
+<div class="clearfix"></div>
