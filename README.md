@@ -15,12 +15,6 @@
 * **[SAS Dokumentation (Google Documents)][1]**
 * **[SAS Notizbuch (Google Documents)][4]**
 * **[SAS Präsentation: "Projektvorstellung" (Google Documents)][3]**
-* **[Countdown zur ersten Beta-Version][100] (aktuell: _v1.1 alpha)**
-
----
-###Online Demo *(ohne Funktion)*:
-
-> Bald wieder verfügbar
 
 ---
 ####Anforderungen des Servers für SAS (Host):
@@ -36,12 +30,11 @@
 
 Es können alle Ubuntu-basierenden (12.04+) Distributionen per SSH oder über SOAP (Ruby-Daemon) ferngesteuert werden
 
+vServer die nicht die 100%ige Funktionalität eines Root-Servers haben können eventuell Fehler verursachen.
+
 [1]: http://goo.gl/dTrur
-[2]: #
 [3]: http://goo.gl/8UqKr
 [4]: http://goo.gl/OZT5x
 [5]: http://www.apache.org/licenses/LICENSE-2.0.html
-[6]: https://github.com/pataga/SAS/wiki
-[100]: http://www.webflix.de/sas-launch/
 [logo2]: http://mangopix.de/local_images/sas-logo2.png
 
