@@ -20,6 +20,7 @@ class DBHandler extends \Classes\MySQL {
 
     public function setDatabase($dbName) {
         $this->selectedDatabase = $dbName;
+        $this->selectDatabase($dbName);
     }
 
     public function setTable($tableName) {
@@ -58,6 +59,10 @@ class DBHandler extends \Classes\MySQL {
         return $this->Query("SELECT * FROM ".$this->selectedTable." LIMIT ".$from.", ".$to)->fetchAll();
     }
     
+    public function exec($sql) {
+        return $this->Query($sql);
+    }
+
     private $selectedDatabase, $selectedTable, $maxRows, $pageNumber;
 }
 

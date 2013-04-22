@@ -194,22 +194,6 @@
 
         <sub>
             <id>2</id>
-            <name>adduser</name>
-            <display>Benutzer anlegen</display>
-            <path>includes/Content/mysql/useradd.inc.php</path>
-            <window>included</window>
-        </sub>
-
-        <sub>
-            <id>3</id>
-            <name>control</name>
-            <display>Steuerung</display>
-            <path>includes/Content/mysql/control.inc.php</path>
-            <window>included</window>
-        </sub>
-
-        <sub>
-            <id>4</id>
             <name>configure</name>
             <display>Einrichtung</display>
             <path>includes/Content/mysql/configure.inc.php</path>
@@ -217,7 +201,15 @@
         </sub>
 
         <sub>
-            <id>5</id>
+            <id>3</id>
+            <name>adduser</name>
+            <display>Benutzer anlegen</display>
+            <path>includes/Content/mysql/useradd.inc.php</path>
+            <window>included</window>
+        </sub>
+
+        <sub>
+            <id>4</id>
             <name>db</name>
             <display>Datenbank Verwaltung</display>
             <path>includes/Content/mysql/db.inc.php</path>
@@ -225,18 +217,18 @@
         </sub>
 
         <sub>
-            <id>6</id>
-            <name>modules</name>
-            <display>Module</display>
-            <path>includes/Content/mysql/module.inc.php</path>
-            <window>included</window>
-        </sub> 
-
-        <sub>
-            <id>7</id>
+            <id>5</id>
             <name>impexp</name>
             <display>Importieren/Exportieren</display>
             <path>includes/Content/mysql/impexp.inc.php</path>
+            <window>included</window>
+        </sub>
+
+        <sub>
+            <id>6</id>
+            <name>console</name>
+            <display>Konsole</display>
+            <path>includes/Content/mysql/sqlcmd.inc.php</path>
             <window>included</window>
         </sub>
     </menu>
