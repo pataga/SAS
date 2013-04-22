@@ -31,23 +31,21 @@ if (isset($_POST['kill'])) {
 <h3>Taskmanager<sup>ALPHA</sup></h3>
 <fieldset>
     <form action="index.php?p=system&s=taskmgr" method="post">
-        <table>
-            <tr>
-                <td> 
-                    <input type="submit" value="Prozess beenden" name="kill">
-                    <input type="submit" value="H&ouml;here Priorit&auml;t" name="nice"> 
-                </td>
-            </tr>
-        </table>
-    	<table>
+        <input type="submit" value="Prozess beenden" name="kill" class="button black">
+        <input type="submit" value="H&ouml;here Priorit&auml;t" name="nice" class="button black"> <hr>
 
+    	<table id="sortable" class="s">
+            <thead>
+                <tr><? $data = $proc->getProcessArray();
+                echo "</tr><td></td><th>".$data[0][1]."</th><th>".$data[0][0]."</th><th>".$data[0][2]."</th><th>".$data[0][3]."</th><th>".$data[0][10]."</th></tr>"; ?></tr>
+            </thead>
+            <tbody>
         <?php 
-            $data = $proc->getProcessArray();
             echo "<input type='hidden' name='count' value='1".count($data)."'>";
-        	for ($i=0; $i<count($data); $i++) {
+        	for ($i=1; $i<count($data); $i++) {
         		echo "</tr><td><input type='checkbox' value='".$data[$i][1]."' name='pid_".$i."'></td><td>".$data[$i][1]."</td><td>".$data[$i][0]."</td><td>".$data[$i][2]."</td><td>".$data[$i][3]."</td><td>".$data[$i][10]."</td></tr>";
         	}
-        ?>
+        ?></tbody>
     	</table>
     </form>
 </fieldset>
