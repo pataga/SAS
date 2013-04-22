@@ -29,8 +29,8 @@ if (isset($_POST['action']) && $_POST['action'] == 1) {
         $query .= '`'.$key.'` = \''.$value.'\' AND ';
     }
     $query .= ' 1=1 LIMIT 1';
-    echo $query;
     $dbModule->Query($query);
+    echo '<span class="info">'.$query.' ausgef&uuml;hrt</span>';
 }
 
 ?>
@@ -61,7 +61,7 @@ if (isset($_POST['action']) && $_POST['action'] == 1) {
         </select>
 
         <?
-        if (isset($_GET['database'])) {
+        if (isset($_GET['database']) && $_GET['database'] != '0') {
             ?>
 
             <select name="table" id="table" onchange="submit();">

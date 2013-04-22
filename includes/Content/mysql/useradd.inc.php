@@ -11,6 +11,15 @@
 *
 */
 
+$data = $main->Server()->getMySQLData();
+if (!$data) {
+    header('Location: ?p=mysql&s=configure');
+    exit;
+}
+
+$dbModule = new \Classes\Module\MySQL\DBHandler($data);
+
+
 ?>
 
 <h3 class="ubuntu">MySQL Benutzer anlegen</h3> 
