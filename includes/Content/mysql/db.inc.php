@@ -19,6 +19,20 @@ if (!$data) {
 
 $dbModule = new \Classes\Module\MySQL\DBHandler($data);
 
+if (isset($_POST['action']) && $_POST['action'] == 1) {
+    $post = $_POST;
+    $get = $_GET;
+    $dbModule->setDatabase($get['database']);
+    $query = 'DELETE FROM '.$get['table'].' WHERE ';
+    foreach ($post as $key => $value) {
+        if ($key == 'action') continue;
+        $query .= '`'.$key.'` = \''.$value.'\' AND ';
+    }
+    $query .= ' 1=1 LIMIT 1';
+    echo $query;
+    $dbModule->Query($query);
+}
+
 ?>
 
 <h3>MySQL</h3>
@@ -100,14 +114,28 @@ $dbModule = new \Classes\Module\MySQL\DBHandler($data);
     foreach ($data as $key => $row) {
         ?>
         <tr>
-            <td>#OPTIONS</td>
+            <form action="?p=mysql&s=db&database=<?=$_GET['database']?>&table=<?=$_GET['table']?>" method="post" id="mysqlAction">
+            <td>
+                
+                    <select name="action" id="mysqlActionSelection" onchange="checkRowAction()">
+                        <option value="0">Aktion</option>
+                        <option value="1">L&ouml;schen</option>
+                        <option value="2">Bearbeiten</option>
+                    </select>
+            </td>
         <?
-        for ($i=0; $i < count($row)/2; $i++) {
+        foreach ($row as $k => $val) {
+            if (!is_numeric($k) || !is_int($k)) {
             ?>
-            <td><?=$row[$i]?></td>
+                <td>
+                    <?=$val?>
+                    <input type="hidden" name="<?=$k?>" value="<?=$val?>">
+                </td>
             <?
+            }
         }
         ?>
+            </form>
         </tr>
         <?
     }

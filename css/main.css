@@ -1071,7 +1071,8 @@ pre.simple {
 
 #main fieldset .scroll {
     min-height: 100px;
-    max-width: 670px;
+    max-height: 500px;
+    max-width: 700px;
     overflow:scroll;
     scrollbar-3dlight-color:#FFFFFF;
     scrollbar-arrow-color:#000000;

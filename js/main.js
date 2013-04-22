@@ -4,6 +4,7 @@ Licensed under The Apache License
 - https://github.com/pataga/SAS
 - Apache License v2 (http://www.apache.org/licenses/LICENSE-2.0.txt
 - Author: Gabriel Wanzek
+- Contributor: Patrick Farnkopf
 ========================================================================== */
 
 $(document).ready(function(){ 
@@ -24,6 +25,17 @@ function checkDatabase() {
     if (document.getElementById('table'))
         document.getElementById('table').selectedIndex = 0; 
     document.getElementById('mysqlForm').submit();
+}
+
+function checkRowAction(id) {
+	var value = document.getElementById('mysqlActionSelection').value;
+
+	if (value == 1)
+		if (confirm('Datensatz wirklich entfernen?')) 
+			document.getElementById('mysqlAction').submit();
+
+	if (value == 2) 
+		document.getElementById('mysqlAction').submit();
 }
 
 function tabs(x) {
