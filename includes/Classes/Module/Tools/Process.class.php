@@ -1,6 +1,5 @@
 <?php
 
-
 /**
 * Licensed under The Apache License
 *
@@ -11,7 +10,6 @@
 * @author Patrick Farnkopf
 *
 */
-
 
 namespace Classes\Module\Tools;
 
@@ -33,16 +31,16 @@ class Process {
 
    /**
 	* Teilt die Prozesse in ihre Attribute auf und gibt einen zweidimensionalen Array zurück
-	* @return (array(array)) Prozess Attribute 
+	* @return (array) Prozess Attribute 
 	*/
 	public function getProcessArray() {
 		$proc = $this->getProcesses();
 		$i = 0;
-		$data = array(array());
+		$data = [];
 		foreach ($proc as $value) {
 			$attrW = explode(" ", $value);
 
-			$attr = array();
+			$attr = [];
 			foreach($attrW as $currentAttr) {
 				$currentAttr = trim($currentAttr);
 

@@ -13,15 +13,15 @@
 */
 
 
-if (isset($_POST['output']))
-    $output = $_POST['output'];
+if (isset($_POST['console']))
+    $output = $_POST['console'];
 else {
-    $output = "root@server:";
+    $output = "root@server: ";
 }
     
 
 if (isset($_POST['command'])) {
-    $output .= $server->execute($_POST['command']);
+    $output .= $server->execute(/*'cd '.$_POST['path'].' && '.*/$_POST['command']);
 }
 ?>
 
@@ -32,10 +32,10 @@ if (isset($_POST['command'])) {
         <label>Befehl ausf&uuml;hren:</label>
         <input type="text" name="command" class="text-long" />
         <input type="submit" value="Befehl ausf&uuml;hren" class="button black"/>
-
+        <input type="hidden" name="path" value="<?=$server->execute('pwd')?>">
         <br> <br> <br> 
         <label>Konsolenausgabe:</label>
-        <textarea id="console" readonly="readonly"><?php echo $output; ?></textarea>
+        <textarea name="console" id="console" readonly="readonly"><?php echo $output; ?></textarea>
 
     </fieldset>
 </form>

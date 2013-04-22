@@ -2,7 +2,7 @@
 
 /**
 *
-* @copyright Copyright 2013 Patrick Farnkopf
+* @copyright Copyright 2013 James Brumond
 * @link http://github.com/kbjr/Git.php
 * @license MIT & GNU GPL
 * @author James Brumond

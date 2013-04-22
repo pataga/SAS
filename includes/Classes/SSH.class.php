@@ -77,7 +77,7 @@ class SSH {
         }
         $output = '';
         if (!($os = ssh2_exec($this->connection, $command, "bash")))
-            throw new \Classes\SSH\Exception('SSH command failed');
+            throw new \Classes\SSH\Exception('SSH command failed', 0xA1);
 
         stream_set_blocking($os, true);
         $data = array();

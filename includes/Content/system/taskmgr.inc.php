@@ -15,7 +15,7 @@
 ?>
 
 <?php
-$proc = new \Module\Tools\Process($main);
+$proc = new \Classes\Module\Tools\Process($main);
 
 if (isset($_POST['kill'])) {
     for ($i=0;$i<6000;$i++) {
@@ -42,9 +42,8 @@ if (isset($_POST['kill'])) {
     	<table>
 
         <?php 
+            $data = $proc->getProcessArray();
             echo "<input type='hidden' name='count' value='1".count($data)."'>";
-        	$data = $proc->getProcessArray();
-        	//print_r($data);
         	for ($i=0; $i<count($data); $i++) {
         		echo "</tr><td><input type='checkbox' value='".$data[$i][1]."' name='pid_".$i."'></td><td>".$data[$i][1]."</td><td>".$data[$i][0]."</td><td>".$data[$i][2]."</td><td>".$data[$i][3]."</td><td>".$data[$i][10]."</td></tr>";
         	}
