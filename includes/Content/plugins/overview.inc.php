@@ -14,17 +14,23 @@
 ?>
 <h3>SAS Plugins</h3>
 <a href="?p=plugins&s=cssinfo"><div class="viertel-box boxitem"><p>CSS-Info</p></div></a>
-<a href="#LEER"><div class="viertel-box boxitem"><p><i>leer</i></p></div></a>
-<a href="#LEER"><div class="viertel-box boxitem"><p><i>leer</i></p></div></a>
-<a href="#LEER"><div class="viertel-box boxitem lastbox"><p><i>leer</i></p></div></a>
-<div class="clearfix"></div>
 
-<a href="#LEER"><div class="viertel-box boxitem"><p><i>leer</i></p></div></a>
-<a href="#LEER"><div class="viertel-box boxitem"><p><i>leer</i></p></div></a>
-<a href="#LEER"><div class="viertel-box boxitem"><p><i>leer</i></p></div></a>
-<a href="#LEER"><div class="viertel-box boxitem lastbox"><p><i>leer</i></p></div></a>
-<div class="clearfix"></div>
 
+<?
+
+$result = $mysql->tableAction('sas_plugins')->select();
+
+for ($i = 1; $row = $result->fetch(); $i++) {
+	if ($i == 3) {
+		echo '<a href="#LEER"><div class="viertel-box boxitem lastbox"><p><i>'.$row->name.'</i></p></div></a><div class="clearfix"></div>';
+		$i = -1;
+	} else {
+		echo '<a href="#LEER"><div class="viertel-box boxitem"><p><i>'.$row->name.'</i></p></div></a>';
+	}
+}
+
+?>
+<div class="clearfix"></div>
 <!--<a href="#LEER"><div class="viertel-box boxitem"><p><i>leer</i></p></div></a>
 <a href="#LEER"><div class="viertel-box boxitem"><p><i>leer</i></p></div></a>
 <a href="#LEER"><div class="viertel-box boxitem"><p><i>leer</i></p></div></a>
