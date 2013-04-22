@@ -14,13 +14,13 @@
 namespace Classes;
 
 class Plugin extends Singleton {
-    public static function install($repo, $activate = false) {
+    public static function install($repo, $activate = true) {
         if (!file_exists(self::getRootDir().'plugins/tmp'))
-            mkdir(self::getRootDir().'plugins/tmp', 0777, true);
+            mkdir(self::getRootDir().'tmp/plugins'.session_id(), 0777, true);
 
-        Git::create_new(self::getRootDir().'plugins/tmp', $repo);
+        Git::create_new(self::getRootDir().'tmp/plugins/'.session_id(), $repo);
 
-        $setup = parse_ini_file(self::getRootDir().'plugins/tmp/plugin.ini', true);
+        $setup = parse_ini_file(self::getRootDir().'tmp/plugins/plugin.ini', true);
 
         $misc = $setup['misc'];
 
@@ -33,7 +33,7 @@ class Plugin extends Singleton {
             $hId = Plugin::getHighestId();
             if (is_array($scripts)) {
                 foreach ($scripts as $key => $value) {
-                    copy(self::getRootDir().'plugins/tmp/'.$key.'.script.php', self::getRootDir().'includes/Scripts/'.$key.'.script.php');
+                    copy(self::getRootDir().'tmp/plugins/'.session_id().'/'.$key.'.script.php', self::getRootDir().'includes/Plugins/Scripts/'.$misc['name'].'/'.$key.'.script.php');
 
                     switch ($value) {
                         case 'MySQLScript':
@@ -60,7 +60,7 @@ class Plugin extends Singleton {
             $sql = $setup['sql'];
             if (is_array($sql)) {
                 foreach ($sql as $key => $value) {
-                    $queries = file_get_contents(self::getRootDir().'plugins/tmp/'.$value);
+                    $queries = file_get_contents(self::getRootDir().'tmp/plugins/'.session_id().'/'.$value);
                     $data = explode(';', $queries);
                     foreach ($data as $key => $quy) {
                         self::getInstance('\Classes\MySQL')->query($quy);
@@ -68,7 +68,7 @@ class Plugin extends Singleton {
                 }
             }
 
-            self::getInstance('\Classes\MySQL')->query("UPDATE sas_plugins SET installed = 1 WHERE id = $hId");
+            self::getInstance('\Classes\MySQL')->Query("UPDATE sas_plugins SET installed = 1 WHERE id = $hId");
         }
 
         Directory::removeDir(self::getRootDir().'plugins/tmp', false);
@@ -94,7 +94,7 @@ class Plugin extends Singleton {
     }
 
     public static function getHighestId() {
-        $result = self::getInstance('\Classes\MySQL')->query("SELECT * FROM sas_plugins ORDER BY id DESC LIMIT 1");
+        $result = self::getInstance('\Classes\MySQL')->Query("SELECT * FROM sas_plugins ORDER BY id DESC LIMIT 1");
         if ($row = $result->fetch()) {
             return $row->id;
         }

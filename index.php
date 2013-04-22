@@ -37,6 +37,8 @@ function exception_handler($exception) {
 
 set_exception_handler('exception_handler');
 
+\Classes\Singleton::setRootDir(__DIR__);
+
 if (isset($_GET['install'])) {
     if ($installer = new \Classes\Install()) {
         require_once $installer->getFile();
