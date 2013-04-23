@@ -148,6 +148,13 @@ class Install {
               `notetime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
               PRIMARY KEY (`id`)
             ) ENGINE=InnoDB DEFAULT CHARSET=latin1");
+
+        $db->Query("DROP TABLE IF EXISTS `sas_user_permission`");
+        $db->Query("CREATE TABLE `sas_user_permission` (
+              `uid` int(11) unsigned NOT NULL,
+              `bitmask` bigint(20) NOT NULL,
+              PRIMARY KEY (`uid`)
+            ) ENGINE=InnoDB DEFAULT CHARSET=latin1");
     }
 
     public function addUser() {
@@ -161,6 +168,7 @@ class Install {
         if (!$this->db) return false;
         $this->db->tableAction('sas_users')->insert(
             ['username' => $_POST['user'], 'password' => md5($_POST['pass']), 'email' => $_POST['email']]);
+        $this->db->Query("INSERT INTO `sas_user_permission` SELECT id, 0xFFFFF FROM `sas_users`");
         return true;
     }
 
