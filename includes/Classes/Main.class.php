@@ -106,6 +106,9 @@ class Main {
     public function Session() { return $this->session; }
     public function Header() { return $this->header; }
 
+    public function setUser($user) {
+        $this->user = $user;
+    }
 
     public static function printLoadTime($startTime, $endTime) {
         try {

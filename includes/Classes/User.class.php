@@ -15,7 +15,7 @@
 namespace Classes;
 class User {
     //Objects
-    private $db, $session, $uTable;
+    private $db, $session, $uTable, $main;
     //User Data
     private $id=0, $name, $email, $admin, $self, $password;
 
@@ -25,10 +25,12 @@ class User {
      * @param int id
      */
     public function __construct($main, $id = false) {
+        $this->main = $main;
         $this->db = $main->MySQL();
         $this->uTable = $this->db->tableAction('sas_users');
         $this->session = $main->Session();
         $s = $this->session;
+
         if (!$id) {
             $this->id = $s->getUserId();
             $this->name = $s->getUserName();
@@ -51,6 +53,10 @@ class User {
                 }
             }
         }
+    }
+
+    public function getPermission() {
+        return new User\Permission($this->main, $this);
     }
 
     /**

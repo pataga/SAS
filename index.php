@@ -78,6 +78,7 @@ $mysql_remote = null;
 //Authentifizierung
 if (isset($_POST['username']) && isset($_POST['password'])) {
     $user = $session->authChallenge($_POST['username'],$_POST['password']);
+    $main->setUser($user);
     $loader->reload();
 }
 

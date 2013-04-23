@@ -65,9 +65,14 @@ class Loader {
         for ($i=0;$i<count($this->xmlData);$i++) {
             if ($this->xmlData[$i]['menu']['name'] == $this->p) {
                 for ($s=0;$s<count($this->xmlData[$i])-1;$s++) {
-                    if (!isset($this->xmlData[$i]['sub'.$s])) continue;
+                    if (!isset($this->xmlData[$i]['sub'.$s])) 
+                        continue;
+
                     $sub = $this->xmlData[$i]['sub'.$s];
-                    if (empty($sub['display'])) continue;
+
+                    if (empty($sub['display'])) 
+                        continue;
+
                     if ($this->s == $sub['name']) {
                         $subFull .= str_replace(['#{PAGE_NAME}','#{PAGE_PARAM}','#{SUBPAGE_NAME}','#{SUBPAGE_PARAM}','#{STATUS}'],
                             [$this->xmlData[$i]['menu']['display'],$this->xmlData[$i]['menu']['name'],$this->xmlData[$i]['sub'.$s]['display'],$sub['name'],'aktiv'],$sidebar);
@@ -131,18 +136,34 @@ class Loader {
     public function getIncFile() {
         if (!$this->main->Session()->isServerChosen() && $this->main->Session()->isAuthenticated())
             return Loader::CONTENT_PATH.'home/server.inc.php';
+
         if (!$this->main->Session()->isAuthenticated())
             $this->reload();
+
         $default = Loader::CONTENT_PATH.'error/404.inc.php';
+
+        $perm = $this->main->User()->getPermission();
+
         for ($i=0;$i<count($this->xmlData);$i++) {
             if ($this->xmlData[$i]['menu']['name'] == $this->p) {
                 $default = $this->xmlData[$i]['menu']['default'];
+
+                if (!$perm->isPermitted((hexdec($this->xmlData[$i]['menu']['pFlag']))))
+                    return Loader::CONTENT_PATH.'error/permisson.inc.php';
+
                 for ($s=0;$s<count($this->xmlData[$i])-1;$s++) {
-                    if (!isset($this->xmlData[$i]['sub'.$s])) continue;
+                    if (!isset($this->xmlData[$i]['sub'.$s])) 
+                        continue;
+
                     $sub = $this->xmlData[$i]['sub'.$s];
+
                     if ($this->s == $sub['name']) {
+                        if (!$perm->isPermitted(hexdec($this->xmlData[$i]['menu']['pFlag']), hexdec($sub['pFlag'])))
+                            return Loader::CONTENT_PATH.'error/permisson.inc.php';
+
                         if (file_exists($sub['path']))
                             return $sub['path'];
+
                         else
                             return Loader::CONTENT_PATH.'error/404.inc.php';
                     } 

@@ -16,12 +16,11 @@ class Permission {
     private $user,$main;
 
     // Permission BitMask Values
-    const HOME_GENERAL          = 0x01;
-    const HOME_OVERVIEW         = 0x02;
-    const HOME_QUICKPANEL       = 0x04;
-    const HOME_ABOUT            = 0x08;
-    const HOME_DOCUMENTATION    = 0x10;
-    const HOME_REPOSITORY       = 0x20;
+    const HOME_OVERVIEW         = 0x01;
+    const HOME_QUICKPANEL       = 0x02;
+    const HOME_ABOUT            = 0x04;
+    const HOME_DOCUMENTATION    = 0x08;
+    const HOME_REPOSITORY       = 0x10;
 
     const APACHE_OVERVIEW       = 0x01;
     const APACHE_CONFIGURATION  = 0x02;
@@ -98,233 +97,56 @@ class Permission {
         $db = $this->main->MySQL();
 
         if ($bitMask & Permission::HOME_PERMISSION) {
-            if ($bitMask & Permission::HOME_GENERAL) {
-                // Do Action
-            }
-
-            if ($bitMask & Permission::HOME_OVERVIEW) {
-                // Do Action
-            }
-
-            if ($bitMask & Permission::HOME_QUICKPANEL) {
-                // Do Action
-            }
-
-            if ($bitMask & Permission::HOME_ABOUT) {
-                // Do Action
-            }
-
-            if ($bitMask & Permission::HOME_REPOSITORY) {
-                // Do Action
-            }
-
-            if ($bitMask & Permission::HOME_DOCUMENTATION) {
-                // Do Action
-            }
+            $db->tableAction('sas_user_permission')->replace(['bitmask' => $bitMask, 'uid' => $this->user->getId()]);
         }
 
         if ($bitMask & Permission::APACHE_PERMISSION) {
-            if ($bitMask & Permission::APACHE_OVERVIEW) {
-                // Do Action
-            }
-
-            if ($bitMask & Permission::APACHE_CONTROL) {
-                // Do Action
-            }
-
-            if ($bitMask & Permission::APACHE_STATS) {
-                // Do Action
-            }
-
-            if ($bitMask & Permission::APACHE_PHPINFO) {
-                // Do Action
-            }
-
-            if ($bitMask & Permission::APACHE_PHP) {
-                // Do Action
-            }
-
-            if ($bitMask & Permission::APACHE_MODULE) {
-                // Do Action
-            }
-
-            if ($bitMask & Permission::APACHE_VHOSTS) {
-                // Do Action
-            }
+            $db->tableAction('sas_user_permission')->replace(['bitmask' => $bitMask, 'uid' => $this->user->getId()]);            
         }
 
         if ($bitMask & Permission::PROFTP_PERMISSION) {
-            if ($bitMask & Permission::PROFTP_OVERVIEW) {
-                // Do Action
-            }
-
-            if ($bitMask & Permission::PROFTP_STATS) {
-                // Do Action
-            }
-
-            if ($bitMask & Permission::PROFTP_FILES) {
-                // Do Action
-            }
-
-            if ($bitMask & Permission::PROFTP_CONTROL) {
-                // Do Action
-            }
-
-            if ($bitMask & Permission::PROFTP_CONFIGURATION) {
-                // Do Action
-            }
+            $db->tableAction('sas_user_permission')->replace(['bitmask' => $bitMask, 'uid' => $this->user->getId()]);            
         }
 
         if ($bitMask & Permission::MYSQL_PERMISSION) {
-            if ($bitMask & Permission::MYSQL_MODULE) {
-                // Do Action
-            }
-
-            if ($bitMask & Permission::MYSQL_OVERVIEW) {
-                // Do Action
-            }
-
-            if ($bitMask & Permission::MYSQL_MANAGEDB) {
-                // Do Action
-            }
-
-            if ($bitMask & Permission::MYSQL_INSTALL) {
-                // Do Action
-            }
-
-            if ($bitMask & Permission::MYSQL_CONTROL) {
-                // Do Action
-            }
-
-            if ($bitMask & Permission::MYSQL_ADDUSER) {
-                // Do Action
-            }
+            $db->tableAction('sas_user_permission')->replace(['bitmask' => $bitMask, 'uid' => $this->user->getId()]);            
         }
 
         if ($bitMask & Permission::SAMBA_PERMISSION) {
-            if ($bitMask & Permission::SAMBA_OVERVIEW) {
-                // Do Action
-            }
-
-            if ($bitMask & Permission::SAMBA_USERS) {
-                // Do Action
-            }
-
-            if ($bitMask & Permission::SAMBA_CONTROL) {
-                // Do Action
-            }
-
-            if ($bitMask & Permission::SAMBA_CONFIGURATION) {
-                // Do Action
-            }
-
-            if ($bitMask & Permission::SAMBA_DRIVES) {
-                // Do Action
-            }
+            $db->tableAction('sas_user_permission')->replace(['bitmask' => $bitMask, 'uid' => $this->user->getId()]);            
         }
 
         if ($bitMask & Permission::LOGS_PERMISSION) {
-            if ($bitMask & Permission::LOGS_TEST) {
-                // Do Action
-            }
-
-            if ($bitMask & Permission::LOGS_SHOW) {
-                // Do Action
-            }
-
-            if ($bitMask & Permission::LOGS_OVERVIEW) {
-                // Do Action
-            }
+            $db->tableAction('sas_user_permission')->replace(['bitmask' => $bitMask, 'uid' => $this->user->getId()]);            
         }
 
         if ($bitMask & Permission::SYSTEM_PERMISSION) {
-            if ($bitMask & Permission::SYSTEM_PACKETMGR) {
-                // Do Action
-            }
-
-            if ($bitMask & Permission::SYSTEM_SUICIDE) {
-                // Do Action
-            }
-
-            if ($bitMask & Permission::SYSTEM_TASKMGR) {
-                // Do Action
-            }
-
-            if ($bitMask & Permission::SYSTEM_PACKETMGR) {
-                // Do Action
-            }
-
-            if ($bitMask & Permission::SYSTEM_CRONJOBS) {
-                // Do Action
-            }
-
-            if ($bitMask & Permission::SYSTEM_CONSOLE) {
-                // Do Action
-            }
-
-            if ($bitMask & Permission::SYSTEM_USER_GROUPS) {
-                // Do Action
-            }
-
-            if ($bitMask & Permission::SYSTEM_OVERVIEW) {
-                // Do Action
-            }
+            $db->tableAction('sas_user_permission')->replace(['bitmask' => $bitMask, 'uid' => $this->user->getId()]);            
         }
 
         if ($bitMask & Permission::TOOLS_PERMISSION) {
-            if ($bitMask & Permission::TOOLS_MISC) {
-                // Do Action
-            }
-
-            if ($bitMask & Permission::TOOLS_NETWORK) {
-                // Do Action
-            }
-
-            if ($bitMask & Permission::TOOLS_RAMINFO) {
-                // Do Action
-            }
-
-            if ($bitMask & Permission::TOOLS_HDDINFO) {
-                // Do Action
-            }
-
-            if ($bitMask & Permission::TOOLS_HWINFO) {
-                // Do Action
-            }
-
-            if ($bitMask & Permission::TOOLS_OVERVIEW) {
-                // Do Action
-            }
+            $db->tableAction('sas_user_permission')->replace(['bitmask' => $bitMask, 'uid' => $this->user->getId()]);            
         }
 
         if ($bitMask & Permission::USER_PERMISSION) {
-            if ($bitMask & Permission::USER_EDIT) {
-                // Do Action
-            }
-
-            if ($bitMask & Permission::USER_ADD) {
-                // Do Action
-            }
-
-            if ($bitMask & Permission::USER_OVERVIEW) {
-                // Do Action
-            }
+            $db->tableAction('sas_user_permission')->replace(['bitmask' => $bitMask, 'uid' => $this->user->getId()]);            
         }
 
         if ($bitMask & Permission::PLUGINS_PERMISSION) {
-            if ($bitMask & Permission::PLUGINS_GENERAL) {
-                // Do Action
-            }
+            $db->tableAction('sas_user_permission')->replace(['bitmask' => $bitMask, 'uid' => $this->user->getId()]);            
         }
     }
 
-    public function isPermitted($bitMask) {
+    public function isPermitted($bitMaskGlobal, $bitMaskLocal = false) {
         $db = $this->main->MySQL();
-
         $result = $db->Query("SELECT * FROM sas_user_permission WHERE uid = ".$this->user->getID());
+
         while ($data = $result->fetch()) {
-            if ($data->permission & $bitMask) 
+            if ($data->bitmask & $bitMaskGlobal && !$bitMaskLocal) {
                 return true;
+            } elseif (($data->bitmask & $bitMaskGlobal) && ($data->bitmask & $bitMaskLocal)) {
+                return true;
+            }
         }
 
         return false;

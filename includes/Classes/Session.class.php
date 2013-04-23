@@ -83,6 +83,10 @@ class Session {
      * @return bool status
      */
     public function isAuthenticated() {
+        if ($_SESSION['user']['authenticated']) {
+            $this->main->setUser(new User($this->main));
+        }
+
         return $_SESSION['user']['authenticated'];
     }
 
@@ -180,7 +184,6 @@ class Session {
         $_SESSION['user']['email'] = $user->email;
         $_SESSION['user']['admin'] = $user->admin;
 
-        //Klasse User noch nicht umgeschrieben, daher noch nicht funktionsfähig
         $userInstance = new User($this->main);
         return $userInstance;
     }

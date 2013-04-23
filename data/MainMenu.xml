@@ -5,6 +5,7 @@
         <name>home</name>
         <display>Home</display>
         <default>includes/Content/home/overview.inc.php</default>
+        <pFlag>0x00100</pFlag>
 
         <!-- SUBS -->
 
@@ -14,6 +15,7 @@
             <display>Übersicht</display>
             <path>includes/Content/home/overview.inc.php</path>
             <window>included</window>
+            <pFlag>0x01</pFlag>
         </sub>
 
         <sub>
@@ -22,6 +24,7 @@
             <display>Quickpanel</display>
             <path>includes/Content/home/qp.inc.php</path>
             <window>included</window>
+            <pFlag>0x02</pFlag>
         </sub>
 
         <sub>
@@ -30,6 +33,7 @@
             <display>Über SAS</display>
             <path>includes/Content/home/about.inc.php</path>
             <window>included</window>
+            <pFlag>0x04</pFlag>
         </sub>
 
         <sub>
@@ -38,6 +42,7 @@
             <display>SAS-Dokumentation</display>
             <path>includes/Content/home/doku.inc.php</path>
             <window>included</window>
+            <pFlag>0x08</pFlag>
         </sub>
 
         <sub>
@@ -46,6 +51,7 @@
             <display>SAS-Repository</display>
             <path>includes/Content/home/repo.inc.php</path>
             <window>included</window>
+            <pFlag>0x10</pFlag>
         </sub>
 
         <sub>
@@ -54,6 +60,7 @@
             <display></display>
             <path>includes/Content/main/notification.inc.php</path>
             <window>seperated</window>
+            <pFlag>0x20</pFlag>
         </sub>
     </menu>
 
@@ -64,6 +71,7 @@
         <name>apache</name>
         <display>Apache</display>
         <default>includes/Content/apache/overview.inc.php</default>
+        <pFlag>0x00200</pFlag>
 
         <!-- SUBS -->
 
@@ -73,6 +81,7 @@
             <display>Übersicht</display>
             <path>includes/Content/apache/overview.inc.php</path>
             <window>included</window>
+            <pFlag>0x01</pFlag>
         </sub>
 
         <!--<sub>
@@ -81,6 +90,7 @@
             <display>Konfiguration</display>
             <path>includes/Content/apache/config.inc.php</path>
             <window>included</window>
+            <pFlag>0x00</pFlag>
         </sub>-->
 
         <sub>
@@ -89,6 +99,7 @@
             <display>Steuerung</display>
             <path>includes/Content/apache/control.inc.php</path>
             <window>included</window>
+            <pFlag>0x02</pFlag>
         </sub>
 
         <sub>
@@ -97,6 +108,7 @@
             <display>&lt;Directory&gt;</display>
             <path>includes/Content/apache/directorys.inc.php</path>
             <window>included</window>
+            <pFlag>0x00</pFlag>
         </sub>
 
         <sub>
@@ -105,6 +117,7 @@
             <display>Module</display>
             <path>includes/Content/apache/module.inc.php</path>
             <window>included</window>
+            <pFlag>0x04</pFlag>
         </sub>
 
         <sub>
@@ -113,6 +126,7 @@
             <display>PHP</display>
             <path>includes/Content/apache/phpsetup.inc.php</path>
             <window>included</window>
+            <pFlag>0x08</pFlag>
         </sub>
 
         <sub>
@@ -121,6 +135,7 @@
             <display>PHP-Informationen</display>
             <path>includes/Content/apache/pi.inc.php</path>
             <window>included</window>
+            <pFlag>0x10</pFlag>
         </sub>
 
     </menu>
@@ -132,6 +147,7 @@
         <name>ftp</name>
         <display>ProFTPD</display>
         <default>includes/Content/ftp/overview.inc.php</default>
+        <pFlag>0x00400</pFlag>
         
         <!-- SUBS -->
 
@@ -141,6 +157,7 @@
             <display>Übersicht</display>
             <path>includes/Content/ftp/overview.inc.php</path>
             <window>included</window>
+            <pFlag>0x01</pFlag>
         </sub>
 
         <sub>
@@ -149,6 +166,7 @@
             <display>Konfiguration</display>
             <path>includes/Content/ftp/config.inc.php</path>
             <window>included</window>
+            <pFlag>0x02</pFlag>
         </sub>
 
         <sub>
@@ -157,6 +175,7 @@
             <display>Steuerung</display>
             <path>includes/Content/ftp/control.inc.php</path>
             <window>included</window>
+            <pFlag>0x04</pFlag>
         </sub>
 
         <sub>
@@ -165,6 +184,7 @@
             <display>Verzeichnisse</display>
             <path>includes/Content/ftp/directories.inc.php</path>
             <window>included</window>
+            <pFlag>0x08</pFlag>
         </sub>
 
         <sub>
@@ -173,6 +193,7 @@
             <display>Statistiken</display>
             <path>includes/Content/ftp/module.inc.php</path>
             <window>included</window>
+            <pFlag>0x10</pFlag>
         </sub>
  
     </menu>
@@ -181,6 +202,7 @@
         <name>mysql</name>
         <display>MySQL</display>
         <default>includes/Content/mysql/overview.inc.php</default>
+        <pFlag>0x00800</pFlag>
         
         <!-- SUBS -->
         
@@ -190,6 +212,7 @@
             <display>Übersicht</display>
             <path>includes/Content/mysql/overview.inc.php</path>
             <window>included</window>
+            <pFlag>0x01</pFlag>
         </sub>
 
         <sub>
@@ -198,6 +221,7 @@
             <display>Einrichtung</display>
             <path>includes/Content/mysql/configure.inc.php</path>
             <window>included</window>
+            <pFlag>0x02</pFlag>
         </sub>
 
         <sub>
@@ -206,6 +230,7 @@
             <display>Benutzer anlegen</display>
             <path>includes/Content/mysql/useradd.inc.php</path>
             <window>included</window>
+            <pFlag>0x04</pFlag>
         </sub>
 
         <sub>
@@ -214,6 +239,7 @@
             <display>Datenbank Verwaltung</display>
             <path>includes/Content/mysql/db.inc.php</path>
             <window>included</window>
+            <pFlag>0x08</pFlag>
         </sub>
 
         <sub>
@@ -222,6 +248,7 @@
             <display>Importieren/Exportieren</display>
             <path>includes/Content/mysql/impexp.inc.php</path>
             <window>included</window>
+            <pFlag>0x10</pFlag>
         </sub>
 
         <sub>
@@ -230,6 +257,7 @@
             <display>Konsole</display>
             <path>includes/Content/mysql/sqlcmd.inc.php</path>
             <window>included</window>
+            <pFlag>0x20</pFlag>
         </sub>
     </menu>
     <menu>
@@ -237,6 +265,7 @@
         <name>samba</name>
         <display>Samba</display>
         <default>includes/Content/samba/overview.inc.php</default>
+        <pFlag>0x01000</pFlag>
         
         <!-- SUBS -->
         
@@ -246,6 +275,7 @@
             <display>Übersicht</display>
             <path>includes/Content/samba/overview.inc.php</path>
             <window>included</window>
+            <pFlag>0x01</pFlag>
         </sub>
 
         <sub>
@@ -254,6 +284,7 @@
             <display>Freigaben</display>
             <path>includes/Content/samba/shares.inc.php</path>
             <window>included</window>
+            <pFlag>0x02</pFlag>
         </sub>
 
         <sub>
@@ -262,6 +293,7 @@
             <display>Konfiguration</display>
             <path>includes/Content/samba/config.inc.php</path>
             <window>included</window>
+            <pFlag>0x04</pFlag>
         </sub>
 
         <sub>
@@ -270,6 +302,7 @@
             <display>Steuerung</display>
             <path>includes/Content/samba/control.inc.php</path>
             <window>included</window>
+            <pFlag>0x08</pFlag>
         </sub>
 
         <sub>
@@ -278,6 +311,7 @@
             <display>Benutzer</display>
             <path>includes/Content/samba/users.inc.php</path>
             <window>included</window>
+            <pFlag>0x10</pFlag>
         </sub>
 
         <sub>
@@ -286,6 +320,7 @@
             <display></display>
             <path>includes/Content/samba/install.inc.php</path>
             <window>included</window>
+            <pFlag>0x20</pFlag>
         </sub>
     </menu>
 
@@ -294,6 +329,7 @@
         <name>logs</name>
         <display>Logs</display>
         <default>includes/Content/logs/overview.inc.php</default>
+        <pFlag>0x02000</pFlag>
 
         <!-- SUBS -->
         
@@ -303,6 +339,7 @@
             <display>Übersicht</display>
             <path>includes/Content/logs/overview.inc.php</path>
             <window>included</window>
+            <pFlag>0x01</pFlag>
         </sub>
         <sub>
             <id>2</id>
@@ -310,6 +347,7 @@
             <display>Bootmeldungen</display>
             <path>includes/Content/logs/boot.inc.php</path>
             <window>included</window>
+            <pFlag>0x02</pFlag>
         </sub>
         <sub>
             <id>3</id>
@@ -317,6 +355,7 @@
             <display>Authentifizierung</display>
             <path>includes/Content/logs/auth.inc.php</path>
             <window>included</window>
+            <pFlag>0x04</pFlag>
         </sub>
         <sub>
             <id>4</id>
@@ -324,6 +363,7 @@
             <display>System</display>
             <path>includes/Content/logs/syslog.inc.php</path>
             <window>included</window>
+            <pFlag>0x08</pFlag>
         </sub>
         <sub>
             <id>5</id>
@@ -331,6 +371,7 @@
             <display>Apache</display>
             <path>includes/Content/logs/apachelog.inc.php</path>
             <window>included</window>
+            <pFlag>0x10</pFlag>
         </sub>   
         <sub>
             <id>6</id>
@@ -338,6 +379,7 @@
             <display>MySQL</display>
             <path>includes/Content/logs/mysqllog.inc.php</path>
             <window>included</window>
+            <pFlag>0x20</pFlag>
         </sub>                    
     </menu>
     <menu>
@@ -345,6 +387,7 @@
         <name>system</name>
         <display>System</display>
         <default>includes/Content/system/overview.inc.php</default>
+        <pFlag>0x04000</pFlag>
         
         <!-- SUBS -->
         
@@ -354,6 +397,7 @@
             <display>Übersicht</display>
             <path>includes/Content/system/overview.inc.php</path>
             <window>included</window>
+            <pFlag>0x01</pFlag>
         </sub>
 
         <sub>
@@ -362,6 +406,7 @@
             <display>Konsole</display>
             <path>includes/Content/system/console.inc.php</path>
             <window>included</window>
+            <pFlag>0x02</pFlag>
         </sub>
 
         <sub>
@@ -370,6 +415,7 @@
             <display>Cronjobs</display>
             <path>includes/Content/system/cronjobs.inc.php</path>
             <window>included</window>
+            <pFlag>0x04</pFlag>
         </sub>
 
         <sub>
@@ -378,6 +424,7 @@
             <display>Taskmanager</display>
             <path>includes/Content/system/taskmgr.inc.php</path>
             <window>included</window>
+            <pFlag>0x08</pFlag>
         </sub>
 
         <sub>
@@ -386,6 +433,7 @@
             <display>User &amp; Gruppen</display>
             <path>includes/Content/system/usergroups.inc.php</path>
             <window>included</window>
+            <pFlag>0x10</pFlag>
         </sub>
 
         <sub>
@@ -394,6 +442,7 @@
             <display>Selbstzerstörung</display>
             <path>includes/Content/system/destroy.inc.php</path>
             <window>included</window>
+            <pFlag>0x20</pFlag>
         </sub>
 
         <sub>
@@ -402,6 +451,7 @@
             <display>Paketverwaltung</display>
             <path>includes/Content/system/install.inc.php</path>
             <window>included</window>
+            <pFlag>0x40</pFlag>
         </sub>
     </menu>
     <menu>
@@ -409,6 +459,7 @@
         <name>tools</name>
         <display>Tools</display>
         <default>includes/Content/tools/overview.inc.php</default>
+        <pFlag>0x08000</pFlag>
 
         <sub>
             <id>1</id>
@@ -416,6 +467,7 @@
             <display>Übersicht</display>
             <path>includes/Content/tools/overview.inc.php</path>
             <window>included</window>
+            <pFlag>0x01</pFlag>
         </sub>
 
         <sub>
@@ -424,6 +476,7 @@
             <display>HW Informationen</display>
             <path>includes/Content/tools/hwinfo.inc.php</path>
             <window>included</window>
+            <pFlag>0x02</pFlag>
         </sub>
 
         <sub>
@@ -432,6 +485,7 @@
             <display>HDD Informationen</display>
             <path>includes/Content/tools/hddinfo.inc.php</path>
             <window>included</window>
+            <pFlag>0x04</pFlag>
         </sub>
 
         <sub>
@@ -440,6 +494,7 @@
             <display>RAM Informationen</display>
             <path>includes/Content/tools/ramload.inc.php</path>
             <window>included</window>
+            <pFlag>0x08</pFlag>
         </sub>
         <sub>
             <id>6</id>
@@ -447,6 +502,7 @@
             <display>Netzwerk-Tools</display>
             <path>includes/Content/tools/nettools.inc.php</path>
             <window>included</window>
+            <pFlag>0x10</pFlag>
         </sub>
     </menu>
 
@@ -455,12 +511,14 @@
         <name>webuser</name>
         <display>Webuser</display>
         <default>includes/Content/webuser/overview.inc.php</default>
+        <pFlag>0x10000</pFlag>
         <sub>
             <id>1</id>
             <name>info</name>
             <display>Übersicht</display>
             <path>includes/Content/webuser/overview.inc.php</path>
             <window>included</window>
+            <pFlag>0x01</pFlag>
         </sub>   
         <sub>
             <id>2</id>
@@ -468,6 +526,7 @@
             <display>Benutzer hinzufügen</display>
             <path>includes/Content/webuser/adduser.inc.php</path>
             <window>included</window>
+            <pFlag>0x02</pFlag>
         </sub>   
         <sub>
             <id>3</id>
@@ -475,6 +534,7 @@
             <display>Benutzer bearbeiten</display>
             <path>includes/Content/webuser/edituser.inc.php</path>
             <window>included</window>
+            <pFlag>0x04</pFlag>
         </sub>                                  
     </menu>
 
@@ -483,12 +543,14 @@
         <name>plugins</name>
         <display>Plugins</display>
         <default>includes/Content/plugins/overview.inc.php</default>
+        <pFlag>0x20000</pFlag>
         <sub>
             <id>1</id>
             <name>overview</name>
             <display>Übersicht</display>
             <path>includes/Content/plugins/overview.inc.php</path>
             <window>included</window>
+            <pFlag>0x01</pFlag>
         </sub>
         <sub>
             <id>2</id>
@@ -496,6 +558,7 @@
             <display>Plugin hinzufügen</display>
             <path>includes/Content/plugins/add.inc.php</path>
             <window>included</window>
+            <pFlag>0x02</pFlag>
         </sub>
         <sub>
             <id>20000</id>
@@ -503,6 +566,7 @@
             <display>DEV: CSS-Info</display>
             <path>includes/Content/plugins/styles.inc.php</path>
             <window>included</window>
+            <pFlag>0x00</pFlag>
         </sub>
     </menu>
 </navigation>
