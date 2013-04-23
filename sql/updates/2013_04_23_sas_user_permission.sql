@@ -5,4 +5,4 @@ CREATE TABLE `sas_user_permission` (
   PRIMARY KEY (`uid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `sas_user_permission` SELECT id, 131071 FROM `sas_users`;
+INSERT INTO `sas_user_permission` SELECT id, 0xFFFFF FROM `sas_users`;
