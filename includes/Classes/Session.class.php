@@ -14,13 +14,11 @@
 
 namespace Classes;
 class Session {
-    private $mysql, $main;
+    private $mysql;
     /**
      * Starte Session 
      */
-    public function __construct($main) {
-        $this->mysql = $main->MySQL();
-        $this->main = $main;
+    public function __construct() {
         if (!isset($_SESSION['user']['authenticated'])) {
             self::initSession();
         }
@@ -84,7 +82,7 @@ class Session {
      */
     public function isAuthenticated() {
         if ($_SESSION['user']['authenticated']) {
-            $this->main->setUser(new User($this->main));
+            Main::setUser(new User());
         }
 
         return $_SESSION['user']['authenticated'];
@@ -151,7 +149,7 @@ class Session {
      * Zudem wird eine Instanz der Klasse User angelegt.
      * @param String username
      * @param String password
-     * @return bool / User
+     * @return \Classes\User
      */
     public function authChallenge($username, $password) {
         if (empty($username) || empty($password)) {
@@ -159,7 +157,7 @@ class Session {
             return false;
         } 
 
-        $users = $this->mysql->tableAction('sas_users');
+        $users = Main::MySQL()->tableAction('sas_users');
         $result = $users->select(NULL, ['username' => $username]);
         if (!$result) {
             $_SESSION['user']['failedAuths']++;
@@ -184,7 +182,7 @@ class Session {
         $_SESSION['user']['email'] = $user->email;
         $_SESSION['user']['admin'] = $user->admin;
 
-        $userInstance = new User($this->main);
+        $userInstance = new User();
         return $userInstance;
     }
 

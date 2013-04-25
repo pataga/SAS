@@ -24,11 +24,9 @@ class User {
      * @param Main
      * @param int id
      */
-    public function __construct($main, $id = false) {
-        $this->main = $main;
-        $this->db = $main->MySQL();
-        $this->uTable = $this->db->tableAction('sas_users');
-        $this->session = $main->Session();
+    public function __construct($id = false) {
+        $this->uTable = Main::MySQL()->tableAction('sas_users');
+        $this->session = Main::Session();
         $s = $this->session;
 
         if (!$id) {
@@ -46,7 +44,7 @@ class User {
                 $this->admin = $row->admin;
                 $this->self = $s->getUserId() == $this->id;
             } else {
-                $res = $this->db->Query("SELECT * FROM sas_users ORDER BY id DESC LIMIT 1");
+                $res = Main::MySQL()->Query("SELECT * FROM sas_users ORDER BY id DESC LIMIT 1");
                 if ($r = $res->fetchObject()) {
                     $this->id = $r->id+1;
                     $this->uTable->insert(['id' => $this->id]);
@@ -56,7 +54,7 @@ class User {
     }
 
     public function getPermission() {
-        return new User\Permission($this->main, $this);
+        return new User\Permission($this);
     }
 
     /**

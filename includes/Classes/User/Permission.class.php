@@ -87,14 +87,13 @@ class Permission {
     const USER_PERMISSION       = 0x10000;
     const PLUGINS_PERMISSION    = 0x20000;
 
-    public function __construct($main,$user) {
+    public function __construct($user) {
         $this->user = $user;
-        $this->main = $main;
     }
 
     public function setPermission($bitMask) {
         $isPermitted = false;
-        $db = $this->main->MySQL();
+        $db = \Classes\Main::MySQL();
 
         if ($bitMask & Permission::HOME_PERMISSION) {
             $db->tableAction('sas_user_permission')->replace(['bitmask' => $bitMask, 'uid' => $this->user->getId()]);
@@ -138,7 +137,7 @@ class Permission {
     }
 
     public function isPermitted($bitMaskGlobal, $bitMaskLocal = false) {
-        $db = $this->main->MySQL();
+        $db = \Classes\Main::MySQL();
         $result = $db->Query("SELECT * FROM sas_user_permission WHERE uid = ".$this->user->getID());
 
         while ($data = $result->fetch()) {

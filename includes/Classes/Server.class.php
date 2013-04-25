@@ -29,16 +29,14 @@ class Server extends Singleton {
     const MYSQL_PASS        = 3;
     const MYSQL_DB          = 4;
 
-    public function __construct($main) {
-        $this->m = $main;
-        $this->mysql = $main->MySQL();
-        $session = $main->Session();
+    public function __construct() {
+        $session = Main::Session();
         $this->server_id = $session->getServerID();
         $data = $this->getServerData();
         $this->server_address = $data[0];
 
         if (!$this->server_id) return;
-        $result = $this->mysql->tableAction('sas_server_data')->select(NULL, ['id' => $this->server_id]);
+        $result = Main::MySQL()->tableAction('sas_server_data')->select(NULL, ['id' => $this->server_id]);
         
         if ($result->getRowsCount() > 0) {
             $r = $result->fetchObject();
@@ -113,7 +111,7 @@ class Server extends Singleton {
     */
     public function getServerData() {
         if (!$this->server_id) return false;
-        $result = $this->mysql->tableAction('sas_server_data')->select(NULL, ['id' => $this->server_id]);
+        $result = Main::MySQL()->tableAction('sas_server_data')->select(NULL, ['id' => $this->server_id]);
 
         if ($result->getRowsCount() > 0) {
             $row = $result->fetchObject();
@@ -137,7 +135,7 @@ class Server extends Singleton {
     */
     public function isInstalled($package) {
         if (!$this->server_id) return false;
-        $result = $this->mysql->tableAction('sas_server_data')->select(NULL, ['id' => $this->server_id]);
+        $result = Main::MySQL()->tableAction('sas_server_data')->select(NULL, ['id' => $this->server_id]);
 
         if ($result->getRowsCount() > 0) {
             $row = $result->fetchObject();
@@ -163,7 +161,7 @@ class Server extends Singleton {
     */
     public function getMySQLData() {
         if ($this->isInstalled("mysql")) {
-            $result = $this->mysql->tableAction('sas_server_mysql')->select(NULL, ['sid' => $this->server_id]);
+            $result = Main::MySQL()->tableAction('sas_server_mysql')->select(NULL, ['sid' => $this->server_id]);
             if ($result->getRowsCount()) {
                 $data = [];
                 $row = $result->fetchObject();
@@ -218,19 +216,18 @@ class Server extends Singleton {
     }
 
     public function execute($cmd, $format = 0, $type = 0) {
-        $m = $this->m;
         if (!$this->soap->isAlive()) {
-            return $m->SSH()->execute($cmd,$format);
+            return Main::SSH()->execute($cmd,$format);
         }
         if ($type == 0) {
             if ($this->soapActive) 
                 return $this->soap->execute($cmd,$format);
             else 
-                return $m->SSH()->execute($cmd,$format);
+                return Main::SSH()->execute($cmd,$format);
         } elseif ($type == 1) {
             return $this->soap->execute($cmd,$format);
         } elseif ($type == 2) {
-            return $m->SSH()->execute($cmd,$format);
+            return Main::SSH()->execute($cmd,$format);
         }
     }
 
@@ -248,7 +245,7 @@ class Server extends Singleton {
             foreach ($news as $value) {
                 $value = explode('#>:<#', $value);
                 if (count($value) > 1)
-                    $this->mysql->Query("INSERT INTO sas_notifications (type,body,datum,zeit) VALUES ('$value[0]','$value[1]',CURDATE(),CURTIME())");
+                    Main::MySQL()->Query("INSERT INTO sas_notifications (type,body,datum,zeit) VALUES ('$value[0]','$value[1]',CURDATE(),CURTIME())");
             }
         }
     }

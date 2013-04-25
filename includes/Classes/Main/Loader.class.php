@@ -21,18 +21,17 @@ class Loader {
     const CONTENT_MENU_DATA     = 'data/MainMenu.xml';
     const CONTENT_TOP           = 'includes/Content/main/top.inc.php';
 
-    public function __construct($main)
+    public function __construct()
     {
         $this->p = isset($_GET['p']) ? $_GET['p'] : 'home';
         $this->s = isset($_GET['s']) ? $_GET['s'] : null;
 
         try {
-            $this->mysql = $main->MySQL();
+            $this->mysql = \Classes\Main::MySQL();
         } catch (\Exception $e) {
-            $this->main->Debug()->error($e);
+            \Classes\Main::Debug()->error($e);
         }
         $this->loadXML();
-        $this->main = $main;
     }
 
     public function getMenu() {
@@ -96,7 +95,7 @@ class Loader {
 
         $replace = [
             $this->pageName,
-            $this->main->Session()->getUsername(),
+            \Classes\Main::Session()->getUsername(),
             $this->getNotificationCount(),
             $this->window === 'included' ? '' : 'display:none;'
         ];
@@ -111,7 +110,7 @@ class Loader {
     }
 
     private function getNotificationCount() {
-        $server = $this->main->Server();
+        $server = \Classes\Main::Server();
         $soap = $server->getSoap();
         if (!$soap || !$soap->isAlive()) {
             return 0;
@@ -134,15 +133,15 @@ class Loader {
     }
 
     public function getIncFile() {
-        if (!$this->main->Session()->isServerChosen() && $this->main->Session()->isAuthenticated())
+        if (!\Classes\Main::Session()->isServerChosen() && \Classes\Main::Session()->isAuthenticated())
             return Loader::CONTENT_PATH.'home/server.inc.php';
 
-        if (!$this->main->Session()->isAuthenticated())
+        if (!\Classes\Main::Session()->isAuthenticated())
             $this->reload();
 
         $default = Loader::CONTENT_PATH.'error/404.inc.php';
 
-        $perm = $this->main->User()->getPermission();
+        $perm = \Classes\Main::User()->getPermission();
 
         for ($i=0;$i<count($this->xmlData);$i++) {
             if ($this->xmlData[$i]['menu']['name'] == $this->p) {
@@ -207,12 +206,12 @@ class Loader {
     }
 
     public function loadLoginMask() {
-        $this->main->Header()->relocate("./login/");
+        \Classes\Main::Header()->relocate("./login/");
         die;
     }
 
     public function reload() {
-        $header = $this->main->Header();
+        $header = \Classes\Main::Header();
         if (!empty($this->s) && !empty($this->p))
             $header->relocate('?p='.$this->p.'&s='.$this->s);
         else if (!empty($this->p))

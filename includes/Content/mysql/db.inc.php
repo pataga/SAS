@@ -11,7 +11,8 @@
 *
 */
 
-$data = $main->Server()->getMySQLData();
+$data = \Classes\Main::Server()->getMySQLData();
+
 if (!$data) {
     header('Location: ?p=mysql&s=configure');
     exit;

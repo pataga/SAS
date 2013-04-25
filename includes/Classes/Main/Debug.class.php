@@ -29,7 +29,6 @@ class Debug implements \Config\System {
 			case 0: break;
 			case 1: 
 				try {
-					$file;
 					if (!($file = fopen(\Config\System::SYSTEM_LOG_FILE, 'a+'))) throw new Exception("error.log konnte nicht ge&ouml;ffnet werden. Permission denied", 1);
 					fputs($file, "[ERROR] ".$msg."\n");
 					fclose($file);

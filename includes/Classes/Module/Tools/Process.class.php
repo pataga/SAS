@@ -17,8 +17,8 @@ class Process {
 
 	private $server;
 
-	function __construct($main) {
-		$this->server = $main->Server();
+	function __construct() {
+		$this->server = \Classes\Main::Server();
 	}
 
    /**

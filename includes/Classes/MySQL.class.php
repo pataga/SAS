@@ -43,7 +43,7 @@ class MySQL implements \Config\MySQL {
    /**
     *   Führt Query aus und gibt einen Klon von $this zurück
     *   @param (String) Query
-    *   @return Result Instanz
+    *   @return MySQL\Result
     */
     public function Query($query) {
         try {
@@ -57,7 +57,7 @@ class MySQL implements \Config\MySQL {
    /**
     *   Neue Instanz zum Bearbeiten von Tabellen
     *   @param String Tabellenname
-    *   @return TableAction
+    *   @return MySQL\TableAction
     */
     public function tableAction($table) {
         try {

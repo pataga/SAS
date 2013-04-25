@@ -13,18 +13,18 @@
 
 namespace Classes;
 
-class Plugin extends Singleton {
+class Plugin {
     public static function install($repo, $activate = true) {
-        if (!file_exists(self::getRootDir().'plugins/tmp'))
-            mkdir(self::getRootDir().'tmp/plugins'.session_id(), 0777, true);
+        if (!file_exists(Singleton::getRootDir().'plugins/tmp'))
+            mkdir(Singleton::getRootDir().'tmp/plugins'.session_id(), 0777, true);
 
-        Git::create_new(self::getRootDir().'tmp/plugins/'.session_id(), $repo);
+        Git::create_new(Singleton::getRootDir().'tmp/plugins/'.session_id(), $repo);
 
-        $setup = parse_ini_file(self::getRootDir().'tmp/plugins/plugin.ini', true);
+        $setup = parse_ini_file(Singleton::getRootDir().'tmp/plugins/plugin.ini', true);
 
         $misc = $setup['misc'];
 
-        self::getInstance('\Classes\MySQL')
+        Main::MySQL()
         ->tableAction('sas_plugins')
         ->insert(['name' => $misc['name'], 'version' => $misc['version']]);
 
@@ -33,23 +33,23 @@ class Plugin extends Singleton {
             $hId = Plugin::getHighestId();
             if (is_array($scripts)) {
                 foreach ($scripts as $key => $value) {
-                    copy(self::getRootDir().'tmp/plugins/'.session_id().'/'.$key.'.script.php', self::getRootDir().'includes/Plugins/Scripts/'.$misc['name'].'/'.$key.'.script.php');
+                    copy(Singleton::getRootDir().'tmp/plugins/'.session_id().'/'.$key.'.script.php', Singleton::getRootDir().'includes/Plugins/Scripts/'.$misc['name'].'/'.$key.'.script.php');
 
                     switch ($value) {
                         case 'MySQLScript':
-                            self::getInstance('\Classes\MySQL')
+                            Main::MySQL()
                             ->tableAction('sas_plugin_scripts')
                             ->insert(['script' => $key, 'type' => 1, 'pid' => $hId]);
                             break;
 
                         case 'UserScript':
-                            self::getInstance('\Classes\MySQL')
+                            Main::MySQL()
                             ->tableAction('sas_plugin_scripts')
                             ->insert(['script' => $key, 'type' => 2, 'pid' => $hId]);
                             break;
 
                         case 'PageScript':
-                            self::getInstance('\Classes\MySQL')
+                            Main::MySQL()
                             ->tableAction('sas_plugin_scripts')
                             ->insert(['script' => $key, 'type' => 3, 'pid' => $hId]);
                             break;
@@ -60,22 +60,22 @@ class Plugin extends Singleton {
             $sql = $setup['sql'];
             if (is_array($sql)) {
                 foreach ($sql as $key => $value) {
-                    $queries = file_get_contents(self::getRootDir().'tmp/plugins/'.session_id().'/'.$value);
+                    $queries = file_get_contents(Singleton::getRootDir().'tmp/plugins/'.session_id().'/'.$value);
                     $data = explode(';', $queries);
                     foreach ($data as $key => $quy) {
-                        self::getInstance('\Classes\MySQL')->query($quy);
+                        Main::MySQL()->query($quy);
                     }
                 }
             }
 
-            self::getInstance('\Classes\MySQL')->Query("UPDATE sas_plugins SET installed = 1 WHERE id = $hId");
+            Main::MySQL()->Query("UPDATE sas_plugins SET installed = 1 WHERE id = $hId");
         }
 
-        Directory::removeDir(self::getRootDir().'plugins/tmp', false);
+        Directory::removeDir(Singleton::getRootDir().'plugins/tmp', false);
     }
 
     public static function getInstalledPlugins() {
-        $result = self::getInstance('\Classes\MySQL')
+        $result = Main::MySQL()
         ->tableAction('sas_plugins')
         ->select();
 
@@ -94,7 +94,7 @@ class Plugin extends Singleton {
     }
 
     public static function getHighestId() {
-        $result = self::getInstance('\Classes\MySQL')->Query("SELECT * FROM sas_plugins ORDER BY id DESC LIMIT 1");
+        $result = Main::MySQL()->Query("SELECT * FROM sas_plugins ORDER BY id DESC LIMIT 1");
         if ($row = $result->fetch()) {
             return $row->id;
         }

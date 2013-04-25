@@ -58,18 +58,18 @@ if (is_dir(\Classes\Install::DIRECTORY)) {
 //Timer start
 $startTime = microtime(true);
 
-//Erstelle Instanz der Hauptklasse. Dieses Objekt beinhaltet Objekte der Hauptklassen
-$main = new \Classes\Main();
+//Initialisierung der Objekte der Main Klasse
+\Classes\Main::start();
 
 
 //Initialisiere Hauptobjekte
-$mysql = $main->MySQL();
-$loader = $main->Loader();
-$server = $main->Server();
-$debug = $main->Debug();
-$cache = $main->Cache();
-$session = $main->Session();
-$header = $main->Header();
+$mysql = \Classes\Main::MySQL();
+$loader = \Classes\Main::Loader();
+$server = \Classes\Main::Server();
+$debug = \Classes\Main::Debug();
+$cache = \Classes\Main::Cache();
+$session = \Classes\Main::Session();
+$header = \Classes\Main::Header();
 $user = NULL;
 
 //Remote Instance
@@ -78,21 +78,10 @@ $mysql_remote = null;
 //Authentifizierung
 if (isset($_POST['username']) && isset($_POST['password'])) {
     $user = $session->authChallenge($_POST['username'],$_POST['password']);
-    $main->setUser($user);
+    if ($user)
+        \Classes\Main::setUser($user);
     $loader->reload();
 }
-
-
-//Wenn ServerID gesetzt, dann ....
-/*if ($session->isServerChosen()) {
-    //... setze ServerID in Klasse
-    $server->setID($session->getServerId());
-    //... versuche eine Remote MySQL Verbindung aufzubauen
-    $rmd = $server->getMySQLData();
-    if ($rmd) {
-        $mysql_remote = new \MySQL($rmd);
-    }
-}*/
 
 
 //Wenn nicht angemeldet, dann LoginMaske
@@ -138,7 +127,6 @@ ob_end_clean();
 $header->printHeaders();
 
 $cache->buildCache($content);
-
 
 //Überprüfe auf Fehler
 if ($debug->hasError()) {

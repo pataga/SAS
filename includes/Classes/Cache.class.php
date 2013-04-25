@@ -16,20 +16,15 @@ namespace Classes;
 class Cache {
 	
 	private $cache='';
-	private $main;
-
-	public function __construct($main) {
-		$this->main = $main;
-	}
 
 	public function buildCache($inc) {
-		$loader = $this->main->Loader();
+		$loader = Main::Loader();
 		$this->cache .= $loader->getMenu();
 		$this->cache .= $inc;
 		$this->cache .= self::loadFooter();
 	}
 
-	static function loadFooter() {
+	public static function loadFooter() {
 		try {
 			ob_start();
 			require_once 'includes/Content/main/footer.inc.php';
@@ -37,7 +32,7 @@ class Cache {
 			ob_end_clean();
 			return $content;
 		} catch (\Exception $e) {
-			$this->main->getDebugInstance()->error($e);
+            Main::Debug()->error($e);
 			return '';
 		}
 	}

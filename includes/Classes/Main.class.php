@@ -14,13 +14,13 @@
 namespace Classes;
 class Main {
 
-    private $mysql,$db,$result,$server,$ssh,$user,$tableaction,$loader,$session,$header;
+    private static $mysql,$server,$ssh,$user,$loader,$session,$header,$debug,$cache;
 
-    public function __construct() {
+    public static function start() {
         if (!file_exists('./includes/Config/MySQL.conf.php')) {
             throw new \Classes\Main\Exception("Fehler in ./includes/Config/MySQL.conf.php");
         } else {
-            $this->initialisizeInstances();
+            self::initialisizeInstances();
         }
     }
 
@@ -28,86 +28,121 @@ class Main {
     /**
      * Initialisiert Objekte der Hauptklassen
      */
-    private function initialisizeInstances() {
+    private static function initialisizeInstances() {
         try {
-            $this->debug = new \Classes\Main\Debug();
+            self::$debug = new \Classes\Main\Debug();
         } catch (\Classes\Main\Exception $e) {
             throw new \Classes\Main\Exception($e->getMessage());
         }
 
         try {
-            $this->mysql = new \Classes\MySQL();  
-            $this->mysql->selectDatabase(\Config\MySQL::DATABASE);  
+            self::$mysql = new \Classes\MySQL();  
+            self::$mysql->selectDatabase(\Config\MySQL::DATABASE);  
         } catch (\Classes\Main\Exception $e) {
-            $this->debug->error($e);
+            self::$debug->error($e);
         }
 
         try {
-            $this->session = new \Classes\Session($this);
+            self::$session = new \Classes\Session();
         } catch (\Classes\Main\Exception $e) {
-            $this->debug->error($e);
+            self::$debug->error($e);
         }
 
         try {
-            $this->loader = new \Classes\Main\Loader($this);
+            self::$loader = new \Classes\Main\Loader();
         } catch (\Classes\Main\Exception $e) {
-            $this->debug->error($e);
+            self::$debug->error($e);
         }
 
         try {
-            $this->server = new \Classes\Server($this);
+            self::$server = new \Classes\Server();
         } catch (\Classes\Main\Exception $e) {
-            $this->debug->error($e);
+            self::$debug->error($e);
         }
 
         try {
-            $this->header = new \Classes\Main\Header();
+            self::$header = new \Classes\Main\Header();
         } catch (\Classes\Main\Exception $e) {
-            $this->debug->error($e);
+            self::$debug->error($e);
         }
 
         try {
-            $this->cache = new \Classes\Cache($this);
+            self::$cache = new \Classes\Cache();
         } catch (\Classes\Main\Exception $e) {
-            $this->debug->error($e);
+            self::$debug->error($e);
         }
 
-        $this->ssh = $this->setSSHInstance();
+        self::$ssh = self::setSSHInstance();
     }
 
     /**
      * Erstellt SSH Instanz
      * @return SSH ssh [SSH Instanz]
      */
-    private function setSSHInstance() {
+    private static function setSSHInstance() {
         try {
-            if ($this->session->isServerChosen()) {
-                $this->server->setID($this->session->getServerId());
-                $data = $this->server->getServerData();
+            if (self::$session->isServerChosen()) {
+                self::$server->setID(self::$session->getServerId());
+                $data = self::$server->getServerData();
                 if (!is_array($data))
                     throw new \Classes\Main\Exception("unable to find data of ssh daemon in Main::setSSHInstance()", 1);
 
-                return new \Classes\SSH($this,$data[0],22,$data[1],$data[2]);
+                return new \Classes\SSH($data[0],22,$data[1],$data[2]);
             } else {
                 return NULL;
             }
         } catch (\Classes\Main\Exception $e) {
-            $this->debug->error($e);
+            self::$debug->error($e);
         }
     }
 
-    public function Server() { return $this->server; }
-    public function SSH() { return $this->ssh; }
-    public function MySQL() { return $this->mysql; }
-    public function User() { return $this->user; }
-    public function Loader() { return $this->loader; }
-    public function Debug() { return $this->debug; }
-    public function Cache() { return $this->cache; }
-    public function Session() { return $this->session; }
-    public function Header() { return $this->header; }
+    /**
+     * @return \Classes\Server
+     */
+    public static function Server() { return self::$server; }
 
-    public function setUser($user) {
-        $this->user = $user;
+    /**
+     * @return \Classes\SSH
+     */
+    public static function SSH() { return self::$ssh; }
+
+    /**
+     * @return \Classes\MySQL
+     */
+    public static function MySQL() { return self::$mysql; }
+
+    /**
+     * @return \Classes\User
+     */
+    public static function User() { return self::$user; }
+
+    /**
+     * @return \Classes\Main\Loader
+     */
+    public static function Loader() { return self::$loader; }
+
+    /**
+     * @return \Classes\Main\Debug
+     */
+    public static function Debug() { return self::$debug; }
+
+    /**
+     * @return \Classes\Main\Cache
+     */
+    public static function Cache() { return self::$cache; }
+
+    /**
+     * @return \Classes\Session
+     */
+    public static function Session() { return self::$session; }
+
+    /**
+     * @return \Classes\Main\Header
+     */
+    public static function Header() { return self::$header; }
+
+    public static function setUser(\Classes\User $user) {
+        self::$user = $user;
     }
 
     public static function printLoadTime($startTime, $endTime) {
@@ -120,7 +155,7 @@ class Main {
                 print($outStr);
             }
         } catch (\Classes\Main\Exception $e) {
-            //$this->debug->logInfo('Fehler beim Berechnen der Ladezeit');
+            //self::$debug->logInfo('Fehler beim Berechnen der Ladezeit');
         }
     }
 }

@@ -27,7 +27,7 @@ class tableAction {
    /**
     *   Fügt einen Datensatz hinzu
     *   @param Array Dateninhalte
-    *   @return MySQL
+    *   @return Result
     */
     public function insert($content) {
         $query = self::buildInsertQuery($content);
@@ -39,7 +39,7 @@ class tableAction {
     *   Aktualisiert einen Datensatz
     *   @param Array Änderungen
     *   @param Array Condition
-    *   @return MySQL
+    *   @return Result
     */
     public function update($content, $condition) {
         $query = self::buildUpdateQuery($content, $condition);
@@ -50,7 +50,7 @@ class tableAction {
     *   Aktualisiert einen Datensatz
     *   @param Array Änderungen
     *   @param Array Condition
-    *   @return MySQL
+    *   @return Result
     */
     public function replace($content, $condition) {
         $query = self::buildReplaceQuery($content, $condition);
@@ -60,7 +60,7 @@ class tableAction {
    /**
     *   Fügt mit einen Datensatz hinzu
     *   @param Array Dateninhalte
-    *   @return MySQL
+    *   @return Result
     */
     public function select($content = null, $condition = null) {
         $query = self::buildSelectQuery($content, $condition);
@@ -70,7 +70,7 @@ class tableAction {
     /**
     *   Fügt mit einen Datensatz hinzu
     *   @param Array Dateninhalte
-    *   @return MySQL
+    *   @return Result
     */
     public function delete($condition) {
         $query = self::buildDeleteQuery($condition);

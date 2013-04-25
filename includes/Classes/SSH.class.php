@@ -15,20 +15,19 @@
 namespace Classes;
 class SSH {
 
-    private $host,$port,$user,$pass,$connection,$out,$con;
+    private $host,$port,$user,$pass,$connection,$con;
 
    /**
     * An diese Methode werden die SSH Zugangsdaten übergeben
-    *   
-    * @param Main main [Main Instanz]
+    *
     * @param String Host [Adresse zum SSH Server Host]
     * @param int Port [Port des SSH Dienstes]
     * @param String Benutzername [SSH Benutzername]
     * @param String Passwort [SSH Passwort]
     * 
-    * @example $ssh = new SSH($main, '127.0.0.1', 22, 'root', 'topsecret');
+    * @example $ssh = new SSH('127.0.0.1', 22, 'root', 'topsecret');
     */
-    public function __construct($main=null,$host='',$port=22,$user='',$pass='') {
+    public function __construct($host='',$port=22,$user='',$pass='') {
         if (!empty($host))
             $this->host = $host;
         if (!empty($port))
