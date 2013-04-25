@@ -21,6 +21,7 @@ class Permission {
     const HOME_ABOUT            = 0x04;
     const HOME_DOCUMENTATION    = 0x08;
     const HOME_REPOSITORY       = 0x10;
+    const HOME_FULL             = 0xFF;
 
     const APACHE_OVERVIEW       = 0x01;
     const APACHE_CONFIGURATION  = 0x02;
@@ -30,12 +31,14 @@ class Permission {
     const APACHE_PHP            = 0x20;
     const APACHE_PHPINFO        = 0x40;
     const APACHE_STATS          = 0x80;
+    const APACHE_FULL           = 0xFF;
 
     const PROFTP_OVERVIEW       = 0x01;
     const PROFTP_CONFIGURATION  = 0x02;
     const PROFTP_CONTROL        = 0x04;
     const PROFTP_FILES          = 0x08;
     const PROFTP_STATS          = 0x10;
+    const PROFTP_FULL           = 0xFF;
 
     const MYSQL_OVERVIEW        = 0x01;
     const MYSQL_ADDUSER         = 0x02;
@@ -44,16 +47,19 @@ class Permission {
     const MYSQL_MANAGEDB        = 0x10;
     const MYSQL_MODULE          = 0x20;
     const MYSQL_IMPORT_EXPORT   = 0x40;
+    const MYSQL_FULL            = 0xFF;
 
     const SAMBA_OVERVIEW        = 0x01;
     const SAMBA_DRIVES          = 0x02;
     const SAMBA_CONFIGURATION   = 0x04;
     const SAMBA_CONTROL         = 0x08;
     const SAMBA_USERS           = 0x10;
+    const SAMBA_FULL            = 0xFF;
 
     const LOGS_OVERVIEW         = 0x01;
     const LOGS_SHOW             = 0x02;
     const LOGS_TEST             = 0x04;
+    const LOGS_FULL             = 0xFF;
 
     const SYSTEM_OVERVIEW       = 0x01;
     const SYSTEM_CONSOLE        = 0x02;
@@ -62,6 +68,7 @@ class Permission {
     const SYSTEM_USER_GROUPS    = 0x10;
     const SYSTEM_SUICIDE        = 0x20;
     const SYSTEM_PACKETMGR      = 0x40;
+    const SYSTEM_FULL           = 0xFF;
 
     const TOOLS_OVERVIEW        = 0x01;
     const TOOLS_HWINFO          = 0x02;
@@ -69,81 +76,43 @@ class Permission {
     const TOOLS_RAMINFO         = 0x08;
     const TOOLS_NETWORK         = 0x10;
     const TOOLS_MISC            = 0x20;
+    const TOOLS_FULL            = 0xFF;
 
     const USER_OVERVIEW         = 0x01;
     const USER_ADD              = 0x02;
     const USER_EDIT             = 0x04;
+    const USER_FULL             = 0xFF;
 
-    const PLUGINS_GENERAL       = 0x01;
+    const PLUGINS_OVERVIEW      = 0x01;
+    const PLUGINS_ADD           = 0x02;
+    const PLUGIN_FULL           = 0xFF;
 
-    const HOME_PERMISSION       = 0x00100;
-    const APACHE_PERMISSION     = 0x00200;
-    const PROFTP_PERMISSION     = 0x00400;
-    const MYSQL_PERMISSION      = 0x00800;
-    const SAMBA_PERMISSION      = 0x01000;
-    const LOGS_PERMISSION       = 0x02000;
-    const SYSTEM_PERMISSION     = 0x04000;
-    const TOOLS_PERMISSION      = 0x08000;
-    const USER_PERMISSION       = 0x10000;
-    const PLUGINS_PERMISSION    = 0x20000;
+    const HOME_PERMISSION       = 1;
+    const APACHE_PERMISSION     = 2;
+    const PROFTP_PERMISSION     = 3;
+    const MYSQL_PERMISSION      = 4;
+    const SAMBA_PERMISSION      = 5;
+    const LOGS_PERMISSION       = 6;
+    const SYSTEM_PERMISSION     = 7;
+    const TOOLS_PERMISSION      = 8;
+    const USER_PERMISSION       = 9;
+    const PLUGINS_PERMISSION    = 10;
 
     public function __construct($user) {
         $this->user = $user;
     }
 
-    public function setPermission($bitMask) {
-        $isPermitted = false;
+    public function setPermission($pid, $bitMask) {
         $db = \Classes\Main::MySQL();
-
-        if ($bitMask & Permission::HOME_PERMISSION) {
-            $db->tableAction('sas_user_permission')->replace(['bitmask' => $bitMask, 'uid' => $this->user->getId()]);
-        }
-
-        if ($bitMask & Permission::APACHE_PERMISSION) {
-            $db->tableAction('sas_user_permission')->replace(['bitmask' => $bitMask, 'uid' => $this->user->getId()]);            
-        }
-
-        if ($bitMask & Permission::PROFTP_PERMISSION) {
-            $db->tableAction('sas_user_permission')->replace(['bitmask' => $bitMask, 'uid' => $this->user->getId()]);            
-        }
-
-        if ($bitMask & Permission::MYSQL_PERMISSION) {
-            $db->tableAction('sas_user_permission')->replace(['bitmask' => $bitMask, 'uid' => $this->user->getId()]);            
-        }
-
-        if ($bitMask & Permission::SAMBA_PERMISSION) {
-            $db->tableAction('sas_user_permission')->replace(['bitmask' => $bitMask, 'uid' => $this->user->getId()]);            
-        }
-
-        if ($bitMask & Permission::LOGS_PERMISSION) {
-            $db->tableAction('sas_user_permission')->replace(['bitmask' => $bitMask, 'uid' => $this->user->getId()]);            
-        }
-
-        if ($bitMask & Permission::SYSTEM_PERMISSION) {
-            $db->tableAction('sas_user_permission')->replace(['bitmask' => $bitMask, 'uid' => $this->user->getId()]);            
-        }
-
-        if ($bitMask & Permission::TOOLS_PERMISSION) {
-            $db->tableAction('sas_user_permission')->replace(['bitmask' => $bitMask, 'uid' => $this->user->getId()]);            
-        }
-
-        if ($bitMask & Permission::USER_PERMISSION) {
-            $db->tableAction('sas_user_permission')->replace(['bitmask' => $bitMask, 'uid' => $this->user->getId()]);            
-        }
-
-        if ($bitMask & Permission::PLUGINS_PERMISSION) {
-            $db->tableAction('sas_user_permission')->replace(['bitmask' => $bitMask, 'uid' => $this->user->getId()]);            
-        }
+        $db->tableAction('sas_user_permission')->replace(['bitmask' => $bitMask, 'uid' => $this->user->getId(), 'pid' => $pid, 'sid' => \Classes\Main::Server()->getID()], []);
     }
 
-    public function isPermitted($bitMaskGlobal, $bitMaskLocal = false) {
+    public function isPermitted($pid, $bitMaskLocal) {
         $db = \Classes\Main::MySQL();
-        $result = $db->Query("SELECT * FROM sas_user_permission WHERE uid = ".$this->user->getID());
+        $result = $db->Query("SELECT * FROM sas_user_permission WHERE sid = ".\Classes\Main::Session()->getServerID()." AND pid = ".$pid." AND uid = ".$this->user->getID());
 
         while ($data = $result->fetch()) {
-            if ($data->bitmask & $bitMaskGlobal && !$bitMaskLocal) {
-                return true;
-            } elseif (($data->bitmask & $bitMaskGlobal) && ($data->bitmask & $bitMaskLocal)) {
+            if ($data->bitmask & $bitMaskLocal) {
                 return true;
             }
         }

@@ -4,7 +4,7 @@
         <id>1</id>
         <name>home</name>
         <display>Home</display>
-        <default>includes/Content/home/overview.inc.php</default>
+        <default>1</default>
         <pFlag>0x00100</pFlag>
 
         <!-- SUBS -->
@@ -70,7 +70,7 @@
         <id>2</id>
         <name>apache</name>
         <display>Apache</display>
-        <default>includes/Content/apache/overview.inc.php</default>
+        <default>1</default>
         <pFlag>0x00200</pFlag>
 
         <!-- SUBS -->
@@ -201,7 +201,7 @@
         <id>4</id>
         <name>mysql</name>
         <display>MySQL</display>
-        <default>includes/Content/mysql/overview.inc.php</default>
+        <default>1</default>
         <pFlag>0x00800</pFlag>
         
         <!-- SUBS -->
@@ -264,7 +264,7 @@
         <id>5</id>
         <name>samba</name>
         <display>Samba</display>
-        <default>includes/Content/samba/overview.inc.php</default>
+        <default>1</default>
         <pFlag>0x01000</pFlag>
         
         <!-- SUBS -->
@@ -328,7 +328,7 @@
         <id>6</id>
         <name>logs</name>
         <display>Logs</display>
-        <default>includes/Content/logs/overview.inc.php</default>
+        <default>1</default>
         <pFlag>0x02000</pFlag>
 
         <!-- SUBS -->
@@ -386,7 +386,7 @@
         <id>7</id>
         <name>system</name>
         <display>System</display>
-        <default>includes/Content/system/overview.inc.php</default>
+        <default>1</default>
         <pFlag>0x04000</pFlag>
         
         <!-- SUBS -->
@@ -458,7 +458,7 @@
         <id>6</id>
         <name>tools</name>
         <display>Tools</display>
-        <default>includes/Content/tools/overview.inc.php</default>
+        <default>1</default>
         <pFlag>0x08000</pFlag>
 
         <sub>
@@ -510,7 +510,7 @@
         <id>8</id>
         <name>webuser</name>
         <display>Webuser</display>
-        <default>includes/Content/webuser/overview.inc.php</default>
+        <default>1</default>
         <pFlag>0x10000</pFlag>
         <sub>
             <id>1</id>
@@ -542,7 +542,7 @@
         <id>9</id>
         <name>plugins</name>
         <display>Plugins</display>
-        <default>includes/Content/plugins/overview.inc.php</default>
+        <default>1</default>
         <pFlag>0x20000</pFlag>
         <sub>
             <id>1</id>

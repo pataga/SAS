@@ -145,10 +145,6 @@ class Loader {
 
         for ($i=0;$i<count($this->xmlData);$i++) {
             if ($this->xmlData[$i]['menu']['name'] == $this->p) {
-                $default = $this->xmlData[$i]['menu']['default'];
-
-                if (!$perm->isPermitted((hexdec($this->xmlData[$i]['menu']['pFlag']))))
-                    return Loader::CONTENT_PATH.'error/permisson.inc.php';
 
                 for ($s=0;$s<count($this->xmlData[$i])-1;$s++) {
                     if (!isset($this->xmlData[$i]['sub'.$s])) 
@@ -156,8 +152,15 @@ class Loader {
 
                     $sub = $this->xmlData[$i]['sub'.$s];
 
+                    if ($this->s == null &&  $this->xmlData[$i]['menu']['default'] == $sub['id'])
+                        if (!$perm->isPermitted(hexdec($this->xmlData[$i]['menu']['id']), hexdec($sub['pFlag'])))
+                            return Loader::CONTENT_PATH.'error/permisson.inc.php';
+                        else if (file_exists($sub['path']))
+                            return $sub['path'];
+
+
                     if ($this->s == $sub['name']) {
-                        if (!$perm->isPermitted(hexdec($this->xmlData[$i]['menu']['pFlag']), hexdec($sub['pFlag'])))
+                        if (!$perm->isPermitted(hexdec($this->xmlData[$i]['menu']['id']), hexdec($sub['pFlag'])))
                             return Loader::CONTENT_PATH.'error/permisson.inc.php';
 
                         if (file_exists($sub['path']))
