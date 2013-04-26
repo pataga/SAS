@@ -38,24 +38,29 @@ if (isset($_POST['adduser']))
 
 <h3>Benutzer hinzufügen</h3>
 <fieldset>
-<form action="index.php?p=webuser&s=add" method="POST">
+	<form action="index.php?p=webuser&s=add" method="POST">
 
- <div class ="viertel-box"> 
- 	Username:<br><br>
- 	E-Mail:<br><br>
- 	Passwort:<br><br>
- 	Passwort wiederholen:<br><br>
- 	<label for="admin" class="inline">Admin?</label><input type="checkbox" name="admin" id=""> 
- </div>
+		<div class ="viertel-box"> 
+		 	Username:<br><br>
+		 	E-Mail:<br><br>
+		 	Passwort:<br><br>
+		 	Passwort wiederholen:<br><br><br>
+		 	<input type="checkbox" name="admin"> Admin Rechte
+		</div>
 
- <div class ="dreiviertel-box lastbox">	
-	<input type="text" class = "text-long" name="newuser" id=""><br><br>
-	<input type="text" class = "text-long" name="usermail" id=""><br><br>
-	<input type="password" class = "text-long" name="passwd" id=""><br><br>
-	<input type="password" class = "text-long" name="repeatpasswd" id=""><br><br><br>
-</div>
+		<div class ="dreiviertel-box lastbox">	
+			<input type="text" class = "text-long" name="newuser" id=""><br><br>
+			<input type="text" class = "text-long" name="usermail" id=""><br><br>
+			<input type="password" class = "text-long" name="passwd" id=""><br><br>
+			<input type="password" class = "text-long" name="repeatpasswd" id=""><br><br><br>
+		</div>
 
-	<input type="submit" class="button black" name="adduser" value="Hinzuf&uuml;gen">
-	<br><br>
-</form>
+			<input type="submit" class="button black" name="adduser" value="Hinzuf&uuml;gen">
+			<br><br>
+
+			 <span class="info"><b>Admin Rechte:</b><br>
+			 	Der neu erstellte User hat bei Aktivierung alle Rechte, sodass benutzt werden können.
+			 	Die Rechte für die einzelnen Module je User können unter dem Menüpunkt "Benutzer bearbeiten" konfiguriert werden.
+			 </span>
+	</form>
 </fieldset>

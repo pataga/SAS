@@ -22,7 +22,6 @@ if (!$server->isInstalled('samba')) {
     for ($i = 0; $i < count($out); $i++) {
         $line = explode(':', $out[$i]);
         $group[$i]['name'] = $line[0];
-    //$group[$i]['id'] = $line[2]; 
     }
 
     
@@ -390,6 +389,10 @@ Die Freigaben tauchen in der Netzwerkumgebung auf und können bei Bedarf auch al
         <input type="submit" class="button green" name="add" value="Neue Freigabe Hinzuf&uuml;gen"><br><br>
         <span class="info">Hinweis: Nach dem hinzufügen einer neuen Freigabe wird der Dienst automatisch neu gestartet.</span>
     </form>
+</fieldset>
+<fieldset>
+    <legend>Informationen</legend>
+    <a href="http://wiki.ubuntuusers.de/Samba_Server/smb.conf" target="_blank">Hier</a> finden Sie Informationen zu sämtlichen Konfigurationsmöglichkeiten.
 </fieldset>
 
 
