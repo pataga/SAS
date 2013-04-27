@@ -63,6 +63,27 @@ class DBHandler extends \Classes\MySQL {
         return $this->Query($sql);
     }
 
+    public function getVersion() {
+        $result = $this->Query("SELECT VERSION()");
+        if ($row = $result->fetch(\Classes\MySQL\Result::FETCH_ASSOC))
+            return $row['VERSION()'];
+    }
+
+    public function getConnectionId() {
+        $result = $this->Query("SELECT CONNECTION_ID()");
+        if ($row = $result->fetch(\Classes\MySQL\Result::FETCH_ASSOC))
+            return $row['CONNECTION_ID()'];
+    }
+
+    public function getUserCount() {
+        $this->Query('USE mysql');
+        return count($this->Query("SELECT * FROM user")->fetchAll());
+    }
+
+    public function getDatabaseCount() {
+        return count($this->getDatabases());
+    }
+
     private $selectedDatabase, $selectedTable, $maxRows, $pageNumber;
 }
 

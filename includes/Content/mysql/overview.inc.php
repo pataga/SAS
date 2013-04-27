@@ -11,13 +11,47 @@
 *
 */
 
+$connected = false;
+$data = $server->getMySQLData();
+if (is_array($data)) {
+    $connected = true;
+    $dbModule = new \Classes\Module\MySQL\DBHandler($data);
+}
+
 ?>
 
 <h3>MySQL</h3>
-<fieldset>
-	<p><b>Modulname: </b>overview</p>
-	<p><b>Modulbeschreibung: </b><br></p>
-	<p><b>Programmierer(in):</b> Patrick</p>
-	<p><b>Status:</b> in Entwicklung</p>
-</fieldset>
+<div class="halbe-box">
+    <fieldset>
+        <legend>Allgemeine Informationen</legend>
+        <div class="halbe-box"><span style="font-size: 13px; font-weight: bold;">Status</span></div>
+        <div class="halbe-box lastbox"><span style="font-size: 13px; font-weight: bold;"><?=$connected?'Verbunden':'Nicht Verbunden'?></span></div>
+        <div class="clearfix"></div>
+        <div class="halbe-box"><span style="font-size: 13px; font-weight: bold;">Version</span></div>
+        <div class="halbe-box lastbox"><span style="font-size: 13px; font-weight: bold;"><?=$connected?$dbModule->getVersion() :'Unbekannt'?></span></div>
+        <div class="clearfix"></div>
+        <div class="halbe-box"><span style="font-size: 13px; font-weight: bold;">Datenbankanzahl</span></div>
+        <div class="halbe-box lastbox"><span style="font-size: 13px; font-weight: bold;"><?=$connected?$dbModule->getDatabaseCount():'Unbekannt'?></span></div>
+        <div class="clearfix"></div>
+        <div class="halbe-box"><span style="font-size: 13px; font-weight: bold;">Benutzeranzahl</span></div>
+        <div class="halbe-box lastbox"><span style="font-size: 13px; font-weight: bold;"><?=$connected?$dbModule->getUserCount():'Unbekannt'?></span></div>
+        <div class="clearfix"></div>
+    </fieldset>
+</div>
 
+<div class="halbe-box lastbox">
+    <fieldset>
+        <legend>Konfiguration</legend>
+        <div class="halbe-box"><span style="font-size: 13px; font-weight: bold;">Host</span></div>
+        <div class="halbe-box lastbox"><span style="font-size: 13px; font-weight: bold;"><?=is_array($data)?$data[\Classes\Server::MYSQL_HOST]:'nicht konfiguriert'?></span></div>
+        <div class="clearfix"></div>
+        <div class="halbe-box"><span style="font-size: 13px; font-weight: bold;">Port</span></div>
+        <div class="halbe-box lastbox"><span style="font-size: 13px; font-weight: bold;"><?=is_array($data)?$data[\Classes\Server::MYSQL_PORT]:'nicht konfiguriert'?></span></div>
+        <div class="clearfix"></div>
+        <div class="halbe-box"><span style="font-size: 13px; font-weight: bold;">Benutzer</span></div>
+        <div class="halbe-box lastbox"><span style="font-size: 13px; font-weight: bold;"><?=is_array($data)?$data[\Classes\Server::MYSQL_USER]:'nicht konfiguriert'?></span></div>
+        <div class="clearfix"></div>
+    </fieldset>
+</div>
+
+<div class="clearfix"></div>
