@@ -120,13 +120,13 @@ if (isset($param['create'])) {
             <input type="radio" name="wday" value="1" checked="checked" onchange="document.getElementById('wday').setAttribute('disabled', 'disabled');"/> Jeden Wochentag<br>
             <input type="radio" name="wday" value="2" onchange="document.getElementById('wday').removeAttribute('disabled');"/> Wochentag w&auml;hlen<br>
             <select id="wday" name="wdayval[]" multiple style="height:160px;" disabled="disabled">
-                <option value="0">Montag</option>
-                <option value="1">Dienstag</option>
-                <option value="2">Mittwoch</option>
-                <option value="3">Donnerstag</option>
-                <option value="4">Freitag</option>
-                <option value="5">Samstag</option>
-                <option value="6">Sonntag</option>
+                <option value="1">Montag</option>
+                <option value="2">Dienstag</option>
+                <option value="3">Mittwoch</option>
+                <option value="4">Donnerstag</option>
+                <option value="5">Freitag</option>
+                <option value="6">Samstag</option>
+                <option value="7">Sonntag</option>
             </select>
         </div>
         <div class="clearfix"></div>
