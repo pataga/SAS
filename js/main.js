@@ -18,8 +18,15 @@ $(document).ready(function(){ 			// Spoiler
 	$('.show_hide').click(function() {
 		$(".spoiler_div").slideToggle();
 	});
-
 });
+
+function resetCronForm() {
+    document.getElementById('min').setAttribute('disabled', 'disabled');
+    document.getElementById('std').setAttribute('disabled', 'disabled');
+    document.getElementById('day').setAttribute('disabled', 'disabled');
+    document.getElementById('month').setAttribute('disabled', 'disabled');
+    document.getElementById('wday').setAttribute('disabled', 'disabled');
+}
 
 function checkDatabase() {
     if (document.getElementById('table'))
