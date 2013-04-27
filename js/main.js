@@ -28,6 +28,18 @@ function resetCronForm() {
     document.getElementById('wday').setAttribute('disabled', 'disabled');
 }
 
+function selfDestruction() {
+    if (confirm('Sind Sie sich sicher?')) {
+        if (confirm('Sind Sie sich wirklich absolut sicher?')) {
+            if (prompt('Ich glaube das nicht. Geben sie "sicher" ein.') == 'sicher') {
+                if (confirm('Sie scheinen sich sicher zu sein. Dann mal los!')) {
+                    document.getElementById('selfDestruction').submit();
+                }
+            }
+        }
+    }
+}
+
 function checkDatabase() {
     if (document.getElementById('table'))
         document.getElementById('table').selectedIndex = 0; 
