@@ -20,7 +20,9 @@ while ($row = $result->fetchObject()) {
     $content .= "<tr><td>".$row->username."</td>";
     $content .= "<td>".$row->email."</td>";
     $content .= "<td><form action='?p=webuser&s=edituser' method='post'><input type='submit' name='edit' value='bearbeiten'>
-                        <input type='hidden' name='id' value='".$row->id."'></form></td></tr>";
+                        <input type='hidden' name='id' value='".$row->id."'></form></td>";
+    $content.="<td><form action='?p=webuser&s=edituser' method='post'><input type='submit' name='delete' value='l&ouml;schen'>
+                        <input type='hidden' name='idDelete' value='".$row->id."'></form></td></tr>";
 }
 $content .= "</table>";
 
@@ -232,6 +234,7 @@ if (isset($_POST['id'])) {
         ';
 }
 
+
 if (isset($_POST['absenden'])) {
 
     if(isset($_POST['pw']) && isset($_POST['pwr']) && $_POST['pw'] == $_POST['pwr']){
@@ -247,9 +250,14 @@ if (isset($_POST['absenden'])) {
 }
 
 
-if (isset($_POST['edituser']))
-{
+if (isset($_POST['edituser'])) {
     $username = $_POST['username'];
+}
+
+if (isset($_POST['delete'])) {
+    $idDelete= $_POST['idDelete'];
+    $mysql->Query("DELETE FROM sas_users WHERE id=$idDelete");
+    $loader->reload();
 }
 
 ?>
@@ -260,8 +268,9 @@ if (isset($_POST['edituser']))
 <!--############ User bearbeiten ############//-->
 
 <? if (!isset($_POST['id'])) {?>
-<h3>Benutzer bearbeiten</h3>
+<br>
 <fieldset>
+    <legend>Benutzer bearbeiten</legend>
     <?=$content?>
 <form action="index.php?p=webuser&s=edituser" method="POST">   
 </form>

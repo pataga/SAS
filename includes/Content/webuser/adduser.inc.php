@@ -26,10 +26,10 @@ if (isset($_POST['adduser']))
 		// Eintragen eines neuen Webusers
 		$status = $mysql->tableAction('sas_users')
 				->insert(['username'=>$newuser, 'password'=>md5($passwd), 'email' => $usermail]);
-		//if($status)
-			echo '<br>Benutzer wurde erstellt'; // Temp Hack
-		/*if($status == -1) //Hacky
-			echo '<br>Benutzername existiert bereits';*/
+	
+			echo '<br><span class="success">Benutzer wurde erfolgreich erstellt.</span>'; 
+
+			//echo '<br>Benutzername existiert bereits';*/
 	}
 }
 
