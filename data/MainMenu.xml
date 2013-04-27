@@ -566,7 +566,7 @@
             <display>DEV: CSS-Info</display>
             <path>includes/Content/plugins/styles.inc.php</path>
             <window>included</window>
-            <pFlag>0x00</pFlag>
+            <pFlag>0x04</pFlag>
         </sub>
     </menu>
 </navigation>
