@@ -146,7 +146,7 @@
         <id>3</id>
         <name>ftp</name>
         <display>ProFTPD</display>
-        <default>includes/Content/ftp/overview.inc.php</default>
+        <default>1</default>
         <pFlag>0x00400</pFlag>
         
         <!-- SUBS -->

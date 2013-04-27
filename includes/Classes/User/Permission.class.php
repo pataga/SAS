@@ -102,9 +102,11 @@ class Permission {
         $this->user = $user;
     }
 
-    public function setPermission($pid, $bitMask) {
+    public function setPermission(array $pid, $bitMask) {
         $db = \Classes\Main::MySQL();
-        $db->tableAction('sas_user_permission')->replace(['bitmask' => $bitMask, 'uid' => $this->user->getId(), 'pid' => $pid, 'sid' => \Classes\Main::Server()->getID()], []);
+        foreach ($pid as $val) {
+            $db->tableAction('sas_user_permission')->replace(['bitmask' => $bitMask, 'uid' => $this->user->getId(), 'pid' => $val, 'sid' => \Classes\Main::Server()->getID()], []);
+        }
     }
 
     public function isPermitted($pid, $bitMaskLocal) {
