@@ -216,6 +216,15 @@
         </sub>
 
         <sub>
+            <id>7</id>
+            <name>control</name>
+            <display>Steuerung</display>
+            <path>includes/Content/mysql/control.inc.php</path>
+            <window>included</window>
+            <pFlag>0x40</pFlag>
+        </sub>
+
+        <sub>
             <id>2</id>
             <name>configure</name>
             <display></display>
