@@ -62,7 +62,7 @@
                     Default Root
                         <a href="#" class="tooltip3">?
                                 <span><b>Info:</b><br>
-                                   
+                                   Wenn Sie Defaul Root aktivieren landet jeder Benutzer nach dem Login in seinem eigenen Homeverzeichnis.
                                 </span>
                         </a>
                 </div>
