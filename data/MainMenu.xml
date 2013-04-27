@@ -218,7 +218,7 @@
         <sub>
             <id>2</id>
             <name>configure</name>
-            <display>Einrichtung</display>
+            <display></display>
             <path>includes/Content/mysql/configure.inc.php</path>
             <window>included</window>
             <pFlag>0x02</pFlag>

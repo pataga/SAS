@@ -51,6 +51,7 @@ if (is_array($data)) {
         <div class="halbe-box"><span style="font-size: 13px; font-weight: bold;">Benutzer</span></div>
         <div class="halbe-box lastbox"><span style="font-size: 13px; font-weight: bold;"><?=is_array($data)?$data[\Classes\Server::MYSQL_USER]:'nicht konfiguriert'?></span></div>
         <div class="clearfix"></div>
+        <div align=center><a href="?p=mysql&s=configure" class="button black">Konfiguration &auml;ndern</a></div>
     </fieldset>
 </div>
 
