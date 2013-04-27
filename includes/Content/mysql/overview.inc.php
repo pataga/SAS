@@ -25,7 +25,7 @@ if (is_array($data)) {
     <fieldset>
         <legend>Allgemeine Informationen</legend>
         <div class="halbe-box"><span style="font-size: 13px; font-weight: bold;">Status</span></div>
-        <div class="halbe-box lastbox"><span style="font-size: 13px; font-weight: bold;"><?=$connected?'Verbunden':'Nicht Verbunden'?></span></div>
+        <div class="halbe-box lastbox"><?=$connected?'<span class="aktiv">Verbunden':'<span class="inaktiv">Nicht Verbunden'?></span></div>
         <div class="clearfix"></div>
         <div class="halbe-box"><span style="font-size: 13px; font-weight: bold;">Version</span></div>
         <div class="halbe-box lastbox"><span style="font-size: 13px; font-weight: bold;"><?=$connected?$dbModule->getVersion() :'Unbekannt'?></span></div>
