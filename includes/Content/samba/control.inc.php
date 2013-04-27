@@ -35,5 +35,9 @@ foreach($datei AS $meine_datei){
 
 </textarea>
 <br><br><br>
-<input type="submit" class="button green" name="change" value="speichern">
+<input type="submit" class="button green" name="change" value="speichern"><br><br><br>
+    <fieldset>
+        <legend>Informationen</legend>
+        <a href="http://wiki.ubuntuusers.de/Samba_Server/smb.conf" target="_blank">Hier</a> finden Sie Informationen zu sämtlichen Konfigurationsmöglichkeiten.
+    </fieldset>
 </form>
