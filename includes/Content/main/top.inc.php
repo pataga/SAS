@@ -53,7 +53,7 @@
                 <div id="main">
                     <div id="sidebar">
                         <ul>
------SIDEBARSTART----- <li><a class="#{STATUS}" href="?p=#{PAGE_PARAM}&s=#{SUBPAGE_PARAM}">#{SUBPAGE_NAME}</a></li>-----SIDEBAREND-----
+-----SIDEBARSTART----- <li class="#{STATUS}"><a href="?p=#{PAGE_PARAM}&s=#{SUBPAGE_PARAM}">#{SUBPAGE_NAME}</a></li>-----SIDEBAREND-----
                         </ul>
                     </div>
                     <div id="content">

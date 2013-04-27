@@ -72,7 +72,7 @@ class Loader {
                     if (empty($sub['display'])) 
                         continue;
 
-                    if ($this->s == $sub['name']) {
+                    if ($this->s == $sub['name'] || $this->xmlData[$i]['menu']['default'] == $sub['id'] && !isset($_GET['s'])) {
                         $subFull .= str_replace(['#{PAGE_NAME}','#{PAGE_PARAM}','#{SUBPAGE_NAME}','#{SUBPAGE_PARAM}','#{STATUS}'],
                             [$this->xmlData[$i]['menu']['display'],$this->xmlData[$i]['menu']['name'],$this->xmlData[$i]['sub'.$s]['display'],$sub['name'],'aktiv'],$sidebar);
                     } else {
