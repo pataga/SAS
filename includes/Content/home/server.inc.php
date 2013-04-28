@@ -12,8 +12,8 @@
     *
     */
 
-    if (isset($_POST['server']) && $_POST['server'] != -1) {
-        $session->setServerId($_POST['server']);
+    if (isset($_POST['select'])) {
+        $session->setServerId($_POST['id']);
         $session->selectServer();
         $loader->reload();
     } else if (isset($_POST['name']) && isset($_POST['shost']) && isset($_POST['sport']) && isset($_POST['suser']) && isset($_POST['spass'])) {
@@ -32,11 +32,7 @@
         $loader->reload();
     }
 
-    $result = $mysql->Query("SELECT id, name, host FROM sas_server_data");
-    $server_selection = "";
-    while ($row = $result->fetchObject()) {
-        $server_selection .= "<option value='$row->id'>Server '$row->name' - $row->host</option>";
-    }
+
 
     /* STATUS - ÜBERPRÜFUNG 
 
@@ -56,15 +52,53 @@
 <h3>Server auswählen</h3>
 <fieldset>
     <p>Bitte w&auml;hlen Sie ihren Server aus, den Sie mit SAS verwalten m&ouml;chten.</p>
-    <form action="index.php" method="post">
-        <label>Server:</label>
-        <select name="server" class="shadow" required autofocus="autofocus">
-            <option value="-1"> </option>
-            <?php echo $server_selection; ?>
-        </select>
-        <br><br>
-        <input class="button black"type="submit" value="Server ausw&auml;hlen">
-    </form>
+
+    <table cellpadding="0" cellspacing="0">
+        <tr>
+            <th>Servername</th>
+            <th>IP-Adresse</th>
+            <th>Domains</th>
+            <th>Status</th>
+            <th>Aktionen</th>
+        </tr>
+        <?php
+        $result = $mysql->Query("SELECT * FROM sas_server_data");
+        while ($row = $result->fetch()) {
+        ?>
+        <tr>
+            <td><?=$row->name?></td>
+            <td><?=$row->host?></td>
+            <td>
+                <?php
+                foreach (explode(',', $row->domains) as $domain) {
+                ?>
+                    <a href="http://<?=trim($domain)?>"><?=$domain?></a><br>
+                <?php
+                }?>
+            </td>
+            <td>
+                <?php
+                try {
+                    if (!fsockopen($row->host, "22", $errno, $errstr, 0.1))
+                        throw new Exception('Connection failed', 0xA1);
+                    echo '<span class="ok">erreichbar</span>';
+                } catch (Exception $e) {
+                    echo '<span class="red">nicht erreichbar</span>';
+                }
+                ?>
+            </td>
+            <td class="action">
+                <form action="index.php" method="post">
+                    <input type="hidden" name="id" value="<?=$row->id?>"/>
+                    <input type="submit" class="view" value="Auswählen" name="select">
+                    <input type="submit" class="edit" value="Bearbeiten" name="edit">
+                </form>
+            </td>
+        </tr>
+        <?php
+        }
+        ?>
+    </table>
 </fieldset>
 <h3>Server hinzuf&uuml;gen</h3>
 <fieldset>
@@ -93,50 +127,5 @@
 
 
 
-<!-- NEUE SERVERVERWALTUNG 
-<h3>Serververwaltung</h3>
-<table cellpadding="0" cellspacing="0">
-    <tr>
-        <th>Servername</th>
-        <th>IP-Adresse</th>
-        <th>Domains</th>
-        <th>Status</th>
-        <th>Aktionen</th>
-    </tr>
-    <tr>
-        <td>localhost</td>
-        <td>127.0.0.1</td>
-        <td><a href="http://localhost">mango.local</a></td>        
-        <td><span class="unknown">unbekannt</span></td>
-        <td class="action">
-            <form action="index.php" method="post">
-            <input type="submit" class="view" value="Auswählen" name="######">
-            <input type="submit" class="edit" value="Bearbeiten" name="######">
-            </form>
-        </td>
-    </tr>
-    <tr>
-        <td>Melone</td>
-        <td>46.38.238.216</td>
-        <td>
-            <a href="http://webflix.de">webflix.de</a><br>
-            <a href="http://melone.yourvserver.net">melone.yourvserver.net</a>
-        </td>        
-        <td><span class="ok">erreichbar<span></td>
-        <td class="action">
-            <input type="submit" class="view" value="Auswählen" name="######">
-            <input type="submit" class="edit" value="Bearbeiten" name="######">
-        </td>
-    </tr>
-    <tr>
-        <td>Apfel</td>
-        <td>192.168.56.200</td>
-        <td><a href="http://apfel.local">apfel.local</a></td>
-        <td><span class="red">nicht erreichbar<span></td>
-        <td class="action">
-            <input type="submit" class="view" value="Auswählen" name="######">
-            <input type="submit" class="edit" value="Bearbeiten" name="######">
-        </td>
-    </tr>
-</table>
--->
+
+
