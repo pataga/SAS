@@ -102,7 +102,7 @@ $noteres = $mysql->Query('SELECT * FROM sas_home_notes ORDER BY id DESC LIMIT 1'
                 </td>
                 <td><?php echo $serverload; ?></td>
             </tr>
-        </table>#disposition
+        </table>
         <br>
         <a href="<?php $_SERVER['SCRIPT_NAME'] ?>" onclick="location.reload();" class="button white">Aktualisieren</a>
     </div>
