@@ -83,16 +83,6 @@
             <window>included</window>
             <pFlag>0x01</pFlag>
         </sub>
-
-        <!--<sub>
-            <id>2</id>
-            <name>config</name>
-            <display>Konfiguration</display>
-            <path>includes/Content/apache/config.inc.php</path>
-            <window>included</window>
-            <pFlag>0x00</pFlag>
-        </sub>-->
-
         <sub>
             <id>3</id>
             <name>control</name>
@@ -108,7 +98,7 @@
             <display>&lt;Directory&gt;</display>
             <path>includes/Content/apache/directorys.inc.php</path>
             <window>included</window>
-            <pFlag>0x00</pFlag>
+            <pFlag>0x20</pFlag>
         </sub>
 
         <sub>

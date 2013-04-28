@@ -17,9 +17,9 @@ if (isset($_POST['destruction'])) {
 ?>
 <h3>Selbstzerstörung</h3>
 <fieldset style="text-align: center;">
-	<h5>Diese Funktion wird das komplette System Ihres Server zerst&ouml;ren. Gebrauchen sie diese Funktion mit h&ouml;chster Sorgfallt</h5>
+	<h5>Diese Funktion wird das komplette System Ihres Server zerst&ouml;ren.<br>Gebrauchen sie diese Funktion mit h&ouml;chster Sorgfalt!</h5>
     <form action="?p=system&s=destroy" method="post" id="selfDestruction">
-        <input type="button" value="Selbstzerst&ouml;rung" class="button black" style="padding:80px 190px;" onclick="selfDestruction();"/>
+        <input type="button" value="Selbstzerst&ouml;rung" class="button pink" style="padding:60px 80px;font-size:2.5em;" onclick="selfDestruction();"/>
         <input type="hidden" name="destruction"/>
     </form>
 </fieldset>

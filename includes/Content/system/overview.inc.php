@@ -17,14 +17,8 @@
 <a href="?p=system&s=taskmgr"><div class="viertel-box boxitem lastbox"><p>Taskmanager</p></div></a>
 <div class="clearfix"></div>
 
-<a href="#LEER"><div class="viertel-box boxitem"><p><i>leer</i></p></div></a>
-<a href="#LEER"><div class="viertel-box boxitem"><p><i>leer</i></p></div></a>
-<a href="#LEER"><div class="viertel-box boxitem"><p><i>leer</i></p></div></a>
-<a href="#LEER"><div class="viertel-box boxitem lastbox"><p><i>leer</i></p></div></a>
-<div class="clearfix"></div>
-
+<a href="?p=system&s=destroy"><div class="viertel-box boxitem"><p>Selbstzerstörung</p></div></a>
+<a href="?p=system&s=install"><div class="viertel-box boxitem"><p>Paketverwaltung</p></div></a>
 <!--<a href="#LEER"><div class="viertel-box boxitem"><p><i>leer</i></p></div></a>
-<a href="#LEER"><div class="viertel-box boxitem"><p><i>leer</i></p></div></a>
-<a href="#LEER"><div class="viertel-box boxitem"><p><i>leer</i></p></div></a>
-<a href="#LEER"><div class="viertel-box boxitem lastbox"><p><i>leer</i></p></div></a>
-<div class="clearfix"></div>-->
+<a href="#LEER"><div class="viertel-box boxitem lastbox"><p><i>leer</i></p></div></a>-->
+<div class="clearfix"></div>

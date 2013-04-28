@@ -59,7 +59,7 @@ if (isset($_POST['adduser']))
 			<br><br>
 
 			 <span class="info"><b>Admin Rechte:</b><br>
-			 	Der neu erstellte User hat bei Aktivierung alle Rechte, sodass benutzt werden können.
+			 	Der neu erstellte User hat bei Aktivierung alle Rechte, sodass alle Module benutzt werden können.
 			 	Die Rechte für die einzelnen Module je User können unter dem Menüpunkt "Benutzer bearbeiten" konfiguriert werden.
 			 </span>
 	</form>

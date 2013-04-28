@@ -9,6 +9,7 @@
         <!-- CSS -->
         <link rel="stylesheet" href="css/normalize.min.css">
         <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/icons/css/fontello.css">
         <link rel="stylesheet" href="css/notifications.css">
         <link rel="shortcut icon" href="img/fav.ico">
         <!-- JS -->

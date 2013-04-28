@@ -237,6 +237,7 @@
         <ul>
             <li><b>Lobster:</b> <a href="http://scripts.sil.org/OFL" target="_blank">SIL Open Font License, 1.1</a></li>
             <li><b>Ubuntu:</b> <a href="http://font.ubuntu.com/ufl/" target="_blank">Ubuntu Font License, 1.0</a></li>
+            <li><b>Entypo Icons</b> <a href="http://www.entypo.com">SIL Open Font License</a></li>
         </ul>
         <h5>Graphics/Icons:</h5>
         <ul>
