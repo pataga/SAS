@@ -17,7 +17,7 @@ Hier können Sie allgemeine Einstellungen vornehmen.
 Beispielsweise können Sie globale Einstellungen, wie den Namen der Arbeitsgruppe abändern.
 Wenn Sie keine Erfahrungen mit dem Samba Dienst haben sollten Sie sich vor einer Änderung dieser Textdatei über die verschiedenen Möglichkeiten informieren. 
 </fieldset>
-<br><textarea name="samba_config" cols="80" rows="20">
+<textarea name="samba_config" id="console">
 
 
 <?php
@@ -34,7 +34,8 @@ foreach($datei AS $meine_datei){
 
 
 </textarea>
-<br><br><br>
+<div class="clearfix"></div>
+<br><br>
 <input type="submit" class="button green" name="change" value="speichern"><br><br><br>
     <fieldset>
         <legend>Informationen</legend>

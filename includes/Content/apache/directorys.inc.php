@@ -38,14 +38,14 @@ if(isset($_POST['go'])) {
 		<p>
             <label>Kommentar:</label> 
             <input type="text" class="text-long" name="comment" placeholder="optional">
-            <a href="#" class="tooltip3">Info
+            <a href="#" class="tooltip3"><i class="icon-help-circled" style="font-size:15px"></i>
                 <span><b>Info:</b><br>Wird als #Kommentar hinzugefügt über dem Container eingefügt.</span>
             </a>
         </p>
         <p>
             <label>Verzeichnispfad:</label> 
             <input type="text" class="text-long" name="path" placeholder="" required>
-            <a href="#" class="tooltip3">Info
+            <a href="#" class="tooltip3"><i class="icon-help-circled" style="font-size:15px"></i>
                 <span><b>Info:</b><br></span>
             </a>
         </p>
@@ -53,7 +53,7 @@ if(isset($_POST['go'])) {
         <p>
             <label>Direktive:</label> 
             <input type="text" class="text-long" name="option[]" placeholder="" id="option">
-            <a href="#" class="tooltip3">Info
+            <a href="#" class="tooltip3"><i class="icon-help-circled" style="font-size:15px"></i>
                 <span><b>Info:</b><br>Wird als Kommentar hinzugefügt über dem Container eingefügt.</span>
             </a>
         </p>

@@ -260,26 +260,26 @@ Die Freigaben tauchen in der Netzwerkumgebung auf und können bei Bedarf auch al
     <form action="index.php?p=samba&s=shares" method="POST">
         <div class ="viertel-box"> 
             Freigabename 
-                <a href="#" class="tooltip3">?
+                <a href="#" class="tooltip3"><i class="icon-help-circled" style="font-size:13px"></i>
                 <span><b>Info:</b><br>Name der neuen Freigabe.
                 </span></a><br><br>
             Verzeichnispfad: 
-                <a href="#" class="tooltip3">?
+                <a href="#" class="tooltip3"><i class="icon-help-circled" style="font-size:13px"></i>
                 <span><b>Info:</b><br>Hier geben Sie den Pfad für das Verzeichniss an, dass SIe Freigeben möchten<br><br><b>Achtung:</b>
                     Hier muss der absolute Pfad angegeben werden!
                 </span></a><br><br>
             G&uuml;ltige Benutzer:
-                <a href="#" class="tooltip3">?
+                <a href="#" class="tooltip3"><i class="icon-help-circled" style="font-size:13px"></i>
                 <span><b>Info:</b><br>Hier können Benutzer angegeben werden, welche die Berechtigung haben, nach Passwortabfrage, dieses Verzeichnis zu benutzen.
                 </span></a><br><br>
             Schreibrechte f&uuml;r:
-                <a href="#" class="tooltip3">?
+                <a href="#" class="tooltip3"><i class="icon-help-circled" style="font-size:13px"></i>
                 <span><b>Info:</b><br>Hier können Benutzer angegeben werden, welche Schreibrechte erhalten sollen.<br><br>
                     Bitte trennen Sie die einzelnen Benutzer mit einem Komma.<br>
                     Beispiel: user1, user2, user3
                 </span></a><br><br>
             Schreibrechte für die Gruppe:
-                <a href="#" class="tooltip3">?
+                <a href="#" class="tooltip3"><i class="icon-help-circled" style="font-size:13px"></i>
                 <span><b>Info:</b><br>Hier können Sie Gruppen angeben, die Schreibrechte erhalten sollen.<br><br>
                     Bitte trennen Sie die einzelnen Gruppen mit einem Komma.<br>
                     Beispiel: group1, group2, group3

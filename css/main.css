@@ -933,7 +933,7 @@ pre.simple {
     resize: vertical;
 }
 
-#main fieldset textarea#console {
+#main textarea#console {
     background: #000;
     font: 1em "Ubuntu Mono", monospace;
     color: #fff;

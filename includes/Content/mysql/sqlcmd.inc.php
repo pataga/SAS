@@ -58,7 +58,7 @@ $dbModule = new \Classes\Module\MySQL\DBHandler($data);
             ?>
         </select>
         <input type="submit" name="exec" value="Ausf&uuml;hren" class="button black"><br><br>
-        <textarea style="width:400px;height:300px;" name="query"></textarea>
+        <textarea style="height:300px;" name="query" id="console"></textarea>
     </form>
 </fieldset>
 

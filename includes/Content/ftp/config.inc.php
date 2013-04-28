@@ -18,21 +18,21 @@
             <legend>Konfiguration</legend>
                 <div class="halbe-box">
                     <label>Servertype:</label>
-                            <a href="#" class="tooltip3">?
+                            <a href="#" class="tooltip3"><i class="icon-help-circled" style="font-size:15px"></i>
                                 <span><b>Info:</b><br>
                                     Hier geben Sie den Servertypen an. MAn unterscheidet hier zwischen Inetd und Standalone. 
                                 </span>
                             </a>
                         <input type="text" class="text-long" name="servertype" placeholder="bspw. standalone"><br><br><br>
                     <label>Servername:</label>
-                            <a href="#" class="tooltip3">?
+                            <a href="#" class="tooltip3"><i class="icon-help-circled" style="font-size:15px"></i>
                                 <span><b>Info:</b><br>
                                    Hier geben Sie den Namen des Servers an. 
                                 </span>
                             </a>
                         <input type="text" class="text-long" name="servername"><br><br><br>
                     <label>Umask:</label>
-                            <a href="#" class="tooltip3">?
+                            <a href="#" class="tooltip3"><i class="icon-help-circled" style="font-size:15px"></i>
                                 <span><b>Info:</b><br>
                                     Mit Umask können Sie Zugriffsrechte für neu erstelle Dateien und Verzeichnisse festlegen.
                                     Zu beachten ist hierbei, dass die Rechtvergabe nicht wie bei den allgemeinen Rechten unter Linux erfolgen.<br><br>
@@ -44,14 +44,14 @@
                             </a>
                         <input type="text" class="text-long" name="umask" placeholder="Standard: 022"><br><br><br>
                     <label>Administrator E-Mail:</label>
-                             <a href="#" class="tooltip3">?
+                             <a href="#" class="tooltip3"><i class="icon-help-circled" style="font-size:15px"></i>
                                 <span><b>Info:</b><br>
                                    Hier geben Sie die E-Mail Adresse des Server Administrators an. 
                                 </span>
                             </a>
                         <input type="text" class="text-long" name="adminmail"><br><br><br>
                     <label>Port:</label>
-                             <a href="#" class="tooltip3">?
+                             <a href="#" class="tooltip3"><i class="icon-help-circled" style="font-size:15px"></i>
                                 <span><b>Info:</b><br>
                                    Die "Port"-Anweisung gibt an, auf welchen Port der Server im Standalone auf ankommende Verbindung wartet. 
                                 </span>
@@ -71,7 +71,7 @@
 
                 <div class="viertel-box">
                     Default Root
-                        <a href="#" class="tooltip3">?
+                        <a href="#" class="tooltip3"><i class="icon-help-circled" style="font-size:15px"></i>
                                 <span><b>Info:</b><br>
                                    Wenn Sie Default Root aktivieren landet jeder Benutzer nach dem Login in seinem eigenen Homeverzeichnis.
                                 </span>

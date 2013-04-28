@@ -86,7 +86,7 @@ $noteres = $mysql->Query('SELECT * FROM sas_home_notes ORDER BY id DESC LIMIT 1'
                 <td><?php echo $userswholi ?></td>
             </tr>
             <tr>
-                <td>Load:  <a href="#" class="tooltip">Info
+                <td>Load:  <a href="#" class="tooltip"><i class="icon-help-circled"></i>
                     <span><b>Was ist das?</b><br>
                         1. Wert: letzte Minute<br>
                         2. Wert: letzten 5 Min.<br>
