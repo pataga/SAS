@@ -1,22 +1,21 @@
 <?php
 
-
-    /**
-    * Licensed under The Apache License
-    *
-    * @copyright Copyright 2012-2013 Patrick Farnkopf, Tanja Weiser, Gabriel Wanzek (PaTaGa)
-    * @link https://github.com/pataga/SAS
-    * @since SAS v1.0.0
-    * @license Apache License v2 (http://www.apache.org/licenses/LICENSE-2.0.txt)
-    * @author Patrick Farnkopf
-    *
-    */
+/**
+ * Licensed under The Apache License
+ *
+ * @copyright Copyright 2012-2013 Patrick Farnkopf, Tanja Weiser, Gabriel Wanzek (PaTaGa)
+ * @link https://github.com/pataga/SAS
+ * @since SAS v1.0.0
+ * @license Apache License v2 (http://www.apache.org/licenses/LICENSE-2.0.txt)
+ * @author Patrick Farnkopf
+ *
+ */
 
     if (isset($_POST['select'])) {
         $session->setServerId($_POST['id']);
         $session->selectServer();
         $loader->reload();
-    } else if (isset($_POST['name']) && isset($_POST['shost']) && isset($_POST['sport']) && isset($_POST['suser']) && isset($_POST['spass'])) {
+    } else if (isset($_POST['addserver'])) {
         $mysql
         ->tableAction('sas_server_data')
         ->insert([
@@ -30,24 +29,21 @@
         ]);
 
         $loader->reload();
+    } else if (isset($_POST['edit'])) {
+        require_once './includes/Content/home/editserver.inc.php';
+    } else if (isset($_POST['save'])) {
+        $d = $_POST;
+        $mysql->tableAction('sas_server_data')->update(
+          ['name'=>$d['name'], 'domains'=>$d['sdomains'], 'host'=>$d['shost'], 'user'=>$d['suser'],
+           'port'=>$d['sport'], 'soapPort'=>$d['soapPort'], 'soapKey'=>$d['soapPort']],
+          ['id' => $d['id']]
+        );
+
+        if (isset($d['spass'])){
+            $mysql->tableAction('sas_server_data')->update(['pass' => $d['spass']], ['id' => $d['id']]);
+        }
     }
 
-
-
-    /* STATUS - ÜBERPRÜFUNG 
-
-    $servers = ['localhost', '46.38.238.216', 'apfel.local'];
-    $sc = count($servers);
-
-    for ($i = 0; $i <= $sc ; $i++) {
-            @$fp = fsockopen($servers[$i], "22", $errno, $errstr, 0.05); //timeout reicht wenn SAS im RZ-Netz ist
-            if (!$fp) {
-                //offline
-            } else {
-                //online
-            }
-        }
-    */
 ?>
 <h3>Server auswählen</h3>
 <fieldset>
@@ -120,12 +116,7 @@
                 <input type="text" name="suser" class="text-long" placeholder="Standard: root" required></p>
             <p><label>SSH Passwort: </label>
                 <input type="password" name="spass" class="text-long" required></p>
-            <input type="submit" value="Server eintragen" class="button green">
+            <input type="submit" value="Server eintragen" class="button green" name="addserver">
         </table>
     </form>
 </fieldset>
-
-
-
-
-
