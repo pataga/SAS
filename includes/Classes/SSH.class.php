@@ -47,11 +47,13 @@ class SSH {
         if ($this->con) return true;
         try {
             if (!($this->connection = ssh2_connect($this->host, $this->port)))
-                throw new \Classes\SSH\Exception('SSH Connection failed');
+                throw new \Classes\SSH\Exception('SSH Connection failed', 1010);
             if (!ssh2_auth_password($this->connection, $this->user, $this->pass))
-                throw new \Classes\SSH\Exception('SSH Autentication failed');
+                throw new \Classes\SSH\Exception('SSH Autentication failed', 1011);
         } catch (\Classes\SSH\Exception $e) {
             $this->con = false;
+            \Classes\Main::Session()->unselectServer();
+            \Classes\Main::Loader()->reload();
             return false;
         }
         $this->con = true;

@@ -21,18 +21,20 @@ function __autoload($name) {
     require_once \Classes\Main\AutoLoad::getFilePath($name);
 }
 
-function exceptionErrorHandler($errno, $errstr, $errfile, $errline) {
-    throw new ErrorException($errstr, 0,$errno, $errfile, $errline);
-}
-
-set_error_handler('exceptionErrorHandler');
-
 function exception_handler($exception) {
-    $_SESSION = [];
-    session_destroy();
-    echo $exception;
-    require_once 'includes/Content/error/error.inc.php';
-    exit;
+    echo $exception->getCode();
+    switch ($exception->getCode()) {
+        case 0xFA:
+            \Classes\Main::Session()->unselectServer();
+            header('Location: index.php');
+            break;
+        default:
+            $_SESSION = [];
+            session_destroy();
+            echo $exception;
+            require_once 'includes/Content/error/error.inc.php';
+            exit;
+    }
 }
 
 set_exception_handler('exception_handler');
