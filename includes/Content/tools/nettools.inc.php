@@ -12,34 +12,40 @@
 */
 if (isset($_POST['timeout'])) {
     $timeout = (int)$_POST['timeout'];
+    //Fehlerunterdrückung wenn diese Funktion deaktiviert sein sollte (kommt bei manchen PHP-Installationen vor..)
     @set_time_limit($timeout);
+
 }
 
 if (isset($_POST['net'])) {
     $net = $_POST['net'];
-    switch ($net) {
-        case 'ping':
-            $out = $server->execute("ping ".$_POST['host']." -c 4 -W 5 -v");
-            break;
-        case 'traceroute':
-            $out = $server->execute("traceroute ".$_POST['host']." -w 3 -q 2 -m 15");
-            break;
-        case 'whois':
-            $out = $server->execute("whois ".$_POST['host']." -H ");
-            break;
-        case 'ifc':
-            $out = $server->execute("ifconfig");
-            break;
-        case 'me':
-            $win = true;
-            $me = true;
-            $out =  "<b>Ihre IP: </b><br>".$_SERVER['REMOTE_ADDR']."<br><br>";
-            $out .= "<b>Ihr User-Agent: </b><br>".$_SERVER['HTTP_USER_AGENT']."<br><br>";
-            break;
-        default:
-            $win = true;
-            $out = "Keine Ausgabe vorhanden. Bitte führen Sie eine Aktion durch.";
-            break;
+    if ((strlen($_POST['host']) == 0) && ($net == 'ping' || $net == 'traceroute' || $net == 'whois')) {
+                $out = "<b>Fehler:</b> Bitte geben Sie einen Host an!";
+    } else {
+        switch ($net) {
+            case 'ping':                  
+                $out = $server->execute("ping ".$_POST['host']." -c 4 -W 5 -v");
+                break;
+            case 'traceroute':
+                $out = $server->execute("traceroute ".$_POST['host']." -w 3 -q 2 -m 15");
+                break;
+            case 'whois':
+                $out = $server->execute("whois ".$_POST['host']." -H ");
+                break;
+            case 'ifc':
+                $out = $server->execute("ifconfig");
+                break;
+            case 'me':
+                $win = true;
+                $me = true;
+                $out =  "<b>Ihre IP: </b><br>".$_SERVER['REMOTE_ADDR']."<br><br>";
+                $out .= "<b>Ihr User-Agent: </b><br>".$_SERVER['HTTP_USER_AGENT']."<br><br>";
+                break;
+            default:
+                $win = true;
+                $out = "Keine Ausgabe vorhanden. Bitte führen Sie eine Aktion durch.";
+                break;
+        }
     }
 }
 else {

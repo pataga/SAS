@@ -1,7 +1,17 @@
 <?php
 
-if(isset($_POST['go'])) {
-	//$server->execute('echo -ne "\n# Include SAS-Directory Settings\nInclude sas-dd.conf\n" > /etc/apache2/apache2.conf && touch /etc/apache2/sas-dd.conf');
+//prüfe ob /etc/apache2/sas-dd.conf existiert -- wenn nicht, erstelle diese
+$sasddexis = $server->execute('if [ -f /etc/apache2/sas-dd.conf ]; then echo "true"; fi');
+if ($sasddexis != "true") {
+    $server->execute('touch /etc/apache2/sas-dd.conf');
+}
+
+//prüfe ob 'Include sas-dd.conf' in der datei /etc/apache2/apache2.conf steht
+$checkconf = $server->execute('cat /etc/apache2/apache2.conf | grep sas-dd');
+$cfstatus = (preg_match('/Include sas-dd.conf/', $checkconf)) ? true : false ;
+
+if(isset($_POST['insertinc'])) {
+	$server->execute('echo -ne "\n# Include SAS-Directory Settings\nInclude sas-dd.conf\n" >> /etc/apache2/apache2.conf && service apache2 reload');
 }
 
 
@@ -12,7 +22,7 @@ if(isset($_POST['go'])) {
     var i = $('#option').size() + 1;
 
     $('#onemore').live('click', function () {
-        $('<p><label>Direktive:</label><input type="text" id="option" name="option[]" class="text-long"><a href="#" id="away">Entfernen</a></p>').appendTo(scntDiv);
+        $('<p><label>Direktive:</label><input type="text" id="option" name="option[]" class="text-long"><a href="#" id="away"><i class="icon-cancel-squared"></i> Entfernen</a></p>').appendTo(scntDiv);
         i++;
         return false;
     });
@@ -43,7 +53,7 @@ if(isset($_POST['go'])) {
             </a>
         </p>
         <p>
-            <label>Verzeichnispfad:</label> 
+            <label>absoluter Verzeichnispfad:</label> 
             <input type="text" class="text-long" name="path" placeholder="" required>
             <a href="#" class="tooltip3"><i class="icon-help-circled" style="font-size:15px"></i>
                 <span><b>Info:</b><br></span>
@@ -54,10 +64,10 @@ if(isset($_POST['go'])) {
             <label>Direktive:</label> 
             <input type="text" class="text-long" name="option[]" placeholder="" id="option">
             <a href="#" class="tooltip3"><i class="icon-help-circled" style="font-size:15px"></i>
-                <span><b>Info:</b><br>Wird als Kommentar hinzugefügt über dem Container eingefügt.</span>
+                <span><b>Info:</b><br>Wird als Kommentar hinzugefügt in der ersten Zeile des Containers eingefügt.</span>
             </a>
         </p>
-        <a href="#" id="onemore" class="button black">weitere Direktive(n) hinzufügen</a>
+        <a href="#" id="onemore" class="button black"><i class="icon-plus-squared"></i> weitere Direktive hinzufügen</a>
         <br><br>
         </div>
         <input type="submit" value="Eintragen" class="button black">
@@ -67,10 +77,19 @@ if(isset($_POST['go'])) {
 <div class="zweidrittel-box lastbox">
 </div>
 <fieldset>
-	<legend>Bearbeiten</legend>
-</fieldset>
-<fieldset>
-	<legend>Löschen</legend>
+    <legend>Konfiguration einbinden</legend>
+    <p>Damit diese Direktiven in die Apache2-Konfigurationen eingebunden werden muss die Datei "<code>sas-dd.conf</code>" in der Konfigurationsdatei "<code>apache2.conf</code>" eingebunden sein.</p>
+    <b>Status:</b><br>
+<?php if ($cfstatus): ?>
+    Datei ist eingebunden.
+<?php else: ?>
+    Datei ist nicht eingebunden.
+    <hr>
+    <p>Klicken Sie jetzt auf "einbinden" um die Datei "<code>sas-dd.conf</code>" einzubinden. Anschließend werden die  Apache2-Konfiguration neugeladen.</p>
+    <form action="?p=apache&s=directorys" method="post">
+        <input type="submit" name="insertinc" value="einbinden" class="button green">
+    </form>
+<?php endif; ?>    
 </fieldset>
 <div class="clearfix"></div>
 <fieldset>
