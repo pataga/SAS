@@ -17,7 +17,7 @@ interface System {
      *
      * Default: 2
      **************************************************************/
-    const SYSTEM_DEBUG_LEVEL = 2;
+    const SYSTEM_DEBUG_LEVEL = 1;
 
 
 
