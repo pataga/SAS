@@ -28,6 +28,7 @@
     <li><a href="#si">Statusinformationen</a></li>
     <li><a href="#sp">Spoiler</a></li>
     <li><a href="#tab">Tabs</a></li>
+    <li><a href="#icons">Icons</a></li>
 </ol>
 
 <hr>
@@ -549,4 +550,17 @@ drwxrwxrwx  8 root    root    4096 Jan 18  2011 sqlbuddy/
 <div id="tab3content" style="display:none;">
     <h5>Tab Nummer 3!</h5>
     <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla </p>
+</div>
+<hr>
+<!--
+   =========================== ICONS ===========================
+-->
+<h3 id="icons">Icons</h3>
+<b><i class="icon-info"></i> Verwendung:</b>
+<pre>
+<?=htmlentities('<i class="icon-info"></i>')?>
+</pre>
+<h4>Verfügbare Icons</h4>
+<div style="height:330px;width:700px; overflow-x:scroll; overflow-y: hidden;box-shadow:0 0 5px #ccc;"> 
+<img src="css/iconhelp.png" alt="">
 </div>

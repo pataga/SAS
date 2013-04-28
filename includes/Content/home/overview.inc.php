@@ -38,7 +38,14 @@ if (isset($_POST['notiz'])) {
     $mysql->Query($sql);
 }
 
-$noteres = $mysql->Query('SELECT * FROM sas_home_notes ORDER BY id DESC LIMIT 1');
+if (isset($_POST['oldnc'])) {
+    $notereslist = $mysql->Query('SELECT * FROM sas_home_notes ORDER BY id DESC LIMIT 75');
+} 
+
+$noteres = $mysql->Query('SELECT * FROM sas_home_notes ORDER BY id DESC LIMIT 1');    
+
+
+
 
 ?>
 
@@ -95,7 +102,7 @@ $noteres = $mysql->Query('SELECT * FROM sas_home_notes ORDER BY id DESC LIMIT 1'
                 </td>
                 <td><?php echo $serverload; ?></td>
             </tr>
-        </table>
+        </table>#disposition
         <br>
         <a href="<?php $_SERVER['SCRIPT_NAME'] ?>" onclick="location.reload();" class="button white">Aktualisieren</a>
     </div>
@@ -163,13 +170,28 @@ $noteres = $mysql->Query('SELECT * FROM sas_home_notes ORDER BY id DESC LIMIT 1'
 </fieldset>
 
 <fieldset>
-    <legend>Notizbuch</legend>
-    <form action="index.php?p=home" method="POST">
+    <legend id='notelist'>Notizbuch</legend>
+    <form action="index.php?p=home#notelist" method="POST">
 <?php while ($row = $noteres->fetchObject()): ?>
     <textarea name="notizen"><?= $row->note ?></textarea>
     <input type="submit" class="button black" name="notiz" value="Notizen speichern">
     <br><br>
-    <span>Gespeichert um:<br><b><?= date("d.m.Y H:i:s",strtotime($row->notetime)) ?></b> von <b><?= $row->author ?></b></span>
-    </form>
+    <span>
+        Gespeichert um:
+        <br>
+        <b><?= date("d.m.Y H:i:s",strtotime($row->notetime)) ?></b> von <b><?= $row->author ?></b>
+        <br>
+        <br>
+        <input type="submit" name="oldnc" value="ältere Notizen anzeigen" class="invs">
+    </span>
 <?php endwhile; ?>
+    </form>
+<?php if (isset($notereslist)) {
+    echo "<div class='clearfix'></div><br><ul class='log' stlye='color:#222;'>";
+    while ($row = $notereslist->fetchObject()) {
+        echo "<li><b>[".date("d.m.Y H:i:s",strtotime($row->notetime))." von ".$row->author."]</b> ".$row->note."</li>";
+    }
+    echo "</ul>";
+}
+?>
 </fieldset>
