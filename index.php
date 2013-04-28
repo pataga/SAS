@@ -80,6 +80,8 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     $user = $session->authChallenge($_POST['username'],$_POST['password']);
     if ($user)
         \Classes\Main::setUser($user);
+    else
+        echo $session->loginErrorMessage();        
     $loader->reload();
 }
 

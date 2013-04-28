@@ -202,6 +202,14 @@ class Session {
     }
 
     /**
+     * Login-Fehlermeldung
+     * @return Errormelding
+     */
+    public function loginErrorMessage() {
+        return '<p style="width:500px;font-family:sans-serif;font-size:14px;font-weight:700;padding:10px;margin:5px auto;border:1px solid #881414;border-radius:5px;background:#C62525;color:#fff;">Login fehlgeschlagen!</p>';
+    }
+
+    /**
      * Server Session
      * @param String
      */
