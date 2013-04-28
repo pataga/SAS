@@ -25,7 +25,8 @@
             'user' => $_POST['suser'], 
             'pass' => $_POST['spass'], 
             'soapPort' => $_POST['soapPort'], 
-            'soapKey' => $_POST['soapKey']
+            'soapKey' => $_POST['soapKey'],
+            'domains' => $_POST['domains']
         ]);
 
         $loader->reload();
@@ -105,7 +106,7 @@
             <p><label>Server Host:</label>
                 <input type="text" name="shost" placeholder="bspw.: 203.7.201.90" class="text-long required"></p>
             <p><label>Server Domain(s):</label><a href="#" class="tooltip">Info<span><b>Achtung:</b><br>Bitte kein Protokoll (z.B.: http://) angeben!<br>Mehrere Domains durch Kommatrennung möglich, ohne Leerzeichen</span></a>
-                <input type="text" name="sport" class="text-long"></p>         
+                <input type="text" name="domains" class="text-long"></p>
             <p><label>SOAP Port:</label>
                 <input type="text" name="soapPort" placeholder="Daemon Port" class="text-long"></p>
             <p><label>SOAP Key:</label>
