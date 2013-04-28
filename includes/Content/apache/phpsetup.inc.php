@@ -44,8 +44,8 @@ if (isset($_POST['pinisave'])) {
 <h3>PHP</h3>
 <div class="halbe-box">
 	<fieldset>
+		<legend>Informationen</legend>
 		<form action="?p=apache&s=php" method="post">
-			<legend>Informationen</legend>
 			<h6>Status</h6>
 				<?=$ps?>
 				<br>

@@ -14,32 +14,23 @@ if(isset($_POST['insertinc'])) {
 	$server->execute('echo -ne "\n# Include SAS-Directory Settings\nInclude sas-dd.conf\n" >> /etc/apache2/apache2.conf && service apache2 reload');
 }
 
-
+// Dieser Part hat mich zwei Tassen Kaffee und eine Apache Neuinstallation gekostet [auf dem Schlauch stehen ist nervtötend!]
+if (isset($_POST['go'])) {
+    $cmdp1 = "";
+    foreach ($_POST['options'] as $value) {
+        $cmdp1 .= '\t'.$value.'\n';
+    }
+    $cmd = 'echo -ne "\n<Directory '.$_POST['path'].'>\n\t#'.$_POST['comment'].'\n'.$cmdp1.'</Directory>\n" >> /etc/apache2/sas-dd.conf';
+    $server->execute($cmd);
+}
 ?>
 <script>
-	$(function () {
-    var scntDiv = $('#variable');
-    var i = $('#option').size() + 1;
-
-    $('#onemore').live('click', function () {
-        $('<p><label>Direktive:</label><input type="text" id="option" name="option[]" class="text-long"><a href="#" id="away"><i class="icon-cancel-squared"></i> Entfernen</a></p>').appendTo(scntDiv);
-        i++;
-        return false;
-    });
-
-    $('#away').live('click', function () {
-        if (i > 2) {
-            $(this).parents('p').remove();
-            i--;
-        }
-        return false;
-    });
-});
+$(function(){var e=$("#variable");var t=$("#option").size()+1;$("#onemore").live("click",function(){$('<p><label>Direktive:</label><input type="text" id="option" name="options[]" class="text-long"><a href="#" id="away"><i class="icon-cancel-squared"></i> Entfernen</a></p>').appendTo(e);t++;return false});$("#away").live("click",function(){if(t>2){$(this).parents("p").remove();t--}return false})})
 </script>
-
 <h3>&lt;Directory&gt;</h3>
 <fieldset>
-	Die meisten Einstellungen in der httpd.conf, die das Verhalten der veröffentlichten Website betreffen, sind Verzeichnisoptionen. &lt;Directory&gt; ... &lt;/Directory&gt; ist der wichtigste der entsprechenden Container.
+	Die meisten Einstellungen in der httpd.conf, die das Verhalten der veröffentlichten Website betreffen, sind Verzeichnisoptionen. &lt;Directory&gt; ... &lt;/Directory&gt; ist der wichtigste der entsprechenden Container.<br>
+    <b>Hinweis:</b> Damit die Direktiven übernommen werden, müssen Sie die Konfiguration des Apache2 neuladen. Das können Sie <a href="?p=apache&s=control">hier</a> tun.
 </fieldset>
 <div class="zweidrittel-box">
 	<fieldset>
@@ -53,7 +44,7 @@ if(isset($_POST['insertinc'])) {
             </a>
         </p>
         <p>
-            <label>absoluter Verzeichnispfad:</label> 
+            <label>Verzeichnispfad:</label> 
             <input type="text" class="text-long" name="path" placeholder="" required>
             <a href="#" class="tooltip3"><i class="icon-help-circled" style="font-size:15px"></i>
                 <span><b>Info:</b><br></span>
@@ -62,7 +53,7 @@ if(isset($_POST['insertinc'])) {
         <div id="variable" style="margin-bottom:25px;">
         <p>
             <label>Direktive:</label> 
-            <input type="text" class="text-long" name="option[]" placeholder="" id="option">
+            <input type="text" class="text-long" name="options[]" placeholder="" id="option">
             <a href="#" class="tooltip3"><i class="icon-help-circled" style="font-size:15px"></i>
                 <span><b>Info:</b><br>Wird als Kommentar hinzugefügt in der ersten Zeile des Containers eingefügt.</span>
             </a>
@@ -70,7 +61,7 @@ if(isset($_POST['insertinc'])) {
         <a href="#" id="onemore" class="button black"><i class="icon-plus-squared"></i> weitere Direktive hinzufügen</a>
         <br><br>
         </div>
-        <input type="submit" value="Eintragen" class="button black">
+        <input type="submit" value="Eintragen" name="go" class="button black">
 	</form>
 </fieldset>
 </div>
