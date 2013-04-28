@@ -95,9 +95,10 @@ if (isset($_POST['action']) && $_POST['action'] == 1) {
 <fieldset style="">
     <legend>Datens&auml;tze</legend>
     <div class="scroll">
-    <table>
+    <table id="sortable" class="s">
+        <thead>
         <tr>
-            <th></th>
+            <td></td>
     <?
     $dbModule->setTable($_GET['table']);
     $dbModule->setDatabase($_GET['database']);
@@ -109,6 +110,8 @@ if (isset($_POST['action']) && $_POST['action'] == 1) {
     }
     ?>
         </tr>
+        </thead>
+        <tbody>
     <?
     $dbModule->setMaxRows(50);
     $data = $dbModule->getData();
@@ -141,6 +144,7 @@ if (isset($_POST['action']) && $_POST['action'] == 1) {
         <?
     }
     ?>
+    </tbody>
     </table>
     </div>
 </fieldset>
