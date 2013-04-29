@@ -76,7 +76,7 @@
             <td>
                 <?php
                 try {
-                    if (!fsockopen($row->host, "22", $errno, $errstr, 0.1))
+                    if (!@fsockopen($row->host, "22", $errno, $errstr, 0.1))
                         throw new Exception('Connection failed', 0xA1);
                     echo '<span class="ok">erreichbar</span>';
                 } catch (Exception $e) {
