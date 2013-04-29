@@ -118,4 +118,23 @@ function checkVersion() {
 		return "err";
 	}
 }
+
+/**
+ * Generiert ein Passwort mit [A..z] [0..9]
+ *
+ * @param $length Länge des Passworts das generiert werden soll
+ * @return $pw Das generierte Passwort
+ * @author Gabriel Wanzek
+ */
+
+function generatePassword($length) {
+    $pw = "";
+    $char = str_shuffle("qwertzuiopasdfghjklyxcvbnmQWERTZUIOPASDFGHJKLYXCVBNM1234567890");
+    $char_c = strlen($char);
+    for ($i = 0; $i < $length; $i++) { // get rand. char and add it to $pw
+       $pw .= $char[mt_rand(0, $char_c -1)];
+    }
+    return $pw;
+}
+
 ?>
