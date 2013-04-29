@@ -87,7 +87,7 @@ function getVersion() {
 
 /**
  * Gibt die aktuelle Version zurück die bei GitHub verfügbar ist
- * @return string Version
+ * @return string Version oder False bei Fehler
  */
 function getNewestVersion() {
    if (extension_loaded('openssl')) {
@@ -104,7 +104,7 @@ function getNewestVersion() {
 
 /**
  * Vergleicht installierte mit Repoversion
- * @return string Version
+ * @return bool or string
  */
 function checkVersion() {
 	$vechk = getNewestVersion();
