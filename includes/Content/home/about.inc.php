@@ -10,7 +10,7 @@
 * @version 1.0
 *
 */
-require './includes/Content/main/module_functions.inc.php';
+require_once './includes/Content/main/module_functions.inc.php';
 ?>
 <h3>Über Server Admin System</h3>
 <fieldset>

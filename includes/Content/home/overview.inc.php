@@ -10,7 +10,7 @@
  * @version 0.8
  *
  */
-require './includes/Content/main/module_functions.inc.php';
+require_once './includes/Content/main/module_functions.inc.php';
 
 $load = $server->execute("uptime");        //für Serverload
 $uptime = $server->execute("who -b");      //für Systemstartdatum

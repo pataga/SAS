@@ -1,4 +1,4 @@
-<?php require './includes/Content/main/module_functions.inc.php'; ?>
+<?php require_once './includes/Content/main/module_functions.inc.php'; ?>
 <div class="clearfix"></div>
  </div>
  	<div class="clearfix"></div>
