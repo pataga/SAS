@@ -161,7 +161,7 @@ echo $service['apache'] ? '<span class="aktiv">aktiv</span>' : '<span class="ina
     </div>
     <br><br>
 </fieldset>
-<? if (isset($_GET['success'])): ?>
+<? if (isset($_GET['success']) && isset($_POST['notiz'])): ?>
     <span class="success">Die Notiz wurde erfolgreich gespeichert.</span><br>
 <? endif; ?>
 <fieldset id='notelist'>
