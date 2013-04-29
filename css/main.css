@@ -52,21 +52,21 @@ Inhaltsverzeichnis:
     font-family: 'Ubuntu';
     font-style: normal;
     font-weight: 400;
-    src: local('Ubuntu'), url(fonts/ubuntu-400.woff) format('woff');
+    src: url(fonts/ubuntu-400.woff) format('woff');
 }
 
 @font-face {
     font-family: 'Ubuntu Bold';
     font-style: normal;
     font-weight: 700;
-    src: local('Ubuntu Bold'), url(fonts/ubuntu-700.woff) format('woff');
+    src: url(fonts/ubuntu-700.woff) format('woff');
 }
 
 @font-face {
     font-family: 'Ubuntu Mono';
     font-style: normal;
     font-weight: 400;
-    src: local('Ubuntu Mono'), local('UbuntuMono-Regular'), url(fonts/ubuntu-mono.woff) format('woff');
+    src: url(fonts/ubuntu-mono.woff) format('woff');
 }
 
 /* ==========================================================================
