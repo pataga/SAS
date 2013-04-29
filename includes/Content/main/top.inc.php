@@ -15,9 +15,11 @@
         <!-- JS -->
         <script src="js/vendor/modernizr-2.6.1.min.js"></script>
         <script src="js/vendor/jquery-1.8.2.min.js"></script>
+        <script src="js/vendor/tablesorter/jquery.tablesorter.min.js"></script>
+        <script src="js/vendor/mousetrap.min.js"></script>
         <script src="js/main.js"></script>
-        <script src="js/notifications.js"></script> 
-        <script src="js/tablesorter/jquery.tablesorter.min.js"></script>
+        <script src="js/notifications.js"></script>
+        <script src="js/shortcuts.js"></script>
         <!-- external JS -->
         <script type="text/javascript" src="https://www.google.com/jsapi"></script>
         <!--[if IE]>
@@ -36,13 +38,13 @@
             </div>
             <div class="usermenu" style="#{VISIBILITY}">
                 <img src="img/profile/ubuntu.png" alt="Profilbild">
-                <h3>#{USERNAME}</h3><a href="?server=change">Server wechseln</a><br>
-                <a href="javascript:poppy();">SAS Notification Center
+                <h3>#{USERNAME}</h3><a href="?server=change"><i class="icon-database"></i> Server wechseln</a><br>
+                <a href="javascript:poppy();"><i class="icon-list"></i>SAS Notification Center
                     <div id="notify">
                         <div class="notify_bubble">#{NOTIFICATION_COUNT}</div>
                     </div>
                 </a><br>
-                <a href="?user=logout">Logout</a>
+                <a href="?user=logout"><i class="icon-export"></i> Logout</a>
             </div>
         </div>
         <div id="wrapper">

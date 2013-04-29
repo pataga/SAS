@@ -10,7 +10,9 @@
 * @version 1.0
 *
 */
-?><h3>Über Server Admin System</h3>
+require './includes/Content/main/module_functions.inc.php';
+?>
+<h3>Über Server Admin System</h3>
 <fieldset>
     <legend>Allgemein</legend>
     <div class="halbe-box">
@@ -21,7 +23,7 @@
     <div class="halbe-box lastbox">
         <h5>Grundsystem:</h5><p>Patrick Farnkopf</p>
         <h5>Lizenz:</h5><p>Lizenziert unter der <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache Lizenz v2.0</a></p>
-        <h5>Version:</h5><p>1.0.1</p>
+        <h5>Version:</h5><p><?=getVersion()?></p>
     </div>
 </fieldset>
 <fieldset>
@@ -251,9 +253,9 @@
     <div class="halbe-box lastbox">
         <h5>Scripts:</h5>
         <ul>
+            <li><b>JS - Mousetrap: </b><a href="http://craig.is/killing/mice" target="_blank">Apache License</a></li>
             <li><b>jQuery - JavaScript library:</b> <a href="http://jquery.org/license/" target="_blank">MIT-License</a></li>
             <li><b>jQuery - Tablesorter: </b><a href="http://tablesorter.com/docs/" target="_blank">MIT-License</a></li>
-            <li><b>jQuery - FastLiveFilter: </b><a href="http://anthonybush.com/projects/jquery_fast_live_filter/" target="_blank">FreeBSD 2-clause License</a></li>
             <li><b>Modernizr</b> - <a href="http://modernizr.com/license/" target="_blank">MIT License</a></li>
             <li><b>Normalize.css</b> - <a href="https://github.com/necolas/normalize.css/" target="_blank">MIT License</a></li>
             <li><b>HTML5Boilerplate: </b><a href="https://github.com/h5bp/html5-boilerplate/" target="_blank">MIT License</a></li>

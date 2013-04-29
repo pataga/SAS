@@ -67,7 +67,7 @@ if (!$server->isInstalled('apache')) {
             </tr>
         </table>
         <br>
-        <a href="?p=apache" class="button white">Aktualisieren</a>
+        <a href="?p=apache" class="button white"><i class="icon-arrows-ccw"></i>  Aktualisieren</a>
     </div>
     <div class="halbe-box lastbox">
         <h5>Aktive Module:</h5>

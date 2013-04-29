@@ -55,6 +55,15 @@
         </sub>
 
         <sub>
+            <id>10</id>
+            <name>shortcuts</name>
+            <display></display>
+            <path>includes/Content/home/shortcuts.inc.php</path>
+            <window>included</window>
+            <pFlag>0x40</pFlag>
+        </sub>
+
+        <sub>
             <id>8</id>
             <name>notification</name>
             <display></display>

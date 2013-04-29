@@ -73,4 +73,49 @@ function getSwapData($input, $data) {
 	}
 }
 
+/**
+ * Gibt die installierte Version zurück
+ * @return string Version
+ */
+function getVersion() {
+	$verfile = "./data/version.txt";
+	if (file_exists($verfile)) {
+		return file_get_contents($verfile);
+	}
+}
+
+
+/**
+ * Gibt die aktuelle Version zurück die bei GitHub verfügbar ist
+ * @return string Version
+ */
+function getNewestVersion() {
+   if (extension_loaded('openssl')) {
+        if ($stream = @fopen('https://raw.github.com/pataga/SAS/master/data/version.txt', 'r')) {
+            return stream_get_contents($stream);
+        fclose($stream);
+        }
+        else
+        	return false;
+    }       
+    else 
+    	return false;
+}
+
+/**
+ * Vergleicht installierte mit Repoversion
+ * @return string Version
+ */
+function checkVersion() {
+	$vechk = getNewestVersion();
+	if ($vechk) {
+		if (preg_match('/'.getVersion().'/', $vechk)){
+			return true;	//aktuell
+		} else {
+			return false; 	//nicht aktuell
+		}
+	} else {
+		return "err";
+	}
+}
 ?>
