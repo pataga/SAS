@@ -92,16 +92,29 @@ if (isset($_POST['action']) && $_POST['action'] == 1) {
 
 <? if (isset($_GET['database']) && isset($_GET['table']) && $_GET['table'] != '0') { ?>
 
-<fieldset style="">
+<fieldset>
     <legend>Datens&auml;tze</legend>
+    <?php
+    $dbModule->setTable($_GET['table']);
+    $dbModule->setDatabase($_GET['database']);
+    $dbModule->setMaxRows(isset($_GET['maxrows']) ? $_GET['maxrows'] : 30);
+    $dbModule->setPageNumber(isset($_GET['pnr']) ? $_GET['pnr'] : 1);
+    $data = $dbModule->getData();
+    echo "<div style='width:100px;text-align:left;float:right;'><span style='margin:60px 0px;'>Seite ".(isset($_GET['pnr'])?$_GET['pnr']:1)." / ".ceil($dbModule->getDataCount()/$dbModule->getMaxRows())."</span></div>";
+    echo "<b>Seite</b>";
+    for ($i=1; $i<=ceil($dbModule->getDataCount()/$dbModule->getMaxRows()); $i++) {
+        echo "<a style='margin:5px 5px;' href='?p=mysql&s=db&database=".$_GET['database']."&table=".$_GET['table']."&pnr=".$i."'>".$i."</a>";
+    }
+
+    ?>
+    <hr>
     <div class="scroll">
     <table id="sortable" class="s">
         <thead>
         <tr>
             <td></td>
     <?
-    $dbModule->setTable($_GET['table']);
-    $dbModule->setDatabase($_GET['database']);
+
     $cols = $dbModule->getColumns();
     foreach ($cols as $key => $col) {
         ?>
@@ -113,8 +126,8 @@ if (isset($_POST['action']) && $_POST['action'] == 1) {
         </thead>
         <tbody>
     <?
-    $dbModule->setMaxRows(50);
-    $data = $dbModule->getData();
+
+
     foreach ($data as $key => $row) {
         ?>
         <tr>
@@ -132,7 +145,7 @@ if (isset($_POST['action']) && $_POST['action'] == 1) {
             if (!is_numeric($k) || !is_int($k)) {
             ?>
                 <td>
-                    <?=$val?>
+                    <span style="margin:15px; 0px;"><?=$val?></span>
                     <input type="hidden" name="<?=$k?>" value="<?=$val?>">
                 </td>
             <?

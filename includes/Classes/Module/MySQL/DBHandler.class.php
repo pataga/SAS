@@ -54,9 +54,16 @@ class DBHandler extends \Classes\MySQL {
     }
 
     public function getData() {
-        $from = $this->maxRows*$this->pageNumber;
-        $to = $this->maxRows*$this->pageNumber+$this->maxRows-1;
-        return $this->Query("SELECT * FROM ".$this->selectedTable." LIMIT ".$from.", ".$to)->fetchAll();
+        $from = $this->maxRows*($this->pageNumber-1);
+        return $this->Query("SELECT * FROM ".$this->selectedTable." LIMIT ".$from.", ".$this->maxRows)->fetchAll();
+    }
+
+    public function getMaxRows() {
+        return $this->maxRows;
+    }
+
+    public function getDataCount() {
+        return $this->Query('SELECT * FROM '.$this->selectedTable)->getRowsCount();
     }
     
     public function exec($sql) {
