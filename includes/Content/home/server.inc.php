@@ -40,7 +40,7 @@
           ['id' => $d['id']]
         );
 
-        if (isset($d['spass'])){
+        if (isset($d['spass']) && !empty($d['spass'])){
             $mysql->tableAction('sas_server_data')->update(['pass' => $d['spass']], ['id' => $d['id']]);
         }
     }

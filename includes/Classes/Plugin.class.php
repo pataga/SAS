@@ -27,10 +27,15 @@ class Plugin {
 
         Main::MySQL()
         ->tableAction('sas_plugins')
-        ->insert(['name' => $misc['name'], 'version' => $misc['version']]);
+        ->insert(['name' => $misc['name'], 'version' => $misc['version'], 'content' => isset($misc['content'])?$misc['content']:0]);
+
+        if (isset($misc['content']) && file_exists(Singleton::getRootDir().'/tmp/plugins/'.$sessionId.'/'.$misc['content'])) {
+            mkdir(Singleton::getRootDir().'/includes/Plugins/Content/'.$misc['name']);
+            copy(Singleton::getRootDir().'/tmp/plugins/'.$sessionId.'/'.$misc['content'], Singleton::getRootDir().'/includes/Plugins/Content/'.$misc['name'].'/'.$misc['content']);
+        }
 
         if ($activate) {
-            $scripts = $setup['scripts'];
+            $scripts = isset($setup['scripts']) ? $setup['scripts'] : false;
             $hId = Plugin::getHighestId();
             if (is_array($scripts)) {
                 foreach ($scripts as $key => $value) {
@@ -59,7 +64,7 @@ class Plugin {
                 }
             }
 
-            $sql = $setup['sql'];
+            $sql = isset($setup['sql']) ? $setup['sql'] : false;
             if (is_array($sql)) {
                 foreach ($sql as $key => $value) {
                     $queries = file_get_contents(Singleton::getRootDir().'/tmp/plugins/'.$sessionId.'/'.$value);
