@@ -943,7 +943,8 @@ pre.simple {
 
 #main textarea#console {
     background: #fff;
-    font: 1em "Ubuntu Mono", monospace;
+    font: 13px "Ubuntu Mono", monospace;
+    line-height: 1.2;
     color: #000;
     padding: 5px 7px; 
     width: 630px;
