@@ -7,7 +7,7 @@
 * @copyright Copyright 2012-2013 Patrick Farnkopf, Tanja Weiser, Gabriel Wanzek (PaTaGa)
 * @link https://github.com/pataga/SAS
 * @since SAS v1.0.0
-* @license Apache License v2 (http://www.apache.org/licenses/LICENSE-2.0.txt
+* @license Apache License v2 (http://www.apache.org/licenses/LICENSE-2.0.txt)
 * @author Patrick Farnkopf
 *
 */
@@ -16,6 +16,7 @@ namespace Classes\Main;
 class Debug implements \Config\System {
 
 	private $errorCount, $errors;
+    private static $errorMessage;
 
 	public function __construct() {
 		$this->errorCount = 0;
@@ -60,6 +61,14 @@ class Debug implements \Config\System {
 	public function getError() {
 		return $this->errors;
 	}
+
+    public static function getErrorMessage() {
+        return self::$errorMessage;
+    }
+
+    public static function setErrorMessage($msg) {
+        self::$errorMessage = $msg;
+    }
 }
 
 ?>

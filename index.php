@@ -31,7 +31,7 @@ function exception_handler($exception) {
         default:
             $_SESSION = [];
             session_destroy();
-            echo $exception;
+            \Classes\Main\Debug::setErrorMessage($exception);
             require_once 'includes/Content/error/error.inc.php';
             exit;
     }
@@ -76,6 +76,9 @@ $user = NULL;
 
 //Remote Instance
 $mysql_remote = null;
+
+//Init Scripts
+\Classes\ScriptLoader::loadMySQLScripts();
 
 //Authentifizierung
 if (isset($_POST['username']) && isset($_POST['password'])) {

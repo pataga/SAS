@@ -15,6 +15,7 @@
 <pre>
 <?php
 if (isset($debug)) echo $debug->getError();
+else echo \Classes\Main\Debug::getErrorMessage();
 ?>
 </pre>
 	</body>
