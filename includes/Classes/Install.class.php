@@ -99,8 +99,9 @@ class Install {
               `ftp` tinyint(3) NOT NULL,
               `apache` tinyint(3) NOT NULL,
               `samba` tinyint(3) NOT NULL,
+              `domains` varchar(255) DEFAULT NULL,
               PRIMARY KEY (`id`)
-            ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1");
+            ) ENGINE=InnoDB DEFAULT CHARSET=latin1");
 
         $db->Query("DROP TABLE IF EXISTS `sas_server_mysql`");
         $db->Query("CREATE TABLE `sas_server_mysql` (
@@ -111,22 +112,6 @@ class Install {
               `username` varchar(255) NOT NULL,
               `password` varchar(255) NOT NULL,
               PRIMARY KEY (`id`)
-            ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1");
-
-        $db->Query("DROP TABLE IF EXISTS `sas_user_permission`");
-        $db->Query("CREATE TABLE `sas_user_permission` (
-              `uid` int(10) NOT NULL,
-              `sid` int(10) NOT NULL,
-              `apache` tinyint(3) NOT NULL,
-              `postfix` tinyint(3) NOT NULL,
-              `mysql` tinyint(3) NOT NULL,
-              `ftp` tinyint(3) NOT NULL,
-              `samba` tinyint(3) NOT NULL,
-              `control` tinyint(3) NOT NULL,
-              `webuser` tinyint(3) NOT NULL,
-              `tools` tinyint(3) NOT NULL,
-              `plugins` tinyint(3) NOT NULL,
-              PRIMARY KEY (`uid`,`sid`)
             ) ENGINE=InnoDB DEFAULT CHARSET=latin1");
 
         $db->Query("DROP TABLE IF EXISTS `sas_users`");
@@ -138,22 +123,44 @@ class Install {
               `admin` tinyint(3) NOT NULL,
               PRIMARY KEY (`id`),
               UNIQUE KEY `userunique` (`username`)
-            ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1");
+            ) ENGINE=InnoDB DEFAULT CHARSET=latin1");
 
         $db->Query("DROP TABLE IF EXISTS `sas_home_notes`");
         $db->Query("CREATE TABLE `sas_home_notes` (
-              `id` int(10) NOT NULL,
-              `author` varchar(50) NOT NULL,
-              `note` text CHARACTER SET utf8 NOT NULL,
+              `id` int(11) NOT NULL AUTO_INCREMENT,
+              `author` varchar(255) DEFAULT NULL,
+              `note` text NOT NULL,
               `notetime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
               PRIMARY KEY (`id`)
-            ) ENGINE=InnoDB DEFAULT CHARSET=latin1");
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8");
 
         $db->Query("DROP TABLE IF EXISTS `sas_user_permission`");
         $db->Query("CREATE TABLE `sas_user_permission` (
+              `pid` int(11) unsigned NOT NULL,
+              `sid` int(11) unsigned NOT NULL,
               `uid` int(11) unsigned NOT NULL,
               `bitmask` bigint(20) NOT NULL,
-              PRIMARY KEY (`uid`)
+              PRIMARY KEY (`pid`,`sid`,`uid`)
+            ) ENGINE=InnoDB DEFAULT CHARSET=latin1");
+
+        $db->Query("DROP TABLE IF EXISTS `sas_plugins`");
+        $db->Query("CREATE TABLE `sas_plugins` (
+              `id` int(10) NOT NULL AUTO_INCREMENT,
+              `name` varchar(255) NOT NULL,
+              `version` varchar(255) NOT NULL,
+              `repo` varchar(255) NOT NULL,
+              `content` varchar(255) NOT NULL,
+              `installed` tinyint(3) NOT NULL DEFAULT '0',
+              PRIMARY KEY (`id`)
+            ) ENGINE=InnoDBDEFAULT CHARSET=latin1");
+
+        $db->Query("DROP TABLE IF EXISTS `sas_plugin_scripts`");
+        $db->Query("CREATE TABLE `sas_plugin_scripts` (
+              `id` int(10) NOT NULL AUTO_INCREMENT,
+              `pid` int(10) NOT NULL,
+              `script` varchar(255) NOT NULL,
+              `type` int(10) NOT NULL,
+              PRIMARY KEY (`id`)
             ) ENGINE=InnoDB DEFAULT CHARSET=latin1");
     }
 
