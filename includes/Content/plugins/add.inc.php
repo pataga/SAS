@@ -11,11 +11,16 @@
 *
 */
 
+if (isset($_POST['url'])) {
+    \Classes\Plugin::install($_POST['url']);
+}
 ?>
 <br>
 <fieldset>
     <legend>Plugin installieren</legend>
     <label>Git URL:</label>
-    <input type="text" class="text-long" name="url">
-    <input type="submit" class="button black" name="install" value="installieren">
+    <form action="?p=plugins&s=add" method="post">
+        <input type="text" class="text-long" name="url">
+        <input type="submit" class="button black" name="install" value="installieren">
+    </form>
 </fieldset>

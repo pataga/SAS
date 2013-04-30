@@ -15,12 +15,14 @@ namespace Classes;
 
 class Plugin {
     public static function install($repo, $activate = true) {
-        if (!file_exists(Singleton::getRootDir().'plugins/tmp'))
-            mkdir(Singleton::getRootDir().'tmp/plugins'.session_id(), 0777, true);
+        $sessionId = session_id();
+        echo $sessionId;
+        if (!file_exists(Singleton::getRootDir().'/tmp/plugins/'.$sessionId))
+            @mkdir(Singleton::getRootDir().'/tmp/plugins/'.$sessionId, 0777, true);
 
-        Git::create_new(Singleton::getRootDir().'tmp/plugins/'.session_id(), $repo);
+        Git::create_new(Singleton::getRootDir().'/tmp/plugins/'.$sessionId, $repo);
 
-        $setup = parse_ini_file(Singleton::getRootDir().'tmp/plugins/plugin.ini', true);
+        $setup = parse_ini_file(Singleton::getRootDir().'/tmp/plugins/'.$sessionId.'/plugin.ini', true);
 
         $misc = $setup['misc'];
 
@@ -33,7 +35,8 @@ class Plugin {
             $hId = Plugin::getHighestId();
             if (is_array($scripts)) {
                 foreach ($scripts as $key => $value) {
-                    copy(Singleton::getRootDir().'tmp/plugins/'.session_id().'/'.$key.'.script.php', Singleton::getRootDir().'includes/Plugins/Scripts/'.$misc['name'].'/'.$key.'.script.php');
+                    mkdir(Singleton::getRootDir().'/includes/Plugins/Scripts/'.$misc['name']);
+                    copy(Singleton::getRootDir().'/tmp/plugins/'.$sessionId.'/'.$key.'.script.php', Singleton::getRootDir().'/includes/Plugins/Scripts/'.$misc['name'].'/'.$key.'.script.php');
 
                     switch ($value) {
                         case 'MySQLScript':
@@ -60,7 +63,7 @@ class Plugin {
             $sql = $setup['sql'];
             if (is_array($sql)) {
                 foreach ($sql as $key => $value) {
-                    $queries = file_get_contents(Singleton::getRootDir().'tmp/plugins/'.session_id().'/'.$value);
+                    $queries = file_get_contents(Singleton::getRootDir().'/tmp/plugins/'.$sessionId.'/'.$value);
                     $data = explode(';', $queries);
                     foreach ($data as $key => $quy) {
                         Main::MySQL()->query($quy);
@@ -71,7 +74,8 @@ class Plugin {
             Main::MySQL()->Query("UPDATE sas_plugins SET installed = 1 WHERE id = $hId");
         }
 
-        Directory::removeDir(Singleton::getRootDir().'plugins/tmp', false);
+        Directory::removeDir(Singleton::getRootDir().'/tmp/plugins/'.$sessionId, false);
+        rmdir(Singleton::getRootDir().'/tmp/plugins/'.$sessionId);
     }
 
     public static function getInstalledPlugins() {

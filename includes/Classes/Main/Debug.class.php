@@ -16,6 +16,7 @@ namespace Classes\Main;
 class Debug implements \Config\System {
 
 	private $errorCount, $errors;
+    private static $errorMessage;
 
 	public function __construct() {
 		$this->errorCount = 0;
@@ -60,6 +61,14 @@ class Debug implements \Config\System {
 	public function getError() {
 		return $this->errors;
 	}
+
+    public static function getErrorMessage() {
+        return self::$errorMessage;
+    }
+
+    public static function setErrorMessage($msg) {
+        self::$errorMessage = $msg;
+    }
 }
 
 ?>

@@ -31,7 +31,7 @@ function exception_handler($exception) {
         default:
             $_SESSION = [];
             session_destroy();
-            echo $exception;
+            \Classes\Main\Debug::setErrorMessage($exception);
             require_once 'includes/Content/error/error.inc.php';
             exit;
     }
