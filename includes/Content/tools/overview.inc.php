@@ -13,5 +13,5 @@
 <a href="?p=tools&s=hddinfo"><div class="viertel-box boxitem"><p class="long">Festplatten-<br>	Informationen</p></div></a>
 <a href="?p=tools&s=hwinfo"><div class="viertel-box boxitem"><p class="long">Hardware-<br>Informationen</p></div></a>
 <a href="?p=tools&s=ramload"><div class="viertel-box boxitem"><p class="long">Arbeitsspeicher-<br>Informationen</p></div></a>
-<a href="?p=tools&s=nettools"><div class="viertel-box boxitem"><p class="long">Netzwerk-<br>Tools</p></div></a>
+<a href="?p=tools&s=nettools"><div class="viertel-box lastbox boxitem"><p class="long">Netzwerk-<br>Tools</p></div></a>
 <div class="clearfix"></div>
