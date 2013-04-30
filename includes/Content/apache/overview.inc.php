@@ -23,30 +23,30 @@ $en_mods_a2 = $server->execute("ls -1 /etc/apache2/mods-enabled/ | grep load");
 $version_a2_ = explode("\n", $version_a2);
 $version_a2_x = explode(": ", $version_a2_[0]);
 $en_mods_a2_ = explode(".load", $en_mods_a2);
-
-if (isset($_POST['a2-stop']) && isset($_POST['a2-stop-h'])) {           //wenn hidden+submit ..
-    $server->execute("service apache2 stop");                              //.. führe das aus
-} elseif (isset($_POST['a2-start']) && isset($_POST['a2-start-h'])) {
-    $server->execute("service apache2 start");
+$out = "";
+if (isset($_POST['a2-stop'])) {           //wenn hidden+submit ..
+    $out = $server->execute("service apache2 stop");                              //.. führe das aus
+} elseif (isset($_POST['a2-start'])) {
+    $out = $server->execute("service apache2 start");
 }
-if (isset($_POST['a2-reload']) && isset($_POST['a2-reload-h'])) {           //wenn hidden+submit ..
-    $server->execute("service apache2 reload");                              //.. führe das aus
+if (isset($_POST['a2-reload'])) {           //wenn hidden+submit ..
+    $out = $server->execute("service apache2 reload");                              //.. führe das aus
 }
-if (isset($_POST['a2-restart']) && isset($_POST['a2-restart-h'])) {           //wenn hidden+submit ..
-    $server->execute("service apache2 restart");                              //.. führe das aus
+if (isset($_POST['a2-restart'])) {           //wenn hidden+submit ..
+    $out = $server->execute("service apache2 restart");                              //.. führe das aus
 }
 if (isset($_POST['a2_install'])) {           //wenn hidden+submit ..
     $server->execute("apt-get install apache2 -fy");
-    $mysql->Query("UPDATE sas_server_data SET apache=1 WHERE id = " . $_SESSION['server_id']);                              //.. führe das aus
+    $mysql->Query("UPDATE sas_server_data SET apache=1 WHERE id = " . $_SESSION['server']['id']);                              //.. führe das aus
 }
 ?>
 <h3>Apache-Übersicht</h3>
 <?php
 if (!$server->isInstalled('apache')) {
-    echo '<fieldset>
+    echo '<br><fieldset>
     <legend>Apache2 installieren</legend>
     <span class="error"> <b>Fehler:</b> Apache2 ist nicht installiert.</span><br>
-    <form action="?p=apache" method="post">
+    <form action="?p=apache#action" method="post">
     <p>Wenn Sie den Apache2 jetzt installieren möchten klicken Sie hier: <input type="submit" name="a2_install" value="Apache2 installieren" class="button black">
     </p>
     </form>
@@ -79,38 +79,48 @@ foreach ($en_mods_a2_ as $key => $value) {
     </div>
     <div class="clearfix"></div>
 </fieldset>
+<?php if (isset($_POST['action'])): ?>
+    <span class="info" id="action">
+        <img src="./img/load.gif" style="float:right;width:24px;height:24px;padding:7px;" >Aktion wird ausgeführt. Einen Moment bitte...
+        <hr>
+<pre class="simple">
+<?=$out?>
+</pre>
+    </span>
+    <script>setTimeout('window.location.href="?p=apache"', 2750)</script>
+<?php endif; ?>
 </fieldset>
 <h4>Aktionen</h4>
 <fieldset>
     <div class="drittel-box">
         <h5>Start / Stop</h5>
         <p><b><?php echo ($server->getServiceStatus('apache2')) ? 'Stoppt' : 'Startet'; ?> den Webserver sofort.</b></p>
-        <form action="?p=apache" method="post">
+        <form action="?p=apache#action" method="post">
             <?php
-            echo ($server->getServiceStatus('apache2')) ? '<input type="hidden" name="a2-stop-h"><input type="submit" name="a2-stop" value="Stop" class="button pink">' : '<input type="hidden" name="a2-start-h"><input type="submit" name="a2-start" value="Start" class="button green">';
+            echo ($server->getServiceStatus('apache2')) ? '<input type="hidden" name="action"><input type="submit" name="a2-stop" value="Stop" class="button pink">' : '<input type="hidden" name="action"><input type="submit" name="a2-start" value="Start" class="button green">';
             ?>
         </form>
     </div>
     <div class="drittel-box">
         <h5>Reload</h5>
         <p><b>Lädt die Apache Konfiguration neu</b></p>
-        <form action="?p=apache" method="post">
-            <input type="hidden" name="a2-reload-h">
+        <form action="?p=apache#action" method="post">
+            <input type="hidden" name="action">
             <input type="submit" name="a2-reload" value="neu laden" class="button darkblue">
         </form>
     </div>
     <div class="drittel-box lastbox">
         <h5>Restart</h5>
         <p><b>Startet den Webserver neu</b></p>
-        <form action="?p=apache" method="post">
-            <input type="hidden" name="a2-restart-h">
+        <form action="?p=apache#action" method="post">
+            <input type="hidden" name="action">
             <input type="submit" name="a2-restart" value="neustarten" class="button darkblue">
         </form>
     </div>
     <div class="clearfix"></div>
 </fieldset>
 <?php
-if (isset($_POST['a2-restart']) || isset($_POST['a2-reload']) || isset($_POST['a2-restart'])) {
+if (isset($_POST['action'])) {
     echo '<span class="info"><b>Hinweis:</b> Bitte beachten Sie, dass der Status ggf. nach einer Aktion manuell aktuelisiert werden muss. Klicken Sie hierzu einfach den Aktualisieren-Button. Dies kommt durch die Zeitverzögerung der Verbindung zum Server zustande.</span>';
 }
 ?>

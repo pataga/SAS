@@ -7,43 +7,45 @@
 * @since SAS v1.0.0
 * @license Apache License v2 (http://www.apache.org/licenses/LICENSE-2.0.txt)
 * @author Gabriel Wanzek
-* @version 1.0
+* @version 1.1
 *
 */
-$info ="";
-if (isset($_POST['a2-stop']) && isset($_POST['a2-stop-h'])) {
-    $server->execute("service apache2 stop");
-    $info = "Apache2 wurde gestoppt";
+$out = "";
+if (isset($_POST['a2-stop'])) {
+    $out = $server->execute("service apache2 stop");
 } elseif (isset($_POST['a2-start'])) {
-    $server->execute("service apache2 start");
-    $info = "Apache2 wurde gestartet";
+    $out = $server->execute("service apache2 start");
 }
 if (isset($_POST['a2-reload'])) {
-    $server->execute("service apache2 reload");
-    $info = "Apache2-Konfigurationsdateien wurden neu geladen";
+    $out = $server->execute("service apache2 reload");
 }
 if (isset($_POST['a2-restart'])) {
-    $server->execute("service apache2 restart");
-    $info = "Apache2 wurden neu gestartet";
+    $out = $server->execute("service apache2 restart");
 }
 if (isset($_POST['a2-f-reload'])) {
-    $server->execute("service apache2 force-reload");
-    $info = "Apache2-Konfigurationsdateien wurden neu geladen";
+    $out = $server->execute("service apache2 force-reload");
 }
 ?>
 <h3>Apache-Steuerung</h3>
+<?php if (isset($_POST['action'])): ?>
+    <span class="info" id="action">
+        <img src="./img/load.gif" style="float:right;width:24px;height:24px;padding:7px;" >Aktion wird ausgeführt. Einen Moment bitte...
+        <hr>
+<pre class="simple">
+<?=$out?>
+</pre>
+    </span>
+    <script>setTimeout('window.location.href="?p=apache&s=control"', 2750)</script>
+<?php endif; ?>
 <fieldset>
-    <?php if (isset($_POST['a2_action'])){
-        echo '<span class="success"><b>Info: </b>'.$info.'</span>';
-    }?>
     <div class="viertel-box">
         <h5>Start / Stop</h5>
         <p><b><?php echo ($server->getServiceStatus('apache2')) ? 'Stoppt' : 'Startet'; ?> den Webserver sofort.</b></p>
         <form action="<?php $_SERVER['SCRIPT_NAME'] ?>" method="post">
             <?php
-            echo ($server->getServiceStatus('apache2')) ? '<input type="hidden" name="a2-stop-h"><input type="submit" name="a2-stop" value="Stop" class="button pink">' : '<input type="hidden" name="a2-start-h"><input type="submit" name="a2-start" value="Start" class="button green">';
+            echo ($server->getServiceStatus('apache2')) ? '<input type="hidden" name="action"><input type="submit" name="a2-stop" value="Stop" class="button pink">' : '<input type="hidden" name="action"><input type="submit" name="a2-start" value="Start" class="button green">';
             ?>
-            <input type="hidden" name="a2_action">
+            <input type="hidden" name="action">
         </form>
     </div>
     <div class="viertel-box">
@@ -55,7 +57,7 @@ if (isset($_POST['a2-f-reload'])) {
         </p>
         <form action="<?php $_SERVER['SCRIPT_NAME'] ?>" method="post">
             <input type="submit" name="a2-reload" value="neu laden" class="button darkblue">
-            <input type="hidden" name="a2_action">
+            <input type="hidden" name="action">
         </form>
     </div>
     <div class="viertel-box">
@@ -67,7 +69,7 @@ if (isset($_POST['a2-f-reload'])) {
         </p>
         <form action="<?php $_SERVER['SCRIPT_NAME'] ?>" method="post">
             <input type="submit" name="a2-f-reload" value="neu laden" class="button darkblue">
-            <input type="hidden" name="a2_action">
+            <input type="hidden" name="action">
         </form>
     </div>
     <div class="viertel-box lastbox">
@@ -79,7 +81,7 @@ if (isset($_POST['a2-f-reload'])) {
         </p>
         <form action="<?php $_SERVER['SCRIPT_NAME'] ?>" method="post">
             <input type="submit" name="a2-restart" value="neu starten" class="button darkblue">
-            <input type="hidden" name="a2_action">
+            <input type="hidden" name="action">
         </form>
     </div>
     <div class="clearfix"></div>
