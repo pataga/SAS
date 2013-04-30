@@ -2,7 +2,7 @@
 Licensed under The Apache License
 - Copyright 2012-2013 Patrick Farnkopf, Tanja Weiser, Gabriel Wanzek (PaTaGa)
 - https://github.com/pataga/SAS
-- Apache License v2 (http://www.apache.org/licenses/LICENSE-2.0.txt
+- Apache License v2 (http://www.apache.org/licenses/LICENSE-2.0.txt)
 - Author: Gabriel Wanzek
 - Contributor: Patrick Farnkopf
 ========================================================================== */

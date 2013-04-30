@@ -1,17 +1,16 @@
 <?php
-
-
 /**
-* Licensed under The Apache License
-*
-* @copyright Copyright 2012-2013 Patrick Farnkopf, Tanja Weiser, Gabriel Wanzek (PaTaGa)
-* @link https://github.com/pataga/SAS
-* @since SAS v1.0.0
-* @license Apache License v2 (http://www.apache.org/licenses/LICENSE-2.0.txt)
-* @author Gabriel Wanzek
-* @version 0.8
-*
-*/
+ * Licensed under The Apache License
+ *
+ * @copyright Copyright 2012-2013 Patrick Farnkopf, Tanja Weiser, Gabriel Wanzek (PaTaGa)
+ * @link https://github.com/pataga/SAS
+ * @since SAS v1.0.0
+ * @license Apache License v2 (http://www.apache.org/licenses/LICENSE-2.0.txt)
+ * @author Gabriel Wanzek
+ * @version 0.8
+ *
+ */
+require_once './includes/Content/main/module_functions.inc.php';
 
 $load = $server->execute("uptime");        //für Serverload
 $uptime = $server->execute("who -b");      //für Systemstartdatum
@@ -20,7 +19,7 @@ $kernelversion = $server->execute("cat /proc/version");    //kernelversion
 $sekundentmp = $server->execute("cat /proc/uptime");       //zeit in sek. wie lang server an ist
 $hostname = $server->execute("hostname -s");       //gibt den Systemnamen/Hostnamen aus
 
-$loadpart = explode("load average:", $load);    
+$loadpart = explode("load average:", $load);
 $serverload = isset($loadpart[1]) ? $loadpart[1] : 0;
 
 $sekunden0 = explode(".", $sekundentmp);
@@ -34,19 +33,15 @@ $service = $server->serviceStatus();
 
 if (isset($_POST['notiz'])) {
     $sql = "INSERT INTO sas_home_notes (id, author, note, notetime) 
-    VALUES (NULL, '".$_SESSION['user']['name']."','".htmlspecialchars(mysql_real_escape_string($_POST['notizen']))."'  , CURRENT_TIMESTAMP);";
+    VALUES (NULL, '" . $_SESSION['user']['name'] . "','" . htmlspecialchars(mysql_real_escape_string($_POST['notizen'])) . "'  , CURRENT_TIMESTAMP);";
     $mysql->Query($sql);
 }
 
 if (isset($_POST['oldnc'])) {
     $notereslist = $mysql->Query('SELECT * FROM sas_home_notes ORDER BY id DESC LIMIT 75');
-} 
+}
 
-$noteres = $mysql->Query('SELECT * FROM sas_home_notes ORDER BY id DESC LIMIT 1');    
-
-
-
-
+$noteres = $mysql->Query('SELECT * FROM sas_home_notes ORDER BY id DESC LIMIT 1');
 ?>
 
 <h3>Serverübersicht</h3>
@@ -82,11 +77,11 @@ $noteres = $mysql->Query('SELECT * FROM sas_home_notes ORDER BY id DESC LIMIT 1'
                     window.setTimeout("upservtime()",1000); 
                     sek++;
                 }
-                upservtime(); <?php // aktualisiert die Uptime ständig neu. ?>
+                upservtime(); <?php // aktualisiert die Uptime ständig neu.  ?>
             </script>    
             <tr>
                 <td>Systemstart:</td>
-                <td><?php echo date("d.m.Y - H:i", strtotime($bootdate))." Uhr"; ?></td>
+                <td><?php echo date("d.m.Y - H:i", strtotime($bootdate)) . " Uhr"; ?></td>
             </tr>
             <tr class="odd">
                 <td>Eingeloggte User:</td>
@@ -94,26 +89,26 @@ $noteres = $mysql->Query('SELECT * FROM sas_home_notes ORDER BY id DESC LIMIT 1'
             </tr>
             <tr>
                 <td>Load:  <a href="#" class="tooltip"><i class="icon-help-circled"></i>
-                    <span><b>Was ist das?</b><br>
-                        1. Wert: letzte Minute<br>
-                        2. Wert: letzten 5 Min.<br>
-                        3. Wert: letzte 15 Min.
-                    </span></a>
+                        <span><b>Was ist das?</b><br>
+                            1. Wert: letzte Minute<br>
+                            2. Wert: letzten 5 Min.<br>
+                            3. Wert: letzte 15 Min.
+                        </span></a>
                 </td>
                 <td><?php echo $serverload; ?></td>
             </tr>
         </table>
         <br>
-        <a href="<?php $_SERVER['SCRIPT_NAME'] ?>" onclick="location.reload();" class="button white">Aktualisieren</a>
+        <a href="<?php $_SERVER['SCRIPT_NAME'] ?>" onclick="location.reload();" class="button white"><i class="icon-arrows-ccw"></i> Aktualisieren</a>
     </div>
     <div class="halbe-box lastbox">
         <table cellpadding="0" cellspacing="0">
             <tr>
                 <td>Apache 2:</td>
                 <td>
-                    <?php
-                    echo $service['apache'] ? '<span class="aktiv">aktiv</span>' : '<span class="inaktiv">inaktiv</span>';
-                    ?>
+<?php
+echo $service['apache'] ? '<span class="aktiv">aktiv</span>' : '<span class="inaktiv">inaktiv</span>';
+?>
                 </td>
             </tr>
             <tr>
@@ -143,53 +138,54 @@ $noteres = $mysql->Query('SELECT * FROM sas_home_notes ORDER BY id DESC LIMIT 1'
             <tr class="odd">
                 <td>Daemon:</td>
                 <td>
-                   <span class="notaviable">keine Information</span>
-                </td>
-            </tr>
-            <tr>
-                <td> N/A </td>
-                <td>
-                    <span class="notaviable">keine Information</span>
-                </td>
-            </tr>
-            <tr class="odd">
-                <td> N/A </td>
-                <td>
                     <span class="notaviable">keine Information</span>
                 </td>
             </tr>
             <tr>
-                <td> N/A </td>
+                <td>SAS-Version:</td>
                 <td>
-                    <span class="notaviable">keine Information</span>
+                    <?php
+                    $vercheck = checkVersion();
+                    if ($vercheck && is_bool($vercheck))
+                        echo '<span class="aktiv">aktuell</span>';
+                    elseif (!$vercheck)
+                        echo '<span class="inaktiv">nicht aktuell</span>';
+                    elseif ($vercheck == "err")
+                        echo '<span class="notaviable">keine Information</span>';
+                    else
+                        echo '<span class="notaviable">keine Information</span>';
+                    ?>
                 </td>
             </tr>
         </table>
     </div>
     <br><br>
 </fieldset>
-
-<fieldset>
-    <legend id='notelist'>Notizbuch</legend>
-    <form action="index.php?p=home#notelist" method="POST">
+<? if (isset($_GET['success']) && isset($_POST['notiz'])): ?>
+    <span class="success">Die Notiz wurde erfolgreich gespeichert.</span><br>
+<? endif; ?>
+<fieldset id='notelist'>
+    <legend>Notizbuch</legend>
+    <form action="index.php?p=home&success#notelist" method="POST">
 <?php while ($row = $noteres->fetchObject()): ?>
-    <textarea name="notizen"><?= $row->note ?></textarea>
-    <input type="submit" class="button black" name="notiz" value="Notizen speichern">
-    <br><br>
-    <span>
-        Gespeichert um:
-        <br>
-        <b><?= date("d.m.Y H:i:s",strtotime($row->notetime)) ?></b> von <b><?= $row->author ?></b>
-        <br>
-        <br>
-        <input type="submit" name="oldnc" value="ältere Notizen anzeigen" class="invs">
-    </span>
+            <textarea name="notizen"><?= $row->note ?></textarea>
+            <input type="submit" class="button black" name="notiz" value="Notizen speichern">
+            <br><br>
+            <span>
+                Gespeichert um:
+                <br>
+                <b><?= date("d.m.Y H:i:s", strtotime($row->notetime)) ?></b> von <b><?= $row->author ?></b>
+                <br>
+                <br>
+                <i class="icon-archive"></i> <input type="submit" name="oldnc" value="ältere Notizen anzeigen" class="invs">
+            </span>
 <?php endwhile; ?>
     </form>
-<?php if (isset($notereslist)) {
+<?php
+if (isset($notereslist)) {
     echo "<div class='clearfix'></div><br><ul class='log' stlye='color:#222;'>";
     while ($row = $notereslist->fetchObject()) {
-        echo "<li><b>[".date("d.m.Y H:i:s",strtotime($row->notetime))." von ".$row->author."]</b> ".$row->note."</li>";
+        echo "<li><b>[" . date("d.m.Y H:i:s", strtotime($row->notetime)) . " von " . $row->author . "]</b> " . $row->note . "</li>";
     }
     echo "</ul>";
 }

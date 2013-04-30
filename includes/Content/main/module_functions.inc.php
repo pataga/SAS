@@ -73,4 +73,68 @@ function getSwapData($input, $data) {
 	}
 }
 
+/**
+ * Gibt die installierte Version zurück
+ * @return string Version
+ */
+function getVersion() {
+	$verfile = "./data/version.txt";
+	if (file_exists($verfile)) {
+		return file_get_contents($verfile);
+	}
+}
+
+
+/**
+ * Gibt die aktuelle Version zurück die bei GitHub verfügbar ist
+ * @return string Version oder False bei Fehler
+ */
+function getNewestVersion() {
+   if (extension_loaded('openssl')) {
+        if ($stream = @fopen('https://raw.github.com/pataga/SAS/master/data/version.txt', 'r')) {
+            return stream_get_contents($stream);
+        fclose($stream);
+        }
+        else
+        	return false;
+    }       
+    else 
+    	return false;
+}
+
+/**
+ * Vergleicht installierte mit Repoversion
+ * @return bool or string
+ */
+function checkVersion() {
+	$vechk = getNewestVersion();
+	if ($vechk) {
+		if (preg_match('/'.getVersion().'/', $vechk)){
+			return true;	//aktuell
+		} else {
+			return false; 	//nicht aktuell
+		}
+	} else {
+		return "err";
+	}
+}
+
+/**
+ * Generiert ein Passwort mit [A..z] [0..9]
+ *
+ * @param $length Länge des Passworts das generiert werden soll
+ * @return $pw Das generierte Passwort
+ * @author Gabriel Wanzek
+ */
+
+function generatePassword($length) {
+    $pw = "";
+    $char = str_shuffle("qwertzuiopasdfghjklyxcvbnmQWERTZUIOPASDFGHJKLYXCVBNM1234567890");
+    $char_c = strlen($char);
+    for ($i = 0; $i < $length; $i++) { // get rand. char and add it to $pw
+       $pw .= $char[mt_rand(0, $char_c -1)];
+    }
+    return $pw;
+}
+
 ?>

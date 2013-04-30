@@ -52,21 +52,21 @@ Inhaltsverzeichnis:
     font-family: 'Ubuntu';
     font-style: normal;
     font-weight: 400;
-    src: local('Ubuntu'), url(fonts/ubuntu-400.woff) format('woff');
+    src: url(fonts/ubuntu-400.woff) format('woff');
 }
 
 @font-face {
     font-family: 'Ubuntu Bold';
     font-style: normal;
     font-weight: 700;
-    src: local('Ubuntu Bold'), url(fonts/ubuntu-700.woff) format('woff');
+    src: url(fonts/ubuntu-700.woff) format('woff');
 }
 
 @font-face {
     font-family: 'Ubuntu Mono';
     font-style: normal;
     font-weight: 400;
-    src: local('Ubuntu Mono'), local('UbuntuMono-Regular'), url(fonts/ubuntu-mono.woff) format('woff');
+    src: url(fonts/ubuntu-mono.woff) format('woff');
 }
 
 /* ==========================================================================
@@ -658,6 +658,14 @@ code.fancy {
     font-size: 1.0em;
 }
 
+code.keyboard {
+    border: 1px solid #222;
+    padding: 1px 3px;
+    border-radius: 2px;
+    background-color: #444;
+    color: #eee;
+}
+
 pre {
     white-space: pre-wrap;
     white-space: -moz-pre-wrap !important;
@@ -937,7 +945,7 @@ pre.simple {
     background: #fff;
     font: 1em "Ubuntu Mono", monospace;
     color: #000;
-    padding: 5px 7px;
+    padding: 5px 7px; 
     width: 630px;
     float: left;
     margin: 3px 10px 0 0;
