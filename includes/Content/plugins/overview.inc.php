@@ -22,10 +22,10 @@ $result = $mysql->tableAction('sas_plugins')->select();
 
 for ($i = 1; $row = $result->fetch(); $i++) {
 	if ($i == 3) {
-		echo '<a href="#LEER"><div class="viertel-box boxitem lastbox"><p><i>'.$row->name.'</i></p></div></a><div class="clearfix"></div>';
+		echo '<a href="?p=plugins&s=show&id='.$row->id.'"><div class="viertel-box boxitem lastbox"><p><i>'.$row->name.'</i></p></div></a><div class="clearfix"></div>';
 		$i = -1;
 	} else {
-		echo '<a href="#LEER"><div class="viertel-box boxitem"><p><i>'.$row->name.'</i></p></div></a>';
+		echo '<a href="?p=plugins&s=show&id='.$row->id.'"><div class="viertel-box boxitem"><p><i>'.$row->name.'</i></p></div></a>';
 	}
 }
 
