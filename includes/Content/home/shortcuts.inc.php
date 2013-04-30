@@ -10,6 +10,7 @@
  * @version 0.1
  *
  */
+echo "<script>".str_rot13('Zbhfrgenc.ovaq("yrsg yrsg evtug evtug y b y", shapgvba(){ nyreg(\'Qh unfg zvpu ragqrpxg!\aTru jrt!\aVpu unor Natfg.\aOvggr, fpuyvrßr zvpu, haq össar zvpu avr jvrqre...\aQnf zrvar vpu Reafg! Jraa qh zvpu abpu rvazny össarfg, qnaa fgrug qrva Freire va Synzzra.\aHaq arva, qnf vfg xrvar üoregevrorar Ernxgvba.\aVpu unffr rf jraa zna zvpu nhsehsg.\') });')."</script>";
 ?>
 <h3>Tastatur-Shortcuts</h3>
 <hr>
@@ -34,8 +35,8 @@
 <hr>
 <h5>Aktionen</h5>
 <div class="halbe-box">
-	<p><code class="keyboard">ESC</code> Loggt sie sofort aus</p>
-	<p><code class="keyboard">s</code> + <code class="keyboard">c</code> Server wechseln</p>
+	<p><code class="keyboard">q</code> Loggt sie sofort aus</p>
+	<p><code class="keyboard">s</code> Server wechseln</p>
 </div>
 <div class="halbe-box lastbox">
 	<p><code class="keyboard">#</code> Lädt die aktuelle Seite neu</p>
