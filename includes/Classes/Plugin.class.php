@@ -5,7 +5,7 @@
 *
 * @copyright Copyright 2012-2013 Patrick Farnkopf, Tanja Weiser, Gabriel Wanzek (PaTaGa)
 * @link https://github.com/pataga/SAS
-* @since SAS v1.0.0
+* @since SAS v1.1.0
 * @license Apache License v2 (http://www.apache.org/licenses/LICENSE-2.0.txt)
 * @author Patrick Farnkopf
 *
@@ -16,7 +16,6 @@ namespace Classes;
 class Plugin {
     public static function install($repo, $activate = true) {
         $sessionId = session_id();
-        echo $sessionId;
         if (!file_exists(Singleton::getRootDir().'/tmp/plugins/'.$sessionId))
             @mkdir(Singleton::getRootDir().'/tmp/plugins/'.$sessionId, 0777, true);
 

@@ -77,6 +77,9 @@ $user = NULL;
 //Remote Instance
 $mysql_remote = null;
 
+//Init Scripts
+\Classes\ScriptLoader::loadMySQLScripts();
+
 //Authentifizierung
 if (isset($_POST['username']) && isset($_POST['password'])) {
     $user = $session->authChallenge($_POST['username'],$_POST['password']);

@@ -13,6 +13,7 @@
 */
 
 namespace Classes;
+
 class MySQL implements \Config\MySQL {
     public function __construct($data = false) {
         try {
@@ -26,6 +27,7 @@ class MySQL implements \Config\MySQL {
             }
             $this->isAlive = true;
             $this->pdoInstance->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+            Scripting\MySQLScript::_OnConnect();
         } catch (\Exception $e) {
             $this->isAlive = false;
         }
@@ -47,6 +49,7 @@ class MySQL implements \Config\MySQL {
     */
     public function Query($query) {
         try {
+            Scripting\MySQLScript::_OnQueryExecute($query);
             $result = $this->pdoInstance->query($query);
             return new \Classes\MySQL\Result($result);
         } catch (\Exception $e) {
