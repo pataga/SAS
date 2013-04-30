@@ -21,6 +21,9 @@ function __autoload($name) {
     require_once \Classes\Main\AutoLoad::getFilePath($name);
 }
 
+//xdebug deaktivieren um auf exception_handler zugreifen
+if (function_exists('xdebug_disable')) { xdebug_disable(); }
+
 function exception_handler($exception) {
     echo $exception->getCode();
     switch ($exception->getCode()) {
