@@ -14,6 +14,19 @@
 namespace Classes;
 
 class Plugin {
+    public static function remove($id) {
+        $result = Main::MySQL()->tableAction('sas_plugins')
+            ->select(null, ['id' => $id]);
+        if ($row = $result->fetch()) {
+            Directory::removeDir(Singleton::getRootDir().'/includes/Plugins/Content/'.$row->name, false);
+            @rmdir(Singleton::getRootDir().'/includes/Plugins/Content/'.$row->name);
+            Directory::removeDir(Singleton::getRootDir().'/includes/Plugins/Scripts/'.$row->name, false);
+            @rmdir(Singleton::getRootDir().'/includes/Plugins/Scripts/'.$row->name);
+            Main::MySQL()->tableAction('sas_plugins')->delete(['id' => $id]);
+            Main::MySQL()->tableAction('sas_plugin_scripts')->delete(['pid' => $id]);
+        }
+    }
+
     public static function install($repo, $activate = true) {
         $sessionId = session_id();
         if (!file_exists(Singleton::getRootDir().'/tmp/plugins/'.$sessionId))
@@ -25,9 +38,29 @@ class Plugin {
 
         $misc = $setup['misc'];
 
+        if (file_exists(Singleton::getRootDir().'/includes/Plugins/Content/'.$misc['name'])) {
+            Directory::removeDir(Singleton::getRootDir().'/includes/Plugins/Content/'.$misc['name'], false);
+            rmdir(Singleton::getRootDir().'/includes/Plugins/Content/'.$misc['name']);
+        }
+
+        if (isset($_GET['id'])) {
+            Main::MySQL()
+                ->tableAction('sas_plugins')
+                ->delete(['id' => $_GET['id']]);
+            Main::MySQL()
+                ->tableAction('sas_plugins')
+                ->delete(['id' => $_GET['id']]);
+            Main::MySQL()
+                ->tableAction('sas_plugin_scripts')
+                ->delete(['pid' => $_GET['id']]);
+        } else {
+            Main::MySQL()->Query("DELETE FROM sas_plugins WHERE name = '".$misc['name']."'");
+            Main::MySQL()->Query("DELETE FROM sas_plugin_scripts WHERE pid NOT IN (SELECT id FROM sas_plugins)");
+        }
+
         Main::MySQL()
-        ->tableAction('sas_plugins')
-        ->insert(['name' => $misc['name'], 'version' => $misc['version'], 'content' => isset($misc['content'])?$misc['content']:0]);
+            ->tableAction('sas_plugins')
+            ->insert(['name' => $misc['name'], 'version' => $misc['version'], 'content' => isset($misc['content'])?$misc['content']:0, 'repo' => $repo]);
 
         if (isset($misc['content']) && file_exists(Singleton::getRootDir().'/tmp/plugins/'.$sessionId.'/'.$misc['content'])) {
             mkdir(Singleton::getRootDir().'/includes/Plugins/Content/'.$misc['name']);
@@ -37,9 +70,13 @@ class Plugin {
         if ($activate) {
             $scripts = isset($setup['scripts']) ? $setup['scripts'] : false;
             $hId = Plugin::getHighestId();
+            if (file_exists(Singleton::getRootDir().'/includes/Plugins/Scripts/'.$misc['name'])) {
+                Directory::removeDir(Singleton::getRootDir().'/includes/Plugins/Scripts/'.$misc['name'], false);
+                rmdir(Singleton::getRootDir().'/includes/Plugins/Scripts/'.$misc['name']);
+            }
+            mkdir(Singleton::getRootDir().'/includes/Plugins/Scripts/'.$misc['name']);
             if (is_array($scripts)) {
                 foreach ($scripts as $key => $value) {
-                    mkdir(Singleton::getRootDir().'/includes/Plugins/Scripts/'.$misc['name']);
                     copy(Singleton::getRootDir().'/tmp/plugins/'.$sessionId.'/'.$key.'.script.php', Singleton::getRootDir().'/includes/Plugins/Scripts/'.$misc['name'].'/'.$key.'.script.php');
 
                     switch ($value) {
