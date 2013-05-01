@@ -178,15 +178,6 @@
         </sub>
 
         <sub>
-            <id>4</id>
-            <name>directories</name>
-            <display>Verzeichnisse</display>
-            <path>includes/Content/ftp/directories.inc.php</path>
-            <window>included</window>
-            <pFlag>0x08</pFlag>
-        </sub>
-
-        <sub>
             <id>5</id>
             <name>stats</name>
             <display>Statistiken</display>
