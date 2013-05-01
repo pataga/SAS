@@ -233,15 +233,6 @@
         </sub>
 
         <sub>
-            <id>3</id>
-            <name>adduser</name>
-            <display>Benutzer anlegen</display>
-            <path>includes/Content/mysql/useradd.inc.php</path>
-            <window>included</window>
-            <pFlag>0x04</pFlag>
-        </sub>
-
-        <sub>
             <id>4</id>
             <name>db</name>
             <display>Datenbank Verwaltung</display>
