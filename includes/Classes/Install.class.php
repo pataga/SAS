@@ -133,6 +133,7 @@ class Install {
               `notetime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
               PRIMARY KEY (`id`)
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8");
+        $db->Query("INSERT INTO `sas_home_notes` (`id`, `author`, `note`, `notetime`) VALUES (NULL, 'sas', 'Hier k&ouml;nnen Sie Notizen eintragen. Diese werden f&uuml;r alle Benutzer sichtbar sein.', NULL);");
 
         $db->Query("DROP TABLE IF EXISTS `sas_user_permission`");
         $db->Query("CREATE TABLE `sas_user_permission` (
