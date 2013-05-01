@@ -37,11 +37,7 @@ $module = $server->execute('proftpd --list',1);
 			ProFTPD (Pro File Transfer Protocoll Daemon) ist ein freier FTP-Server, der am häufigsten genutzt wird.
 	</fieldset>
 		<form action="index.php?p=ftp" method="POST">
-	<fieldset>	
-		<legend>Restart</legend>
-			<input type="submit" class="button black" name="restart" value="neustarten">
-		</form>
-	</fieldset>
+	
 <div class="halbe-box">
 	<fieldset>
 		<legend>Version</legend>
