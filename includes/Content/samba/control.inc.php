@@ -34,10 +34,8 @@ Wenn Sie keine Erfahrungen mit dem Samba Dienst haben sollten Sie sich vor einer
 
 <?php
 
-$datei = file("/etc/samba/smb.conf");
-foreach($datei AS $meine_datei){
-    echo $meine_datei;
-}
+$datei = $server->execute("cat /etc/samba/smb.conf");
+echo $datei;
 ?>
 
 
