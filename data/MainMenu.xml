@@ -296,15 +296,6 @@
         </sub>
 
         <sub>
-            <id>3</id>
-            <name>config</name>
-            <display>Konfiguration</display>
-            <path>includes/Content/samba/config.inc.php</path>
-            <window>included</window>
-            <pFlag>0x04</pFlag>
-        </sub>
-
-        <sub>
             <id>4</id>
             <name>control</name>
             <display>Steuerung</display>
