@@ -14,6 +14,9 @@
 //Starte Session
 session_start();
 
+//Skript nach 180Sek. (3Min.) abbrechen
+set_time_limit(180);
+
 require_once 'includes/Classes/Main/Autoload.class.php';
 
 //Lade benötigte Klassen
