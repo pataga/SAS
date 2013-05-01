@@ -10,7 +10,6 @@
  *
  */
 
-
 if (isset($_POST['search'])) {
    $string = $_POST['aptcache'];
    $output = $server->execute('apt-cache search '.$string,2);
@@ -23,9 +22,9 @@ if (isset($_POST['search'])) {
 
 }
 
-if (isset($_POST['install'])) {
+if (isset($_POST['aptgetinstall'])) {
     $packetname = $_POST['aptgetinstall'];
-    $server->execute('apt-get install '.$packetname. '-y -f');
+    $server->execute('apt-get install '.$packetname. ' -y -f');
 }
 
  ?>
@@ -33,7 +32,7 @@ if (isset($_POST['install'])) {
 <h3>Paket Installation</h3>
 <form action="index.php?p=system&s=install" method="POST">
     <fieldset>  
-        <legend>Paketsuche</legend>	
+        <legend>Paketsuche</legend> 
         <div class="halbe-box">
             <input type="text" class="text-long" name="aptcache">
             <br><br><br>
@@ -44,6 +43,7 @@ if (isset($_POST['install'])) {
             Gefundene Pakete: <br>
             <div class="listbox">
                 <?
+                    if (isset($packet) && is_array($packet))
                     foreach ($packet as $value) {
                         echo $value['name']."<br>";
                      }
@@ -58,5 +58,4 @@ if (isset($_POST['install'])) {
         <br><br><br>
         <input type="submit" class="button green" name="install" value="installieren">
     </fieldset>
-</from>
-
+</form>
