@@ -190,7 +190,7 @@
             <id>5</id>
             <name>stats</name>
             <display>Statistiken</display>
-            <path>includes/Content/ftp/module.inc.php</path>
+            <path>includes/Content/ftp/stats.inc.php</path>
             <window>included</window>
             <pFlag>0x10</pFlag>
         </sub>
