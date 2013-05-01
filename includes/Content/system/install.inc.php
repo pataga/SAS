@@ -6,9 +6,28 @@
  * @link https://github.com/pataga/SAS
  * @since SAS v1.0.0
  * @license Apache License v2 (http://www.apache.org/licenses/LICENSE-2.0.txt)
- * @author 
+ * @author Tanja Weiser
  *
  */
+
+
+if (isset($_POST['search'])) {
+   $string = $_POST['aptcache'];
+   $output = $server->execute('apt-cache search '.$string,2);
+
+    $packet = array();
+    for ($i = 0; $i < count($output); $i++) {
+        $line = explode(' - ', $output[$i]);
+        $packet[$i]['name'] = $line[0];
+    }
+
+}
+
+if (isset($_POST['install'])) {
+    $packetname = $_POST['aptgetinstall'];
+    $server->execute('apt-get install '.$packetname. '-y -f');
+}
+
  ?>
 
 <h3>Paket Installation</h3>
@@ -22,7 +41,14 @@
             <br>
         </div>
         <div class="halbe-box lastbox">
-            Gefundene Pakete:
+            Gefundene Pakete: <br>
+            <div class="listbox">
+                <?
+                    foreach ($packet as $value) {
+                        echo $value['name']."<br>";
+                     }
+                 ?>
+            </div>
         </div>
     </fieldset>
     <fieldset>
