@@ -20,54 +20,67 @@
 // neustarten -> etc/init.d/proftpd restart
 
 $version = $server->execute('proftpd --version');
-$status = $server->execute('ftpwho');
-//$status = explode(",", $stat);
-$module = $server->execute('proftpd --list');
-//$user = $server->execute('');
-
-
+$status = $server->execute('service proftpd status');
+$seq_users = $server->execute("awk -F: '$3>999{print $1}' /etc/passwd", 2);
+$module = $server->execute('proftpd --list',1);
+//$module_ = explode("\n", $module);
 
 
 ?>
 
 
 <h3>Übersicht</h3>
-<fieldset>
-<legend>Was Ist ProFTPD?</legend>
-	Das File Transfer Protocol (FTP) ist ein Dateiübertragungsverfahren.<br>
-	Es wird genutzt um Dateien auf einen Server hochzuladen oder um Dateien auf den Client herunterzuladen.<br>
-	ProFTPD (Pro File Transfer Protocoll Daemon) ist ein freier FTP-Server, der am häufigsten genutzt wird.
-</fieldset>
-<form action="index.php?p=ftp&s=overview" method="POST">
-<fieldset>	
-<legend>Restart</legend>
-<input type="submit" class="button black" name="restart" value="neustarten">
-</form>
-</fieldset>
+	<fieldset>
+		<legend>Was Ist ProFTPD?</legend>
+			Das File Transfer Protocol (FTP) ist ein Dateiübertragungsverfahren.<br>
+			Es wird genutzt um Dateien auf einen Server hochzuladen oder um Dateien auf den Client herunterzuladen.<br>
+			ProFTPD (Pro File Transfer Protocoll Daemon) ist ein freier FTP-Server, der am häufigsten genutzt wird.
+	</fieldset>
+		<form action="index.php?p=ftp" method="POST">
+	<fieldset>	
+		<legend>Restart</legend>
+			<input type="submit" class="button black" name="restart" value="neustarten">
+		</form>
+	</fieldset>
 <div class="halbe-box">
-<fieldset>
-<legend>Version</legend>
-<h5><?=$version?></h5><br>
-</fieldset>
+	<fieldset>
+		<legend>Version</legend>
+			<h5><?=$version?></h5><br>
+	</fieldset>
 </div>
 <div class="halbe-box lastbox">
-<fieldset>
-<legend>Status</legend>
-<h5><?=$status?></h5>
-</fieldset>
+	<fieldset>
+		<legend>Status</legend>
+			<h5><?=$status?></h5>
+	</fieldset>
 </div>
 
 <div class="halbe-box">
-<fieldset>
-<legend>Module</legend>
-<h5><?=$module?></h5><br>
-</fieldset>
+	<fieldset>
+		<legend>Module</legend>
+		<div class="listbox">
+        <?php
+            
+               echo $module."<br>";
+           
+        ?>
+     	 <br>
+		</div>
+			<!-- <h5><?=$module?></h5><br> -->
+	</fieldset>
 </div>
 <div class="halbe-box lastbox">
-<fieldset>
-<legend>Benutzer</legend>
-<!--<h5><?=$user?></h5>-->
-Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>
-Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>
+	<fieldset>
+		<legend>Benutzer</legend>
+<div class="listbox">
+        <?php
+            foreach ($seq_users as $key => $value) {
+                echo $value . "<br>";
+            }
+        ?>
+      <br>
+</div>
+<br><br><br><br><br><br><br>
+    <span class="info">Neue Bernutzer für ProFTPD legen Sie <a href="http://localhost/SAS/index.php?p=system&s=usergroups" target="_blank">hier</a> an.</span>
 </fieldset>
 </div>
