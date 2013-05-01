@@ -170,7 +170,9 @@ class Session {
         }
 
         $user = $result->fetchObject();
-        if ($user->password != md5($password)) {
+        echo $user->password.'<br>';
+        echo sha1(sha1($username).sha1($password));
+        if ($user->password != sha1(sha1($username).sha1($password))) {
             $_SESSION['user']['failedAuths']++;
             return false;
         }

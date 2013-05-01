@@ -174,8 +174,8 @@ class Install {
         $this->connect();
         if (!$this->db) return false;
         $this->db->tableAction('sas_users')->insert(
-            ['username' => $_POST['user'], 'password' => md5($_POST['pass']), 'email' => $_POST['email']]);
-        $this->db->Query("INSERT INTO `sas_user_permission` SELECT id, 0xFFFFF FROM `sas_users`");
+            ['username' => $_POST['user'], 'password' => sha1(sha1($_POST['user']).sha1($_POST['pass'])), 'email' => $_POST['email']]);
+        $this->db->Query("INSERT INTO `sas_user_permission` (pid, uid, sid, bitmask) SELECT 0, id, 0, 0xFF FROM `sas_users`");
         return true;
     }
 

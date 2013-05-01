@@ -111,7 +111,12 @@ class Permission {
 
     public function isPermitted($pid, $bitMaskLocal) {
         $db = \Classes\Main::MySQL();
-        $result = $db->Query("SELECT * FROM sas_user_permission WHERE sid = ".\Classes\Main::Session()->getServerID()." AND pid = ".$pid." AND uid = ".$this->user->getID());
+        $result = $db->Query("SELECT * FROM sas_user_permission WHERE sid = "
+            .\Classes\Main::Session()->getServerID()." AND pid = ".$pid." AND uid = ".$this->user->getID()
+            .' OR pid = 0 AND sid = 0 AND uid = '.$this->user->getID()
+            .' OR pid = 0 AND sid = '.\Classes\Main::Session()->getServerID().' AND uid = '.$this->user->getID()
+            .' OR pid = '.$pid.' AND sid = 0 AND uid = '.$this->user->getID()
+        );
 
         while ($data = $result->fetch()) {
             if ($data->bitmask & $bitMaskLocal) {

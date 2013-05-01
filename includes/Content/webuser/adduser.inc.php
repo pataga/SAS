@@ -25,7 +25,7 @@ if (isset($_POST['adduser']))
 
 		// Eintragen eines neuen Webusers
 		$status = $mysql->tableAction('sas_users')
-				->insert(['username'=>$newuser, 'password'=>md5($passwd), 'email' => $usermail]);
+				->insert(['username'=>$newuser, 'password'=>sha1(sha1($newuser).sha1($passwd)), 'email' => $usermail]);
 	
 			echo '<br><span class="success">Benutzer wurde erfolgreich erstellt.</span>'; 
 
