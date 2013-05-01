@@ -9,6 +9,18 @@
 *
 -->
 <br>
+
+<?php
+
+if (isset($_POST['change'])) {
+    $newConf = explode("\n", $_POST['samba_config']);
+    $server->execute('echo "# SAS-SMB Konfig" > /etc/samba/smb.conf');
+    foreach ($newConf as $key => $value) {
+        $server->execute('echo "'.$value.'" >> /etc/samba/smb.conf');
+    }
+}
+?>
+
 <form action="index.php?p=samba&s=control" method="POST">
 <fieldset>
 <legend>Samba Steuerung</legend>
@@ -24,12 +36,8 @@ Wenn Sie keine Erfahrungen mit dem Samba Dienst haben sollten Sie sich vor einer
 
 $datei = file("/etc/samba/smb.conf");
 foreach($datei AS $meine_datei){
-	echo $meine_datei;
+    echo $meine_datei;
 }
-
-
-
-
 ?>
 
 
