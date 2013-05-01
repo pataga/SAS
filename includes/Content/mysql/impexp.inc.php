@@ -11,6 +11,7 @@
  *
  */
 
+$info = '';
 $data = \Classes\Main::Server()->getMySQLData();
 if (!$data) {
     header('Location: ?p=mysql&s=configure');
@@ -19,27 +20,58 @@ if (!$data) {
 
 $dbModule = new \Classes\Module\MySQL\DBHandler($data);
 
+if (isset($_POST['import'])) {
+    @unlink(\Classes\Singleton::getRootDir().'/tmp/mysql/import/'.session_id().'.sql');
+    @move_uploaded_file($_FILES['datei']['tmp_name'], \Classes\Singleton::getRootDir().'/tmp/mysql/import/'.session_id().'.sql');
+
+    if (isset($_GET['database']))
+        $dbModule->selectDatabase($_GET['database']);
+
+    $data = explode(';', @file_get_contents(\Classes\Singleton::getRootDir().'/tmp/mysql/import/'.session_id().'.sql'));
+    foreach ($data as $query) {
+        $dbModule->Query($query);
+    }
+    @unlink(\Classes\Singleton::getRootDir().'/tmp/mysql/import/'.session_id().'.sql');
+    $info = '<span class="info">Import erfolgreich durchgef&uuml;hrt!</span>';
+}
 
 ?>
 
 <h3>MySQL</h3>
+<?=$info?>
 <fieldset>
     <legend>Import</legend>
-    <form action="?p=mysql&s=console" method="post">
-        <select name="database" style="margin-right: 30px;">
-            <option value="0">Datenbank w&auml;hlen</option>
-            <?
-            $data = $dbModule->getDatabases();
 
-            foreach ($data as $key => $value) {
-                ?>
-                    <option><?=$value[0]?></option>
+    <div class="halbe-box">
+        <form action="" method="get" name="mysqlSubmit" id="mysqlForm">
+            <input type="hidden" name="p" value="mysql">
+            <input type="hidden" name="s" value="impexp">
+            <select name="database" id="database" onchange="checkDatabase()">
+                <option value="0">Datenbank w&auml;hlen</option>
                 <?
-            }
-            ?>
-        </select>
-        <input type="file" name="file" style="margin-right: 20px;"> <input class="button black" type="submit" value="Import" style="float:right"/>
-    </form>
+                $data = $dbModule->getDatabases();
+
+                foreach ($data as $key => $value) {
+                    if (isset($_GET['database']) && $_GET['database'] == $value[0]) {
+                        ?>
+                        <option selected="selected"><?=$value[0]?></option>
+                    <?
+                    } else {
+                        ?>
+                        <option><?=$value[0]?></option>
+                    <?
+                    }
+                }
+                ?>
+            </select>
+        </form>
+    </div>
+    <div class="halbe-box lastbox">
+        <form action="?p=mysql&s=impexp&database=<?=$_GET['database']?>" method="post" enctype="multipart/form-data">
+            <input type="file" name="datei" style="margin-right: 20px;" required>
+            <input class="button black" type="submit" name="import" value="Import" style="float:right"/>
+        </form>
+    </div>
 </fieldset>
 
 <fieldset>
