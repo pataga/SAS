@@ -24,8 +24,8 @@ if (isset($_POST['import'])) {
     @unlink(\Classes\Singleton::getRootDir().'/tmp/mysql/import/'.session_id().'.sql');
     @move_uploaded_file($_FILES['datei']['tmp_name'], \Classes\Singleton::getRootDir().'/tmp/mysql/import/'.session_id().'.sql');
 
-    if (isset($_GET['database']))
-        $dbModule->selectDatabase($_GET['database']);
+    if (isset($_GET['db']))
+        $dbModule->selectDatabase($_GET['db']);
 
     $data = explode(';', @file_get_contents(\Classes\Singleton::getRootDir().'/tmp/mysql/import/'.session_id().'.sql'));
     foreach ($data as $query) {
@@ -33,6 +33,85 @@ if (isset($_POST['import'])) {
     }
     @unlink(\Classes\Singleton::getRootDir().'/tmp/mysql/import/'.session_id().'.sql');
     $info = '<span class="info">Import erfolgreich durchgef&uuml;hrt!</span>';
+}
+
+if (isset($_GET['export'])) {
+    $query = "-- SAS MySQL Exporter --\n";
+    if ($_GET['table'] == '0') {
+        $dbModule->selectDatabase($_GET['database']);
+        $result = $dbModule->Query('SHOW TABLES');
+        while ($row = $result->fetch(\Classes\MySQL\Result::FETCH_BOTH)) {
+            $data = $dbModule->Query('SHOW FIELDS FROM '.$row[0]);
+            $query .= 'CREATE TABLE '.$row[0]." (\n";
+            $first = true;
+            while ($field = $data->fetch()) {
+                if (!$first)
+                    $query .= ",\n";
+                $query .= '`'.$field->Field.'` '.$field->Type.' '.($field->Key=='PRI'?'PRIMARY KEY':'').' '.$field->Extra;
+                $first = false;
+            }
+            $query .= "\n);\n\n";
+            $res = $dbModule->Query('SELECT * FROM '.$row[0]);
+            while ($content = $res->fetch(\Classes\MySQL\Result::FETCH_ASSOC)) {
+                $key_ = array_keys($content);
+                $data_ = array_values($content);
+                $amount = count($key_)-1;
+                $i = 0;
+                $query .= "INSERT INTO ".$row[0]." (";
+                foreach ($key_ as $key) {
+                    $query .= "$key";
+                    if ($i < $amount) $query .= ",";
+                    $i++;
+                }
+
+                $query .= ") VALUES (";
+                $i = 0;
+                foreach ($data_ as $data) {
+                    $query .= "'$data'";
+                    if ($i < $amount) $query .= ",";
+                    $i++;
+                }
+                $query .= ");\n\n";
+            }
+        }
+    } else {
+        $dbModule->selectDatabase($_GET['database']);
+        $data = $dbModule->Query('SHOW FIELDS FROM '.$_GET['table']);
+        $query .= 'CREATE TABLE '.$_GET['table']." (\n";
+        $first = true;
+        while ($field = $data->fetch()) {
+            if (!$first)
+                $query .= ",\n";
+            $query .= '`'.$field->Field.'` '.$field->Type.' '.($field->Key=='PRI'?'PRIMARY KEY':'').' '.$field->Extra;
+            $first = false;
+        }
+        $query .= "\n);\n\n";
+        $res = $dbModule->Query('SELECT * FROM '.$_GET['table']);
+        while ($content = $res->fetch(\Classes\MySQL\Result::FETCH_ASSOC)) {
+            $key_ = array_keys($content);
+            $data_ = array_values($content);
+            $amount = count($key_)-1;
+            $i = 0;
+            $query .= "INSERT INTO ".$_GET['table']." (";
+            foreach ($key_ as $key) {
+                $query .= "$key";
+                if ($i < $amount) $query .= ",";
+                $i++;
+            }
+
+            $query .= ") VALUES (";
+            $i = 0;
+            foreach ($data_ as $data) {
+                $query .= "'$data'";
+                if ($i < $amount) $query .= ",";
+                $i++;
+            }
+            $query .= ");\n\n";
+        }
+    }
+
+    file_put_contents(\Classes\Singleton::getRootDir().'/tmp/mysql/export/'.session_id().'.sql', $query);
+    header('Location: includes/Content/mysql/downloader.php');
 }
 
 ?>
@@ -43,10 +122,10 @@ if (isset($_POST['import'])) {
     <legend>Import</legend>
 
     <div class="halbe-box">
-        <form action="" method="get" name="mysqlSubmit" id="mysqlForm">
+        <form action="" method="get" name="mysqlSubmit" id="mysqlFormImp">
             <input type="hidden" name="p" value="mysql">
             <input type="hidden" name="s" value="impexp">
-            <select name="database" id="database" onchange="checkDatabase()">
+            <select name="db" id="db" onchange="checkDatabaseImp()">
                 <option value="0">Datenbank w&auml;hlen</option>
                 <?
                 $data = $dbModule->getDatabases();
@@ -124,6 +203,6 @@ if (isset($_POST['import'])) {
         <?
         }
         ?>
-        <input class="button black" type="submit" value="Export" style="float:right"/>
+        <input class="button black" type="submit" name="export" value="Export" style="float:right"/>
     </form>
 </fieldset>
