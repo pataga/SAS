@@ -11,6 +11,8 @@
 *
 */
 
+echo '<h3>MySQL</h3>';
+
 $data = \Classes\Main::Server()->getMySQLData();
 
 if (!$data) {
@@ -32,11 +34,17 @@ if (isset($_POST['action']) && $_POST['action'] == 1) {
     $query .= ' 1=1 LIMIT 1';
     $dbModule->Query($query);
     echo '<span class="info">'.$query.' ausgef&uuml;hrt</span>';
+} else if (isset($_POST['action']) && $_POST['action'] == 2) {
+    require_once \Classes\Singleton::getRootDir().'/includes/Content/mysql/editdb.inc.php';
+}
+
+if (isset($_POST['save'])) {
+    //Edit Algorithmus
 }
 
 ?>
 
-<h3>MySQL</h3>
+
 <fieldset>
     <legend>Datenbank/Tabelle</legend>
     <form action="" method="get" name="mysqlSubmit" id="mysqlForm">
