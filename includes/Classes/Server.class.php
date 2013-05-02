@@ -216,13 +216,13 @@ class Server extends Singleton {
     }
 
     public function execute($cmd, $format = 0, $type = 0) {
-        if (!$this->soap->isAlive()) {
+        if (is_object($this->soap) && !$this->soap->isAlive()) {
             return Main::SSH()->execute($cmd,$format);
         }
         if ($type == 0) {
             if ($this->soapActive) 
                 return $this->soap->execute($cmd,$format);
-            else 
+            elseif (is_object(Main::SSH()))
                 return Main::SSH()->execute($cmd,$format);
         } elseif ($type == 1) {
             return $this->soap->execute($cmd,$format);

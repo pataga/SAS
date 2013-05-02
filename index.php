@@ -21,7 +21,8 @@ require_once 'includes/Classes/Main/Autoload.class.php';
 
 //Lade benötigte Klassen
 function __autoload($name) {
-    require_once \Classes\Main\AutoLoad::getFilePath($name);
+    if (is_file(\Classes\Main\AutoLoad::getFilePath($name)))
+        require_once \Classes\Main\AutoLoad::getFilePath($name);
 }
 
 //xdebug deaktivieren um auf exception_handler zugreifen
@@ -86,7 +87,6 @@ $mysql_remote = null;
 //Init Scripts
 \Classes\ScriptLoader::loadMySQLScripts();
 \Classes\ScriptLoader::loadUserScripts();
-\Classes\ScriptLoader::loadScriptsFromPlugins();
 
 //Authentifizierung
 if (isset($_POST['username']) && isset($_POST['password'])) {
@@ -128,6 +128,8 @@ if ($session->isAuthenticated() &&
     $loader->reload();
 }
 
+\Classes\ScriptLoader::loadScriptsFromPlugins();
+
 ob_start();
 
 try {
@@ -158,5 +160,5 @@ $endTime = microtime(true);
 //Calc Time
 \Classes\Main::printLoadTime($startTime, $endTime);
 echo '<p class="memory">Speicherverbrauch '.floor(memory_get_usage()/1024).'KiB</p>';
-Scripting\MySQLScript::_OnClose();
+\Classes\Scripting\MySQLScript::_OnClose();
 ?>

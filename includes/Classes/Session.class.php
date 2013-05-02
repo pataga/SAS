@@ -202,7 +202,7 @@ class Session {
         $_SESSION['server']['address'] = '';
         $_SESSION['debug']['logLevel'] = 2; //Userspezifisches logLevel (für Entwicklung)
         $_SESSION['debug']['errorsCount'] = 0;
-        Scripting\UserScript::_OnLogout($userInstance);
+        Scripting\UserScript::_OnLogout(Main::User());
     }
 
     /**
