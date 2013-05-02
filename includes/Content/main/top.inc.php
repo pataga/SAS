@@ -20,8 +20,6 @@
         <script src="js/main.js"></script>
         <script src="js/notifications.js"></script>
         <script src="js/shortcuts.js"></script>
-        <!-- external JS -->
-        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
         <!--[if IE]>
             <script  src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->

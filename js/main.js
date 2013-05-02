@@ -42,8 +42,12 @@ function selfDestruction() {
 
 function checkDatabase() {
     if (document.getElementById('table'))
-        document.getElementById('table').selectedIndex = 0; 
+        document.getElementById('table').selectedIndex = 0;
     document.getElementById('mysqlForm').submit();
+}
+
+function checkDatabaseImp() {
+    document.getElementById('mysqlFormImp').submit();
 }
 
 function checkRowAction(id) {

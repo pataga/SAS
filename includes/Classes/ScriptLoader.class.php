@@ -24,7 +24,6 @@ class ScriptLoader {
     public static function loadMySQLScripts() {
         self::$mysqlScripts = [
             //Hier die MySQL Scripts registrieren
-            new \Plugins\Scripts\MySQLExample(),
         ];
     }
 

@@ -85,6 +85,8 @@ $mysql_remote = null;
 
 //Init Scripts
 \Classes\ScriptLoader::loadMySQLScripts();
+\Classes\ScriptLoader::loadUserScripts();
+\Classes\ScriptLoader::loadScriptsFromPlugins();
 
 //Authentifizierung
 if (isset($_POST['username']) && isset($_POST['password'])) {
@@ -156,5 +158,5 @@ $endTime = microtime(true);
 //Calc Time
 \Classes\Main::printLoadTime($startTime, $endTime);
 echo '<p class="memory">Speicherverbrauch '.floor(memory_get_usage()/1024).'KiB</p>';
-
+Scripting\MySQLScript::_OnClose();
 ?>

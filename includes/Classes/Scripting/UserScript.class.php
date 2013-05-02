@@ -16,7 +16,7 @@ namespace Classes\Scripting;
 class UserScript {
     function OnLogin(\Classes\User $user) { }
     function OnLogout(\Classes\User $user) { }
-    function OnRegister(\Classes\User $user, &$status) { }
+    function OnRegister(\Classes\User $user) { }
 
     public static function _OnLogin(\Classes\User $user) {
         foreach (\Classes\ScriptLoader::$userScripts as $script) {
@@ -30,7 +30,7 @@ class UserScript {
         }
     }
 
-    public static function _OnRegister(\Classes\User $user, &$status) {
+    public static function _OnRegister(\Classes\User $user) {
         foreach (\Classes\ScriptLoader::$userScripts as $script) {
             $script->OnRegister($user, $status);
         }
