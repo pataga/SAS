@@ -82,7 +82,8 @@ class Install {
     public function installDatabase() {
         if (!$this->db) return false;
         $db = $this->db;
-        $db->Query("CREATE DATABASE IF NOT EXISTS ".\Config\MySQL::DATABASE);
+        $db->Query("CREATE DATABASE IF NOT EXISTS".\Config\MySQL::DATABASE);
+        $db->selectDatabase(\Config\MySQL::DATABASE);
         $db->Query("DROP TABLE IF EXISTS `sas_server_data`");
         $db->Query("CREATE TABLE `sas_server_data` (
               `id` int(10) NOT NULL AUTO_INCREMENT,
