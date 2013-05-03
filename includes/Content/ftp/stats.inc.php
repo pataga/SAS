@@ -10,25 +10,46 @@
  *
  */
 
-$log1 = $server->execute('cat /var/log/proftpd/proftpd.log');
-$log2 = $server->execute('cat /var/log/proftpd/xferlog');
+$log1 = $server->execute('cat /var/log/proftpd/proftpd.log',2);
+$log2 = $server->execute('cat /var/log/proftpd/xferlog',2);
+
+function highlightAuthlog($logline) {
+	$logline =  explode("\n",(wordwrap($logline, 15,"\n",false)));
+	if (isset($logline[0])) {$logline[0] = '<span style="color:#00008F; font-weight: bold;">'.$logline[0].'</span>';}
+	if (isset($logline[1])) {$logline[1] = '<span style="color:#009D1A; font-weight: bold;">'.$logline[1].'</span>';}
+	return implode(" ", $logline);
+}
 
 ?>
 
 <br><br>
 	<fieldset>
 		<legend>proftpd.log</legend>
-		<textarea id="console">
-        	<?=$log1?>
-        </textarea>
+			<div class="scroll" style="width:760px;">
+				<ul id="logline" class="log">
+					<?php
+						foreach ($log1 as $key => $value) {
+							echo '<li style="overflow:hidden">'.highlightAuthlog($value).'</li>';
+
+						}
+					?>
+				</ul>
+			</div>
       		<br>
 	</fieldset>
 	
 	<fieldset>
-		<legend>xferlog</legend>
-		<textarea id="console">
-        	<?=$log2?>
-        </textarea>
+		<legend>proftpd.log</legend>
+			<div class="scroll" style="width:760px;">
+				<ul id="logline" class="log">
+					<?php
+						foreach ($log2 as $key => $value) {
+							echo '<li style="overflow:hidden">'.highlightAuthlog($value).'</li>';
+
+						}
+					?>
+				</ul>
+			</div>
       		<br>
 	</fieldset>
 	
