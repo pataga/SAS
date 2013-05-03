@@ -49,10 +49,10 @@ if (isset($_POST['adduser']))
 		</div>
 
 		<div class ="dreiviertel-box lastbox">	
-			<input type="text" class = "text-long" name="newuser" id=""><br><br>
-			<input type="text" class = "text-long" name="usermail" id=""><br><br>
-			<input type="password" class = "text-long" name="passwd" id=""><br><br>
-			<input type="password" class = "text-long" name="repeatpasswd" id=""><br><br><br>
+			<input type="text" class = "text-long" name="newuser" required><br><br>
+			<input type="email" class = "text-long" name="usermail" required><br><br>
+			<input type="password" class = "text-long" name="passwd" required><br><br>
+			<input type="password" class = "text-long" name="repeatpasswd" required><br><br><br>
 		</div>
 
 			<input type="submit" class="button black" name="adduser" value="Hinzuf&uuml;gen">
