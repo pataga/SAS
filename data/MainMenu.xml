@@ -436,7 +436,7 @@
         </sub>
     </menu>
     <menu>
-        <id>6</id>
+        <id>8</id>
         <name>tools</name>
         <display>Tools</display>
         <default>1</default>
@@ -489,7 +489,7 @@
     </menu>
 
     <menu>
-        <id>8</id>
+        <id>9</id>
         <name>webuser</name>
         <display>Webuser</display>
         <default>1</default>
@@ -521,7 +521,7 @@
     </menu>
 
     <menu>
-        <id>9</id>
+        <id>10</id>
         <name>plugins</name>
         <display>Plugins</display>
         <default>1</default>
