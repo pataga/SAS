@@ -24,8 +24,12 @@ if (isset($_POST['search'])) {
 
 if (isset($_POST['aptgetinstall'])) {
     $packetname = $_POST['aptgetinstall'];
-    $server->execute('apt-get install '.$packetname. ' -y -f');
+    $server->execute('apt-get install '.$packetname. ' -y -f'); 
+
+     echo'<br><span class="success">Das Paket wurde installiert.</span>';
 }
+
+
 
  ?>
 
