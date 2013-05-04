@@ -17,6 +17,14 @@ Mousetrap.bind("7", function(){ window.location.href = "?p=system"; });
 Mousetrap.bind("8", function(){ window.location.href = "?p=tools"; });
 Mousetrap.bind("9", function(){ window.location.href = "?p=webuser"; });
 Mousetrap.bind("0", function(){ window.location.href = "?p=plugins"; });
+Mousetrap.bind("g l o w", function(){
+	$('fieldset').css('-webkit-animation', 'boxglow 2s infinite');
+	$("#logo").css('-webkit-animation','glow 2s infinite'); 
+	$("#logospan").css('-webkit-animation','glow 2s infinite'); 
+});
+Mousetrap.bind("l o l m o d e", function(){
+	$('body').css('-webkit-animation', 'lolmode 1.5s linear 1');
+});
 Mousetrap.bind("s", function(){ 
 	if (confirm('Möchten Sie den Server wechseln?')) {
 	 window.location.href = "?server=change"; 

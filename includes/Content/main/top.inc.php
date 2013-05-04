@@ -32,7 +32,7 @@
         </noscript>
         <div class="top">
             <div class="logo" style="#{VISIBILITY}">
-                <h1>Server <span>Admin</span> System</h1>                       
+                <h1 id="logo">Server <span id="logospan">Admin</span> System</h1>                       
             </div>
             <div class="usermenu" style="#{VISIBILITY}">
                 <img src="img/profile/ubuntu.png" alt="Profilbild">
@@ -46,6 +46,7 @@
             </div>
         </div>
         <div id="wrapper">
+            <div class="clearfix"></div>
             <div id="nav">
                 <ul>
 -----MENUSTART-----<li><a  class="#{STATUS}" href="?p=#{PAGE_PARAM}">#{PAGE_NAME}</a></li>-----MENUEND-----

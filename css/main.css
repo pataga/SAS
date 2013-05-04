@@ -337,6 +337,7 @@ body {
 
 #main {
     width: 980px;
+    height: auto;
     margin: 0 auto;
     padding: 0;
 }
@@ -1864,6 +1865,23 @@ span.show_hide {
 @keyframes animate-streifen  {
     0% {background-position: 0 0;}
     100% {background-position: -100px 0;}
+}
+
+@-webkit-keyframes glow {
+    from {text-shadow: 0 0 10px #000BD4; }
+    50% {text-shadow: 0 0 21px #5D7AC1; }
+    to {text-shadow: 0 0 10px #3E45C5; }
+}
+
+@-webkit-keyframes boxglow {
+    from {box-shadow: 0 0 10px #000BD4; }
+    50% {box-shadow: 0 0 25px #5D7AC1; }
+    to {box-shadow: 0 0 10px #3E45C5; }
+}
+
+@-webkit-keyframes lolmode {
+    from {-webkit-transform: rotate(0deg); }
+    to {-webkit-transform: rotate(360deg); }
 }
 
 /* ==========================================================================
