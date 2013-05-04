@@ -31,13 +31,16 @@ if (isset($_POST['adduser']))
 
 			//echo '<br>Benutzername existiert bereits';*/
 	}
+	else 
+		echo '<br><span class="error">Die Passwörter stimmen nicht überein!</span>';
 }
 
 
 ?>
 
-<h3>Benutzer hinzufügen</h3>
+<br>
 <fieldset>
+	<legend>Benutzer hinzufügen</legend>
 	<form action="index.php?p=webuser&s=add" method="POST">
 
 		<div class ="viertel-box"> 
@@ -55,7 +58,7 @@ if (isset($_POST['adduser']))
 			<input type="password" class = "text-long" name="repeatpasswd" required><br><br><br>
 		</div>
 
-			<input type="submit" class="button black" name="adduser" value="Hinzuf&uuml;gen">
+			<input type="submit" class="button green" name="adduser" value="hinzuf&uuml;gen">
 			<br><br>
 
 			 <span class="info"><b>Admin Rechte:</b><br>

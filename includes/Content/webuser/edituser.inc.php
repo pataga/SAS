@@ -50,6 +50,8 @@ if (isset($_POST['id'])) {
 
 <fieldset>
 <legend>Rechtevergabe</legend>
+<span class="info"><b>Hinweis:</b> Die Rechtevergabe ist global. Das heißt, dass die Rechte die Sie hier für die Benutzer vegeben auf jeden Ihrer Server angewandt werden.</span>
+<br>
 
 <!--############################### HOME ########################################-->
 
@@ -57,12 +59,12 @@ if (isset($_POST['id'])) {
 <fieldset>
     <legend>Home</legend>
         <p> <div class="drittel-box">&Uuml;bersicht</div> 
-            <div class="drittel-box"> Erlauben <input type="checkbox" name="1[]" value="0x01" value=""></div> 
-            <div class="drittel-box lastbox"> Verweigern  <input type="checkbox" name="1[]" value="0x00"></div>
+            <div class="drittel-box"> Erlauben <input type="checkbox" name="1[]" value="0x01"'.($perm->isPermitted(1, 0x01) ? 'checked' : '').'></div> 
+            <div class="drittel-box lastbox"> Verweigern  <input type="checkbox" name="1[]" value="0x00"'.($perm->isPermitted(1, 0x01) ? '' : 'checked').'></div>
         </p>
         <p> <div class="drittel-box">Quickpanel</div> 
-            <div class="drittel-box"> Erlauben <input type="checkbox" name="1[]" value="0x02"></div>
-            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="1[]" value="0x00"></div>
+            <div class="drittel-box"> Erlauben <input type="checkbox" name="1[]" value="0x02"'.($perm->isPermitted(1, 0x02) ? 'checked' : '').'></div>
+            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="1[]" value="0x00"'.($perm->isPermitted(1, 0x02) ? '' : 'checked').'></div>
         </p>
 </fieldset>
 </div>
@@ -73,12 +75,12 @@ if (isset($_POST['id'])) {
 <fieldset>
 <legend>Plugins</legend>
         <p> <div class="drittel-box">&Uuml;bersicht</div> 
-            <div class="drittel-box"> Erlauben <input type="checkbox" name="10[]" id="0x01"></div>
-            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="10[]" id="0x00"></div>
+            <div class="drittel-box"> Erlauben <input type="checkbox" name="10[]" id="0x01" '.($perm->isPermitted(10, 0x01) ? 'checked' : '').'></div>
+            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="10[]" id="0x00"'.($perm->isPermitted(10, 0x01) ? '' : 'checked').'></div>
         </p>
         <p> <div class="drittel-box">Plugin hinzuf&uuml;gen</div> 
-            <div class="drittel-box"> Erlauben <input type="checkbox" name="10[]" id="0x02"></div>
-            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="10[]" id="0x00"></div>
+            <div class="drittel-box"> Erlauben <input type="checkbox" name="10[]" id="0x02"'.($perm->isPermitted(10, 0x02) ? 'checked' : '').'></div>
+            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="10[]" id="0x00"'.($perm->isPermitted(10, 0x02) ? '' : 'checked').'></div>
         </p>
 </fieldset>
 </div>
@@ -89,20 +91,20 @@ if (isset($_POST['id'])) {
 <fieldset>
 <legend>ProFTPD</legend>
        <p> <div class="drittel-box">&Uuml;bersicht</div> 
-            <div class="drittel-box"> Erlauben <input type="checkbox" name="3[]" value="0x01"></div>
-            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="3[]" value="0x00"></div>
+            <div class="drittel-box"> Erlauben <input type="checkbox" name="3[]" value="0x01"'.($perm->isPermitted(3, 0x01) ? 'checked' : '').'></div>
+            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="3[]" value="0x00"'.($perm->isPermitted(3, 0x01) ? '' : 'checked').'></div>
         </p>
         <p> <div class="drittel-box">Konfiguration</div> 
-            <div class="drittel-box"> Erlauben <input type="checkbox" name="3[]" value="0x02"></div>
-            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="3[]" value="0x00"></div>
+            <div class="drittel-box"> Erlauben <input type="checkbox" name="3[]" value="0x02"'.($perm->isPermitted(3, 0x02) ? 'checked' : '').'></div>
+            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="3[]" value="0x00"'.($perm->isPermitted(3, 0x02) ? '' : 'checked').'></div>
         </p>
         <p> <div class="drittel-box">Steuerung</div>    
-            <div class="drittel-box"> Erlauben <input type="checkbox" name="3[]" value="0x04"></div>
-            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="3[]" value="0x00"></div>
+            <div class="drittel-box"> Erlauben <input type="checkbox" name="3[]" value="0x04"'.($perm->isPermitted(3, 0x04) ? 'checked' : '').'></div>
+            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="3[]" value="0x00"'.($perm->isPermitted(3, 0x04) ? '' : 'checked').'></div>
         </p>
         <p> <div class="drittel-box">Statistiken</div> 
-            <div class="drittel-box"> Erlauben <input type="checkbox" name="3[]" value="0x10"></div>
-            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="3[]" value="0x00"></div>
+            <div class="drittel-box"> Erlauben <input type="checkbox" name="3[]" value="0x10"'.($perm->isPermitted(3, 0x10) ? 'checked' : '').'></div>
+            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="3[]" value="0x00"'.($perm->isPermitted(3, 0x10) ? '' : 'checked').'></div>
         </p>
 </fieldset>
 </div>
@@ -113,20 +115,20 @@ if (isset($_POST['id'])) {
 <fieldset>
 <legend>Samba</legend>
         <p> <div class="drittel-box">&Uuml;bersicht</div> 
-            <div class="drittel-box"> Erlauben <input type="checkbox" name="5[]" value="0x01"></div>
-            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="5[]" value="0x00"></div>
+            <div class="drittel-box"> Erlauben <input type="checkbox" name="5[]" value="0x01"'.($perm->isPermitted(5, 0x01) ? 'checked' : '').'></div>
+            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="5[]" value="0x00"'.($perm->isPermitted(5, 0x01) ? '' : 'checked').'></div>
         </p>
         <p> <div class="drittel-box">Freigaben</div> 
-            <div class="drittel-box"> Erlauben <input type="checkbox" name="5[]" value="0x02"></div>
-            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="5[]" value="0x00"></div>
+            <div class="drittel-box"> Erlauben <input type="checkbox" name="5[]" value="0x02"'.($perm->isPermitted(5, 0x02) ? 'checked' : '').'></div>
+            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="5[]" value="0x00"'.($perm->isPermitted(5, 0x02) ? '' : 'checked').'></div>
         </p>
         <p> <div class="drittel-box">Steuerung</div> 
-            <div class="drittel-box"> Erlauben <input type="checkbox" name="5[]" value="0x08"></div>
-            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="5[]" value="0x00"></div>
+            <div class="drittel-box"> Erlauben <input type="checkbox" name="5[]" value="0x08"'.($perm->isPermitted(5, 0x08) ? 'checked' : '').'></div>
+            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="5[]" value="0x00"'.($perm->isPermitted(5, 0x08) ? '' : 'checked').'></div>
         </p>
         <p> <div class="drittel-box">Benutzer</div> 
-            <div class="drittel-box"> Erlauben <input type="checkbox" name="5[]" value="0x10"></div>
-            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="5[]" value="0x00"></div>
+            <div class="drittel-box"> Erlauben <input type="checkbox" name="5[]" value="0x10"'.($perm->isPermitted(5, 0x10) ? 'checked' : '').'></div>
+            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="5[]" value="0x00"'.($perm->isPermitted(5, 0x10) ? '' : 'checked').'></div>
         </p>
 </fieldset>
 </div>
@@ -137,24 +139,24 @@ if (isset($_POST['id'])) {
 <fieldset>
     <legend>MySQL</legend>
         <p> <div class="drittel-box">&Uuml;bersicht</div> 
-            <div class="drittel-box"> Erlauben <input type="checkbox" name="4[]" value="0x01"></div>
-            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="4[]" value="0x00"></div>
+            <div class="drittel-box"> Erlauben <input type="checkbox" name="4[]" value="0x01"'.($perm->isPermitted(4, 0x01) ? 'checked' : '').'></div>
+            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="4[]" value="0x00"'.($perm->isPermitted(4, 0x01) ? '' : 'checked').'></div>
         </p>
         <p> <div class="drittel-box">Steuerung</div> 
-            <div class="drittel-box"> Erlauben <input type="checkbox" name="4[]" id="0x40"></div>
-            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="4[]" value="0x00"></div>
+            <div class="drittel-box"> Erlauben <input type="checkbox" name="4[]" id="0x40"'.($perm->isPermitted(4, 0x40) ? 'checked' : '').'></div>
+            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="4[]" value="0x00"'.($perm->isPermitted(4, 0x040 ? '' : 'checked').'></div>
         </p>
         <p> <div class="drittel-box">Datenbank Verwaltung</div>    
-            <div class="drittel-box"> Erlauben <input type="checkbox" name="4[]" value="0x08"></div>
-            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="4[]" value="0x00"></div>
+            <div class="drittel-box"> Erlauben <input type="checkbox" name="4[]" value="0x08"'.($perm->isPermitted(4, 0x08) ? 'checked' : '').'></div>
+            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="4[]" value="0x00"'.($perm->isPermitted(4, 0x08) ? '' : 'checked').'></div>
         </p>
         <p> <div class="drittel-box">Importieren / Exportieren</div> 
-            <div class="drittel-box"> Erlauben <input type="checkbox" name="4[]" value="0x10"></div>
-            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="4[]" value="0x00"></div>
+            <div class="drittel-box"> Erlauben <input type="checkbox" name="4[]" value="0x10"'.($perm->isPermitted(4, 0x10) ? 'checked' : '').'></div>
+            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="4[]" value="0x00"'.($perm->isPermitted(4, 0x10) ? '' : 'checked').'></div>
         </p>
         <p> <div class="drittel-box">Konsole</div> 
-            <div class="drittel-box"> Erlauben <input type="checkbox" name="4[]" value="0x20"></div>
-            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="4[]" value="0x00"></div>
+            <div class="drittel-box"> Erlauben <input type="checkbox" name="4[]" value="0x20"'.($perm->isPermitted(4, 0x20) ? 'checked' : '').'></div>
+            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="4[]" value="0x00"'.($perm->isPermitted(4, 0x20) ? '' : 'checked').'></div>
         </p>
 </fieldset>
 </div>
@@ -165,24 +167,24 @@ if (isset($_POST['id'])) {
 <fieldset>
     <legend>Tools</legend>
         <p> <div class="drittel-box">&Uuml;bersicht</div> 
-            <div class="drittel-box"> Erlauben <input type="checkbox" name="9[]" value="0x01"></div>
-            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="9[]" value="0x00"></div>
+            <div class="drittel-box"> Erlauben <input type="checkbox" name="8[]" value="0x01"'.($perm->isPermitted(8, 0x01) ? 'checked' : '').'></div>
+            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="8[]" value="0x00"'.($perm->isPermitted(8, 0x01) ? '' : 'checked').'></div>
         </p>
         <p> <div class="drittel-box">HW Informationen</div> 
-            <div class="drittel-box"> Erlauben <input type="checkbox" name="9[]" value="0x02"></div>
-            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="9[]" value="0x00"></div>
+            <div class="drittel-box"> Erlauben <input type="checkbox" name="8[]" value="0x02"'.($perm->isPermitted(8, 0x02) ? 'checked' : '').'></div>
+            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="8[]" value="0x00"'.($perm->isPermitted(8, 0x02) ? '' : 'checked').'></div>
         </p>
         <p> <div class="drittel-box">HDD Informationen</div> 
-            <div class="drittel-box"> Erlauben <input type="checkbox" name="9[]" value="0x04"></div>
-            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="9[]" value="0x00"></div>
+            <div class="drittel-box"> Erlauben <input type="checkbox" name="8[]" value="0x04"'.($perm->isPermitted(8, 0x04) ? 'checked' : '').'></div>
+            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="8[]" value="0x00"'.($perm->isPermitted(8, 0x04) ? '' : 'checked').'></div>
         </p>
         <p> <div class="drittel-box">RAM Informationen</div> 
-            <div class="drittel-box"> Erlauben <input type="checkbox" name="9[]" value="0x08"></div>
-            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="9[]" value="0x00"></div>
+            <div class="drittel-box"> Erlauben <input type="checkbox" name="8[]" value="0x08"'.($perm->isPermitted(8, 0x08) ? 'checked' : '').'></div>
+            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="8[]" value="0x00"'.($perm->isPermitted(8, 0x08) ? '' : 'checked').'></div>
         </p>
         <p> <div class="drittel-box">Netzwerk-Tools</div>
-            <div class="drittel-box"> Erlauben <input type="checkbox" name="9[]" value="0x10"></div>
-            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="9[]" value="0x00"></div>
+            <div class="drittel-box"> Erlauben <input type="checkbox" name="8[]" value="0x10"'.($perm->isPermitted(8, 0x10) ? 'checked' : '').'></div>
+            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="8[]" value="0x00"'.($perm->isPermitted(8, 0x10) ? '' : 'checked').'></div>
         </p>
 </fieldset>
 </div>
@@ -193,28 +195,28 @@ if (isset($_POST['id'])) {
 <fieldset>
     <legend>Apache</legend>
         <p> <div class="drittel-box">&Uuml;bersicht</div> 
-            <div class="drittel-box"> Erlauben <input type="checkbox" name="2[]" value="0x01"></div>
-            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="2[]" value="0x00"></div>
+            <div class="drittel-box"> Erlauben <input type="checkbox" name="2[]" value="0x01"'.($perm->isPermitted(2, 0x01) ? 'checked' : '').'></div>
+            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="2[]" value="0x00"'.($perm->isPermitted(2, 0x01) ? '' : 'checked').'></div>
         </p>
         <p> <div class="drittel-box">Steuerung</div> 
-            <div class="drittel-box"> Erlauben <input type="checkbox" name="2[]" value="0x02"></div>
-            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="2[]" value="0x00"></div>
+            <div class="drittel-box"> Erlauben <input type="checkbox" name="2[]" value="0x02"'.($perm->isPermitted(2, 0x02) ? 'checked' : '').'></div>
+            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="2[]" value="0x00"'.($perm->isPermitted(2, 0x02) ? '' : 'checked').'></div>
         </p>
         <p> <div class="drittel-box">Directory</div> 
-            <div class="drittel-box"> Erlauben <input type="checkbox" name="2[]" value="0x20"></div>
-            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="2[]" value="0x00"></div>
+            <div class="drittel-box"> Erlauben <input type="checkbox" name="2[]" value="0x20"'.($perm->isPermitted(2, 0x20) ? 'checked' : '').'></div>
+            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="2[]" value="0x00"'.($perm->isPermitted(2, 0x20) ? '' : 'checked').'></div>
         </p>
         <p> <div class="drittel-box">Module</div> 
-            <div class="drittel-box"> Erlauben <input type="checkbox" name="2[]" value="0x04"></div>
-            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="2[]" value="0x00"></div>
+            <div class="drittel-box"> Erlauben <input type="checkbox" name="2[]" value="0x04"'.($perm->isPermitted(2, 0x04) ? 'checked' : '').'></div>
+            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="2[]" value="0x00"'.($perm->isPermitted(2, 0x04) ? '' : 'checked').'></div>
         </p>
         <p> <div class="drittel-box">PHP</div> 
-            <div class="drittel-box"> Erlauben <input type="checkbox" name="2[]" value="0x08"></div>
-            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="2[]" value="0x00"></div>
+            <div class="drittel-box"> Erlauben <input type="checkbox" name="2[]" value="0x08"'.($perm->isPermitted(2, 0x08) ? 'checked' : '').'></div>
+            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="2[]" value="0x00"'.($perm->isPermitted(2, 0x08) ? '' : 'checked').'></div>
         </p>
         <p> <div class="drittel-box">PHP-Informationen</div> 
-            <div class="drittel-box"> Erlauben <input type="checkbox" name="2[]" value="0x10"></div>
-            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="2[]" value="0x00"></div>
+            <div class="drittel-box"> Erlauben <input type="checkbox" name="2[]" value="0x10"'.($perm->isPermitted(2, 0x10) ? 'checked' : '').'></div>
+            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="2[]" value="0x00"'.($perm->isPermitted(2, 0x10) ? '' : 'checked').'></div>
         </p>
 </fieldset>
 </div>
@@ -225,28 +227,28 @@ if (isset($_POST['id'])) {
 <fieldset>
 <legend>Logs</legend>
         <p> <div class="drittel-box">&Uuml;bersicht</div> 
-            <div class="drittel-box"> Erlauben <input type="checkbox" name="6[]" id="0x01"></div>
-            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="6[]" id="0x00"></div>
+            <div class="drittel-box"> Erlauben <input type="checkbox" name="6[]" id="0x01"'.($perm->isPermitted(6, 0x01) ? 'checked' : '').'></div>
+            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="6[]" id="0x00"'.($perm->isPermitted(6, 0x01) ? '' : 'checked').'></div>
         </p>
         <p> <div class="drittel-box">Bootmeldungen</div> 
-            <div class="drittel-box"> Erlauben <input type="checkbox" name="6[]" id="0x02"></div>
-            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="6[]" id="0x00"></div>
+            <div class="drittel-box"> Erlauben <input type="checkbox" name="6[]" id="0x02"'.($perm->isPermitted(6, 0x02) ? 'checked' : '').'></div>
+            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="6[]" id="0x00"'.($perm->isPermitted(6, 0x02) ? '' : 'checked').'></div>
         </p>
         <p> <div class="drittel-box">Authentifizierung</div> 
-            <div class="drittel-box"> Erlauben <input type="checkbox" name="6[]" id="0x04"></div>
-            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="6[]" id="0x00"></div>
+            <div class="drittel-box"> Erlauben <input type="checkbox" name="6[]" id="0x04"'.($perm->isPermitted(6, 0x04) ? 'checked' : '').'></div>
+            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="6[]" id="0x00"'.($perm->isPermitted(6, 0x04) ? '' : 'checked').'></div>
         </p>
         <p> <div class="drittel-box">System</div> 
-            <div class="drittel-box"> Erlauben <input type="checkbox" name="6[]" id="0x08"></div>
-            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="6[]" id="0x00"></div>
+            <div class="drittel-box"> Erlauben <input type="checkbox" name="6[]" id="0x08"'.($perm->isPermitted(6, 0x08) ? 'checked' : '').'></div>
+            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="6[]" id="0x00"'.($perm->isPermitted(2, 0x08) ? '' : 'checked').'></div>
         </p>
         <p> <div class="drittel-box">Apache</div> 
-            <div class="drittel-box"> Erlauben <input type="checkbox" name="6[]" id="0x10"></div>
-            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="6[]" id="0x00"></div>
+            <div class="drittel-box"> Erlauben <input type="checkbox" name="6[]" id="0x10"'.($perm->isPermitted(6, 0x10) ? 'checked' : '').'></div>
+            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="6[]" id="0x00"'.($perm->isPermitted(6, 0x10) ? '' : 'checked').'></div>
         </p>
         <p> <div class="drittel-box">MySQL</div> 
-            <div class="drittel-box"> Erlauben <input type="checkbox" name="6[]" id="0x20"></div>
-            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="6[]" id="0x00"></div>
+            <div class="drittel-box"> Erlauben <input type="checkbox" name="6[]" id="0x20"'.($perm->isPermitted(6, 0x20) ? 'checked' : '').'></div>
+            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="6[]" id="0x00"'.($perm->isPermitted(6, 0x20) ? '' : 'checked').'></div>
         </p>
 </fieldset>
 </div>
@@ -257,32 +259,32 @@ if (isset($_POST['id'])) {
 <fieldset>
     <legend>System</legend>
         <p> <div class="drittel-box">&Uuml;bersicht</div> 
-            <div class="drittel-box"> Erlauben <input type="checkbox" name="7[]" value="0x01"></div>
-            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="7[]" value="0x00"></div>
+            <div class="drittel-box"> Erlauben <input type="checkbox" name="7[]" value="0x01"'.($perm->isPermitted(7, 0x01) ? 'checked' : '').'></div>
+            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="7[]" value="0x00"'.($perm->isPermitted(7, 0x01) ? '' : 'checked').'></div>
         </p>
         <p> <div class="drittel-box">Konsole</div> 
-            <div class="drittel-box"> Erlauben <input type="checkbox" name="7[]" value="0x02"></div>
-            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="7[]" value="0x00"></div>
+            <div class="drittel-box"> Erlauben <input type="checkbox" name="7[]" value="0x02"'.($perm->isPermitted(7, 0x02) ? 'checked' : '').'></div>
+            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="7[]" value="0x00"'.($perm->isPermitted(7, 0x02) ? '' : 'checked').'></div>
         </p>
         <p> <div class="drittel-box">Cronjobs</div> 
-            <div class="drittel-box"> Erlauben <input type="checkbox" name="7[]" value="0x04"></div>
-            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="7[]" value="0x00"></div>
+            <div class="drittel-box"> Erlauben <input type="checkbox" name="7[]" value="0x04"'.($perm->isPermitted(7, 0x04) ? 'checked' : '').'></div>
+            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="7[]" value="0x00"'.($perm->isPermitted(7, 0x04) ? '' : 'checked').'></div>
         </p>
         <p> <div class="drittel-box">Taskmanager</div> 
-            <div class="drittel-box"> Erlauben <input type="checkbox" name="7[]" value="0x08"></div>
-            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="7[]" value="0x00"></div>
+            <div class="drittel-box"> Erlauben <input type="checkbox" name="7[]" value="0x08"'.($perm->isPermitted(7, 0x08) ? 'checked' : '').'></div>
+            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="7[]" value="0x00"'.($perm->isPermitted(7, 0x08) ? '' : 'checked').'></div>
         </p>
         <p> <div class="drittel-box">User&Gruppen</div> 
-            <div class="drittel-box"> Erlauben <input type="checkbox" name="7[]" value="0x10"></div>
-            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="7[]" value="0x00"></div>
+            <div class="drittel-box"> Erlauben <input type="checkbox" name="7[]" value="0x10"'.($perm->isPermitted(7, 0x10) ? 'checked' : '').'></div>
+            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="7[]" value="0x00"'.($perm->isPermitted(7, 0x10) ? '' : 'checked').'></div>
         </p>
         <p> <div class="drittel-box">Selbstzerst&ouml;rung</div> 
-            <div class="drittel-box"> Erlauben <input type="checkbox" name="7[]" value="0x20"></div>
-            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="7[]" value="0x00"></div>
+            <div class="drittel-box"> Erlauben <input type="checkbox" name="7[]" value="0x20"'.($perm->isPermitted(7, 0x20) ? 'checked' : '').'></div>
+            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="7[]" value="0x00"'.($perm->isPermitted(7, 0x20) ? '' : 'checked').'></div>
         </p>
         <p> <div class="drittel-box">Paketverwaltung</div> 
-            <div class="drittel-box"> Erlauben <input type="checkbox" name="7[]" value="0x40"></div>
-            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="7[]" value="0x00"></div>
+            <div class="drittel-box"> Erlauben <input type="checkbox" name="7[]" value="0x40"'.($perm->isPermitted(7, 0x40) ? 'checked' : '').'></div>
+            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="7[]" value="0x00"'.($perm->isPermitted(7, 0x40) ? '' : 'checked').'></div>
         </p>
 </fieldset>
 </div>
@@ -293,16 +295,16 @@ if (isset($_POST['id'])) {
 <fieldset>
 <legend>Webuser</legend>
         <p> <div class="drittel-box">&Uuml;bersicht</div> 
-            <div class="drittel-box"> Erlauben <input type="checkbox" name="9[]" id="0x01"></div>
-            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="9[]" id="0x00"></div>
+            <div class="drittel-box"> Erlauben <input type="checkbox" name="9[]" id="0x01"'.($perm->isPermitted(9, 0x01) ? 'checked' : '').'></div>
+            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="9[]" id="0x00"'.($perm->isPermitted(9, 0x01) ? '' : 'checked').'></div>
         </p>
         <p> <div class="drittel-box">Benutzer hinzuf&uuml;gen</div> 
-            <div class="drittel-box"> Erlauben <input type="checkbox" name="9[]" id="0x02"></div>
-            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="9[]" id="0x00"></div>
+            <div class="drittel-box"> Erlauben <input type="checkbox" name="9[]" id="0x02"'.($perm->isPermitted(9, 0x02) ? 'checked' : '').'></div>
+            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="9[]" id="0x00"'.($perm->isPermitted(9, 0x02) ? '' : 'checked').'></div>
         </p>
         <p> <div class="drittel-box">Benutzer bearbeiten</div> 
-            <div class="drittel-box"> Erlauben <input type="checkbox" name="9[]" id="0x04"></div>
-            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="9[]" id="0x00"></div>
+            <div class="drittel-box"> Erlauben <input type="checkbox" name="9[]" id="0x04"'.($perm->isPermitted(9, 0x04) ? 'checked' : '').'></div>
+            <div class="drittel-box lastbox"> Verweigern <input type="checkbox" name="9[]" id="0x00"'.($perm->isPermitted(9, 0x04) ? '' : 'checked').'></div>
         </p>
 </fieldset>
 </div>
@@ -331,12 +333,10 @@ if (isset($_POST['absenden'])) {
 
         $user=$_POST['user'];
         $email=$_POST['mail'];
-        $pw=md5($_POST['pw']);
+        $pw=sha1(sha1($_POST['user']).sha1($_POST['pw']));
 
         $mysql->Query("UPDATE sas_users SET username = '$user', password = '$pw', email ='$email' WHERE id = ".$_POST['id']);
     }
-    //Überprüfen ob Passwort gesetzt
-    //$mysql->Query("UPDATE sas_users SET ... = ... WHERE id = ".$_POST['id']);
 }
 
 
@@ -351,9 +351,6 @@ if (isset($_POST['delete'])) {
 }
 
 ?>
-
-
-
 
 <!--############ User bearbeiten ############//-->
 
