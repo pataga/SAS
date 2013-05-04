@@ -9,14 +9,11 @@
  * @author Gabriel Wanzek
  *
  */
+$checkinstall = $server->execute('if [ -d /etc/apache2/ ]; then echo "true"; else echo "false"; fi');
 
-/* 
-Status: 
-phpinfo.php erstellen + anzeigen    -> funktioniert 
-phpinfo.php löschen                 -> funktioniert
-phpinfo.php textbasiert anzeigen    -> funktioniert, Style folgt (HTML-Tabelle)
-*/
-
+if (preg_match("/false/", $checkinstall)) {
+    echo "<script>setTimeout('window.location.href=\"?p=apache\"', 2000)</script><span class=\"error\"><b>Fehler!</b><br>Apache2 ist nicht installiert! Sie werden nun zur Installation umgeleitet.</span>";
+}
 
 $phpinfo_txt = $server->execute("php -i");
 

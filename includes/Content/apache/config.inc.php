@@ -9,16 +9,12 @@
  * @author Gabriel Wanzek
  */
 
-/* 
-Status: 
-Eingaben prüfen                     -> Template 
-Eingaben schreiben/speichern        -> Template
+$checkinstall = $server->execute('if [ -d /etc/apache2/ ]; then echo "true"; else echo "false"; fi');
 
-Muss nochmal überarbeitet werden. (nur notwendige Configs)
-*/
-
+if (preg_match("/false/", $checkinstall)) {
+    echo "<script>setTimeout('window.location.href=\"?p=apache\"', 2000)</script><span class=\"error\"><b>Fehler!</b><br>Apache2 ist nicht installiert! Sie werden nun zur Installation umgeleitet.</span>";
+}
 ?>
-
 <script type="text/javascript">
     function nur_zahlen(obj){
         obj.value=obj.value.replace(/[^\d]/g,'');

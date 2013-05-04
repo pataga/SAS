@@ -42,6 +42,7 @@ if (isset($_POST['oldnc'])) {
 }
 
 $noteres = $mysql->Query('SELECT * FROM sas_home_notes ORDER BY id DESC LIMIT 1');
+
 ?>
 
 <h3>Serverübersicht</h3>

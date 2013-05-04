@@ -7,6 +7,13 @@
 * @license Apache License v2 (http://www.apache.org/licenses/LICENSE-2.0.txt)
 * @author Gabriel Wanzek
 */
+
+$checkinstall = $server->execute('if [ -d /etc/apache2/ ]; then echo "true"; else echo "false"; fi');
+
+if (preg_match("/false/", $checkinstall)) {
+    echo "<script>setTimeout('window.location.href=\"?p=apache\"', 2000)</script><span class=\"error\"><b>Fehler!</b><br>Apache2 ist nicht installiert! Sie werden nun zur Installation umgeleitet.</span>";
+}
+
 $pini = $server->execute('cat /etc/php5/apache2/php.ini');
 $piniarr = parse_ini_string($pini,false);
 $gpv = $server->execute('php -r "echo substr(phpversion(),0,strpos(phpversion(), \"-\"));"'); // PHP-Version  (nur Zahlen)

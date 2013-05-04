@@ -10,6 +10,12 @@
 * @version 1.0
 *
 */
+$checkinstall = $server->execute('if [ -d /etc/apache2/ ]; then echo "true"; else echo "false"; fi');
+
+if (preg_match("/false/", $checkinstall)) {
+    echo "<script>setTimeout('window.location.href=\"?p=apache\"', 2000)</script><span class=\"error\"><b>Fehler!</b><br>Apache2 ist nicht installiert! Sie werden nun zur Installation umgeleitet.</span>";
+}
+
 $en_mods_a2 = $server->execute("ls -1 /etc/apache2/mods-enabled/ | grep load", 2);
 $av_mods_a2 = $server->execute("ls -1 /etc/apache2/mods-available/ | grep load", 2);
 

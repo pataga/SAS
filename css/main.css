@@ -7,7 +7,7 @@ Licensed under The Apache License
 - https://github.com/pataga/SAS
 - Apache License v2 (http://www.apache.org/licenses/LICENSE-2.0.txt
 - Author:  Gabriel Wanzek
-- Version: 3.2
+- Version: 3.4
 ========================================================================== 
 
 Inhaltsverzeichnis:
@@ -941,6 +941,39 @@ pre.simple {
     resize: vertical;
 }
 
+#main fieldset select {
+   background: transparent;
+   min-width: 100px;
+   padding: 2px;
+   font-size: 14px;
+   line-height: 1.0;
+   border: 1px solid #777;
+   border-radius: 2px;
+   height: 27px;
+   margin: 2px 0;
+}
+
+#main fieldset select.multi {
+    width: auto;
+    padding: 10px;
+    height: auto; 
+    background: #fff;
+}
+
+#main fieldset select.shadow {
+    box-shadow: 1px 1px 6px #ccc;
+}
+
+#main fieldset legend {
+    font-family: "Ubuntu", Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0 0;
+    color: rgb(100, 100, 100);
+}
+
+/*** Textfelder und spezielle DIV's ***/
+
 #main textarea#console {
     background: #fff;
     font: 13px "Ubuntu Mono", monospace;
@@ -1058,49 +1091,19 @@ pre.simple {
     resize: vertical;
 }
 
-#main fieldset select {
-   background: transparent;
-   min-width: 100px;
-   padding: 2px;
-   font-size: 14px;
-   line-height: 1.0;
-   border: 1px solid #777;
-   border-radius: 2px;
-   height: 27px;
-   margin: 2px 0;
-}
-
-#main fieldset select.multi {
-    width: auto;
-    padding: 10px;
-    height: auto; 
-    background: #fff;
-}
-
-#main fieldset select.shadow {
-    box-shadow: 1px 1px 6px #ccc;
-}
-
-#main fieldset legend {
-    font-family: "Ubuntu", Arial, Helvetica, sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    margin: 0 0;
-    color: rgb(100, 100, 100);
-}
-
 #main fieldset .scroll {
     min-height: 100px;
     max-height: 500px;
     max-width: 700px;
-    overflow:scroll;
-    scrollbar-3dlight-color:#FFFFFF;
-    scrollbar-arrow-color:#000000;
-    scrollbar-base-color:#FF9999;
-    scrollbar-darkshadow-color:#000000;
-    scrollbar-face-color:#000000;
-    scrollbar-highlight-color:#000000;
-    scrollbar-shadow-color:#0033CC;
+    overflow: scroll;
+}
+
+#main fieldset .scrolly {
+    min-height: 100px;
+    max-height: 500px;
+    max-width: 700px;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 /* ==========================================================================
@@ -1211,6 +1214,7 @@ pre.simple {
 /* ==========================================================================
 5.4 Template Features: BUTTONS FÜR SUBMIT, BUTTON AND LINKS
 ========================================================================== */
+
 .button {
     display: inline-block;
     text-decoration: none;

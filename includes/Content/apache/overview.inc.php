@@ -10,6 +10,8 @@
  * @version 1.0
  *
  */
+$checkinstall = $server->execute('if [ -d /etc/apache2/ ]; then echo "true"; else echo "false"; fi');
+
 // prozess status über apache2
 $status_a2 = $server->execute("service apache2 status");
 
@@ -37,22 +39,18 @@ if (isset($_POST['a2-restart'])) {           //wenn hidden+submit ..
 }
 if (isset($_POST['a2_install'])) {           //wenn hidden+submit ..
     $server->execute("apt-get install apache2 -fy");
-    $mysql->Query("UPDATE sas_server_data SET apache=1 WHERE id = " . $_SESSION['server']['id']);                              //.. führe das aus
-}
-if (isset($_POST['a2_isinstalled'])) {
     $mysql->Query("UPDATE sas_server_data SET apache=1 WHERE id = " . $_SESSION['server']['id']);
 }
 ?>
 <h3>Apache-Übersicht</h3>
 <?php
-if (!$server->isInstalled('apache')) {
+if (preg_match("/false/", $checkinstall)) {
     echo '<br><fieldset>
     <legend>Apache2 installieren</legend>
-    <span class="error"> <b>Fehler:</b> Apache2 ist nicht installiert.</span><br>
+    <span class="error"> <b>Fehler:</b> Der Dienst "Apache2" ist nicht installiert.</span><br>
     <form action="?p=apache#action" method="post">
     <p>Wenn Sie den Apache2 jetzt installieren möchten klicken Sie hier: <br><br>
     <input type="submit" name="a2_install" value="Apache2 installieren" class="button black">
-    Wenn Sie den Apache2 schon installiert haben, klicken Sie <input type="submit" name="a2_isinstalled" value="hier" class="invs">.
     </p>
     </form>
 </fieldset>';

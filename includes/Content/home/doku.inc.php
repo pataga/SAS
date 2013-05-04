@@ -20,7 +20,7 @@ function showiframe() {
 </script> 
 <h3>Dokumentation</h3>
 <div class="centered">
-<a href="https://docs.google.com/document/d/1hukXg3i2yNqPLXS_kya2b27Ar80m0gASJYqIWnHl9Us" target="_blank">SAS-Dokumentation (Google Docs)</a> &middot; <a href="http://mangopix.de/pataga/doku.pdf">PDF - Download</a>
+<a href="https://docs.google.com/file/d/0Bww1bWeFV4q_RWZjcVN4QXJyY1k" target="_blank">SAS-Dokumentation (Google Docs)</a> &middot; <a href="http://mangopix.de/pataga/doku.pdf">PDF - Download</a>
 </div>
 <div id="loading"> 
 	<img src="img/load.gif" id="img" alt="Loading...">

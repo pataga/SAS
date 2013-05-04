@@ -10,6 +10,13 @@
 * @version 1.1
 *
 */
+
+$checkinstall = $server->execute('if [ -d /etc/apache2/ ]; then echo "true"; else echo "false"; fi');
+
+if (preg_match("/false/", $checkinstall)) {
+    echo "<script>setTimeout('window.location.href=\"?p=apache\"', 2000)</script><span class=\"error\"><b>Fehler!</b><br>Apache2 ist nicht installiert! Sie werden nun zur Installation umgeleitet.</span>";
+}
+
 $out = "";
 if (isset($_POST['a2-stop'])) {
     $out = $server->execute("service apache2 stop");

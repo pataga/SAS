@@ -25,7 +25,7 @@ function highlightAuthlog($logline) {
 <br><br>
 	<fieldset>
 		<legend>proftpd.log</legend>
-			<div class="scroll" style="width:760px;">
+			<div class="scrolly" style="width:760px;">
 				<ul id="logline" class="log">
 					<?php
 						foreach ($log1 as $key => $value) {
@@ -40,7 +40,7 @@ function highlightAuthlog($logline) {
 	
 	<fieldset>
 		<legend>proftpd.log</legend>
-			<div class="scroll" style="width:760px;">
+			<div class="scrolly" style="width:760px;">
 				<ul id="logline" class="log">
 					<?php
 						foreach ($log2 as $key => $value) {

@@ -1,6 +1,7 @@
 # custom private files #
-/nbproject/**/*
-main/includes/config/*
+nbproject/*
+includes/config/*
+includes/Plugins/Content/Minecraft/*
 
 # OS generated files #
 .DS_Store
