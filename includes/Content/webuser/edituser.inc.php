@@ -12,7 +12,7 @@
 *
 */
 
-
+error_reporting(E_ERROR | E_WARNING | E_PARSE);
 
 $result = $mysql->Query("SELECT * FROM sas_users");
 $content = "<table>";
@@ -329,7 +329,7 @@ if (isset($_POST['id'])) {
 
 if (isset($_POST['absenden'])) {
 
-    if(isset($_POST['pw']) && isset($_POST['pwr']) && $_POST['pw'] == $_POST['pwr']){
+    if(isset($_POST['pw']) && isset($_POST['pwr']) && $_POST['pw'] == $_POST['pwr']) {
 
         $user=$_POST['user'];
         $email=$_POST['mail'];
@@ -337,6 +337,18 @@ if (isset($_POST['absenden'])) {
 
         $mysql->Query("UPDATE sas_users SET username = '$user', password = '$pw', email ='$email' WHERE id = ".$_POST['id']);
     }
+
+    for ($i=1; $i<=10; $i++) {
+        $bitmask = 0x00;
+        $mysql->Query("DELETE FROM sas_user_permission WHERE uid = ".$_POST['id']." AND pid = $i");
+        if (@isset($_POST[$i])) {
+            foreach (@$_POST[$i] as $mask) {
+                $bitmask |= hexdec($mask);
+            }
+        }
+        $mysql->Query("INSERT INTO sas_user_permission (pid, uid, sid, bitmask) VALUES ($i, ".$_POST['id'].", 0, $bitmask)");
+    }
+
 }
 
 
