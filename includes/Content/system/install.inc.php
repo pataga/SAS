@@ -30,21 +30,31 @@ if (isset($_POST['install'])) {
 }
 
 
+$a = $server->execute('dpkg -l', 2); // Anzeigen der Installierten Pakete
 
- ?>
+if (isset($_POST['remove'])) {
+    $name = $_POST['paketname'];
+    $server->execute('apt-get remove --purge '.$name. ' -y -f');
+    echo '<br><span class="success">Das Paket wurde deinstalliert.</span>';
 
-<h3>Paket Installation</h3>
+}
+
+
+
+?>
+
+<br>
+
 <form action="index.php?p=system&s=install" method="POST">
     <fieldset>  
         <legend>Paketsuche</legend> 
         <div class="halbe-box">
-            <input type="text" class="text-long" name="aptcache">
+            <input type="text" class="text-long" name="aptcache" placeholder="Suchbegriff">
             <br><br><br>
-            <input type="submit" class="button green" name="search" value="suchen">
-            <br>
+            <input type="submit" class="button blue" name="search" value="suchen">
         </div>
         <div class="halbe-box lastbox">
-            Gefundene Pakete: <br>
+            Gefundene Pakete: <br><br>
             <div class="listbox">
                 <?
                     if (isset($packet) && is_array($packet))
@@ -57,9 +67,27 @@ if (isset($_POST['install'])) {
     </fieldset>
     <fieldset>
         <legend>Installation</legend>
-        <label>Paketname:</label>
-        <input type="text" class="text-long" name="aptgetinstall">
+        <input type="text" class="text-long" name="aptgetinstall" placeholder="Paketname">
         <br><br><br>
         <input type="submit" class="button green" name="install" value="installieren">
+    </fieldset>
+    <fieldset>
+        <legend>Deinstallation</legend>
+        <div class="halbe-box">
+            <input type="text" class="text-long" name="paketname" placeholder="Paketname">
+            <br><br><br>
+            <input type="submit" class="button pink" name="remove" value="l&ouml;schen">
+        </div>
+        <div class="halbe-box lastbox">
+            Momentan installlierte Pakete auf Ihrem System: <br><br>
+            <div class="listbox">
+                <?
+                    for ($i=6; $i<count($a);$i++) {
+                         $line = explode(' ', $a[$i]);
+                            echo $line[2].'<br>';
+                    }
+                ?>
+            </div>
+        </div>
     </fieldset>
 </form>
