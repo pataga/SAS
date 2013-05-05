@@ -26,13 +26,21 @@ if (isset($_POST['adduser']))
 		// Eintragen eines neuen Webusers
 		$status = $mysql->tableAction('sas_users')
 				->insert(['username'=>$newuser, 'password'=>sha1(sha1($newuser).sha1($passwd)), 'email' => $usermail]);
+
+		if (isset($_POST['admin'])) {
+				$result = $mysql->Query("SELECT * FROM sas_users WHERE username = '".$newuser."'");
+				if ($row = $result->fetch()) {
+					$id = $row->id;
+					$mysql->tableAction('sas_user_permission')->insert(['uid'=>$id, 'sid'=>0, 'pid'=>0, 'bitmask'=>255]);
+				}
+			}
 	
 			echo '<br><span class="success">Benutzer wurde erfolgreich erstellt.</span>'; 
-
-			//echo '<br>Benutzername existiert bereits';*/
 	}
 	else 
 		echo '<br><span class="error">Die Passwörter stimmen nicht überein!</span>';
+
+
 }
 
 
