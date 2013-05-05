@@ -64,23 +64,31 @@ if(isset($_POST['delete']))
 }
 
 //#######################################################
-//		Aktuelle Benutzer anzeigen
+//		Aktuelle Samba Benutzer anzeigen
 //#######################################################
 
-$line=$server->execute('pdbedit -L', 2);
-$ausgabe = "";
-foreach($line as $value)
-{
-	$pdbedit=explode(":",$value);
-	$ausgabe .=$pdbedit[0]."<br>";
-}
+$sam_users = $server->execute("pdbedit -L", 2);
+
+
+//#######################################################
+//		Aktuelle System Benutzer anzeigen
+//#######################################################
+
+$seq_users = $server->execute("awk -F: '$3>999{print $1}' /etc/passwd", 2);
 
 ?>
 
 
 
-<h3>Samba Nutzer</h3>
+<br>
 <form action="index.php?p=samba&s=users" method="POST">
+
+<fieldset>
+<legend>Samba Benutzer</legend>
+Jeder Benutzer, der auf die Samba Freigaben zugreifen soll, muss als Samba Benutzer angelegt werden.
+<br>Wichtig hierbei ist, dass die Benutzer im vorraus auf dem System angelegt sein müssen.
+
+</fieldset>
 
 <!--###############################################################	
 		Neuen Samba Benutzer anlegen
@@ -90,7 +98,7 @@ foreach($line as $value)
 <fieldset>
 <legend>Benutzer anlegen</legend>
 <label>Benutzername:</label>
-<input type="text" class="text-long" name="smbuser"><br><br><br>
+<input type="text" class="text-long" name="smbuser" placeholder="Name eines verfügbaren Systembenutzers"><br><br><br>
 <label>Passwort:</label>
 <input type="password" class="text-long" name="smbpasswd"><br><br><br>
 <label>Passwort wiederholen:</label>
@@ -105,7 +113,7 @@ foreach($line as $value)
 <fieldset>
 <legend>Passwort &auml;ndern</legend>
 <label>Benutzername:</label>
-<input type="text" class="text-long" name="user"><br><br><br>
+<input type="text" class="text-long" name="user" placeholder="Benutzername des zu löschenden Benutzers"><br><br><br>
 <label>Neues Passwort:</label>
 <input type="password" class="text-long" name="newpasswd"><br><br><br>
 <label>Passwort wiederholen:</label>
@@ -120,7 +128,7 @@ foreach($line as $value)
 <fieldset>
 <legend>Benutzer l&ouml;schen</legend>
 <label>Benutzername:</label>
-<input type="text" class="text-long" name="deluser"><br><br><br>
+<input type="text" class="text-long" name="deluser" placeholder="Benutzername"><br><br><br>
 <input type="submit" class="button black" name="delete" value="l&ouml;schen">
 </fieldset>
 </div>
@@ -130,8 +138,33 @@ foreach($line as $value)
 	###############################################################-->
 
 <div class="halbe-box lastbox">
-<fieldset>
-<legend>Aktuelle Benutzer:</legend>
-<h5><?=$ausgabe."<br>"?></h5> 
-</fieldset>
+	<fieldset>
+		<legend>Angelegte Samba Benutzer</legend>
+<div class="listbox">
+        <?php
+            foreach ($sam_users as $key => $value) {
+                $ausgabe = explode(":", $value);
+                echo $ausgabe[0] ."<br>";
+            }
+        ?>
+      <br>
+  </fieldset>
 </div>
+
+<!--###############################################################	
+		Anzeigen der aktuell verfügbaren System Benutzer
+	###############################################################-->
+
+<div class="halbe-box lastbox">
+	<fieldset>
+		<legend>Verfügbare Systembenutzer</legend>
+<div class="listbox">
+        <?php
+            foreach ($seq_users as $key => $value) {
+                echo $value . "<br>";
+            }
+        ?>
+      <br>
+</div>
+<br><br><br><br><br><br><br>
+    <span class="info">Neue Systembenutzer legen Sie <a href="http://localhost/SAS/index.php?p=system&s=usergroups" target="_blank">hier</a> an.</span>
