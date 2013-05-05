@@ -11,6 +11,8 @@
  *
  */
 
+$info = '';
+
 if (isset($_POST['del'])) {
     \Classes\Plugin::remove($_GET['id']);
     header('Location: ?p=plugins');
@@ -21,7 +23,8 @@ if (isset($_POST['update'])) {
     $result = \Classes\Main::MySQL()->Query("SELECT * FROM sas_plugins WHERE id = ".$_GET['id']);
     if ($row = $result->fetch()) {
         \Classes\Plugin::install($row->repo);
-        header('Location: ?p=plugins');
+        $info = '<span class="success">Das Plugin wurde erfolgreich aktualisiert!</span>';
+        header( "Location: ?p=plugins" ); 
         exit;
     }
 }
@@ -32,6 +35,7 @@ if (isset($_GET['id'])) {
         ?>
         <h2><?=$row->name?></h2>
         <fieldset>
+            <?=$info?>
             <legend>Plugin Operationen</legend>
             <form action="?p=plugins&s=show&id=<?= $row->id ?>" method="post">
                 <input class="button pink" type="submit" name="del" value="Plugin entfernen"/>

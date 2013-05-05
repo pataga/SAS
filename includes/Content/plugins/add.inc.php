@@ -10,14 +10,17 @@
 * @author Patrick Farnkopf
 *
 */
-
+$info = '';
 if (isset($_POST['url'])) {
     \Classes\Plugin::install($_POST['url']);
+    $info = '<span class="success">Das Plugin wurde erfolgreich installiert!</span>';
+    header( "refresh:3;url=?p=plugins" ); 
 }
 ?>
 <br>
 <fieldset>
     <legend>Plugin installieren</legend>
+    <?=$info?>
     <label>Git URL:</label>
     <form action="?p=plugins&s=add" method="post">
         <input type="text" class="text-long" name="url">

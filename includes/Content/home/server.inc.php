@@ -26,7 +26,8 @@
             'pass' => $_POST['spass'], 
             'soapPort' => $_POST['soapPort'], 
             'soapKey' => $_POST['soapKey'],
-            'domains' => $_POST['domains']
+            'domains' => $_POST['domains'],
+            'soap' => 1
         ]);
 
         $loader->reload();
@@ -108,9 +109,9 @@
             <p><label>Server Domain(s):</label><a href="#" class="tooltip">Info<span><b>Achtung:</b><br>Bitte kein Protokoll (z.B.: http://) angeben!<br>Mehrere Domains durch Kommatrennung möglich, ohne Leerzeichen</span></a>
                 <input type="text" name="domains" class="text-long"></p>
             <p><label>SOAP Port:</label>
-                <input type="text" name="soapPort" placeholder="Daemon Port" class="text-long"></p>
+                <input type="text" name="soapPort" placeholder="Daemon Port" class="text-long"> <i>*optional</i></p>
             <p><label>SOAP Key:</label>
-                <input type="text" name="soapKey" placeholder="Daemon Schl&uuml;ssel" class="text-long"></p>
+                <input type="text" name="soapKey" placeholder="Daemon Schl&uuml;ssel" class="text-long"> <i>*optional</i></p>
             <p><label>SSH Port:</label>
                 <input type="text" name="sport" placeholder="Standard: 22" class="text-long" required></p>
             <p><label>SSH Benutzername: </label>
