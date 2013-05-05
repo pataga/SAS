@@ -77,6 +77,6 @@ $module = $server->execute('proftpd --list',1);
       <br>
 </div>
 <br><br><br><br><br><br><br>
-    <span class="info">Neue Bernutzer für ProFTPD legen Sie <a href="http://localhost/SAS/index.php?p=system&s=usergroups" target="_blank">hier</a> an.</span>
+    <span class="info">Neue Benutzer für ProFTPD legen Sie <a href="http://localhost/SAS/index.php?p=system&s=usergroups" target="_blank">hier</a> an.</span>
 </fieldset>
 </div>
