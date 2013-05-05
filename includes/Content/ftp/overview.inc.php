@@ -29,9 +29,9 @@ $module = $server->execute('proftpd --list',1);
 ?>
 
 
-<h3>Übersicht</h3>
+<br>
 	<fieldset>
-		<legend>Was Ist ProFTPD?</legend>
+		<legend>Was ist ProFTPD?</legend>
 			Das File Transfer Protocol (FTP) ist ein Dateiübertragungsverfahren.<br>
 			Es wird genutzt um Dateien auf einen Server hochzuladen oder um Dateien auf den Client herunterzuladen.<br>
 			ProFTPD (Pro File Transfer Protocoll Daemon) ist ein freier FTP-Server, der am häufigsten genutzt wird.
@@ -62,7 +62,6 @@ $module = $server->execute('proftpd --list',1);
         ?>
      	 <br>
 		</div>
-			<!-- <h5><?=$module?></h5><br> -->
 	</fieldset>
 </div>
 <div class="halbe-box lastbox">
