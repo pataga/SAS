@@ -88,6 +88,12 @@ $mysql_remote = null;
 \Classes\ScriptLoader::loadMySQLScripts();
 \Classes\ScriptLoader::loadUserScripts();
 
+//Wenn Logout Link geklickt, dann abmelden
+if ($session->isAuthenticated() && isset($_GET['user']) && $_GET['user'] == 'logout') {
+    $session->Logout();
+    $loader->reload();
+}
+
 //Authentifizierung
 if (isset($_POST['username']) && isset($_POST['password'])) {
     $user = $session->authChallenge($_POST['username'],$_POST['password']);
@@ -108,13 +114,6 @@ if (!$session->isAuthenticated()) {
         $debug->error($e);
         exit;
     }
-}
-
-
-//Wenn Logout Link geklickt, dann abmelden
-if ($session->isAuthenticated() && isset($_GET['user']) && $_GET['user'] == 'logout') {
-    $session->Logout();
-    $loader->reload();
 }
 
 
