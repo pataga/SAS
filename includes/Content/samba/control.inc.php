@@ -29,8 +29,9 @@ Hier können Sie allgemeine Einstellungen vornehmen.
 Beispielsweise können Sie globale Einstellungen, wie den Namen der Arbeitsgruppe abändern.
 Wenn Sie keine Erfahrungen mit dem Samba Dienst haben sollten Sie sich vor einer Änderung dieser Textdatei über die verschiedenen Möglichkeiten informieren. 
 </fieldset>
-<textarea name="samba_config" id="console">
 
+
+<textarea name="samba_config" id="console">
 
 <?php
 
@@ -40,11 +41,26 @@ echo $datei;
 
 
 </textarea>
+
+
+
 <div class="clearfix"></div>
 <br><br>
 <input type="submit" class="button green" name="change" value="speichern"><br><br><br>
-    <fieldset>
+<div class="clearfix"></div>
+<fieldset>
         <legend>Informationen</legend>
         <a href="http://wiki.ubuntuusers.de/Samba_Server/smb.conf" target="_blank">Hier</a> finden Sie Informationen zu sämtlichen Konfigurationsmöglichkeiten.
     </fieldset>
+<fieldset>
+	<legend>Testparm</legend>
+Testparm prüft die Konfigurationsdatei von Samba auf interne Korrektheit.
+</fieldset>
+<textarea readonly="yes" id="console">
+<?php
+$syntax = $server->execute("testparm -s");
+
+echo $syntax;
+?>
+</textarea>
 </form>
