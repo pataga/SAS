@@ -13,9 +13,9 @@
 ?>
 <style type="text/css">#loading p {text-align: center;}#loading img {padding-top:100px;padding-bottom:100px;display: block;margin-left: auto;margin-right: auto;}.centered {text-align: center;vertical-align: middle;padding-bottom: 5px;}</style>
 <script type="text/javascript">
-function showiframe() { 
-    document.getElementById('loading').style.display = "none"; 
-    document.getElementById('frame').style.display = "block"; 
+function showiframe() {    
+	$('#loading').slideUp(200);
+	$('#frame').fadeIn('slow');
 } 
 </script> 
 <h3>Dokumentation</h3>
