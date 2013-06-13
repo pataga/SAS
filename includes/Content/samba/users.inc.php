@@ -113,7 +113,7 @@ Jeder Benutzer, der auf die Samba Freigaben zugreifen soll, muss als Samba Benut
 <fieldset>
 <legend>Passwort &auml;ndern</legend>
 <label>Benutzername:</label>
-<input type="text" class="text-long" name="user" placeholder="Benutzername des zu löschenden Benutzers"><br><br><br>
+<input type="text" class="text-long" name="user" placeholder="Benutzername"><br><br><br>
 <label>Neues Passwort:</label>
 <input type="password" class="text-long" name="newpasswd"><br><br><br>
 <label>Passwort wiederholen:</label>
@@ -128,7 +128,7 @@ Jeder Benutzer, der auf die Samba Freigaben zugreifen soll, muss als Samba Benut
 <fieldset>
 <legend>Benutzer l&ouml;schen</legend>
 <label>Benutzername:</label>
-<input type="text" class="text-long" name="deluser" placeholder="Benutzername"><br><br><br>
+<input type="text" class="text-long" name="deluser" placeholder="Benutzername des zu löschenden Benutzers"><br><br><br>
 <input type="submit" class="button black" name="delete" value="l&ouml;schen">
 </fieldset>
 </div>

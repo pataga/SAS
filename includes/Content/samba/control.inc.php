@@ -58,8 +58,14 @@ Testparm prüft die Konfigurationsdatei von Samba auf interne Korrektheit.
 </fieldset>
 <textarea readonly="yes" id="console">
 <?php
-$syntax = $server->execute("testparm -s");
-
+$syntax='';
+$out = $server->execute('testparm -s',2);
+foreach($out as $line) {
+	if (strpos($line, "Loaded") === FALSE)
+		$syntax.=$line;
+	else 
+		$syntax.="\n --> ".$line."\n";
+}
 echo $syntax;
 ?>
 </textarea>
