@@ -43,6 +43,18 @@ if (isset($_POST['oldnc'])) {
 
 $noteres = $mysql->Query('SELECT * FROM sas_home_notes ORDER BY id DESC LIMIT 1');
 
+if (isset($_POST['chkver'])) {
+    $vercheck = checkVersion();
+    if ($vercheck && is_bool($vercheck))
+        $chkver = '<span class="aktiv">aktuell</span>';
+    elseif (!$vercheck)
+        $chkver = '<span class="inaktiv">nicht aktuell</span>';
+    elseif ($vercheck == "err")
+        $chkver = '<span class="notaviable">keine Information</span>';
+    else
+        $chkver = '<span class="notaviable">keine Information</span>';
+}
+
 ?>
 
 <h3>Serverübersicht</h3>
@@ -142,20 +154,18 @@ echo $service['apache'] ? '<span class="aktiv">aktiv</span>' : '<span class="ina
                     <span class="notaviable">keine Information</span>
                 </td>
             </tr>
-            <tr>
+            <tr style="height:50px;">
                 <td>SAS-Version:</td>
                 <td>
                     <?php
-                    $vercheck = checkVersion();
-                    if ($vercheck && is_bool($vercheck))
-                        echo '<span class="aktiv">aktuell</span>';
-                    elseif (!$vercheck)
-                        echo '<span class="inaktiv">nicht aktuell</span>';
-                    elseif ($vercheck == "err")
-                        echo '<span class="notaviable">keine Information</span>';
-                    else
-                        echo '<span class="notaviable">keine Information</span>';
+                    if (isset($_POST['chkver'])) {
+                        echo $chkver;                    
+                    } else {
                     ?>
+                    <form action="index.php?p=home" method="post">
+                        <input type="submit" name="chkver" value="Version prüfen" class="button grey">
+                    </form>
+                    <?php } ?>
                 </td>
             </tr>
         </table>
