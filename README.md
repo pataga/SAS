@@ -2,8 +2,6 @@
 
 ---
 
-→ **Was ist SAS? Was kann SAS? Wer sind wir? Diese und weitere Informationen hier: www.pataga.de**
-
 → **Projektarbeit von Patrick Farnkopf, Tanja Weiser und Gabriel Wanzek (PaTaGa) | 2BKI2 | WvS² Mannheim**
 
 → **Lizenziert unter der [Apache Lizenz v2.0][5]**
