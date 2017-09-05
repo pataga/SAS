@@ -8,14 +8,14 @@
            
 ---
 
-###SAS - Dokumente:
+### SAS - Dokumente:
 
 * **[SAS Dokumentation (Google Documents)][1]**
 * **[SAS Notizbuch (Google Documents)][4]**
 * **[SAS Präsentation: "Projektvorstellung" (Google Documents)][3]**
 
 ---
-####Anforderungen des Servers für SAS (Host):
+#### Anforderungen des Servers für SAS (Host):
 - Apache2.2+
 - PHP 5.4+
 - optional libssh2 für PHP 5.4+
